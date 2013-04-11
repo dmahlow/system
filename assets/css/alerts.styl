@@ -1,0 +1,78 @@
+// ALERTS VIEW
+// ---------------------------------------------------------------
+
+okBg = rgba(120, 250, 110, 0.55)
+errorBg = rgba(250, 100, 100, 0.55)
+textColor = rgba(0, 0, 0, 1)
+
+
+// ALERTS: FOOTER
+// ---------------------------------------------------------------
+
+#alert-footer
+    background rgba(200, 200, 200, 0.4)
+    color textColor
+    bottom 0
+    height 16px
+    left 0
+    padding 10px 0 10px 0
+    position fixed
+    text-align center
+    text-shadow #FFFFFF 0 0 6px
+    width 100%
+    z-index 9
+
+    label
+        font-weight bold
+        margin-right 10px
+
+    span
+        margin-right 10px
+
+
+#alert-footer.ok
+    background okBg
+
+
+#alert-footer.error
+    background errorBg
+
+
+
+// ALERTS: TOOLTIP
+// ---------------------------------------------------------------
+
+#alert-tooltip
+    border 1px solid rgba(250, 250, 250, 0.6)
+    box-shadow 0 0 42px 12px #707070
+    left 50%
+    margin auto
+    margin-left -302px
+    min-height 140px
+    min-width 300px
+    padding 8px
+    position fixed
+    top 30%
+    z-index 99
+    user-select none
+    -webkit-user-select none
+
+    // The tooltip alert message.
+    span
+        display block
+        font-size 110%
+        margin-top 10px
+
+    // The tooltip alert title.
+    label
+        border-bottom 1px solid rgba(250, 250, 250, 0.6)
+        display block
+        font-size 130%
+        padding 0 0 5px 0
+
+
+#alert-tooltip.ok
+    background-color rgba(65, 175, 75, 0.92)
+
+#alert-tooltip.error
+    background-color rgba(185, 55, 45, 0.92)

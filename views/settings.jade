@@ -1,0 +1,108 @@
+// SETTINGS HTML
+// -------------------------------------------------------------------------
+
+#settings.full-overlay(style="display:none")
+    div.full-overlay-contents
+        img.close(src="images/ico-x.png")
+        h2 Settings
+
+        // Tabs shown on top of the overlay: Startup, Local Storage, Server Logs and Keyboard.
+        div.tab-headers
+            label(data-tab=".startup",title="App startup options.").active Startup
+            label(data-tab=".localstorage",title="View and manage data on the browser's local storage.") Local storage
+            label(data-tab=".serverlogs",title="List and view detailed server errors and logs.") Server logs
+            label(data-tab=".keyboard",title="View and manage keyboard shortcuts and modifier keys.") Keyboard
+
+        // Startup tab containing startup options.
+        div.tab.styled.startup
+            h4 Startup
+            div
+                span.control-label Start the app maximized
+                label.toggle(for="settings-start-maximized",title="If ON, the app will start maximized - header, menu, map controls and footer will be hidden.")
+                    input#settings-start-maximized(type="checkbox", name="settings-start-maximized")
+                    span
+            div
+                span.control-label Auto start the audit data timers
+                label.toggle(for="settings-start-timers",title="If ON, audit data timers to refresh their data will start automatically when you load the app.")
+                    input#settings-start-timers(type="checkbox", name="settings-start-timers")
+                    span
+            br
+            div
+                span App version: #{version}
+            div
+                span Running on port: #{port}
+            div
+                span Last updated: #{lastModified}
+
+        // Local storage tab to see and manage the local storage contents.
+        div.tab.styled.localstorage(style="display:none")
+            h4 Local storage
+            #settings-localstorage-contents
+            button#settings-localstorage-clear-but Clear local storage
+
+        // Server logs to see and troubleshoot server logs.
+        div.tab.styled.serverlogs(style="display:none")
+            h4 Server errors
+            #settings-servererrors-contents
+            button#settings-servererrors-clear-but Clear server errors
+
+        // Keyboard tab to edit keyboard preferences and manage shortcuts.
+        div.tab.styled.keyboard(style="display:none")
+            // The modifier keys are customizable and will highlight when
+            // mouse hovers any span.
+            .modifiers
+                h4 Modifier keys (customizable per user)
+                #settings-modifierkeys-delete(data-modifier="Delete")
+                    label Delete elements
+                    .group
+                        span.ctrl Ctrl
+                        span.shift Shift
+                        span.alt Alt
+                    strong +
+                    .group
+                        span.leftclick Left click
+                        span.rightclick Right click
+                #settings-modifierkeys-multiple(data-modifier="Multiple")
+                    label Select multiple
+                    .group
+                        span.ctrl Ctrl
+                        span.shift Shift
+                        span.alt Alt
+                    strong +
+                    .group
+                        span.leftclick Left click
+                        span.rightclick Right click
+                #settings-modifierkeys-toback(data-modifier="ToBack")
+                    label Send to back
+                    .group
+                        span.ctrl Ctrl
+                        span.shift Shift
+                        span.alt Alt
+                    strong +
+                    .group
+                        span.leftclick Left click
+                        span.rightclick Right click
+            // The shortcuts are not customizable. Static, no highlight on mouse over.
+            .shortcuts
+                h4 Shortcuts (fixed for all users)
+                div
+                    label Save everything
+                    span#settings-short-ctrl-save.active Ctrl
+                    span#settings-short-shift-save Shift
+                    span#settings-short-alt-save Alt
+                    strong +
+                    span.active S
+                div
+                    label Toggle edit mode
+                    span#settings-short-ctrl-save.active Ctrl
+                    span#settings-short-shift-save Shift
+                    span#settings-short-alt-save Alt
+                    strong +
+                    span.active E
+                div
+                    label Data binding
+                    span#settings-short-ctrl-autocomplete Ctrl
+                    span#settings-short-shift-autocomplete Shift
+                    span#settings-short-alt-autocomplete Alt
+                    strong +
+                    span.active $

@@ -1,0 +1,266 @@
+// COMMON STYLES
+// ---------------------------------------------------------------
+
+// The body style.
+body
+    background rgba(0, 0, 0, 1)
+    color rgba(240, 240, 240, 1)
+    font 0.8em Arial, Helvetica, sans-serif
+    height 100%
+    margin 0
+    overflow hidden
+    padding 0
+    position relative
+    width 100%
+
+a
+    color rgba(80, 190, 110, 1)
+
+// The main wrapper.
+#wrapper
+    overflow hidden
+    position relative
+
+// The "loading..." animated box
+#loading
+    background rgba(0, 0, 0, 1)
+    height 100%
+    left 0
+    position fixed
+    overflow hidden
+    text-align center
+    top 0
+    vertical-align middle
+    width 100%
+    z-index 99
+
+    // Loading icon is a SVG object.
+    object
+        left 50%
+        margin-left -160px
+        margin-top -180px
+        position absolute
+        top 50%
+    div
+        font-size 130%
+        margin-top 50px
+
+
+// GENERAL STYLING
+// ---------------------------------------------------------------
+
+.hyperlink
+    cursor pointer
+
+.right
+    float right
+
+.close
+    cursor pointer
+    float right
+
+.strong
+    font-weight bold
+
+.italic
+    font-style italic
+
+.small
+    font-size 75%
+
+.watermark
+    color rgba(180, 180, 180, 1)
+
+.nocursor
+    cursor default !important
+
+.red-bg
+    background-color rgba(250, 80, 80, 0.9) !important
+
+
+// STYLED FORMS
+// ---------------------------------------------------------------
+
+.toggle
+    padding-bottom 4px
+
+.styled .toggle
+    cursor pointer
+    display inline-block
+    margin 4px
+    user-select none
+    -webkit-user-select none
+    vertical-align middle
+
+.styled button
+.styled input[type="submit"]
+    background rgba(200, 200, 200, 0.2) no-repeat 95%
+    border 1px solid rgb(160, 160, 160)
+    color rgba(250, 250, 250, 1)
+    cursor pointer
+    font 14px/25px Arial, Helvetica, sans-serif
+    padding 2px 30px 1px 4px
+
+.styled button:hover
+.styled input[type="submit"]:hover
+    background-color rgba(60, 150, 70, 0.3)
+    border-color rgb(60, 150, 70)
+
+.styled button:disabled
+.styled input[type="submit"]:disabled
+    background-color inherit !important
+    border-color inherit !important
+    cursor default !important
+    opacity 0.5 !important
+
+.styled select
+    background rgb(255, 255, 255)
+    border-radius 0
+    border 1px solid rgb(160, 160, 160)
+    font 14px/21px Arial, Helvetica, sans-serif
+    padding 2px
+    -webkit-appearance none
+
+.styled input[type="email"],
+.styled input[type="number"],
+.styled input[type="text"],
+.styled input[type="url"]
+    border-radius 0
+    border 1px solid rgb(160, 160, 160)
+    font 14px/25px Arial, Helvetica, sans-serif
+    padding-left 3px
+    padding-right 3px
+    -webkit-appearance none
+
+.styled input[type="email"]:disabled,
+.styled input[type="number"]:disabled,
+.styled input[type="text"]:disabled,
+.styled input[type="url"]:disabled
+    color rgb(127, 127, 127)
+
+// Hover on red buttons.
+button.red:hover
+    background-color rgba(160, 30, 10, 0.3)
+    border-color rgb(160, 30, 10)
+
+// Buttons with a save icon.
+button.save
+    background-image url(../images/but-save.png)
+
+// Buttons with a edit icon.
+button.edit
+    background-image url(../images/but-edit.png)
+
+// When a text field is not valid, set it to red to alert the user
+input.error, textarea.error
+    background-color rgb(250, 170, 160)
+
+
+// STYLED CHECKBOXES AND RADIO BUTTONS
+// ---------------------------------------------------------------
+
+.styled input[type="checkbox"] + span:after
+.styled input[type="radio"] + span:after
+    content "off"
+
+.styled input[type="checkbox"]:checked + span:after
+.styled input[type="radio"]:checked + span:after
+    content "on"
+
+.styled input[type="checkbox"] + span
+.styled input[type="radio"] + span
+.styled input[type="checkbox"] + span:before
+.styled input[type="radio"] + span:before
+.styled input[type="checkbox"] + span:after
+.styled input[type="radio"] + span:after
+    display inline-block
+
+.styled input[type="checkbox"] + span
+.styled input[type="radio"] + span
+    font-style normal !important
+    vertical-align middle
+
+.styled input[type="checkbox"] + span:before
+.styled input[type="radio"] + span:before
+.styled input[type="checkbox"] + span:after
+.styled input[type="radio"] + span:after
+.styled input[type="checkbox"]:checked + span:before
+.styled input[type="radio"]:checked + span:before
+.styled input[type="checkbox"]:checked + span:after
+.styled input[type="radio"]:checked + span:after
+    top 0
+
+.styled input[type="checkbox"] + span:after
+.styled input[type="radio"] + span:after
+.styled input[type="checkbox"]:checked + span:before
+.styled input[type="radio"]:checked + span:before
+    right 0
+
+.styled input[type="checkbox"] + span:before
+.styled input[type="radio"] + span:before
+.styled input[type="checkbox"]:checked + span:after
+.styled input[type="radio"]:checked + span:after
+    left 0
+
+.styled input[type="checkbox"]
+.styled input[type="radio"]
+.styled input[type="checkbox"] + span:before
+.styled input[type="radio"] + span:before
+.styled input[type="checkbox"] + span:after
+.styled input[type="radio"] + span:after
+    position absolute
+
+.styled input[type="checkbox"]
+.styled input[type="radio"]
+    opacity 0
+
+.styled input[type="checkbox"] + span
+.styled input[type="radio"] + span
+    background -webkit-linear-gradient(top, #C8C8C8, #F3F3F3)
+    background linear-gradient(top, #C8C8C8, #F3F3F3)
+    color #8C8C8C
+    font 11px/26px Arial, Helvetica, sans-serif
+    height 25px
+    position relative
+    text-indent -9999px
+    text-transform uppercase
+    width 80px
+
+.styled input[type="checkbox"] + span:before
+.styled input[type="radio"] + span:before
+    background -webkit-linear-gradient(top, #CFCFCF, #F9F9F9)
+    background linear-gradient(top, #CFCFCF, #F9F9F9)
+    content ""
+    height 25px
+    width 40%
+
+.styled input[type="checkbox"] + span:after
+.styled input[type="radio"] + span:after
+    height 27px
+    width 62%
+    text-align center
+    text-indent 0
+
+.styled input[type="checkbox"]:checked + span
+.styled input[type="radio"]:checked + span
+    background -webkit-linear-gradient(top, #55AA44, #227711)
+    background linear-gradient(top, #55AA44, #227711)
+    color #FAFAFA
+    text-shadow -1px -1px #114400
+
+.styled input[type="checkbox"]:disabled + span
+.styled input[type="radio"]:disabled + span
+    background -webkit-linear-gradient(top, #BFBFBF, #EFEFEF)
+    background linear-gradient(top, #BFBFBF, #EFEFEF)
+    color #EEEEEE
+    text-shadow -1px -1px #BBBBBB
+
+.styled input[type="checkbox"]:checked + span:before
+.styled input[type="radio"]:checked + span:before
+    left auto
+
+.styled input[type="checkbox"]:checked + span:after
+.styled input[type="radio"]:checked + span:after
+    height 30px
+    left -1px
+    top -1px

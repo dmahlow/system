@@ -1,0 +1,4 @@
+/assets
+
+All app dynamic assets will be stored in this folder.
+CoffeeScript and Stylus files will be transformed to Javascript and CSS by Connect-Assets.

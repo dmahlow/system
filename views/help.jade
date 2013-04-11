@@ -1,0 +1,113 @@
+// HELP OVERLAY HTML
+// -------------------------------------------------------------------------
+
+#help.full-overlay(style="display:none")
+    div.full-overlay-contents
+        img.close(src="images/ico-x.png")
+        h2 Help Center
+
+        div.tab-headers
+            label(data-tab=".general",title="General help.").active General
+            label(data-tab=".maps",title="What are Maps, how they are stored, and how to create and edit maps.") Maps
+            label(data-tab=".entities",title="What are Entities and how to manage the,.") Entities
+            label(data-tab=".auditdata",title="What are Audit Data records, and how to manage and use them accross the app.") Audit Data
+            label(data-tab=".auditevents",title="What are Audit Data records, and how to manage and use them accross the app.") Audit Events
+            label(data-tab=".variables",title="What are Variables, how to manage them, and how to use on maps and alerts.") Variables
+            label(data-tab=".shortcuts",title="Keyboard and mouse shortcuts to make your life easier when using the app.") Shortcuts
+
+        div.tab.general
+            h4 General
+            p.
+                Before you start, have you tried our simple <a href="javascript:System.App.Tutorial.start();">tutorial</a> yet?
+            ul.qa
+                li.
+                    <label>Which browsers are compatible with the System App?</label><br />
+                    This app works best on the latest version of Google Chrome, although FireFox and Opera <em>should</em> work as well.
+                li.
+                    <label>The app suddenly stopped working or has a strange behaviour. What can I do?</label><br />
+                    The silly answer is: refresh the page (usually by pressing F5). The more precise answer is: the System App is
+                    100% javascript driven and requires that a few libraries work together, and we're still nailing down all the gaps
+                    to make it work buttery smooth.
+                li.
+                    <label>Where can I get the source code documentation for this app?</label><br />
+                    Feeling lucky? The source code docs are available at <em><a href="docs/index.html" target="SystemDocs">/docs</a></em>.
+                li.
+                    <label>Need help? Found a bug? Have a suggestion?</label><br />
+                    Send a message to <strong><a href="mailto:igor.ramadas@zalando.de">igor.ramadas@zalando.de</a></strong> and he'll get back to you ASAP.
+
+        div.tab.entities(style="display:none")
+            h4 Entities
+            ul.qa
+                li.
+                    <label>What are Entities?</label><br />
+                    Entities represent the different types of objects you have on your infrastructure. A common scenario
+                    would be having the following entity definitions: DataCenters, Machines, DbHost, HttpHost, The System App has no restrictions on how you define
+                    them. A
+                li.
+                    <label>I can't see a particular entity listed on the Entities list, why?</label><br />
+                    Go to the Entities Manager ("Entities" on the top menu) and make sure that the Source URL property for
+                    that particular entity is properly set.
+
+        div.tab.maps(style="display:none")
+            h4 Maps
+            ul.qa
+                li.
+                    <label>How can I create maps?</label><br />
+                    First of all, map creations will be available <strong>only</strong> if you have the necessary permissions.
+                    Simply click the "Create Map" button on the left side of top bar, enter the name of the new map, and start
+                    adding shapes by dragging them from the "Entities" list on the map controls bar (NOT the Entities Manager,
+                    accessible from the top menu!).
+                li.
+                    <label>I can't see a particular entity listed on the Entities list, why?</label><br />
+                    Go to the Entities Manager ("Entities" on the top menu) and make sure that the Source URL property for
+                    that particular entity is properly set.
+
+        div.tab.auditdata(style="display:none")
+            h4 Audit Data
+            ul.qa
+                li.
+                    <label>How to bind dynamic values (Audit Data) to labels on shapes and links?</label><br />
+                    When edtiting label values, you can either use the autocomplete list that appears right below the text box or press the key <em>$</em>
+                    to show the current available audit data items. If you're conformtable with javascript, you can also evaluate code by entering
+                    <em>eval:</em> which will bring the eval text box - in this case, please remember that you must have a return statement set somewhere.
+
+        div.tab.auditevents(style="display:none")
+            h4 Audit Events
+            ul.qa
+                li.
+                    <label>What are Audit Events?</label><br />
+                    Audit Events are a combination of rules and actions to notify users about the state of the monitored systems. You can define multiple
+                    rules, and if any of these rules are valid (true), it will trigger the specified actions on all the shapes which have this particular
+                    alert attached.
+                li.
+                    <label>How do I create Audit Events?</label><br />
+                    Click the "Audit Events" button on the top of the page, and the Audit Events manager will open. On the left part of the panel you can
+                    see a list of registered alerts and also create new alerts. On the right side you can see the list of rules and actions for the
+                    currently selected alert.
+                li.
+                    <label>How can I set the source or target of a rule to a specific shape label?</label><br />
+                    To set the source or target to a label on the shape, use the <strong><span class="prefix-auditeventcontext"></span></strong> prefix and the label number.
+                    The label numbers are: left 1, top 2, right 3, bottom 4, center 5. So to compare the left label with the right label, you would use
+                    <em><span class="prefix-auditeventcontext"></span>1</em> as source and <em><span class="prefix-auditeventcontext"></span>3</em> as target.
+
+        div.tab.variables(style="display:none")
+            h4 Variables
+            ul.qa
+                li.
+                    <label>What are Variables?</label><br />
+                    Custom variables are javascript code blocks that gets parsed and interpreted on demand. They're mainly used to aggregate and process
+                    values from Audit Data itens, which can then be shown on map labels or used in Audit Events. Variables are prefixed
+                    by <strong><span class="prefix-variables"></span></strong>.
+                li.
+                    <label>Can I pass arguments when using Variables?</label><br />
+                    Yes, you can pass arguments inside parentheses. For example: <em><span class="prefix-variables"></span>CalculateCPU(1)</em>
+                    or <em><span class="prefix-variables"></span>GetRequestsPerSec(1,3,6,7)</em>.
+
+        div.tab.shortcuts(style="display:none")
+            h4 Shortcuts
+            ul.qa
+                li.
+                    <label>What are the key and mouse shortcuts available on the app?</label><br />
+                    A few. Pressing <em>Ctrl+S</em> will save the current map. <em>Ctrl+E</em> will enable editing the map (if you have permissions).
+                    <em>Ctrl+T</em> will toggle the fullscreen mode. Pressing <em>Esc</em> will usually cancel any pending actions and close overlays.
+                    Fore more details, open the Settings tab.

@@ -1,0 +1,52 @@
+// AUDIT DATA MANAGER HTML
+// -------------------------------------------------------------------------
+
+#auditdata.full-overlay(style="display:none")
+    div.full-overlay-contents
+        img.close(src="images/ico-x.png")
+        h2 Audit Data
+
+        // Tabs shown on top of the overlay.
+        #auditdata-tabheaders.tab-headers
+            label(data-tab="#auditdata-tab-props",title="View and edit the selected audit data's properties.").active Properties
+            label(data-tab="#auditdata-tab-preview",title="View the selected audit data's preview.") Preview
+
+        // Audit Data list on the left.
+        .left-col
+            // This "Audit Data list" is populated via javascript.
+            #auditdata-list.models-list
+
+            div.styled.create
+                input#auditdata-txt-create(type="text",placeholder="New audit data ID...",title="Enter the name of the new audit data to be created.")
+                button#auditdata-but-create(title="Click to create a new audit data with the specified ID.") Create
+
+            div.notes.small.
+                Please note that only normal characters and numbers are allowed
+                on the ID field. Special characters and spaces will be normalized.
+
+        // The right panel has the tabs and forms for editing the audit data.
+        .right-col
+
+            // Audit Data properties tab.
+            #auditdata-tab-props.tab
+                h4 Audit Data properties
+                .panel.styled
+                    div
+                        label(for="auditdata-txt-description") Description:
+                        input#auditdata-txt-description.required.long(type="text",data-propertyname="description",title="Enter a quick description of this audit data.")
+                    div
+                        label(for="auditdata-txt-url") Source URL:
+                        input#auditdata-txt-url.required.long(type="url",data-propertyname="sourceUrl",placeholder="http(s)://domain.com/path/to/auditdata/json",title="Enter the URL to the JSON resource for this audit data, including http(s)://.")
+                    div
+                        label(for="auditdata-txt-refresh") Refresh:
+                        input#auditdata-txt-refresh.required.short(type="number",data-propertyname="refreshInterval",title="Data refresh interval in milliseconds. Minimum of 2000, for performance reasons.")
+                        span.spaced seconds
+
+            // Audit data preview tab.
+            #auditdata-tab-preview.tab(style="display:none")
+                #auditdata-preview
+
+        // Manage tab.
+       div.tab.reports(style="display:none")
+           div.
+               Reports will be available soon!

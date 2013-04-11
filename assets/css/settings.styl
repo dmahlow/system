@@ -1,0 +1,65 @@
+// SETTINGS VIEW STYLES
+// ---------------------------------------------------------------
+
+monoFonts = Consolas,Monaco,Lucida Console,Liberation Mono,Courier New
+
+#settings > div
+    .topmargin
+        margin-top 24px
+
+    .modifiers, .shortcuts
+        div
+            line-height 35px
+            strong
+                margin-right 5px // Add a margin next to the + symbol
+
+        label
+            display inline-block
+            width 130px
+
+        span
+            border 1px solid rgba(0, 0, 0, 1)
+            font-family monoFonts
+            margin-right 5px
+            padding 6px
+
+    .modifiers
+        span
+            cursor pointer
+
+    .shortcuts
+        margin-top 16px
+
+    .active
+        background rgba(60, 150, 70, 0.8)
+
+    .group
+        display inline
+
+    .startup
+        .control-label
+            display inline-block
+            width 200px
+
+
+#settings-localstorage-contents
+    background rgba(200, 200, 200, 0.1)
+    border 1px solid rgba(200, 200, 200, 0.8)
+    clear both
+    height 250px
+    overflow auto
+    padding 5px
+    white-space pre-wrap
+
+
+#settings-servererrors-contents
+    background rgba(200, 200, 200, 0.1)
+    border 1px solid rgba(200, 200, 200, 0.8)
+    clear both
+    height 177px
+    overflow auto
+    padding 5px
+
+#settings-localstorage-clear-but, #settings-servererrors-clear-but
+    background-image url(../images/but-delete-small.png)
+    margin 20px 0 0 0

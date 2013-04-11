@@ -1,0 +1,1 @@
+All views (using the Jade template system) should be stored here.

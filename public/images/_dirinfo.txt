@@ -1,0 +1,5 @@
+/public/images
+
+Static images should be stored here.
+Files under the /mapthumbs folder are generated and managed automatically
+by the app, so please do nt try to updated them manually.

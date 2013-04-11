@@ -1,0 +1,61 @@
+// AUDIT VIEW STYLES
+// ---------------------------------------------------------------
+
+#auditevents
+    // The info text below the panels.
+    .info
+        font-size 85%
+        font-style italic
+        margin-top 4px
+
+    // All add "icons".
+    .add
+        background url(../images/but-add-small.png) no-repeat bottom
+        cursor pointer
+        display inline-block
+        height 16px
+        margin-bottom 1px
+        vertical-align middle
+        width 16px
+
+    .add:hover
+        background-image url(../images/but-add-small-green.png)
+
+    // The grid headers.
+    .header
+        span
+            color rgba(130, 130, 130, 1)
+            display inline-block
+            margin-left 1px
+            margin-right 12px
+
+    // Make text italic on all the "add" fields.
+    .addrow
+        input[type="text"], select
+            font-style italic !important
+
+// The "Rules" div wrapper.
+#auditevents-tab-rules
+    margin-bottom 20px
+
+    .source
+        margin-right 10px
+        width 210px
+
+    .comparator
+        margin-right 9px
+        width 40px
+
+    .target
+        margin-right 10px
+        width 210px
+
+// The "Actions" div wrapper.
+#auditevents-tab-actions
+    .type
+        margin-right 9px
+        width 170px
+
+    .value
+        margin-right 10px
+        width 310px

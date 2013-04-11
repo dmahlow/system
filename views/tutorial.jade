@@ -1,0 +1,180 @@
+// Full size div to cancel mouse and keyboard actions while tutorial is running.
+#tutorial-cancelbg
+
+// The tutorial list / steps.
+ol#tutorial
+    li(data-button="Next: Entities", class="tutorial-modal")
+        h2 Welcome to the System App by Zalando!
+        p.
+            This tutorial will guide you through the System App's features. Each step will give you
+            the main details on each feature and instructions on how to proceed. During the tutorial
+            you won't be able to interact with the app directly.
+        p.
+            <strong>Already a pro?</strong>
+            Simply click the "X" icon on the top right to close the tutorial at any time.
+        p.
+            If source code is what you're looking for, then head over to the
+            <a href="docs/index.html" title="System App annotated source code and docs">docs</a>.
+        p.
+            Ready? Set? Go!
+
+    li(data-id="menu-entities", data-button="Next: Adding Entity Definitions")
+        h3 Entity Definitions and Objects
+        p.
+            First step is to create and setup <label>Entity Definitions</label>.
+        p.
+            <strong>But what are Entities?</strong> It can be any physical or logical
+            part of your infrastructure, and you should have one <label>Entity Definition</label>
+            for each part. A few examples:
+        ul
+            li DataCenter, Machine and Host.
+            li Database, Http, Email and Backup.
+            li WindowsHost, LinuxHost, MacHost, MobileDevice.
+        p.
+            Each <label>Entity Definition</label> has a source URL attribute, setting the URL
+            to a remote JSON listing all its <label>Entity Objects</label>.
+        p.
+            Making a comparison to databases, think of Entity Definitions as being
+            table schemas and Entity Objects as being the records.
+
+    li(data-id="entitymanager-list", data-button="Next: Sample Entity Definition", data-options="tipLocation:left")
+        p.
+            This is the <label>Entities Manager</label> panel.
+        p.
+            On the left you'll see a list of all registered <label>Entity Definitions</label>.
+            If you just installed the System App, this list will probably be empty by now.
+        p.
+            To add a new <label>Entity Definition</label>, enter its ID on the "New entity ID..." field
+            at the bottom of the list and press Enter.
+        p.
+            Please note that this ID should have only letters and numbers. Prefer short names,
+            but keep it readable and self descriptive.
+            <br />
+            Example: <em>DbHost</em> might be better than the long <em>DatabaseHost</em>, and
+            than <em>dbh</em> which is shorter but has no meaning.
+
+    li(data-id="entitymanager-but-create", data-button="Next: Properties of an Entity Definition", data-options="tipLocation:left")
+        p.
+            We're now create a dummy <label>MyEntity</label> for demo purposes.
+        p.
+            Check the "New entity ID" field. It should be automatically populated and
+            in a few seconds you should see the new Entity Definition listed on the left.
+
+    li(data-id="entitymanager-tabheader-shape", data-button="Next: Shape Template", data-options="tipLocation:left", class="tutorial-entityprops")
+        p.
+            Once an <label>Entity Definition</label> is added you'll see a form to edit its
+            properties and settings. The most important fields here are:
+        p.
+            <label>Source URL:</label> The local or remote path to a JSON file
+            containing all <label>Entity Objects</label> for the selected definition.
+        p.
+            <label>ID attribute:</label> The name of the JSON attribute that defines the
+            unique ID for each <label>Entity Objects</label>.
+        p.
+            <label>Title attribute(s):</label> The name of the JSON attribute that defines the
+            title or name of each <label>Entity Objects</label>. You can add more than one value,
+            separated by commas.
+        p.
+            Specifying a source URL is optional, but if you do you must make sure that
+            the ID and title attributes are properly set.
+
+    li(data-id="entitymanager-tabheader-shape", data-button="Next: Audit Data", data-options="tipLocation:left", class="tutorial-entityprops")
+        h3 Shape Template
+        p.
+            Next step is setting the <label>Shape Template</label> for the selected
+            entity definition.
+        p.
+            <strong>What is a shape template?</strong> Each object on a map is considered
+            a shape. These shapes can all have specific sizes, colours and styling.
+        p.
+            When you add a shape representing a particular <label>Entity Object</label>
+            to a map, it will inherit the default styling of the object's
+            <label>Entity Definition</label>. Here's where you define this template.
+
+    li(data-id="menu-auditdata", data-button="Next: Managing Audit Data")
+        h3 Audit Data
+        p.
+            If you have monitoring or health check systems in place (Nagios, SNMP, etc..) with JSON
+            output then you can register them on the System App by creating
+            <label>Audit Data</label> records.
+        p.
+            <strong>What for?</strong> So you can bind and trigger events with these monitored
+            data on your maps. For example showing the CPU load inside shapes, or making
+            shape's background red whenever a machine is running out of disk space.
+        p.
+            You can create as many <label>Audit Data</label> records as you want, as long as there's
+            a valid JSON URL where we can get this data from.
+
+    li(data-id="auditdata-list", data-button="Next: Audit Events", data-options="tipLocation:left")
+        p.
+            Adding an <label>Audit Data</label> record is fairly similar to adding
+            <label>Entity Definitions</label>. You enter an unique ID on the bottom field
+            and press Enter.
+        p.
+            Once the <label>Audit Data</label> has been added, the form to change its properties
+            will be shown on the right side of the panel.
+
+    li(data-id="menu-auditevents", data-button="Next: Maps")
+        h3 Audit Events
+        p.
+            You can create events that will be triggered depending on specific values and rules,
+            each event having one or more actions. We call them <label>Audit Events</label>.
+        p.
+            Managing <label>Audit Events</label> follows the same rules as the previous described
+            <label>Entity Definitions</label> and <label>Audit Data</label>. A list is shown on the left,
+            and once you select an item you can see and change its properties on the form on the right.
+
+    li(data-id="menu-createmap", data-button="Next: Editing a Map")
+        h3 Maps
+        p.
+            After getting the entities, audit data and audit events sorted out, it's time to start creating
+            <label>Maps</label>. You can create as many as you want and each <label>Map</label> has its
+            own customizable settings.
+        p.
+            Click on the "Create Map" button on the top left of the screen, enter a name for the
+            new <label>Map</label> and press Enter.
+        p.
+            Proceed to create a "My Test System" sample map...
+
+    li(data-id="map-controls", data-button="Next: Adding Shapes to the Map", data-options="tipLocation:right", class="tutorial-mapcontrols")
+        p.
+            Once a map is open, you can start manipulating it by using the controls
+            on the right side of the screen.
+        p.
+            The <label>Map</label> tab shows you all attributes and general properties of the map.
+            The <label>Shape</label> and <label>Inspector</label> will show you the attributes
+            and details about the selected shape or link on the map. And finally the
+            <label>Objects</label> shows you a list of available Entity Objects to be added.
+
+    li(data-id="map-ctl-tab-header-entities", data-button="Next: Shortcuts", data-options="tipLocation:right", class="tutorial-mapcontrols")
+        p.
+            Clicking on the <label>Objects</label> tab will show you a list of objects collected
+            from the registered entities. You can also add custom shapes - these are not linked
+            to any specific Entity Object.
+        p.
+            To add a shape to the map, simply drag from the list and drop it on the map area.
+
+    li(data-button="Next: more to follow...")
+        h3 Keyboard and mouse shortcuts
+        ul
+            li. <label>Ctrl + E</label> toggle the map edit lock
+            li. <label>Ctrl + S</label> saves the current map view
+            li. <label>Ctrl + T</label> toggle the fullscreen mode
+            li. <label>Esc</label> will cancel any pending operations
+            li. <label>Double Esc</label> will force close any open overlays
+            li. <label>Ctrl + Alt + Right Click</label> delete the clicked shape or link
+        p.
+            Please note that some of these shortcuts depend on the current view
+            to work. For example you can't toggle map editing if you don't have permissions
+            to edit the current map.
+
+    li(data-id="menu-help", data-button="End tutorial")
+        p.
+            <label>We're still writing this intercative tutorial!</label>
+        p.
+            If you need help with any specific
+            feature, please check the Help section or in the last case
+            contact the developer: igor.ramadas@zalando.de.
+        p.
+            Please note that when closing this tutorial, any <strong>sample data</strong>
+            created will be automatically <strong>destroyed</strong>!

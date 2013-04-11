@@ -1,0 +1,32 @@
+// FOOTER STYLES
+// ---------------------------------------------------------------
+
+#footer
+    background rgba(60, 60, 60, 1)
+    bottom 0
+    left 0
+    position fixed
+    user-select none
+    -webkit-user-select none
+    width 100%
+    z-index 6
+
+    .path
+        margin 10px
+        span:not(:empty):before
+            content " > "
+
+#footer.transparent
+    background-color transparent
+
+#footer-maps-name, #footer-maps-entity
+    font-weight bold
+
+#footer-online-users
+    background url(../images/ico-user.png) no-repeat right
+    bottom 1px
+    height 24px
+    right 256px
+    padding-top 8px
+    position fixed
+    width 41px

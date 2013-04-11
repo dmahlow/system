@@ -1,0 +1,5 @@
+/server
+
+All server modules should be stored here.
+Please note that the server files *might* use coffee files / modules from
+other folders, for example the models inside /assets/js/models.

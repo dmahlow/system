@@ -1,0 +1,233 @@
+// MAP VIEW STYLES
+// ---------------------------------------------------------------
+
+#map
+    margin-top 42px
+    max-height 100%
+    overflow hidden
+    text-align left
+    user-select none
+    vertical-align top
+    -webkit-user-select none
+
+
+// MAP PANNING
+// ---------------------------------------------------------------
+
+#map-panning-icon
+    background url('../images/ico-panning.png') no-repeat
+    height 128px
+    left 50%
+    margin-left -140px
+    margin-top -70px
+    opacity 0.6
+    position fixed
+    top 50%
+    width 128px
+    z-index 9
+
+
+// MAP LABEL EDIT VIEW
+// ---------------------------------------------------------------
+
+.label-edit-view
+    background overlayBackground
+    border overlayBorder
+    box-shadow 0 0 18px 6px #BBBBBB
+    padding 4px
+    position absolute
+
+    // Simple input field with autocompletion.
+    .simple
+
+        div.autocomplete
+            max-height 280px
+
+        div
+            margin 2px
+            overflow auto
+            width auto
+
+            // Autocomplete: properties of a single Audit Data item.
+            div
+                white-space pre-wrap
+
+                span
+                    cursor pointer
+
+                span:hover
+                    text-decoration underline
+
+                .level1
+                    color highlightColor
+                    display block
+                    font-size 95%
+                    margin-top 6px
+
+                .level2
+                    display block
+                    font-size 90%
+                    margin-left 10px
+                    margin-top 3px
+
+                .level3
+                    display block
+                    font-size 85%
+                    margin-left 20px
+                    margin-top 1px
+
+                .level4
+                    display block
+                    font-size 80%
+                    margin-left 30px
+
+                .level5
+                    display block
+                    font-size 75%
+                    margin-left 40px
+
+            // Autocomplete: list of available Audit Data items
+            ul
+                margin 10px 0 10px 0
+                padding 0 0 0 18px
+
+                li
+                    color highlightColor
+                    cursor pointer
+
+    // The custom variable name
+    input.variable
+        clear both
+        margin-bottom 4px
+        max-height 400px
+        max-width 900px
+        min-width 400px
+
+    // The custom variable code
+    textarea.variable
+        clear both
+        display block
+        height 180px
+        max-height 400px
+        max-width 900px
+        min-height 180px
+        min-width 404px
+
+    // The "Save variable" button
+    button.variable
+        margin 5px 0 0 3px
+        padding-bottom 0
+        padding-top 0
+
+    // When user is entering an Audit Data property
+    .highlight
+        color rgba(5, 65, 15, 1)
+
+    // The span at the top of the view.
+    .current-value
+        clear both
+        display block
+        font-size 78%
+        font-style italic
+        margin 0 0 4px 1px
+
+    // The "create new variable..." link, below the simple text
+    .create-variable
+        color highlightColor
+        cursor pointer
+        display block
+        font-size 78%
+        font-style italic
+        margin 6px 0 0 1px
+
+    .create-variable:hover
+        text-decoration underline
+
+    // The autocomplete list of audit data items.
+    ul.auditdata
+        list-style-type disc
+
+        li:hover
+            text-decoration underline
+
+    // The autocomplete list of variables.
+    ul.variable
+        list-style-type circle
+
+        // Each custom variable item and edit icon.
+        li
+            img
+                margin-left 8px
+                opacity 0.5
+                vertical-align bottom
+                visibility hidden
+
+        // List image and span hover effects.
+        li:hover
+            img
+                visibility visible
+            img:hover
+                opacity 1
+        span:hover
+                text-decoration underline
+
+
+// MAP SCRIPT EDIT VIEW
+// ---------------------------------------------------------------
+
+// The script editor overlay.
+#script-editor
+
+    // The textarea represents the script.
+    textarea
+        height 460px
+        margin-top 10px
+        max-width 99%
+        resize none
+        width 90%
+
+    // The save button should be aligned to the left.
+    button.save
+        margin-left 0
+
+    // Validation error message in red.
+    span.error
+        color errorColor
+        margin-left 10px
+
+
+// FULLSCREEN MODE
+// ---------------------------------------------------------------
+
+.fullscreen
+    #map
+        height 100% !important
+        left 0 !important
+        margin 0 !important
+        padding 0 !important
+        position fixed !important
+        top 0 !important
+        width 100% !important
+        z-index 3 !important
+
+    #map-controls
+        height 100% !important
+        top 0 !important
+
+// CREATE NEW MAP OVERLAY
+// ---------------------------------------------------------------
+
+#map-create-overlay > div
+    background overlayBackground
+    border overlayBorder
+    border-left 0
+    left 0
+    margin auto
+    padding 15px 15px 15px 5px
+    position fixed
+    text-align center
+    top headerHeight
+    z-index 12
+
+#map-create-overlay-name
+    font-size 260%

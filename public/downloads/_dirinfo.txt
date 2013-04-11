@@ -1,0 +1,4 @@
+/public/downloads
+
+All external files downloaded by the System App will be stored here.
+For example Audit Data and Entity Objects.

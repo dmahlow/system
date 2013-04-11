@@ -1,0 +1,237 @@
+// OVERLAYS
+// ---------------------------------------------------------------
+
+.full-overlay
+    background rgba(0, 0, 0, 0.7)
+    left 0
+    height 100%
+    position fixed
+    top 0
+    width 100%
+    z-index 7
+
+.full-overlay-contents
+    background overlayBackground
+    height 608px
+    left 0
+    padding 15px
+    position fixed
+    top headerHeight
+    z-index 9
+    width 100%
+
+    h2
+        border-bottom 3px solid overlayHighlightColor
+        font-size 175%
+        font-weight normal
+        margin 0 0 16px 0
+        padding 0 0 5px 0
+        user-select none
+        -webkit-user-select none
+
+    h4
+        font-size 140%
+        margin 20px 0 0 0
+        padding-top 6px
+        user-select none
+        -webkit-user-select none
+
+    // Spaced span (between input fields).
+    span.spaced
+        margin-left 6px
+        margin-right 6px
+
+    // Divs with margin on the top.
+    div.topmargin
+        margin-top 12px
+
+    // The close "X" icon.
+    .close
+        margin-top 4px
+
+    // The tab titles (headers).
+    .tab-headers
+        font-size 115%
+        left 266px
+        position absolute
+        top 18px
+
+        // Each tab header is a label.
+        label
+            cursor pointer
+            display inline-block
+            margin-right 6px
+            padding 5px 10px 6px 10px
+
+        // Mouse over a label.
+        label:hover
+            background-color rgba(60, 150, 70, 0.1)
+
+        // The active help tab.
+        label.active
+            background-color tabHighlightColor !important
+            cursor default
+
+    // Tab containers.
+    .tab
+        h4
+            margin-top 0
+
+    // Left column on overlays are floating to left.
+    .left-col
+        border-right 1px solid overlayHighlightColor
+        float left
+        min-height 460px
+        padding-right 3px
+        width 242px
+
+        // The models list on the left.
+        .models-list
+            margin-bottom 8px
+
+            // Each entity ID input field.
+            .id
+                width 152px
+
+        // Notes are shown in italic and small letters.
+        // Usually on the bottom of the models list.
+        .notes
+            font-style italic
+            margin-top 15px
+
+        // Row wrapper.
+        .row
+            margin-bottom 6px
+
+        // Proper rows on the left column, usually listing models.
+        // The row itself is a wrapper with a child div containing
+        // a textbox/edit/delete, and an arrow.
+        .row > div
+            background-color rgba(200, 200, 200, 0.1)
+            border-bottom 1px solid rgba(200, 200, 200, 0.8)
+            margin-right 16px
+
+            // Text input fields should look like normal read-only text.
+            input[type="text"]
+                background-color Transparent
+                border-width 0
+                color overlayHighlightTextColor
+                font 14px/24px Arial, Helvetica, sans-serif
+                margin 2px 15px 2px 2px
+                padding-left 4px
+
+            // Edit icons.
+            .edit
+                margin-right 12px
+                margin-top -2px
+
+            // Delete icons.
+            .delete
+                margin-top -2px
+
+        // Display an arrow next to selected rows.
+        span.arrow
+            border-top 16px solid Transparent
+            border-bottom 15px solid Transparent
+            border-left 16px solid tabHighlightColor
+            display none
+            float right
+            height 0px
+            width 0px
+
+        // Active rows are highlighted.
+        .row.active > div
+            background-color tabHighlightColor
+            border-color rgba(60, 150, 70, 1)
+
+            // Active input fields should look editable.
+            input[type="text"]
+                background-color rgba(250, 250, 250, 1) !important
+                color rgba(30, 30, 30, 1) !important
+
+        // Show arrow when row is active.
+        .row.active span.arrow
+            display inline-block !important
+
+        // Div containing the "Add new" model text field and button.
+        div.create
+            margin-top 20px
+
+            // The input where user types the ID of models.
+            input
+                width 142px
+
+            // The "Create new" model button.
+            button
+                background-image url(../images/but-add-small.png)
+                padding-bottom 1px
+                padding-right 25px
+                padding-top 1px
+                margin-left 2px
+                margin-right 0
+
+    // Right column has a border on the left and margin.
+    .right-col
+        margin-left 260px
+        max-width 634px
+
+        // Position form labels and input fields.
+        .panel
+            margin-bottom 20px
+            margin-top 10px
+
+            label
+                display inline-block
+                width 120px
+
+        // Make the form fields spaced.
+        .panel > div
+            margin-bottom 2px
+
+        // Long input fields.
+        input.long
+            width 330px
+
+        // Medium input fields.
+        input.medium
+            width 150px
+
+        // Short input fields.
+        input.short
+            width 60px
+
+        // Align select boxes by using negative margin.
+        select
+            margin-left -1px
+            width 60px
+
+        // If label has a toggle class, means it represents a checkbox so do not
+        // apply the panel label styling.
+        label.toggle
+            display inline !important
+            margin-left 0
+            width auto !important
+
+    // All delete icons.
+    .delete
+        background url(../images/but-delete.png) no-repeat bottom
+        cursor pointer
+        display inline-block
+        height 16px
+        margin-bottom 1px
+        vertical-align middle
+        width 16px
+
+    // When user clicks the delete icon, it gets red.
+    .delete-red
+        background-image url(../images/but-delete-red.png)
+
+    // All edit icons.
+    .edit
+        background url(../images/but-edit.png) no-repeat bottom
+        cursor pointer
+        display inline-block
+        height 16px
+        margin-bottom 1px
+        vertical-align middle
+        width 16px

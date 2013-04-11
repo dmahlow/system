@@ -1,0 +1,179 @@
+// MAP CONTROLS HTML
+// -------------------------------------------------------------------------
+
+// This is the map controls wrapper (the panel on the right of the screen).
+#map-controls.styled
+
+    // Controls: Map view options, settings and entity list.
+    #map-ctl-tab-headers.tab-header
+        h4.active(data-tabid="#map-ctl-tab-map",title="Map settings and view options") Map
+        h4(data-tabid="#map-ctl-tab-shape",title="Shape properties and style") Shape
+        h4(data-tabid="#map-ctl-tab-inspector",title="Inspect the current shape(s) or link(s)") Inspector
+        h4#map-ctl-tab-header-entities(data-tabid="#map-ctl-tab-entities",title="List of available entity objects") Objects
+
+    // Map options and settings tab.
+    #map-ctl-tab-map.tab
+        h5 Map properties
+        .panel
+            div
+                label.control-label(for="map-ctl-name") Name
+                input#map-ctl-name(type="text",maxlength="20",disabled="disabled",title="Enter the map's name here, with a maximum of 20 chars.")
+            div
+                label.control-label Paper Size
+                input#map-ctl-papersize-x.grid-size(type="text",maxlength="4",disabled="disabled",title="Enter the map's paper width (horizontal length, in pixels).")
+                span.grid-size X
+                input#map-ctl-papersize-y.grid-size(type="text",maxlength="4",disabled="disabled",title="Enter the map's paper height (vertical length, in pixels).")
+                span.grid-size Y
+            div
+                label.control-label Grid Size
+                input#map-ctl-gridsize-x.grid-size(type="text",maxlength="2",disabled="disabled",title="Enter the horizontal grid size, in pixels (distance between vertical lines).")
+                span.grid-size X
+                input#map-ctl-gridsize-y.grid-size(type="text",maxlength="2",disabled="disabled",title="Enter the vertical grid size, in pixels (distance between horizontal lines).")
+                span.grid-size Y
+            div
+                label.control-label Init script
+                button#map-ctl-init-script.edit(title="Click to view or edit the map's init script.") Edit
+        h5 View options
+        .panel
+            div
+                label.control-label(for="map-ctl-displayprops") Shape's title
+                select#map-ctl-displayprops(title="Select the property to display on top of the map's shapes.")
+                    option ...
+            div
+                label.control-label Show links
+                label.toggle(for="map-ctl-showlinks",title="If ON, shape's links will be shown on the map.")
+                    input#map-ctl-showlinks(type="checkbox", name="map-ctl-showlinks", checked="checked")
+                    span
+        h5 Tools
+        .panel
+            div
+                button#map-ctl-zindex-identify(title="Click to briefly identify each shape's z-index value.") Identify z-index
+                button#map-ctl-export-svg(title="Click to export the current map view to a SVG image. Will open on a new window.") Export to SVG
+        h5 Delete
+        .panel
+            div
+                button#map-ctl-delete(disabled="disabled",title="Click to delete the map. You'll need to confirm this action by clicking on another button.") Delete map
+                button#map-ctl-confirmdelete.red.hidden(title="Click to CONFIRM the MAP DELETION. This action CANNOT BE UNDONE!") Confirm
+
+    // Shape properties and details tab.
+    #map-ctl-tab-shape.tab(style="display:none")
+        h6 No shape(s) or link(s) selected
+        h5 Colours
+        .panel
+            div.not-for-links
+                label.control-label(for="map-ctl-shape-background") Background
+                input#map-ctl-shape-background(type="text",maxlength="10",disabled="disabled",title="Enter the shape's background color, hexadecimal format.")
+                div.preview
+            div
+                label.control-label(for="map-ctl-shape-foreground") Label color
+                input#map-ctl-shape-foreground(type="text",maxlength="10",disabled="disabled",title="Enter the element's label color, hexadecimal format.")
+                div.preview
+            div.not-for-links
+                label.control-label(for="map-ctl-shape-title-foreground") Title color
+                input#map-ctl-shape-title-foreground(type="text",maxlength="10",disabled="disabled",title="Enter the shape's title foreground color, hexadecimal format.")
+                div.preview
+            div
+                label.control-label(for="map-ctl-shape-stroke") Border color
+                input#map-ctl-shape-stroke(type="text",maxlength="10",disabled="disabled",title="Enter the element's border / stroke color, hexadecimal format.")
+                div.preview
+        h5 Styling
+        .panel
+            div
+                label.control-label(for="map-ctl-shape-strokewidth") Border width
+                select#map-ctl-shape-strokewidth.medium(disabled="disabled",title="Select the element's border / stroke width.")
+                    option 1
+                    option 2
+                    option 3
+                    option 4
+                    option 5
+                    option 10
+            div
+                label.control-label(for="map-ctl-shape-fontsize") Font size
+                select#map-ctl-shape-fontsize.medium(disabled="disabled",title="Select the element's font size, in pixels.")
+                    option 10
+                    option 11
+                    option 12
+                    option 14
+                    option 18
+                    option 24
+                    option 35
+                    option 50
+            div
+                label.control-label(for="map-ctl-shape-opacity") Opacity
+                select#map-ctl-shape-opacity.medium(disabled="disabled",title="Select the element's opacity, from 0.5 (semi-transparent) to 1.0 (fully opaque).")
+                    option 0.5
+                    option 0.6
+                    option 0.7
+                    option 0.8
+                    option 0.9
+                    option 1.0
+            div.not-for-links
+                label.control-label(for="map-ctl-shape-icon") Icon
+                select#map-ctl-shape-icon(disabled="disabled",title="Select the shape's icon.")
+            div.not-for-links
+                label.control-label Rounded corners
+                label.toggle(for="map-ctl-shape-roundedcorners",title="If ON, the shape will have rounded corners. If OFF, squared corners.")
+                    input#map-ctl-shape-roundedcorners(type="checkbox", name="map-ctl-shape-roundedcorners", checked="checked")
+                    span
+            div.only-for-links
+                label.control-label Link style
+                select#map-ctl-link-arrow-source(disabled="disabled",title="Select the link source arrow style.")
+                    option(value="0") -
+                    option(value="1") &#8701;
+                select#map-ctl-link-arrow-target(disabled="disabled",title="Select the link target arrow style.")
+                    option(value="0") -
+                    option(value="1") &#8702;
+            div.only-for-links
+                label.control-label Smooth link
+                label.toggle(for="map-ctl-link-smooth",title="If ON, the link will have a smooth path. If OFF it will be a straight line.")
+                    input#map-ctl-link-smooth(type="checkbox",name="map-ctl-link-smooth",checked="checked")
+                    span
+        h5 Stack level
+        .panel
+            #map-ctl-shape-zindex.disabled
+                div(title="Set z-index to 1 (lowest level, back of the map).") 1
+                div(title="Set z-index to 2.") 2
+                div(title="Set z-index to 3.") 3
+                div(title="Set z-index to 4.") 4
+                div(title="Set z-index to 5.") 5
+                div(title="Set z-index to 6.") 6
+                div(title="Set z-index to 7.") 7
+                div(title="Set z-index to 8.") 8
+                div(title="Set z-index to 9 (highest level, front of the map).") 9
+        h5 Delete
+        .panel
+            div
+                button#map-ctl-shape-delete(disabled="disabled",title="Click to remove the selected element(s) from the map. You'll need to confirm this action by clicking on another button.") Remove
+                button#map-ctl-shape-confirmdelete.red.hidden(title="Click to CONFIRM the SHAPE REMOVAL. This action CANNOT BE UNDONE!") Confirm
+
+    // Events and alerts tab.
+    #map-ctl-tab-inspector.tab(style="display:none")
+        h6 No shape(s) or link(s) selected
+        h5 Attributes
+        #map-ctl-inspector-attributes.panel
+
+        // h5 Related objects
+        // .panel
+        //    span No related objects!
+        //    #map-ctl-shape-parent-child
+        //        span No child entities.
+        //    #map-ctl-shape-links
+        //        span No connections.
+
+        h5 Attached events
+        .panel
+            #map-ctl-shape-events
+
+
+    // Map entity / objects list tab.
+    #map-ctl-tab-entities.tab(style="display:none")
+        #map-entity-list-filters
+            input#map-entity-list-search(type="text",title="Enter your search terms to filter the available entities. You can use property names to filter the entities, for example 'assigned_memory>8000000' or 'internal_ip=10.1.1.1'. You can also filter by quantity, using the symbols =, < or >. For example '>1' will show all shapes which are added more than once on the map.")
+            img.search(src="images/ico-search.png")
+        ul
+
+// Map zoom icons shown on the bottom right of the screen.
+#map-ctl-zoom
+    span#map-ctl-zoom-span.control-label Zoom 1.0
+    img#map-ctl-zoom-out(src="images/ico-zoom-out.png")
+    img#map-ctl-zoom-in(src="images/ico-zoom-in.png")

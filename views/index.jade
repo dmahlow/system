@@ -1,0 +1,27 @@
+!!! 5
+!= js("app")
+!= css("app")
+html
+    head
+        title #{title}
+        script(src="/socket.io/socket.io.js")
+        link(type="image/x-icon", href="images/favico.png", rel="icon")
+        meta(name="apple-mobile-web-app-capable", content="yes")
+    body(data-app="system")
+        #wrapper
+            include header
+            include map
+            include entityManager
+            include auditDataManager
+            include auditEventManager
+            include settings
+            include help
+            include start
+            include scriptEditor
+            include alerts
+            include footer
+        #loading
+            object(data="images/loading.svg")
+            div #{title} #{version} is loading, please wait...
+
+        include tutorial

@@ -1,0 +1,119 @@
+// ENTITY MANAGER HTML
+// -------------------------------------------------------------------------
+
+#entitymanager.full-overlay(style="display:none")
+    div.full-overlay-contents
+        img.close(src="images/ico-x.png")
+        h2 Entities
+
+        // Tabs shown on top of the overlay.
+        #entitymanager-tabheaders.tab-headers
+            label#entitymanager-tabheader-props(data-tab="#entitymanager-tab-props",title="View and edit the selected entity's properties.").active Properties
+            label#entitymanager-tabheader-shape(data-tab="#entitymanager-tab-shape",title="View and edit the selected entity's shape template.") Shape template
+
+        // Entity list on the left.
+        .left-col
+            // This "Entity Definitions list" is populated via javascript.
+            #entitymanager-list.models-list
+
+            div.styled.create
+                input#entitymanager-txt-create(type="text",placeholder="New entity ID...",title="Enter the name of the new entity definition to be created.")
+                button#entitymanager-but-create(title="Click to create a new entity definition with the specified ID.") Create
+
+            div.notes.small.
+                Please note that only normal characters and numbers are allowed
+                on the ID field. Special characters and spaces will be normalized.
+
+        // The right panel has tabs and forms to edit the entity definition.
+        .right-col
+
+            // Entity properties tab.
+            #entitymanager-tab-props.tab
+                h4 Entity Definition properties
+
+                div.panel.styled
+                    div
+                        label(for="entitymanager-txt-description") Description:
+                        input#entitymanager-txt-description.required.long(type="text",data-propertyname="description",placeholder="Enter a quick description about the entity definition here.",title="Enter a quick description for that entity definition.")
+                    div
+                        label(for="entitymanager-txt-sourceurl") Source URL:
+                        input#entitymanager-txt-sourceurl.long(type="url",data-propertyname="sourceUrl",placeholder="http(s)://domain.com/path/to/entity/json",title="Enter the URL to the JSON where the entity objects can be downloaded from.")
+                    div
+                        label(for="entitymanager-txt-refresh") Refresh:
+                        input#entitymanager-txt-refresh.required.short(type="number",data-propertyname="refreshInterval",title="Refresh objects from the source URL above every X seconds.")
+                        span.spaced seconds
+                strong Entity Object properties
+                div.panel.styled
+                    div
+                        label(for="entitymanager-txt-idattribute") ID attribute:
+                        input#entitymanager-txt-idattribute.medium(type="text",data-propertyname="objectIdAttribute",placeholder="id",title="Enter the JSON attribute which defines the ID of objects. Default is id.")
+                    div
+                        label(for="entitymanager-txt-titleattribute") Title attribute(s):
+                        input#entitymanager-txt-titleattribute.medium(type="text",data-propertyname="objectTitleAttribute",placeholder="name,hostname,etc...",title="Enter the JSON attribute which defines the title of objects. You can specify more than one attribute separated by comma. Default is name.")
+
+            // Shape properties tab.
+            #entitymanager-tab-shape.tab(style="display:none")
+                h4 Shape template
+
+                // The shape template with title, labels, colours and borders.
+                #entitymanager-shape-preview
+                    div
+                        label.label-title title
+                        span.label-center c
+                        span.label-left left
+                        span.label-top top
+                        span.label-right right
+                        span.label-bottom bottom
+
+                div.panel.styled
+                    div
+                        label(for="entitymanager-txt-shape-sizex") Size:
+                        input#entitymanager-txt-shape-sizex.required.short(type="number",data-propertyname="shapeSizeX",title="Enter default shape horizontal size, in blocks.",min="1",max="100")
+                        span.spaced x
+                        input#entitymanager-txt-shape-sizey.required.short(type="number",data-propertyname="shapeSizeY",title="Enter default shape vertical size, in blocks.",min="1",max="100")
+                    div.topmargin
+                        label(for="entitymanager-txt-shape-background") Background:
+                        input#entitymanager-txt-shape-background.required.medium(type="text",data-propertyname="shapeBackground",title="Enter the shape's background colour, hexadecimal value.")
+                    div
+                        label(for="entitymanager-txt-shape-foreground") Label color:
+                        input#entitymanager-txt-shape-foreground.required.medium(type="text",data-propertyname="shapeForeground",title="Enter the shape's foreground / label colour, hexadecimal value.")
+                    div
+                        label(for="entitymanager-txt-shape-titleforeground") Title color:
+                        input#entitymanager-txt-shape-titleforeground.required.medium(type="text",data-propertyname="shapeTitleForeground",title="Enter the shape's title colour, hexadecimal value.")
+                    div
+                        label(for="entitymanager-txt-shape-stroke") Border color:
+                        input#entitymanager-txt-shape-stroke.required.medium(type="text",data-propertyname="shapeStroke",title="Enter the shape's stroke / border colour, hexadecimal value.")
+                    div.topmargin
+                        label(for="entitymanager-cbo-shape-strokewidth") Border width:
+                        select#entitymanager-cbo-shape-strokewidth(data-propertyname="shapeStrokeWidth",title="Select the element's border / stroke width.")
+                            option 1
+                            option 2
+                            option 3
+                            option 4
+                            option 5
+                            option 10
+                    div
+                        label(for="entitymanager-cbo-shape-fontsize") Font size:
+                        select#entitymanager-cbo-shape-fontsize(data-propertyname="shapeFontSize",title="Select the element's font size, in pixels.")
+                            option 10
+                            option 11
+                            option 12
+                            option 14
+                            option 18
+                            option 24
+                            option 35
+                            option 50
+                    div
+                        label(for="entitymanager-cbo-shape-opacity") Opacity:
+                        select#entitymanager-cbo-shape-opacity(data-propertyname="shapeOpacity",title="Select the element's opacity, from 0.5 (semi-transparent) to 1.0 (fully opaque).")
+                            option 0.5
+                            option 0.6
+                            option 0.7
+                            option 0.8
+                            option 0.9
+                            option 1.0
+                    div.topmargin
+                        label Rounded corners
+                        label.toggle(for="entitymanager-chk-shape-roundedcorners",title="If ON, the shape will have rounded corners. If OFF, squared corners.")
+                            input#entitymanager-chk-shape-roundedcorners(type="checkbox",data-propertyname="shapeRoundedCorners",name="entitymanager-chk-shape-roundedcorners")
+                            span
