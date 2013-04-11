@@ -7,7 +7,7 @@ fs = require "fs"
 # Make sure that the `settings.coffee` file is present. In a normal and expected scenario
 # this will be called only once when the app is started for the very first time.
 if not fs.existsSync "./server/settings.coffee"
-    fs.renameSync "./server/settings.base.coffee", "./server/settings.coffee"
+    fs.createReadStream("./server/settings.base.coffee").pipe fs.createWriteStream("./server/settings.coffee")
 
 # Define the settings and sockets.
 logger = require "./server/logger.coffee"

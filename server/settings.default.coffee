@@ -1,4 +1,4 @@
-# SERVER SETTINGS - DEFAULT
+# DEFAULT SERVER SETTINGS
 # --------------------------------------------------------------------------
 # Has all default server side settings for the app. Please DOT NOT edit
 # this file unless you know excatly what you're doing. To change settings,
@@ -25,8 +25,8 @@ class SettingsDefault
         connString: "mongodb://localhost/systemapp"
         # Wait for flush to file system before acknowlegement? Default is false.
         fsync: false
-        # For how many hours should the DB keep insert/update/delete logs? Default is 2 hours.
-        logExpires: 2
+        # For how many hours should the DB keep insert/update/delete logs? Default is 3 hours.
+        logExpires: 3
 
 
     # PATHS
