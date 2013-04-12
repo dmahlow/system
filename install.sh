@@ -255,7 +255,7 @@ checkMongo(){
     if checkDependency "mongo"; then
         echo "MongoDB is installed!"
     else
-        aboutDependency "The System App needs MongoDB to store data." 0
+        aboutDependency "The System App needs MongoDB to store data. If you don't want to install MongoDB locally, you can use a free hosted version at http://mongolab.com." 0
         if [ "$PKG_MANAGER" = "brew" ]; then
             confirmInstall "mongo" 0
         else
@@ -330,19 +330,9 @@ checkMongoYumRepo(){
     fi
 }
 
-# Check if CoffeeScript is installed (coffee: required).
-checkCoffeeScript(){
-    if checkDependency "coffee"; then
-        echo "CoffeeScript is installed!"
-    else
-        aboutDependency "The System App needs CoffeeScript to execute." 0
-        confirmInstall "coffee-script" 1
-    fi
-}
-
 # Check if forever is installed (forever: optional).
 checkForever(){
-    if checkDependency "zocco"; then
+    if checkDependency "forever"; then
         echo "Forever is installed!"
     else
         aboutDependency "Forever is a Node.js module that helps you starting and stopping the server as a service." 1
@@ -350,13 +340,13 @@ checkForever(){
     fi
 }
 
-# Check if Zocco is installed (zocco: optional).
-checkZocco(){
-    if checkDependency "zocco"; then
-        echo "Zocco is installed!"
+# Check if Docco is installed (docco: optional).
+checkDocco(){
+    if checkDependency "docco"; then
+        echo "Docco is installed!"
     else
-        aboutDependency "Zocco is necessary to update the System App documentation." 1
-        confirmInstall "zocco" 1
+        aboutDependency "Docco is necessary to update the System App documentation." 1
+        confirmInstall "docco" 1
     fi
 }
 
@@ -404,6 +394,7 @@ downloadFromGit(){
             git clone https://github.com/zalando/system.git ./system_latest
             rm -f system_latest/install.sh
             mv -f system_latest/* ./
+            mv -f system_latest/.git ./
             rm -fr system_latest
             echo "Installing Node.js modules..."
             sudo npm install
@@ -426,10 +417,10 @@ howToStartServer(){
     fi
 
     echo "If no problems were found you should be able to start the System App by running the command:"
-    echo "$ coffee server.coffee"
+    echo "$ node server.js"
     echo ""
     echo "If you have installed the forever module, please use:"
-    echo "$ forever start -c coffee server.coffee"
+    echo "$ forever start -c node server.js"
     echo ""
     echo "Please note that MongoDB might not start automatically depending on your system configuration."
     echo "To check if Mongo is running, run the command:"
@@ -467,9 +458,8 @@ checkGit
 checkNode
 checkNpm
 checkMongo
-checkCoffeeScript
 checkForever
-checkZocco
+checkDocco
 checkImageMagick
 
 downloadFromGit
