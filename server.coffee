@@ -4,11 +4,17 @@
 # Require filesystem.
 fs = require "fs"
 
-# Make sure that the `settings.coffee` file is present. In a normal and expected scenario
-# this will be called only once when the app is started for the very first time.
-if not fs.existsSync "./server/settings.coffee"
-    baseSettings = fs.readFileSync "./server/settings.base.coffee"
-    fs.writeFileSync "./server/settings.coffee", baseSettings
+# Make sure that the `settings.coffee` file is present. There are 2 settings file: one for client settings
+# and one for server and backend settings. In a normal and expected scenario this will be called only once
+# when the app is started for the very first time.
+checkSettingsFiles = () ->
+    if not fs.existsSync "./server/settings.coffee"
+        baseSettings = fs.readFileSync "./server/settings.base.coffee"
+        fs.writeFileSync "./server/settings.coffee", baseSettings
+    if not fs.existsSync "./assets/js/settings.coffee"
+        baseSettings = fs.readFileSync "./assets/js/settings.base.coffee"
+        fs.writeFileSync "./assets/js/settings.coffee", baseSettings
+checkSettingsFiles()
 
 # Define the settings and sockets.
 logger = require "./server/logger.coffee"

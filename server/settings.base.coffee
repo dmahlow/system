@@ -1,11 +1,13 @@
 # SERVER SETTINGS
 # --------------------------------------------------------------------------
-# All server settings should be set here (filename is settings.coffee).
+# All server settings should be set here (filename should be settings.coffee).
+# Check the `settings.default.coffee` for a list of all available settings.
 
 class Settings
 
 # Singleton implementation
 # --------------------------------------------------------------------------
+# Default settings will be copied from `settings.default.coffee`.
 Settings.getInstance = ->
     if not @instance?
         xtend = (source, target) ->

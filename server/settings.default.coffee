@@ -2,10 +2,10 @@
 # --------------------------------------------------------------------------
 # Has all default server side settings for the app. Please DOT NOT edit
 # this file unless you know excatly what you're doing. To change settings,
-# please use the settings.coffee file which will always override the ones
+# please use the `settings.coffee` file which will always override the ones
 # specified here.
 
-# TODO! Transform the default settings to plain JSON files instead of coffee classes.
+# TODO! Transform the default server settings to plain JSON files instead of coffee classes.
 
 class SettingsDefault
 

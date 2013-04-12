@@ -1,8 +1,13 @@
-# SETTINGS
+# DEFAULT APP CLIENT SETTINGS
 # --------------------------------------------------------------------------
-# All settings should be available here.
+# All default settings should be available here. Please DOT NOT edit
+# this file unless you know excatly what you're doing. To change settings,
+# please use the `settings.coffee` file which will always override the ones
+# specified here.
 
-System.App.Settings =
+# TODO! Transform the default client settings to plain JSON files instead of coffee classes.
+
+System.App.SettingsDefault =
 
     # GENERAL
     # ----------------------------------------------------------------------

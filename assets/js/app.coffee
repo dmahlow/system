@@ -21,6 +21,7 @@
 
 # APP UTILS AND MANAGERS
 # -----------------------------------------------------------------------------
+#= require settings.default.coffee
 #= require settings.coffee
 #= require messages.coffee
 #= require vectors.coffee
