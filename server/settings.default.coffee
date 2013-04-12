@@ -5,7 +5,7 @@
 # please use the settings.coffee file which will always override the ones
 # specified here.
 
-# TODO! Transform the settings to plain JSON files instead of coffee classes.
+# TODO! Transform the default settings to plain JSON files instead of coffee classes.
 
 class SettingsDefault
 

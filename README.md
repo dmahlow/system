@@ -1,14 +1,21 @@
 # System App - Readme
 
-System monitoring and infrastructure mapping app by Zalando.
+System monitoring and infrastructure mapping app by Zalando. Please note that the app is still in BETA
+so some features are not yet implemented, although it's quite usable in its current state.
 
-### The master tips
+There's a functional demo running on AppFog: <http://systemapp.rs.af.cm>
 
-- This app depends on Node.js and MongoDB. The default port is set to 3003, make sure firewall is properly set.
-- ALL client side settings (database conn string, ports, etc) are located on `/assets/js/settings.coffee`.
-- ALL server side settings (timers, colors, prefixes, etc) are located on `/server/settings.coffee`.
-- You MUST be familiar with CoffeeScript, Backbone.js, jQuery and Raphaël to fully understand the app.
-- If something goes really weird with the UI, refreshing the page (refresh button or F5) will solve most problems.
+#### What's still not ready for prime time?
+
+- User authentication. Right now the app can be locked down using a generic querystring.
+- Editing and moving multiple shapes simultaneously on a map by selecting them holding Ctrl.
+- Better and smarter auto completion when editing shape labels.
+- Auto completion when editing Audit Event rules (just like on shape labels).
+- Undo and redo of actions, mainly with map shapes.
+- Better and more stable sync of data using Socket.IO instead of AJAX calls.
+- Support for multiple users editing a map at the same time, or map locking when there's someone editing already.
+- External API with HTTP webhooks and better documentation.
+- Self-healing features - app will self diagnose in case too many errors are triggered.
 
 ## Installation
 
@@ -21,8 +28,8 @@ It should work on Linux and OS X environments.
 2.  Make it executable.
     `$ chmod +x install.sh`
 
-3.  Run it as root and hope for the best :-)
-    `$ sudo ./install.sh`
+3.  Run it and hope for the best :-)
+    `$ ./install.sh`
 
 The script should tell you what's missing and ask if you want to install the missing dependencies.
 As easy as just choosing "Yes" for everything.
@@ -47,8 +54,8 @@ but then you won't have a "preview" of each map on the start screen.
 To download ImageMagick go to:
 <http://www.imagemagick.org/script/binary-releases.php>
 
-If you want to keep the documentation up-to-date, you'll need Zocco:
-<http://github.com/zalando/zocco>
+If you want to keep the documentation up-to-date, you'll need Docco:
+<http://jashkenas.github.io/docco/>
 
 ### Required Node.js modules
 
@@ -60,7 +67,9 @@ The following Node.js modules are required by the *System App*.
 - express
 - imagemagick
 - jade
+- lodash
 - mongoskin
+- node-logentries
 - socket.io
 - stylus
 - winston
@@ -85,24 +94,36 @@ database at MongoLab (http://mongolab.com). The connection string will be someth
 
 ## Configuring the server
 
-All server configuration settings are located on the file `server/settings.coffee`.
-The following `System.Settings` keys will certainly need your attention:
+All server configuration settings are located on the file `server/settings.coffee`. If that file
+doesn't exist, please open the app on the browser first and it will be generated automatically.
+Or if you prefer you can duplicate the file `settings.base.coffee` and save it as `settings.coffee`.
+
+The following settings will certainly need your attention:
 
 ##### Settings.General
-Change the `appTitle` and set your desired title. Something like "MyCompany System".
-Make sure the `debug` is set to false before you deploy the app to production!
+`appTitle` - The app title, default is Zalando System. You can use something like "MyCompany System".
+`debug` - This should be set to false before you deploy the app to production!
 
-##### Settings.Database.connString
-The MongoDB connection string. If you have MongoDB installed locally with no user and password,
-the default should work fine.
+##### Settings.Database
+`connString` - The MongoDB connection string, including user and password (if any).
 
-##### Settings.Paths (all)
-The default paths should work unless you have very specific restrictions on your environment.
+##### Settings.Paths
+The default paths should not be touched UNLESS you have very specific restrictions on your environment.
 Edit these values in case you need to save or fetch data from different folders,
-for example saving the app logs on a global "/logs" location.
+for example saving the app logs on a global `/etc/logs` location.
 
-##### Settings.Web.defaultPort
-Port used by Node.js. The default 3003 should work fine if you have no firewall rules.
+##### Settings.Web
+`defaultPort` - The port used by the Node.js server. The default 3003 should work fine if you have no firewall rules.
+
+##### Deploying to PaaS
+The *System App* can be easily deployed to AppFog, OpenShift and other providers. The only requirement is
+that you set `Settings.Web.paas` to true (it is true by default). In this case we'll override a few
+settings to cope with the PaaS environment. For example:
+- the web `port` will be automatically set so it doesn't matter what value you have entered.
+- if your app on AppFog has a MongoDB bound to it, the `connString` will be automatically set.
+- it will use Logentries for logging if you have it enabled on your AppFog app account.
+
+At the moment the `paas` setting supports AppFog and OpenShift only!
 
 ## Starting the server
 
@@ -193,19 +214,6 @@ and deletions are logged there, and these records stay saved for 2 hours by defa
 change this setting on the [Server Settings](server/settings.html) file. As the logs
 are stored in a separate collection and saved in async mode, performance stays roughly the same.
 
-### Diagrams
-
-And now some imagery to better understand everything we have said above :-)
-
-#### Framework
-![Entities](diagrams/System_Framework.png)
-
-#### Entities and objects
-![Entities](diagrams/System_Entities.png)
-
-#### Views
-![Entities](diagrams/System_Views.png)
-
 ## Common questions and answers
 
 #### Which browsers are supported?
@@ -231,7 +239,9 @@ Check the readme again! And then if you REALLY still need help please get in tou
 
 *Have fun!*
 
-*Documentation generated generated with [Zocco](http://zalando.github.com/zocco/)!*
+Generating docs:
 ```
-zocco -o public/docs `find . \( -name "*.coffee" ! -path "*node_modules*" \)`
+docco -o public/docs `find . \( -name "*.md" ! -path "*node_modules*" \)`
+docco -o public/docs `find ./assets \( -name "*.coffee" ! -path "*node_modules*" \)`
+docco -o public/docs/server `find ./server \( -name "*.coffee" ! -path "*node_modules*" \)`
 ```

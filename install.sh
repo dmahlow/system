@@ -59,7 +59,7 @@ checkEnvironment(){
         echo "Supported systems: Linux Ubuntu, Debian, Fedora, CentOS, Red Hat, and Mac OS X."
         echo "Supported package managers: APT, YUM and Homebrew."
         echo ""
-        echo "Please go to http://zalando.github.com/system/ to see how to install the System App manually."
+        echo "Please go to http://zalando.github.io/system/ to see how to install the System App manually."
         exit 1
     fi
 
@@ -411,38 +411,6 @@ downloadFromGit(){
     fi
 }
 
-# Ask the user if he wants to add sample data.
-# NOT IMPLEMENTED YET!!!
-confirmSampleData(){
-    echo "Installation finished!"
-    echo ""
-    echo "Is this is the first time you're trying the System App?"
-    echo "If so, we can create some sample data for you to play with:"
-    echo "- Entities (machines, hosts, services and load balancers)"
-    echo "- Audit Data (fake JSON with random generated values)"
-    echo "- Test Map (shapes displaying some of the entities and audit data values)"
-    echo "- Test Alerts (will make a shape red in case its center label is 0)"
-    echo ""
-    echo "Do you want to add the sample data?"
-
-    select syn in Yes No
-    do
-        case "$syn" in
-            Yes)
-                coffee ./sampledata/install.coffee
-                break
-                ;;
-            No)
-                echo "Do not install sample data!"
-                echo ""
-                echo "If you change your mind, you can always install the sample data manually by running:"
-                echp "$ coffee ./sampledata/install.coffee"
-                break
-                ;;
-        esac
-    done
-}
-
 # Tell the user how to start the server.
 howToStartServer(){
     echo ""
@@ -479,7 +447,7 @@ echo ""
 echo "This script will help you installing and configuring the Zalando System App."
 echo "If you have problems please get help on our project page:"
 echo ""
-echo "http://zalando.github.com/system/"
+echo "http://zalando.github.io/system/"
 echo ""
 
 if [ "$1" = "-y" ]; then
