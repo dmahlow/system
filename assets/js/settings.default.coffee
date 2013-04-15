@@ -32,7 +32,7 @@ System.App.SettingsDefault =
         # Time in ms to fade in / out when using the show / hide methods of views.
         fadeDelay: 200
         # Refresh the browser if the page has been idle for more than X minutes.
-        idleRefreshMinutes: 180
+        idleRefreshMinutes: 60
         # The idle timer interval (tick every X milliseconds).
         idleTimerInterval: 60000
         # How many milliseconds to compare when checking local storage expiry date.
@@ -306,8 +306,8 @@ System.App.SettingsDefault =
         url: "json/auditdata"
         # The namespace used for data binding.
         bindingNamespace: "audit"
-        # Alert the user if the data could not be refreshed for 10 times in a row.
-        alertOnErrorCount: 10
+        # Alert the user if the data could not be refreshed for 6 times in a row.
+        alertOnErrorCount: 6
         # Default interval to save the current data, in ms.
         dataSaveInterval: 60000
         # Round numbers to a maximum number of decimal cases.

@@ -1,0 +1,18 @@
+SYSTEM APP CHANGE LOG
++ = new features
+* = changes and bug fixing
+- = removed features
+
+# -----------------------------------------------------------------------------
+  0.5.1, 2013.04.15
++ Code documentation is now available under /docs.
+  Docs are generated with Docco. See the new updateddocs.sh script for details.
++ Alternative documentation is also available at CoffeeDoc:
+  http://coffeedoc.info/github/zalando/system/master/
+* Improved layout and UI especially on Linux machines.
+* General bug fixes.
+
+# -----------------------------------------------------------------------------
+  0.5.0, 2013.04.12
++ First public release of the System App.
++ Available on http://zalando.github.com/system.

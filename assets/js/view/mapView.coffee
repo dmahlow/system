@@ -281,11 +281,13 @@ class System.MapView extends System.BaseView
     mapSaved: (map) =>
         System.App.alertEvents.trigger "footer", {savedModel: map}
 
-    # When user deletes (destroy) the current [Map](map.html), refresh the
-    # view with an empty map.
+    # When user deletes (destroy) the current [Map](map.html), refresh the browser.
     mapRemoved: (map) =>
         System.App.alertEvents.trigger "footer", {removedModel: map}
-        window.open "/", "_self"
+        System.App.toggleLoadding true
+
+        reloadPage = -> window.open "/", "_self"
+        setTimeout reloadPage, 1000
 
 
     # BINDING MAP SHAPES

@@ -2,8 +2,11 @@
 
 System monitoring and infrastructure mapping app by Zalando. Please note that the app is still in BETA
 so some features are not yet implemented, although it's quite usable in its current state.
+We recommend using Google Chrome but FireFox should work fine as well.
 
 There's a functional demo running on AppFog: <http://systemapp.rs.af.cm>
+Documentation can be found under the /docs directory of the app, or alternatively
+via CoffeeDoc at <http://coffeedoc.info/github/zalando/system/master/>.
 
 #### What's still not ready for prime time?
 
@@ -214,34 +217,10 @@ and deletions are logged there, and these records stay saved for 2 hours by defa
 change this setting on the [Server Settings](server/settings.html) file. As the logs
 are stored in a separate collection and saved in async mode, performance stays roughly the same.
 
-## Common questions and answers
-
-#### Which browsers are supported?
-Due to its pure-and-sleek-javascript-web-app nature, we recommend *Google Chrome* and in fact this is
-the only browser that we use while developing and testing *System*. But as the app follows all major
-web standards (HTML5, CSS3, SVG etc...), FireFox and Opera *should* work fine as well. If you want
-to use IE, well... good luck with that.
-
-#### Missing shapes to the map, shadows on incorrect placements, links not being saved... something's wrong!
-The quick-and-dirty answer is: reload the page. The long answer: *System* depends on third-party
-libraries and getting these libraries to work in sync together proved to be more challenging than
-expected. We are working *hard* to pinpoint all these failures and get rid of them with our own
-patches. But till we get there, if something weird happens refreshing the page will likely solve the problem.
-
-#### Sometimes there's an asterisk * next to the shapes title. Why?
-When you change the "Shape's title" dropdown (on the right bar > Map View), it will bind the selected
-value to the all shape titles. But sometimes the shape might not have that specific property,
-so in this case the default property will get bound and that asterisk will be shown.
-
 ## Need help?
 
 Check the readme again! And then if you REALLY still need help please get in touch with Igor: igor.ramadas@zalando.de
 
 *Have fun!*
 
-Generating docs:
-```
-docco -o public/docs `find . \( -name "*.md" ! -path "*node_modules*" \)`
-docco -o public/docs `find ./assets \( -name "*.coffee" ! -path "*node_modules*" \)`
-docco -o public/docs/server `find ./server \( -name "*.coffee" ! -path "*node_modules*" \)`
-```
+To update the app docs, run the `updatedocs.sh` file.
