@@ -1,0 +1,866 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+  <title>map.coffee</title>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <meta name="viewport" content="width=device-width, target-densitydpi=160dpi, initial-scale=1.0; maximum-scale=1.0; user-scalable=0;">
+  <link rel="stylesheet" media="all" href="docco.css" />
+</head>
+<body>
+  <div id="container">
+    <div id="background"></div>
+    
+      <ul id="jump_to">
+        <li>
+          <a class="large" href="javascript:void(0);">Jump To &hellip;</a>
+          <a class="small" href="javascript:void(0);">+</a>
+          <div id="jump_wrapper">
+          <div id="jump_page">
+            
+              
+              <a class="source" href="api.auditData.html">
+                api.auditData.coffee
+              </a>
+            
+              
+              <a class="source" href="api.auditEvent.html">
+                api.auditEvent.coffee
+              </a>
+            
+              
+              <a class="source" href="api.html">
+                api.coffee
+              </a>
+            
+              
+              <a class="source" href="api.entity.html">
+                api.entity.coffee
+              </a>
+            
+              
+              <a class="source" href="api.map.html">
+                api.map.coffee
+              </a>
+            
+              
+              <a class="source" href="api.server.html">
+                api.server.coffee
+              </a>
+            
+              
+              <a class="source" href="api.variable.html">
+                api.variable.coffee
+              </a>
+            
+              
+              <a class="source" href="api.view.html">
+                api.view.coffee
+              </a>
+            
+              
+              <a class="source" href="app.html">
+                app.coffee
+              </a>
+            
+              
+              <a class="source" href="app.instance.html">
+                app.instance.coffee
+              </a>
+            
+              
+              <a class="source" href="data.html">
+                data.coffee
+              </a>
+            
+              
+              <a class="source" href="dataUtil.html">
+                dataUtil.coffee
+              </a>
+            
+              
+              <a class="source" href="messages.html">
+                messages.coffee
+              </a>
+            
+              
+              <a class="source" href="auditData.html">
+                auditData.coffee
+              </a>
+            
+              
+              <a class="source" href="auditEvent.html">
+                auditEvent.coffee
+              </a>
+            
+              
+              <a class="source" href="base.html">
+                base.coffee
+              </a>
+            
+              
+              <a class="source" href="entityDefinition.html">
+                entityDefinition.coffee
+              </a>
+            
+              
+              <a class="source" href="entityObject.html">
+                entityObject.coffee
+              </a>
+            
+              
+              <a class="source" href="eventAction.html">
+                eventAction.coffee
+              </a>
+            
+              
+              <a class="source" href="eventRule.html">
+                eventRule.coffee
+              </a>
+            
+              
+              <a class="source" href="link.html">
+                link.coffee
+              </a>
+            
+              
+              <a class="source" href="map.html">
+                map.coffee
+              </a>
+            
+              
+              <a class="source" href="shape.html">
+                shape.coffee
+              </a>
+            
+              
+              <a class="source" href="userSettings.html">
+                userSettings.coffee
+              </a>
+            
+              
+              <a class="source" href="variable.html">
+                variable.coffee
+              </a>
+            
+              
+              <a class="source" href="routes.html">
+                routes.coffee
+              </a>
+            
+              
+              <a class="source" href="settings.base.html">
+                settings.base.coffee
+              </a>
+            
+              
+              <a class="source" href="settings.html">
+                settings.coffee
+              </a>
+            
+              
+              <a class="source" href="settings.default.html">
+                settings.default.coffee
+              </a>
+            
+              
+              <a class="source" href="sockets.html">
+                sockets.coffee
+              </a>
+            
+              
+              <a class="source" href="tutorial.html">
+                tutorial.coffee
+              </a>
+            
+              
+              <a class="source" href="vectors.html">
+                vectors.coffee
+              </a>
+            
+              
+              <a class="source" href="alertView.html">
+                alertView.coffee
+              </a>
+            
+              
+              <a class="source" href="auditDataManagerView.html">
+                auditDataManagerView.coffee
+              </a>
+            
+              
+              <a class="source" href="auditEventManagerView.html">
+                auditEventManagerView.coffee
+              </a>
+            
+              
+              <a class="source" href="baseView.html">
+                baseView.coffee
+              </a>
+            
+              
+              <a class="source" href="createMapView.html">
+                createMapView.coffee
+              </a>
+            
+              
+              <a class="source" href="entityManagerView.html">
+                entityManagerView.coffee
+              </a>
+            
+              
+              <a class="source" href="footerView.html">
+                footerView.coffee
+              </a>
+            
+              
+              <a class="source" href="helpView.html">
+                helpView.coffee
+              </a>
+            
+              
+              <a class="source" href="entitiesTabView.html">
+                entitiesTabView.coffee
+              </a>
+            
+              
+              <a class="source" href="inspectorTabView.html">
+                inspectorTabView.coffee
+              </a>
+            
+              
+              <a class="source" href="mapTabView.html">
+                mapTabView.coffee
+              </a>
+            
+              
+              <a class="source" href="shapeTabView.html">
+                shapeTabView.coffee
+              </a>
+            
+              
+              <a class="source" href="controlsView.html">
+                controlsView.coffee
+              </a>
+            
+              
+              <a class="source" href="labelEditView.html">
+                labelEditView.coffee
+              </a>
+            
+              
+              <a class="source" href="linkCreatorView.html">
+                linkCreatorView.coffee
+              </a>
+            
+              
+              <a class="source" href="linkLabelsView.html">
+                linkLabelsView.coffee
+              </a>
+            
+              
+              <a class="source" href="linkView.html">
+                linkView.coffee
+              </a>
+            
+              
+              <a class="source" href="shapeLabelsView.html">
+                shapeLabelsView.coffee
+              </a>
+            
+              
+              <a class="source" href="shapeView.html">
+                shapeView.coffee
+              </a>
+            
+              
+              <a class="source" href="shapesMoverView.html">
+                shapesMoverView.coffee
+              </a>
+            
+              
+              <a class="source" href="mapView.html">
+                mapView.coffee
+              </a>
+            
+              
+              <a class="source" href="menuView.html">
+                menuView.coffee
+              </a>
+            
+              
+              <a class="source" href="overlayView.html">
+                overlayView.coffee
+              </a>
+            
+              
+              <a class="source" href="scriptEditorView.html">
+                scriptEditorView.coffee
+              </a>
+            
+              
+              <a class="source" href="selfTestView.html">
+                selfTestView.coffee
+              </a>
+            
+              
+              <a class="source" href="settingsView.html">
+                settingsView.coffee
+              </a>
+            
+              
+              <a class="source" href="startView.html">
+                startView.coffee
+              </a>
+            
+          </div>
+        </li>
+      </ul>
+    
+    <ul class="sections">
+        
+          <li id="title">
+              <div class="annotation">
+                  <h1>map.coffee</h1>
+              </div>
+          </li>
+        
+        
+        
+        <li id="section-1">
+            <div class="annotation">
+              
+              <div class="pilwrap for-h2">
+                <a class="pilcrow" href="#section-1">&#182;</a>
+              </div>
+              <h2>MAPFILTER MODEL</h2>
+
+            </div>
+            
+        </li>
+        
+        
+        <li id="section-2">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-2">&#182;</a>
+              </div>
+              <p>Represents a map containing a collection of <a href="shape.html">Shapes</a>
+and <a href="link.html">Links</a>, and specific sizes and colours.</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre><span class="class"><span class="keyword">class</span> <span class="title">System</span>.<span class="title">Map</span> <span class="keyword">extends</span> <span class="title">System</span>.<span class="title">BaseModel</span></span>
+    typeName: <span class="string">"Map"</span>
+    defaults:
+        background: System.App.Settings.Map.background
+        paperSizeX: System.App.Settings.Map.paperSizeX
+        paperSizeY: System.App.Settings.Map.paperSizeY
+        gridSizeX: System.App.Settings.Map.gridSizeX
+        gridSizeY: System.App.Settings.Map.gridSizeY
+        silent: <span class="literal">false</span>
+        thumbnailDate: <span class="keyword">new</span> Date(<span class="number">2000</span>, <span class="number">1</span>, <span class="number">1</span>)
+
+    relations:
+        links: System.LinkCollection
+        shapes: System.ShapeCollection</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-3">
+            <div class="annotation">
+              
+              <div class="pilwrap for-h2">
+                <a class="pilcrow" href="#section-3">&#182;</a>
+              </div>
+              <h2>PROPERTIES</h2>
+
+            </div>
+            
+        </li>
+        
+        
+        <li id="section-4">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-4">&#182;</a>
+              </div>
+              <p>Helper to get / set the map name.</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>    name: (value) =&gt;
+        <span class="keyword">if</span> value?
+            <span class="property">@set</span> <span class="string">"name"</span>, value
+        <span class="property">@get</span> <span class="string">"name"</span></pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-5">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-5">&#182;</a>
+              </div>
+              <p>Helper to get / set the map creation date.</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>    dateCreated: (value) =&gt;
+        <span class="keyword">if</span> value?
+            <span class="property">@set</span> <span class="string">"dateCreated"</span>, value
+        <span class="property">@get</span> <span class="string">"dateCreated"</span></pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-6">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-6">&#182;</a>
+              </div>
+              <p>Helper to get / set the map background: a color or image url.</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>    background: (value) =&gt;
+        <span class="keyword">if</span> value?
+            <span class="property">@set</span> <span class="string">"background"</span>, value
+        <span class="property">@get</span> <span class="string">"background"</span></pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-7">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-7">&#182;</a>
+              </div>
+              <p>Helper to get / set the map paper X size, in pixels.</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>    paperSizeX: (value) =&gt;
+        <span class="keyword">if</span> value?
+            <span class="property">@set</span> <span class="string">"paperSizeX"</span>, value
+        <span class="property">@get</span> <span class="string">"paperSizeX"</span></pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-8">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-8">&#182;</a>
+              </div>
+              <p>Helper to get / set the map paper Y size, in pixels.</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>    paperSizeY: (value) =&gt;
+        <span class="keyword">if</span> value?
+            <span class="property">@set</span> <span class="string">"paperSizeY"</span>, value
+        <span class="property">@get</span> <span class="string">"paperSizeY"</span></pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-9">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-9">&#182;</a>
+              </div>
+              <p>Helper to get / set the map grid X size, in pixels. This represents the distance between vertical lines.</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>    gridSizeX: (value) =&gt;
+        <span class="keyword">if</span> value?
+            <span class="property">@set</span> <span class="string">"gridSizeX"</span>, value
+        <span class="property">@get</span> <span class="string">"gridSizeX"</span></pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-10">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-10">&#182;</a>
+              </div>
+              <p>Helper to get / set the map grid Y size, in pixels. This represents the distance between horizontal lines.</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>    gridSizeY: (value) =&gt;
+        <span class="keyword">if</span> value?
+            <span class="property">@set</span> <span class="string">"gridSizeY"</span>, value
+        <span class="property">@get</span> <span class="string">"gridSizeY"</span></pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-11">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-11">&#182;</a>
+              </div>
+              <p>Helper to get / set the map init script.</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>    initScript: (value) =&gt;
+        <span class="keyword">if</span> value?
+            <span class="property">@set</span> <span class="string">"initScript"</span>, value
+        <span class="property">@get</span> <span class="string">"initScript"</span></pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-12">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-12">&#182;</a>
+              </div>
+              <p>Helper to get / set the map silent mode.</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>    silent: (value) =&gt;
+        <span class="keyword">if</span> value?
+            <span class="property">@set</span> <span class="string">"silent"</span>, value
+        <span class="property">@get</span> <span class="string">"silent"</span></pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-13">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-13">&#182;</a>
+              </div>
+              <p>Helper to get / set the shapes and their positions on the map. This must set as a <a href="shape.html">ShapeCollection</a>.</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>    shapes: (value) =&gt;
+        <span class="keyword">if</span> value?
+            value = <span class="keyword">new</span> System.ShapeCollection value <span class="keyword">if</span> <span class="keyword">not</span> value.typeName?
+            <span class="property">@set</span> <span class="string">"shapes"</span>, value
+        <span class="property">@get</span> <span class="string">"shapes"</span></pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-14">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-14">&#182;</a>
+              </div>
+              <p>Helper to get / set the links between shapes on the map. This must set as a <a href="link.html">LinkCollection</a>.</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>    links: (value) =&gt;
+        <span class="keyword">if</span> value?
+            value = <span class="keyword">new</span> System.LinkCollection value <span class="keyword">if</span> <span class="keyword">not</span> value.typeName?
+            <span class="property">@set</span> <span class="string">"links"</span>, value
+        <span class="property">@get</span> <span class="string">"links"</span></pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-15">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-15">&#182;</a>
+              </div>
+              <p>Helper to get / set the last date when the map&#39;s thumbnail was generated.</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>    thumbnailDate: (value) =&gt;
+        <span class="keyword">if</span> value?
+            <span class="property">@set</span> <span class="string">"thumbnailDate"</span>, value
+        <span class="property">@get</span> <span class="string">"thumbnailDate"</span></pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-16">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-16">&#182;</a>
+              </div>
+              <p>Helper to get the map&#39;s URL key based on its name: replace all spaces and special characters.</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>    urlKey: =&gt;
+        <span class="keyword">return</span> System.App.DataUtil.getUrlKey <span class="property">@name</span>()</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-17">
+            <div class="annotation">
+              
+              <div class="pilwrap for-h2">
+                <a class="pilcrow" href="#section-17">&#182;</a>
+              </div>
+              <h2>VALIDATE</h2>
+
+            </div>
+            
+        </li>
+        
+        
+        <li id="section-18">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-18">&#182;</a>
+              </div>
+              <p>All validation rules should be put inside this method.</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>    validate: (attrs) =&gt;</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-19">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-19">&#182;</a>
+              </div>
+              <p>Name must be set.</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>        <span class="keyword">if</span> <span class="keyword">not</span> attrs.name? <span class="keyword">or</span> attrs.name <span class="keyword">is</span> <span class="string">""</span>
+            <span class="keyword">return</span> System.App.Messages.valNameIsRequired</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-20">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-20">&#182;</a>
+              </div>
+              <p>Grid size X can&#39;t be too low.</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>        <span class="keyword">if</span> <span class="keyword">not</span> attrs.gridSizeX? <span class="keyword">or</span> attrs.gridSizeX &lt; System.App.Settings.Map.minGridSize
+            <span class="keyword">return</span> System.App.Messages.valGridSizeTooSmall</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-21">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-21">&#182;</a>
+              </div>
+              <p>Grid size Y can&#39;t be too low.</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>        <span class="keyword">if</span> <span class="keyword">not</span> attrs.gridSizeY? <span class="keyword">or</span> attrs.gridSizeY &lt; System.App.Settings.Map.minGridSize
+            <span class="keyword">return</span> System.App.Messages.valGridSizeTooSmall</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-22">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-22">&#182;</a>
+              </div>
+              <p>Paper size X can&#39;t be too low.</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>        <span class="keyword">if</span> <span class="keyword">not</span> attrs.paperSizeX? <span class="keyword">or</span> attrs.paperSizeX &lt; System.App.Settings.Map.minPaperSize
+            <span class="keyword">return</span> System.App.Messages.valPaperSizeTooSmall</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-23">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-23">&#182;</a>
+              </div>
+              <p>Paper size Y can&#39;t be too low.</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>        <span class="keyword">if</span> <span class="keyword">not</span> attrs.paperSizeY? <span class="keyword">or</span> attrs.paperSizeY &lt; System.App.Settings.Map.minPaperSize
+            <span class="keyword">return</span> System.App.Messages.valPaperSizeTooSmall</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-24">
+            <div class="annotation">
+              
+              <div class="pilwrap for-h2">
+                <a class="pilcrow" href="#section-24">&#182;</a>
+              </div>
+              <h2>SHAPE AND LINK METHODS</h2>
+
+            </div>
+            
+        </li>
+        
+        
+        <li id="section-25">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-25">&#182;</a>
+              </div>
+              <p>Removes a <a href="shape.html">Shape</a> from the <code>shapes</code> collection.</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>    removeShape: (shape) =&gt;
+        <span class="property">@shapes</span>().remove <span class="property">@shapes</span>().get shape.id
+        <span class="property">@removeShapeLinks</span>
+
+        <span class="property">@save</span>()</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-26">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-26">&#182;</a>
+              </div>
+              <p>Removes a all links related to the specified <a href="shape.html">Shape</a> from the <code>links</code> collection.</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>    removeShapeLinks: (shape) =&gt;
+        _.each <span class="property">@links</span>, (link) =&gt;
+            <span class="keyword">if</span> link.sourceId() <span class="keyword">is</span> shape.id <span class="keyword">or</span> link.targetId() <span class="keyword">is</span> shape.id
+                <span class="property">@removeLink</span> link</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-27">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-27">&#182;</a>
+              </div>
+              <p>Remove a <a href="link.html">Link</a> from the <code>links</code> collection.</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>    removeLink: (link) =&gt;
+        <span class="property">@links</span>().remove <span class="property">@links</span>().get link.id
+        <span class="property">@save</span>()</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-28">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-28">&#182;</a>
+              </div>
+              <p>Clear all links which have invalid <code>sourceId</code> or <code>targetId</code>.</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>    clearInvalidLinks: =&gt;
+        removeLinks = []
+        _.each <span class="property">@links</span>().models, (link) =&gt;
+            <span class="keyword">if</span> <span class="property">@shapes</span>().where({id: link.sourceId()}).length &lt; <span class="number">1</span> <span class="keyword">or</span> <span class="property">@shapes</span>().where({id: link.targetId()}).length &lt; <span class="number">1</span>
+                removeLinks.push link.id
+
+        <span class="keyword">for</span> linkId <span class="keyword">in</span> removeLinks
+            <span class="property">@links</span>().remove(<span class="property">@links</span>().get linkId, {silent: <span class="literal">true</span>})
+
+        <span class="property">@save</span>()</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-29">
+            <div class="annotation">
+              
+              <div class="pilwrap for-h2">
+                <a class="pilcrow" href="#section-29">&#182;</a>
+              </div>
+              <h2>MAP COLLECTION</h2>
+
+            </div>
+            
+        </li>
+        
+        
+        <li id="section-30">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-30">&#182;</a>
+              </div>
+              <p>Represents a collection of maps.</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre><span class="class"><span class="keyword">class</span> <span class="title">System</span>.<span class="title">MapCollection</span> <span class="keyword">extends</span> <span class="title">System</span>.<span class="title">BaseCollection</span></span>
+    typeName: <span class="string">"MapCollection"</span>
+    model: System.Map
+    url: System.App.Settings.Map.url</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-31">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-31">&#182;</a>
+              </div>
+              <p>Set the comparator function to order the maps collection by name.</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>    comparator: (map) -&gt; <span class="keyword">return</span> map.name()</pre></div></div>
+            
+        </li>
+        
+    </ul>
+  </div>
+</body>
+</html>

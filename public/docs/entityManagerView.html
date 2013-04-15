@@ -1,0 +1,925 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+  <title>entityManagerView.coffee</title>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <meta name="viewport" content="width=device-width, target-densitydpi=160dpi, initial-scale=1.0; maximum-scale=1.0; user-scalable=0;">
+  <link rel="stylesheet" media="all" href="docco.css" />
+</head>
+<body>
+  <div id="container">
+    <div id="background"></div>
+    
+      <ul id="jump_to">
+        <li>
+          <a class="large" href="javascript:void(0);">Jump To &hellip;</a>
+          <a class="small" href="javascript:void(0);">+</a>
+          <div id="jump_wrapper">
+          <div id="jump_page">
+            
+              
+              <a class="source" href="api.auditData.html">
+                api.auditData.coffee
+              </a>
+            
+              
+              <a class="source" href="api.auditEvent.html">
+                api.auditEvent.coffee
+              </a>
+            
+              
+              <a class="source" href="api.html">
+                api.coffee
+              </a>
+            
+              
+              <a class="source" href="api.entity.html">
+                api.entity.coffee
+              </a>
+            
+              
+              <a class="source" href="api.map.html">
+                api.map.coffee
+              </a>
+            
+              
+              <a class="source" href="api.server.html">
+                api.server.coffee
+              </a>
+            
+              
+              <a class="source" href="api.variable.html">
+                api.variable.coffee
+              </a>
+            
+              
+              <a class="source" href="api.view.html">
+                api.view.coffee
+              </a>
+            
+              
+              <a class="source" href="app.html">
+                app.coffee
+              </a>
+            
+              
+              <a class="source" href="app.instance.html">
+                app.instance.coffee
+              </a>
+            
+              
+              <a class="source" href="data.html">
+                data.coffee
+              </a>
+            
+              
+              <a class="source" href="dataUtil.html">
+                dataUtil.coffee
+              </a>
+            
+              
+              <a class="source" href="messages.html">
+                messages.coffee
+              </a>
+            
+              
+              <a class="source" href="auditData.html">
+                auditData.coffee
+              </a>
+            
+              
+              <a class="source" href="auditEvent.html">
+                auditEvent.coffee
+              </a>
+            
+              
+              <a class="source" href="base.html">
+                base.coffee
+              </a>
+            
+              
+              <a class="source" href="entityDefinition.html">
+                entityDefinition.coffee
+              </a>
+            
+              
+              <a class="source" href="entityObject.html">
+                entityObject.coffee
+              </a>
+            
+              
+              <a class="source" href="eventAction.html">
+                eventAction.coffee
+              </a>
+            
+              
+              <a class="source" href="eventRule.html">
+                eventRule.coffee
+              </a>
+            
+              
+              <a class="source" href="link.html">
+                link.coffee
+              </a>
+            
+              
+              <a class="source" href="map.html">
+                map.coffee
+              </a>
+            
+              
+              <a class="source" href="shape.html">
+                shape.coffee
+              </a>
+            
+              
+              <a class="source" href="userSettings.html">
+                userSettings.coffee
+              </a>
+            
+              
+              <a class="source" href="variable.html">
+                variable.coffee
+              </a>
+            
+              
+              <a class="source" href="routes.html">
+                routes.coffee
+              </a>
+            
+              
+              <a class="source" href="settings.base.html">
+                settings.base.coffee
+              </a>
+            
+              
+              <a class="source" href="settings.html">
+                settings.coffee
+              </a>
+            
+              
+              <a class="source" href="settings.default.html">
+                settings.default.coffee
+              </a>
+            
+              
+              <a class="source" href="sockets.html">
+                sockets.coffee
+              </a>
+            
+              
+              <a class="source" href="tutorial.html">
+                tutorial.coffee
+              </a>
+            
+              
+              <a class="source" href="vectors.html">
+                vectors.coffee
+              </a>
+            
+              
+              <a class="source" href="alertView.html">
+                alertView.coffee
+              </a>
+            
+              
+              <a class="source" href="auditDataManagerView.html">
+                auditDataManagerView.coffee
+              </a>
+            
+              
+              <a class="source" href="auditEventManagerView.html">
+                auditEventManagerView.coffee
+              </a>
+            
+              
+              <a class="source" href="baseView.html">
+                baseView.coffee
+              </a>
+            
+              
+              <a class="source" href="createMapView.html">
+                createMapView.coffee
+              </a>
+            
+              
+              <a class="source" href="entityManagerView.html">
+                entityManagerView.coffee
+              </a>
+            
+              
+              <a class="source" href="footerView.html">
+                footerView.coffee
+              </a>
+            
+              
+              <a class="source" href="helpView.html">
+                helpView.coffee
+              </a>
+            
+              
+              <a class="source" href="entitiesTabView.html">
+                entitiesTabView.coffee
+              </a>
+            
+              
+              <a class="source" href="inspectorTabView.html">
+                inspectorTabView.coffee
+              </a>
+            
+              
+              <a class="source" href="mapTabView.html">
+                mapTabView.coffee
+              </a>
+            
+              
+              <a class="source" href="shapeTabView.html">
+                shapeTabView.coffee
+              </a>
+            
+              
+              <a class="source" href="controlsView.html">
+                controlsView.coffee
+              </a>
+            
+              
+              <a class="source" href="labelEditView.html">
+                labelEditView.coffee
+              </a>
+            
+              
+              <a class="source" href="linkCreatorView.html">
+                linkCreatorView.coffee
+              </a>
+            
+              
+              <a class="source" href="linkLabelsView.html">
+                linkLabelsView.coffee
+              </a>
+            
+              
+              <a class="source" href="linkView.html">
+                linkView.coffee
+              </a>
+            
+              
+              <a class="source" href="shapeLabelsView.html">
+                shapeLabelsView.coffee
+              </a>
+            
+              
+              <a class="source" href="shapeView.html">
+                shapeView.coffee
+              </a>
+            
+              
+              <a class="source" href="shapesMoverView.html">
+                shapesMoverView.coffee
+              </a>
+            
+              
+              <a class="source" href="mapView.html">
+                mapView.coffee
+              </a>
+            
+              
+              <a class="source" href="menuView.html">
+                menuView.coffee
+              </a>
+            
+              
+              <a class="source" href="overlayView.html">
+                overlayView.coffee
+              </a>
+            
+              
+              <a class="source" href="scriptEditorView.html">
+                scriptEditorView.coffee
+              </a>
+            
+              
+              <a class="source" href="selfTestView.html">
+                selfTestView.coffee
+              </a>
+            
+              
+              <a class="source" href="settingsView.html">
+                settingsView.coffee
+              </a>
+            
+              
+              <a class="source" href="startView.html">
+                startView.coffee
+              </a>
+            
+          </div>
+        </li>
+      </ul>
+    
+    <ul class="sections">
+        
+          <li id="title">
+              <div class="annotation">
+                  <h1>entityManagerView.coffee</h1>
+              </div>
+          </li>
+        
+        
+        
+        <li id="section-1">
+            <div class="annotation">
+              
+              <div class="pilwrap for-h2">
+                <a class="pilcrow" href="#section-1">&#182;</a>
+              </div>
+              <h2>ENTITY MANAGER VIEW</h2>
+
+            </div>
+            
+        </li>
+        
+        
+        <li id="section-2">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-2">&#182;</a>
+              </div>
+              <p>Represents the entities manager overlay.</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre><span class="class"><span class="keyword">class</span> <span class="title">System</span>.<span class="title">EntityManagerView</span> <span class="keyword">extends</span> <span class="title">System</span>.<span class="title">OverlayView</span></span>
+
+    $txtCreate: <span class="literal">null</span>                <span class="comment"># the text input used to create a new entity definition</span>
+    $butCreate: <span class="literal">null</span>                <span class="comment"># the button used to create a new entity definition</span>
+    $txtDescription: <span class="literal">null</span>           <span class="comment"># the "Description" textbox when editing an entity definition</span>
+    $txtSourceUrl: <span class="literal">null</span>             <span class="comment"># the "Source URL" textbox when editing an entity definition</span>
+    $txtRefresh: <span class="literal">null</span>               <span class="comment"># the "Refresh interval" textbox when editing an entity definition</span>
+    $txtIdAttribute: <span class="literal">null</span>           <span class="comment"># the "Object's ID attribute" textbox when editing an entity definition</span>
+    $txtTitleAttribute: <span class="literal">null</span>        <span class="comment"># the "Object's Title attribute" textbox when editing an entity definition</span>
+    $txtShapeSizeX: <span class="literal">null</span>            <span class="comment"># the shape template "Size X" textbox</span>
+    $txtShapeSizeY: <span class="literal">null</span>            <span class="comment"># the shape template "Size Y" textbox</span>
+    $txtShapeBackground: <span class="literal">null</span>       <span class="comment"># the shape template "Background" textbox</span>
+    $txtShapeForeground: <span class="literal">null</span>       <span class="comment"># the shape template "Label colour" textbox</span>
+    $txtShapeTitleForeground: <span class="literal">null</span>  <span class="comment"># the shape template "Title foreground" textbox</span>
+    $txtShapeStroke: <span class="literal">null</span>           <span class="comment"># the shape template "Border colour" textbox</span>
+    $cboShapeStrokeWidth: <span class="literal">null</span>      <span class="comment"># the shape template "Border width" combobox</span>
+    $cboShapeFontSize: <span class="literal">null</span>         <span class="comment"># the shape template "Font size" combobox</span>
+    $cboShapeOpacity: <span class="literal">null</span>          <span class="comment"># the shape template "Opacity" combobox</span>
+    $chkShapeRoundedCorners: <span class="literal">null</span>   <span class="comment"># the shape template "Rounded corners" checkbox</span>
+    $shapePreview: <span class="literal">null</span>             <span class="comment"># the shape template preview</span></pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-3">
+            <div class="annotation">
+              
+              <div class="pilwrap for-h2">
+                <a class="pilcrow" href="#section-3">&#182;</a>
+              </div>
+              <h2>INIT AND DISPOSE</h2>
+
+            </div>
+            
+        </li>
+        
+        
+        <li id="section-4">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-4">&#182;</a>
+              </div>
+              <p>Init the Entity Manager overlay view.</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>    initialize: =&gt;
+        <span class="property">@currentSettings</span> = System.App.Settings.EntityDefinition
+        <span class="property">@overlayInit</span> <span class="string">"#entitymanager"</span>
+        <span class="property">@setDom</span>()
+        <span class="property">@setEvents</span>()</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-5">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-5">&#182;</a>
+              </div>
+              <p>Dispose the Entity Manager view.</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>    dispose: =&gt;
+        <span class="property">@baseDispose</span>()</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-6">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-6">&#182;</a>
+              </div>
+              <p>Set the DOM elements cache.</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>    setDom: =&gt;
+        <span class="property">@$menuItem</span> = $ <span class="string">"#menu-entities"</span>
+        <span class="property">@$modelsList</span> = $ <span class="string">"#entitymanager-list"</span>
+        <span class="property">@$txtCreate</span> = $ <span class="string">"#entitymanager-txt-create"</span>
+        <span class="property">@$butCreate</span> = $ <span class="string">"#entitymanager-but-create"</span></pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-7">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-7">&#182;</a>
+              </div>
+              <p>Input fields for the entity definition properties.</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>        <span class="property">@$txtDescription</span> = $ <span class="string">"#entitymanager-txt-description"</span>
+        <span class="property">@$txtSourceUrl</span> = $ <span class="string">"#entitymanager-txt-sourceurl"</span>
+        <span class="property">@$txtRefresh</span> = $ <span class="string">"#entitymanager-txt-refresh"</span>
+        <span class="property">@$txtIdAttribute</span> = $ <span class="string">"#entitymanager-txt-idattribute"</span>
+        <span class="property">@$txtTitleAttribute</span> = $ <span class="string">"#entitymanager-txt-titleattribute"</span></pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-8">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-8">&#182;</a>
+              </div>
+              <p>Input fields for shape template.</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>        <span class="property">@$txtShapeSizeX</span> = $ <span class="string">"#entitymanager-txt-shape-sizex"</span>
+        <span class="property">@$txtShapeSizeY</span> = $ <span class="string">"#entitymanager-txt-shape-sizey"</span>
+        <span class="property">@$txtShapeBackground</span> = $ <span class="string">"#entitymanager-txt-shape-background"</span>
+        <span class="property">@$txtShapeForeground</span> = $ <span class="string">"#entitymanager-txt-shape-foreground"</span>
+        <span class="property">@$txtShapeTitleForeground</span> = $ <span class="string">"#entitymanager-txt-shape-titleforeground"</span>
+        <span class="property">@$txtShapeStroke</span> = $ <span class="string">"#entitymanager-txt-shape-stroke"</span>
+        <span class="property">@$cboShapeStrokeWidth</span> = $ <span class="string">"#entitymanager-cbo-shape-strokewidth"</span>
+        <span class="property">@$cboShapeFontSize</span> = $ <span class="string">"#entitymanager-cbo-shape-fontsize"</span>
+        <span class="property">@$cboShapeOpacity</span> = $ <span class="string">"#entitymanager-cbo-shape-opacity"</span>
+        <span class="property">@$chkShapeRoundedCorners</span> = $ <span class="string">"#entitymanager-chk-shape-roundedcorners"</span></pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-9">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-9">&#182;</a>
+              </div>
+              <p>The shape preview.</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>        <span class="property">@$shapePreview</span> = $ <span class="string">"#entitymanager-shape-preview &gt; div"</span></pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-10">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-10">&#182;</a>
+              </div>
+              <p>Add dynamic attributes to input fields.</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>        <span class="property">@$txtRefresh</span>.attr <span class="string">"min"</span>, System.App.Settings.EntityDefinition.minRefreshInterval
+        <span class="property">@$txtRefresh</span>.attr <span class="string">"max"</span>, System.App.Settings.EntityDefinition.maxRefreshInterval</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-11">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-11">&#182;</a>
+              </div>
+              <p>Bind events to the DOM. This will effectively update the <code>model</code> automatically
+whenever any input field value gets changed.</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>    setEvents: =&gt;
+        <span class="property">@$butCreate</span>.click <span class="property">@createEntityClick</span>
+        <span class="property">@$txtCreate</span>.keyup <span class="property">@createEntityKeyUp</span>
+
+        <span class="property">@$txtDescription</span>.change <span class="property">@inputOnChange</span>
+        <span class="property">@$txtSourceUrl</span>.change <span class="property">@inputOnChange</span>
+        <span class="property">@$txtRefresh</span>.change <span class="property">@inputOnChange</span>
+        <span class="property">@$txtIdAttribute</span>.change <span class="property">@inputOnChange</span>
+        <span class="property">@$txtTitleAttribute</span>.change <span class="property">@inputOnChange</span>
+
+        <span class="property">@$txtShapeSizeX</span>.change <span class="property">@inputOnChangeShape</span>
+        <span class="property">@$txtShapeSizeY</span>.change <span class="property">@inputOnChangeShape</span>
+        <span class="property">@$txtShapeBackground</span>.change <span class="property">@inputOnChangeShape</span>
+        <span class="property">@$txtShapeForeground</span>.change <span class="property">@inputOnChangeShape</span>
+        <span class="property">@$txtShapeTitleForeground</span>.change <span class="property">@inputOnChangeShape</span>
+        <span class="property">@$txtShapeStroke</span>.change <span class="property">@inputOnChangeShape</span>
+        <span class="property">@$cboShapeStrokeWidth</span>.change <span class="property">@inputOnChangeShape</span>
+        <span class="property">@$cboShapeFontSize</span>.change <span class="property">@inputOnChangeShape</span>
+        <span class="property">@$cboShapeOpacity</span>.change <span class="property">@inputOnChangeShape</span>
+        <span class="property">@$chkShapeRoundedCorners</span>.change <span class="property">@inputOnChangeShape</span></pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-12">
+            <div class="annotation">
+              
+              <div class="pilwrap for-h2">
+                <a class="pilcrow" href="#section-12">&#182;</a>
+              </div>
+              <h2>ENTITY LIST</h2>
+
+            </div>
+            
+        </li>
+        
+        
+        <li id="section-13">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-13">&#182;</a>
+              </div>
+              <p>Clear the current view by setting the <code>model</code> to null
+and emptying the <code>$modelsList</code>.</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>    clear: =&gt;
+        <span class="property">@model</span> = <span class="literal">null</span>
+        <span class="property">@$modelsList</span>.empty()
+        <span class="property">@clearTextInputs</span>()</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-14">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-14">&#182;</a>
+              </div>
+              <p>Clear the text input fields.</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>    clearTextInputs: =&gt;
+        <span class="property">@$txtCreate</span>.val <span class="string">""</span></pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-15">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-15">&#182;</a>
+              </div>
+              <p>Bind all <a href="entityDefinition.html">EntityDefinitions</a> from the <a href="data.html">data store</a>.</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>    bindEntities: =&gt;
+        <span class="property">@clear</span>()
+        <span class="property">@addToModelsList</span> item <span class="keyword">for</span> item <span class="keyword">in</span> System.App.Data.entities.models</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-16">
+            <div class="annotation">
+              
+              <div class="pilwrap for-h2">
+                <a class="pilcrow" href="#section-16">&#182;</a>
+              </div>
+              <h2>CREATING ENTITIES</h2>
+
+            </div>
+            
+        </li>
+        
+        
+        <li id="section-17">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-17">&#182;</a>
+              </div>
+              <p>When user clicks the &quot;Add&quot; entity button, add a new record to the
+<a href="data.html">Data.entities</a> and move focus to the properties form.</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>    createEntityClick: (e) =&gt;
+        newId = <span class="property">@$txtCreate</span>.val()</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-18">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-18">&#182;</a>
+              </div>
+              <p>The entity definition ID must have at least 2 chars.</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>        <span class="keyword">if</span> newId.length &lt; <span class="number">2</span>
+            <span class="property">@warnField</span> <span class="property">@$txtCreate</span>
+            <span class="keyword">return</span>
+        <span class="keyword">else</span>
+            newId = System.App.DataUtil.normalize newId, <span class="literal">true</span>
+
+        System.App.Data.entities.create {friendlyId: newId}, {wait: <span class="literal">true</span>}
+        <span class="property">@clearTextInputs</span>()</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-19">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-19">&#182;</a>
+              </div>
+              <p>If the <code>$txtCreate</code> field has focus, pressing Enter will call the <code>click</code>
+event on the <code>$butCreate</code>.</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>    createEntityKeyUp: (e) =&gt;
+        <span class="keyword">if</span> e.keyCode <span class="keyword">is</span> <span class="number">13</span>
+            <span class="property">@$butCreate</span>.click()</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-20">
+            <div class="annotation">
+              
+              <div class="pilwrap for-h2">
+                <a class="pilcrow" href="#section-20">&#182;</a>
+              </div>
+              <h2>PROPERTIES AND SHAPE TEMPLATE</h2>
+
+            </div>
+            
+        </li>
+        
+        
+        <li id="section-21">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-21">&#182;</a>
+              </div>
+              <p>Bind entity properties and refresh the shape template.</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>    onBindModel: =&gt;
+        <span class="property">@bindEntityProperties</span>()
+        <span class="property">@bindShapeProperties</span>()</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-22">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-22">&#182;</a>
+              </div>
+              <p>Delay the <code>updateShapeTemplate</code> so it can property calculate width and height.</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>        setTimeout <span class="property">@updateShapeTemplate</span>, <span class="number">100</span></pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-23">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-23">&#182;</a>
+              </div>
+              <p>Bind the properties (ID, url, description etc...) from the specified
+<a href="entityDefinition.html">Entity Definition</a> to the form.</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>    bindEntityProperties: =&gt;
+        <span class="keyword">return</span> <span class="keyword">if</span> <span class="keyword">not</span> <span class="property">@model</span>?
+
+        <span class="property">@$txtDescription</span>.val <span class="property">@model</span>.description()
+        <span class="property">@$txtSourceUrl</span>.val <span class="property">@model</span>.sourceUrl()
+        <span class="property">@$txtRefresh</span>.val <span class="property">@model</span>.refreshInterval()
+        <span class="property">@$txtIdAttribute</span>.val <span class="property">@model</span>.objectIdAttribute()
+        <span class="property">@$txtTitleAttribute</span>.val <span class="property">@model</span>.objectTitleAttribute()</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-24">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-24">&#182;</a>
+              </div>
+              <p>Bind the shape template properties for the selected <a href="entityDefinition.html">Entity Definition</a>.</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>    bindShapeProperties: =&gt;
+        <span class="keyword">return</span> <span class="keyword">if</span> <span class="keyword">not</span> <span class="property">@model</span>?
+
+        <span class="property">@$txtShapeSizeX</span>.val <span class="property">@model</span>.shapeSizeX()
+        <span class="property">@$txtShapeSizeY</span>.val <span class="property">@model</span>.shapeSizeY()
+        <span class="property">@$txtShapeBackground</span>.val <span class="property">@model</span>.shapeBackground()
+        <span class="property">@$txtShapeForeground</span>.val <span class="property">@model</span>.shapeForeground()
+        <span class="property">@$txtShapeTitleForeground</span>.val <span class="property">@model</span>.shapeTitleForeground()
+        <span class="property">@$txtShapeStroke</span>.val <span class="property">@model</span>.shapeStroke()
+        <span class="property">@$cboShapeStrokeWidth</span>.val <span class="property">@model</span>.shapeStrokeWidth()
+        <span class="property">@$cboShapeFontSize</span>.val <span class="property">@model</span>.shapeFontSize()
+        <span class="property">@$cboShapeOpacity</span>.val <span class="property">@model</span>.shapeOpacity()
+        <span class="property">@$chkShapeRoundedCorners</span>.prop <span class="string">"checked"</span>, <span class="property">@model</span>.shapeRoundedCorners()</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-25">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-25">&#182;</a>
+              </div>
+              <p>Update the div representing the shape template with the new values.
+If not entity is being edited, hide the shape template preview.</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>    updateShapeTemplate: =&gt;
+        <span class="keyword">if</span> <span class="keyword">not</span> <span class="property">@model</span>?
+            <span class="property">@$shapePreview</span>.hide()
+            <span class="keyword">return</span>
+
+        <span class="keyword">if</span> <span class="property">@model</span>.shapeRoundedCorners()
+            borderRadius = <span class="string">"10px"</span>
+        <span class="keyword">else</span>
+            borderRadius = <span class="string">"0"</span>
+
+        shapeCss =
+            <span class="string">"background"</span>: <span class="property">@model</span>.shapeBackground()
+            <span class="string">"border"</span>: <span class="string">"<span class="subst">#{@model.shapeStrokeWidth()}</span>px solid <span class="subst">#{@model.shapeStroke()}</span>"</span>
+            <span class="string">"border-radius"</span>: borderRadius
+            <span class="string">"font-size"</span>: <span class="string">"<span class="subst">#{@model.shapeFontSize()}</span>px"</span>
+            <span class="string">"height"</span>: <span class="property">@model</span>.shapeSizeY() * System.App.Settings.Map.gridSizeY - <span class="property">@model</span>.shapeStrokeWidth()
+            <span class="string">"opacity"</span>: <span class="property">@model</span>.shapeOpacity()
+            <span class="string">"width"</span>: <span class="property">@model</span>.shapeSizeX() * System.App.Settings.Map.gridSizeX - <span class="property">@model</span>.shapeStrokeWidth()
+
+        titleCss =
+            <span class="string">"color"</span>: <span class="property">@model</span>.shapeTitleForeground()
+
+        labelCss =
+            <span class="string">"color"</span>: <span class="property">@model</span>.shapeForeground()
+
+        <span class="property">@$shapePreview</span>.show()
+        <span class="property">@$shapePreview</span>.css shapeCss
+        <span class="property">@$shapePreview</span>.children(<span class="string">"label"</span>).css titleCss
+        <span class="property">@$shapePreview</span>.children(<span class="string">"span"</span>).css labelCss
+
+        <span class="function"><span class="title">moveToCenter</span></span> = (i, label) -&gt;
+            label = $(label)
+            label.css <span class="string">"margin-left"</span>, label.outerWidth() / <span class="number">2</span> * -<span class="number">1</span> + <span class="string">"px"</span>
+
+        <span class="function"><span class="title">moveToMiddle</span></span> = (i, label) -&gt;
+            label = $(label)
+            label.css <span class="string">"margin-top"</span>, label.outerHeight() / <span class="number">2</span> * -<span class="number">1</span> + <span class="string">"px"</span>
+
+        $.each <span class="property">@$shapePreview</span>.find(<span class="string">".label-title,.label-top,.label-center,.label-bottom"</span>), moveToCenter
+        $.each <span class="property">@$shapePreview</span>.find(<span class="string">".label-left,.label-center,.label-right"</span>), moveToMiddle</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-26">
+            <div class="annotation">
+              
+              <div class="pilwrap for-h2">
+                <a class="pilcrow" href="#section-26">&#182;</a>
+              </div>
+              <h2>UPDATING SHAPE PROPERTIES</h2>
+
+            </div>
+            
+        </li>
+        
+        
+        <li id="section-27">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-27">&#182;</a>
+              </div>
+              <p>When user changes the value of shape related fields, do a <code>updateShapeTemplate</code>
+and save the new value by calling the generic <code>inputOnChange</code>.</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>    inputOnChangeShape: (e) =&gt;
+        <span class="property">@inputOnChange</span> e
+        <span class="property">@updateShapeTemplate</span>()</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-28">
+            <div class="annotation">
+              
+              <div class="pilwrap for-h2">
+                <a class="pilcrow" href="#section-28">&#182;</a>
+              </div>
+              <h2>SHOW AND HIDE</h2>
+
+            </div>
+            
+        </li>
+        
+        
+        <li id="section-29">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-29">&#182;</a>
+              </div>
+              <p>Bind the <code>keyUp</code> event when overlay is shown.</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>    onShow: =&gt;
+        <span class="property">@bindEntities</span>()
+
+        $(document).keyup <span class="property">@hasModelListKeyUp</span>
+        <span class="property">@listenTo</span> System.App.Data.entities, <span class="string">"add"</span>, <span class="property">@addToModelsList</span>
+        <span class="property">@listenTo</span> System.App.Data.entities, <span class="string">"remove"</span>, <span class="property">@removeFromModelsList</span></pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-30">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-30">&#182;</a>
+              </div>
+              <p>Save the <code>model</code> (if there&#39;s one) when the overlay is closed,
+and remove the <code>keyUp</code> from the document.</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>    onHide: =&gt;
+        $(document).unbind <span class="string">"keyup"</span>, <span class="property">@hasModelListKeyUp</span>
+        <span class="property">@stopListening</span>()
+
+        <span class="property">@model</span>?.save()
+        <span class="property">@model</span> = <span class="literal">null</span></pre></div></div>
+            
+        </li>
+        
+    </ul>
+  </div>
+</body>
+</html>

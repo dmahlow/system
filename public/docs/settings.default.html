@@ -1,0 +1,2999 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+  <title>settings.default.coffee</title>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <meta name="viewport" content="width=device-width, target-densitydpi=160dpi, initial-scale=1.0; maximum-scale=1.0; user-scalable=0;">
+  <link rel="stylesheet" media="all" href="docco.css" />
+</head>
+<body>
+  <div id="container">
+    <div id="background"></div>
+    
+      <ul id="jump_to">
+        <li>
+          <a class="large" href="javascript:void(0);">Jump To &hellip;</a>
+          <a class="small" href="javascript:void(0);">+</a>
+          <div id="jump_wrapper">
+          <div id="jump_page">
+            
+              
+              <a class="source" href="api.auditData.html">
+                api.auditData.coffee
+              </a>
+            
+              
+              <a class="source" href="api.auditEvent.html">
+                api.auditEvent.coffee
+              </a>
+            
+              
+              <a class="source" href="api.html">
+                api.coffee
+              </a>
+            
+              
+              <a class="source" href="api.entity.html">
+                api.entity.coffee
+              </a>
+            
+              
+              <a class="source" href="api.map.html">
+                api.map.coffee
+              </a>
+            
+              
+              <a class="source" href="api.server.html">
+                api.server.coffee
+              </a>
+            
+              
+              <a class="source" href="api.variable.html">
+                api.variable.coffee
+              </a>
+            
+              
+              <a class="source" href="api.view.html">
+                api.view.coffee
+              </a>
+            
+              
+              <a class="source" href="app.html">
+                app.coffee
+              </a>
+            
+              
+              <a class="source" href="app.instance.html">
+                app.instance.coffee
+              </a>
+            
+              
+              <a class="source" href="data.html">
+                data.coffee
+              </a>
+            
+              
+              <a class="source" href="dataUtil.html">
+                dataUtil.coffee
+              </a>
+            
+              
+              <a class="source" href="messages.html">
+                messages.coffee
+              </a>
+            
+              
+              <a class="source" href="auditData.html">
+                auditData.coffee
+              </a>
+            
+              
+              <a class="source" href="auditEvent.html">
+                auditEvent.coffee
+              </a>
+            
+              
+              <a class="source" href="base.html">
+                base.coffee
+              </a>
+            
+              
+              <a class="source" href="entityDefinition.html">
+                entityDefinition.coffee
+              </a>
+            
+              
+              <a class="source" href="entityObject.html">
+                entityObject.coffee
+              </a>
+            
+              
+              <a class="source" href="eventAction.html">
+                eventAction.coffee
+              </a>
+            
+              
+              <a class="source" href="eventRule.html">
+                eventRule.coffee
+              </a>
+            
+              
+              <a class="source" href="link.html">
+                link.coffee
+              </a>
+            
+              
+              <a class="source" href="map.html">
+                map.coffee
+              </a>
+            
+              
+              <a class="source" href="shape.html">
+                shape.coffee
+              </a>
+            
+              
+              <a class="source" href="userSettings.html">
+                userSettings.coffee
+              </a>
+            
+              
+              <a class="source" href="variable.html">
+                variable.coffee
+              </a>
+            
+              
+              <a class="source" href="routes.html">
+                routes.coffee
+              </a>
+            
+              
+              <a class="source" href="settings.base.html">
+                settings.base.coffee
+              </a>
+            
+              
+              <a class="source" href="settings.html">
+                settings.coffee
+              </a>
+            
+              
+              <a class="source" href="settings.default.html">
+                settings.default.coffee
+              </a>
+            
+              
+              <a class="source" href="sockets.html">
+                sockets.coffee
+              </a>
+            
+              
+              <a class="source" href="tutorial.html">
+                tutorial.coffee
+              </a>
+            
+              
+              <a class="source" href="vectors.html">
+                vectors.coffee
+              </a>
+            
+              
+              <a class="source" href="alertView.html">
+                alertView.coffee
+              </a>
+            
+              
+              <a class="source" href="auditDataManagerView.html">
+                auditDataManagerView.coffee
+              </a>
+            
+              
+              <a class="source" href="auditEventManagerView.html">
+                auditEventManagerView.coffee
+              </a>
+            
+              
+              <a class="source" href="baseView.html">
+                baseView.coffee
+              </a>
+            
+              
+              <a class="source" href="createMapView.html">
+                createMapView.coffee
+              </a>
+            
+              
+              <a class="source" href="entityManagerView.html">
+                entityManagerView.coffee
+              </a>
+            
+              
+              <a class="source" href="footerView.html">
+                footerView.coffee
+              </a>
+            
+              
+              <a class="source" href="helpView.html">
+                helpView.coffee
+              </a>
+            
+              
+              <a class="source" href="entitiesTabView.html">
+                entitiesTabView.coffee
+              </a>
+            
+              
+              <a class="source" href="inspectorTabView.html">
+                inspectorTabView.coffee
+              </a>
+            
+              
+              <a class="source" href="mapTabView.html">
+                mapTabView.coffee
+              </a>
+            
+              
+              <a class="source" href="shapeTabView.html">
+                shapeTabView.coffee
+              </a>
+            
+              
+              <a class="source" href="controlsView.html">
+                controlsView.coffee
+              </a>
+            
+              
+              <a class="source" href="labelEditView.html">
+                labelEditView.coffee
+              </a>
+            
+              
+              <a class="source" href="linkCreatorView.html">
+                linkCreatorView.coffee
+              </a>
+            
+              
+              <a class="source" href="linkLabelsView.html">
+                linkLabelsView.coffee
+              </a>
+            
+              
+              <a class="source" href="linkView.html">
+                linkView.coffee
+              </a>
+            
+              
+              <a class="source" href="shapeLabelsView.html">
+                shapeLabelsView.coffee
+              </a>
+            
+              
+              <a class="source" href="shapeView.html">
+                shapeView.coffee
+              </a>
+            
+              
+              <a class="source" href="shapesMoverView.html">
+                shapesMoverView.coffee
+              </a>
+            
+              
+              <a class="source" href="mapView.html">
+                mapView.coffee
+              </a>
+            
+              
+              <a class="source" href="menuView.html">
+                menuView.coffee
+              </a>
+            
+              
+              <a class="source" href="overlayView.html">
+                overlayView.coffee
+              </a>
+            
+              
+              <a class="source" href="scriptEditorView.html">
+                scriptEditorView.coffee
+              </a>
+            
+              
+              <a class="source" href="selfTestView.html">
+                selfTestView.coffee
+              </a>
+            
+              
+              <a class="source" href="settingsView.html">
+                settingsView.coffee
+              </a>
+            
+              
+              <a class="source" href="startView.html">
+                startView.coffee
+              </a>
+            
+          </div>
+        </li>
+      </ul>
+    
+    <ul class="sections">
+        
+          <li id="title">
+              <div class="annotation">
+                  <h1>settings.default.coffee</h1>
+              </div>
+          </li>
+        
+        
+        
+        <li id="section-1">
+            <div class="annotation">
+              
+              <div class="pilwrap for-h2">
+                <a class="pilcrow" href="#section-1">&#182;</a>
+              </div>
+              <h2>DEFAULT APP CLIENT SETTINGS</h2>
+
+            </div>
+            
+        </li>
+        
+        
+        <li id="section-2">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-2">&#182;</a>
+              </div>
+              <p>All default settings should be available here. Please DOT NOT edit
+this file unless you know excatly what you&#39;re doing. To change settings,
+please use the <code>settings.coffee</code> file which will always override the ones
+specified here.</p>
+<p>TODO! Transform the default client settings to plain JSON files instead of coffee classes.</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>System.App.SettingsDefault =</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-3">
+            <div class="annotation">
+              
+              <div class="pilwrap for-h2">
+                <a class="pilcrow" href="#section-3">&#182;</a>
+              </div>
+              <h2>GENERAL</h2>
+
+            </div>
+            
+        </li>
+        
+        
+        <li id="section-4">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-4">&#182;</a>
+              </div>
+              
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>    General:</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-5">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-5">&#182;</a>
+              </div>
+              <p>Force set the debug mode. If true, most actions will be logged to the console.
+If not set, it will be <code>false</code> on production environments and <code>true</code> on all other environments.</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>        debug: <span class="literal">null</span></pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-6">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-6">&#182;</a>
+              </div>
+              <p>Set the profile mode. If true, performance profiles will be triggered automatically.</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>        profile: <span class="literal">false</span></pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-7">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-7">&#182;</a>
+              </div>
+              <p>The title of the app.</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>        appTitle: <span class="string">"Zalando System"</span></pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-8">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-8">&#182;</a>
+              </div>
+              <p>Auto refresh the browser window at the specified time.</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>        autoRefreshTime: <span class="string">"0700"</span></pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-9">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-9">&#182;</a>
+              </div>
+              <p>The base url where to get JSON data (default is &quot;json/&quot;).</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>        baseJsonUrl: <span class="string">"json/"</span></pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-10">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-10">&#182;</a>
+              </div>
+              <p>The special key / character used for data bindings.</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>        dataBindingKey: <span class="string">"#"</span></pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-11">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-11">&#182;</a>
+              </div>
+              <p>Interval when blinking a form or HTMl field.</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>        elementBlinkInterval: <span class="number">150</span></pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-12">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-12">&#182;</a>
+              </div>
+              <p>Text that triggers / defines if the value being bound is an eval.</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>        evalPrefix: <span class="string">"eval:"</span></pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-13">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-13">&#182;</a>
+              </div>
+              <p>Time in ms to fade in / out when using the show / hide methods of views.</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>        fadeDelay: <span class="number">200</span></pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-14">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-14">&#182;</a>
+              </div>
+              <p>Refresh the browser if the page has been idle for more than X minutes.</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>        idleRefreshMinutes: <span class="number">60</span></pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-15">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-15">&#182;</a>
+              </div>
+              <p>The idle timer interval (tick every X milliseconds).</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>        idleTimerInterval: <span class="number">60000</span></pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-16">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-16">&#182;</a>
+              </div>
+              <p>How many milliseconds to compare when checking local storage expiry date.</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>        localDataLifespan: <span class="number">120000</span></pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-17">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-17">&#182;</a>
+              </div>
+              <p>How many parallels tasks can run by default? For example when refreshing shape labels.</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>        maxParallelTasks: <span class="number">10</span></pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-18">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-18">&#182;</a>
+              </div>
+              <p>Pool time to watch for the fetching property of data collections.</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>        refetchDelay: <span class="number">600</span></pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-19">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-19">&#182;</a>
+              </div>
+              <p>The url to the proxy downloader (used to download external files).</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>        remoteDownloaderUrl: <span class="string">"downloader/"</span></pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-20">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-20">&#182;</a>
+              </div>
+              <p>If restrictedMode is true, most of map and data management features and map creation
+will be restricted and available only if user appends a queryString ?godmode=1.
+This is a temporary &quot;hack&quot; till we get proper user management implemented.</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>        restrictedMode: <span class="literal">false</span></pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-21">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-21">&#182;</a>
+              </div>
+              <p>Minimum time in ms between saves to the remote MongoDB database.
+Please note that all data will ALWAYS be saved locally.</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>        saveInterval: <span class="number">2000</span></pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-22">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-22">&#182;</a>
+              </div>
+              <p>If true, only updated info will be saved to the server, otherwise
+the whole model will be sent.</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>        savePatch: <span class="literal">false</span></pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-23">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-23">&#182;</a>
+              </div>
+              <p>Delay when using a text field to search, on the EntityListView for example.</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>        searchDelay: <span class="number">300</span></pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-24">
+            <div class="annotation">
+              
+              <div class="pilwrap for-h2">
+                <a class="pilcrow" href="#section-24">&#182;</a>
+              </div>
+              <h2>MENU</h2>
+
+            </div>
+            
+        </li>
+        
+        
+        <li id="section-25">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-25">&#182;</a>
+              </div>
+              
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>    Menu:</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-26">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-26">&#182;</a>
+              </div>
+              <p>Timeout to hide submenus when mouse leaves them.</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>        hideTimeout: <span class="number">500</span></pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-27">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-27">&#182;</a>
+              </div>
+              <p>Prefix of the ID of submenu items.</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>        subPrefix: <span class="string">"menu-filter-"</span></pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-28">
+            <div class="annotation">
+              
+              <div class="pilwrap for-h2">
+                <a class="pilcrow" href="#section-28">&#182;</a>
+              </div>
+              <h2>ENTITY DEFINITIONS</h2>
+
+            </div>
+            
+        </li>
+        
+        
+        <li id="section-29">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-29">&#182;</a>
+              </div>
+              
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>    EntityDefinition:</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-30">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-30">&#182;</a>
+              </div>
+              <p>The default URL where to get entities from.</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>        url: <span class="string">"json/entitydefinition"</span></pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-31">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-31">&#182;</a>
+              </div>
+              <p>Maximum allowed refresh interval for entities, in seconds.</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>        maxRefreshInterval: <span class="number">864000</span></pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-32">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-32">&#182;</a>
+              </div>
+              <p>Minimum allowed refresh interval for entities, in seconds.</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>        minRefreshInterval: <span class="number">30</span></pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-33">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-33">&#182;</a>
+              </div>
+              <p>The default attribute which defines the ID of entity objects.</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>        objectIdAttribute: <span class="string">"id"</span></pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-34">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-34">&#182;</a>
+              </div>
+              <p>The default attribute which defines the title or name of entity objects.</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>        objectTitleAttribute: <span class="string">"name"</span></pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-35">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-35">&#182;</a>
+              </div>
+              <p>The default interval to refresh entity objects, in seconds.</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>        refreshInterval: <span class="number">600</span></pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-36">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-36">&#182;</a>
+              </div>
+              <p>Prefix of DOM IDs set on each row representing an item on the EntityDefinitionView.</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>        rowListPrefix: <span class="string">"list-entitydefinition-"</span></pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-37">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-37">&#182;</a>
+              </div>
+              <p>The URL served as proxy between the server and the entity source URL.</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>        sourceUrlProxy: <span class="string">"json/entitydata/"</span></pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-38">
+            <div class="annotation">
+              
+              <div class="pilwrap for-h2">
+                <a class="pilcrow" href="#section-38">&#182;</a>
+              </div>
+              <h2>ENTITY OBJECTS</h2>
+
+            </div>
+            
+        </li>
+        
+        
+        <li id="section-39">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-39">&#182;</a>
+              </div>
+              
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>    EntityObject:</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-40">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-40">&#182;</a>
+              </div>
+              <p>The default URL where to get entities from.</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>        url: <span class="string">"json/entityobject"</span></pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-41">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-41">&#182;</a>
+              </div>
+              <p>The namespace used for data binding.</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>        bindingNamespace: <span class="string">"obj"</span></pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-42">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-42">&#182;</a>
+              </div>
+              <p>The default attribute which defines the ID of entity objects.</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>        objectIdAttribute: <span class="string">"id"</span></pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-43">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-43">&#182;</a>
+              </div>
+              <p>The default interval to refresh entity objects, in seconds.</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>        refreshInterval: <span class="number">3600</span></pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-44">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-44">&#182;</a>
+              </div>
+              <p>The default attribute which defines the title or name of entity objects.</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>        objectTitleAttribute: <span class="string">"name"</span></pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-45">
+            <div class="annotation">
+              
+              <div class="pilwrap for-h2">
+                <a class="pilcrow" href="#section-45">&#182;</a>
+              </div>
+              <h2>MAP</h2>
+
+            </div>
+            
+        </li>
+        
+        
+        <li id="section-46">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-46">&#182;</a>
+              </div>
+              
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>    Map:</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-47">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-47">&#182;</a>
+              </div>
+              <p>The id of the map background element.</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>        id: <span class="string">"map-bg"</span></pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-48">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-48">&#182;</a>
+              </div>
+              <p>The url to the map(s) JSON.</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>        url: <span class="string">"json/map"</span></pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-49">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-49">&#182;</a>
+              </div>
+              <p>The default background color or image.</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>        background: <span class="string">"#000000"</span></pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-50">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-50">&#182;</a>
+              </div>
+              <p>Shape or link blink internval in ms.</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>        blinkInterval: <span class="number">80</span></pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-51">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-51">&#182;</a>
+              </div>
+              <p>Shape or link blink internval in ms.</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>        blinkSlowInterval: <span class="number">320</span></pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-52">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-52">&#182;</a>
+              </div>
+              <p>How long to display the updated border on the map,
+before it resets to the &quot;selected shape&quot; border style.</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>        borderUpdatedDelay: <span class="number">1400</span></pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-53">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-53">&#182;</a>
+              </div>
+              <p>Radius of rounded shape corners. Used only for rounded shapes.</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>        cornerRadius: <span class="number">8</span></pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-54">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-54">&#182;</a>
+              </div>
+              <p>Name of the default colour palette when no palette is selected.</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>        defaultPalette: <span class="string">"Outliner"</span></pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-55">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-55">&#182;</a>
+              </div>
+              <p>Properties available to be shown on map options. Separated by |, and equivalent properties
+separated by commas.</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>        displayProps: <span class="string">"name,hostname|internal_ip|external_ip,service_ip|memory,assigned_memory"</span></pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-56">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-56">&#182;</a>
+              </div>
+              <p>The URL to the background SVG editor.</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>        editBgUrl: <span class="string">"svg-edit/svg-editor.html"</span></pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-57">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-57">&#182;</a>
+              </div>
+              <p>On the &quot;Entity List&quot; DOM, add this prefix to each entity list item.</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>        entityListPrefix: <span class="string">"map-entity-list-"</span></pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-58">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-58">&#182;</a>
+              </div>
+              <p>All grid path elements will have this prefix + line number as ID.</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>        gridIdPrefix: <span class="string">"map-grid-"</span></pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-59">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-59">&#182;</a>
+              </div>
+              <p>The default shape width in pixels.</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>        gridSizeX: <span class="number">18</span></pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-60">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-60">&#182;</a>
+              </div>
+              <p>The default shape height in pixels.</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>        gridSizeY: <span class="number">14</span></pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-61">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-61">&#182;</a>
+              </div>
+              <p>The default grid stroke color.</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>        gridStroke: <span class="string">"#303030"</span></pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-62">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-62">&#182;</a>
+              </div>
+              <p>The opacity of action icons when mouse is NOT over them.</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>        icoActionsOpacity: <span class="number">0.4</span></pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-63">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-63">&#182;</a>
+              </div>
+              <p>Size of the shape action icons (add label, link).</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>        icoActionsSize: <span class="number">20</span></pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-64">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-64">&#182;</a>
+              </div>
+              <p>The URL to the shape &quot;add label&quot; icon.</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>        icoAddLabelUrl: <span class="string">"images/ico-shape-label.png"</span></pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-65">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-65">&#182;</a>
+              </div>
+              <p>The URL to the shape &quot;linker&quot; icon.</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>        icoLinkerUrl: <span class="string">"images/ico-shape-link.png"</span></pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-66">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-66">&#182;</a>
+              </div>
+              <p>The URL to the shape &quot;resizer&quot; icon.</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>        icoResizeUrl: <span class="string">"images/ico-shape-resize.png"</span></pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-67">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-67">&#182;</a>
+              </div>
+              <p>The shape label Y offset relative to the parent shape.</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>        labelOffsetY: <span class="number">22</span></pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-68">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-68">&#182;</a>
+              </div>
+              <p>The default font size for shape labels.</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>        labelFontSize: <span class="number">12</span></pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-69">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-69">&#182;</a>
+              </div>
+              <p>The refresh interval to update shapes, links and label values.</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>        labelRefreshInterval: <span class="number">5000</span></pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-70">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-70">&#182;</a>
+              </div>
+              <p>Maximum zoom amount allowed.</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>        maxZoom: <span class="number">1.80</span></pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-71">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-71">&#182;</a>
+              </div>
+              <p>Minimum grid size in pixels (distance between grid lines).</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>        minGridSize: <span class="number">10</span></pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-72">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-72">&#182;</a>
+              </div>
+              <p>Minimum size of shapes when resizing, whereas 3 means shapes can&#39;t be smaller than 2 grid blocks.</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>        minGridSizeBlocks: <span class="number">3</span></pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-73">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-73">&#182;</a>
+              </div>
+              <p>The minimum map paper size (width and height) in pixels.</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>        minPaperSize: <span class="number">500</span></pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-74">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-74">&#182;</a>
+              </div>
+              <p>Minimum zoom amount allowed.</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>        minZoom: <span class="number">0.50</span></pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-75">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-75">&#182;</a>
+              </div>
+              <p>For how long a mao is considered &quot;new&quot; (for example on the top menu),
+value is defined in seconds. Default is 5 minutes.</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>        isNewInterval: <span class="number">300</span></pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-76">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-76">&#182;</a>
+              </div>
+              <p>The opacity of map shapes when dragging.</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>        opacityDrag: <span class="number">0.32</span></pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-77">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-77">&#182;</a>
+              </div>
+              <p>The opacity interval when animating map shapes, in milliseconds.</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>        opacityInterval: <span class="number">200</span></pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-78">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-78">&#182;</a>
+              </div>
+              <p>The static opacity for map objects.</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>        opacityStatic: <span class="number">0.9</span></pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-79">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-79">&#182;</a>
+              </div>
+              <p>The default map paper X size.</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>        paperSizeX: <span class="number">1920</span></pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-80">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-80">&#182;</a>
+              </div>
+              <p>The default map paper Y size.</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>        paperSizeY: <span class="number">1080</span></pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-81">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-81">&#182;</a>
+              </div>
+              <p>The reference (or target) shape shadow color when creating links.</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>        refShadowColor: <span class="string">"#FFFF33"</span></pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-82">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-82">&#182;</a>
+              </div>
+              <p>The default shape shadow color.</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>        shadowColor: <span class="string">"#FF6633"</span></pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-83">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-83">&#182;</a>
+              </div>
+              <p>Delay to show the shadow (to make sure it will have the correct size after snaping the shape to the grid).</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>        shadowDelay: <span class="number">90</span></pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-84">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-84">&#182;</a>
+              </div>
+              <p>The default shape shadow opacity.</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>        shadowOpacity: <span class="number">0.75</span></pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-85">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-85">&#182;</a>
+              </div>
+              <p>The default shape shadow strength.</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>        shadowStrength: <span class="number">5</span></pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-86">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-86">&#182;</a>
+              </div>
+              <p>The default padding to apply to labels inside shapes (does not include the border).</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>        labelPadding: <span class="number">5</span></pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-87">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-87">&#182;</a>
+              </div>
+              <p>The base URL where map thumbnails are located.</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>        thumbnailBaseUrl: <span class="string">"images/mapthumbs/"</span></pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-88">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-88">&#182;</a>
+              </div>
+              <p>The maximum age of the map&#39;s thumbnail before it&#39;s allowed to generate a new thumbnail again, in ms.</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>        thumbnailExpires: <span class="number">60000</span></pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-89">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-89">&#182;</a>
+              </div>
+              <p>The default shape title color is white.</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>        titleColor: <span class="string">"#FFFFFF"</span></pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-90">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-90">&#182;</a>
+              </div>
+              <p>The default shape title shadow color is black.</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>        titleShadowColor: <span class="string">"#000000"</span></pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-91">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-91">&#182;</a>
+              </div>
+              <p>The shape title Y offset, upwards (so in this case 10 pixels on top of the shape).</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>        titleOffsetY: <span class="number">10</span></pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-92">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-92">&#182;</a>
+              </div>
+              <p>How many milliseconds to wait before auto hiding the z-index identifiers on shapes.</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>        zIndexHideTimeout: <span class="number">5000</span></pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-93">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-93">&#182;</a>
+              </div>
+              <p>Zoom step while zooming (0.10 means will zoom in or out 10%).</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>        zoomStep: <span class="number">0.10</span></pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-94">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-94">&#182;</a>
+              </div>
+              <p>Properties to ignore on the shape details tab.</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>        ignoreDisplayProps: <span class="string">"0,format,background,foreground,fontSize,stroke,strokeWidth,"</span> +
+                            <span class="string">"map_position_x,map_position_y,physical_machine,sizeX,sizeY,roundedCorners,zIndex"</span></pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-95">
+            <div class="annotation">
+              
+              <div class="pilwrap for-h2">
+                <a class="pilcrow" href="#section-95">&#182;</a>
+              </div>
+              <h2>MAP MOVER</h2>
+
+            </div>
+            
+        </li>
+        
+        
+        <li id="section-96">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-96">&#182;</a>
+              </div>
+              
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>    MapMover:</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-97">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-97">&#182;</a>
+              </div>
+              <p>The map shapes mover background.</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>        background: <span class="string">"#77AAFF"</span></pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-98">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-98">&#182;</a>
+              </div>
+              <p>The map shapes mover opacity.</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>        opacity: <span class="number">0.25</span></pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-99">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-99">&#182;</a>
+              </div>
+              <p>The shape shadow color when moving multiple shapes.</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>        shadowColor: <span class="string">"#77AAFF"</span></pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-100">
+            <div class="annotation">
+              
+              <div class="pilwrap for-h2">
+                <a class="pilcrow" href="#section-100">&#182;</a>
+              </div>
+              <h2>SHAPES</h2>
+
+            </div>
+            
+        </li>
+        
+        
+        <li id="section-101">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-101">&#182;</a>
+              </div>
+              
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>    Shape:</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-102">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-102">&#182;</a>
+              </div>
+              <p>The default shape background color.</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>        background: <span class="string">"#060606"</span></pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-103">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-103">&#182;</a>
+              </div>
+              <p>The namespace used for data binding.</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>        bindingNamespace: <span class="string">"shape"</span></pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-104">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-104">&#182;</a>
+              </div>
+              <p>ID of custom shapes.</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>        customId: <span class="string">"custom"</span></pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-105">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-105">&#182;</a>
+              </div>
+              <p>Text of custom shapes.</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>        customText: <span class="string">"Custom"</span></pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-106">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-106">&#182;</a>
+              </div>
+              <p>The default shape format (rect or circle).</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>        format: <span class="string">"rect"</span></pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-107">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-107">&#182;</a>
+              </div>
+              <p>The default label font size.</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>        fontSize: <span class="number">10</span></pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-108">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-108">&#182;</a>
+              </div>
+              <p>The foreground color user for the shape&#39;s texts.</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>        foreground: <span class="string">"#FFFFFF"</span></pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-109">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-109">&#182;</a>
+              </div>
+              <p>Use rounded corners?</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>        roundedCorners: <span class="literal">false</span></pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-110">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-110">&#182;</a>
+              </div>
+              <p>The default shape X size relative to the grid.</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>        gridViewSizeX: <span class="number">4</span></pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-111">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-111">&#182;</a>
+              </div>
+              <p>The default shape Y size relative to the grid.</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>        gridViewSizeY: <span class="number">4</span></pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-112">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-112">&#182;</a>
+              </div>
+              <p>The default shape opacity.</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>        opacity: <span class="number">0.9</span></pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-113">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-113">&#182;</a>
+              </div>
+              <p>The default shape stroke / border color.</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>        stroke: <span class="string">"#F0F0F0"</span></pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-114">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-114">&#182;</a>
+              </div>
+              <p>The default shape stroke width.</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>        strokeWidth: <span class="number">2</span></pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-115">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-115">&#182;</a>
+              </div>
+              <p>The default shape title color.</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>        titleForeground: <span class="string">"#FFFFFF"</span></pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-116">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-116">&#182;</a>
+              </div>
+              <p>The default z-index of shapes.</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>        zIndex: <span class="number">5</span></pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-117">
+            <div class="annotation">
+              
+              <div class="pilwrap for-h2">
+                <a class="pilcrow" href="#section-117">&#182;</a>
+              </div>
+              <h2>LINK</h2>
+
+            </div>
+            
+        </li>
+        
+        
+        <li id="section-118">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-118">&#182;</a>
+              </div>
+              
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>    Link:</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-119">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-119">&#182;</a>
+              </div>
+              <p>Default arrow size.</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>        arrowSize: <span class="number">12</span></pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-120">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-120">&#182;</a>
+              </div>
+              <p>Default source arrow. 0 = no arrow, 1 = filled arrow, 2 = open arrow</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>        arrowSource: <span class="number">0</span></pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-121">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-121">&#182;</a>
+              </div>
+              <p>Default target arrow. 0 = no arrow, 1 = filled arrow, 2 = open arrow</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>        arrowTarget: <span class="number">0</span></pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-122">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-122">&#182;</a>
+              </div>
+              <p>The opacity of the circle that appear on shapes to create links.</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>        creatorOpacity: <span class="number">0.2</span></pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-123">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-123">&#182;</a>
+              </div>
+              <p>The new link stroke color.</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>        creatorStroke: <span class="string">"#FF6666"</span></pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-124">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-124">&#182;</a>
+              </div>
+              <p>The new link width / strength.</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>        creatorWidth: <span class="number">2</span></pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-125">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-125">&#182;</a>
+              </div>
+              <p>The label font size.</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>        fontSize: <span class="number">12</span></pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-126">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-126">&#182;</a>
+              </div>
+              <p>The color of the link labels.</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>        foreground: <span class="string">"#CCEEFF"</span></pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-127">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-127">&#182;</a>
+              </div>
+              <p>The default link label opacity.</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>        labelOpacity: <span class="number">0.9</span></pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-128">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-128">&#182;</a>
+              </div>
+              <p>The default link opacity.</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>        opacity: <span class="number">0.9</span></pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-129">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-129">&#182;</a>
+              </div>
+              <p>Are links smooth by default? smooth = true, straight = false.</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>        smooth: <span class="literal">true</span></pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-130">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-130">&#182;</a>
+              </div>
+              <p>The link stroke color.</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>        stroke: <span class="string">"#55EE88"</span></pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-131">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-131">&#182;</a>
+              </div>
+              <p>The link width / strength.</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>        strokeWidth: <span class="number">3</span></pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-132">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-132">&#182;</a>
+              </div>
+              <p>The default z-index of links.</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>        zIndex: <span class="number">3</span></pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-133">
+            <div class="annotation">
+              
+              <div class="pilwrap for-h2">
+                <a class="pilcrow" href="#section-133">&#182;</a>
+              </div>
+              <h2>LABEL EDITING</h2>
+
+            </div>
+            
+        </li>
+        
+        
+        <li id="section-134">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-134">&#182;</a>
+              </div>
+              
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>    LabelEdit:</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-135">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-135">&#182;</a>
+              </div>
+              <p>CSS class name of the label edit view wrapper.</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>        className: <span class="string">"label-edit-view"</span></pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-136">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-136">&#182;</a>
+              </div>
+              <p>If eval fails, show the error message on the textbox for X milliseconds.</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>        evalErrorTimeout: <span class="number">1500</span></pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-137">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-137">&#182;</a>
+              </div>
+              <p>Minimum size of the edit textbox (textbox size property).</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>        minTxtSize: <span class="number">45</span></pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-138">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-138">&#182;</a>
+              </div>
+              <p>The opacity interval when showing or hiding a labelEditView.</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>        opacityInterval: <span class="number">200</span></pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-139">
+            <div class="annotation">
+              
+              <div class="pilwrap for-h2">
+                <a class="pilcrow" href="#section-139">&#182;</a>
+              </div>
+              <h2>AUDIT DATA</h2>
+
+            </div>
+            
+        </li>
+        
+        
+        <li id="section-140">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-140">&#182;</a>
+              </div>
+              
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>    AuditData:</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-141">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-141">&#182;</a>
+              </div>
+              <p>The url to the audit data(s) JSON.</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>        url: <span class="string">"json/auditdata"</span></pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-142">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-142">&#182;</a>
+              </div>
+              <p>The namespace used for data binding.</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>        bindingNamespace: <span class="string">"audit"</span></pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-143">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-143">&#182;</a>
+              </div>
+              <p>Alert the user if the data could not be refreshed for 6 times in a row.</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>        alertOnErrorCount: <span class="number">6</span></pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-144">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-144">&#182;</a>
+              </div>
+              <p>Default interval to save the current data, in ms.</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>        dataSaveInterval: <span class="number">60000</span></pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-145">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-145">&#182;</a>
+              </div>
+              <p>Round numbers to a maximum number of decimal cases.</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>        decimalCases: <span class="number">0</span></pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-146">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-146">&#182;</a>
+              </div>
+              <p>What text to show when an audit data value is still being loaded.</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>        loadingText: <span class="string">"..."</span></pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-147">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-147">&#182;</a>
+              </div>
+              <p>Maximum allowed value for the refreshInterval, in seconds.</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>        maxRefreshInterval: <span class="number">864000</span></pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-148">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-148">&#182;</a>
+              </div>
+              <p>Minimum allowed value for the refreshInterval, in seconds.</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>        minRefreshInterval: <span class="number">3</span></pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-149">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-149">&#182;</a>
+              </div>
+              <p>Default interval to refresh the data from its sourceUrl, in ms.</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>        refreshInterval: <span class="number">5</span></pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-150">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-150">&#182;</a>
+              </div>
+              <p>Prefix of DOM IDs set on each row representing an item on the AuditDataManagerView.</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>        rowListPrefix: <span class="string">"list-auditdata-"</span></pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-151">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-151">&#182;</a>
+              </div>
+              <p>Delay to start the audit data refresh timers when the app is loaded.</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>        startTimersDelay: <span class="number">2000</span></pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-152">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-152">&#182;</a>
+              </div>
+              <p>Data will be considered outdated after X times the value of its refreshInterval.</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>        outdatedMultiplier: <span class="number">3</span></pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-153">
+            <div class="annotation">
+              
+              <div class="pilwrap for-h2">
+                <a class="pilcrow" href="#section-153">&#182;</a>
+              </div>
+              <h2>AUDIT ALERT</h2>
+
+            </div>
+            
+        </li>
+        
+        
+        <li id="section-154">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-154">&#182;</a>
+              </div>
+              
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>    AuditEvent:</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-155">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-155">&#182;</a>
+              </div>
+              <p>The url to the audit event(s) JSON.</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>        url: <span class="string">"json/auditevent"</span></pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-156">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-156">&#182;</a>
+              </div>
+              <p>The namespace used for data binding.</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>        bindingNamespace: <span class="string">"event"</span></pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-157">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-157">&#182;</a>
+              </div>
+              <p>How many times to blink if no value is specified on the alert action.</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>        blinkTimes: <span class="number">2</span></pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-158">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-158">&#182;</a>
+              </div>
+              <p>The context special key used to test shape or link labels agains an <a href="auditEvent.html">AuditEvent</a>.</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>        contextSpecialKey: <span class="string">"@"</span></pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-159">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-159">&#182;</a>
+              </div>
+              <p>The color to use if no background/border color is specified on the alert action.</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>        defaultColor: <span class="string">"#FF6666"</span></pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-160">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-160">&#182;</a>
+              </div>
+              <p>Prefix of DOM IDs set on each row representing an item on the EntityDefinitionView.</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>        rowListPrefix: <span class="string">"list-auditevent-"</span></pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-161">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-161">&#182;</a>
+              </div>
+              <p>The prefix of action rows on the <code>$gridActions</code> grid of the <a href="auditEventManagerView.html">Audit Events View</a>.</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>        rowActionPrefix: <span class="string">"list-auditevent-action-"</span></pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-162">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-162">&#182;</a>
+              </div>
+              <p>The prefix of rule rows on the <code>$gridRules</code> grid of the <a href="auditEventManagerView.html">Audit Events View</a>.</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>        rowRulePrefix: <span class="string">"list-auditevent-rule-"</span></pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-163">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-163">&#182;</a>
+              </div>
+              <p>The checkbox group name (DOM) of the alerts manager for a specific shape.</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>        shapeCheckboxName: <span class="string">"shape-alerts-enabled"</span></pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-164">
+            <div class="annotation">
+              
+              <div class="pilwrap for-h2">
+                <a class="pilcrow" href="#section-164">&#182;</a>
+              </div>
+              <h2>AUDIT ALERT</h2>
+
+            </div>
+            
+        </li>
+        
+        
+        <li id="section-165">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-165">&#182;</a>
+              </div>
+              
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>    Variable:</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-166">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-166">&#182;</a>
+              </div>
+              <p>The url to the custom variable(s) JSON.</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>        url: <span class="string">"json/variable"</span></pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-167">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-167">&#182;</a>
+              </div>
+              <p>The namespace used for data binding.</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>        bindingNamespace: <span class="string">"var"</span></pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-168">
+            <div class="annotation">
+              
+              <div class="pilwrap for-h2">
+                <a class="pilcrow" href="#section-168">&#182;</a>
+              </div>
+              <h2>ALERT</h2>
+
+            </div>
+            
+        </li>
+        
+        
+        <li id="section-169">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-169">&#182;</a>
+              </div>
+              
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>    Alert:</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-170">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-170">&#182;</a>
+              </div>
+              <p>How long should the alerts stay shown.</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>        hideDelay: <span class="number">2500</span></pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-171">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-171">&#182;</a>
+              </div>
+              <p>How long it takes to fade in / out alerts.</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>        opacityInterval: <span class="number">300</span></pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-172">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-172">&#182;</a>
+              </div>
+              <p>Minimum time between similar alerts to be shown.
+For example if you save a map twice in less than 8 seconds, then just show the alert once.</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>        similarTimeout: <span class="number">8000</span></pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-173">
+            <div class="annotation">
+              
+              <div class="pilwrap for-h2">
+                <a class="pilcrow" href="#section-173">&#182;</a>
+              </div>
+              <h2>FOOTER</h2>
+
+            </div>
+            
+        </li>
+        
+        
+        <li id="section-174">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-174">&#182;</a>
+              </div>
+              
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>    Footer:</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-175">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-175">&#182;</a>
+              </div>
+              <p>How long it takes to fade in / out footer information.</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>        opacityInterval: <span class="number">400</span></pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-176">
+            <div class="annotation">
+              
+              <div class="pilwrap for-h2">
+                <a class="pilcrow" href="#section-176">&#182;</a>
+              </div>
+              <h2>USER SETTINGS</h2>
+
+            </div>
+            
+        </li>
+        
+        
+        <li id="section-177">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-177">&#182;</a>
+              </div>
+              
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>    User:</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-178">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-178">&#182;</a>
+              </div>
+              <p>Default key combination to delete shapes and links.</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>        modifierDelete: <span class="string">"ctrl rightclick"</span></pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-179">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-179">&#182;</a>
+              </div>
+              <p>Default key combination to select multiple shapes or items.</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>        modifierMultiple: <span class="string">"shift leftclick"</span></pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-180">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-180">&#182;</a>
+              </div>
+              <p>Default key combination to send shapes and links to the back of the map.</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>        modifierToBack: <span class="string">"rightclick"</span></pre></div></div>
+            
+        </li>
+        
+    </ul>
+  </div>
+</body>
+</html>

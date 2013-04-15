@@ -1,0 +1,1104 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+  <title>overlayView.coffee</title>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <meta name="viewport" content="width=device-width, target-densitydpi=160dpi, initial-scale=1.0; maximum-scale=1.0; user-scalable=0;">
+  <link rel="stylesheet" media="all" href="docco.css" />
+</head>
+<body>
+  <div id="container">
+    <div id="background"></div>
+    
+      <ul id="jump_to">
+        <li>
+          <a class="large" href="javascript:void(0);">Jump To &hellip;</a>
+          <a class="small" href="javascript:void(0);">+</a>
+          <div id="jump_wrapper">
+          <div id="jump_page">
+            
+              
+              <a class="source" href="api.auditData.html">
+                api.auditData.coffee
+              </a>
+            
+              
+              <a class="source" href="api.auditEvent.html">
+                api.auditEvent.coffee
+              </a>
+            
+              
+              <a class="source" href="api.html">
+                api.coffee
+              </a>
+            
+              
+              <a class="source" href="api.entity.html">
+                api.entity.coffee
+              </a>
+            
+              
+              <a class="source" href="api.map.html">
+                api.map.coffee
+              </a>
+            
+              
+              <a class="source" href="api.server.html">
+                api.server.coffee
+              </a>
+            
+              
+              <a class="source" href="api.variable.html">
+                api.variable.coffee
+              </a>
+            
+              
+              <a class="source" href="api.view.html">
+                api.view.coffee
+              </a>
+            
+              
+              <a class="source" href="app.html">
+                app.coffee
+              </a>
+            
+              
+              <a class="source" href="app.instance.html">
+                app.instance.coffee
+              </a>
+            
+              
+              <a class="source" href="data.html">
+                data.coffee
+              </a>
+            
+              
+              <a class="source" href="dataUtil.html">
+                dataUtil.coffee
+              </a>
+            
+              
+              <a class="source" href="messages.html">
+                messages.coffee
+              </a>
+            
+              
+              <a class="source" href="auditData.html">
+                auditData.coffee
+              </a>
+            
+              
+              <a class="source" href="auditEvent.html">
+                auditEvent.coffee
+              </a>
+            
+              
+              <a class="source" href="base.html">
+                base.coffee
+              </a>
+            
+              
+              <a class="source" href="entityDefinition.html">
+                entityDefinition.coffee
+              </a>
+            
+              
+              <a class="source" href="entityObject.html">
+                entityObject.coffee
+              </a>
+            
+              
+              <a class="source" href="eventAction.html">
+                eventAction.coffee
+              </a>
+            
+              
+              <a class="source" href="eventRule.html">
+                eventRule.coffee
+              </a>
+            
+              
+              <a class="source" href="link.html">
+                link.coffee
+              </a>
+            
+              
+              <a class="source" href="map.html">
+                map.coffee
+              </a>
+            
+              
+              <a class="source" href="shape.html">
+                shape.coffee
+              </a>
+            
+              
+              <a class="source" href="userSettings.html">
+                userSettings.coffee
+              </a>
+            
+              
+              <a class="source" href="variable.html">
+                variable.coffee
+              </a>
+            
+              
+              <a class="source" href="routes.html">
+                routes.coffee
+              </a>
+            
+              
+              <a class="source" href="settings.base.html">
+                settings.base.coffee
+              </a>
+            
+              
+              <a class="source" href="settings.html">
+                settings.coffee
+              </a>
+            
+              
+              <a class="source" href="settings.default.html">
+                settings.default.coffee
+              </a>
+            
+              
+              <a class="source" href="sockets.html">
+                sockets.coffee
+              </a>
+            
+              
+              <a class="source" href="tutorial.html">
+                tutorial.coffee
+              </a>
+            
+              
+              <a class="source" href="vectors.html">
+                vectors.coffee
+              </a>
+            
+              
+              <a class="source" href="alertView.html">
+                alertView.coffee
+              </a>
+            
+              
+              <a class="source" href="auditDataManagerView.html">
+                auditDataManagerView.coffee
+              </a>
+            
+              
+              <a class="source" href="auditEventManagerView.html">
+                auditEventManagerView.coffee
+              </a>
+            
+              
+              <a class="source" href="baseView.html">
+                baseView.coffee
+              </a>
+            
+              
+              <a class="source" href="createMapView.html">
+                createMapView.coffee
+              </a>
+            
+              
+              <a class="source" href="entityManagerView.html">
+                entityManagerView.coffee
+              </a>
+            
+              
+              <a class="source" href="footerView.html">
+                footerView.coffee
+              </a>
+            
+              
+              <a class="source" href="helpView.html">
+                helpView.coffee
+              </a>
+            
+              
+              <a class="source" href="entitiesTabView.html">
+                entitiesTabView.coffee
+              </a>
+            
+              
+              <a class="source" href="inspectorTabView.html">
+                inspectorTabView.coffee
+              </a>
+            
+              
+              <a class="source" href="mapTabView.html">
+                mapTabView.coffee
+              </a>
+            
+              
+              <a class="source" href="shapeTabView.html">
+                shapeTabView.coffee
+              </a>
+            
+              
+              <a class="source" href="controlsView.html">
+                controlsView.coffee
+              </a>
+            
+              
+              <a class="source" href="labelEditView.html">
+                labelEditView.coffee
+              </a>
+            
+              
+              <a class="source" href="linkCreatorView.html">
+                linkCreatorView.coffee
+              </a>
+            
+              
+              <a class="source" href="linkLabelsView.html">
+                linkLabelsView.coffee
+              </a>
+            
+              
+              <a class="source" href="linkView.html">
+                linkView.coffee
+              </a>
+            
+              
+              <a class="source" href="shapeLabelsView.html">
+                shapeLabelsView.coffee
+              </a>
+            
+              
+              <a class="source" href="shapeView.html">
+                shapeView.coffee
+              </a>
+            
+              
+              <a class="source" href="shapesMoverView.html">
+                shapesMoverView.coffee
+              </a>
+            
+              
+              <a class="source" href="mapView.html">
+                mapView.coffee
+              </a>
+            
+              
+              <a class="source" href="menuView.html">
+                menuView.coffee
+              </a>
+            
+              
+              <a class="source" href="overlayView.html">
+                overlayView.coffee
+              </a>
+            
+              
+              <a class="source" href="scriptEditorView.html">
+                scriptEditorView.coffee
+              </a>
+            
+              
+              <a class="source" href="selfTestView.html">
+                selfTestView.coffee
+              </a>
+            
+              
+              <a class="source" href="settingsView.html">
+                settingsView.coffee
+              </a>
+            
+              
+              <a class="source" href="startView.html">
+                startView.coffee
+              </a>
+            
+          </div>
+        </li>
+      </ul>
+    
+    <ul class="sections">
+        
+          <li id="title">
+              <div class="annotation">
+                  <h1>overlayView.coffee</h1>
+              </div>
+          </li>
+        
+        
+        
+        <li id="section-1">
+            <div class="annotation">
+              
+              <div class="pilwrap for-h2">
+                <a class="pilcrow" href="#section-1">&#182;</a>
+              </div>
+              <h2>OVERLAY VIEW</h2>
+
+            </div>
+            
+        </li>
+        
+        
+        <li id="section-2">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-2">&#182;</a>
+              </div>
+              <p>Abstract overlay view containing helper methods for closing and tabs.
+Used by all the overlays (Settings, Help, Audit Data Manager, etc...).</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre><span class="class"><span class="keyword">class</span> <span class="title">System</span>.<span class="title">OverlayView</span> <span class="keyword">extends</span> <span class="title">System</span>.<span class="title">BaseView</span></span>
+
+    closeOnFirstEsc: <span class="literal">false</span>  <span class="comment"># when false, overlay will close on "double Esc", otherwise a single press will do it</span>
+    currentSettings: <span class="literal">null</span>   <span class="comment"># define the settings container</span>
+    lastPressedKey: <span class="literal">null</span>    <span class="comment"># holds the last pressed key (while the overlay is shown)</span>
+    fullWidth: <span class="literal">true</span>         <span class="comment"># overlay takes the full width (true) or only the map area (false)</span>
+
+    $box: <span class="literal">null</span>              <span class="comment"># the overlay wrapper / box, which is in fact the first child div</span>
+    $close: <span class="literal">null</span>            <span class="comment"># the close icon</span>
+    $leftCol: <span class="literal">null</span>          <span class="comment"># the left column</span>
+    $rightCol: <span class="literal">null</span>         <span class="comment"># the right column</span>
+    $menuItem: <span class="literal">null</span>         <span class="comment"># menu item corresponding to this overlay</span>
+    $modelsList: <span class="literal">null</span>       <span class="comment"># used by some overlays to show a list of models</span>
+    $tabHeaders: <span class="literal">null</span>       <span class="comment"># the tab header divs (used only for tabbed overlays)</span>
+    $tabContents: <span class="literal">null</span>      <span class="comment"># the tav content divs (used only for tabbed overlays)</span></pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-3">
+            <div class="annotation">
+              
+              <div class="pilwrap for-h2">
+                <a class="pilcrow" href="#section-3">&#182;</a>
+              </div>
+              <h2>INIT AND DISPOSE</h2>
+
+            </div>
+            
+        </li>
+        
+        
+        <li id="section-4">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-4">&#182;</a>
+              </div>
+              <p>Init the overlay view.</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>    overlayInit: (overlaySelector) =&gt;
+        <span class="property">@setElement</span> $ overlaySelector
+
+        <span class="property">@setOverlayDom</span>()
+        <span class="property">@setOverlayEvents</span>()</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-5">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-5">&#182;</a>
+              </div>
+              <p>Set the DOM elements cache.</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>    setOverlayDom: =&gt;
+        <span class="property">@$box</span> = <span class="property">@$el</span>.children <span class="string">".full-overlay-contents"</span>
+        <span class="property">@$close</span> = <span class="property">@$box</span>.children <span class="string">".close"</span></pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-6">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-6">&#182;</a>
+              </div>
+              <p>Set tabs (some overlays might have no tabs).</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>        <span class="property">@$tabHeaders</span> = <span class="property">@$el</span>.find(<span class="string">".tab-headers"</span>).children(<span class="string">"label"</span>)
+        <span class="property">@$tabContents</span> = <span class="property">@$el</span>.find(<span class="string">"div.tab"</span>)</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-7">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-7">&#182;</a>
+              </div>
+              <p>Set left and right columns (some overlays might have no left / right columns).</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>        <span class="property">@$leftCol</span> = <span class="property">@$el</span>.find <span class="string">".left-col"</span>
+        <span class="property">@$rightCol</span> = <span class="property">@$el</span>.find <span class="string">".right-col"</span></pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-8">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-8">&#182;</a>
+              </div>
+              <p>Bind events to the DOM.</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>    setOverlayEvents: =&gt;
+        <span class="property">@$close</span>.click <span class="property">@hide</span>
+        <span class="property">@$tabHeaders</span>.click <span class="property">@tabClick</span></pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-9">
+            <div class="annotation">
+              
+              <div class="pilwrap for-h2">
+                <a class="pilcrow" href="#section-9">&#182;</a>
+              </div>
+              <h2>TABS</h2>
+
+            </div>
+            
+        </li>
+        
+        
+        <li id="section-10">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-10">&#182;</a>
+              </div>
+              <p>Hide the tabs wrapper.</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>    hideTabs: =&gt;
+        <span class="property">@$tabHeaders</span>.hide()</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-11">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-11">&#182;</a>
+              </div>
+              <p>Show the tab wrapper. This is called whenever the user starts editing
+a model, or if the overlay has no models to be edited (and thus
+tabs are always shown).</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>    showTabs: =&gt;
+        <span class="property">@$tabHeaders</span>.show()</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-12">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-12">&#182;</a>
+              </div>
+              <p>When user clicks on a tab header, add the <code>active</code> class and show the
+corresponding help div.</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>    tabClick: (e) =&gt;
+        src = $ e.currentTarget
+
+        <span class="property">@$tabHeaders</span>.removeClass <span class="string">"active"</span>
+        <span class="property">@$tabContents</span>.hide()
+        <span class="property">@$tabContents</span>.filter(src.data(<span class="string">"tab"</span>)).show()
+
+        src.addClass <span class="string">"active"</span></pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-13">
+            <div class="annotation">
+              
+              <div class="pilwrap for-h2">
+                <a class="pilcrow" href="#section-13">&#182;</a>
+              </div>
+              <h2>SHOW AND HIDE</h2>
+
+            </div>
+            
+        </li>
+        
+        
+        <li id="section-14">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-14">&#182;</a>
+              </div>
+              <p>Show the overlay using a &quot;fade in&quot; effect. The fade time is defined
+at the <a href="settings.html">Settings</a>. Prior to showing, the overlay box will
+be resized to fit the map area.
+Arguments will be passed over to the &#39;onShow&#39; callback.</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>    show: (e) =&gt;
+        $(document).keyup <span class="property">@overlayKeyUp</span>
+        $(window).resize <span class="property">@resize</span>
+
+        <span class="property">@resize</span>()
+        <span class="property">@$rightCol</span>.hide()
+
+        <span class="property">@lastPressedKey</span> = <span class="literal">null</span>
+        <span class="property">@$el</span>.fadeIn System.App.Settings.General.fadeDelay</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-15">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-15">&#182;</a>
+              </div>
+              <p>Set the footer text to the title of the overlay.
+TODO! Stop calling footer view directly, use events instead.</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>        System.App.footerView.setText <span class="property">@$el</span>.find(<span class="string">"h2:first"</span>).html()</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-16">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-16">&#182;</a>
+              </div>
+              <p>Change the view based on what properties are set.</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>        <span class="property">@$menuItem</span>.addClass(<span class="string">"active"</span>) <span class="keyword">if</span> <span class="property">@$menuItem</span>?
+        <span class="property">@hideTabs</span>() <span class="keyword">if</span> <span class="property">@$modelsList</span>?
+        <span class="property">@onShow</span>.apply <span class="keyword">this</span>, arguments <span class="keyword">if</span> <span class="property">@onShow</span>?</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-17">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-17">&#182;</a>
+              </div>
+              <p>Hide the overlay using a &quot;fade out&quot; effect. The fade time is defined
+at the <a href="settings.html">Settings</a>.
+Arguments will be passed over to the &#39;onHide&#39; callback.</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>    hide: (e) =&gt;
+        $(document).unbind <span class="string">"keyup"</span>, <span class="property">@overlayKeyUp</span>
+        $(window).unbind <span class="string">"resize"</span>, <span class="property">@resize</span>
+
+        <span class="property">@lastPressedKey</span> = <span class="literal">null</span>
+        <span class="property">@$el</span>.fadeOut System.App.Settings.General.fadeDelay</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-18">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-18">&#182;</a>
+              </div>
+              <p>Change the view based on what properties are set.</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>        <span class="property">@$menuItem</span>.removeClass(<span class="string">"active"</span>) <span class="keyword">if</span> <span class="property">@$menuItem</span>?
+        <span class="property">@onHide</span>.apply <span class="keyword">this</span>, arguments <span class="keyword">if</span> <span class="property">@onHide</span>?</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-19">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-19">&#182;</a>
+              </div>
+              <p>If the hide is called via mouse or keyboard action, reset the URL to the
+current loaded map&#39;s URL.</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>        System.App.mapEvents.trigger <span class="string">"url:reset"</span> <span class="keyword">if</span> e?.currentTarget?</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-20">
+            <div class="annotation">
+              
+              <div class="pilwrap for-h2">
+                <a class="pilcrow" href="#section-20">&#182;</a>
+              </div>
+              <h2>RESIZE AND KEYBOARD EVENTS</h2>
+
+            </div>
+            
+        </li>
+        
+        
+        <li id="section-21">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-21">&#182;</a>
+              </div>
+              <p>Resize the overlay to match the window width and height.</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>    resize: =&gt;
+        horizontalDiff = <span class="number">30</span>
+        horizontalDiff = horizontalDiff + System.App.mapView.mapControlsWidth <span class="keyword">if</span> <span class="keyword">not</span> <span class="property">@fullWidth</span>
+        verticalDiff = <span class="number">38</span> + System.App.footerView.height + System.App.menuView.height
+
+        <span class="property">@$box</span>.width $(window).innerWidth() - horizontalDiff
+        <span class="property">@$box</span>.height $(window).innerHeight() - verticalDiff</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-22">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-22">&#182;</a>
+              </div>
+              <p>When user presses a key while the help overlay is visible, check if it&#39;s Esc to close it.</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>    overlayKeyUp: (e) =&gt;
+        keyCode = e.keyCode
+
+        <span class="keyword">if</span> keyCode <span class="keyword">is</span> <span class="number">27</span>
+            <span class="keyword">if</span> <span class="property">@closeOnFirstEsc</span> <span class="keyword">or</span> <span class="property">@lastPressedKey</span> <span class="keyword">is</span> <span class="number">27</span>
+                <span class="property">@hide</span> e
+                <span class="keyword">return</span>
+
+        <span class="property">@lastPressedKey</span> = keyCode</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-23">
+            <div class="annotation">
+              
+              <div class="pilwrap for-h2">
+                <a class="pilcrow" href="#section-23">&#182;</a>
+              </div>
+              <h2>MODELS LIST AND EDITOR</h2>
+
+            </div>
+            
+        </li>
+        
+        
+        <li id="section-24">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-24">&#182;</a>
+              </div>
+              <p>Helper method to add models to the models list on the left.
+Used on the entity / audit data / audit events overlays.
+If <code>options</code> is passed, means it&#39;s a newly created model
+so auto select it in the end.</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>    addToModelsList: (item, collection, options) =&gt;
+        wrapper = $(document.createElement <span class="string">"div"</span>)
+        wrapper.attr <span class="string">"id"</span>, <span class="property">@currentSettings</span>.rowListPrefix + item.id
+        wrapper.data <span class="string">"DataItem"</span>, item
+        wrapper.addClass <span class="string">"row"</span>
+
+        row = $(document.createElement <span class="string">"div"</span>)</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-25">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-25">&#182;</a>
+              </div>
+              <p>The textbox defines the <code>friendlyId</code> property of the model.</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>        id = $(document.createElement <span class="string">"input"</span>)
+        id.data <span class="string">"propertyname"</span>, <span class="string">"friendlyId"</span>
+        id.attr <span class="string">"type"</span>, <span class="string">"text"</span>
+        id.attr <span class="string">"title"</span>, System.App.Messages.tooltipItemId
+        id.prop <span class="string">"readonly"</span>, <span class="literal">true</span>
+        id.addClass <span class="string">"id"</span>
+        id.val item.friendlyId()
+        id.change <span class="property">@inputOnChange</span></pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-26">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-26">&#182;</a>
+              </div>
+              <p>The edit icon on the right of the row.</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>        editIcon = $(document.createElement <span class="string">"div"</span>)
+        editIcon.attr <span class="string">"title"</span>, System.App.Messages.tooltipEditItem
+        editIcon.addClass <span class="string">"edit"</span>
+        editIcon.click item, <span class="property">@clickEditIcon</span></pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-27">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-27">&#182;</a>
+              </div>
+              <p>The delete icon on the right of the row.</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>        delIcon = $(document.createElement <span class="string">"div"</span>)
+        delIcon.attr <span class="string">"title"</span>, System.App.Messages.tooltipDeleteItem
+        delIcon.addClass <span class="string">"delete"</span>
+        delIcon.click item, <span class="property">@clickDeleteIcon</span></pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-28">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-28">&#182;</a>
+              </div>
+              <p>Simulate an arrow using the <code>arrow</code> CSS class.</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>        arrow = $(document.createElement <span class="string">"span"</span>)
+        arrow.addClass <span class="string">"arrow"</span></pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-29">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-29">&#182;</a>
+              </div>
+              <p>Append to the document.</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>        row.append id
+        row.append editIcon
+        row.append delIcon
+        wrapper.append arrow
+        wrapper.append row
+        <span class="property">@$modelsList</span>.append wrapper</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-30">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-30">&#182;</a>
+              </div>
+              <p>Just created by the user? So auto bind it.</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>        <span class="property">@bindModel</span> item <span class="keyword">if</span> options?</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-31">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-31">&#182;</a>
+              </div>
+              <p>Remove the specified model from the <code>$modelsList</code>.</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>    removeFromModelsList: (item) =&gt;
+        $(<span class="string">"#"</span> + <span class="property">@currentSettings</span>.rowListPrefix + item.id).remove()</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-32">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-32">&#182;</a>
+              </div>
+              <p>When user clicks on the edit icon on a row, call the <code>selectModel</code> method.</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>    clickEditIcon: (e) =&gt;
+        e.stopPropagation()
+        <span class="property">@bindModel</span> e.data</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-33">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-33">&#182;</a>
+              </div>
+              <p>When user clicks the &quot;delete&quot; icon, make it red
+so user can click again to confirm the deletion.</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>    clickDeleteIcon: (e) =&gt;
+        e.preventDefault()
+        e.stopPropagation()
+
+        src = $ e.currentTarget</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-34">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-34">&#182;</a>
+              </div>
+              <p>If the icon is red, then confirm the deletion by removing the row&#39;s associated model
+from the <a href="data.html">data store</a>.</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>        <span class="keyword">if</span> src.hasClass <span class="string">"delete-red"</span>
+            e.data.destroy()
+        <span class="keyword">else</span>
+            src.addClass <span class="string">"delete-red"</span>
+
+        <span class="property">@lastPressedKey</span> = <span class="literal">null</span></pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-35">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-35">&#182;</a>
+              </div>
+              <p>Selects a row on the <code>$modelsList</code> representing a model
+and bind its information to the right form.</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>    bindModel: (item) =&gt;
+        <span class="keyword">if</span> item?
+            row = $ <span class="string">"#"</span> + <span class="property">@currentSettings</span>.rowListPrefix + item.id
+            clear = row.hasClass <span class="string">"active"</span>
+        <span class="keyword">else</span>
+            clear = <span class="literal">true</span>
+
+        <span class="property">@$modelsList</span>.find(<span class="string">"div.active"</span>).removeClass <span class="string">"active"</span>
+        <span class="property">@$modelsList</span>.find(<span class="string">"input.id"</span>).prop <span class="string">"readonly"</span>, <span class="literal">true</span>
+
+        <span class="keyword">if</span> clear
+            <span class="property">@model</span> = <span class="literal">null</span>
+            <span class="property">@$rightCol</span>.hide()
+        <span class="keyword">else</span>
+            <span class="property">@model</span> = item
+            <span class="property">@$rightCol</span>.show()
+
+            row.addClass <span class="string">"active"</span>
+            row.find(<span class="string">"input.id"</span>).prop <span class="string">"readonly"</span>, <span class="literal">false</span></pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-36">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-36">&#182;</a>
+              </div>
+              <p>Show editing tabs.</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>        <span class="property">@showTabs</span>()</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-37">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-37">&#182;</a>
+              </div>
+              <p>Call the underlying <code>onBindModel</code>.</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>        <span class="property">@onBindModel</span>()</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-38">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-38">&#182;</a>
+              </div>
+              <p>When user changes the value of any input field then set the value straight away.</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>    inputOnChange: (e) =&gt;
+        src = $ e.currentTarget
+        inputType = src.attr <span class="string">"type"</span>
+        propertyName = src.data <span class="string">"propertyname"</span></pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-39">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-39">&#182;</a>
+              </div>
+              <p>Get the input value based on its type.</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>        <span class="keyword">if</span> inputType <span class="keyword">is</span> <span class="string">"checkbox"</span>
+            value = src.prop <span class="string">"checked"</span>
+        <span class="keyword">else</span>
+            value = src.val()</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-40">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-40">&#182;</a>
+              </div>
+              <p>If the <code>data</code> is passed to the event, then save the property to the
+data instead of the main view model.</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>        <span class="keyword">if</span> e.data?
+            e.data.set propertyName, value
+        <span class="keyword">else</span>
+            <span class="property">@model</span>.set propertyName, value
+
+        <span class="property">@model</span>.save()</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-41">
+            <div class="annotation">
+              
+              <div class="pilwrap for-h2">
+                <a class="pilcrow" href="#section-41">&#182;</a>
+              </div>
+              <h2>KEYBOARD EVENTS</h2>
+
+            </div>
+            
+        </li>
+        
+        
+        <li id="section-42">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-42">&#182;</a>
+              </div>
+              <p>When user presses a key while the overlay is visible, pressing &quot;Esc&quot; will
+once will cancel any pending actions (hide delete icons or unselect current model).</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>    hasModelListKeyUp: (e) =&gt;
+        keyCode = e.keyCode
+        deleteRedIcons = $ <span class="string">".delete-red"</span>
+
+        <span class="keyword">if</span> keyCode <span class="keyword">is</span> <span class="number">27</span>
+            <span class="keyword">if</span> deleteRedIcons.length &gt; <span class="number">0</span>
+                deleteRedIcons.removeClass <span class="string">"delete-red"</span>
+            <span class="keyword">else</span>
+                <span class="property">@bindModel</span> <span class="literal">null</span></pre></div></div>
+            
+        </li>
+        
+    </ul>
+  </div>
+</body>
+</html>

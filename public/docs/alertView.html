@@ -1,0 +1,1001 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+  <title>alertView.coffee</title>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <meta name="viewport" content="width=device-width, target-densitydpi=160dpi, initial-scale=1.0; maximum-scale=1.0; user-scalable=0;">
+  <link rel="stylesheet" media="all" href="docco.css" />
+</head>
+<body>
+  <div id="container">
+    <div id="background"></div>
+    
+      <ul id="jump_to">
+        <li>
+          <a class="large" href="javascript:void(0);">Jump To &hellip;</a>
+          <a class="small" href="javascript:void(0);">+</a>
+          <div id="jump_wrapper">
+          <div id="jump_page">
+            
+              
+              <a class="source" href="api.auditData.html">
+                api.auditData.coffee
+              </a>
+            
+              
+              <a class="source" href="api.auditEvent.html">
+                api.auditEvent.coffee
+              </a>
+            
+              
+              <a class="source" href="api.html">
+                api.coffee
+              </a>
+            
+              
+              <a class="source" href="api.entity.html">
+                api.entity.coffee
+              </a>
+            
+              
+              <a class="source" href="api.map.html">
+                api.map.coffee
+              </a>
+            
+              
+              <a class="source" href="api.server.html">
+                api.server.coffee
+              </a>
+            
+              
+              <a class="source" href="api.variable.html">
+                api.variable.coffee
+              </a>
+            
+              
+              <a class="source" href="api.view.html">
+                api.view.coffee
+              </a>
+            
+              
+              <a class="source" href="app.html">
+                app.coffee
+              </a>
+            
+              
+              <a class="source" href="app.instance.html">
+                app.instance.coffee
+              </a>
+            
+              
+              <a class="source" href="data.html">
+                data.coffee
+              </a>
+            
+              
+              <a class="source" href="dataUtil.html">
+                dataUtil.coffee
+              </a>
+            
+              
+              <a class="source" href="messages.html">
+                messages.coffee
+              </a>
+            
+              
+              <a class="source" href="auditData.html">
+                auditData.coffee
+              </a>
+            
+              
+              <a class="source" href="auditEvent.html">
+                auditEvent.coffee
+              </a>
+            
+              
+              <a class="source" href="base.html">
+                base.coffee
+              </a>
+            
+              
+              <a class="source" href="entityDefinition.html">
+                entityDefinition.coffee
+              </a>
+            
+              
+              <a class="source" href="entityObject.html">
+                entityObject.coffee
+              </a>
+            
+              
+              <a class="source" href="eventAction.html">
+                eventAction.coffee
+              </a>
+            
+              
+              <a class="source" href="eventRule.html">
+                eventRule.coffee
+              </a>
+            
+              
+              <a class="source" href="link.html">
+                link.coffee
+              </a>
+            
+              
+              <a class="source" href="map.html">
+                map.coffee
+              </a>
+            
+              
+              <a class="source" href="shape.html">
+                shape.coffee
+              </a>
+            
+              
+              <a class="source" href="userSettings.html">
+                userSettings.coffee
+              </a>
+            
+              
+              <a class="source" href="variable.html">
+                variable.coffee
+              </a>
+            
+              
+              <a class="source" href="routes.html">
+                routes.coffee
+              </a>
+            
+              
+              <a class="source" href="settings.base.html">
+                settings.base.coffee
+              </a>
+            
+              
+              <a class="source" href="settings.html">
+                settings.coffee
+              </a>
+            
+              
+              <a class="source" href="settings.default.html">
+                settings.default.coffee
+              </a>
+            
+              
+              <a class="source" href="sockets.html">
+                sockets.coffee
+              </a>
+            
+              
+              <a class="source" href="tutorial.html">
+                tutorial.coffee
+              </a>
+            
+              
+              <a class="source" href="vectors.html">
+                vectors.coffee
+              </a>
+            
+              
+              <a class="source" href="alertView.html">
+                alertView.coffee
+              </a>
+            
+              
+              <a class="source" href="auditDataManagerView.html">
+                auditDataManagerView.coffee
+              </a>
+            
+              
+              <a class="source" href="auditEventManagerView.html">
+                auditEventManagerView.coffee
+              </a>
+            
+              
+              <a class="source" href="baseView.html">
+                baseView.coffee
+              </a>
+            
+              
+              <a class="source" href="createMapView.html">
+                createMapView.coffee
+              </a>
+            
+              
+              <a class="source" href="entityManagerView.html">
+                entityManagerView.coffee
+              </a>
+            
+              
+              <a class="source" href="footerView.html">
+                footerView.coffee
+              </a>
+            
+              
+              <a class="source" href="helpView.html">
+                helpView.coffee
+              </a>
+            
+              
+              <a class="source" href="entitiesTabView.html">
+                entitiesTabView.coffee
+              </a>
+            
+              
+              <a class="source" href="inspectorTabView.html">
+                inspectorTabView.coffee
+              </a>
+            
+              
+              <a class="source" href="mapTabView.html">
+                mapTabView.coffee
+              </a>
+            
+              
+              <a class="source" href="shapeTabView.html">
+                shapeTabView.coffee
+              </a>
+            
+              
+              <a class="source" href="controlsView.html">
+                controlsView.coffee
+              </a>
+            
+              
+              <a class="source" href="labelEditView.html">
+                labelEditView.coffee
+              </a>
+            
+              
+              <a class="source" href="linkCreatorView.html">
+                linkCreatorView.coffee
+              </a>
+            
+              
+              <a class="source" href="linkLabelsView.html">
+                linkLabelsView.coffee
+              </a>
+            
+              
+              <a class="source" href="linkView.html">
+                linkView.coffee
+              </a>
+            
+              
+              <a class="source" href="shapeLabelsView.html">
+                shapeLabelsView.coffee
+              </a>
+            
+              
+              <a class="source" href="shapeView.html">
+                shapeView.coffee
+              </a>
+            
+              
+              <a class="source" href="shapesMoverView.html">
+                shapesMoverView.coffee
+              </a>
+            
+              
+              <a class="source" href="mapView.html">
+                mapView.coffee
+              </a>
+            
+              
+              <a class="source" href="menuView.html">
+                menuView.coffee
+              </a>
+            
+              
+              <a class="source" href="overlayView.html">
+                overlayView.coffee
+              </a>
+            
+              
+              <a class="source" href="scriptEditorView.html">
+                scriptEditorView.coffee
+              </a>
+            
+              
+              <a class="source" href="selfTestView.html">
+                selfTestView.coffee
+              </a>
+            
+              
+              <a class="source" href="settingsView.html">
+                settingsView.coffee
+              </a>
+            
+              
+              <a class="source" href="startView.html">
+                startView.coffee
+              </a>
+            
+          </div>
+        </li>
+      </ul>
+    
+    <ul class="sections">
+        
+          <li id="title">
+              <div class="annotation">
+                  <h1>alertView.coffee</h1>
+              </div>
+          </li>
+        
+        
+        
+        <li id="section-1">
+            <div class="annotation">
+              
+              <div class="pilwrap for-h2">
+                <a class="pilcrow" href="#section-1">&#182;</a>
+              </div>
+              <h2>ALERT VIEW</h2>
+
+            </div>
+            
+        </li>
+        
+        
+        <li id="section-2">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-2">&#182;</a>
+              </div>
+              <p>Controls and display alerts. This is NOT related to audit events, for these
+please go to the <a href="auditEventManagerView.html">Audit Events View</a>.</p>
+<p>Right now we have two alerts styles:
+Footer, which will show the alert on the footer bar, and Tooltip,
+which will display a floating overlay alert on the app.
+The main method to look here is the <code>showFooter</code>, which
+receives an alert object with the following possible properties:</p>
+<ul>
+<li>(object) savedModel: if you&#39;re saving a model, you only need to set this property</li>
+<li>(object) removedModel: if you&#39;re removing a model, you only need to set this property</li>
+<li>(string) title: the title, which appears in strong text</li>
+<li>(string) message: the alert message or description</li>
+<li>(bool) isError: if true, alert will show in red, if false will show in green</li>
+</ul>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre><span class="class"><span class="keyword">class</span> <span class="title">System</span>.<span class="title">AlertView</span> <span class="keyword">extends</span> <span class="title">System</span>.<span class="title">BaseView</span></span>
+
+    serverErrors: []          <span class="comment"># keep a list of errors that happened on the server side</span>
+    queueFooter: []           <span class="comment"># queue of footer alerts to be displayed</span>
+    queueTooltip: []          <span class="comment"># queue of tooltip alerts to be displayed</span>
+    isFooterVisible: <span class="literal">false</span>    <span class="comment"># is the footer alert being displayed at the moment?</span>
+    isTooltipVisible: <span class="literal">false</span>   <span class="comment"># is the tooltip alert being displayed at the moment?</span>
+    lastFooterAlert: <span class="literal">null</span>     <span class="comment"># holds the last footer alert</span></pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-3">
+            <div class="annotation">
+              
+              <div class="pilwrap for-h2">
+                <a class="pilcrow" href="#section-3">&#182;</a>
+              </div>
+              <h2>DOM CACHE</h2>
+
+            </div>
+            
+        </li>
+        
+        
+        <li id="section-4">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-4">&#182;</a>
+              </div>
+              
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>    $wrapperFooter: <span class="literal">null</span>   <span class="comment"># the wrapper for the footer alert</span>
+    $titleFooter: <span class="literal">null</span>     <span class="comment"># footer title element</span>
+    $msgFooter: <span class="literal">null</span>       <span class="comment"># footer message span</span>
+    $timeFooter: <span class="literal">null</span>      <span class="comment"># footer timespan element</span>
+
+    $wrapperTooltip: <span class="literal">null</span>  <span class="comment"># the wrapper for the tooltip (overlay) alert</span>
+    $titleTooltip: <span class="literal">null</span>    <span class="comment"># tooltip title element</span>
+    $msgTooltip: <span class="literal">null</span>      <span class="comment"># tooltip message span</span>
+    $timeTooltip: <span class="literal">null</span>     <span class="comment"># tooltip timespan element</span></pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-5">
+            <div class="annotation">
+              
+              <div class="pilwrap for-h2">
+                <a class="pilcrow" href="#section-5">&#182;</a>
+              </div>
+              <h2>INIT AND DISPOSE</h2>
+
+            </div>
+            
+        </li>
+        
+        
+        <li id="section-6">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-6">&#182;</a>
+              </div>
+              <p>Init the alert view control.</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>    initialize: =&gt;
+        <span class="property">@setDom</span>()
+        <span class="property">@setEvents</span>()</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-7">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-7">&#182;</a>
+              </div>
+              <p>Dispose the alert cview control.</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>    dispose: =&gt;
+        $(document).<span class="literal">off</span> <span class="string">"keydown"</span>, <span class="property">@keyDown</span>
+
+        System.App.alertEvents.<span class="literal">off</span> <span class="string">"footer"</span>, <span class="property">@showFooter</span>
+        System.App.serverEvents.<span class="literal">off</span> <span class="string">"error"</span>, <span class="property">@showServerError</span>
+
+        <span class="keyword">for</span> collection <span class="keyword">in</span> System.App.Data.allCollections
+            collection.<span class="literal">off</span> <span class="string">"add"</span>, <span class="property">@modelAdded</span>
+            collection.<span class="literal">off</span> <span class="string">"remove"</span>, <span class="property">@modelRemoved</span>
+
+        <span class="property">@$wrapperFooter</span>.css <span class="string">"display"</span>, <span class="string">"none"</span>
+
+        <span class="property">@queueFooter</span> = <span class="literal">null</span>
+        <span class="property">@queueTooltip</span> = <span class="literal">null</span>
+
+        <span class="property">@baseDispose</span>()</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-8">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-8">&#182;</a>
+              </div>
+              <p>Set the DOM elements cache.</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>    setDom: =&gt;
+        <span class="property">@$wrapperFooter</span> = $ <span class="string">"#alert-footer"</span>
+        <span class="property">@$titleFooter</span> = <span class="property">@$wrapperFooter</span>.children <span class="string">"label"</span>
+        <span class="property">@$msgFooter</span> = <span class="property">@$wrapperFooter</span>.children <span class="string">"span"</span>
+        <span class="property">@$timeFooter</span> = <span class="property">@$wrapperFooter</span>.children <span class="string">"time"</span>
+
+        <span class="property">@$wrapperTooltip</span> = $ <span class="string">"#alert-tooltip"</span>
+        <span class="property">@$titleTooltip</span> = <span class="property">@$wrapperTooltip</span>.children <span class="string">"label"</span>
+        <span class="property">@$msgTooltip</span> = <span class="property">@$wrapperTooltip</span>.children <span class="string">"span"</span>
+        <span class="property">@$timeTooltip</span> = <span class="property">@$wrapperTooltip</span>.children <span class="string">"time"</span></pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-9">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-9">&#182;</a>
+              </div>
+              <p>Set and bind alert events to the view. It will automatically listen to models
+added and removed from all collections available on the <a href="data.html">data store</a>.</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>    setEvents: =&gt;
+        $(document).keydown <span class="property">@keyDown</span>
+
+        System.App.alertEvents.<span class="literal">on</span> <span class="string">"footer"</span>, <span class="property">@showFooter</span>
+        System.App.serverEvents.<span class="literal">on</span> <span class="string">"error"</span>, <span class="property">@showServerError</span></pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-10">
+            <div class="annotation">
+              
+              <div class="pilwrap for-h2">
+                <a class="pilcrow" href="#section-10">&#182;</a>
+              </div>
+              <h2>LISTEN TO MODEL UPDATES</h2>
+
+            </div>
+            
+        </li>
+        
+        
+        <li id="section-11">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-11">&#182;</a>
+              </div>
+              <p>If <code>listen</code> is true, view will show a footer alert whenever any model is added
+or removed from the <a href="data.html">data</a> collections. Set <code>listen</code> to false to stop
+listening to these events.</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>    listenToModels: (listen) =&gt;
+        <span class="keyword">for</span> collection <span class="keyword">in</span> System.App.Data.allCollections
+            collection.<span class="literal">off</span> <span class="string">"add"</span>, <span class="property">@modelAdded</span>
+            collection.<span class="literal">off</span> <span class="string">"remove"</span>, <span class="property">@modelRemoved</span>
+            collection.<span class="literal">off</span> <span class="string">"error"</span>, <span class="property">@modelError</span>
+
+        <span class="keyword">if</span> listen
+            <span class="keyword">for</span> collection <span class="keyword">in</span> System.App.Data.allCollections
+                collection.<span class="literal">on</span> <span class="string">"add"</span>, <span class="property">@modelAdded</span>
+                collection.<span class="literal">on</span> <span class="string">"remove"</span>, <span class="property">@modelRemoved</span>
+                collection.<span class="literal">on</span> <span class="string">"error"</span>, <span class="property">@modelError</span></pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-12">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-12">&#182;</a>
+              </div>
+              <p>Listen to model updates.</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>    modelAdded: (model) =&gt;
+        <span class="property">@showFooter</span> {savedModel: model}</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-13">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-13">&#182;</a>
+              </div>
+              <p>Listen to model removals.</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>    modelRemoved: (model) =&gt;
+        <span class="property">@showFooter</span> {removedModel: model}</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-14">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-14">&#182;</a>
+              </div>
+              <p>Listen to model errors (while saving or fetching from server).</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>    modelError: (model, xhr) =&gt;
+        console.warn <span class="string">"Model error!!!"</span>, model, xhr</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-15">
+            <div class="annotation">
+              
+              <div class="pilwrap for-h2">
+                <a class="pilcrow" href="#section-15">&#182;</a>
+              </div>
+              <h2>FOOTER ALERTS</h2>
+
+            </div>
+            
+        </li>
+        
+        
+        <li id="section-16">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-16">&#182;</a>
+              </div>
+              <p>Shows the specified title and message on the footer area.</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>    showFooter: (alertObj) =&gt;
+        alertObj.timestamp = <span class="keyword">new</span> Date()
+
+        <span class="keyword">if</span> <span class="property">@lastFooterAlert</span>?
+            timeoutLess = (alertObj.timestamp - <span class="property">@lastFooterAlert</span>.timestamp) &lt; System.App.Settings.Alert.similarTimeout
+            sameAlert = alertObj.title <span class="keyword">is</span> <span class="property">@lastFooterAlert</span>.title <span class="keyword">and</span> alertObj.message <span class="keyword">is</span> <span class="property">@lastFooterAlert</span>.message</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-17">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-17">&#182;</a>
+              </div>
+              <p>Avoid showing repeated alerts multiple times in a row.</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>            <span class="keyword">if</span> timeoutLess <span class="keyword">and</span> sameAlert
+                <span class="keyword">return</span>
+
+        <span class="property">@lastFooterAlert</span> = _.clone alertObj
+        <span class="property">@queueFooter</span>.push alertObj
+        <span class="property">@nextFooter</span>()</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-18">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-18">&#182;</a>
+              </div>
+              <p>Get the next footer alert from the queue and display it.</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>    nextFooter: =&gt;
+        <span class="keyword">if</span> <span class="property">@isFooterVisible</span> <span class="keyword">or</span> <span class="property">@queueFooter</span>.length &lt; <span class="number">1</span>
+            <span class="keyword">return</span>
+
+        alertObj = <span class="property">@queueFooter</span>.shift()
+        title = <span class="literal">null</span>
+        message = <span class="literal">null</span></pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-19">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-19">&#182;</a>
+              </div>
+              <p>If there&#39;s a <code>savedModel</code> or <code>removedModel</code> property, try to use its
+<code>text</code> or <code>name</code> property as title, and the type of the entity as the message.
+Otherwise use the <code>title</code> and <code>message</code> properties of the alert object.</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>        <span class="keyword">if</span> alertObj.savedModel?
+            <span class="keyword">if</span> alertObj.savedModel.text?
+                title = alertObj.savedModel.text()
+            <span class="keyword">else</span> <span class="keyword">if</span> alertObj.savedModel.friendlyId?
+                title = alertObj.savedModel.friendlyId()
+            <span class="keyword">else</span>
+                title = alertObj.savedModel.id
+            message = alertObj.savedModel.typeName + <span class="string">" saved to the database!"</span>
+        <span class="keyword">else</span> <span class="keyword">if</span> alertObj.removedModel?
+            <span class="keyword">if</span> alertObj.removedModel.text?
+                title = alertObj.removedModel.text()
+            <span class="keyword">else</span> <span class="keyword">if</span> alertObj.removedModel.friendlyId?
+                title = alertObj.removedModel.friendlyId()
+            <span class="keyword">else</span>
+                title = alertObj.removedModel.id
+            message = alertObj.removedModel.typeName + <span class="string">" REMOVED from the database!"</span>
+        <span class="keyword">else</span>
+            title = alertObj.title
+            message = alertObj.message</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-20">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-20">&#182;</a>
+              </div>
+              <p>Strip the timezone out of the time string, to keep it &quot;compact&quot;.</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>        time = alertObj.timestamp.toTimeString()
+        sep = time.indexOf <span class="string">"("</span>
+        time = time.substring(<span class="number">0</span>, sep - <span class="number">1</span>) <span class="keyword">if</span> sep &gt; <span class="number">0</span>
+
+        <span class="property">@$titleFooter</span>.html title
+        <span class="property">@$msgFooter</span>.html message
+        <span class="property">@$timeFooter</span>.html time
+
+        <span class="property">@$wrapperFooter</span>.removeClass()
+
+        <span class="keyword">if</span> alertObj.isError
+            <span class="property">@$wrapperFooter</span>.addClass <span class="string">"error"</span>
+        <span class="keyword">else</span>
+            <span class="property">@$wrapperFooter</span>.addClass <span class="string">"ok"</span>
+
+        delay = System.App.Settings.Alert.hideDelay
+        delay = delay * <span class="number">2</span> <span class="keyword">if</span> alertObj.isError
+
+        <span class="property">@$wrapperFooter</span>.fadeIn System.App.Settings.Alert.opacityInterval
+        <span class="property">@isFooterVisible</span> = <span class="literal">true</span>
+        _.delay <span class="property">@hideFooter</span>, delay + System.App.Settings.Alert.opacityInterval</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-21">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-21">&#182;</a>
+              </div>
+              <p>Log alerts to the console only if app is in debug mode.</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>        <span class="keyword">if</span> System.App.Settings.General.debug
+            <span class="keyword">if</span> alertObj.isError
+                console.warn <span class="string">"Alert Error"</span>, title, message
+            <span class="keyword">else</span>
+                console.log <span class="string">"Alert Info"</span>, title, message</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-22">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-22">&#182;</a>
+              </div>
+              <p>Hide the footer alert and call <code>nextFooter</code> again to check for new alerts.</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>    hideFooter: =&gt;
+        <span class="property">@isFooterVisible</span> = <span class="literal">false</span>
+        <span class="property">@$wrapperFooter</span>.fadeOut System.App.Settings.Alert.opacityInterval, <span class="property">@nextFooter</span></pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-23">
+            <div class="annotation">
+              
+              <div class="pilwrap for-h2">
+                <a class="pilcrow" href="#section-23">&#182;</a>
+              </div>
+              <h2>TOOLTIP ALERTS</h2>
+
+            </div>
+            
+        </li>
+        
+        
+        <li id="section-24">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-24">&#182;</a>
+              </div>
+              <p>Show a tooltip alert.</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>    showTooltip: (alertObj) =&gt;
+        alertObj.timestamp = <span class="keyword">new</span> Date()</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-25">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-25">&#182;</a>
+              </div>
+              <p>Log alerts to the console only if app is in debug mode.</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>        <span class="keyword">if</span> System.App.Settings.General.debug
+            <span class="keyword">if</span> alertObj.isError
+                console.error <span class="string">"Alert"</span>, alertObj
+            <span class="keyword">else</span>
+                console.log <span class="string">"Alert"</span>, alertObj
+
+        <span class="property">@queueTooltip</span>.push alertObj
+        <span class="property">@nextTooltip</span>()</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-26">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-26">&#182;</a>
+              </div>
+              <p>Get the next tooltip alert from the queue and display it.</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>    nextTooltip: =&gt;
+        <span class="keyword">if</span> <span class="property">@isTooltipVisible</span> <span class="keyword">or</span> <span class="property">@queueTooltip</span>.length &lt; <span class="number">1</span>
+            <span class="keyword">return</span>
+
+        alertObj = <span class="property">@queueTooltip</span>.shift()</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-27">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-27">&#182;</a>
+              </div>
+              <p>Strip the timezone out of the time string, to keep it &quot;compact&quot;.</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>        time = alertObj.timestamp.toTimeString()
+        sep = time.indexOf <span class="string">"("</span>
+        time = time.substring(<span class="number">0</span>, sep - <span class="number">1</span>) <span class="keyword">if</span> sep &gt; <span class="number">0</span>
+
+        <span class="property">@$titleTooltip</span>.html alertObj.title
+        <span class="property">@$msgTooltip</span>.html alertObj.message
+        <span class="property">@$timeTooltip</span>.html time
+
+        <span class="property">@$wrapperTooltip</span>.unbind <span class="string">"click"</span>
+        <span class="property">@$wrapperTooltip</span>.removeClass()</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-28">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-28">&#182;</a>
+              </div>
+              <p>Append the <code>error</code> or <code>ok</code> class, depending if isError is true or false.</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>        <span class="keyword">if</span> alertObj.isError
+            <span class="property">@$wrapperTooltip</span>.addClass <span class="string">"error"</span>
+        <span class="keyword">else</span>
+            <span class="property">@$wrapperTooltip</span>.addClass <span class="string">"ok"</span></pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-29">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-29">&#182;</a>
+              </div>
+              <p>Bind the click action to the tooltip container, if there&#39;s one specified.</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>        <span class="keyword">if</span> alertObj.clickAction?
+            <span class="property">@$wrapperTooltip</span>.click alertObj.clickAction
+
+        delay = System.App.Settings.Alert.hideDelay * <span class="number">2</span>
+        delay = delay * <span class="number">2</span> <span class="keyword">if</span> alertObj.isError
+
+        <span class="property">@$wrapperTooltip</span>.fadeIn System.App.Settings.Alert.opacityInterval
+        <span class="property">@isTooltipVisible</span> = <span class="literal">true</span>
+        _.delay <span class="property">@hideTooltip</span>, delay + System.App.Settings.Alert.opacityInterval</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-30">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-30">&#182;</a>
+              </div>
+              <p>Hide a tooltip alert. NOT IMPLEMENTED YET!</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>    hideTooltip: =&gt;
+        <span class="property">@isTooltipVisible</span> = <span class="literal">false</span>
+        <span class="property">@$wrapperTooltip</span>.fadeOut System.App.Settings.Alert.opacityInterval, <span class="property">@nextTooltip</span></pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-31">
+            <div class="annotation">
+              
+              <div class="pilwrap for-h2">
+                <a class="pilcrow" href="#section-31">&#182;</a>
+              </div>
+              <h2>SERVER ALERTS</h2>
+
+            </div>
+            
+        </li>
+        
+        
+        <li id="section-32">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-32">&#182;</a>
+              </div>
+              <p>Show an alert whenever an error happens on the node.js server.
+This is triggered using Socket.IO.</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>    showServerError: (err) =&gt;
+        <span class="keyword">if</span> System.App.Settings.General.debug
+            <span class="property">@showFooter</span> {isError: <span class="literal">true</span>, title: System.App.Messages.server + <span class="string">" "</span> + err.title, message: err.message}</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-33">
+            <div class="annotation">
+              
+              <div class="pilwrap for-h2">
+                <a class="pilcrow" href="#section-33">&#182;</a>
+              </div>
+              <h2>KEYBOARD EVENTS</h2>
+
+            </div>
+            
+        </li>
+        
+        
+        <li id="section-34">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-34">&#182;</a>
+              </div>
+              <p>When user presses the ESC key, hide the tooltip alert (if there&#39;s one visible).</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>    keyDown: (e) =&gt;
+        keyCode = e.keyCode
+        <span class="keyword">if</span> keyCode <span class="keyword">is</span> <span class="number">27</span>
+            <span class="property">@hideTooltip</span>()</pre></div></div>
+            
+        </li>
+        
+    </ul>
+  </div>
+</body>
+</html>

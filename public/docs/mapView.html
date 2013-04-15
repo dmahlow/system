@@ -1,0 +1,2588 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+  <title>mapView.coffee</title>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <meta name="viewport" content="width=device-width, target-densitydpi=160dpi, initial-scale=1.0; maximum-scale=1.0; user-scalable=0;">
+  <link rel="stylesheet" media="all" href="docco.css" />
+</head>
+<body>
+  <div id="container">
+    <div id="background"></div>
+    
+      <ul id="jump_to">
+        <li>
+          <a class="large" href="javascript:void(0);">Jump To &hellip;</a>
+          <a class="small" href="javascript:void(0);">+</a>
+          <div id="jump_wrapper">
+          <div id="jump_page">
+            
+              
+              <a class="source" href="api.auditData.html">
+                api.auditData.coffee
+              </a>
+            
+              
+              <a class="source" href="api.auditEvent.html">
+                api.auditEvent.coffee
+              </a>
+            
+              
+              <a class="source" href="api.html">
+                api.coffee
+              </a>
+            
+              
+              <a class="source" href="api.entity.html">
+                api.entity.coffee
+              </a>
+            
+              
+              <a class="source" href="api.map.html">
+                api.map.coffee
+              </a>
+            
+              
+              <a class="source" href="api.server.html">
+                api.server.coffee
+              </a>
+            
+              
+              <a class="source" href="api.variable.html">
+                api.variable.coffee
+              </a>
+            
+              
+              <a class="source" href="api.view.html">
+                api.view.coffee
+              </a>
+            
+              
+              <a class="source" href="app.html">
+                app.coffee
+              </a>
+            
+              
+              <a class="source" href="app.instance.html">
+                app.instance.coffee
+              </a>
+            
+              
+              <a class="source" href="data.html">
+                data.coffee
+              </a>
+            
+              
+              <a class="source" href="dataUtil.html">
+                dataUtil.coffee
+              </a>
+            
+              
+              <a class="source" href="messages.html">
+                messages.coffee
+              </a>
+            
+              
+              <a class="source" href="auditData.html">
+                auditData.coffee
+              </a>
+            
+              
+              <a class="source" href="auditEvent.html">
+                auditEvent.coffee
+              </a>
+            
+              
+              <a class="source" href="base.html">
+                base.coffee
+              </a>
+            
+              
+              <a class="source" href="entityDefinition.html">
+                entityDefinition.coffee
+              </a>
+            
+              
+              <a class="source" href="entityObject.html">
+                entityObject.coffee
+              </a>
+            
+              
+              <a class="source" href="eventAction.html">
+                eventAction.coffee
+              </a>
+            
+              
+              <a class="source" href="eventRule.html">
+                eventRule.coffee
+              </a>
+            
+              
+              <a class="source" href="link.html">
+                link.coffee
+              </a>
+            
+              
+              <a class="source" href="map.html">
+                map.coffee
+              </a>
+            
+              
+              <a class="source" href="shape.html">
+                shape.coffee
+              </a>
+            
+              
+              <a class="source" href="userSettings.html">
+                userSettings.coffee
+              </a>
+            
+              
+              <a class="source" href="variable.html">
+                variable.coffee
+              </a>
+            
+              
+              <a class="source" href="routes.html">
+                routes.coffee
+              </a>
+            
+              
+              <a class="source" href="settings.base.html">
+                settings.base.coffee
+              </a>
+            
+              
+              <a class="source" href="settings.html">
+                settings.coffee
+              </a>
+            
+              
+              <a class="source" href="settings.default.html">
+                settings.default.coffee
+              </a>
+            
+              
+              <a class="source" href="sockets.html">
+                sockets.coffee
+              </a>
+            
+              
+              <a class="source" href="tutorial.html">
+                tutorial.coffee
+              </a>
+            
+              
+              <a class="source" href="vectors.html">
+                vectors.coffee
+              </a>
+            
+              
+              <a class="source" href="alertView.html">
+                alertView.coffee
+              </a>
+            
+              
+              <a class="source" href="auditDataManagerView.html">
+                auditDataManagerView.coffee
+              </a>
+            
+              
+              <a class="source" href="auditEventManagerView.html">
+                auditEventManagerView.coffee
+              </a>
+            
+              
+              <a class="source" href="baseView.html">
+                baseView.coffee
+              </a>
+            
+              
+              <a class="source" href="createMapView.html">
+                createMapView.coffee
+              </a>
+            
+              
+              <a class="source" href="entityManagerView.html">
+                entityManagerView.coffee
+              </a>
+            
+              
+              <a class="source" href="footerView.html">
+                footerView.coffee
+              </a>
+            
+              
+              <a class="source" href="helpView.html">
+                helpView.coffee
+              </a>
+            
+              
+              <a class="source" href="entitiesTabView.html">
+                entitiesTabView.coffee
+              </a>
+            
+              
+              <a class="source" href="inspectorTabView.html">
+                inspectorTabView.coffee
+              </a>
+            
+              
+              <a class="source" href="mapTabView.html">
+                mapTabView.coffee
+              </a>
+            
+              
+              <a class="source" href="shapeTabView.html">
+                shapeTabView.coffee
+              </a>
+            
+              
+              <a class="source" href="controlsView.html">
+                controlsView.coffee
+              </a>
+            
+              
+              <a class="source" href="labelEditView.html">
+                labelEditView.coffee
+              </a>
+            
+              
+              <a class="source" href="linkCreatorView.html">
+                linkCreatorView.coffee
+              </a>
+            
+              
+              <a class="source" href="linkLabelsView.html">
+                linkLabelsView.coffee
+              </a>
+            
+              
+              <a class="source" href="linkView.html">
+                linkView.coffee
+              </a>
+            
+              
+              <a class="source" href="shapeLabelsView.html">
+                shapeLabelsView.coffee
+              </a>
+            
+              
+              <a class="source" href="shapeView.html">
+                shapeView.coffee
+              </a>
+            
+              
+              <a class="source" href="shapesMoverView.html">
+                shapesMoverView.coffee
+              </a>
+            
+              
+              <a class="source" href="mapView.html">
+                mapView.coffee
+              </a>
+            
+              
+              <a class="source" href="menuView.html">
+                menuView.coffee
+              </a>
+            
+              
+              <a class="source" href="overlayView.html">
+                overlayView.coffee
+              </a>
+            
+              
+              <a class="source" href="scriptEditorView.html">
+                scriptEditorView.coffee
+              </a>
+            
+              
+              <a class="source" href="selfTestView.html">
+                selfTestView.coffee
+              </a>
+            
+              
+              <a class="source" href="settingsView.html">
+                settingsView.coffee
+              </a>
+            
+              
+              <a class="source" href="startView.html">
+                startView.coffee
+              </a>
+            
+          </div>
+        </li>
+      </ul>
+    
+    <ul class="sections">
+        
+          <li id="title">
+              <div class="annotation">
+                  <h1>mapView.coffee</h1>
+              </div>
+          </li>
+        
+        
+        
+        <li id="section-1">
+            <div class="annotation">
+              
+              <div class="pilwrap for-h2">
+                <a class="pilcrow" href="#section-1">&#182;</a>
+              </div>
+              <h2>MAP VIEW</h2>
+
+            </div>
+            
+        </li>
+        
+        
+        <li id="section-2">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-2">&#182;</a>
+              </div>
+              <p>Represents the map view. This is the most important view of the app!</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre><span class="class"><span class="keyword">class</span> <span class="title">System</span>.<span class="title">MapView</span> <span class="keyword">extends</span> <span class="title">System</span>.<span class="title">BaseView</span></span>
+
+    paper: <span class="literal">null</span>                 <span class="comment"># the Raphael paper object</span>
+    paperBg: <span class="literal">null</span>               <span class="comment"># the paper background object or color string</span>
+    currentShape: <span class="literal">null</span>          <span class="comment"># the current selected shape</span>
+    hoverShape: <span class="literal">null</span>            <span class="comment"># the current shape pointed by the mouse</span>
+    lastPressedKey: <span class="literal">null</span>        <span class="comment"># the last keyboard key pressed by the user</span>
+
+    currentZoom: <span class="number">1</span>              <span class="comment"># current map zoom</span>
+    currentPanX: <span class="number">0</span>              <span class="comment"># current pan X position</span>
+    currentPanY: <span class="number">0</span>              <span class="comment"># current pan Y position</span>
+    mousePosX: <span class="number">0</span>                <span class="comment"># current or last mouse X position</span>
+    mousePosY: <span class="number">0</span>                <span class="comment"># current or last mouse Y position</span>
+    mapDivWidth: <span class="number">0</span>              <span class="comment"># cached value of the map DIV width</span>
+    mapDivHeight: <span class="number">0</span>             <span class="comment"># cached value of the map DIV height</span>
+    mapControlsWidth: <span class="number">0</span>         <span class="comment"># cached value of the [Map Controls](controlsView.html) DIV width</span>
+    overrideShapeTitle: <span class="literal">null</span>    <span class="comment"># override the value / property name displayed of the shape's title</span>
+
+    editEnabled: <span class="literal">false</span>          <span class="comment"># is the map in edit mode?</span>
+    isPanning: <span class="literal">false</span>            <span class="comment"># true if user is moving the map, otherwise false</span>
+    isCreatingLink: <span class="literal">false</span>       <span class="comment"># when creating new links (dragging the link connector), this will be set to true</span>
+    isLinksVisible: <span class="literal">true</span>        <span class="comment"># are links visible or hidden on the map?</span>
+
+    controlsView: <span class="literal">null</span>          <span class="comment"># a [Controls View](controlsView.html) to control and interact with map</span>
+    shapesMoverView: <span class="literal">null</span>       <span class="comment"># a {Shapes Mover View](shapesMoverView.html) to move multiple shapes at once</span>
+    stackGroups: <span class="literal">null</span>           <span class="comment"># holds 9 SVG "groups" elements, used to control shape's z-index</span>
+    shapeViews: <span class="literal">null</span>            <span class="comment"># holds current map's ([Shape Views](shapeView.html))</span>
+    linkViews: <span class="literal">null</span>             <span class="comment"># holds current map's ([Link Views](linkView.html))</span>
+    gridLines: <span class="literal">null</span>             <span class="comment"># array, holds all grid lines (when toggled on)</span></pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-3">
+            <div class="annotation">
+              
+              <div class="pilwrap for-h2">
+                <a class="pilcrow" href="#section-3">&#182;</a>
+              </div>
+              <h2>DOM ELEMENTS</h2>
+
+            </div>
+            
+        </li>
+        
+        
+        <li id="section-4">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-4">&#182;</a>
+              </div>
+              
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>    $footer: <span class="literal">null</span>          <span class="comment"># the map footer wrapper</span>
+    $footerName: <span class="literal">null</span>      <span class="comment"># the map name span (2)</span>
+    $footerShape: <span class="literal">null</span>     <span class="comment"># the map current shape span (3)</span>
+    $panningIcon: <span class="literal">null</span>     <span class="comment"># icon shown when map is panning / moving</span></pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-5">
+            <div class="annotation">
+              
+              <div class="pilwrap for-h2">
+                <a class="pilcrow" href="#section-5">&#182;</a>
+              </div>
+              <h2>INIT AND DISPOSE</h2>
+
+            </div>
+            
+        </li>
+        
+        
+        <li id="section-6">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-6">&#182;</a>
+              </div>
+              <p>Init the map view.</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>    initialize: =&gt;
+        <span class="property">@setDom</span>()
+        <span class="property">@setPaper</span>()
+        <span class="property">@setEvents</span>()</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-7">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-7">&#182;</a>
+              </div>
+              <p>Child views.</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>        <span class="property">@controlsView</span> = <span class="keyword">new</span> System.MapControlsView <span class="keyword">this</span>
+        <span class="property">@shapesMoverView</span> = <span class="keyword">new</span> System.MapShapesMoverView <span class="keyword">this</span></pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-8">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-8">&#182;</a>
+              </div>
+              <p>Cached variable: are links visible?</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>        <span class="property">@isLinksVisible</span> = <span class="property">@controlsView</span>.isLinksVisible()</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-9">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-9">&#182;</a>
+              </div>
+              <p>Clear the current map view, footer, and unbind all events.</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>    dispose: =&gt;
+        $(document).unbind <span class="string">"mouseup"</span>, <span class="property">@mouseUp</span>
+        $(document).unbind <span class="string">"keydown"</span>, <span class="property">@keyDown</span>
+
+        <span class="property">@clear</span>()
+
+        <span class="property">@controlsView</span>?.dispose()
+        <span class="property">@shapesMoverView</span>?.dispose()
+
+        <span class="property">@controlsView</span> = <span class="literal">null</span>
+        <span class="property">@shapesMoverView</span> = <span class="literal">null</span>
+        <span class="property">@shapeViews</span> = <span class="literal">null</span>
+        <span class="property">@linkViews</span> = <span class="literal">null</span>
+
+        <span class="property">@baseDispose</span>()</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-10">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-10">&#182;</a>
+              </div>
+              <p>Set the DOM elements cache.</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>    setDom: =&gt;
+        <span class="property">@setElement</span> $ <span class="string">"#map"</span>
+        <span class="property">@$footer</span> = $ <span class="string">"#footer-maps"</span>
+        <span class="property">@$footerName</span> = $ <span class="string">"#footer-maps-name"</span>
+        <span class="property">@$footerShape</span> = $ <span class="string">"#footer-maps-shape"</span>
+        <span class="property">@$panningIcon</span> = $ <span class="string">"#map-panning-icon"</span>
+
+        <span class="property">@mapControlsWidth</span> = $(<span class="string">"#map-controls"</span>).outerWidth()</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-11">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-11">&#182;</a>
+              </div>
+              <p>Bind events to the global app events, DOM elements and objects.</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>    setEvents: =&gt;
+        <span class="property">@listenTo</span> System.App.mapEvents, <span class="string">"url:reset"</span>, <span class="property">@resetUrl</span>
+        <span class="property">@listenTo</span> System.App.mapEvents, <span class="string">"background:toggle"</span>, <span class="property">@toggleBackground</span>
+        <span class="property">@listenTo</span> System.App.mapEvents, <span class="string">"edit:toggle"</span>, <span class="property">@toggleEdit</span>
+        <span class="property">@listenTo</span> System.App.mapEvents, <span class="string">"links:toggle"</span>, <span class="property">@toggleLinks</span>
+        <span class="property">@listenTo</span> System.App.mapEvents, <span class="string">"shapes:overridetitle"</span>, <span class="property">@setOverrideShapeTitle</span>
+        <span class="property">@listenTo</span> System.App.mapEvents, <span class="string">"zoom:in"</span>, <span class="property">@zoomIn</span>
+        <span class="property">@listenTo</span> System.App.mapEvents, <span class="string">"zoom:out"</span>, <span class="property">@zoomOut</span>
+        <span class="property">@listenTo</span> System.App.mapEvents, <span class="string">"selected:blink"</span>, <span class="property">@blinkSelectedShapes</span>
+        <span class="property">@listenTo</span> System.App.dataEvents, <span class="string">"auditdata:refresh"</span>, <span class="property">@auditDataRefresh</span></pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-12">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-12">&#182;</a>
+              </div>
+              <p>Handle document events.</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>        $(document).bind <span class="string">"mouseup"</span>, <span class="property">@mouseUp</span>
+        $(document).bind <span class="string">"keydown"</span>, <span class="property">@keyDown</span></pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-13">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-13">&#182;</a>
+              </div>
+              <p>Handle map element events.</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>        <span class="property">@$el</span>.bind <span class="string">"mousedown"</span>, <span class="property">@mouseDown</span>
+        <span class="property">@$el</span>.bind <span class="string">"mousemove"</span>, <span class="property">@mouseMove</span>
+        <span class="property">@$el</span>.bind <span class="string">"mousewheel"</span>, <span class="property">@mouseWheel</span>
+        <span class="property">@$el</span>.bind <span class="string">"contextmenu"</span>, <span class="property">@contextMenu</span>
+        <span class="property">@$el</span>.dblclick <span class="property">@doubleClick</span></pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-14">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-14">&#182;</a>
+              </div>
+              <p>Set the Raphael/SVG paper and its properties.</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>    setPaper: =&gt;
+        width = System.App.Settings.Map.paperSizeX
+        height = System.App.Settings.Map.paperSizeY
+
+        <span class="property">@paper</span> = <span class="keyword">new</span> Raphael <span class="string">"map"</span>, width, height</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-15">
+            <div class="annotation">
+              
+              <div class="pilwrap for-h2">
+                <a class="pilcrow" href="#section-15">&#182;</a>
+              </div>
+              <h2>RENDER THE CURRENT MAP</h2>
+
+            </div>
+            
+        </li>
+        
+        
+        <li id="section-16">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-16">&#182;</a>
+              </div>
+              <p>Clear the map (usually called when user changes the current <a href="map.html">Map</a>).</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>    clear: =&gt;
+        <span class="property">@$el</span>.find(<span class="string">".label-edit-view"</span>).remove()</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-17">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-17">&#182;</a>
+              </div>
+              <p>Unbind and clear the <a href="map.html">current map</a>.</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>        <span class="keyword">if</span> <span class="property">@model</span>?
+            <span class="property">@stopListening</span> <span class="property">@model</span>.shapes()
+            <span class="property">@stopListening</span> <span class="property">@model</span>.links()
+            <span class="property">@stopListening</span> <span class="property">@model</span>
+            <span class="property">@model</span> = <span class="literal">null</span></pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-18">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-18">&#182;</a>
+              </div>
+              <p>Deselect the current shape.</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>        <span class="property">@setCurrentElement</span> <span class="literal">null</span></pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-19">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-19">&#182;</a>
+              </div>
+              <p>Clear the current map background object.</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>        <span class="property">@paperBg</span>?.remove()
+        <span class="property">@gridLines</span>?.remove()
+        <span class="property">@paperBg</span> = <span class="literal">null</span></pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-20">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-20">&#182;</a>
+              </div>
+              <p>Remove the <a href="shapesMoverView.html">Shapes Mover View</a>.</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>        <span class="property">@shapesMoverView</span>.remove()</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-21">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-21">&#182;</a>
+              </div>
+              <p>Clear shapes and links.</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>        <span class="property">@clearShapes</span>()
+        <span class="property">@clearLinks</span>()
+
+        _.each <span class="property">@stackGroups</span>, (group) -&gt; group.remove()
+        <span class="property">@stackGroups</span> = {}</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-22">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-22">&#182;</a>
+              </div>
+              <p>Clear the paper.</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>        <span class="property">@paper</span>?.clear()</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-23">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-23">&#182;</a>
+              </div>
+              <p>CLear (remove!) all shapes on the map.</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>    clearShapes: =&gt;
+        _.each <span class="property">@shapeViews</span>, (view) -&gt; view.dispose()
+        <span class="property">@shapeViews</span> = {}</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-24">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-24">&#182;</a>
+              </div>
+              <p>CLear (remove!) all links on the map.</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>    clearLinks: =&gt;
+        _.each <span class="property">@linkViews</span>, (view) -&gt; view.dispose()
+        <span class="property">@linkViews</span> = {}</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-25">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-25">&#182;</a>
+              </div>
+              <p>Bind a <a href="map.html">Map</a> to the map. this will reset the map state!</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>    bindMap: (map) =&gt;
+        console.profile <span class="string">"MapView.bindMap"</span> <span class="keyword">if</span> System.App.Settings.General.profile
+        System.App.consoleLog <span class="string">"MapView.bindMap"</span>, <span class="string">"<span class="subst">#{map.name()}</span>, <span class="subst">#{map.shapes().length}</span> shapes, <span class="subst">#{map.links().length}</span> links"</span>
+
+        <span class="property">@model</span>?.save()
+        <span class="property">@clear</span>()</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-26">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-26">&#182;</a>
+              </div>
+              <p>No map to bind? So stop here.</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>        <span class="keyword">return</span> <span class="keyword">if</span> <span class="keyword">not</span> map?
+
+        <span class="property">@model</span> = map</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-27">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-27">&#182;</a>
+              </div>
+              <p>Set the current window title and footer details.</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>        <span class="property">@setTitle</span> map.name()
+        <span class="property">@setFooterName</span> map.name()</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-28">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-28">&#182;</a>
+              </div>
+              <p>Reset the SVG paper with the new map paper size.</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>        <span class="property">@paper</span>.setSize map.paperSizeX(), map.paperSizeY()</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-29">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-29">&#182;</a>
+              </div>
+              <p>Bind map data.</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>        <span class="property">@bindMapEvents</span>()
+        <span class="property">@bindMapBg</span>()
+        <span class="property">@bindMapGroups</span>()
+        <span class="property">@bindShapes</span>()
+        <span class="property">@setViewBox</span>()</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-30">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-30">&#182;</a>
+              </div>
+              <p>Reset the <a href="shapesMovewView.html">shapes mover view</a>.</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>        <span class="property">@shapesMoverView</span>.render()</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-31">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-31">&#182;</a>
+              </div>
+              <p>Force refresh shape/link labels.</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>        <span class="property">@refreshLabels</span>()</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-32">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-32">&#182;</a>
+              </div>
+              <p>Generate the map thumbnail on the server.</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>        <span class="property">@generateThumbnail</span>()</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-33">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-33">&#182;</a>
+              </div>
+              <p>Check and run the init script.</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>        initScript = map.initScript()
+        System.App.DataUtil.runEval initScript <span class="keyword">if</span> initScript? <span class="keyword">and</span> initScript <span class="keyword">isnt</span> <span class="string">""</span></pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-34">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-34">&#182;</a>
+              </div>
+              <p>The other views that a new map has loaded.</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>        System.App.mapEvents.trigger <span class="string">"loaded"</span>, map
+        System.App.toggleLoading <span class="literal">false</span>
+
+        console.profileEnd <span class="string">"MapView.bindMap"</span> <span class="keyword">if</span> System.App.Settings.General.profile</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-35">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-35">&#182;</a>
+              </div>
+              <p>Bind event listeners to the current <a href="map.html">Map</a>.</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>    bindMapEvents: =&gt;
+        <span class="property">@listenTo</span> <span class="property">@model</span>, <span class="string">"sync"</span>, <span class="property">@mapSaved</span>
+        <span class="property">@listenTo</span> <span class="property">@model</span>, <span class="string">"destroy"</span>, <span class="property">@mapRemoved</span>
+
+        <span class="property">@listenTo</span> <span class="property">@model</span>, <span class="string">"change:name"</span>, <span class="property">@nameChanged</span>
+        <span class="property">@listenTo</span> <span class="property">@model</span>, <span class="string">"change:paperSizeX"</span>, <span class="property">@paperSizeChanged</span>
+        <span class="property">@listenTo</span> <span class="property">@model</span>, <span class="string">"change:paperSizeY"</span>, <span class="property">@paperSizeChanged</span>
+        <span class="property">@listenTo</span> <span class="property">@model</span>, <span class="string">"change:gridSizeX"</span>, <span class="property">@gridSizeChanged</span>
+        <span class="property">@listenTo</span> <span class="property">@model</span>, <span class="string">"change:gridSizeY"</span>, <span class="property">@gridSizeChanged</span>
+
+        <span class="property">@listenTo</span> <span class="property">@model</span>.shapes(), <span class="string">"reset"</span>, <span class="property">@resetShapes</span>
+        <span class="property">@listenTo</span> <span class="property">@model</span>.shapes(), <span class="string">"add"</span>, <span class="property">@addShape</span>
+        <span class="property">@listenTo</span> <span class="property">@model</span>.shapes(), <span class="string">"remove"</span>, <span class="property">@removeShape</span>
+
+        <span class="property">@listenTo</span> <span class="property">@model</span>.links(), <span class="string">"reset"</span>, <span class="property">@resetLinks</span>
+        <span class="property">@listenTo</span> <span class="property">@model</span>.links(), <span class="string">"add"</span>, <span class="property">@addLink</span>
+        <span class="property">@listenTo</span> <span class="property">@model</span>.links(), <span class="string">"remove"</span>, <span class="property">@removeLink</span></pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-36">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-36">&#182;</a>
+              </div>
+              <p>Set the paper background, which can be a URL to an image or a solid color.</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>    bindMapBg: =&gt;
+        <span class="property">@paperBg</span> = <span class="property">@model</span>.background()
+
+        <span class="keyword">if</span> <span class="property">@paperBg</span> <span class="keyword">isnt</span> <span class="literal">undefined</span> <span class="keyword">and</span> <span class="property">@paperBg</span>.indexOf(<span class="string">"."</span>) &gt; <span class="number">0</span>
+            <span class="property">@paperBg</span> = <span class="property">@paper</span>.image <span class="string">"images/<span class="subst">#{@paperBg}</span>"</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="property">@paper</span>.width, <span class="property">@paper</span>.height
+        <span class="keyword">else</span>
+            <span class="property">@paperBg</span> = <span class="property">@paper</span>.rect(<span class="number">0</span>, <span class="number">0</span>, <span class="property">@paper</span>.width, <span class="property">@paper</span>.height).attr {fill: <span class="property">@paperBg</span>}
+
+        <span class="property">@paperBg</span>.node.id = System.App.Settings.Map.id</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-37">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-37">&#182;</a>
+              </div>
+              <p>Create the map groups using raphael.group.js plugin.</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>    bindMapGroups: =&gt;
+        i = <span class="number">1</span>
+        <span class="keyword">while</span> i &lt; <span class="number">10</span>
+            <span class="property">@stackGroups</span>[i] = <span class="property">@paper</span>.group()
+            i++</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-38">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-38">&#182;</a>
+              </div>
+              <p>Reset shapes on the map. This is mainly called when the map&#39;s <code>shapes</code> collection
+triggers an reset event.</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>    resetShapes: =&gt;
+        <span class="keyword">return</span> <span class="keyword">if</span> <span class="keyword">not</span> <span class="property">@model</span>?
+
+        <span class="property">@clearShapes</span>()
+        <span class="property">@bindShapes</span>()</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-39">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-39">&#182;</a>
+              </div>
+              <p>Reset links on the map. This is mainly called when the map&#39;s <code>links</code> collection
+triggers an reset event.</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>    resetLinks: =&gt;
+        <span class="keyword">return</span> <span class="keyword">if</span> <span class="keyword">not</span> <span class="property">@model</span>?
+
+        <span class="property">@clearLinks</span>()
+        <span class="property">@bindLinks</span>()</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-40">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-40">&#182;</a>
+              </div>
+              <p>Refresh current map&#39;s <a href="shapeLabelsView.html">Shape Labels</a> and
+<a href="linkLabelsView.html">Link Labels</a>. This will also update the <a href="shapeDetailsView.html">Shape Details View</a>
+to reflect the selected shape&#39;s active alerts.</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>    refreshLabels: =&gt;
+        _.each <span class="property">@shapeViews</span>, (view) -&gt; view.labelsView.bindAllLabelsData()
+        _.each <span class="property">@linkViews</span>, (view) -&gt; view.labelsView.bindAllLabelsData()
+
+        <span class="property">@controlsView</span>.inspectorTabView.bindActiveAuditEvents()</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-41">
+            <div class="annotation">
+              
+              <div class="pilwrap for-h2">
+                <a class="pilcrow" href="#section-41">&#182;</a>
+              </div>
+              <h2>MAP EVENTS</h2>
+
+            </div>
+            
+        </li>
+        
+        
+        <li id="section-42">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-42">&#182;</a>
+              </div>
+              <p>Save the current <code>filter</code> to the remote server.</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>    saveMap: =&gt;
+        <span class="property">@model</span>.save() <span class="keyword">if</span> <span class="property">@editEnabled</span> <span class="keyword">and</span> <span class="property">@model</span>.hasChanged()</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-43">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-43">&#182;</a>
+              </div>
+              <p>Display an alert whenever the current map has been saved to the server.</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>    mapSaved: (map) =&gt;
+        System.App.alertEvents.trigger <span class="string">"footer"</span>, {savedModel: map}</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-44">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-44">&#182;</a>
+              </div>
+              <p>When user deletes (destroy) the current <a href="map.html">Map</a>, refresh the browser.</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>    mapRemoved: (map) =&gt;
+        System.App.alertEvents.trigger <span class="string">"footer"</span>, {removedModel: map}
+        System.App.toggleLoadding <span class="literal">true</span>
+
+        <span class="function"><span class="title">reloadPage</span></span> = -&gt; window.open <span class="string">"/"</span>, <span class="string">"_self"</span>
+        setTimeout reloadPage, <span class="number">1000</span></pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-45">
+            <div class="annotation">
+              
+              <div class="pilwrap for-h2">
+                <a class="pilcrow" href="#section-45">&#182;</a>
+              </div>
+              <h2>BINDING MAP SHAPES</h2>
+
+            </div>
+            
+        </li>
+        
+        
+        <li id="section-46">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-46">&#182;</a>
+              </div>
+              <p>Bind the current map&#39;s shapes (a <a href="shape.html">ShapeCollection</a>) to the view.</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>    bindShapes: =&gt;
+        <span class="property">@addShape</span> item <span class="keyword">for</span> item <span class="keyword">in</span> <span class="property">@model</span>.shapes().models
+        <span class="property">@bindLinks</span>()
+        <span class="property">@toggleGridLines</span> <span class="property">@editEnabled</span></pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-47">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-47">&#182;</a>
+              </div>
+              <p>Create a <a href="shapeView.html">shape view</a> based on the passed <a href="shape.html">shape model</a>
+and add it to the map. Make sure we don&#39;t add orphan shapes by checking if there&#39;s
+an ID present.</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>    addShape: (shape, collection) =&gt;
+        <span class="keyword">return</span> <span class="keyword">if</span> <span class="keyword">not</span> shape.id? <span class="keyword">or</span> shape.id <span class="keyword">is</span> <span class="string">""</span>
+
+        view = <span class="keyword">new</span> System.MapShapeView {model: shape}
+        view.bindEntityObject()
+        view.render <span class="keyword">this</span>
+
+        <span class="property">@shapeViews</span>[shape.id] = view
+        <span class="property">@stackGroups</span>[shape.zIndex()].push view.svgs()</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-48">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-48">&#182;</a>
+              </div>
+              <p>If a collection was passed, it means shape was added from the
+<a href="entityListView.html">Shape Entity List</a> panel, so set <code>save</code> to true,
+unless map <code>silent</code> is true which means it might have been added via the API.</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>        save = collection? <span class="keyword">and</span> <span class="keyword">not</span> <span class="property">@model</span>.silent()
+
+        <span class="property">@setShapePosition</span> view, shape.x(), shape.y(), save
+
+        <span class="keyword">if</span> save
+            view.blink()
+            <span class="property">@setCurrentElement</span> view</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-49">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-49">&#182;</a>
+              </div>
+              <p>Removes a shape from the map and delete its value from the <code>shapeViews</code>.</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>    removeShape: (model) =&gt;
+        <span class="keyword">delete</span> <span class="property">@shapeViews</span>[model.id]
+
+        <span class="property">@model</span>.save()
+        <span class="property">@setCurrentElement</span>()</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-50">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-50">&#182;</a>
+              </div>
+              <p>Unbind all shapes from the map.</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>    unbindShapes: =&gt;
+        _.each <span class="property">@shapeViews</span>, (view) =&gt; view.dispose()
+        <span class="property">@shapeViews</span> = {}</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-51">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-51">&#182;</a>
+              </div>
+              <p>Set the selected shape on the map.</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>    setCurrentElement: (view) =&gt;
+        <span class="property">@currentShape</span>?.removeShadow()
+        <span class="property">@currentShape</span> = view
+
+        <span class="keyword">if</span> view?
+
+            view.createShadow()
+
+            entityObject = view.model.entityObject
+            textTitle = view.model.defaultText()</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-52">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-52">&#182;</a>
+              </div>
+              <p>If the view&#39;s model has an <code>entityObject</code> property, means it has an
+<a href="entityObject.html">Entity Object</a> bound to it so show its title on the footer.
+Otherwise show the shape&#39;s title text.</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>            <span class="keyword">if</span> entityObject?
+                <span class="property">@setFooterShape</span> entityObject.title()
+            <span class="keyword">else</span> <span class="keyword">if</span> textTitle? <span class="keyword">and</span> textTitle <span class="keyword">isnt</span> <span class="string">""</span>
+                <span class="property">@setFooterShape</span> textTitle
+            <span class="keyword">else</span>
+                <span class="property">@setFooterShape</span> view.model.id
+
+        <span class="keyword">else</span></pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-53">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-53">&#182;</a>
+              </div>
+              <p>No view specified, so set the footer to an empty string.</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>            <span class="property">@setFooterShape</span>()
+
+        <span class="property">@controlsView</span>.bindShape view</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-54">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-54">&#182;</a>
+              </div>
+              <p>Set the current shape at which mouse is pointing. This is mainly used when creating links between shapes.</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>    setHoverShape: (shapeView) =&gt;
+        <span class="property">@hoverShape</span> = shapeView</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-55">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-55">&#182;</a>
+              </div>
+              <p>Set the property to be displayed inside the map shapes.</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>    setOverrideShapeTitle: (prop) =&gt;
+        System.App.consoleLog <span class="string">"MapView.setOverrideShapeTitle"</span>, prop</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-56">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-56">&#182;</a>
+              </div>
+              <p>If <code>prop</code> is passed, then make sure we append the data binding key and the
+entity object namespace before its value.</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>        <span class="keyword">if</span> prop? <span class="keyword">and</span> prop <span class="keyword">isnt</span> <span class="string">""</span>
+            prop = <span class="string">"<span class="subst">#{System.App.Settings.General.dataBindingKey}</span><span class="subst">#{System.App.Settings.EntityObject.bindingNamespace}</span>.<span class="subst">#{prop}</span>"</span>
+
+        <span class="property">@overrideShapeTitle</span> = prop
+        _.each <span class="property">@shapeViews</span>, (view) =&gt; view.labelsView.refreshTitle()</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-57">
+            <div class="annotation">
+              
+              <div class="pilwrap for-h2">
+                <a class="pilcrow" href="#section-57">&#182;</a>
+              </div>
+              <h2>BINDING MAP LINKS</h2>
+
+            </div>
+            
+        </li>
+        
+        
+        <li id="section-58">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-58">&#182;</a>
+              </div>
+              <p>Bind shape links to the map.</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>    bindLinks: =&gt;
+        <span class="property">@addLink</span> item <span class="keyword">for</span> item <span class="keyword">in</span> <span class="property">@model</span>.links().models</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-59">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-59">&#182;</a>
+              </div>
+              <p>Add a single link to the map.</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>    addLink: (item, collection) =&gt;
+        sourceView = <span class="property">@shapeViews</span>[item.sourceId()]
+        targetView = <span class="property">@shapeViews</span>[item.targetId()]</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-60">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-60">&#182;</a>
+              </div>
+              <p>Do not proceed if target or source shape is not valid.</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>        <span class="keyword">return</span> <span class="keyword">if</span> <span class="keyword">not</span> sourceView? <span class="keyword">or</span> <span class="keyword">not</span> targetView?
+
+        view = <span class="keyword">new</span> System.MapLinkView {model: item}
+        <span class="property">@linkViews</span>[item.id] = view
+
+        view.render <span class="keyword">this</span>
+        view.semiHide() <span class="keyword">if</span> <span class="keyword">not</span> <span class="property">@controlsView</span>.isLinksVisible()
+        <span class="property">@stackGroups</span>[item.zIndex()].push view.svgs()</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-61">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-61">&#182;</a>
+              </div>
+              <p>If a collection was passed, it means links was just created by the user
+so set <code>save</code> to true, and save the <a href="map.html">Current Map</a> in this case.</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>        save = collection?
+        <span class="property">@model</span>.save() <span class="keyword">if</span> save</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-62">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-62">&#182;</a>
+              </div>
+              <p>Remove a link from the map.</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>    removeLink: (link) =&gt;
+        <span class="keyword">delete</span> <span class="property">@linkViews</span>[link.id]
+        <span class="property">@model</span>.save()</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-63">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-63">&#182;</a>
+              </div>
+              <p>Unbind element links from map</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>    unbindLinks: =&gt;
+        _.each <span class="property">@linkViews</span>, (view) =&gt; view.dispose()
+        <span class="property">@linkViews</span> = {}</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-64">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-64">&#182;</a>
+              </div>
+              <p>Get all <a href="linkView.html">Link Views</a> related to the specified shape.</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>    getLinkViewsForShape: (shape) =&gt;
+        <span class="keyword">return</span> _.filter <span class="property">@linkViews</span>, (linkView) =&gt;
+            linkView.model.sourceId() <span class="keyword">is</span> shape.id <span class="keyword">or</span> linkView.model.targetId() <span class="keyword">is</span> shape.id</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-65">
+            <div class="annotation">
+              
+              <div class="pilwrap for-h2">
+                <a class="pilcrow" href="#section-65">&#182;</a>
+              </div>
+              <h2>MAP CONTROLS</h2>
+
+            </div>
+            
+        </li>
+        
+        
+        <li id="section-66">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-66">&#182;</a>
+              </div>
+              <p>User has clicked the mouse and started panning (moving) the map around.</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>    panningStart: (e) =&gt;
+        <span class="property">@$panningIcon</span>.mousemove <span class="property">@panningMove</span>
+        <span class="property">@$el</span>.css <span class="string">"cursor"</span>, <span class="string">"move"</span>
+
+        <span class="property">@mousePosX</span> = e.pageX
+        <span class="property">@mousePosY</span> = e.pageY
+
+        <span class="property">@isPanning</span> = <span class="literal">true</span></pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-67">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-67">&#182;</a>
+              </div>
+              <p>User is panning (moving) the map while holding the mouse button.
+Please note that it is NOT possible to go outside the map bounds.</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>    panningMove: (e) =&gt;
+        <span class="property">@currentPanX</span> -= (e.pageX - <span class="property">@mousePosX</span>) * <span class="property">@currentZoom</span>
+        <span class="property">@currentPanY</span> -= (e.pageY - <span class="property">@mousePosY</span>) * <span class="property">@currentZoom</span>
+        summedWidth = <span class="property">@mapDivWidth</span> - <span class="property">@mapControlsWidth</span></pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-68">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-68">&#182;</a>
+              </div>
+              <p>If there&#39;s a map bound, then check if the current pan X and Y values
+are less than the maximum allowed values, which is the map&#39;s paper
+width/height - the map&#39;s div <code>#map</code> width/height. This will ensure
+that grid lines are always visible.</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>        <span class="keyword">if</span> <span class="property">@model</span>?
+            maxPanX = <span class="property">@model</span>.paperSizeX() - summedWidth * <span class="property">@currentZoom</span>
+            maxPanY = <span class="property">@model</span>.paperSizeY() - <span class="property">@mapDivHeight</span> * <span class="property">@currentZoom</span>
+            <span class="property">@currentPanX</span> = maxPanX <span class="keyword">if</span> <span class="property">@currentPanX</span> &gt; maxPanX
+            <span class="property">@currentPanY</span> = maxPanY <span class="keyword">if</span> <span class="property">@currentPanY</span> &gt; maxPanY</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-69">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-69">&#182;</a>
+              </div>
+              <p>Only show the &quot;moving icon&quot; when current map position has not reached its borders.</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>        <span class="keyword">if</span> (<span class="property">@currentPanX</span> &gt; <span class="number">0</span> <span class="keyword">and</span> <span class="property">@currentPanX</span> &lt; maxPanX) <span class="keyword">or</span> (<span class="property">@currentPanY</span> &gt; <span class="number">0</span> <span class="keyword">and</span> <span class="property">@currentPanY</span> &lt; maxPanY)
+            <span class="property">@$panningIcon</span>.css <span class="string">"display"</span>, <span class="string">""</span>
+        <span class="keyword">else</span>
+            <span class="property">@$panningIcon</span>.css <span class="string">"display"</span>, <span class="string">"none"</span></pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-70">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-70">&#182;</a>
+              </div>
+              <p>Set temporary mouse position variables.</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>        <span class="property">@mousePosX</span> = e.pageX
+        <span class="property">@mousePosY</span> = e.pageY
+
+        <span class="property">@setViewBox</span>()</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-71">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-71">&#182;</a>
+              </div>
+              <p>User has finished panning (moving) the map when mouse button is released.</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>    panningEnd: (e) =&gt;
+        <span class="property">@$panningIcon</span>.unbind <span class="string">"mousemove"</span>
+        <span class="property">@$panningIcon</span>.css <span class="string">"display"</span>, <span class="string">"none"</span>
+        <span class="property">@$el</span>.css <span class="string">"cursor"</span>, <span class="string">"default"</span>
+
+        <span class="property">@isPanning</span> = <span class="literal">false</span>
+
+        e.stopPropagation()
+        e.preventDefault()</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-72">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-72">&#182;</a>
+              </div>
+              <p>Helper to get the paper <code>viewBox</code> object.</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>    getViewBox: =&gt;
+        <span class="keyword">return</span> <span class="property">@paper</span>.canvas.viewBox.baseVal</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-73">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-73">&#182;</a>
+              </div>
+              <p>Set the current view box (zoom and panning) of the map.
+The max and min zoom values are defined on the <a href="settings.html">Settings</a>.</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>    setViewBox: =&gt;
+        <span class="property">@currentZoom</span> = System.App.Settings.Map.minZoom <span class="keyword">if</span> <span class="property">@currentZoom</span> &lt; System.App.Settings.Map.minZoom
+        <span class="property">@currentZoom</span> = System.App.Settings.Map.maxZoom <span class="keyword">if</span> <span class="property">@currentZoom</span> &gt; System.App.Settings.Map.maxZoom
+
+        boxWidth = <span class="property">@paper</span>.width * <span class="property">@currentZoom</span>
+        boxHeight = <span class="property">@paper</span>.height * <span class="property">@currentZoom</span>
+
+        <span class="property">@currentPanX</span> = <span class="number">0</span> <span class="keyword">if</span> <span class="property">@currentPanX</span> &lt; <span class="number">0</span>
+        <span class="property">@currentPanY</span> = <span class="number">0</span> <span class="keyword">if</span> <span class="property">@currentPanY</span> &lt; <span class="number">0</span>
+
+        <span class="property">@paper</span>.setViewBox(<span class="property">@currentPanX</span>, <span class="property">@currentPanY</span>, boxWidth, boxHeight, <span class="literal">true</span>)
+
+        System.App.mapEvents.trigger <span class="string">"zoom"</span>, <span class="property">@currentZoom</span></pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-74">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-74">&#182;</a>
+              </div>
+              <p>Set the <code>currentZoom</code> variable and update the view.
+Save zoom to the <a href="userSettings.html">user settings</a>.</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>    zoomSet: (value) =&gt;
+        <span class="property">@currentZoom</span> = value
+        <span class="property">@setViewBox</span>()
+        System.App.Data.userSettings.mapZoom value</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-75">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-75">&#182;</a>
+              </div>
+              <p>Zoom in, with optional <code>amount</code> parameter.</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>    zoomIn: (amount) =&gt;
+        amount = System.App.Settings.Map.zoomStep <span class="keyword">if</span> <span class="keyword">not</span> amount?
+        <span class="property">@zoomSet</span> <span class="property">@currentZoom</span> - amount</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-76">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-76">&#182;</a>
+              </div>
+              <p>Zoom out, with optional <code>amount</code> parameter.</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>    zoomOut: (amount) =&gt;
+        amount = System.App.Settings.Map.zoomStep <span class="keyword">if</span> <span class="keyword">not</span> amount?
+        <span class="property">@zoomSet</span> <span class="property">@currentZoom</span> + amount</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-77">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-77">&#182;</a>
+              </div>
+              <p>Toggle the <code>editEnabled</code> on or off.</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>    toggleEdit: (enabled) =&gt;
+        <span class="property">@editEnabled</span> = enabled
+        <span class="property">@toggleGridLines</span> enabled</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-78">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-78">&#182;</a>
+              </div>
+              <p>Toggle the map background image (represented by the <code>paperBg</code> element, if there&#39;s one).</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>    toggleBackground: (enabled) =&gt;
+        <span class="keyword">if</span> enabled
+            <span class="property">@paperBg</span>.show()
+        <span class="keyword">else</span>
+            <span class="property">@paperBg</span>.hide()</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-79">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-79">&#182;</a>
+              </div>
+              <p>Toggle links on or off (<a href="linkView.html">Link View</a> <code>show</code> and <code>semiHide</code> methods).
+Please note that hiding links means setting their opacity to a very low value,
+so they&#39;re almost invisible but not totally hidden.</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>    toggleLinks: (enabled) =&gt;
+        <span class="property">@isLinksVisible</span> = enabled
+
+        _.each <span class="property">@linkViews</span>, (linkView) -&gt;
+            <span class="keyword">if</span> <span class="keyword">not</span> linkView?
+                <span class="keyword">return</span>
+            <span class="keyword">if</span> enabled
+                linkView.show()
+            <span class="keyword">else</span>
+                linkView.semiHide()</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-80">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-80">&#182;</a>
+              </div>
+              <p>Toggle grid lines on or off. Usually grid lines will be toggled on when map is in
+edit mode, and off when not editable.</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>    toggleGridLines: (enabled) =&gt;
+        <span class="keyword">if</span> <span class="keyword">not</span> <span class="property">@model</span>?
+            <span class="keyword">return</span>
+
+        sizeX = <span class="property">@model</span>.gridSizeX()
+        sizeY = <span class="property">@model</span>.gridSizeY()
+
+        lengthX = <span class="property">@paper</span>.width / sizeX
+        lengthY = <span class="property">@paper</span>.height / sizeY
+
+        <span class="property">@gridLines</span>?.remove()
+        pathString = <span class="string">""</span>
+
+        <span class="keyword">if</span> enabled
+            i = <span class="number">0</span>
+            <span class="keyword">while</span> i++ &lt; lengthX
+                pathString += <span class="string">"M"</span> + i * sizeX + <span class="string">" 0V"</span> + <span class="property">@paper</span>.height
+
+            i = <span class="number">0</span>
+            <span class="keyword">while</span> i++ &lt; lengthY
+                pathString += <span class="string">"M0 "</span> + i * sizeY + <span class="string">"H"</span> + <span class="property">@paper</span>.width
+
+        <span class="property">@gridLines</span> = <span class="property">@paper</span>.path(pathString).attr(<span class="string">"stroke"</span>, System.App.Settings.Map.gridStroke)
+        <span class="property">@gridLines</span>.toBack()
+
+        <span class="property">@paperBg</span>.toBack()</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-81">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-81">&#182;</a>
+              </div>
+              <p>Toggle the fullscreen mode on or off. While on fullscreen, the app <a href="menuView.html">Menu</a>
+and <a href="controlsView.html">Map Controls</a> will be hidden.</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>    toggleFullscreen: (fullscreen) =&gt;
+        <span class="keyword">if</span> <span class="keyword">not</span> fullscreen? <span class="keyword">or</span> fullscreen.originalEvent?
+            fullscreen = $(<span class="string">"#header"</span>).<span class="keyword">is</span>(<span class="string">":visible"</span>)
+
+        <span class="keyword">if</span> fullscreen
+            $(<span class="string">"#header"</span>).hide()
+            $(<span class="string">"#footer"</span>).addClass(<span class="string">"transparent"</span>)
+            $(<span class="string">"body"</span>).addClass <span class="string">"fullscreen"</span>
+            <span class="property">@controlsView</span>?.hide()
+        <span class="keyword">else</span>
+            $(<span class="string">"#header"</span>).show()
+            $(<span class="string">"#footer"</span>).removeClass(<span class="string">"transparent"</span>)
+            $(<span class="string">"body"</span>).removeClass <span class="string">"fullscreen"</span>
+            <span class="property">@mapDivWidth</span> = $(window).innerWidth()
+            <span class="property">@mapDivHeight</span> = $(window).innerHeight() - $(<span class="string">"#header"</span>).outerHeight() - $(<span class="string">"#footer"</span>).outerHeight()
+            <span class="property">@$el</span>.css <span class="string">"width"</span>, <span class="property">@mapDivWidth</span>
+            <span class="property">@$el</span>.css <span class="string">"height"</span>, <span class="property">@mapDivHeight</span>
+
+        <span class="property">@mapControlsWidth</span> = $(<span class="string">"#map-controls"</span>).outerWidth()</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-82">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-82">&#182;</a>
+              </div>
+              <p>Save the current fullscreen state on the <a href="userSettings.html">User Settings</a> model.</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>        System.App.Data.userSettings.mapFullscreen fullscreen</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-83">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-83">&#182;</a>
+              </div>
+              <p>Send the map background and grid lines to back of the paper.</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>    toBack: =&gt;
+        <span class="property">@gridLines</span>.toBack()
+        <span class="property">@paperBg</span>.toBack()</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-84">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-84">&#182;</a>
+              </div>
+              <p>Set position of a shape view based on grid X and Y. The absolute size of the grid blocks
+are defined on the <a href="settings.html">Settings</a>.</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>    setShapePosition: (view, x, y, save) =&gt;
+        save = <span class="literal">true</span> <span class="keyword">if</span> <span class="keyword">not</span> save?
+        view.setPosition x * <span class="property">@model</span>.gridSizeX(), y * <span class="property">@model</span>.gridSizeY(), save</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-85">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-85">&#182;</a>
+              </div>
+              <p>Regroup the specified <a href="shapeView.html">Shape View</a> or <a href="linkView.html">Link View</a> to the
+value set in its model&#39;s <code>zIndex</code> property.</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>    regroupElement: (view) =&gt;
+        svgs = view.svgs()
+
+        <span class="keyword">for</span> svg <span class="keyword">in</span> svgs
+            <span class="keyword">try</span>
+                svg.node.parentNode.removeChild svg.node <span class="keyword">if</span> svg?
+            <span class="keyword">catch</span> ex
+                System.App.consoleLog <span class="string">"MapView.regroupElement"</span>, <span class="string">"Can't remove element from SVG group."</span>, svg
+
+        <span class="property">@stackGroups</span>[view.model.zIndex()].push svgs</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-86">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-86">&#182;</a>
+              </div>
+              <p>Get a <a href="entityListView.html">Shape}(shape.html) object with the first x/y free position on the map grid.
+This method is called to position the shapes when they&#39;re added from
+the [Entity List View</a> overlay.</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>    getFirstAvailableShape: =&gt;
+        x = <span class="number">0</span>
+        y = <span class="number">0</span>
+
+        _.each <span class="property">@shapeViews</span>, (view) =&gt;
+            posX = view.x()
+            posY = view.y()
+
+            <span class="keyword">if</span> posX - x &lt; System.App.Settings.Map.gridSizeX
+                x += System.App.Settings.Map.gridSizeX
+
+            <span class="keyword">if</span> posY - y &lt; System.App.Settings.Map.gridSizeY
+                y += System.App.Settings.Map.gridSizeY
+
+        <span class="keyword">return</span> <span class="keyword">new</span> System.Shape {x: x / System.App.Settings.Map.gridSizeX, y: y / System.App.Settings.Map.gridSizeY}</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-87">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-87">&#182;</a>
+              </div>
+              <p>Blink the selected <a href="shapeView.html">Shape</a> on the map.</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>    blinkSelectedShapes: =&gt;
+        <span class="property">@currentShape</span>?.blink()</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-88">
+            <div class="annotation">
+              
+              <div class="pilwrap for-h2">
+                <a class="pilcrow" href="#section-88">&#182;</a>
+              </div>
+              <h2>KEYBOARD EVENTS</h2>
+
+            </div>
+            
+        </li>
+        
+        
+        <li id="section-89">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-89">&#182;</a>
+              </div>
+              <p>When user presses a key. Pressing &quot;Ctrl+S&quot; will save the current map,
+and pressing &quot;Esc&quot; twice will unselect the any selected shapes.</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>    keyDown: (e) =&gt;
+        keyCode = e.keyCode</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-90">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-90">&#182;</a>
+              </div>
+              <p>User pressed &quot;Ctrl+S&quot;, so save everything.</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>        <span class="keyword">if</span> e.ctrlKey <span class="keyword">and</span> keyCode <span class="keyword">is</span> <span class="number">83</span>
+            <span class="property">@model</span>.save()
+            e.preventDefault()
+            e.stopPropagation()</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-91">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-91">&#182;</a>
+              </div>
+              <p>User pressed &quot;Ctrl+E&quot;, so toggle the edit mode.</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>        <span class="keyword">else</span> <span class="keyword">if</span> e.ctrlKey <span class="keyword">and</span> keyCode <span class="keyword">is</span> <span class="number">69</span> <span class="keyword">and</span> System.App.godMode
+            System.App.mapEvents.trigger <span class="string">"edit:toggle"</span>, <span class="keyword">not</span> <span class="property">@editEnabled</span>
+            e.preventDefault()
+            e.stopPropagation()</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-92">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-92">&#182;</a>
+              </div>
+              <p>User pressed &quot;Esc&quot; twice in a row, so deselect the current shape.</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>        <span class="keyword">else</span> <span class="keyword">if</span> keyCode <span class="keyword">is</span> <span class="number">27</span> <span class="keyword">and</span> <span class="property">@lastPressedKey</span> <span class="keyword">is</span> <span class="number">27</span>
+            <span class="property">@setCurrentElement</span> <span class="literal">null</span>
+            <span class="property">@lastPressedKey</span> = <span class="literal">null</span></pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-93">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-93">&#182;</a>
+              </div>
+              <p>User pressed &quot;F11&quot;, go to fullscreen mode.</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>        <span class="keyword">else</span> <span class="keyword">if</span> e.ctrlKey <span class="keyword">and</span> keyCode <span class="keyword">is</span> <span class="number">84</span>
+            <span class="property">@toggleFullscreen</span>()
+            e.preventDefault()
+            e.stopPropagation()</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-94">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-94">&#182;</a>
+              </div>
+              <p>Set the last pressed key code.</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>        <span class="property">@lastPressedKey</span> = keyCode</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-95">
+            <div class="annotation">
+              
+              <div class="pilwrap for-h2">
+                <a class="pilcrow" href="#section-95">&#182;</a>
+              </div>
+              <h2>MOUSE EVENTS</h2>
+
+            </div>
+            
+        </li>
+        
+        
+        <li id="section-96">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-96">&#182;</a>
+              </div>
+              <p>Triggered when user clicks the map. If clicking with left button, prepares map to pan.</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>    mouseDown: (e) =&gt;
+        src = e.target
+        targetId = src.id</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-97">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-97">&#182;</a>
+              </div>
+              <p>Temp variables to check where the user clicked.</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>        isBaseSvgTag = src.tagName <span class="keyword">isnt</span> <span class="string">"svg"</span>
+        isMapTag = targetId <span class="keyword">isnt</span> System.App.Settings.Map.id
+        isGridLine = targetId.indexOf(System.App.Settings.Map.gridIdPrefix) &lt; <span class="number">0</span></pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-98">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-98">&#182;</a>
+              </div>
+              <p>If click wasn&#39;t on the map background or any of the grid lines, do not proceed with panning.</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>        <span class="keyword">if</span> e.which &gt; <span class="number">1</span> <span class="keyword">or</span> (<span class="property">@editEnabled</span> <span class="keyword">and</span> isBaseSvgTag <span class="keyword">and</span> isMapTag <span class="keyword">and</span> isGridLine)
+            <span class="keyword">return</span></pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-99">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-99">&#182;</a>
+              </div>
+              <p>If user clicked on a blank area, deselect the current <a href="shapeView.html">Shape View</a>.</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>        <span class="keyword">if</span> targetId <span class="keyword">is</span> System.App.Settings.Map.id
+            <span class="property">@shapesMoverView</span>.hide()
+            <span class="property">@setCurrentElement</span> <span class="literal">null</span></pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-100">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-100">&#182;</a>
+              </div>
+              <p>If pressing Shift, then start selecting multiple elements with the <a href="shapesMoverView.html">Shapes Mover View</a>.</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>        <span class="keyword">if</span> <span class="property">@editEnabled</span> <span class="keyword">and</span> <span class="property">@isEventMultiple</span> e
+            <span class="property">@shapesMoverView</span>.show e.pageX, e.pageY
+        <span class="keyword">else</span>
+            <span class="property">@panningStart</span> e</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-101">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-101">&#182;</a>
+              </div>
+              <p>Triggered when user moves the mouse around the map. If <code>isPanning</code> is true
+then pan the map with the amount of pixels from the mouse down location.</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>    mouseMove: (e) =&gt;
+        <span class="keyword">if</span> <span class="property">@isPanning</span>
+            <span class="property">@panningMove</span> e</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-102">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-102">&#182;</a>
+              </div>
+              <p>Triggered when user releases mouse button on the map. Set <code>isPanning</code> to false
+and restore the default mouse cursor.</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>    mouseUp: (e) =&gt;
+        <span class="keyword">if</span> <span class="property">@isPanning</span>
+            <span class="property">@panningEnd</span> e</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-103">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-103">&#182;</a>
+              </div>
+              <p>Triggered when user scrolls the mouse wheel. Scrolling will change the map zoom.</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>    mouseWheel: (e) =&gt;
+        <span class="keyword">if</span> <span class="property">@isPanning</span>
+            <span class="keyword">return</span>
+
+        delta = e.originalEvent.wheelDeltaY
+
+        <span class="keyword">if</span> delta &gt; <span class="number">0</span>
+            System.App.mapEvents.trigger <span class="string">"zoom:in"</span>
+        <span class="keyword">else</span>
+            System.App.mapEvents.trigger <span class="string">"zoom:out"</span>
+
+        e.stopPropagation()
+        e.preventDefault()</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-104">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-104">&#182;</a>
+              </div>
+              <p>Triggered when user right click the map. This will cancel the default context menu.</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>    contextMenu: =&gt;
+        <span class="keyword">return</span> <span class="literal">false</span></pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-105">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-105">&#182;</a>
+              </div>
+              <p>Triggered when user double clicks the map. This will reset the map position to top left corner.</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>    doubleClick: (e) =&gt;
+        src = e.target
+
+        <span class="keyword">if</span> src?.tagname <span class="keyword">isnt</span> <span class="string">"rect"</span> <span class="keyword">and</span> src?.tagname <span class="keyword">isnt</span> <span class="string">"path"</span>
+            <span class="keyword">return</span>
+
+        <span class="property">@currentPanX</span> = <span class="number">0</span>
+        <span class="property">@currentPanY</span> = <span class="number">0</span>
+
+        <span class="property">@zoomSet</span> <span class="number">1</span>
+
+        <span class="property">@isPanning</span> = <span class="literal">false</span>
+        e.stopPropagation()
+        e.preventDefault()</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-106">
+            <div class="annotation">
+              
+              <div class="pilwrap for-h2">
+                <a class="pilcrow" href="#section-106">&#182;</a>
+              </div>
+              <h2>MAP PROPERTY CHANGES</h2>
+
+            </div>
+            
+        </li>
+        
+        
+        <li id="section-107">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-107">&#182;</a>
+              </div>
+              <p>Triggered when the current <a href="map.html">Map</a> <code>name</code> has changed.</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>    nameChanged: =&gt;
+        <span class="property">@model</span>.save()
+
+        <span class="property">@setFooterName</span> <span class="property">@model</span>.name()</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-108">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-108">&#182;</a>
+              </div>
+              <p>Triggered when the current <a href="map.html">Map</a> <code>paperSizeX</code> or <code>paperSizeY</code> has changed.</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>    paperSizeChanged: =&gt;
+        <span class="property">@model</span>.save()
+
+        <span class="property">@paper</span>.setSize <span class="property">@model</span>.paperSizeX(), <span class="property">@model</span>.paperSizeY()
+
+        <span class="property">@toggleGridLines</span> <span class="literal">true</span>
+        <span class="property">@setViewBox</span>()</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-109">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-109">&#182;</a>
+              </div>
+              <p>Triggered when the current <a href="map.html">Map</a> <code>gridSizeX</code> or <code>gridSizeY</code> has changed.</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>    gridSizeChanged: =&gt;
+        <span class="property">@model</span>.save()
+
+        <span class="property">@toggleGridLines</span> <span class="literal">true</span>
+        <span class="property">@setCurrentElement</span> <span class="literal">null</span>
+
+        _.each <span class="property">@shapeViews</span>, (shapeView) =&gt; shapeView.resetDimensions()
+        _.each <span class="property">@linkViews</span>, (linkView) =&gt; linkView.drag()
+
+        <span class="property">@setViewBox</span>()</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-110">
+            <div class="annotation">
+              
+              <div class="pilwrap for-h2">
+                <a class="pilcrow" href="#section-110">&#182;</a>
+              </div>
+              <h2>AUDIT DATA AND ALERTS</h2>
+
+            </div>
+            
+        </li>
+        
+        
+        <li id="section-111">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-111">&#182;</a>
+              </div>
+              <p>When user deletes (destroy) an <a href="auditData.html">AuditData</a>, reload
+the whole page.</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>    auditDataRemoved: (auditData) =&gt;
+        System.App.alertEvents.trigger <span class="string">"footer"</span>, {removedModel: auditData}
+        _.delay location.reload, System.App.Settings.General.refetchDelay</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-112">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-112">&#182;</a>
+              </div>
+              <p>When an <a href="auditData.html">AuditData</a> has been refreshed, run it against
+all registered <a href="auditEvent.html">Audit Events</a>.</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>    auditDataRefresh: (auditData) =&gt;
+        _.each System.App.Data.auditEvents.models, (alert) -&gt; alert.run()</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-113">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-113">&#182;</a>
+              </div>
+              <p>Trigger a &quot;footer message&quot; action.</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>    auditEventFooterMessage: (alertObj, action, matchedRules) =&gt;
+        System.App.alertEvents.trigger <span class="string">"footer"</span>, {title: <span class="string">"ALERT!!!"</span>, message: action.actionValue(), isError: <span class="literal">true</span>}</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-114">
+            <div class="annotation">
+              
+              <div class="pilwrap for-h2">
+                <a class="pilcrow" href="#section-114">&#182;</a>
+              </div>
+              <h2>URL AND FOOTER PROPERTIES</h2>
+
+            </div>
+            
+        </li>
+        
+        
+        <li id="section-115">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-115">&#182;</a>
+              </div>
+              <p>Reset the URL to the current&#39;s map URL. This is triggered mainly when user closes
+an open overlay, so we can properly keep track of page history.
+This will NOT trigger the backbone route event - it only updates the URL.</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>    resetUrl: =&gt;
+        <span class="keyword">if</span> <span class="property">@model</span>?
+            System.App.routes.navigate <span class="string">"map/"</span> + <span class="property">@model</span>.urlKey(), {trigger: <span class="literal">false</span>}
+            System.App.consoleLog <span class="string">"MapView.resetUrl"</span>, <span class="string">"Current map's URL: "</span> + <span class="property">@model</span>.urlKey()
+        <span class="keyword">else</span>
+            System.App.routes.navigate <span class="string">""</span>, {trigger: <span class="literal">false</span>}</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-116">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-116">&#182;</a>
+              </div>
+              <p>Bind the map name to the footer.</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>    setFooterName: (value) =&gt;
+        <span class="property">@$footerName</span>.html value
+        <span class="property">@$footerShape</span>.empty()</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-117">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-117">&#182;</a>
+              </div>
+              <p>Show the current selected shape name on the footer.</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>    setFooterShape: (shape) =&gt;
+        shape = System.App.Messages.noShapeSelected <span class="keyword">if</span> shape <span class="keyword">is</span> <span class="literal">undefined</span> <span class="keyword">or</span> shape <span class="keyword">is</span> <span class="literal">null</span> <span class="keyword">or</span> shape <span class="keyword">is</span> <span class="string">""</span>
+        <span class="property">@$footerShape</span>.html shape</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-118">
+            <div class="annotation">
+              
+              <div class="pilwrap for-h2">
+                <a class="pilcrow" href="#section-118">&#182;</a>
+              </div>
+              <h2>THUMBNAILS</h2>
+
+            </div>
+            
+        </li>
+        
+        
+        <li id="section-119">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-119">&#182;</a>
+              </div>
+              <p>Post the SVG representation of the map to the server to
+generate the SVG and PNG thumbnails.</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>    generateThumbnail: =&gt;
+        now = <span class="keyword">new</span> Date()
+        thumbnailDate = <span class="property">@model</span>.thumbnailDate()
+
+        <span class="keyword">if</span> thumbnailDate?
+            thumbnailDate = <span class="keyword">new</span> Date thumbnailDate
+        <span class="keyword">else</span>
+            thumbnailDate = <span class="keyword">new</span> Date()</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-120">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-120">&#182;</a>
+              </div>
+              <p>If a thumbnail was generated less than 5 minutes ago, do nothing.</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>        <span class="keyword">if</span> now.getTime() - thumbnailDate.getTime() &lt; System.App.Settings.Map.thumbnailExpires
+            <span class="keyword">return</span>
+
+        <span class="property">@model</span>.thumbnailDate now
+
+        $.ajax
+            url: System.App.Settings.Map.thumbnailBaseUrl + <span class="property">@model</span>.id
+            cache: <span class="literal">false</span>
+            dataType: <span class="string">"json"</span>
+            type: <span class="string">"POST"</span>
+            data:
+                svg: <span class="property">@$el</span>.html()</pre></div></div>
+            
+        </li>
+        
+    </ul>
+  </div>
+</body>
+</html>

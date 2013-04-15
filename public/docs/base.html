@@ -1,0 +1,1508 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+  <title>base.coffee</title>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <meta name="viewport" content="width=device-width, target-densitydpi=160dpi, initial-scale=1.0; maximum-scale=1.0; user-scalable=0;">
+  <link rel="stylesheet" media="all" href="docco.css" />
+</head>
+<body>
+  <div id="container">
+    <div id="background"></div>
+    
+      <ul id="jump_to">
+        <li>
+          <a class="large" href="javascript:void(0);">Jump To &hellip;</a>
+          <a class="small" href="javascript:void(0);">+</a>
+          <div id="jump_wrapper">
+          <div id="jump_page">
+            
+              
+              <a class="source" href="api.auditData.html">
+                api.auditData.coffee
+              </a>
+            
+              
+              <a class="source" href="api.auditEvent.html">
+                api.auditEvent.coffee
+              </a>
+            
+              
+              <a class="source" href="api.html">
+                api.coffee
+              </a>
+            
+              
+              <a class="source" href="api.entity.html">
+                api.entity.coffee
+              </a>
+            
+              
+              <a class="source" href="api.map.html">
+                api.map.coffee
+              </a>
+            
+              
+              <a class="source" href="api.server.html">
+                api.server.coffee
+              </a>
+            
+              
+              <a class="source" href="api.variable.html">
+                api.variable.coffee
+              </a>
+            
+              
+              <a class="source" href="api.view.html">
+                api.view.coffee
+              </a>
+            
+              
+              <a class="source" href="app.html">
+                app.coffee
+              </a>
+            
+              
+              <a class="source" href="app.instance.html">
+                app.instance.coffee
+              </a>
+            
+              
+              <a class="source" href="data.html">
+                data.coffee
+              </a>
+            
+              
+              <a class="source" href="dataUtil.html">
+                dataUtil.coffee
+              </a>
+            
+              
+              <a class="source" href="messages.html">
+                messages.coffee
+              </a>
+            
+              
+              <a class="source" href="auditData.html">
+                auditData.coffee
+              </a>
+            
+              
+              <a class="source" href="auditEvent.html">
+                auditEvent.coffee
+              </a>
+            
+              
+              <a class="source" href="base.html">
+                base.coffee
+              </a>
+            
+              
+              <a class="source" href="entityDefinition.html">
+                entityDefinition.coffee
+              </a>
+            
+              
+              <a class="source" href="entityObject.html">
+                entityObject.coffee
+              </a>
+            
+              
+              <a class="source" href="eventAction.html">
+                eventAction.coffee
+              </a>
+            
+              
+              <a class="source" href="eventRule.html">
+                eventRule.coffee
+              </a>
+            
+              
+              <a class="source" href="link.html">
+                link.coffee
+              </a>
+            
+              
+              <a class="source" href="map.html">
+                map.coffee
+              </a>
+            
+              
+              <a class="source" href="shape.html">
+                shape.coffee
+              </a>
+            
+              
+              <a class="source" href="userSettings.html">
+                userSettings.coffee
+              </a>
+            
+              
+              <a class="source" href="variable.html">
+                variable.coffee
+              </a>
+            
+              
+              <a class="source" href="routes.html">
+                routes.coffee
+              </a>
+            
+              
+              <a class="source" href="settings.base.html">
+                settings.base.coffee
+              </a>
+            
+              
+              <a class="source" href="settings.html">
+                settings.coffee
+              </a>
+            
+              
+              <a class="source" href="settings.default.html">
+                settings.default.coffee
+              </a>
+            
+              
+              <a class="source" href="sockets.html">
+                sockets.coffee
+              </a>
+            
+              
+              <a class="source" href="tutorial.html">
+                tutorial.coffee
+              </a>
+            
+              
+              <a class="source" href="vectors.html">
+                vectors.coffee
+              </a>
+            
+              
+              <a class="source" href="alertView.html">
+                alertView.coffee
+              </a>
+            
+              
+              <a class="source" href="auditDataManagerView.html">
+                auditDataManagerView.coffee
+              </a>
+            
+              
+              <a class="source" href="auditEventManagerView.html">
+                auditEventManagerView.coffee
+              </a>
+            
+              
+              <a class="source" href="baseView.html">
+                baseView.coffee
+              </a>
+            
+              
+              <a class="source" href="createMapView.html">
+                createMapView.coffee
+              </a>
+            
+              
+              <a class="source" href="entityManagerView.html">
+                entityManagerView.coffee
+              </a>
+            
+              
+              <a class="source" href="footerView.html">
+                footerView.coffee
+              </a>
+            
+              
+              <a class="source" href="helpView.html">
+                helpView.coffee
+              </a>
+            
+              
+              <a class="source" href="entitiesTabView.html">
+                entitiesTabView.coffee
+              </a>
+            
+              
+              <a class="source" href="inspectorTabView.html">
+                inspectorTabView.coffee
+              </a>
+            
+              
+              <a class="source" href="mapTabView.html">
+                mapTabView.coffee
+              </a>
+            
+              
+              <a class="source" href="shapeTabView.html">
+                shapeTabView.coffee
+              </a>
+            
+              
+              <a class="source" href="controlsView.html">
+                controlsView.coffee
+              </a>
+            
+              
+              <a class="source" href="labelEditView.html">
+                labelEditView.coffee
+              </a>
+            
+              
+              <a class="source" href="linkCreatorView.html">
+                linkCreatorView.coffee
+              </a>
+            
+              
+              <a class="source" href="linkLabelsView.html">
+                linkLabelsView.coffee
+              </a>
+            
+              
+              <a class="source" href="linkView.html">
+                linkView.coffee
+              </a>
+            
+              
+              <a class="source" href="shapeLabelsView.html">
+                shapeLabelsView.coffee
+              </a>
+            
+              
+              <a class="source" href="shapeView.html">
+                shapeView.coffee
+              </a>
+            
+              
+              <a class="source" href="shapesMoverView.html">
+                shapesMoverView.coffee
+              </a>
+            
+              
+              <a class="source" href="mapView.html">
+                mapView.coffee
+              </a>
+            
+              
+              <a class="source" href="menuView.html">
+                menuView.coffee
+              </a>
+            
+              
+              <a class="source" href="overlayView.html">
+                overlayView.coffee
+              </a>
+            
+              
+              <a class="source" href="scriptEditorView.html">
+                scriptEditorView.coffee
+              </a>
+            
+              
+              <a class="source" href="selfTestView.html">
+                selfTestView.coffee
+              </a>
+            
+              
+              <a class="source" href="settingsView.html">
+                settingsView.coffee
+              </a>
+            
+              
+              <a class="source" href="startView.html">
+                startView.coffee
+              </a>
+            
+          </div>
+        </li>
+      </ul>
+    
+    <ul class="sections">
+        
+          <li id="title">
+              <div class="annotation">
+                  <h1>base.coffee</h1>
+              </div>
+          </li>
+        
+        
+        
+        <li id="section-1">
+            <div class="annotation">
+              
+              <div class="pilwrap for-h2">
+                <a class="pilcrow" href="#section-1">&#182;</a>
+              </div>
+              <h2>BASE MODEL</h2>
+
+            </div>
+            
+        </li>
+        
+        
+        <li id="section-2">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-2">&#182;</a>
+              </div>
+              <p>This is the base abstract model for all models of the System App.</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre><span class="class"><span class="keyword">class</span> <span class="title">System</span>.<span class="title">BaseModel</span> <span class="keyword">extends</span> <span class="title">Backbone</span>.<span class="title">Model</span></span>
+
+    typeName: <span class="literal">null</span></pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-3">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-3">&#182;</a>
+              </div>
+              <p>When was it last saved?</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>    lastSave: <span class="keyword">new</span> Date(<span class="number">2000</span>, <span class="number">1</span>, <span class="number">1</span>)</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-4">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-4">&#182;</a>
+              </div>
+              <p>If model is syncing with server, property fetching will be true.</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>    fetching: <span class="literal">false</span></pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-5">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-5">&#182;</a>
+              </div>
+              <p>Used for delayed saving to the server, so user can change multiple
+properties of the model and it will send the changes to the server
+all at once after a few milliseconds.</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>    timerSave: <span class="literal">null</span></pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-6">
+            <div class="annotation">
+              
+              <div class="pilwrap for-h2">
+                <a class="pilcrow" href="#section-6">&#182;</a>
+              </div>
+              <h2>COMMON PROPERTIES</h2>
+
+            </div>
+            
+        </li>
+        
+        
+        <li id="section-7">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-7">&#182;</a>
+              </div>
+              <p>Get or set the model&#39;s active property.</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>    active: (value) =&gt;
+        <span class="keyword">if</span> value?
+            <span class="property">@set</span> <span class="string">"active"</span>, value
+        <span class="property">@get</span> <span class="string">"active"</span></pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-8">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-8">&#182;</a>
+              </div>
+              <p>Get or set the model&#39;s friendly ID (updateable by the user, and different from the fixed &quot;id&quot;).</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>    friendlyId: (value) =&gt;
+        <span class="keyword">if</span> value?
+            <span class="property">@set</span> <span class="string">"friendlyId"</span>, value
+
+        result = <span class="property">@get</span> <span class="string">"friendlyId"</span>
+
+        <span class="keyword">if</span> <span class="keyword">not</span> result? <span class="keyword">or</span> result <span class="keyword">is</span> <span class="string">""</span>
+            result = System.App.DataUtil.normalize(<span class="property">@get</span>(<span class="string">"name"</span>), <span class="literal">true</span>)
+            result = System.App.DataUtil.normalize(<span class="property">@get</span>(<span class="string">"title"</span>), <span class="literal">true</span>) <span class="keyword">if</span> <span class="keyword">not</span> result? <span class="keyword">or</span> result <span class="keyword">is</span> <span class="string">""</span>
+            result = System.App.DataUtil.normalize(<span class="property">@get</span>(<span class="string">"id"</span>), <span class="literal">true</span>) <span class="keyword">if</span> <span class="keyword">not</span> result? <span class="keyword">or</span> result <span class="keyword">is</span> <span class="string">""</span>
+            <span class="property">@set</span> <span class="string">"friendlyId"</span>, result
+
+        <span class="keyword">return</span> result</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-9">
+            <div class="annotation">
+              
+              <div class="pilwrap for-h2">
+                <a class="pilcrow" href="#section-9">&#182;</a>
+              </div>
+              <h2>ID AND URL HELPERS</h2>
+
+            </div>
+            
+        </li>
+        
+        
+        <li id="section-10">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-10">&#182;</a>
+              </div>
+              <p>Set a new entity ID, based on current date and an extra 2 random characters.</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>    generateId: =&gt;
+        chars = <span class="string">"0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz"</span>
+        today = <span class="keyword">new</span> Date()
+        result = today.valueOf().toString <span class="number">16</span>
+        result += chars.substr Math.floor(Math.random() * chars.length), <span class="number">1</span>
+        result += chars.substr Math.floor(Math.random() * chars.length), <span class="number">1</span>
+
+        <span class="property">@set</span> <span class="string">"id"</span>, result
+
+        <span class="keyword">return</span> result</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-11">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-11">&#182;</a>
+              </div>
+              <p>Return the model&#39;s ID to be used on the local storage.</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>    localId: =&gt;
+        result = <span class="property">@typeName</span>
+        result += <span class="property">@id</span> <span class="keyword">if</span> <span class="property">@id</span>?
+        <span class="keyword">return</span> result</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-12">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-12">&#182;</a>
+              </div>
+              <p>The URL to call when syncing with server. If the model&#39;s ID is set, then
+append it to the end of the URL.</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>    url: =&gt;
+        t = System.App.Settings.General.baseJsonUrl + <span class="property">@typeName</span>.toLowerCase()
+
+        <span class="keyword">if</span> <span class="property">@id</span>? <span class="keyword">and</span> <span class="property">@id</span> <span class="keyword">isnt</span> <span class="string">""</span>
+            <span class="keyword">return</span> t + <span class="string">"/"</span> + <span class="property">@id</span>
+
+        <span class="keyword">return</span> t</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-13">
+            <div class="annotation">
+              
+              <div class="pilwrap for-h2">
+                <a class="pilcrow" href="#section-13">&#182;</a>
+              </div>
+              <h2>PARSE AND TOJSON</h2>
+
+            </div>
+            
+        </li>
+        
+        
+        <li id="section-14">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-14">&#182;</a>
+              </div>
+              <p>Initialize the model, make sure its nested models and collections are created.</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>    initialize: =&gt;
+        <span class="keyword">return</span> <span class="keyword">if</span> <span class="keyword">not</span> <span class="property">@relations</span>?
+
+        <span class="keyword">for</span> key <span class="keyword">of</span> <span class="property">@relations</span>
+            <span class="keyword">if</span> <span class="keyword">not</span> <span class="property">@attributes</span>[key]?.typeName?
+                <span class="property">@attributes</span>[key] = <span class="keyword">new</span> <span class="property">@relations</span>[key](<span class="property">@attributes</span>[key])
+                <span class="property">@attributes</span>[key].parentModel = <span class="keyword">this</span></pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-15">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-15">&#182;</a>
+              </div>
+              <p>If model has <code>relations</code> set, transform the data to proper models or collections.</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>    parse: (response) =&gt;
+        <span class="keyword">if</span> <span class="keyword">not</span> <span class="property">@relations</span>?
+            <span class="keyword">return</span> response
+
+        <span class="keyword">for</span> key <span class="keyword">of</span> <span class="property">@relations</span>
+            current = <span class="property">@get</span> key
+            responseValue = response[key]</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-16">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-16">&#182;</a>
+              </div>
+              <p>Make sure value is valid JSON and not a string. Remove last <code>;</code> if there&#39;s one.
+Alert if the response can&#39;t be parsed.</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>            <span class="keyword">if</span> <span class="keyword">typeof</span> responseValue <span class="keyword">is</span> <span class="string">"string"</span>
+                <span class="keyword">try</span>
+                    <span class="keyword">if</span> responseValue.substring(responseValue.length - <span class="number">1</span>) <span class="keyword">is</span> <span class="string">";"</span>
+                        responseValue = responseValue.substring(<span class="number">0</span>, responseValue.length - <span class="number">1</span>)
+                    responseValue = JSON.parse responseValue
+                <span class="keyword">catch</span> ex
+                    console.warn <span class="property">@typeName</span> + <span class="string">".parse"</span>, responseValue, ex</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-17">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-17">&#182;</a>
+              </div>
+              <p>If the current attribute is already &quot;set&quot; to the defined model / collection,
+then update its value. Otherwise create a new model / collection.</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>            <span class="keyword">if</span> current?.typeName?
+                <span class="keyword">if</span> current.update?
+                    current.update responseValue
+                <span class="keyword">else</span>
+                    current.set responseValue
+                response[key] = current
+            <span class="keyword">else</span>
+                response[key] = <span class="keyword">new</span> <span class="property">@relations</span>[key](responseValue)
+                response[key].parentModel = <span class="keyword">this</span>
+
+        <span class="keyword">return</span> response</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-18">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-18">&#182;</a>
+              </div>
+              <p>If model has <code>relations</code> set, transform sub models and collections to JSON.</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>    toJSON: =&gt;
+        result = _.clone <span class="property">@attributes</span>
+
+        <span class="keyword">if</span> <span class="property">@relations</span>?
+            <span class="keyword">for</span> key <span class="keyword">of</span> <span class="property">@relations</span>
+                result[key] = result[key].toJSON() <span class="keyword">if</span> result[key]?
+
+        <span class="keyword">return</span> result</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-19">
+            <div class="annotation">
+              
+              <div class="pilwrap for-h2">
+                <a class="pilcrow" href="#section-19">&#182;</a>
+              </div>
+              <h2>FETCH DATA</h2>
+
+            </div>
+            
+        </li>
+        
+        
+        <li id="section-20">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-20">&#182;</a>
+              </div>
+              <p>Override backbone&#39;s <code>fetch</code>. Set <code>fetching</code> to true before
+fetching new data from server, and cancel fetching if collection
+is being fetched already.</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>    fetch: (options) =&gt;
+        <span class="keyword">return</span> <span class="keyword">if</span> <span class="property">@fetching</span>
+        <span class="property">@fetching</span> = <span class="literal">true</span>
+
+        options = {} <span class="keyword">if</span> <span class="keyword">not</span> options?</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-21">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-21">&#182;</a>
+              </div>
+              <p>Override <code>success</code> and <code>error</code>. If these callbacks are passed, they&#39;ll be handled
+later inside <code>fetchSuccess</code> and <code>fetchError</code>.</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>        options.successCallback = options.success
+        options.success = <span class="property">@fetchSuccess</span>
+        options.errorCallback = options.error
+        options.error = <span class="property">@fetchError</span>
+
+        Backbone.Model.prototype.fetch.call <span class="keyword">this</span>, options</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-22">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-22">&#182;</a>
+              </div>
+              <p>Fetch data from local storage, using jquery.localData plugin.</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>    fetchLocal: =&gt;
+        <span class="keyword">return</span> <span class="keyword">if</span> <span class="property">@fetching</span>
+        <span class="property">@fetching</span> = <span class="literal">true</span>
+
+        localObj = $.localData.get <span class="property">@localId</span>()
+
+        <span class="keyword">if</span> localObj?
+            <span class="property">@set</span> <span class="property">@parse</span> localObj
+
+        <span class="property">@fetching</span> = <span class="literal">false</span></pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-23">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-23">&#182;</a>
+              </div>
+              <p>When <code>fetch</code> is successful, set <code>fetching</code> to false.</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>    fetchSuccess: (model, resp, options) =&gt;
+        <span class="property">@fetching</span> = <span class="literal">false</span>
+
+        options.successCallback? model, resp, options
+        System.App.consoleLog <span class="property">@typeName</span> + <span class="string">".fetch"</span>, <span class="string">"Success "</span> + <span class="property">@id</span>, resp</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-24">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-24">&#182;</a>
+              </div>
+              <p>When <code>fetch</code> has problems or throws an error, set <code>fetching</code> to false
+and log to the console if debugging is enabled.</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>    fetchError: (model, xhr, options) =&gt;
+        <span class="property">@fetching</span> = <span class="literal">false</span>
+
+        options.errorCallback? model, xhr, options
+        System.App.consoleLog <span class="property">@typeName</span> + <span class="string">".fetch"</span>, <span class="string">"Error "</span> + <span class="property">@id</span>, xhr</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-25">
+            <div class="annotation">
+              
+              <div class="pilwrap for-h2">
+                <a class="pilcrow" href="#section-25">&#182;</a>
+              </div>
+              <h2>SAVING DATA</h2>
+
+            </div>
+            
+        </li>
+        
+        
+        <li id="section-26">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-26">&#182;</a>
+              </div>
+              <p>Save model data. Try saving remotely, and if it fails, save a copy
+on the local storage. Avoid saving to the server multiple times
+in a row by using a timer to delay the remote save call.
+Cancel the save is the model is currently being refreshed.</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>    save: (key, val, options) =&gt;
+        <span class="keyword">return</span> <span class="keyword">if</span> <span class="property">@fetching</span></pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-27">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-27">&#182;</a>
+              </div>
+              <p>We&#39;re not using <code>key</code> and <code>val</code> but Backbone uses it internally.
+Just make sure <code>options</code> is properly set.</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>        options = val <span class="keyword">if</span> <span class="keyword">not</span> options?
+        options = key <span class="keyword">if</span> <span class="keyword">not</span> options?
+
+        <span class="keyword">if</span> <span class="property">@timerSave</span>?
+            clearTimeout <span class="property">@timerSave</span>
+            <span class="property">@timerSave</span> = <span class="literal">null</span>
+
+        callback = () =&gt; <span class="property">@saveRemote</span> options
+        <span class="property">@timerSave</span> = setTimeout callback, System.App.Settings.General.saveInterval</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-28">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-28">&#182;</a>
+              </div>
+              <p>Save model data to the local storage using jquery.localData plugin.</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>    saveLocal: =&gt;
+        $.localData.set <span class="property">@localId</span>(), <span class="property">@toJSON</span>()</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-29">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-29">&#182;</a>
+              </div>
+              <p>Save model data to the remote server (Node / MongoDB).
+If no options are passed, created one, and set the
+<code>success</code> and <code>error</code> callbacks.</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>    saveRemote: (options) =&gt;
+        <span class="property">@timerSave</span> = <span class="literal">null</span>
+
+        options = {} <span class="keyword">if</span> <span class="keyword">not</span> options?
+        options.patch = System.App.Settings.General.savePatch</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-30">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-30">&#182;</a>
+              </div>
+              <p>Override <code>success</code> and <code>error</code>. If these callbacks are passed, they&#39;ll be handled
+later inside <code>saveSuccess</code> and <code>saveError</code>.</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>        options.successCallback = options.success
+        options.success = <span class="property">@saveSuccess</span>
+        options.errorCallback = options.error
+        options.error = <span class="property">@saveError</span></pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-31">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-31">&#182;</a>
+              </div>
+              <p>If <code>options.patch</code> is set, then send only updated data to the server.</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>        <span class="keyword">if</span> options.patch <span class="keyword">and</span> <span class="keyword">not</span> <span class="property">@isNew</span>()
+
+            attrs = <span class="property">@changed</span></pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-32">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-32">&#182;</a>
+              </div>
+              <p>Make sure changed attributes inside nested collections are passed along.
+Important: this will only work for first level nesting!!!</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>            <span class="keyword">if</span> <span class="property">@relations</span>?
+                <span class="keyword">for</span> key <span class="keyword">of</span> <span class="property">@relations</span></pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-33">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-33">&#182;</a>
+              </div>
+              <p>Get value of related model or collection.</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>                    propValue = <span class="property">@get</span> key</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-34">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-34">&#182;</a>
+              </div>
+              <p>Has it a <code>changedModels</code> property?</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>                    <span class="keyword">if</span> propValue.changedModels
+                        changedModels = propValue.changedModels()</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-35">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-35">&#182;</a>
+              </div>
+              <p>Has changed models? If so, append to the <code>attrs</code>.</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>                        <span class="keyword">if</span> changedModels.length &gt; <span class="number">0</span>
+                            attrs[key] = propValue.changedModels()</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-36">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-36">&#182;</a>
+              </div>
+              <p>No patch, so send everything.</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>        <span class="keyword">else</span>
+            attrs = {}
+
+        Backbone.Model.prototype.save.call <span class="keyword">this</span>, attrs, options</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-37">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-37">&#182;</a>
+              </div>
+              <p>Callback when the <code>save</code> is completed successfully. This will clear the local
+storage data for this model, if there&#39;s one.</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>    saveSuccess: (model, resp, options) =&gt;
+        <span class="property">@lastSave</span> = <span class="keyword">new</span> Date()
+        <span class="property">@deleteLocal</span>()
+
+        options.successCallback? model, resp, options
+        System.App.consoleLog <span class="property">@typeName</span> + <span class="string">".save"</span>, <span class="string">"Success "</span> + <span class="property">@id</span>, resp</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-38">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-38">&#182;</a>
+              </div>
+              <p>Callback when the <code>save</code> is not completed successfully or had an error.</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>    saveError: (model, xhr, options) =&gt;
+        <span class="property">@saveLocal</span>()
+
+        options.errorCallback? model, xhr, options
+        System.App.consoleLog <span class="property">@typeName</span> + <span class="string">".save"</span>, <span class="string">"Error "</span> + <span class="property">@id</span>, xhr</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-39">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-39">&#182;</a>
+              </div>
+              <p>Delete model data from local storage.</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>    deleteLocal: =&gt;
+        $.localData.del <span class="property">@localId</span>()</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-40">
+            <div class="annotation">
+              
+              <div class="pilwrap for-h2">
+                <a class="pilcrow" href="#section-40">&#182;</a>
+              </div>
+              <h2>NO SYNCING METHODS</h2>
+
+            </div>
+            
+        </li>
+        
+        
+        <li id="section-41">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-41">&#182;</a>
+              </div>
+              <p>To override the &quot;save&quot; method whenever we don&#39;t need to sync
+the model with the server.</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>    noSyncSave: =&gt;
+        <span class="property">@generateId</span>() <span class="keyword">if</span> <span class="keyword">not</span> <span class="property">@id</span>? <span class="keyword">or</span> <span class="property">@id</span> <span class="keyword">is</span> <span class="string">""</span></pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-42">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-42">&#182;</a>
+              </div>
+              <p>To override the &quot;destroy&quot; method whenever we need to trigger the destroy
+without syncing anything with the server.</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>    noSyncDestroy: (options) =&gt;
+        <span class="property">@trigger</span> <span class="string">"destroy"</span>, <span class="keyword">this</span>, <span class="property">@collection</span>, options</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-43">
+            <div class="annotation">
+              
+              <div class="pilwrap for-h2">
+                <a class="pilcrow" href="#section-43">&#182;</a>
+              </div>
+              <h2>BASE COLLECTION</h2>
+
+            </div>
+            
+        </li>
+        
+        
+        <li id="section-44">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-44">&#182;</a>
+              </div>
+              <p>This is the base abstract collection for all collections of the System App.</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre><span class="class"><span class="keyword">class</span> <span class="title">System</span>.<span class="title">BaseCollection</span> <span class="keyword">extends</span> <span class="title">Backbone</span>.<span class="title">Collection</span></span>
+
+    typeName: <span class="literal">null</span></pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-45">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-45">&#182;</a>
+              </div>
+              <p>When was it last saved?</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>    lastSave: <span class="keyword">new</span> Date(<span class="number">2000</span>, <span class="number">1</span>, <span class="number">1</span>)</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-46">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-46">&#182;</a>
+              </div>
+              <p>If collection is syncing with server, property fetching will be true.
+Used to delay binding data to views while still loading.</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>    fetching: <span class="literal">false</span></pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-47">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-47">&#182;</a>
+              </div>
+              <p>Temporary function to be executed whenever <code>fetch</code> is finished.
+The callback must be in the format (err, results), whereas <code>err</code> contains
+errors and problems (if any!) and <code>results</code> the final result.
+IMPORTANT: this property will always cleared after called!!!</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>    onFetchCallback: <span class="literal">null</span></pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-48">
+            <div class="annotation">
+              
+              <div class="pilwrap for-h2">
+                <a class="pilcrow" href="#section-48">&#182;</a>
+              </div>
+              <h2>ID HELPERS</h2>
+
+            </div>
+            
+        </li>
+        
+        
+        <li id="section-49">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-49">&#182;</a>
+              </div>
+              <p>Return the collection&#39;s ID to be used on the local storage.</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>    localId: =&gt;
+        result = <span class="property">@typeName</span>
+        result += <span class="property">@id</span> <span class="keyword">if</span> <span class="property">@id</span>?
+        result</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-50">
+            <div class="annotation">
+              
+              <div class="pilwrap for-h2">
+                <a class="pilcrow" href="#section-50">&#182;</a>
+              </div>
+              <h2>FETCH DATA</h2>
+
+            </div>
+            
+        </li>
+        
+        
+        <li id="section-51">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-51">&#182;</a>
+              </div>
+              <p>Override backbone&#39;s <code>fetch</code>. Set <code>fetching</code> to true before
+fetching new data from server, and cancel fetching if collection
+is being fetched already.</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>    fetch: (options) =&gt;
+        <span class="keyword">return</span> <span class="keyword">if</span> <span class="property">@fetching</span>
+        <span class="property">@fetching</span> = <span class="literal">true</span></pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-52">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-52">&#182;</a>
+              </div>
+              <p>If no options are passed then create one, and set the
+<code>success</code> and <code>error</code> callbacks.</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>        options = {} <span class="keyword">if</span> <span class="keyword">not</span> options?
+        options.success = <span class="property">@fetchSuccess</span>
+        options.error = <span class="property">@fetchError</span>
+
+        Backbone.Collection.prototype.fetch.call <span class="keyword">this</span>, options</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-53">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-53">&#182;</a>
+              </div>
+              <p>Fetch data from local storage, using jquery.localData plugin.</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>    fetchLocal: =&gt;
+        <span class="keyword">return</span> <span class="keyword">if</span> <span class="property">@fetching</span>
+        <span class="property">@fetching</span> = <span class="literal">true</span>
+
+        localObj = $.localData.get <span class="property">@localId</span>()
+
+        <span class="keyword">if</span> localObj?
+            <span class="property">@reset</span> localObj
+
+        <span class="property">@fetching</span> = <span class="literal">false</span></pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-54">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-54">&#182;</a>
+              </div>
+              <p>When <code>fetch</code> is successful, set <code>fetching</code> to false.</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>    fetchSuccess: =&gt;
+        <span class="property">@fetching</span> = <span class="literal">false</span></pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-55">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-55">&#182;</a>
+              </div>
+              <p>If <code>onFetchCallback</code> is defined, call and set it back to null.</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>        <span class="keyword">if</span> <span class="property">@onFetchCallback</span>?
+            <span class="property">@onFetchCallback</span> <span class="literal">null</span>, <span class="literal">true</span>
+            <span class="property">@onFetchCallback</span> = <span class="literal">null</span></pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-56">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-56">&#182;</a>
+              </div>
+              <p>When <code>fetch</code> has problems or throws an error, set <code>fetching</code> to false
+and log to the console if debugging is enabled.</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>    fetchError: =&gt;
+        <span class="property">@fetching</span> = <span class="literal">false</span></pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-57">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-57">&#182;</a>
+              </div>
+              <p>If <code>onFetchCallback</code> is defined, call and set it back to null.</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>        <span class="keyword">if</span> <span class="property">@onFetchCallback</span>?
+            <span class="property">@onFetchCallback</span> <span class="string">"Could not load from remote server."</span>, <span class="literal">null</span>
+            <span class="property">@onFetchCallback</span> = <span class="literal">null</span>
+
+        System.App.consoleLog <span class="property">@typeName</span> + <span class="string">".fetch"</span>, <span class="string">"Fetch ERROR: "</span> + <span class="property">@id</span>, arguments</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-58">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-58">&#182;</a>
+              </div>
+              <p>Delete collection data from local storage.</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>    deleteLocal: =&gt;
+        $.localData.del <span class="property">@localId</span>()</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-59">
+            <div class="annotation">
+              
+              <div class="pilwrap for-h2">
+                <a class="pilcrow" href="#section-59">&#182;</a>
+              </div>
+              <h2>CLEAR DATA</h2>
+
+            </div>
+            
+        </li>
+        
+        
+        <li id="section-60">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-60">&#182;</a>
+              </div>
+              <p>Clear all models by calling each model&#39;s destroy method,
+and save the parent model if there&#39;s one.</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>    clear: =&gt;
+        _.each <span class="property">@models</span>, (item) -&gt; item.destroy() <span class="keyword">if</span> item?
+        <span class="property">@parentModel</span>.save() <span class="keyword">if</span> <span class="property">@parentModel</span>?</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-61">
+            <div class="annotation">
+              
+              <div class="pilwrap for-h2">
+                <a class="pilcrow" href="#section-61">&#182;</a>
+              </div>
+              <h2>NO SYNCING METHODS</h2>
+
+            </div>
+            
+        </li>
+        
+        
+        <li id="section-62">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-62">&#182;</a>
+              </div>
+              <p>To override the default &quot;create&quot; method whenever we don&#39;t need to sync
+the collection models directly with the server.</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>    noSyncCreate: (model, options) =&gt;
+        options = (<span class="keyword">if</span> options <span class="keyword">then</span> _.clone(options) <span class="keyword">else</span> {})
+
+        model = <span class="property">@_prepareModel</span>(model, options)
+        <span class="keyword">return</span> <span class="literal">false</span> <span class="keyword">if</span> <span class="keyword">not</span> model? <span class="keyword">or</span> model <span class="keyword">is</span> <span class="literal">false</span>
+        model.generateId() <span class="keyword">if</span> <span class="keyword">not</span> model.id? <span class="keyword">or</span> model.id <span class="keyword">is</span> <span class="string">""</span></pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-63">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-63">&#182;</a>
+              </div>
+              <p>Add the model without calling save afterwards.</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>        <span class="property">@add</span> model, options
+
+        <span class="keyword">return</span> model</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-64">
+            <div class="annotation">
+              
+              <div class="pilwrap for-h2">
+                <a class="pilcrow" href="#section-64">&#182;</a>
+              </div>
+              <h2>EXTRA HELPERS</h2>
+
+            </div>
+            
+        </li>
+        
+        
+        <li id="section-65">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-65">&#182;</a>
+              </div>
+              <p>Return an array containing all models which were changed since last sync.</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>    changedModels: =&gt;
+        result = []
+        <span class="keyword">for</span> m <span class="keyword">in</span> <span class="property">@models</span>
+            <span class="keyword">if</span> m.hasChanged()
+                result.push m
+        <span class="keyword">return</span> result</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-66">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-66">&#182;</a>
+              </div>
+              <p>Get a specific model by its friendlyId. If no item is found, return null.</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>    getByFriendlyId: (value) =&gt;
+        result = <span class="property">@where</span> {friendlyId: value}
+
+        <span class="keyword">if</span> result.length &gt; <span class="number">0</span>
+            <span class="keyword">return</span> result[<span class="number">0</span>]
+        <span class="keyword">else</span>
+            <span class="keyword">return</span> <span class="literal">null</span></pre></div></div>
+            
+        </li>
+        
+    </ul>
+  </div>
+</body>
+</html>

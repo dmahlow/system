@@ -1,0 +1,1379 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+  <title>routes.coffee</title>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <meta name="viewport" content="width=device-width, target-densitydpi=160dpi, initial-scale=1.0; maximum-scale=1.0; user-scalable=0;">
+  <link rel="stylesheet" media="all" href="docco.css" />
+</head>
+<body>
+  <div id="container">
+    <div id="background"></div>
+    
+      <ul id="jump_to">
+        <li>
+          <a class="large" href="javascript:void(0);">Jump To &hellip;</a>
+          <a class="small" href="javascript:void(0);">+</a>
+          <div id="jump_wrapper">
+          <div id="jump_page">
+            
+              
+              <a class="source" href="configure.html">
+                configure.coffee
+              </a>
+            
+              
+              <a class="source" href="database.html">
+                database.coffee
+              </a>
+            
+              
+              <a class="source" href="imaging.html">
+                imaging.coffee
+              </a>
+            
+              
+              <a class="source" href="logger.html">
+                logger.coffee
+              </a>
+            
+              
+              <a class="source" href="manager.html">
+                manager.coffee
+              </a>
+            
+              
+              <a class="source" href="routes.html">
+                routes.coffee
+              </a>
+            
+              
+              <a class="source" href="settings.base.html">
+                settings.base.coffee
+              </a>
+            
+              
+              <a class="source" href="settings.html">
+                settings.coffee
+              </a>
+            
+              
+              <a class="source" href="settings.default.html">
+                settings.default.coffee
+              </a>
+            
+              
+              <a class="source" href="sockets.html">
+                sockets.coffee
+              </a>
+            
+              
+              <a class="source" href="sync.html">
+                sync.coffee
+              </a>
+            
+          </div>
+        </li>
+      </ul>
+    
+    <ul class="sections">
+        
+          <li id="title">
+              <div class="annotation">
+                  <h1>routes.coffee</h1>
+              </div>
+          </li>
+        
+        
+        
+        <li id="section-1">
+            <div class="annotation">
+              
+              <div class="pilwrap for-h2">
+                <a class="pilcrow" href="#section-1">&#182;</a>
+              </div>
+              <h2>SERVER ROUTES</h2>
+
+            </div>
+            
+        </li>
+        
+        
+        <li id="section-2">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-2">&#182;</a>
+              </div>
+              <p>Define server routes.</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>module.<span class="function"><span class="title">exports</span></span> = (app) -&gt;</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-3">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-3">&#182;</a>
+              </div>
+              <p>Define the settings, database and sync objects.</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>    logger = require <span class="string">"./logger.coffee"</span>
+    database = require <span class="string">"./database.coffee"</span>
+    imaging = require <span class="string">"./imaging.coffee"</span>
+    manager = require <span class="string">"./manager.coffee"</span>
+    settings = require <span class="string">"./settings.coffee"</span>
+    sockets = require <span class="string">"./sockets.coffee"</span>
+    sync = require <span class="string">"./sync.coffee"</span></pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-4">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-4">&#182;</a>
+              </div>
+              <p>Define the file system and package.json.</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>    fs = require <span class="string">"fs"</span>
+    packageJson = require <span class="string">"./../package.json"</span></pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-5">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-5">&#182;</a>
+              </div>
+              <p>When was the package.json last modified?</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>    lastModified = <span class="literal">null</span></pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-6">
+            <div class="annotation">
+              
+              <div class="pilwrap for-h2">
+                <a class="pilcrow" href="#section-6">&#182;</a>
+              </div>
+              <h2>MAIN ROUTES</h2>
+
+            </div>
+            
+        </li>
+        
+        
+        <li id="section-7">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-7">&#182;</a>
+              </div>
+              <p>The main index page.</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>    <span class="function"><span class="title">getIndex</span></span> = (req, res) -&gt;
+        host = req.headers[<span class="string">"host"</span>]</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-8">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-8">&#182;</a>
+              </div>
+              <p>Check the last modified date.</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>        lastModified = fs.statSync(<span class="string">"./package.json"</span>).mtime <span class="keyword">if</span> <span class="keyword">not</span> lastModified?
+
+        options =
+            title: settings.General.appTitle,
+            port: settings.Web.port,
+            version: packageJson.version,
+            lastModified: lastModified
+
+        res.render <span class="string">"index"</span>, options</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-9">
+            <div class="annotation">
+              
+              <div class="pilwrap for-h2">
+                <a class="pilcrow" href="#section-9">&#182;</a>
+              </div>
+              <h2>ENTITIES</h2>
+
+            </div>
+            
+        </li>
+        
+        
+        <li id="section-10">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-10">&#182;</a>
+              </div>
+              <p>Get a single or a collection of <a href="entityDefinition.html">Entity Definitions</a>.</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>    <span class="function"><span class="title">getEntityDefinition</span></span> = (req, res) -&gt;
+        database.getEntityDefinition getIdFromRequest(req), (err, result) -&gt;
+            <span class="keyword">if</span> result? <span class="keyword">and</span> <span class="keyword">not</span> err?
+                res.send minifyJson result
+            <span class="keyword">else</span>
+                sendErrorResponse res, <span class="string">"Entity GET"</span>, err</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-11">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-11">&#182;</a>
+              </div>
+              <p>Add or update an <a href="entityDefinition.html">Entity Definition</a>.</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>    <span class="function"><span class="title">postEntityDefinition</span></span> = (req, res) -&gt;
+        database.setEntityDefinition getDocumentFromBody(req), <span class="literal">null</span>, (err, result) -&gt;
+            <span class="keyword">if</span> result? <span class="keyword">and</span> <span class="keyword">not</span> err?
+                res.send minifyJson result
+            <span class="keyword">else</span>
+                sendErrorResponse res, <span class="string">"Entity POST"</span>, err</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-12">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-12">&#182;</a>
+              </div>
+              <p>Patch only the specified properties of an <a href="entityDefinition.html">Entity Definition</a>.</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>    <span class="function"><span class="title">patchEntityDefinition</span></span> = (req, reslo) -&gt;
+        database.setEntityDefinition getDocumentFromBody(req), {patch: <span class="literal">true</span>}, (err, result) -&gt;
+            <span class="keyword">if</span> result? <span class="keyword">and</span> <span class="keyword">not</span> err?
+                res.send minifyJson result
+            <span class="keyword">else</span>
+                sendErrorResponse res, <span class="string">"Entity PATCH"</span>, err</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-13">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-13">&#182;</a>
+              </div>
+              <p>Delete an <a href="entityDefinition.html">Entity Definition</a>.</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>    <span class="function"><span class="title">deleteEntityDefinition</span></span> = (req, res) -&gt;
+        database.deleteEntityDefinition getIdFromRequest(req), (err, result) -&gt;
+            <span class="keyword">if</span> <span class="keyword">not</span> err?
+                res.send <span class="string">""</span>
+            <span class="keyword">else</span>
+                sendErrorResponse res, <span class="string">"Entity DELETE"</span>, err</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-14">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-14">&#182;</a>
+              </div>
+              <p>Get the data for the specified <a href="entityDefinition.html">Entity Definition</a>.
+This effectively returns the <a href="entityObject.html">Entity Objects Collection</a>
+related to the definition.</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>    <span class="function"><span class="title">getEntityObject</span></span> = (req, res) -&gt;
+        friendlyId = getIdFromRequest(req)
+        database.getEntityDefinition {friendlyId: friendlyId}, (err, result) -&gt;
+            <span class="keyword">if</span> result? <span class="keyword">and</span> <span class="keyword">not</span> err?
+                filename = <span class="string">"entity.<span class="subst">#{friendlyId}</span>.json"</span></pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-15">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-15">&#182;</a>
+              </div>
+              <p>Results is an array! If it has no models, then the
+specified <code>friendlyId</code> wasn&#39;t found in the database.</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>                <span class="keyword">if</span> result.length &lt; <span class="number">1</span>
+                    sendErrorResponse res, <span class="string">"EntityObject GET - could not find entity definition ID "</span> + friendlyId
+                    <span class="keyword">return</span>
+
+                result = result[<span class="number">0</span>]</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-16">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-16">&#182;</a>
+              </div>
+              <p>Got the entity definition, now download from its SourceUrl.</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>                sync.download result.sourceUrl, app.downloadsDir + filename, (errorMessage, localFile) -&gt;
+                    <span class="keyword">if</span> errorMessage?
+                        sendErrorResponse res, <span class="string">"EntityObject GET - download failed: "</span> + localFile, errorMessage
+                    <span class="keyword">else</span>
+                        fs.readFile localFile, (fileError, fileData) -&gt;
+                            <span class="keyword">if</span> fileError?
+                                sendErrorResponse res, <span class="string">"EntityObject GET - downloaded, but read failed: "</span> + localFile, fileError
+                            <span class="keyword">else</span>
+                                data = fileData.toString()
+                                result.data = database.cleanObjectForInsertion data
+                                database.setEntityDefinition result, {patch: <span class="literal">true</span>}
+                                res.send data</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-17">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-17">&#182;</a>
+              </div>
+              <p>If we can&#39;t find the matching entity definition, return an error.</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>            <span class="keyword">else</span>
+                sendErrorResponse res, <span class="string">"Entity Data GET"</span>, err</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-18">
+            <div class="annotation">
+              
+              <div class="pilwrap for-h2">
+                <a class="pilcrow" href="#section-18">&#182;</a>
+              </div>
+              <h2>AUDIT DATA</h2>
+
+            </div>
+            
+        </li>
+        
+        
+        <li id="section-19">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-19">&#182;</a>
+              </div>
+              <p>Get all <a href="auditData.html">AuditData</a>.</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>    <span class="function"><span class="title">getAuditData</span></span> = (req, res) -&gt;
+        database.getAuditData getIdFromRequest(req), (err, result) -&gt;
+            <span class="keyword">if</span> result? <span class="keyword">and</span> <span class="keyword">not</span> err?
+                res.send minifyJson result
+            <span class="keyword">else</span>
+                sendErrorResponse res, <span class="string">"Audit Data GET"</span>, err</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-20">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-20">&#182;</a>
+              </div>
+              <p>Add or update an <a href="auditData.html">AuditData</a>.</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>    <span class="function"><span class="title">postAuditData</span></span> = (req, res) -&gt;
+        database.setAuditData getDocumentFromBody(req), <span class="literal">null</span>, (err, result) -&gt;
+            <span class="keyword">if</span> result? <span class="keyword">and</span> <span class="keyword">not</span> err?
+                res.send minifyJson result
+            <span class="keyword">else</span>
+                sendErrorResponse res, <span class="string">"Audit Data POST"</span>, err</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-21">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-21">&#182;</a>
+              </div>
+              <p>Patch only the specified properties of an <a href="auditData.html">AuditData</a>.</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>    <span class="function"><span class="title">patchAuditData</span></span> = (req, res) -&gt;
+        database.setAuditData getDocumentFromBody(req), {patch: <span class="literal">true</span>}, (err, result) -&gt;
+            <span class="keyword">if</span> result? <span class="keyword">and</span> <span class="keyword">not</span> err?
+                res.send minifyJson result
+            <span class="keyword">else</span>
+                sendErrorResponse res, <span class="string">"Audit Data PATCH"</span>, err</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-22">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-22">&#182;</a>
+              </div>
+              <p>Delete an <a href="auditData.html">AuditData</a>.</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>    <span class="function"><span class="title">deleteAuditData</span></span> = (req, res) -&gt;
+        database.deleteAuditData getIdFromRequest(req), (err, result) -&gt;
+            <span class="keyword">if</span> <span class="keyword">not</span> err?
+                res.send <span class="string">""</span>
+                manager.initAuditDataTimers()
+            <span class="keyword">else</span>
+                sendErrorResponse res, <span class="string">"Audit Data DELETE"</span>, err</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-23">
+            <div class="annotation">
+              
+              <div class="pilwrap for-h2">
+                <a class="pilcrow" href="#section-23">&#182;</a>
+              </div>
+              <h2>AUDIT EVENTS</h2>
+
+            </div>
+            
+        </li>
+        
+        
+        <li id="section-24">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-24">&#182;</a>
+              </div>
+              <p>Get a single or a collection of <a href="auditEvent.html">Audit Events</a>.</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>    <span class="function"><span class="title">getAuditEvent</span></span> = (req, res) -&gt;
+        database.getAuditEvent getIdFromRequest(req), (err, result) -&gt;
+            <span class="keyword">if</span> result? <span class="keyword">and</span> <span class="keyword">not</span> err?
+                res.send minifyJson result
+            <span class="keyword">else</span>
+                sendErrorResponse res, <span class="string">"Audit Event GET"</span>, err</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-25">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-25">&#182;</a>
+              </div>
+              <p>Add or update an <a href="auditEvent.html">AuditEvent</a>.</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>    <span class="function"><span class="title">postAuditEvent</span></span> = (req, res) -&gt;
+        database.setAuditEvent getDocumentFromBody(req), <span class="literal">null</span>, (err, result) -&gt;
+            <span class="keyword">if</span> result? <span class="keyword">and</span> <span class="keyword">not</span> err?
+                res.send minifyJson result
+            <span class="keyword">else</span>
+                sendErrorResponse res, <span class="string">"Audit Event POST"</span>, err</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-26">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-26">&#182;</a>
+              </div>
+              <p>Patch only the specified properties of an <a href="auditEvent.html">AuditEvent</a>.</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>    <span class="function"><span class="title">patchAuditEvent</span></span> = (req, res) -&gt;
+        database.setAuditEvent getDocumentFromBody(req), {patch: <span class="literal">true</span>}, (err, result) -&gt;
+            <span class="keyword">if</span> result? <span class="keyword">and</span> <span class="keyword">not</span> err?
+                res.send minifyJson result
+            <span class="keyword">else</span>
+                sendErrorResponse res, <span class="string">"Audit Event PATCH"</span>, err</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-27">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-27">&#182;</a>
+              </div>
+              <p>Delete an <a href="auditEvent.html">AuditEvent</a>.</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>    <span class="function"><span class="title">deleteAuditEvent</span></span> = (req, res) -&gt;
+        database.deleteAuditEvent getIdFromRequest(req), (err, result) -&gt;
+            <span class="keyword">if</span> <span class="keyword">not</span> err?
+                res.send <span class="string">""</span>
+            <span class="keyword">else</span>
+                sendErrorResponse res, <span class="string">"Audit Event DELETE"</span>, err</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-28">
+            <div class="annotation">
+              
+              <div class="pilwrap for-h2">
+                <a class="pilcrow" href="#section-28">&#182;</a>
+              </div>
+              <h2>VARIABLES</h2>
+
+            </div>
+            
+        </li>
+        
+        
+        <li id="section-29">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-29">&#182;</a>
+              </div>
+              <p>Get a single or a collection of <a href="variable.html">Variables</a>.</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>    <span class="function"><span class="title">getVariable</span></span> = (req, res) -&gt;
+        database.getVariable getIdFromRequest(req), (err, result) -&gt;
+            <span class="keyword">if</span> result? <span class="keyword">and</span> <span class="keyword">not</span> err?
+                res.send minifyJson result
+            <span class="keyword">else</span>
+                sendErrorResponse res, <span class="string">"Variable GET"</span>, err</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-30">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-30">&#182;</a>
+              </div>
+              <p>Add or update an <a href="variable.html">Variable</a>.</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>    <span class="function"><span class="title">postVariable</span></span> = (req, res) -&gt;
+        database.setVariable getDocumentFromBody(req), <span class="literal">null</span>, (err, result) -&gt;
+            <span class="keyword">if</span> result? <span class="keyword">and</span> <span class="keyword">not</span> err?
+                res.send minifyJson result
+            <span class="keyword">else</span>
+                sendErrorResponse res, <span class="string">"Variable POST"</span>, err</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-31">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-31">&#182;</a>
+              </div>
+              <p>Patch only the specified properties of a <a href="variable.html">Variable</a>.</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>    <span class="function"><span class="title">patchVariable</span></span> = (req, res) -&gt;
+        database.setVariable getDocumentFromBody(req), {patch: <span class="literal">true</span>}, (err, result) -&gt;
+            <span class="keyword">if</span> result? <span class="keyword">and</span> <span class="keyword">not</span> err?
+                res.send minifyJson result
+            <span class="keyword">else</span>
+                sendErrorResponse res, <span class="string">"Variable PATCH"</span>, err</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-32">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-32">&#182;</a>
+              </div>
+              <p>Delete a <a href="variable.html">Variable</a>.</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>    <span class="function"><span class="title">deleteVariable</span></span> = (req, res) -&gt;
+        database.deleteVariable getIdFromRequest(req), (err, result) -&gt;
+            <span class="keyword">if</span> <span class="keyword">not</span> err?
+                res.send <span class="string">""</span>
+            <span class="keyword">else</span>
+                sendErrorResponse res, <span class="string">"Variable DELETE"</span>, err</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-33">
+            <div class="annotation">
+              
+              <div class="pilwrap for-h2">
+                <a class="pilcrow" href="#section-33">&#182;</a>
+              </div>
+              <h2>MAPS</h2>
+
+            </div>
+            
+        </li>
+        
+        
+        <li id="section-34">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-34">&#182;</a>
+              </div>
+              <p>Get a single or a collection of <a href="map.html">Maps</a>.</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>    <span class="function"><span class="title">getMap</span></span> = (req, res) -&gt;
+        database.getMap getIdFromRequest(req), (err, result) -&gt;
+            <span class="keyword">if</span> result? <span class="keyword">and</span> <span class="keyword">not</span> err?
+                res.send minifyJson result
+            <span class="keyword">else</span>
+                sendErrorResponse res, <span class="string">"Map GET"</span>, err</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-35">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-35">&#182;</a>
+              </div>
+              <p>Add or update a <a href="map.html">Map</a>.</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>    <span class="function"><span class="title">postMap</span></span> = (req, res) -&gt;
+        database.setMap getDocumentFromBody(req), <span class="literal">null</span>, (err, result) -&gt;
+            <span class="keyword">if</span> result? <span class="keyword">and</span> <span class="keyword">not</span> err?
+                res.send minifyJson result
+            <span class="keyword">else</span>
+                sendErrorResponse res, <span class="string">"Map POST"</span>, err</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-36">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-36">&#182;</a>
+              </div>
+              <p>Patch only the specified properties of a <a href="map.html">Map</a>.</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>    <span class="function"><span class="title">patchMap</span></span> = (req, res) -&gt;
+        database.setMap getDocumentFromBody(req), {patch: <span class="literal">true</span>}, (err, result) -&gt;
+            <span class="keyword">if</span> result? <span class="keyword">and</span> <span class="keyword">not</span> err?
+                res.send minifyJson result
+            <span class="keyword">else</span>
+                sendErrorResponse res, <span class="string">"Map PATCH"</span>, err</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-37">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-37">&#182;</a>
+              </div>
+              <p>Delete a <a href="map.html">Map</a>.</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>    <span class="function"><span class="title">deleteMap</span></span> = (req, res) -&gt;
+        database.deleteMap getIdFromRequest(req), (err, result) -&gt;
+            <span class="keyword">if</span> <span class="keyword">not</span> err?
+                res.send <span class="string">""</span>
+            <span class="keyword">else</span>
+                sendErrorResponse res, <span class="string">"Map DELETE"</span>, err</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-38">
+            <div class="annotation">
+              
+              <div class="pilwrap for-h2">
+                <a class="pilcrow" href="#section-38">&#182;</a>
+              </div>
+              <h2>MAP THUMBS</h2>
+
+            </div>
+            
+        </li>
+        
+        
+        <li id="section-39">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-39">&#182;</a>
+              </div>
+              <p>Generates a thumbnail of the specified <a href="map.html">Map</a>, by passing
+its ID and SVG representation.</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>    <span class="function"><span class="title">postMapThumb</span></span> = (req, res) -&gt;
+        svg = req.body.svg
+        svgPath = settings.Paths.imagesDir + <span class="string">"mapthumbs/"</span> + req.params[<span class="string">"id"</span>] + <span class="string">".svg"</span>
+
+        fs.writeFile svgPath, svg, (err) -&gt;
+            <span class="keyword">if</span> err?
+                logger.error <span class="string">"Thumbnail SVG save error."</span>, err
+            <span class="keyword">else</span>
+                imaging.svgToPng svgPath, settings.Images.mapThumbSize</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-40">
+            <div class="annotation">
+              
+              <div class="pilwrap for-h2">
+                <a class="pilcrow" href="#section-40">&#182;</a>
+              </div>
+              <h2>PROXY DOWNLOAD</h2>
+
+            </div>
+            
+        </li>
+        
+        
+        <li id="section-41">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-41">&#182;</a>
+              </div>
+              <p>Download an external file and serve it to the client, thus acting like a &quot;proxy&quot;.
+The local filename is provided after the /downloader/ on the url, and the
+download URL is provided with the post parameter &quot;url&quot;.</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>    <span class="function"><span class="title">downloader</span></span> = (req, res) -&gt;
+        remoteUrl = req.body.url
+        filename = req.params[<span class="string">"filename"</span>]
+
+        sync.download remoteUrl, app.downloadsDir + filename, (errorMessage, localFile) -&gt;
+            <span class="keyword">if</span> errorMessage?
+                sendErrorResponse res, <span class="string">"Download failed: "</span> + localFile, errorMessage
+            <span class="keyword">else</span>
+                fs.readFile localFile, (err, data) -&gt;
+                    <span class="keyword">if</span> err?
+                        sendErrorResponse res, <span class="string">"Downloaded, read failed: "</span> + localFile, err
+                    <span class="keyword">else</span>
+                        res.send data.toString()</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-42">
+            <div class="annotation">
+              
+              <div class="pilwrap for-h2">
+                <a class="pilcrow" href="#section-42">&#182;</a>
+              </div>
+              <h2>SERVER INFO AND UPDATE</h2>
+
+            </div>
+            
+        </li>
+        
+        
+        <li id="section-43">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-43">&#182;</a>
+              </div>
+              <p>Get the list of server logs for the past 24 hours. Value can be changed on
+the <a href="settings.html">Server Settings</a>.</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>    <span class="function"><span class="title">getLogsRecent</span></span> = (req, res) -&gt;
+        logger.getRecent (err, result) -&gt;
+            <span class="keyword">if</span> <span class="keyword">not</span> err?
+                res.send minifyJson result
+            <span class="keyword">else</span>
+                res.json err</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-44">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-44">&#182;</a>
+              </div>
+              <p>Get the system status page.</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>    <span class="function"><span class="title">getStatus</span></span> = (req, res) -&gt;
+        res.json { status: <span class="string">"ok"</span> }</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-45">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-45">&#182;</a>
+              </div>
+              <p>Run the system upgrader.</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>    <span class="function"><span class="title">runUpgrade</span></span> = (req, res) -&gt;
+        files = fs.readdirSync <span class="string">"./upgrade/"</span>
+
+        <span class="keyword">for</span> f <span class="keyword">in</span> files
+            <span class="keyword">if</span> f.indexOf(<span class="string">".coffee"</span>) &gt; <span class="number">0</span>
+                require <span class="string">"../upgrade/"</span> + f
+
+        res.send <span class="string">"UPGRADED!!!"</span></pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-46">
+            <div class="annotation">
+              
+              <div class="pilwrap for-h2">
+                <a class="pilcrow" href="#section-46">&#182;</a>
+              </div>
+              <h2>HELPER METHODS</h2>
+
+            </div>
+            
+        </li>
+        
+        
+        <li id="section-47">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-47">&#182;</a>
+              </div>
+              <p>Minify the passed JSON value. Please note that the result will be minified
+ONLY if the <code>Web.minifyJsonResponse</code> setting is set to true.</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>    <span class="function"><span class="title">minifyJson</span></span> = (source) -&gt;
+        <span class="keyword">return</span> source <span class="keyword">if</span> settings.Web.minifyJsonResponse
+
+        source = JSON.stringify source <span class="keyword">if</span> <span class="keyword">typeof</span> source <span class="keyword">is</span> <span class="string">"object"</span>
+        index = <span class="number">0</span>
+        length = source.length
+        result = <span class="string">""</span>
+        symbol = <span class="literal">undefined</span>
+        position = <span class="literal">undefined</span>
+        
+        <span class="keyword">while</span> index &lt; length
+
+            symbol = source.charAt(index)
+            <span class="keyword">switch</span> symbol</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-48">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-48">&#182;</a>
+              </div>
+              <p>Ignore whitespace tokens. According to ES 5.1 section 15.12.1.1,
+whitespace tokens include tabs, carriage returns, line feeds, and
+space characters.</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>                <span class="keyword">when</span> <span class="string">"\t"</span>, <span class="string">"\r"</span>
+                , <span class="string">"\n"</span>
+                , <span class="string">" "</span>
+                    index += <span class="number">1</span></pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-49">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-49">&#182;</a>
+              </div>
+              <p>Ignore line and block comments.</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>                <span class="keyword">when</span> <span class="string">"/"</span>
+                    symbol = source.charAt(index += <span class="number">1</span>)
+                    <span class="keyword">switch</span> symbol</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-50">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-50">&#182;</a>
+              </div>
+              <p>Line comments.</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>                        <span class="keyword">when</span> <span class="string">"/"</span>
+                            position = source.indexOf(<span class="string">"\n"</span>, index)</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-51">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-51">&#182;</a>
+              </div>
+              <p>Check for CR-style line endings.</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>                            position = source.indexOf(<span class="string">"\r"</span>, index)  <span class="keyword">if</span> position &lt; <span class="number">0</span>
+                            index = (<span class="keyword">if</span> position &gt; -<span class="number">1</span> <span class="keyword">then</span> position <span class="keyword">else</span> length)</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-52">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-52">&#182;</a>
+              </div>
+              <p>Block comments.</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>                        <span class="keyword">when</span> <span class="string">"*"</span>
+                            position = source.indexOf(<span class="string">"*/"</span>, index)
+                            <span class="keyword">if</span> position &gt; -<span class="number">1</span></pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-53">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-53">&#182;</a>
+              </div>
+              <p>Advance the scanner&#39;s position past the end of the comment.</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>                                index = position += <span class="number">2</span>
+                                <span class="keyword">break</span>
+                            <span class="keyword">throw</span> SyntaxError(<span class="string">"Unterminated block comment."</span>)
+                        <span class="keyword">else</span>
+                            <span class="keyword">throw</span> SyntaxError(<span class="string">"Invalid comment."</span>)</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-54">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-54">&#182;</a>
+              </div>
+              <p>Parse strings separately to ensure that any whitespace characters and
+JavaScript-style comments within them are preserved.</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>                <span class="keyword">when</span> <span class="string">"\""</span>
+                    position = index
+                    <span class="keyword">while</span> index &lt; length
+                        symbol = source.charAt(index += <span class="number">1</span>)
+                        <span class="keyword">if</span> symbol <span class="keyword">is</span> <span class="string">"\\"</span></pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-55">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-55">&#182;</a>
+              </div>
+              <p>Skip past escaped characters.</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>                            index += <span class="number">1</span>
+                        <span class="keyword">else</span> <span class="keyword">break</span>  <span class="keyword">if</span> symbol <span class="keyword">is</span> <span class="string">"\""</span>
+                    <span class="keyword">if</span> source.charAt(index) <span class="keyword">is</span> <span class="string">"\""</span>
+                        result += source.slice(position, index += <span class="number">1</span>)
+                        <span class="keyword">break</span>
+                    <span class="keyword">throw</span> SyntaxError(<span class="string">"Unterminated string."</span>)</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-56">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-56">&#182;</a>
+              </div>
+              <p>Preserve all other characters.</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>                <span class="keyword">else</span>
+                    result += symbol
+                    index += <span class="number">1</span>
+        result</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-57">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-57">&#182;</a>
+              </div>
+              <p>Return the ID from the request. Give preference to the ID parameter
+on the body first, and then to the parameter passed on the URL path.</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>    <span class="function"><span class="title">getIdFromRequest</span></span> = (req) -&gt;
+        <span class="keyword">if</span> req.body?.id?
+            <span class="keyword">return</span> req.body.id
+        <span class="keyword">else</span>
+            <span class="keyword">return</span> req.params.id</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-58">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-58">&#182;</a>
+              </div>
+              <p>Return the document from the request body.
+Make sure the document ID is set by checking its body and
+if necessary appending from the request parameters.</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>    <span class="function"><span class="title">getDocumentFromBody</span></span> = (req) -&gt;
+        obj = req.body
+        obj.id = req.params.id <span class="keyword">if</span> <span class="keyword">not</span> obj.id?
+        <span class="keyword">return</span> obj</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-59">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-59">&#182;</a>
+              </div>
+              <p>When the server can&#39;t return a valid result,
+send an error response with status code 500.</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>    <span class="function"><span class="title">sendErrorResponse</span></span> = (res, method, message) -&gt;
+        logger.error <span class="string">"Web response error!"</span>, method, message
+
+        res.statusCode = <span class="number">500</span>
+        res.send <span class="string">"Error: <span class="subst">#{method}</span> - <span class="subst">#{message}</span>"</span></pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-60">
+            <div class="annotation">
+              
+              <div class="pilwrap for-h2">
+                <a class="pilcrow" href="#section-60">&#182;</a>
+              </div>
+              <h2>SET ROUTES</h2>
+
+            </div>
+            
+        </li>
+        
+        
+        <li id="section-61">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-61">&#182;</a>
+              </div>
+              <p>Main index route.</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>    app.get <span class="string">"/"</span>, getIndex</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-62">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-62">&#182;</a>
+              </div>
+              <p>Entity definition routes.</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>    app.get     <span class="string">"/json/entitydefinition"</span>,         getEntityDefinition
+    app.get     <span class="string">"/json/entitydefinition/:id"</span>,     getEntityDefinition
+    app.post    <span class="string">"/json/entitydefinition"</span>,         postEntityDefinition
+    app.put     <span class="string">"/json/entitydefinition/:id"</span>,     postEntityDefinition
+    app.patch   <span class="string">"/json/entitydefinition/:id"</span>,     patchEntityDefinition
+    app.<span class="keyword">delete</span>  <span class="string">"/json/entitydefinition/:id"</span>,     deleteEntityDefinition</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-63">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-63">&#182;</a>
+              </div>
+              <p>Entity data (objects) routes.</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>    app.get     <span class="string">"/json/entityobject/:id"</span>,         getEntityObject</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-64">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-64">&#182;</a>
+              </div>
+              <p>Audit Data routes.</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>    app.get     <span class="string">"/json/auditdata"</span>,        getAuditData
+    app.get     <span class="string">"/json/auditdata/:id"</span>,    getAuditData
+    app.post    <span class="string">"/json/auditdata"</span>,        postAuditData
+    app.put     <span class="string">"/json/auditdata/:id"</span>,    postAuditData
+    app.patch   <span class="string">"/json/auditdata/:id"</span>,    patchAuditData
+    app.<span class="keyword">delete</span>  <span class="string">"/json/auditdata/:id"</span>,    deleteAuditData</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-65">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-65">&#182;</a>
+              </div>
+              <p>Audit Event routes.</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>    app.get     <span class="string">"/json/auditevent"</span>,       getAuditEvent
+    app.get     <span class="string">"/json/auditevent/:id"</span>,   getAuditEvent
+    app.post    <span class="string">"/json/auditevent"</span>,       postAuditEvent
+    app.put     <span class="string">"/json/auditevent/:id"</span>,   postAuditEvent
+    app.patch   <span class="string">"/json/auditevent/:id"</span>,   patchAuditEvent
+    app.<span class="keyword">delete</span>  <span class="string">"/json/auditevent/:id"</span>,   deleteAuditEvent</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-66">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-66">&#182;</a>
+              </div>
+              <p>Variable routes.</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>    app.get     <span class="string">"/json/variable"</span>,         getVariable
+    app.get     <span class="string">"/json/variable/:id"</span>,     getVariable
+    app.post    <span class="string">"/json/variable"</span>,         postVariable
+    app.put     <span class="string">"/json/variable/:id"</span>,     postVariable
+    app.patch   <span class="string">"/json/variable/:id"</span>,     patchVariable
+    app.<span class="keyword">delete</span>  <span class="string">"/json/variable/:id"</span>,     deleteVariable</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-67">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-67">&#182;</a>
+              </div>
+              <p>Map routes.</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>    app.get     <span class="string">"/json/map"</span>,        getMap
+    app.get     <span class="string">"/json/map/:id"</span>,    getMap
+    app.post    <span class="string">"/json/map"</span>,        postMap
+    app.put     <span class="string">"/json/map/:id"</span>,    postMap
+    app.patch   <span class="string">"/json/map/:id"</span>,    patchMap
+    app.<span class="keyword">delete</span>  <span class="string">"/json/map/:id"</span>,    deleteMap</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-68">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-68">&#182;</a>
+              </div>
+              <p>Map thumbnails.</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>    app.post    <span class="string">"/images/mapthumbs/:id"</span>, postMapThumb</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-69">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-69">&#182;</a>
+              </div>
+              <p>External downloader.</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>    app.post    <span class="string">"/downloader/:filename"</span>, downloader</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-70">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-70">&#182;</a>
+              </div>
+              <p>Server status and log routes.</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>    app.get     <span class="string">"/status"</span>,        getStatus
+    app.get     <span class="string">"/logs/recent"</span>,   getLogsRecent
+    app.get     <span class="string">"/upgrade"</span>,       runUpgrade</pre></div></div>
+            
+        </li>
+        
+    </ul>
+  </div>
+</body>
+</html>
