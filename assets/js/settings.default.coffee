@@ -354,7 +354,7 @@ System.App.SettingsDefault =
     # AUDIT ALERT
     # ----------------------------------------------------------------------
     Variable:
-        # The url to the custom variable(s) JSON.
+        # The url to the variable(s) JSON.
         url: "json/variable"
         # The namespace used for data binding.
         bindingNamespace: "var"
@@ -382,9 +382,14 @@ System.App.SettingsDefault =
     # USER SETTINGS
     # ----------------------------------------------------------------------
     User:
+        # The url to the user's JSON.
+        url: "json/user"
         # Default key combination to delete shapes and links.
         modifierDelete: "ctrl rightclick"
         # Default key combination to select multiple shapes or items.
         modifierMultiple: "shift leftclick"
         # Default key combination to send shapes and links to the back of the map.
         modifierToBack: "rightclick"
+        # The secret key used to generate user passwords. We deeply recommend you
+        # to override this value on the [settings file](settings.html).
+        passwordSecretKey: "ZalsysH4S4"

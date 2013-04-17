@@ -62,20 +62,7 @@ If you want to keep the documentation up-to-date, you'll need Docco:
 
 ### Required Node.js modules
 
-The following Node.js modules are required by the *System App*.
-
-- async
-- coffee-script
-- connect-assets
-- express
-- imagemagick
-- jade
-- lodash
-- mongoskin
-- node-logentries
-- socket.io
-- stylus
-- winston
+Check the `package.json` file for details on dependencies.
 
 The easiest way to get these is by running NPM install:
 

@@ -190,6 +190,25 @@ class Database
         @delData table, id, callback
 
 
+    # USERS
+    # ----------------------------------------------------------------------
+
+    # Get [User](user.html).
+    getUser: (filter, callback) =>
+        table = db.collection "user"
+        @getData table, filter, callback
+
+    # Insert or update a [User](user.html).
+    setUser: (obj, options, callback) =>
+        table = db.collection "user"
+        @setData table, obj, options, callback
+
+    # Delete the specified [User](user.html).
+    deleteUser: (id, callback) =>
+        table = db.collection "user"
+        @delData table, id, callback
+
+
     # HISTORY LOGS
     # ----------------------------------------------------------------------
 

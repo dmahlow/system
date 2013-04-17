@@ -190,7 +190,6 @@ class System.MapLabelEditView extends System.BaseView
             customVar = new System.Variable()
             customVar.friendlyId varName
             customVar.code varCode
-            customVar.generateId()
 
             System.App.Data.variables.add customVar
             customVar.save()

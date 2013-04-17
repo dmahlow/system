@@ -272,6 +272,42 @@ module.exports = (app) ->
                 imaging.svgToPng svgPath, settings.Images.mapThumbSize
 
 
+    # USERS
+    # ----------------------------------------------------------------------
+
+    # Get a single or a collection of [Users](user.html).
+    getUser = (req, res) ->
+        database.getMap getIdFromRequest(req), (err, result) ->
+            if result? and not err?
+                res.send minifyJson result
+            else
+                sendErrorResponse res, "Map GET", err
+
+    # Add or update a [Users](user.html).
+    postUser = (req, res) ->
+        database.setMap getDocumentFromBody(req), null, (err, result) ->
+            if result? and not err?
+                res.send minifyJson result
+            else
+                sendErrorResponse res, "Map POST", err
+
+    # Patch only the specified properties of a [Users](user.html).
+    patchUser = (req, res) ->
+        database.setMap getDocumentFromBody(req), {patch: true}, (err, result) ->
+            if result? and not err?
+                res.send minifyJson result
+            else
+                sendErrorResponse res, "Map PATCH", err
+
+    # Delete a [Users](user.html).
+    deleteUser = (req, res) ->
+        database.deleteMap getIdFromRequest(req), (err, result) ->
+            if not err?
+                res.send ""
+            else
+                sendErrorResponse res, "Map DELETE", err
+
+
     # PROXY DOWNLOAD
     # ----------------------------------------------------------------------
 
@@ -470,6 +506,14 @@ module.exports = (app) ->
 
     # Map thumbnails.
     app.post    "/images/mapthumbs/:id", postMapThumb
+
+    # User routes.
+    app.get     "/json/user",       getUser
+    app.get     "/json/user/:id",   getUser
+    app.post    "/json/user",       postUser
+    app.put     "/json/user/:id",   postUser
+    app.patch   "/json/user/:id",   patchUser
+    app.delete  "/json/user/:id",   deleteUser
 
     # External downloader.
     app.post    "/downloader/:filename", downloader

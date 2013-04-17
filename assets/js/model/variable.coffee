@@ -1,14 +1,12 @@
-# CUSTOM VARIABLE MODEL
+# VARIABLE MODEL
 # --------------------------------------------------------------------------
-# Custom variables are javascript blocks that can represent aggregated
-# values, calculations and combinations of different [AuditData](auditData.html)
-# sources.
+# Variables are javascript blocks that can represent aggregated values,
+# calculations and combinations of different [AuditData](auditData.html) sources.
 
 class System.Variable extends System.BaseModel
     typeName: "Variable"
     defaults:
-        name: null     # the variable name
-        code: null     # the variable code
+        code: null     # the variable javascript code
 
 
     # PROPERTIES
@@ -21,7 +19,7 @@ class System.Variable extends System.BaseModel
         @get "code"
 
 
-# CUSTOM VARIABLE COLLECTION
+# VARIABLE COLLECTION
 # --------------------------------------------------------------------------
 # Represents a collection of variables.
 
@@ -30,5 +28,5 @@ class System.VariableCollection extends System.BaseCollection
     model: System.Variable
     url: System.App.Settings.Variable.url
 
-    # Set the comparator function to order the custom variable collection by friendlyId.
+    # Set the comparator function to order the variable collection by friendlyId.
     comparator: (variable) -> return variable.friendlyId()
