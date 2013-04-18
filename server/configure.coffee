@@ -6,6 +6,9 @@ module.exports = (app, express) ->
 
     # Define the database and settings objects.
     database = require "./database.coffee"
+    logger = require "./logger.coffee"
+    manager = require "./manager.coffee"
+    security = require "./security.coffee"
     settings = require "./settings.coffee"
 
     # Helper function to configure the app in OpenShift and AppFog.
@@ -31,7 +34,14 @@ module.exports = (app, express) ->
         logentries = process.env.LOGENTRIES_TOKEN
         settings.Log.logentriesToken = logentries if logentries? and logentries isnt ""
 
+    # Common configuration for all envrionments. This will tweak process settings, bind error
+    # handlers and init all the necessary modules.
     app.configure ->
+        process.setMaxListeners 30
+        process.on "uncaughtException", (err) -> sockets.sendServerError "Proc unhandled exception!", err
+        app.on "uncaughtException", (err) -> sockets.sendServerError "App unhandled exception!", err
+
+        # If the `Settings.Web.paas` is true, then override settings with environmental variables.
         configPaaS() if settings.Web.paas
 
         # Sets the app path variables.
@@ -53,18 +63,23 @@ module.exports = (app, express) ->
         app.use app.router
         app.use express["static"] app.publicDir
 
-    # Config for development.
+        # Init other modules.
+        logger.init()
+        manager.init()
+        security.init()
+
+    # Config for development. Do not minify builds, and set debug to `true` in case it's unset.
     app.configure "development", ->
         settings.General.debug = true if not settings.General.debug?
 
-        ConnectAssets = (require "connect-assets") {build: true, minifyBuilds: false}
+        ConnectAssets = (require "connect-assets") {build: true, buildDir: false, minifyBuilds: false}
         app.use ConnectAssets
         app.use express.errorHandler {dumpExceptions: true, showStack: true}
 
-    # Config for production. JS and CSS will be minified.
+    # Config for production. JS and CSS will be minified. Set debug to `false` in case it's unset.
     app.configure "production", ->
         settings.General.debug = false if not settings.General.debug?
 
-        ConnectAssets = (require "connect-assets") {build: true, minifyBuilds: true}
+        ConnectAssets = (require "connect-assets") {build: true, buildDir: false, minifyBuilds: true}
         app.use ConnectAssets
         app.use express.errorHandler()

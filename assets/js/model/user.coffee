@@ -8,6 +8,7 @@ class System.User extends System.BaseModel
     defaults:
         displayName: null   # the user display name
         password: null      # the user password
+        roles: null         # the user roles array
         username: null      # the username
 
 
@@ -25,6 +26,12 @@ class System.User extends System.BaseModel
         if value?
             @set "password", value
         @get "password"
+
+    # Helper to get / set the user roles.
+    roles: (value) =>
+        if value?
+            @set "roles", value
+        @get "roles"
 
     # Helper to get / set the user's username.
     username: (value) =>

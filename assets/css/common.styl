@@ -1,11 +1,19 @@
 // COMMON STYLES
 // ---------------------------------------------------------------
 
+// Import fonts.
+@font-face
+    font-family "OpenSansLight"
+    src url("../fonts/OpenSans-Light-webfont.eot")
+    src url("../fonts/OpenSans-Light-webfont.eot?#iefix") format("embedded-opentype"), url("../fonts/OpenSans-Light-webfont.woff") format("woff"), url("../fonts/OpenSans-Light-webfont.ttf") format("truetype"), url("../fonts/OpenSans-Light-webfont.svg#OpenSansLight") format("svg")
+    font-weight normal
+    font-style normal
+
 // The body style.
 body
-    background rgba(0, 0, 0, 1)
-    color rgba(240, 240, 240, 1)
-    font 0.8em Arial, Helvetica, sans-serif
+    background rgb(0, 0, 0)
+    color rgb(240, 240, 240)
+    font 0.8em OpenSansLight, sans-serif
     height 100%
     margin 0
     overflow hidden
@@ -13,8 +21,9 @@ body
     position relative
     width 100%
 
+// Links are green.
 a
-    color rgba(80, 190, 110, 1)
+    color rgb(80, 190, 110)
 
 // The main wrapper.
 #wrapper

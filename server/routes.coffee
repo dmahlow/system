@@ -4,17 +4,18 @@
 
 module.exports = (app) ->
 
-    # Define the settings, database and sync objects.
+    # Define required modules.
     logger = require "./logger.coffee"
     database = require "./database.coffee"
+    fs = require "fs"
     imaging = require "./imaging.coffee"
     manager = require "./manager.coffee"
+    passport = require "passport"
     settings = require "./settings.coffee"
     sockets = require "./sockets.coffee"
     sync = require "./sync.coffee"
 
-    # Define the file system and package.json.
-    fs = require "fs"
+    # Define the package.json.
     packageJson = require "./../package.json"
 
     # When was the package.json last modified?
@@ -455,22 +456,33 @@ module.exports = (app) ->
         res.send "Error: #{method} - #{message}"
 
 
+    # LOGIN AND SECURITY
+    # ----------------------------------------------------------------------
+
+    # Authenticate using passportjs.
+    login = () ->
+        return passport.authenticate "local", {successRedirect: "/", failureRedirect: "/login"}
+
+
     # SET ROUTES
     # ----------------------------------------------------------------------
 
-    # Main index route.
+    # Login.
+    app.get "/login", login
+
+    # Main index.
     app.get "/", getIndex
 
     # Entity definition routes.
-    app.get     "/json/entitydefinition",         getEntityDefinition
-    app.get     "/json/entitydefinition/:id",     getEntityDefinition
-    app.post    "/json/entitydefinition",         postEntityDefinition
-    app.put     "/json/entitydefinition/:id",     postEntityDefinition
-    app.patch   "/json/entitydefinition/:id",     patchEntityDefinition
-    app.delete  "/json/entitydefinition/:id",     deleteEntityDefinition
+    app.get     "/json/entitydefinition",     getEntityDefinition
+    app.get     "/json/entitydefinition/:id", getEntityDefinition
+    app.post    "/json/entitydefinition",     postEntityDefinition
+    app.put     "/json/entitydefinition/:id", postEntityDefinition
+    app.patch   "/json/entitydefinition/:id", patchEntityDefinition
+    app.delete  "/json/entitydefinition/:id", deleteEntityDefinition
 
     # Entity data (objects) routes.
-    app.get     "/json/entityobject/:id",         getEntityObject
+    app.get     "/json/entityobject/:id", getEntityObject
 
     # Audit Data routes.
     app.get     "/json/auditdata",        getAuditData
