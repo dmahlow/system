@@ -39,9 +39,6 @@ class System.Routes extends Backbone.Router
         System.App.startView.hide()
         System.App.helpView.hide()
 
-        if not System.App.godMode
-            System.App.mapEvents.trigger "edit:toggle", false
-
         # If no valid ID is specified, then clear the current map.
         if not id? or id is 0
             System.App.mapView.bindMap null

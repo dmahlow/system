@@ -103,7 +103,6 @@
 # user must access with the special querystring: ?godmode=true.
 # To enable debugging messages, use ?debug=true.
 # The `startDate` tells when the app was started (page loaded).
-System.App.godMode = false
 System.App.startDate = new Date()
 
 
@@ -238,8 +237,6 @@ System.App.start = ->
     now = new Date()
     console.log "#{System.App.Settings.General.appTitle} START: #{now}"
 
-    System.App.checkGodMode()
-
     # Start listening to model updates.
     System.App.alertView.listenToModels true
     
@@ -268,12 +265,6 @@ System.App.dispose = ->
 # or if the app is running under the localhost domain.
 # Users can create and update data with no restrictions when in God Mode.
 System.App.checkGodMode = ->
-    godEnable = location.href.indexOf("?godmode=1") >= 0 or location.hostname is "localhost"
-
-    if godEnable > 0 or not System.App.Settings.General.restrictedMode
-        System.App.godMode = true
-        return
-
     # Add a style to hide the delete and add icons.
     headStyle = ".full-overlay-contents .delete, .full-overlay-contents .add, .addrow{display:none !important}"
     $("<style type='text/css'>#{headStyle}</style>").appendTo("head")

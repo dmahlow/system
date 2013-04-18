@@ -658,7 +658,7 @@ class System.MapView extends System.BaseView
             e.stopPropagation()
 
             # User pressed "Ctrl+E", so toggle the edit mode.
-        else if e.ctrlKey and keyCode is 69 and System.App.godMode
+        else if e.ctrlKey and keyCode is 69
             System.App.mapEvents.trigger "edit:toggle", not @editEnabled
             e.preventDefault()
             e.stopPropagation()

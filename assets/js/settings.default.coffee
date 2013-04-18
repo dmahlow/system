@@ -43,10 +43,6 @@ System.App.SettingsDefault =
         refetchDelay: 600
         # The url to the proxy downloader (used to download external files).
         remoteDownloaderUrl: "downloader/"
-        # If restrictedMode is true, most of map and data management features and map creation
-        # will be restricted and available only if user appends a queryString ?godmode=1.
-        # This is a temporary "hack" till we get proper user management implemented.
-        restrictedMode: false
         # Minimum time in ms between saves to the remote MongoDB database.
         # Please note that all data will ALWAYS be saved locally.
         saveInterval: 2000

@@ -2,7 +2,7 @@
 // ---------------------------------------------------------------
 
 #header
-    background rgb(80, 80, 80) url("../images/nav-bg.gif") repeat-x
+    background rgb(60, 60, 60)
     left 0
     position fixed
     top 0
@@ -43,9 +43,8 @@
             padding-bottom 1px !important
 
     .menu-item
-        background rgba(0, 0, 0, 0.8)
-        border 1px solid rgba(0, 0, 0, 1)
-        color rgba(250, 250, 250, 1)
+        border 1px solid Transparent
+        color lightTextColor
         cursor pointer
         display inline-block
         margin-right 10px
@@ -55,12 +54,13 @@
         z-index 9
 
     .menu-item:hover
-        color rgba(60, 150, 70, 1)
+        background darkBgColor
+        color darkHoverColor
 
     .menu-item.active
         background-color overlayBackground
         border-color overlayBackground
-        color highlightColor
+        color lightHoverColor
         padding-bottom 12px
 
     .styled input[type="checkbox"] + span

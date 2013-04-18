@@ -1,6 +1,7 @@
 // MAP CONTROLS VIEW STYLES
 // ---------------------------------------------------------------
 
+// The controls bar on the right side of the map.
 #map-controls
     background overlayBackground
     border overlayBorder
@@ -58,7 +59,7 @@
 
             // Highlight the active tab.
             &.active
-                background tabHighlightColor
+                background darkHoverColor
                 border-bottom 3px solid tabBorderColor
                 color inherit
                 padding-bottom 3px
@@ -71,7 +72,7 @@
         // Sub headers inside the tabs are H5 elements.
         > h5
             background rgba(100, 100, 100, 0.3)
-            border-bottom 1px solid tabHighlightColor
+            border-bottom 1px solid darkHoverColor
             font-size 90%
             margin 0 0 2px 0
             padding 5px 6px 5px 6px
@@ -79,7 +80,7 @@
         // Errors and warnings are shown with a H6 element.
         > h6
             background rgba(100, 100, 100, 0.3)
-            border-bottom 1px solid tabHighlightColor
+            border-bottom 1px solid darkHoverColor
             font-size 90%
             margin 0 0 2px 0
             padding 5px 6px 5px 6px
