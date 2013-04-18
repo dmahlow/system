@@ -258,31 +258,6 @@ System.App.dispose = ->
     System.App.startView?.dispose()
 
 
-# SECURITY
-# -----------------------------------------------------------------------------
-
-# Called on init to check if user has entered the special ?godmode=1 query string,
-# or if the app is running under the localhost domain.
-# Users can create and update data with no restrictions when in God Mode.
-System.App.checkGodMode = ->
-    # Add a style to hide the delete and add icons.
-    headStyle = ".full-overlay-contents .delete, .full-overlay-contents .add, .addrow{display:none !important}"
-    $("<style type='text/css'>#{headStyle}</style>").appendTo("head")
-
-    # Hide the locker div on the header and the "Delete map" button.
-    $("div.lock").hide()
-    $("#map-ctl-delete").hide()
-
-    # Hide the Audit Data / Audit Event overlay buttons and inputs.
-    $(".delete").hide()
-
-    # Bind a function to hide input fields when data is loaded to the Audit Data / Audit Events overlay.
-    $("#auditdata").find("input,select,textarea").prop("disabled", true).attr("readonly", true)
-    $("#auditevents").find("input,select,textarea").prop("disabled", true).attr("readonly", true)
-    $("#entitymanager").find("input,select,textarea").prop("disabled", true).attr("readonly", true)
-    $("#map-ctl-init-script").prop("disabled", true)
-
-
 # IDLE TIMER AND ACTIONS
 # -----------------------------------------------------------------------------
 
@@ -324,6 +299,18 @@ System.App.toggleLoading = (enabled) ->
 
 # HELPERS
 # -----------------------------------------------------------------------------
+
+# Enable or disable the `debug` mode.
+System.App.toggleDebug = (enabled) ->
+    System.App.debug = enabled
+    if enabled
+        alertTitle = "ENABLED"
+        alertMsg = "Most actions and events will be logged to the console."
+    else
+        alertTitle = "DISABLED"
+        alertMsg = "Only errors will be logged to the console now."
+
+    System.App.alertEvents.trigger "footer", {title: "DEBUG #{alertTitle}", message: alertMsg}
 
 # Prevent accidental use of backspace which could trigger a `history.back()` on the page.
 System.App.suppressBackspace = (e) ->

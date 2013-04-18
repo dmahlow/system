@@ -66,24 +66,20 @@
         color lightHoverColor
         padding-bottom 12px
 
-    input[type="checkbox"] + span
-    input[type="radio"] + span
-        font 11px/26px Arial, Helvetica, sans-serif
-
-    lock input[type="checkbox"] + span:after
-    lock input[type="radio"] + span:after
+    .lock input[type="checkbox"] + span:after
+    .lock input[type="radio"] + span:after
         content "edit"
 
-    lock input[type="checkbox"]:checked + span:after
-    lock input[type="radio"]:checked + span:after
+    .lock input[type="checkbox"]:checked + span:after
+    .lock input[type="radio"]:checked + span:after
         content "lock"
 
-    lock input[type="checkbox"] + span
-    lock input[type="radio"] + span
+    .lock input[type="checkbox"] + span
+    .lock input[type="radio"] + span
         color #779977
 
-    lock input[type="checkbox"]:checked + span
-    lock input[type="radio"]:checked + span
+    .lock input[type="checkbox"]:checked + span
+    .lock input[type="radio"]:checked + span
         background rgb(160, 40, 30)
         color #FAFAFA
 
