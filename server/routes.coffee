@@ -36,7 +36,8 @@ module.exports = (app) ->
             title: settings.General.appTitle,
             port: settings.Web.port,
             version: packageJson.version,
-            lastModified: lastModified
+            lastModified: lastModified,
+            userRoles: {mapcreate: 1, mapedit: 1, entities: 1, auditdata: 1, auditevents: 1, settings: 1}
 
         res.render "index", options
 

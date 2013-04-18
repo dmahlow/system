@@ -16,7 +16,7 @@
             // This "Entity Definitions list" is populated via javascript.
             #entitymanager-list.models-list
 
-            div.styled.create
+            div.create
                 input#entitymanager-txt-create(type="text",placeholder="New entity ID...",title="Enter the name of the new entity definition to be created.")
                 button#entitymanager-but-create(title="Click to create a new entity definition with the specified ID.") Create
 
@@ -31,7 +31,7 @@
             #entitymanager-tab-props.tab
                 h4 Entity Definition properties
 
-                div.panel.styled
+                div.panel
                     div
                         label(for="entitymanager-txt-description") Description:
                         input#entitymanager-txt-description.required.long(type="text",data-propertyname="description",placeholder="Enter a quick description about the entity definition here.",title="Enter a quick description for that entity definition.")
@@ -43,7 +43,7 @@
                         input#entitymanager-txt-refresh.required.short(type="number",data-propertyname="refreshInterval",title="Refresh objects from the source URL above every X seconds.")
                         span.spaced seconds
                 strong Entity Object properties
-                div.panel.styled
+                div.panel
                     div
                         label(for="entitymanager-txt-idattribute") ID attribute:
                         input#entitymanager-txt-idattribute.medium(type="text",data-propertyname="objectIdAttribute",placeholder="id",title="Enter the JSON attribute which defines the ID of objects. Default is id.")
@@ -65,7 +65,7 @@
                         span.label-right right
                         span.label-bottom bottom
 
-                div.panel.styled
+                div.panel
                     div
                         label(for="entitymanager-txt-shape-sizex") Size:
                         input#entitymanager-txt-shape-sizex.required.short(type="number",data-propertyname="shapeSizeX",title="Enter default shape horizontal size, in blocks.",min="1",max="100")

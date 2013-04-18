@@ -17,7 +17,7 @@
             // This "Audit Events list" is populated via javascript.
             #auditevents-list.models-list
 
-            div.styled.create
+            div.create
                 input#auditevents-txt-create(type="text",placeholder="New audit event ID...",title="Enter the name of the new audit event to be created.")
                 button#auditevents-but-create(title="Click to create a new audit event with the specified name.") Create
 
@@ -32,11 +32,11 @@
             // Event Properties tab.
             #auditevents-tab-props.tab
                 h4 Event Properties
-                .panel.styled
+                .panel
                     div
                         label(for="auditevents-txt-description") Description:
                         input#auditevents-txt-description.required.long(type="text",data-propertyname="description",title="Enter a description for this Audit Event.")
-                .panel.styled
+                .panel
                     div
                         label(for="auditevents-chk-active") Active:
                         label.toggle(for="auditevents-chk-active",data-propertyname="active",title="If OFF, this event won't be triggered even if it has matching rules.")
@@ -46,7 +46,7 @@
             // Event Rules tab.
             #auditevents-tab-rules.tab(style="display:none")
                 h4 Event Rules
-                div.panel.styled
+                div.panel
 
                     div.row.header
                         span.source Source value
@@ -77,7 +77,7 @@
             // Event Actions tab.
             #auditevents-tab-actions.tab(style="display:none")
                 h4 Event Actions
-                div.panel.styled
+                div.panel
 
                     div.row.header
                         span.type What to do?

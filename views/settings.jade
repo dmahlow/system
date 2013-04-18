@@ -14,7 +14,7 @@
             label(data-tab=".keyboard",title="View and manage keyboard shortcuts and modifier keys.") Keyboard
 
         // Startup tab containing startup options.
-        div.tab.styled.startup
+        div.tab.startup
             h4 Startup
             div
                 span.control-label Start the app maximized
@@ -35,19 +35,19 @@
                 span Last updated: #{lastModified}
 
         // Local storage tab to see and manage the local storage contents.
-        div.tab.styled.localstorage(style="display:none")
+        div.tab.localstorage(style="display:none")
             h4 Local storage
             #settings-localstorage-contents
             button#settings-localstorage-clear-but Clear local storage
 
         // Server logs to see and troubleshoot server logs.
-        div.tab.styled.serverlogs(style="display:none")
+        div.tab.serverlogs(style="display:none")
             h4 Server errors
             #settings-servererrors-contents
             button#settings-servererrors-clear-but Clear server errors
 
         // Keyboard tab to edit keyboard preferences and manage shortcuts.
-        div.tab.styled.keyboard(style="display:none")
+        div.tab.keyboard(style="display:none")
             // The modifier keys are customizable and will highlight when
             // mouse hovers any span.
             .modifiers
