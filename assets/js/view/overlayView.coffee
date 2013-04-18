@@ -89,7 +89,7 @@ class System.OverlayView extends System.BaseView
         @$rightCol.hide()
 
         @lastPressedKey = null
-        @$el.fadeIn System.App.Settings.General.fadeDelay
+        @$el.show()
 
         # Set the footer text to the title of the overlay.
         # TODO! Stop calling footer view directly, use events instead.
@@ -108,7 +108,7 @@ class System.OverlayView extends System.BaseView
         $(window).unbind "resize", @resize
 
         @lastPressedKey = null
-        @$el.fadeOut System.App.Settings.General.fadeDelay
+        @$el.hide()
 
         # Change the view based on what properties are set.
         @$menuItem.removeClass("active") if @$menuItem?

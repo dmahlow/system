@@ -19,5 +19,7 @@ class System.HelpView extends System.OverlayView
 
     # Add dynamic values to the Help html.
     setHtml: =>
+        @$menuItem = $ "#menu-help"
+
         @$el.find(".prefix-variables").html System.App.Settings.General.dataBindingKey + System.App.Settings.Variable.bindingNamespace
         @$el.find(".prefix-auditeventcontext").html System.App.Settings.General.dataBindingKey + System.App.Settings.Shape.bindingNamespace

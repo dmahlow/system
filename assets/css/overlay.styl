@@ -21,7 +21,8 @@
     width 100%
 
     h2
-        border-bottom 3px solid overlayHighlightColor
+        border-bottom 3px solid darkHoverColor
+        color brightTextColor
         font-size 175%
         font-weight normal
         margin 0 0 16px 0
@@ -51,7 +52,6 @@
 
     // The tab titles (headers).
     .tab-headers
-        font-size 115%
         left 266px
         position absolute
         top 18px
@@ -61,15 +61,17 @@
             cursor pointer
             display inline-block
             margin-right 6px
-            padding 5px 10px 6px 10px
+            margin-top 2px
+            padding 5px 10px 7px 10px
 
         // Mouse over a label.
         label:hover
-            background-color rgba(60, 150, 70, 0.1)
+            color darkHoverColor
 
         // The active help tab.
         label.active
             background-color darkHoverColor !important
+            color brightTextColor !important
             cursor default
 
     // Tab containers.
@@ -79,7 +81,7 @@
 
     // Left column on overlays are floating to left.
     .left-col
-        border-right 1px solid overlayHighlightColor
+        border-right 1px solid darkHoverColor
         float left
         min-height 460px
         padding-right 3px
@@ -107,15 +109,15 @@
         // The row itself is a wrapper with a child div containing
         // a textbox/edit/delete, and an arrow.
         .row > div
-            background-color rgba(200, 200, 200, 0.1)
-            border-bottom 1px solid rgba(200, 200, 200, 0.8)
+            background-color mediumBgColor
+            border-bottom 1px solid brightBgColor
             margin-right 16px
 
             // Text input fields should look like normal read-only text.
             input[type="text"]
                 background-color Transparent
                 border-width 0
-                color overlayHighlightTextColor
+                color brightTextColor
                 font 14px/24px Arial, Helvetica, sans-serif
                 margin 2px 15px 2px 2px
                 padding-left 4px

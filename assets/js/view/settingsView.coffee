@@ -28,6 +28,8 @@ class System.App.SettingsView extends System.OverlayView
 
     # Set the DOM elements cache.
     setDom: =>
+        @$menuItem = $ "#menu-settings"
+
         @$localStorageDiv = $ "#settings-localstorage-contents"
         @$localStorageClearBut = $ "#settings-localstorage-clear-but"
         @$serverErrorsDiv = $ "#settings-servererrors-contents"

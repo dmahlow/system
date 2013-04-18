@@ -99,11 +99,11 @@
 
 # APP VARIABLES
 # -----------------------------------------------------------------------------
-# To enable editing (inserting, updating, deleting) data on the app the
-# user must access with the special querystring: ?godmode=true.
-# To enable debugging messages, use ?debug=true.
 # The `startDate` tells when the app was started (page loaded).
 System.App.startDate = new Date()
+# The `slowDevice`, if true, will disable a few features and UI elements.
+# Will be true when running on phones, tablets and old computers.
+System.App.slowDevice = false
 
 
 # ROUTES
