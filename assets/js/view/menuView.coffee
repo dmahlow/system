@@ -68,13 +68,16 @@ class System.MenuView extends System.BaseView
         @$menuSettings.click "click:settings", @menuClick
         @$menuHelp.click "click:help", @menuClick
 
-        @$menuMaps.click @showSubItems
+        # Make sure submenu with maps is hidden when user clicks the "Maps..." option.
+        @$menuMaps.click () => @toggleSubMenu false
+
+        # Show and hide submenu on mouse over and out.
         @$menuMaps.mouseover @showSubItems
         @$menuMaps.mouseout false, @showSubItems
-
         @$subMenuItems.mouseover true, @showSubItems
         @$subMenuItems.mouseout false, @showSubItems
 
+        # Listen to map and app events.
         @listenTo System.App.Data.maps, "sync", @sortSubMenu
         @listenTo System.App.Data.maps, "add", @createSubMap
         @listenTo System.App.Data.maps, "remove", @removeSubMap

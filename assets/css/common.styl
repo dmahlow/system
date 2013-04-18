@@ -1,7 +1,7 @@
 // COMMON STYLES
 // ---------------------------------------------------------------
 
-// Import fonts.
+// Import font faces.
 @font-face
     font-family "OpenSansLight"
     src url("../fonts/OpenSans-Light-webfont.eot")
@@ -9,11 +9,18 @@
     font-weight normal
     font-style normal
 
+@font-face
+    font-family "OpenSansBold"
+    src url("../fonts/OpenSans-Bold-webfont.eot")
+    src url("../fonts/OpenSans-Bold-webfont.eot?#iefix") format("embedded-opentype"), url("../fonts/OpenSans-Bold-webfont.woff") format("woff"), url("../fonts/OpenSans-Bold-webfont.ttf") format("truetype"), url("../fonts/OpenSans-Bold-webfont.svg#OpenSansBold") format("svg")
+    font-weight normal
+    font-style normal
+
 // The body style.
 body
     background pageBgColor
     color lightTextColor
-    font 0.8em OpenSansLight, sans-serif
+    font 12px OpenSansLight, sans-serif
     height 100%
     margin 0
     overflow hidden
@@ -24,6 +31,7 @@ body
 // Links are green.
 a
     color linkColor
+    text-decoration none
 
 // The main wrapper.
 #wrapper
@@ -225,8 +233,7 @@ input.error, textarea.error
 
 .styled input[type="checkbox"] + span
 .styled input[type="radio"] + span
-    background -webkit-linear-gradient(top, #C8C8C8, #F3F3F3)
-    background linear-gradient(top, #C8C8C8, #F3F3F3)
+    background rgb(210, 210, 210)
     color #8C8C8C
     font 11px/26px Arial, Helvetica, sans-serif
     height 25px
@@ -237,8 +244,7 @@ input.error, textarea.error
 
 .styled input[type="checkbox"] + span:before
 .styled input[type="radio"] + span:before
-    background -webkit-linear-gradient(top, #CFCFCF, #F9F9F9)
-    background linear-gradient(top, #CFCFCF, #F9F9F9)
+    background rgb(245, 245, 245)
     content ""
     height 25px
     width 40%
@@ -252,17 +258,13 @@ input.error, textarea.error
 
 .styled input[type="checkbox"]:checked + span
 .styled input[type="radio"]:checked + span
-    background -webkit-linear-gradient(top, #55AA44, #227711)
-    background linear-gradient(top, #55AA44, #227711)
+    background rgb(70, 160, 60)
     color #FAFAFA
-    text-shadow -1px -1px #114400
 
 .styled input[type="checkbox"]:disabled + span
 .styled input[type="radio"]:disabled + span
-    background -webkit-linear-gradient(top, #BFBFBF, #EFEFEF)
-    background linear-gradient(top, #BFBFBF, #EFEFEF)
+    background rgb(235, 235, 235)
     color #EEEEEE
-    text-shadow -1px -1px #BBBBBB
 
 .styled input[type="checkbox"]:checked + span:before
 .styled input[type="radio"]:checked + span:before
