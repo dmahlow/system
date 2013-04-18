@@ -54,9 +54,9 @@ class System.MapControlsMapTabView extends System.BaseView
 
         @$selDisplayProps = $ "#map-ctl-displayprops"
         @$chkShowLinks = $ "#map-ctl-showlinks"
-        @$zoomSpan = $ "#map-ctl-zoom-span"
-        @$zoomIn = $ "#map-ctl-zoom-in"
-        @$zoomOut = $ "#map-ctl-zoom-out"
+        @$zoomSpan = $ "#footer-zoom-span"
+        @$zoomIn = $ "#footer-zoom-in"
+        @$zoomOut = $ "#footer-zoom-out"
         @$butExportSvg = $ "#map-ctl-export-svg"
         @$butZIndexIdentify = $ "#map-ctl-zindex-identify"
 

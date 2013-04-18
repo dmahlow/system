@@ -21,7 +21,6 @@ class System.MapControlsView extends System.BaseView
     $imgLock: null             # the top "Lock" icon
     $imgAutoUpdate: null       # the top "Timer auto-update" icon
     $imgFullscreen: null       # the top right "Fullscreen" icon
-    $imgRefresh: null          # the top right "Refresh" icon
     $tabDivs: null             # the tab divs (each div is a tab)
     $tabHeaders: null          # to get each h4 element on the tab headers
 
@@ -67,7 +66,6 @@ class System.MapControlsView extends System.BaseView
         @$imgLock = $ "#top-img-lock"
         @$imgAutoUpdate = $ "#top-img-autoupdate"
         @$imgFullscreen = $ "#top-img-fullscreen"
-        @$imgRefresh = $ "#top-img-refresh"
 
     # Bind events to DOM and other controls.
     setEvents: =>
@@ -77,7 +75,6 @@ class System.MapControlsView extends System.BaseView
         @$chkEditable.change @setEnabled
         @$chkAutoUpdate.change @setAutoUpdate
         @$imgFullscreen.click @parentView.toggleFullscreen
-        @$imgRefresh.click System.App.routes.refresh
 
         @listenTo System.App.mapEvents, "loaded", @bindMap
         @listenTo System.App.mapEvents, "edit:toggle", @editSetState
@@ -142,10 +139,9 @@ class System.MapControlsView extends System.BaseView
         @$chkAutoUpdate.prop "checked", not value
 
         if not value
-            @checkAuditDataStatus()
-            @$imgAutoUpdate.attr "src", "images/ico-autoupdate-on.png"
+            @$imgAutoUpdate.removeClass "disabled"
         else
-            @$imgAutoUpdate.attr "src", "images/ico-autoupdate-off.png"
+            @$imgAutoUpdate.addClass "disabled"
 
         System.App.Data.autoUpdateEnabled = not value
         System.App.Data.userSettings.mapAuditAutoUpdate System.App.Data.autoUpdateEnable

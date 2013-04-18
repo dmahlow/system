@@ -4,8 +4,7 @@
 #header
 
     // The fullscreen and refresh icons that sits on the top right of the screen.
-    img#top-img-fullscreen(src="images/ico-fullscreen.png",title="Click to enable fullscreen mode.")
-    img#top-img-refresh(src="images/ico-refresh.png",title="Click to refresh the app.")
+    img#top-img-fullscreen(src="images/ico-hidecontrols.png",title="Click to enable fullscreen mode.")
 
     // The menu containing navigation options.
     #menu
@@ -15,7 +14,7 @@
         a#menu-auditdata.menu-item(href="#auditdata",title="Open the Audit Data manager dialog.") Audit Data
         a#menu-auditevents.menu-item(href="#auditevents",title="Open the Audit Events manager dialog.") Audit Events
         a#menu-settings.menu-item(href="#settings",title="Open the Settings dialog.") Settings
-        a#menu-help.menu-item(href="#help",title="Open the online Q&A and help center.") Help!
+        a#menu-help.menu-item(href="#help",title="Open the online Q&A and help center.") Help
 
         // The "Edit ON/OFF" switch, which is shown only if the user has the necessary permissions.
         .styled.lock
@@ -26,7 +25,7 @@
 
         // The "Audit Data / alerts auto update" switch.
         .styled.autoupdate
-            img#top-img-autoupdate(src="images/ico-autoupdate-on.png",title="Audit data auto-update enabled")
+            img#top-img-autoupdate(src="images/ico-refresh.png",title="Audit data auto-update enabled")
             label.toggle(for="map-ctl-autoupdate",title="When on, audit data will get bound to the map automatically every X seconds")
                 input#map-ctl-autoupdate(type="checkbox", name="map-ctl-autoupdate", checked="checked")
                 span

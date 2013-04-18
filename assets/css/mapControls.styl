@@ -7,9 +7,10 @@
     border overlayBorder
     border-bottom 0
     border-right 0
+    margin-top 1px
     position fixed
     right 0
-    top 42px
+    top headerHeight
     width mapControlsWidth
     z-index 6
 
@@ -20,14 +21,14 @@
         margin-left 3px
 
     &.hidden
-        background url('../images/ico-mapcontrols.png') no-repeat
+        background url('../images/ico-showcontrols.png') no-repeat
         border 0
         cursor pointer
-        height 32px !important
-        margin-right 1px
+        height 24px !important
+        margin-right 2px
         margin-top 5px
         padding 0
-        width 32px !important
+        width 24px !important
 
     &.hidden *
         display none
@@ -154,25 +155,6 @@
 // The "shape's title" select box.
 #map-ctl-displayprops
     padding-right 8px
-
-// The zoom div on the bottom right of the screen.
-#map-ctl-zoom
-    bottom -1px
-    position fixed
-    right 1px
-    z-index 7
-    user-select none
-    -webkit-user-select none
-
-    // Each zoom icon (one with -, another with +).
-    img
-        cursor pointer
-        padding-bottom 3px
-        vertical-align middle
-
-// The zoom indicator with a right margin to the zoom icons.
-#map-ctl-zoom-span
-    margin-right 5px
 
 // Entity tab showing a list of entity objects available.
 #map-ctl-tab-entities

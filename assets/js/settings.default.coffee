@@ -57,7 +57,7 @@ System.App.SettingsDefault =
     # ----------------------------------------------------------------------
     Menu:
         # Timeout to hide submenus when mouse leaves them.
-        hideTimeout: 500
+        hideTimeout: 400
         # Prefix of the ID of submenu items.
         subPrefix: "menu-filter-"
 

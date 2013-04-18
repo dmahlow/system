@@ -159,8 +159,10 @@ class System.MenuView extends System.BaseView
     # Show or hide the submenu items div, depending on the parameter `show`.
     toggleSubMenu: (show) =>
         if show? and show
+            @$menuMaps.addClass "hover"
             @$subMenuItems.show()
         else
+            @$menuMaps.removeClass "hover"
             @$subMenuItems.hide()
 
     # Sort the items on the map submenu.

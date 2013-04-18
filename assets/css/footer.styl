@@ -22,11 +22,32 @@
 #footer-maps-name, #footer-maps-entity
     font-weight bold
 
+// The online users div.
 #footer-online-users
     background url(../images/ico-user.png) no-repeat right
-    bottom 1px
+    bottom 3px
     height 24px
     right 256px
-    padding-top 8px
+    padding-top 6px
     position fixed
     width 41px
+    z-index 7
+
+// The zoom div on the bottom right of the screen.
+#footer-zoom
+    bottom -1px
+    position fixed
+    right 1px
+    z-index 7
+    user-select none
+    -webkit-user-select none
+
+    // Each zoom icon (one with -, another with +).
+    img
+        cursor pointer
+        padding-bottom 3px
+        vertical-align middle
+
+// The zoom indicator with a right margin to the zoom icons.
+#footer-zoom-span
+    margin-right 5px
