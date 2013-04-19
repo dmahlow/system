@@ -44,14 +44,14 @@
 
     // The map controls tab headers (Properties, Details, Related, Events, etc...).
     .tab-header
-        background rgba(100, 100, 100, 0.5)
+        background lightBgColor
         font-size 14px
         -webkit-user-select none
         user-select none
 
         // Each tab is a H4 element.
         h4
-            color rgba(180, 180, 180, 0.5)
+            color brightTextColor
             cursor pointer
             display inline-block
             font-weight normal
@@ -68,7 +68,7 @@
     // The map controls tab container.
     .tab
         overflow auto
-        padding 1px 2px 2px 2px
+        padding 1px 0 2px 0
 
         // Sub headers inside the tabs are H5 elements.
         > h5
@@ -163,7 +163,7 @@
     img.search
         opacity 0.35
         position absolute
-        right 21px
+        right 11px
         top 35px
 
     ul
@@ -178,7 +178,6 @@
         li
             background-position 6px center
             background-repeat no-repeat
-            border 1px solid rgba(80, 80, 80, 1)
             cursor pointer
             display block
             list-style-type none
@@ -186,7 +185,7 @@
             padding 5px
 
             &:hover
-                background-color rgba(80, 80, 80, 1)
+                background-color darkBgColor
 
             span
                 color darkHoverColor
@@ -218,7 +217,7 @@
 #map-entity-list-search
     margin-left 1px !important
     user-select text !important
-    width 96%
+    width 97%
 
 
 // TAB: SHAPE
@@ -245,18 +244,15 @@
             margin 10px 0 6px 0
             width auto
         div
-            border 1px solid rgba(200, 200, 200, 0.9)
             cursor pointer
             display inline-block
-            margin 0 4px 0 1px
+            margin 0 5px 0 1px
             padding 2px
             text-align center
-            width 18px
+            width 20px
         .active
-            background rgba(120, 220, 130, 0.1)
-            color rgba(120, 220, 130, 1)
+            background darkHoverColor
             cursor default
-            border 1px solid rgba(60, 150, 70, 1)
 
     .disabled *
         cursor default !important

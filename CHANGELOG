@@ -4,6 +4,18 @@ SYSTEM APP CHANGE LOG
 - = removed features
 
 # -----------------------------------------------------------------------------
+  0.5.3, 2013.04.19
++ Major UI overhaul. Interface is now much cleaner. All unnecessary UI elements
+  like borders, shadows and transparencies were thrown away.
++ Added the required modules for authorization, user and roles.
+  The basic HTTP authentication will be available from version 0.6.0.
+* Updated node modules.
+* Fixed UI bugs on the header and map controls.
+- Got rid of unnecessary styles (mainly the .styled class).
+- Because of the soon-to-be-available user authentication the godMode setting
+  was permanently removed from the app.
+
+# -----------------------------------------------------------------------------
   0.5.1, 2013.04.15
 + Code documentation is now available under /docs.
   Docs are generated with Docco. See the new updateddocs.sh script for details.

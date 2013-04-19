@@ -5,19 +5,31 @@ so some features are not yet implemented, although it's quite usable in its curr
 We recommend using Google Chrome but FireFox should work fine as well.
 
 There's a functional demo running on AppFog: <http://systemapp.rs.af.cm>
-Documentation can be found under the /docs directory of the app, or alternatively
-via CoffeeDoc at <http://coffeedoc.info/github/zalando/system/master/>.
+Documentation can be found under the `/docs` directory of the app.
+
+As the app is being developed on a daily basis, we recommend you to keep an eye on commits and
+especially the CHANGELOG file. The final 1.0.0 version will be available by summer 2013.
+
+*Version 0.5.3 is out with a much needed UI update!*
 
 #### What's still not ready for prime time?
 
-- User authentication. Right now the app can be locked down using a generic querystring.
+- The `settings.coffee` file will be created automatically but only after the app has
+  started for the first time. We'll change this once we have the UI to manage these settings,
+  so when app is started for the first time a page with the settings manager will open
+  allowing the user to create its own customized settings.
+- User authentication. We're implementing basic HTTP authentication first, and LDAP will follow
+  as soon as we get the basic stuff done.
+- Performance improvements on complex maps. SVG is slow, so we'll tweak our implementation to
+  minimze DOM queries and whenever possible use hardware accelerated features on rendering.
 - Editing and moving multiple shapes simultaneously on a map by selecting them holding Ctrl.
 - Better and smarter auto completion when editing shape labels.
 - Auto completion when editing Audit Event rules (just like on shape labels).
-- Undo and redo of actions, mainly with map shapes.
+- Undo and redo of actions especially when editing maps.
 - Better and more stable sync of data using Socket.IO instead of AJAX calls.
-- Support for multiple users editing a map at the same time, or map locking when there's someone editing already.
-- External API with HTTP webhooks and better documentation.
+- Support for multiple users editing a map at the same time, or at least map locking when there's
+  someone editing it already.
+- External API with HTTP webhooks.
 - Self-healing features - app will self diagnose in case too many errors are triggered.
 
 ## Installation
