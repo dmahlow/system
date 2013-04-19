@@ -10,8 +10,6 @@ Documentation can be found under the `/docs` directory of the app.
 As the app is being developed on a daily basis, we recommend you to keep an eye on commits and
 especially the CHANGELOG file. The final 1.0.0 version will be available by summer 2013.
 
-*Version 0.5.3 is out with a much needed UI update!*
-
 #### What's still not ready for prime time?
 
 - The `settings.coffee` file will be created automatically but only after the app has
