@@ -1,18 +1,23 @@
 // COMMON STYLES
 // ---------------------------------------------------------------
 
-// Import font faces.
+// Import OpenSans font face.
+@font-face
+    font-family "OpenSans"
+    src url("../fonts/OpenSans-Regular-webfont.eot")
+    src url("../fonts/OpenSans-Regular-webfont.eot?#iefix") format("embedded-opentype"), url("../fonts/OpenSans-Regular-webfont.woff") format("woff"), url("../fonts/OpenSans-Regular-webfont.ttf") format("truetype")
+    font-weight normal
+    font-style normal
 @font-face
     font-family "OpenSansLight"
     src url("../fonts/OpenSans-Light-webfont.eot")
-    src url("../fonts/OpenSans-Light-webfont.eot?#iefix") format("embedded-opentype"), url("../fonts/OpenSans-Light-webfont.woff") format("woff"), url("../fonts/OpenSans-Light-webfont.ttf") format("truetype"), url("../fonts/OpenSans-Light-webfont.svg#OpenSansLight") format("svg")
+    src url("../fonts/OpenSans-Light-webfont.eot?#iefix") format("embedded-opentype"), url("../fonts/OpenSans-Light-webfont.woff") format("woff"), url("../fonts/OpenSans-Light-webfont.ttf") format("truetype")
     font-weight normal
     font-style normal
-
 @font-face
     font-family "OpenSansBold"
     src url("../fonts/OpenSans-Bold-webfont.eot")
-    src url("../fonts/OpenSans-Bold-webfont.eot?#iefix") format("embedded-opentype"), url("../fonts/OpenSans-Bold-webfont.woff") format("woff"), url("../fonts/OpenSans-Bold-webfont.ttf") format("truetype"), url("../fonts/OpenSans-Bold-webfont.svg#OpenSansBold") format("svg")
+    src url("../fonts/OpenSans-Bold-webfont.eot?#iefix") format("embedded-opentype"), url("../fonts/OpenSans-Bold-webfont.woff") format("woff"), url("../fonts/OpenSans-Bold-webfont.ttf") format("truetype")
     font-weight normal
     font-style normal
 
@@ -20,13 +25,14 @@
 body
     background pageBgColor
     color lightTextColor
-    font 13px OpenSansLight, sans-serif
+    font 13px OpenSans, sans-serif
     height 100%
     margin 0
     overflow hidden
     padding 0
     position relative
     width 100%
+    -webkit-font-smoothing antialiased
 
 // Links are green.
 a
@@ -105,8 +111,8 @@ a
     cursor pointer
     display inline-block
     margin 4px
-    user-select none
     -webkit-user-select none
+    user-select none
     vertical-align middle
 
 button
@@ -127,7 +133,7 @@ input[type="submit"]:disabled
     background-color mediumBgColor !important
     color lightBgColor
     cursor default !important
-    opacity 0.5 !important
+    opacity 0.6 !important
 
 select
     background rgb(255, 255, 255)
@@ -142,7 +148,7 @@ input[type="number"],
 input[type="text"],
 input[type="url"]
     border-radius 0
-    border 1px solid rgb(160, 160, 160)
+    border 0
     font 14px/25px Arial, Helvetica, sans-serif
     padding-left 3px
     padding-right 3px

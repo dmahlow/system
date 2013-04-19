@@ -6,7 +6,7 @@
 class System.UserSettings extends System.BaseModel
     typeName: "UserSettings"
     defaults:
-        mapAuditAutoUpdate: true
+        mapAutoRefresh: true
         mapShowBackground: true
         mapFullSizeIcons: false
         mapShowLinks: true
@@ -24,10 +24,10 @@ class System.UserSettings extends System.BaseModel
     # ----------------------------------------------------------------------
 
     # Helper to get / set the "Audit data auto update" map option.
-    mapAuditAutoUpdate: (value) =>
+    mapAutoRefresh: (value) =>
         if value?
-            @set "mapAuditAutoUpdate", value
-        @get "mapAuditAutoUpdate"
+            @set "mapAutoRefresh", value
+        @get "mapAutoRefresh"
 
     # Helper to get / set the "Show background" map option.
     mapShowBackground: (value) =>

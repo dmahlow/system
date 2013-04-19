@@ -4,13 +4,17 @@
 
 class System.App.SettingsView extends System.OverlayView
 
-    $localStorageDiv: null        # the local storage contents wrapper
-    $localStorageClearBut: null   # the "Clear local storage" button
-    $serverErrorsDiv: null        # the server errors contents wrapper
-    $serverErrorsClearBut: null   # the "Clear server errors" button
-    $modifierDelete: null         # the "Delete" modifier keys div
-    $modifierMultiple: null       # the "Multiple" modifier keys div
-    $modifierToBack: null         # the "To Back" modifier keys div
+    $chkFullscreen: null             # the start maximized checkbox
+    $chkAutoRefresh: null           # the autorefresh checkbox
+    $chkDebug: null                 # the debug checkbox
+    $debugNote: null                # the debug performance note
+    $localStorageDiv: null          # the local storage contents wrapper
+    $localStorageClearBut: null     # the "Clear local storage" button
+    $serverErrorsDiv: null          # the server errors contents wrapper
+    $serverErrorsClearBut: null     # the "Clear server errors" button
+    $modifierDelete: null           # the "Delete" modifier keys div
+    $modifierMultiple: null         # the "Multiple" modifier keys div
+    $modifierToBack: null           # the "To Back" modifier keys div
 
 
     # INIT AND DISPOSE
@@ -30,6 +34,11 @@ class System.App.SettingsView extends System.OverlayView
     setDom: =>
         @$menuItem = $ "#menu-settings"
 
+        @$chkFullscreen = $ "#settings-chk-fullscreen"
+        @$chkAutoRefresh = $ "#settings-chk-autorefresh"
+        @$chkDebug = $ "#settings-chk-debug"
+        @$debugNote = @$el.find ".general span.error"
+
         @$localStorageDiv = $ "#settings-localstorage-contents"
         @$localStorageClearBut = $ "#settings-localstorage-clear-but"
         @$serverErrorsDiv = $ "#settings-servererrors-contents"
@@ -39,8 +48,15 @@ class System.App.SettingsView extends System.OverlayView
         @$modifierMultiple = $ "#settings-modifierkeys-multiple"
         @$modifierToBack = $ "#settings-modifierkeys-toback"
 
+        @$chkFullscreen.prop "checked", System.App.Data.userSettings.mapFullscreen()
+        @$chkAutoRefresh.prop "checked", System.App.Data.userSettings.mapAutoRefresh()
+        @$chkDebug.prop "checked", System.App.debug
+
+        @$debugNote.hide() if not System.App.debug
+
     # Bind events to the DOM.
     setEvents: =>
+
         @$localStorageClearBut.click @clearLocalStorage
         @$serverErrorsClearBut.click @clearServerErrors
 

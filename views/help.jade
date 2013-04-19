@@ -18,28 +18,36 @@
         div.tab.general
             h4 General
             p.
-                Before you start, have you tried our interactive <a href="javascript:System.App.Tutorial.start();" title="Start the interactive tutorial now!">tutorial</a> yet?
+                Before you start, have you tried our interactive
+                <a href="javascript:System.App.Tutorial.start();" title="Start the interactive tutorial now!">tutorial</a>
+                yet?
             ul.qa
                 li
                     label Which browsers are compatible with the #{title}?
                     div.
-                        This app works best on the latest version of Google Chrome, although recent versions of Opera, FireFox and IE <em>should</em> work as well.
+                        This app works best on the latest version of Google Chrome, although recent versions of Opera,
+                        FireFox and IE <em>should</em> work as well.
                 li
                     label The app suddenly stopped working or has a strange behaviour. What can I do?
                     div.
-                        Silly answer is: refresh the page (usually by pressing F5). This will solve the vast majority of problems.
+                        Silly answer is: refresh the page (usually by pressing F5). This will solve the vast
+                        majority of problems.
                     div.
-                        If the error persists, please <a href="javascript:System.App.toggleDebug(true);">enable the debug mode</a> and keep an eye
-                        on the Javascript for more detailed info.
+                        If the error persists, please
+                        <a href="javascript:System.App.toggleDebug(true);">enable the debug mode</a> and keep an eye
+                        on the Javascript console for more detailed info.
                 li
                     label Where can I get the source code documentation for this app?
                     div.
-                        Feeling lucky? The source code docs are available at <em><a href="docs/index.html" target="SystemDocs">/docs</a></em>.
+                        Feeling lucky? The source code docs are available at
+                        <a href="docs/index.html" target="SystemDocs">/docs</a>.
                 li
                     label Need help? Found a bug? Have a suggestion?
                     div.
-                        You can <a href="https://github.com/zalando/system/issues/new" title"#{title} issues on GitHub">post an issue</a>
-                        or get support on our <a href="https://github.com/zalando/system" title="Our GitHub project page">project page at GitHub</a>.
+                        You can
+                        <a href="https://github.com/zalando/system/issues/new" title"#{title} issues on GitHub">post an issue</a>
+                        or get support on our
+                        <a href="https://github.com/zalando/system" title="Our GitHub project page">project page at GitHub</a>.
 
         div.tab.maps(style="display:none")
             h4 Maps
@@ -48,95 +56,138 @@
                     label How can I create maps?
                     if roles.admin || roles.mapcreate
                         div.
-                            Click the "Create Map" option on the very top left of the screen, enter the name of the new map,
-                            press "Enter" and start adding shapes by dragging them from the "Objects" list on the map controls bar.
+                            Click the "Create Map" option on the very top left of the screen, enter the name of the new
+                            map, press "Enter" and start adding shapes by dragging them from the "Objects" list on the
+                            map controls bar. The map will be sync'd to the remote database automatically as you edit.
                         div.
-
                     else
                         div.
                             You don't have the necessary permissions to create maps, sorry.
                 li
-                    label I can't see a particular entity object listed on the "Objects" list. Why?
-                    if roles.admin || roles.entities
-                        div.
-                            Open the Entities Manager ("Entities" on the top of the screen) and make sure that the "Source URL" property for
-                            that particular entity is properly set. If the URL is correct, it might be that the "Refresh" interval
-                            is too long so please set it to a lower value.
-                    else
-                        div.
-                            You don't have the necessary permissions to manage Entity Definitions and Objects, so please wait for a few
-                            minutes - it might be that the entity objects were not sync'd yet but that should happen
-                            automatically in a few minutes.
-                li
                     label It's really slow to scroll, zoom and pan the map around. Any way to improve this?
                     div.
-                        On complex maps (having dozens or hundreds of shapes and links) it might get slow to interact with the
-                        map, indeed. If you're experiencing this, please try
+                        On complex maps (having dozens or hundreds of shapes and links) it might get slow to interact
+                        with the map, indeed. If you're experiencing this, please try
                         <a href="javascript:System.App.Data.userSettings.slowDevice(true);" title="Click to enable the slow device mode">enabling the slowDevice option</a>.
-                        This will effectively disable most UI effects and slow the data refresh ratio to cope with limited
-                        processing power.
-
-
+                        This will effectively disable most UI effects and slow the data refresh ratio to cope with
+                        limited processing power.
 
         div.tab.entities(style="display:none")
             h4 Entities
             ul.qa
-                li.
-                    <label>What are Entities?</label><br />
-                    Entities represent the different types of objects you have on your infrastructure. A common scenario
-                    would be having the following entity definitions: DataCenters, Machines, DbHost, HttpHost, The System App has no restrictions on how you define
-                    them. A
-                li.
-                    <label>I can't see a particular entity listed on the Entities list, why?</label><br />
-                    Go to the Entities Manager ("Entities" on the top menu) and make sure that the Source URL property for
-                    that particular entity is properly set.
+                li
+                    label What are Entities?
+                    div.
+                        The types of objects you have on your infrastructure are represented by "Entity Definitions".
+                        Each of these definitions have one or more "Entity Objects". Making a direct comparison to
+                        databases, entity definitions are the tables and entity objects are the records.
+                li
+                    label How can I import my Entities to the #{title}?
+                    if roles.admin || roles.entities
+                        div.
+                            Click on "Entities" on the top of the screen and create a new Entity Definition there.
+                            You must specify the "Source URL" (local or remote) to a JSON file containing a list with
+                            all objects for that particular definition, and set the "Refresh" interval in seconds.
+                    else
+                        div.
+                            You don't have the necessary permissions to manage Entity Definitions and Objects, so
+                            please contact the administrator if you want to add new Entities.
+                li
+                    label Can I import Entities from XML, CSV or text files?
+                    div.
+                        No, at the moment #{title} supports only JSON files. Please note that the JSON file must contain
+                        the array of entity objects on root level, enclosed with square brackets [].
+                li
+                    label I can't see a particular entity object listed on the "Objects" list. Why?
+                    if roles.admin || roles.entities
+                        div.
+                            Click on "Entities" on the top of the screen, select the desired entity definition and make
+                            sure that the "Source URL" property for that particular entity is properly set. If the URL
+                            is correct, it might be that the "Refresh" interval is too long so please set it to a lower
+                            value.
+                    else
+                        div.
+                            You don't have the necessary permissions to manage Entity Definitions and Objects, so
+                            please wait for a few minutes - it might be that the entity objects were not sync'd yet
+                            but that should happen automatically in a few minutes.
 
         div.tab.auditdata(style="display:none")
             h4 Audit Data
             ul.qa
-                li.
-                    <label>How to bind dynamic values (Audit Data) to labels on shapes and links?</label><br />
-                    When edtiting label values, you can either use the autocomplete list that appears right below the text box or press the key <em>$</em>
-                    to show the current available audit data items. If you're conformtable with javascript, you can also evaluate code by entering
-                    <em>eval:</em> which will bring the eval text box - in this case, please remember that you must have a return statement set somewhere.
+                li
+                    label What are Audit Data records?
+                    div.
+                        We guess you might have a few monitoring tools checking the health and state of your systems.
+                        Just like "Entities", you can import these monitoring data into #{title} by creating
+                        "Audit Data" records, specifying a local or remote "Source URL" for each and a refresh interval.
+                li
+                    label How to bind Audit Data values to shapes and links on a map?
+                    div.
+                        When edtiting label values, a list with all available Audit Data records (along with Variables)
+                        will be displayed right below the input field. Click on the desired Audit Data record to update
+                        the list with its properties and values and keep clicking / navigating till you reach the
+                        specific data you want. A bound Audit Data value should look like:
+                    div.
+                        <em>#audit.Audit_Data_ID.property1.subproperty[index]</em>
+                li
+                    label How often are Audit Data values refreshed?
+                    div.
+                        The refresh interval is set per Audit Data. So one could be refreshed every 5 minutes while
+                        another gets updated every 10 seconds. The minimum accepted value is 2 seconds.
 
         div.tab.auditevents(style="display:none")
             h4 Audit Events
             ul.qa
-                li.
-                    <label>What are Audit Events?</label><br />
-                    Audit Events are a combination of rules and actions to notify users about the state of the monitored systems. You can define multiple
-                    rules, and if any of these rules are valid (true), it will trigger the specified actions on all the shapes which have this particular
-                    alert attached.
-                li.
-                    <label>How do I create Audit Events?</label><br />
-                    Click the "Audit Events" button on the top of the page, and the Audit Events manager will open. On the left part of the panel you can
-                    see a list of registered alerts and also create new alerts. On the right side you can see the list of rules and actions for the
-                    currently selected alert.
-                li.
-                    <label>How can I set the source or target of a rule to a specific shape label?</label><br />
-                    To set the source or target to a label on the shape, use the <strong><span class="prefix-auditeventcontext"></span></strong> prefix and the label number.
-                    The label numbers are: left 1, top 2, right 3, bottom 4, center 5. So to compare the left label with the right label, you would use
-                    <em><span class="prefix-auditeventcontext"></span>1</em> as source and <em><span class="prefix-auditeventcontext"></span>3</em> as target.
+                li
+                    label What are Audit Events?
+                    div.
+                        Audit Events are a combination of rules and actions to notify users about the state of the
+                        monitored systems. You can define multiple rules, and if any of these rules are valid (true),
+                        it will trigger the specified actions on all the shapes which have this particular
+                        alert attached.
+                li
+                    label How do I create Audit Events?
+                    div.
+                        Click the "Audit Events" button on the top of the page, and the Audit Events manager will open.
+                        On the left part of the panel you can see a list of registered alerts and also create new
+                        alerts. On the right side you can see the list of rules and actions for the currently
+                        selected alert.
+                li
+                    label How can I set the source or target of a rule to a specific shape label?
+                    div.
+                        To set the source or target to a label on the shape, use the
+                        <strong><span class="prefix-auditeventcontext"></span></strong> prefix and the label number.
+                        The label numbers are: left 1, top 2, right 3, bottom 4, center 5. So to compare the left label
+                        with the right label, you would use
+                        <em><span class="prefix-auditeventcontext"></span>1</em> as source and
+                        <em><span class="prefix-auditeventcontext"></span>3</em> as target.
 
         div.tab.variables(style="display:none")
             h4 Variables
             ul.qa
-                li.
-                    <label>What are Variables?</label><br />
-                    Custom variables are javascript code blocks that gets parsed and interpreted on demand. They're mainly used to aggregate and process
-                    values from Audit Data itens, which can then be shown on map labels or used in Audit Events. Variables are prefixed
-                    by <strong><span class="prefix-variables"></span></strong>.
-                li.
-                    <label>Can I pass arguments when using Variables?</label><br />
-                    Yes, you can pass arguments inside parentheses. For example: <em><span class="prefix-variables"></span>CalculateCPU(1)</em>
-                    or <em><span class="prefix-variables"></span>GetRequestsPerSec(1,3,6,7)</em>.
+                li
+                    label What are Variables?
+                    div.
+                        Custom variables are javascript code blocks that gets parsed and interpreted on demand.
+                        They're mainly used to aggregate and process
+                        values from Audit Data itens, which can then be shown on map labels or used in Audit Events.
+                        Variables are prefixed
+                        by <strong><span class="prefix-variables"></span></strong>.
+                li
+                    label Can I pass arguments when using Variables?
+                    div.
+                        Yes, you can pass arguments inside parentheses. For example:
+                        <em><span class="prefix-variables"></span>CalculateCPU(1)</em>
+                        or <em><span class="prefix-variables"></span>GetRequestsPerSec(1,3,6,7)</em>.
 
         div.tab.shortcuts(style="display:none")
             h4 Shortcuts
             ul.qa
-                li.
-                    <label>What are the key and mouse shortcuts available on the app?</label><br />
-                    A few. Pressing <em>Ctrl+S</em> will save the current map. <em>Ctrl+E</em> will enable editing the map (if you have permissions).
-                    <em>Ctrl+T</em> will toggle the fullscreen mode. Pressing <em>Esc</em> will usually cancel any pending actions and close overlays.
-                    Fore more details, open the Settings tab.
+                li
+                    label What are the key and mouse shortcuts available on the app?
+                    div.
+                        A few. Pressing <em>Ctrl+S</em> will save the current map. <em>Ctrl+E</em> will enable editing
+                        the map (if you have permissions).
+                        <em>Ctrl+T</em> will toggle the fullscreen mode. Pressing <em>Esc</em> will usually cancel any
+                        pending actions and close overlays.
+                        Fore more details, open the Settings tab.

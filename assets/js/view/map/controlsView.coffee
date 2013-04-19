@@ -81,7 +81,7 @@ class System.MapControlsView extends System.BaseView
 
     # Bind the saved [User Settings](userSettings.html) and current [Data](data.html) to the map map controls.
     bindInitialState: =>
-        @$chkAutoUpdate.prop "checked", System.App.Data.userSettings.mapAuditAutoUpdate()
+        @$chkAutoUpdate.prop "checked", System.App.Data.userSettings.mapAutoRefresh()
 
     # When window has loaded or resized, call this to resize the map controls accordingly.
     # TODO! Properly calculate the diff instead of using the 38 hard coded value.
@@ -144,7 +144,7 @@ class System.MapControlsView extends System.BaseView
             @$imgAutoUpdate.addClass "disabled"
 
         System.App.Data.autoUpdateEnabled = not value
-        System.App.Data.userSettings.mapAuditAutoUpdate System.App.Data.autoUpdateEnable
+        System.App.Data.userSettings.mapAutoRefresh System.App.Data.autoUpdateEnable
 
         if not value
             System.App.Data.startTimers()

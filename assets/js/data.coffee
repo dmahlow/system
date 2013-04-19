@@ -36,7 +36,7 @@ System.App.Data =
         @userSettings.fetch()
 
         @timerRefreshLabels = null
-        @autoUpdateEnabled = @userSettings.mapAuditAutoUpdate()
+        @autoUpdateEnabled = @userSettings.mapAutoRefresh()
         @setEvents()
 
     # Set event listerners related to the app's data.

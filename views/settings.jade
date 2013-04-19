@@ -8,43 +8,37 @@
 
         // Tabs shown on top of the overlay: Startup, Local Storage, Server Logs and Keyboard.
         div.tab-headers
-            label(data-tab=".startup",title="App startup options.").active Startup
+            label(data-tab=".general",title="App general options.").active General options
             label(data-tab=".localstorage",title="View and manage data on the browser's local storage.") Local storage
-            label(data-tab=".serverlogs",title="List and view detailed server errors and logs.") Server logs
             label(data-tab=".keyboard",title="View and manage keyboard shortcuts and modifier keys.") Keyboard
+            label(data-tab=".serverlogs",title="List and view detailed server errors and logs.") Server logs
+            label(data-tab=".about",title="About #{title}") About
 
-        // Startup tab containing startup options.
-        div.tab.startup
+        // Main app options.
+        div.tab.general
             h4 Startup
             div
                 span.control-label Start the app maximized
-                label.toggle(for="settings-start-maximized",title="If ON, the app will start maximized - header, menu, map controls and footer will be hidden.")
-                    input#settings-start-maximized(type="checkbox", name="settings-start-maximized")
+                label.toggle(for="settings-chk-fullscreen",title="If ON, the app will start maximized - header, menu, map controls and footer will be hidden.")
+                    input#settings-chk-fullscreen(type="checkbox", name="settings-chk-fullscreen")
                     span
             div
-                span.control-label Auto start the audit data timers
-                label.toggle(for="settings-start-timers",title="If ON, audit data timers to refresh their data will start automatically when you load the app.")
-                    input#settings-start-timers(type="checkbox", name="settings-start-timers")
+                span.control-label Auto refresh map labels
+                label.toggle(for="settings-chk-autorefresh",title="If ON, timers to refresh Audit Data and Map labels will start automatically when you load the app.")
+                    input#settings-chk-autorefresh(type="checkbox", name="settings-chk-autorefresh")
                     span
-            br
             div
-                span App version: #{version}
-            div
-                span Running on port: #{port}
-            div
-                span Last updated: #{lastModified}
+                span.control-label Enable debugging
+                label.toggle(for="settings-chk-debug",title="If ON, the app will log most actions and events to the console. Use ONLY if necessary!")
+                    input#settings-chk-debug(type="checkbox", name="settings-chk-debug")
+                    span
+                span.small.error Attention! Performance might be affected while running in debug mode. Use only if necessary.
 
         // Local storage tab to see and manage the local storage contents.
         div.tab.localstorage(style="display:none")
             h4 Local storage
             #settings-localstorage-contents
             button#settings-localstorage-clear-but Clear local storage
-
-        // Server logs to see and troubleshoot server logs.
-        div.tab.serverlogs(style="display:none")
-            h4 Server errors
-            #settings-servererrors-contents
-            button#settings-servererrors-clear-but Clear server errors
 
         // Keyboard tab to edit keyboard preferences and manage shortcuts.
         div.tab.keyboard(style="display:none")
@@ -106,3 +100,19 @@
                     span#settings-short-alt-autocomplete Alt
                     strong +
                     span.active $
+
+        // Server logs to see and troubleshoot server logs.
+        div.tab.serverlogs(style="display:none")
+            h4 Server errors
+            #settings-servererrors-contents
+            button#settings-servererrors-clear-but Clear server errors
+
+        // About tab containing info about the app.
+        div.tab.about(style="display:none")
+            h4 About
+            div
+                span App version: #{version}
+            div
+                span Running on port: #{port}
+            div
+                span Last updated: #{lastModified}

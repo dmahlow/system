@@ -4,6 +4,11 @@
 monoFonts = Consolas,Monaco,Lucida Console,Liberation Mono,Courier New
 
 #settings > div
+
+    // Bit of margin below the tab titles.
+    h4
+        margin-bottom 10px
+
     .topmargin
         margin-top 24px
 
@@ -36,10 +41,14 @@ monoFonts = Consolas,Monaco,Lucida Console,Liberation Mono,Courier New
     .group
         display inline
 
-    .startup
+    .general
         .control-label
             display inline-block
             width 200px
+
+    .error
+        color errorColor
+        margin-left 6px
 
 
 #settings-localstorage-contents
