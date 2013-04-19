@@ -794,7 +794,7 @@ dt
 
 #header nav
 {
-    max-width: 650px;
+    max-width: 760px;
     margin: 0 auto;
     padding: 0 10px;
     background: blue;
@@ -879,7 +879,7 @@ dt
 
 section
 {
-    max-width: 650px;
+    max-width: 760px;
     padding: 30px 0px 50px 0px;
     margin: 20px 0;
     margin-top: 70px;
