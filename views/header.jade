@@ -8,7 +8,7 @@
 
     // The menu containing navigation options.
     #menu
-        if userRoles.admin || userRoles.mapcreate
+        if roles.admin || roles.mapcreate
             a#menu-createmap.menu-item(href="#createmap",title="Click to create a new map.") Create Map
         a#menu-maps.menu-item(href="#maps",title="View and open available maps.") Maps...
         a#menu-entities.menu-item(href="#entities",title="Open the Entities Manager.") Entities

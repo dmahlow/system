@@ -18,22 +18,65 @@
         div.tab.general
             h4 General
             p.
-                Before you start, have you tried our simple <a href="javascript:System.App.Tutorial.start();">tutorial</a> yet?
+                Before you start, have you tried our interactive <a href="javascript:System.App.Tutorial.start();" title="Start the interactive tutorial now!">tutorial</a> yet?
             ul.qa
-                li.
-                    <label>Which browsers are compatible with the #{title}?</label><br />
-                    This app works best on the latest version of Google Chrome, although recent versions of Opera, FireFox and IE <em>should</em> work as well.
-                li.
-                    <label>The app suddenly stopped working or has a strange behaviour. What can I do?</label><br />
-                    Silly answer is: refresh the page (usually by pressing F5). This will solve the vast majority of problems.
-                    If the error persists, please <a href="javascript:System.App.toggleDebug(true);">enable the debug mode</a> and keep an eye
-                    on the Javascript for more detailed info.
-                li.
-                    <label>Where can I get the source code documentation for this app?</label><br />
-                    Feeling lucky? The source code docs are available at <em><a href="docs/index.html" target="SystemDocs">/docs</a></em>.
-                li.
-                    <label>Need help? Found a bug? Have a suggestion?</label><br />
-                    Send a message to <strong><a href="mailto:igor.ramadas@zalando.de">igor.ramadas@zalando.de</a></strong> and he'll get back to you ASAP.
+                li
+                    label Which browsers are compatible with the #{title}?
+                    div.
+                        This app works best on the latest version of Google Chrome, although recent versions of Opera, FireFox and IE <em>should</em> work as well.
+                li
+                    label The app suddenly stopped working or has a strange behaviour. What can I do?
+                    div.
+                        Silly answer is: refresh the page (usually by pressing F5). This will solve the vast majority of problems.
+                    div.
+                        If the error persists, please <a href="javascript:System.App.toggleDebug(true);">enable the debug mode</a> and keep an eye
+                        on the Javascript for more detailed info.
+                li
+                    label Where can I get the source code documentation for this app?
+                    div.
+                        Feeling lucky? The source code docs are available at <em><a href="docs/index.html" target="SystemDocs">/docs</a></em>.
+                li
+                    label Need help? Found a bug? Have a suggestion?
+                    div.
+                        You can <a href="https://github.com/zalando/system/issues/new" title"#{title} issues on GitHub">post an issue</a>
+                        or get support on our <a href="https://github.com/zalando/system" title="Our GitHub project page">project page at GitHub</a>.
+
+        div.tab.maps(style="display:none")
+            h4 Maps
+            ul.qa
+                li
+                    label How can I create maps?
+                    if roles.admin || roles.mapcreate
+                        div.
+                            Click the "Create Map" option on the very top left of the screen, enter the name of the new map,
+                            press "Enter" and start adding shapes by dragging them from the "Objects" list on the map controls bar.
+                        div.
+
+                    else
+                        div.
+                            You don't have the necessary permissions to create maps, sorry.
+                li
+                    label I can't see a particular entity object listed on the "Objects" list. Why?
+                    if roles.admin || roles.entities
+                        div.
+                            Open the Entities Manager ("Entities" on the top of the screen) and make sure that the "Source URL" property for
+                            that particular entity is properly set. If the URL is correct, it might be that the "Refresh" interval
+                            is too long so please set it to a lower value.
+                    else
+                        div.
+                            You don't have the necessary permissions to manage Entity Definitions and Objects, so please wait for a few
+                            minutes - it might be that the entity objects were not sync'd yet but that should happen
+                            automatically in a few minutes.
+                li
+                    label It's really slow to scroll, zoom and pan the map around. Any way to improve this?
+                    div.
+                        On complex maps (having dozens or hundreds of shapes and links) it might get slow to interact with the
+                        map, indeed. If you're experiencing this, please try
+                        <a href="javascript:System.App.Data.userSettings.slowDevice(true);" title="Click to enable the slow device mode">enabling the slowDevice option</a>.
+                        This will effectively disable most UI effects and slow the data refresh ratio to cope with limited
+                        processing power.
+
+
 
         div.tab.entities(style="display:none")
             h4 Entities
@@ -43,20 +86,6 @@
                     Entities represent the different types of objects you have on your infrastructure. A common scenario
                     would be having the following entity definitions: DataCenters, Machines, DbHost, HttpHost, The System App has no restrictions on how you define
                     them. A
-                li.
-                    <label>I can't see a particular entity listed on the Entities list, why?</label><br />
-                    Go to the Entities Manager ("Entities" on the top menu) and make sure that the Source URL property for
-                    that particular entity is properly set.
-
-        div.tab.maps(style="display:none")
-            h4 Maps
-            ul.qa
-                li.
-                    <label>How can I create maps?</label><br />
-                    First of all, map creations will be available <strong>only</strong> if you have the necessary permissions.
-                    Simply click the "Create Map" button on the left side of top bar, enter the name of the new map, and start
-                    adding shapes by dragging them from the "Entities" list on the map controls bar (NOT the Entities Manager,
-                    accessible from the top menu!).
                 li.
                     <label>I can't see a particular entity listed on the Entities list, why?</label><br />
                     Go to the Entities Manager ("Entities" on the top menu) and make sure that the Source URL property for

@@ -11,8 +11,8 @@ class System.Map extends System.BaseModel
         paperSizeY: System.App.Settings.Map.paperSizeY
         gridSizeX: System.App.Settings.Map.gridSizeX
         gridSizeY: System.App.Settings.Map.gridSizeY
-        silent: false
         thumbnailDate: new Date(2000, 1, 1)
+        silent: false
 
     relations:
         links: System.LinkCollection
@@ -95,6 +95,12 @@ class System.Map extends System.BaseModel
         if value?
             @set "thumbnailDate", value
         @get "thumbnailDate"
+
+    # Helper to get / set the username who created the map.
+    createdByUser: (value) =>
+        if value?
+            @set "createdByUser", value
+        @get "createdByUser"
 
     # Helper to get the map's URL key based on its name: replace all spaces and special characters.
     urlKey: =>

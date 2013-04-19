@@ -17,6 +17,7 @@ class System.UserSettings extends System.BaseModel
         modifierDelete: System.App.Settings.User.modifierDelete
         modifierMultiple: System.App.Settings.User.modifierMultiple
         modifierToBack: System.App.Settings.User.modifierToBack
+        slowDevice: false
 
 
     # MAP OPTIONS
@@ -91,6 +92,16 @@ class System.UserSettings extends System.BaseModel
         if value?
             @set "modifierToBack", value
         @get "modifierToBack"
+
+
+    # OTHER OPTIONS
+    # ----------------------------------------------------------------------
+
+    # Helper to get / set the slowDevice setting - will be true on slow devices.
+    slowDevice: (value) =>
+        if value?
+            @set "slowDevice", value
+        @get "slowDevice"
 
 
     # OVERRIDE SYNC
