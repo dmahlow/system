@@ -35,9 +35,9 @@ class Database
     # check if it represents an ID to return a single document by ID, otherwise
     # assume it's a property filter and pass it to the `find` method on MongoDB.
     # The `callback` is mandatory here.
-    getData: (table, filter, callback) =>
+    get: (table, filter, callback) =>
         if settings.General.debug
-            console.log "Database.getData", table.collectionName, filter
+            logger.info "Database.get", table.collectionName, filter
 
         if filter?
             if filter.id?
@@ -56,13 +56,13 @@ class Database
     # Insert a new document if its ID is null or undefined, or updates the specified
     # document if its ID is set. If `options.patch` is true, patch the document
     # with its updated info instead of replacing it entirely.
-    setData: (table, obj, options, callback) =>
+    set: (table, obj, options, callback) =>
         if not obj?
             callback? "#{table} record not found.", null
             return
 
         if settings.General.debug
-            console.log "Database.setData", table.collectionName, obj.id, obj.friendlyId
+            logger.info "Database.set", table.collectionName, obj.id, obj.friendlyId
 
         # Make sure the ID is converted to ObjectID, and delete the `obj.id` as
         # internally Mongo only uses the `_id` property.
@@ -84,10 +84,13 @@ class Database
         @log obj, options
 
     # Delete the specified document from the database, based on its ID.
-    delData: (table, id, callback) =>
+    del: (table, id, callback) =>
         if not id?
             callback? "#{table} record not found.", null
             return
+
+        if settings.General.debug
+            logger.info "Database.del", table.collectionName, id
 
         # Make sure the ID is converted to ObjectID.
         id = mongo.ObjectID.createFromHexString id
@@ -102,17 +105,17 @@ class Database
     # Get [Entity Definitions](entityDefinition.html).
     getEntityDefinition: (filter, callback) =>
         table = db.collection "entity"
-        @getData table, filter, callback
+        @get table, filter, callback
 
     # Insert or update an [Entity Definition](entityDefinition.html).
     setEntityDefinition: (obj, options, callback) =>
         table = db.collection "entity"
-        @setData table, obj, options, callback
+        @set table, obj, options, callback
 
     # Delete the specified [Entity Definition](entityDefinition.html).
     deleteEntityDefinition: (id, callback) =>
         table = db.collection "entity"
-        @delData table, id, callback
+        @del table, id, callback
 
     # MAPS
     # ----------------------------------------------------------------------
@@ -120,17 +123,17 @@ class Database
     # Get [Maps](map.html).
     getMap: (filter, callback) =>
         table = db.collection "map"
-        @getData table, filter, callback
+        @get table, filter, callback
 
     # Insert or update a [Map](map.html)
     setMap: (obj, options, callback) =>
         table = db.collection "map"
-        @setData table, obj, options, callback
+        @set table, obj, options, callback
 
     # Delete the specified [Map](map.html).
     deleteMap: (id, callback) =>
         table = db.collection "map"
-        @delData table, id, callback
+        @del table, id, callback
 
 
     # AUDIT DATA
@@ -139,17 +142,17 @@ class Database
     # Get [Audit Data records](auditData.html).
     getAuditData: (filter, callback) =>
         table = db.collection "auditdata"
-        @getData table, filter, callback
+        @get table, filter, callback
 
     # Insert or update an [AuditData](auditData.html).
     setAuditData: (obj, options, callback) =>
         table = db.collection "auditdata"
-        @setData table, obj, options, callback
+        @set table, obj, options, callback
 
     # Delete the specified [AuditData](auditData.html).
     deleteAuditData: (id, callback) =>
         table = db.collection "auditdata"
-        @delData table, id, callback
+        @del table, id, callback
 
 
     # AUDIT EVENTS
@@ -158,17 +161,17 @@ class Database
     # Get [Audit Events](auditEvent.html).
     getAuditEvent: (filter, callback) =>
         table = db.collection "auditevent"
-        @getData table, filter, callback
+        @get table, filter, callback
 
     # Insert or update an [AuditEvent](auditEvent.html).
     setAuditEvent: (obj, options, callback) =>
         table = db.collection "auditevent"
-        @setData table, obj, options, callback
+        @set table, obj, options, callback
 
     # Delete the specified [AuditEvent](auditEvent.html).
     deleteAuditEvent: (id, callback) =>
         table = db.collection "auditevent"
-        @delData table, id, callback
+        @del table, id, callback
 
 
     # VARIABLES
@@ -177,17 +180,17 @@ class Database
     # Get [Variables](variable.html).
     getVariable: (filter, callback) =>
         table = db.collection "variable"
-        @getData table, filter, callback
+        @get table, filter, callback
 
     # Insert or update a [Variable](variable.html).
     setVariable: (obj, options, callback) =>
         table = db.collection "variable"
-        @setData table, obj, options, callback
+        @set table, obj, options, callback
 
     # Delete the specified [Variable](variable.html).
     deleteVariable: (id, callback) =>
         table = db.collection "variable"
-        @delData table, id, callback
+        @del table, id, callback
 
 
     # USERS
@@ -196,17 +199,17 @@ class Database
     # Get [User](user.html).
     getUser: (filter, callback) =>
         table = db.collection "user"
-        @getData table, filter, callback
+        @get table, filter, callback
 
     # Insert or update a [User](user.html).
     setUser: (obj, options, callback) =>
         table = db.collection "user"
-        @setData table, obj, options, callback
+        @set table, obj, options, callback
 
     # Delete the specified [User](user.html).
     deleteUser: (id, callback) =>
         table = db.collection "user"
-        @delData table, id, callback
+        @del table, id, callback
 
 
     # HISTORY LOGS

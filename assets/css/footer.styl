@@ -1,8 +1,9 @@
 // FOOTER STYLES
 // ---------------------------------------------------------------
 
+// The footer wrapper.
 #footer
-    background rgba(60, 60, 60, 1)
+    background mediumBgColor
     bottom 0
     left 0
     position fixed
@@ -11,13 +12,16 @@
     width 100%
     z-index 6
 
+    // Map and shapes path.
     .path
-        margin 7px
+        margin 6px
         span:not(:empty):before
             content " > "
 
+// Footer gets transparent when map is in full screen.
 #footer.transparent
     background-color transparent
+    opacity 0.6
 
 #footer-maps-name, #footer-maps-entity
     font-weight bold
@@ -25,7 +29,7 @@
 // The online users div.
 #footer-online-users
     background url(../images/ico-user.png) no-repeat right
-    bottom 0
+    bottom -1px
     height 24px
     right 256px
     padding-top 6px
@@ -35,7 +39,7 @@
 
 // The zoom div on the bottom right of the screen.
 #footer-zoom
-    bottom -4px
+    bottom -5px
     position fixed
     right 1px
     z-index 7

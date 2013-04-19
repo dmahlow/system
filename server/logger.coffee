@@ -9,8 +9,7 @@ class Logger
 
     # Define the winston and logentries references. Logentries will be instantiated only if necessary.
     logentries = null
-    winstonObj = require "winston"
-    winston = new winstonObj.Logger {exitOnError: false}
+    winston = require "winston"
 
     # Helper function to get the current log filename based on the current date.
     # Please note that it DOES NOT mean having 1 log file for each day.
@@ -26,11 +25,6 @@ class Logger
 
         return now.getFullYear() + "-" + month + "-" + day + ".log"
 
-    # Holds the last info and warn messages to avoid logging duplicates.
-    # Errors are always logged.
-    lastInfo: null
-    lastWarn: null
-
 
     # INIT
     # --------------------------------------------------------------------------
@@ -42,14 +36,16 @@ class Logger
     # Please note that unhandled exceptions will ALWAYS be logged to the /logs/ directory,
     # even when using Logentries for general logging.
     init: =>
+        winston.exitOnError = false
+
         if settings.Log.logentriesToken? and settings.Log.logentriesToken isnt ""
             logentries = require("node-logentries").logger {token: settings.Log.logentriesToken}
             logentries.winston winstonObj
         else
             filename = settings.Paths.logsDir + getLogFilename()
-            winston.add winstonObj.transports.File, {timestamp: true, filename: filename, maxsize: settings.Log.maxFileSize}
+            winston.add winston.transports.File, {timestamp: true, filename: filename, maxsize: settings.Log.maxFileSize}
 
-        winston.handleExceptions(new winstonObj.transports.File {filename: settings.Paths.logsDir + "exceptions.log"})
+        winston.handleExceptions(new winston.transports.File {filename: settings.Paths.logsDir + "exceptions.log"})
         winston.info "WINSTON LOGGING STARTED!"
 
 
@@ -58,29 +54,17 @@ class Logger
 
     # Log any object to the default transports as `info`.
     info: =>
-        obj = JSON.stringify arguments
-        return if obj is @lastInfo
-
-        winston.info obj
-        @lastInfo = obj
-
+        winston.info.apply this, arguments
         console.log.apply this, arguments if settings.General.debug
 
     # Log any object to the default transports as `warn`.
     warn: =>
-        obj = JSON.stringify arguments
-        return if obj is @lastWarn
-
-        winston.warn obj
-        @lastWarn = obj
-
+        winston.warn.apply this, arguments
         console.warn.apply this, arguments if settings.General.debug
 
     # Log any object to the default transports as `error`.
     error: =>
-        obj = JSON.stringify arguments
-        winston.error obj
-
+        winston.error.apply this, arguments
         console.error.apply this, arguments if settings.General.debug
 
 

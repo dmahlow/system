@@ -156,7 +156,7 @@ class Manager
         @timersAuditDataRefresh.push timer
 
         if settings.General.debug
-            console.log "Manager.setAuditDataTimer", auditData.friendlyId, interval + "ms"
+            logger.info "Manager.setAuditDataTimer", auditData.friendlyId, interval + "ms"
 
     # Refresh the specified [AuditData](auditData.html) records. This will run ONLY
     # if there are connected clients, to avoid bandwidth and processing waste.
@@ -187,9 +187,6 @@ class Manager
                     catch err2
                         logger.error err2
                         return
-
-                    if settings.General.debug
-                        console.log "Manager.transmitDataToClients", obj.friendlyId, localFile
 
                     socketsCallback obj
 

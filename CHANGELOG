@@ -4,6 +4,9 @@ SYSTEM APP CHANGE LOG
 - = removed features
 
 # -----------------------------------------------------------------------------
+
+
+# -----------------------------------------------------------------------------
   0.5.3, 2013.04.19
 + Major UI overhaul. Interface is now much cleaner. All unnecessary UI elements
   like borders, shadows and transparencies were thrown away.

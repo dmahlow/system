@@ -59,7 +59,7 @@ class Sockets
         @io.sockets.emit "server:error", {title: title, message: errorMessage.toString().replace(":", " ")}
 
         if settings.General.debug
-            console.warn "Sockets.sendServerError", errorMessage
+            logger.warn "Sockets.sendServerError", errorMessage
 
 
 # Singleton implementation

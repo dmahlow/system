@@ -120,7 +120,7 @@ class Sync
                         delete @currentDownloads[localFile]
 
                         if settings.General.debug
-                            console.log "Sync.download", remoteUrl
+                            logger.info "Sync.download", remoteUrl
 
                     fileWriter.end()
                     fileWriter.destroySoon()

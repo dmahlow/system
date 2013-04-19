@@ -126,7 +126,7 @@ class System.OverlayView extends System.BaseView
     resize: =>
         horizontalDiff = 30
         horizontalDiff = horizontalDiff + System.App.mapView.mapControlsWidth if not @fullWidth
-        verticalDiff = 38 + System.App.footerView.height + System.App.menuView.height
+        verticalDiff = 30 + System.App.footerView.height + System.App.menuView.height
 
         @$box.width $(window).innerWidth() - horizontalDiff
         @$box.height $(window).innerHeight() - verticalDiff

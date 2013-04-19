@@ -17,7 +17,7 @@ class Imaging
             if exists
                 im.convert [svgSource, "-resize", width, svgSource.replace(".svg", ".png")]
                 if settings.General.debug
-                    console.log "Imaging.svgToPng", svgSource, width
+                    logger.info "Imaging.svgToPng", svgSource, width
             else
                 logger.warn "Can't convert SVG to PNG.", "Source #{svgSource} does not exist."
 
