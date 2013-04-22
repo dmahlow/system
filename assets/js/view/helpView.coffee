@@ -21,5 +21,5 @@ class System.HelpView extends System.OverlayView
     setHtml: =>
         @$menuItem = $ "#menu-help"
 
-        @$el.find(".prefix-variables").html System.App.Settings.General.dataBindingKey + System.App.Settings.Variable.bindingNamespace
-        @$el.find(".prefix-auditeventcontext").html System.App.Settings.General.dataBindingKey + System.App.Settings.Shape.bindingNamespace
+        @$el.find(".prefix-variables").html SystemApp.Settings.General.dataBindingKey + SystemApp.Settings.Variable.bindingNamespace
+        @$el.find(".prefix-auditeventcontext").html SystemApp.Settings.General.dataBindingKey + SystemApp.Settings.Shape.bindingNamespace

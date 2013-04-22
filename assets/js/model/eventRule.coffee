@@ -64,15 +64,15 @@ class System.EventRule extends System.BaseModel
         # an [AuditData](auditData.html) property or a context value. Context
         # means the alert is being run against [Shape](shape.html) or [Link](link.html)
         # label values.
-        if sourceValue.substring(0, 1) is System.App.Settings.General.dataBindingKey
-            sourceValue = System.App.DataUtil.getDataBindingValue sourceValue
-        else if contextValues? and sourceValue.substring(0, 1) is System.App.Settings.AuditEvent.contextSpecialKey
+        if sourceValue.substring(0, 1) is SystemApp.Settings.General.dataBindingKey
+            sourceValue = SystemApp.DataUtil.getDataBindingValue sourceValue
+        else if contextValues? and sourceValue.substring(0, 1) is SystemApp.Settings.AuditEvent.contextSpecialKey
             sourceValue = contextValues[parseInt(sourceValue.substring 1)]
 
         # Same as above, but for the target value.
-        if targetValue.substring(0, 1) is System.App.Settings.General.dataBindingKey
-            targetValue = System.App.DataUtil.getDataBindingValue targetValue
-        else if contextValues? and targetValue.substring(0, 1) is System.App.Settings.AuditEvent.contextSpecialKey
+        if targetValue.substring(0, 1) is SystemApp.Settings.General.dataBindingKey
+            targetValue = SystemApp.DataUtil.getDataBindingValue targetValue
+        else if contextValues? and targetValue.substring(0, 1) is SystemApp.Settings.AuditEvent.contextSpecialKey
             targetValue = contextValues[parseInt(targetValue.substring 1)]
 
         # Force setting source and target values to float, in case they're valid numbers.

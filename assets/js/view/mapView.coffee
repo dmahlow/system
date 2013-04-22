@@ -87,15 +87,15 @@ class System.MapView extends System.BaseView
 
     # Bind events to the global app events, DOM elements and objects.
     setEvents: =>
-        @listenTo System.App.mapEvents, "url:reset", @resetUrl
-        @listenTo System.App.mapEvents, "background:toggle", @toggleBackground
-        @listenTo System.App.mapEvents, "edit:toggle", @toggleEdit
-        @listenTo System.App.mapEvents, "links:toggle", @toggleLinks
-        @listenTo System.App.mapEvents, "shapes:overridetitle", @setOverrideShapeTitle
-        @listenTo System.App.mapEvents, "zoom:in", @zoomIn
-        @listenTo System.App.mapEvents, "zoom:out", @zoomOut
-        @listenTo System.App.mapEvents, "selected:blink", @blinkSelectedShapes
-        @listenTo System.App.dataEvents, "auditdata:refresh", @auditDataRefresh
+        @listenTo SystemApp.mapEvents, "url:reset", @resetUrl
+        @listenTo SystemApp.mapEvents, "background:toggle", @toggleBackground
+        @listenTo SystemApp.mapEvents, "edit:toggle", @toggleEdit
+        @listenTo SystemApp.mapEvents, "links:toggle", @toggleLinks
+        @listenTo SystemApp.mapEvents, "shapes:overridetitle", @setOverrideShapeTitle
+        @listenTo SystemApp.mapEvents, "zoom:in", @zoomIn
+        @listenTo SystemApp.mapEvents, "zoom:out", @zoomOut
+        @listenTo SystemApp.mapEvents, "selected:blink", @blinkSelectedShapes
+        @listenTo SystemApp.dataEvents, "auditdata:refresh", @auditDataRefresh
 
         # Handle document events.
         $(document).bind "mouseup", @mouseUp
@@ -110,8 +110,8 @@ class System.MapView extends System.BaseView
 
     # Set the Raphael/SVG paper and its properties.
     setPaper: =>
-        width = System.App.Settings.Map.paperSizeX
-        height = System.App.Settings.Map.paperSizeY
+        width = SystemApp.Settings.Map.paperSizeX
+        height = SystemApp.Settings.Map.paperSizeY
 
         @paper = new Raphael "map", width, height
 
@@ -163,8 +163,8 @@ class System.MapView extends System.BaseView
 
     # Bind a [Map](map.html) to the map. this will reset the map state!
     bindMap: (map) =>
-        console.profile "MapView.bindMap" if System.App.Settings.General.profile
-        System.App.consoleLog "MapView.bindMap", "#{map.name()}, #{map.shapes().length} shapes, #{map.links().length} links"
+        console.profile "MapView.bindMap" if SystemApp.Settings.General.profile
+        SystemApp.consoleLog "MapView.bindMap", "#{map.name()}, #{map.shapes().length} shapes, #{map.links().length} links"
 
         @model?.save()
         @clear()
@@ -199,13 +199,13 @@ class System.MapView extends System.BaseView
 
         # Check and run the init script.
         initScript = map.initScript()
-        System.App.DataUtil.runEval initScript if initScript? and initScript isnt ""
+        SystemApp.DataUtil.runEval initScript if initScript? and initScript isnt ""
 
         # The other views that a new map has loaded.
-        System.App.mapEvents.trigger "loaded", map
-        System.App.toggleLoading false
+        SystemApp.mapEvents.trigger "loaded", map
+        SystemApp.toggleLoading false
 
-        console.profileEnd "MapView.bindMap" if System.App.Settings.General.profile
+        console.profileEnd "MapView.bindMap" if SystemApp.Settings.General.profile
 
     # Bind event listeners to the current [Map](map.html).
     bindMapEvents: =>
@@ -235,7 +235,7 @@ class System.MapView extends System.BaseView
         else
             @paperBg = @paper.rect(0, 0, @paper.width, @paper.height).attr {fill: @paperBg}
 
-        @paperBg.node.id = System.App.Settings.Map.id
+        @paperBg.node.id = SystemApp.Settings.Map.id
 
     # Create the map groups using raphael.group.js plugin.
     bindMapGroups: =>
@@ -279,12 +279,12 @@ class System.MapView extends System.BaseView
 
     # Display an alert whenever the current map has been saved to the server.
     mapSaved: (map) =>
-        System.App.alertEvents.trigger "footer", {savedModel: map}
+        SystemApp.alertEvents.trigger "footer", {savedModel: map}
 
     # When user deletes (destroy) the current [Map](map.html), refresh the browser.
     mapRemoved: (map) =>
-        System.App.alertEvents.trigger "footer", {removedModel: map}
-        System.App.toggleLoadding true
+        SystemApp.alertEvents.trigger "footer", {removedModel: map}
+        SystemApp.toggleLoadding true
 
         reloadPage = -> window.open "/", "_self"
         setTimeout reloadPage, 1000
@@ -370,12 +370,12 @@ class System.MapView extends System.BaseView
 
     # Set the property to be displayed inside the map shapes.
     setOverrideShapeTitle: (prop) =>
-        System.App.consoleLog "MapView.setOverrideShapeTitle", prop
+        SystemApp.consoleLog "MapView.setOverrideShapeTitle", prop
 
         # If `prop` is passed, then make sure we append the data binding key and the
         # entity object namespace before its value.
         if prop? and prop isnt ""
-            prop = "#{System.App.Settings.General.dataBindingKey}#{System.App.Settings.EntityObject.bindingNamespace}.#{prop}"
+            prop = "#{SystemApp.Settings.General.dataBindingKey}#{SystemApp.Settings.EntityObject.bindingNamespace}.#{prop}"
 
         @overrideShapeTitle = prop
         _.each @shapeViews, (view) => view.labelsView.refreshTitle()
@@ -484,8 +484,8 @@ class System.MapView extends System.BaseView
     # Set the current view box (zoom and panning) of the map.
     # The max and min zoom values are defined on the [Settings](settings.html).
     setViewBox: =>
-        @currentZoom = System.App.Settings.Map.minZoom if @currentZoom < System.App.Settings.Map.minZoom
-        @currentZoom = System.App.Settings.Map.maxZoom if @currentZoom > System.App.Settings.Map.maxZoom
+        @currentZoom = SystemApp.Settings.Map.minZoom if @currentZoom < SystemApp.Settings.Map.minZoom
+        @currentZoom = SystemApp.Settings.Map.maxZoom if @currentZoom > SystemApp.Settings.Map.maxZoom
 
         boxWidth = @paper.width * @currentZoom
         boxHeight = @paper.height * @currentZoom
@@ -495,23 +495,23 @@ class System.MapView extends System.BaseView
 
         @paper.setViewBox(@currentPanX, @currentPanY, boxWidth, boxHeight, true)
 
-        System.App.mapEvents.trigger "zoom", @currentZoom
+        SystemApp.mapEvents.trigger "zoom", @currentZoom
 
     # Set the `currentZoom` variable and update the view.
     # Save zoom to the [user settings](userSettings.html).
     zoomSet: (value) =>
         @currentZoom = value
         @setViewBox()
-        System.App.Data.userSettings.mapZoom value
+        SystemApp.Data.userSettings.mapZoom value
 
     # Zoom in, with optional `amount` parameter.
     zoomIn: (amount) =>
-        amount = System.App.Settings.Map.zoomStep if not amount?
+        amount = SystemApp.Settings.Map.zoomStep if not amount?
         @zoomSet @currentZoom - amount
 
     # Zoom out, with optional `amount` parameter.
     zoomOut: (amount) =>
-        amount = System.App.Settings.Map.zoomStep if not amount?
+        amount = SystemApp.Settings.Map.zoomStep if not amount?
         @zoomSet @currentZoom + amount
 
     # Toggle the `editEnabled` on or off.
@@ -564,7 +564,7 @@ class System.MapView extends System.BaseView
             while i++ < lengthY
                 pathString += "M0 " + i * sizeY + "H" + @paper.width
 
-        @gridLines = @paper.path(pathString).attr("stroke", System.App.Settings.Map.gridStroke)
+        @gridLines = @paper.path(pathString).attr("stroke", SystemApp.Settings.Map.gridStroke)
         @gridLines.toBack()
 
         @paperBg.toBack()
@@ -592,7 +592,7 @@ class System.MapView extends System.BaseView
         @mapControlsWidth = $("#map-controls").outerWidth()
 
         # Save the current fullscreen state on the [User Settings](userSettings.html) model.
-        System.App.Data.userSettings.mapFullscreen fullscreen
+        SystemApp.Data.userSettings.mapFullscreen fullscreen
 
     # Send the map background and grid lines to back of the paper.
     toBack: =>
@@ -614,7 +614,7 @@ class System.MapView extends System.BaseView
             try
                 svg.node.parentNode.removeChild svg.node if svg?
             catch ex
-                System.App.consoleLog "MapView.regroupElement", "Can't remove element from SVG group.", svg
+                SystemApp.consoleLog "MapView.regroupElement", "Can't remove element from SVG group.", svg
 
         @stackGroups[view.model.zIndex()].push svgs
 
@@ -629,13 +629,13 @@ class System.MapView extends System.BaseView
             posX = view.x()
             posY = view.y()
 
-            if posX - x < System.App.Settings.Map.gridSizeX
-                x += System.App.Settings.Map.gridSizeX
+            if posX - x < SystemApp.Settings.Map.gridSizeX
+                x += SystemApp.Settings.Map.gridSizeX
 
-            if posY - y < System.App.Settings.Map.gridSizeY
-                y += System.App.Settings.Map.gridSizeY
+            if posY - y < SystemApp.Settings.Map.gridSizeY
+                y += SystemApp.Settings.Map.gridSizeY
 
-        return new System.Shape {x: x / System.App.Settings.Map.gridSizeX, y: y / System.App.Settings.Map.gridSizeY}
+        return new System.Shape {x: x / SystemApp.Settings.Map.gridSizeX, y: y / SystemApp.Settings.Map.gridSizeY}
 
 
     # Blink the selected [Shape](shapeView.html) on the map.
@@ -659,7 +659,7 @@ class System.MapView extends System.BaseView
 
             # User pressed "Ctrl+E", so toggle the edit mode.
         else if e.ctrlKey and keyCode is 69
-            System.App.mapEvents.trigger "edit:toggle", not @editEnabled
+            SystemApp.mapEvents.trigger "edit:toggle", not @editEnabled
             e.preventDefault()
             e.stopPropagation()
 
@@ -688,15 +688,15 @@ class System.MapView extends System.BaseView
 
         # Temp variables to check where the user clicked.
         isBaseSvgTag = src.tagName isnt "svg"
-        isMapTag = targetId isnt System.App.Settings.Map.id
-        isGridLine = targetId.indexOf(System.App.Settings.Map.gridIdPrefix) < 0
+        isMapTag = targetId isnt SystemApp.Settings.Map.id
+        isGridLine = targetId.indexOf(SystemApp.Settings.Map.gridIdPrefix) < 0
 
         # If click wasn't on the map background or any of the grid lines, do not proceed with panning.
         if e.which > 1 or (@editEnabled and isBaseSvgTag and isMapTag and isGridLine)
             return
 
         # If user clicked on a blank area, deselect the current [Shape View](shapeView.html).
-        if targetId is System.App.Settings.Map.id
+        if targetId is SystemApp.Settings.Map.id
             @shapesMoverView.hide()
             @setCurrentElement null
 
@@ -726,9 +726,9 @@ class System.MapView extends System.BaseView
         delta = e.originalEvent.wheelDeltaY
 
         if delta > 0
-            System.App.mapEvents.trigger "zoom:in"
+            SystemApp.mapEvents.trigger "zoom:in"
         else
-            System.App.mapEvents.trigger "zoom:out"
+            SystemApp.mapEvents.trigger "zoom:out"
 
         e.stopPropagation()
         e.preventDefault()
@@ -791,17 +791,17 @@ class System.MapView extends System.BaseView
     # When user deletes (destroy) an [AuditData](auditData.html), reload
     # the whole page.
     auditDataRemoved: (auditData) =>
-        System.App.alertEvents.trigger "footer", {removedModel: auditData}
-        _.delay location.reload, System.App.Settings.General.refetchDelay
+        SystemApp.alertEvents.trigger "footer", {removedModel: auditData}
+        _.delay location.reload, SystemApp.Settings.General.refetchDelay
 
     # When an [AuditData](auditData.html) has been refreshed, run it against
     # all registered [Audit Events](auditEvent.html).
     auditDataRefresh: (auditData) =>
-        _.each System.App.Data.auditEvents.models, (alert) -> alert.run()
+        _.each SystemApp.Data.auditEvents.models, (alert) -> alert.run()
 
     # Trigger a "footer message" action.
     auditEventFooterMessage: (alertObj, action, matchedRules) =>
-        System.App.alertEvents.trigger "footer", {title: "ALERT!!!", message: action.actionValue(), isError: true}
+        SystemApp.alertEvents.trigger "footer", {title: "ALERT!!!", message: action.actionValue(), isError: true}
 
 
     # URL AND FOOTER PROPERTIES
@@ -812,10 +812,10 @@ class System.MapView extends System.BaseView
     # This will NOT trigger the backbone route event - it only updates the URL.
     resetUrl: =>
         if @model?
-            System.App.routes.navigate "map/" + @model.urlKey(), {trigger: false}
-            System.App.consoleLog "MapView.resetUrl", "Current map's URL: " + @model.urlKey()
+            SystemApp.routes.navigate "map/" + @model.urlKey(), {trigger: false}
+            SystemApp.consoleLog "MapView.resetUrl", "Current map's URL: " + @model.urlKey()
         else
-            System.App.routes.navigate "", {trigger: false}
+            SystemApp.routes.navigate "", {trigger: false}
 
     # Bind the map name to the footer.
     setFooterName: (value) =>
@@ -824,7 +824,7 @@ class System.MapView extends System.BaseView
 
     # Show the current selected shape name on the footer.
     setFooterShape: (shape) =>
-        shape = System.App.Messages.noShapeSelected if shape is undefined or shape is null or shape is ""
+        shape = SystemApp.Messages.noShapeSelected if shape is undefined or shape is null or shape is ""
         @$footerShape.html shape
 
 
@@ -843,13 +843,13 @@ class System.MapView extends System.BaseView
             thumbnailDate = new Date()
 
         # If a thumbnail was generated less than 5 minutes ago, do nothing.
-        if now.getTime() - thumbnailDate.getTime() < System.App.Settings.Map.thumbnailExpires
+        if now.getTime() - thumbnailDate.getTime() < SystemApp.Settings.Map.thumbnailExpires
             return
 
         @model.thumbnailDate now
 
         $.ajax
-            url: System.App.Settings.Map.thumbnailBaseUrl + @model.id
+            url: SystemApp.Settings.Map.thumbnailBaseUrl + @model.id
             cache: false
             dataType: "json"
             type: "POST"

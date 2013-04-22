@@ -45,7 +45,7 @@ class System.ScriptEditorView extends System.OverlayView
 
         @model = model
         @propertyName = propertyName
-        @$info.html System.App.Messages.ScriptEditorInfo[propertyName]
+        @$info.html SystemApp.Messages.ScriptEditorInfo[propertyName]
 
         if model?
             @$txtScriptValue.val(model.get propertyName)
@@ -68,7 +68,7 @@ class System.ScriptEditorView extends System.OverlayView
     # For example when using this view to edit a [map](map.html) `initScript`.
     saveScriptValue: =>
         code = @currentValue()
-        valMessage = System.App.DataUtil.validateEval code
+        valMessage = SystemApp.DataUtil.validateEval code
 
         # If has a validation message, display it and stop here.
         if valMessage?
@@ -90,7 +90,7 @@ class System.ScriptEditorView extends System.OverlayView
 
         # Hide the error message after a few seconds.
         clearTimeout @timerHideError if @timerHideError?
-        @timerHideError = setTimeout @hideError, System.App.Settings.Alert.hideDelay
+        @timerHideError = setTimeout @hideError, SystemApp.Settings.Alert.hideDelay
 
     # Hide the error message and clear the `timerHideError` timeout.
     hideError: =>

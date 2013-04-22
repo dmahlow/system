@@ -7,7 +7,7 @@ System.Api.Map =
     # Get the current [Map](map.html) being displayed. Might return null if no
     # maps are open at the moment.
     current: ->
-        return System.App.mapView.model
+        return SystemApp.mapView.model
 
 
     # GET
@@ -17,7 +17,7 @@ System.Api.Map =
     get: (filter) ->
         System.Api.log "Map.get", filter
 
-        return System.Api.getFromCollection System.App.Data.maps, filter
+        return System.Api.getFromCollection SystemApp.Data.maps, filter
 
     # Get the list of shapes available on the current [Map](map.html).
     getShapes: (filter) ->
@@ -38,7 +38,7 @@ System.Api.Map =
     create: (props) ->
         System.Api.log "Map.create", props
 
-        map = System.App.Data.maps.create props
+        map = SystemApp.Data.maps.create props
         return map
 
     # Create and add a [Shape](shape.html) to the current map and return its model.
@@ -58,4 +58,4 @@ System.Api.Map =
 
     # Force refresh all map labels.
     refreshLabels: () ->
-        System.App.mapView.refreshLabels()
+        SystemApp.mapView.refreshLabels()

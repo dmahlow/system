@@ -6,21 +6,21 @@
 class System.EntityDefinition extends System.BaseModel
     typeName: "EntityDefinition"
     defaults:
-        objectIdAttribute: System.App.Settings.EntityDefinition.objectIdAttribute
-        objectTitleAttribute: System.App.Settings.EntityDefinition.objectTitleAttribute
-        refreshInterval: System.App.Settings.EntityDefinition.refreshInterval
-        shapeBackground: System.App.Settings.Shape.background
-        shapeFormat: System.App.Settings.Shape.format
-        shapeFontSize: System.App.Settings.Shape.fontSize
-        shapeForeground: System.App.Settings.Shape.foreground
-        shapeOpacity: System.App.Settings.Map.opacityStatic
-        shapeRoundedCorners: System.App.Settings.Shape.roundedCorners
-        shapeSizeX: System.App.Settings.Shape.gridViewSizeX
-        shapeSizeY: System.App.Settings.Shape.gridViewSizeY
-        shapeStroke: System.App.Settings.Shape.stroke
-        shapeStrokeWidth: System.App.Settings.Shape.strokeWidth
-        shapeTitleForeground: System.App.Settings.Shape.titleForeground
-        shapeZIndex: System.App.Settings.Shape.zIndex
+        objectIdAttribute: SystemApp.Settings.EntityDefinition.objectIdAttribute
+        objectTitleAttribute: SystemApp.Settings.EntityDefinition.objectTitleAttribute
+        refreshInterval: SystemApp.Settings.EntityDefinition.refreshInterval
+        shapeBackground: SystemApp.Settings.Shape.background
+        shapeFormat: SystemApp.Settings.Shape.format
+        shapeFontSize: SystemApp.Settings.Shape.fontSize
+        shapeForeground: SystemApp.Settings.Shape.foreground
+        shapeOpacity: SystemApp.Settings.Map.opacityStatic
+        shapeRoundedCorners: SystemApp.Settings.Shape.roundedCorners
+        shapeSizeX: SystemApp.Settings.Shape.gridViewSizeX
+        shapeSizeY: SystemApp.Settings.Shape.gridViewSizeY
+        shapeStroke: SystemApp.Settings.Shape.stroke
+        shapeStrokeWidth: SystemApp.Settings.Shape.strokeWidth
+        shapeTitleForeground: SystemApp.Settings.Shape.titleForeground
+        shapeZIndex: SystemApp.Settings.Shape.zIndex
 
     relations:
         data: System.EntityObjectCollection
@@ -164,7 +164,7 @@ class System.EntityDefinition extends System.BaseModel
 class System.EntityDefinitionCollection extends System.BaseCollection
     typeName: "EntityDefinitionCollection"
     model: System.EntityDefinition
-    url: System.App.Settings.EntityDefinition.url
+    url: SystemApp.Settings.EntityDefinition.url
 
     # Set the comparator function to order the entity definitions by friendlyId.
     comparator: (entityDef) -> return entityDef.friendlyId()

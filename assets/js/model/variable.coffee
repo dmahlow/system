@@ -26,7 +26,7 @@ class System.Variable extends System.BaseModel
 class System.VariableCollection extends System.BaseCollection
     typeName: "VariableCollection"
     model: System.Variable
-    url: System.App.Settings.Variable.url
+    url: SystemApp.Settings.Variable.url
 
     # Set the comparator function to order the variable collection by friendlyId.
     comparator: (variable) -> return variable.friendlyId()

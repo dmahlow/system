@@ -38,20 +38,20 @@ class System.CreateMapView extends System.OverlayView
     # Hide the view using a fade out effect.
     onHide: =>
         $(document).unbind "keyup", @keyUp
-        System.App.footerView.setText null
-        @$el.fadeOut System.App.Settings.General.fadeDelay
+        SystemApp.footerView.setText null
+        @$el.fadeOut SystemApp.Settings.General.fadeDelay
 
     # Show the view using a fade in effect and pass the entity type.
     onShow: =>
         $(document).keyup @keyUp
-        System.App.footerView.setText System.App.Messages.createMapText
-        @$el.fadeIn System.App.Settings.General.fadeDelay, @focus
+        SystemApp.footerView.setText SystemApp.Messages.createMapText
+        @$el.fadeIn SystemApp.Settings.General.fadeDelay, @focus
 
         # Clear and set focus on the textbox.
         @$txtName.val ""
         @$txtName.focus()
 
-        System.App.menuEvents.trigger "active:menu", @$menuItem
+        SystemApp.menuEvents.trigger "active:menu", @$menuItem
 
     # When user presses a key on the `txtName` field.
     keyUp: (e) =>
@@ -60,18 +60,18 @@ class System.CreateMapView extends System.OverlayView
 
         if e.which is 13
             newMapName = $.trim @$txtName.val()
-            existing = System.App.Data.maps.where {name: newMapName}
+            existing = SystemApp.Data.maps.where {name: newMapName}
 
             if existing.length > 0
-                errTitle = System.App.Messages.errCreatingMap
-                errMessage = System.App.Messages.errMapNameExists.replace "#", newMapName
-                System.App.alertEvents.trigger "footer", {title: errTitle, message: errMessage, isError: true}
+                errTitle = SystemApp.Messages.errCreatingMap
+                errMessage = SystemApp.Messages.errMapNameExists.replace "#", newMapName
+                SystemApp.alertEvents.trigger "footer", {title: errTitle, message: errMessage, isError: true}
                 @warnField @$txtName
                 return
 
-            map = System.App.Data.maps.create {dateCreated: new Date(), name: newMapName}
+            map = SystemApp.Data.maps.create {dateCreated: new Date(), name: newMapName}
 
             @hide()
 
             # Change the URL using the new map key.
-            System.App.routes.navigate "map/" + map.urlKey(), {trigger: true}
+            SystemApp.routes.navigate "map/" + map.urlKey(), {trigger: true}

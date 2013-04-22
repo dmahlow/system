@@ -11,7 +11,7 @@ System.Api.AuditEvent =
     get: (filter) ->
         System.Api.log "AuditEvent.get", filter
 
-        return System.Api.getFromCollection System.App.Data.auditEvents, filter
+        return System.Api.getFromCollection SystemApp.Data.auditEvents, filter
 
 
     # CREATE, UPDATE, DELETE
@@ -21,5 +21,5 @@ System.Api.AuditEvent =
     create: (props) ->
         System.Api.log "AuditEvent.create", props
 
-        auditevent = System.App.Data.auditEvents.create props
+        auditevent = SystemApp.Data.auditEvents.create props
         return auditevent

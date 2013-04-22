@@ -46,9 +46,9 @@ class System.MapControlsInspectorTabView extends System.BaseView
     setEvents: =>
         $(window).resize @resize
 
-        @listenTo System.App.Data.auditEvents, "add", @loadAuditEvent
-        @listenTo System.App.Data.auditEvents, "remove", @removeAuditEvent
-        @listenTo System.App.Data.auditEvents, "change:title", @updateAuditEventTitle
+        @listenTo SystemApp.Data.auditEvents, "add", @loadAuditEvent
+        @listenTo SystemApp.Data.auditEvents, "remove", @removeAuditEvent
+        @listenTo SystemApp.Data.auditEvents, "change:title", @updateAuditEventTitle
 
     # Unbind event listeners from the current [Shape View](shapeView.html).
     clearEvents: =>
@@ -126,13 +126,13 @@ class System.MapControlsInspectorTabView extends System.BaseView
                 _.each entityObj.attributes, @bindAttribute
             else
                 span = $(document.createElement "span")
-                span.html System.App.Settings.Shape.customText
+                span.html SystemApp.Settings.Shape.customText
                 @$attributesDiv.append span
 
     # Add a single attribute to the `$attributesDiv`. First check the `ignoreDisplayProps` setting
     # to see if that particular attribute should be ignored.
     bindAttribute: (propValue, propName) =>
-        if System.App.Settings.Map.ignoreDisplayProps.indexOf(propName) > 0
+        if SystemApp.Settings.Map.ignoreDisplayProps.indexOf(propName) > 0
             return
 
         if not propValue? or propValue is ""
@@ -220,7 +220,7 @@ class System.MapControlsInspectorTabView extends System.BaseView
     # to search for it at the [Entity List View](entityListView.html).
     relatedEntityClick: (e) =>
         entity = e.data
-        System.App.mapEvents.trigger "entitylist:search", entity.text()
+        SystemApp.mapEvents.trigger "entitylist:search", entity.text()
 
 
     # LINKS
@@ -262,7 +262,7 @@ class System.MapControlsInspectorTabView extends System.BaseView
         text += " " + textEnd if textEnd? and textEnd isnt ""
 
         label = text
-        label = System.App.Messages.noLabelsSet if not label? or label is ""
+        label = SystemApp.Messages.noLabelsSet if not label? or label is ""
 
         name.html "Link » #{target}: "
         value.html $.trim(label)
@@ -279,7 +279,7 @@ class System.MapControlsInspectorTabView extends System.BaseView
     # Load all [Audit Events](auditEvent.html) and create the elements on the alerts div.
     loadAllAuditEvents: =>
         @$eventsDiv.empty()
-        _.each System.App.Data.auditEvents.models, @loadAuditEvent
+        _.each SystemApp.Data.auditEvents.models, @loadAuditEvent
 
     # Add a single [AuditEvent](auditEvent.html) to the alerts div.
     loadAuditEvent: (auditEvent) =>
@@ -287,15 +287,15 @@ class System.MapControlsInspectorTabView extends System.BaseView
         checked = $ document.createElement "input"
         title = $ document.createElement "label"
 
-        checked.attr "id", System.App.Settings.AuditEvent.shapeCheckboxName + auditEvent.id
-        checked.attr "name", System.App.Settings.AuditEvent.shapeCheckboxName
-        checked.attr "title", auditEvent.description() + " " + System.App.Messages.tooltipShapeAuditEventCheckbox
+        checked.attr "id", SystemApp.Settings.AuditEvent.shapeCheckboxName + auditEvent.id
+        checked.attr "name", SystemApp.Settings.AuditEvent.shapeCheckboxName
+        checked.attr "title", auditEvent.description() + " " + SystemApp.Messages.tooltipShapeAuditEventCheckbox
         checked.attr "type", "checkbox"
         checked.change auditEvent.id, @eventCheckChange
 
         title.html auditEvent.friendlyId()
-        title.attr "for", System.App.Settings.AuditEvent.shapeCheckboxName + auditEvent.id
-        title.attr "title", System.App.Messages.tooltipShapeAuditEventCheckbox
+        title.attr "for", SystemApp.Settings.AuditEvent.shapeCheckboxName + auditEvent.id
+        title.attr "title", SystemApp.Messages.tooltipShapeAuditEventCheckbox
 
         div.append checked
         div.append title
@@ -304,12 +304,12 @@ class System.MapControlsInspectorTabView extends System.BaseView
 
     # When user deletes an [AuditEvent](auditEvent.html), remove its associated div from the `$eventsDiv`.
     removeAuditEvent: (auditEvent) =>
-        $("#" + System.App.Settings.AuditEvent.shapeCheckboxName + auditEvent.id).parent().remove()
+        $("#" + SystemApp.Settings.AuditEvent.shapeCheckboxName + auditEvent.id).parent().remove()
 
     # If user changes the title of an [AuditEvent](auditEvent.html), update the corresponding div on `$eventsDiv`.
     updateAuditEventTitle: (auditEvent) =>
         title = auditEvent.id
-        $("#" + System.App.Settings.AuditEvent.shapeCheckboxName + auditEvent.id).parent().children("label").html title
+        $("#" + SystemApp.Settings.AuditEvent.shapeCheckboxName + auditEvent.id).parent().children("label").html title
 
     # Check all [Audit Events](auditEvent.html) that are attached to the selected [Shape](shape.html).
     bindAllAuditEvents: =>
@@ -327,7 +327,7 @@ class System.MapControlsInspectorTabView extends System.BaseView
         # mark the correspondent checkboxes.
         if ids? and ids.length > 0
             for alertId in ids
-                $("#" + System.App.Settings.AuditEvent.shapeCheckboxName + alertId).prop("checked", true)
+                $("#" + SystemApp.Settings.AuditEvent.shapeCheckboxName + alertId).prop("checked", true)
 
     # Bind all currently active [Audit Events](auditEvent.html) for the selected shape.
     # Active alerts will have a small icon next to them, set via a CSS class.
@@ -341,7 +341,7 @@ class System.MapControlsInspectorTabView extends System.BaseView
         # Add the `active` class to all corresponding active alert divs.
         if @currentBoundView.labelsView.activeAuditEvents?
             _.each @currentBoundView.labelsView.activeAuditEvents, (auditEvent) =>
-                $("#" + System.App.Settings.AuditEvent.shapeCheckboxName + auditEvent.id).parent().addClass "active"
+                $("#" + SystemApp.Settings.AuditEvent.shapeCheckboxName + auditEvent.id).parent().addClass "active"
 
     # When user (un)check an alert checkbox, update the [Shape](shape.html) `auditEventIds` property.
     eventCheckChange: (e) =>

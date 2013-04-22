@@ -35,9 +35,9 @@ class System.BaseModel extends Backbone.Model
         result = @get "friendlyId"
 
         if not result? or result is ""
-            result = System.App.DataUtil.normalize(@get("name"), true)
-            result = System.App.DataUtil.normalize(@get("title"), true) if not result? or result is ""
-            result = System.App.DataUtil.normalize(@get("id"), true) if not result? or result is ""
+            result = SystemApp.DataUtil.normalize(@get("name"), true)
+            result = SystemApp.DataUtil.normalize(@get("title"), true) if not result? or result is ""
+            result = SystemApp.DataUtil.normalize(@get("id"), true) if not result? or result is ""
             @set "friendlyId", result
 
         return result
@@ -67,7 +67,7 @@ class System.BaseModel extends Backbone.Model
     # The URL to call when syncing with server. If the model's ID is set, then
     # append it to the end of the URL.
     url: =>
-        t = System.App.Settings.General.baseJsonUrl + @typeName.toLowerCase()
+        t = SystemApp.Settings.General.baseJsonUrl + @typeName.toLowerCase()
 
         if @id? and @id isnt ""
             return t + "/" + @id
@@ -169,7 +169,7 @@ class System.BaseModel extends Backbone.Model
         @fetching = false
 
         options.successCallback? model, resp, options
-        System.App.consoleLog @typeName + ".fetch", "Success " + @id, resp
+        SystemApp.consoleLog @typeName + ".fetch", "Success " + @id, resp
 
     # When `fetch` has problems or throws an error, set `fetching` to false
     # and log to the console if debugging is enabled.
@@ -177,7 +177,7 @@ class System.BaseModel extends Backbone.Model
         @fetching = false
 
         options.errorCallback? model, xhr, options
-        System.App.consoleLog @typeName + ".fetch", "Error " + @id, xhr
+        SystemApp.consoleLog @typeName + ".fetch", "Error " + @id, xhr
 
 
     # SAVING DATA
@@ -200,7 +200,7 @@ class System.BaseModel extends Backbone.Model
             @timerSave = null
 
         callback = () => @saveRemote options
-        @timerSave = setTimeout callback, System.App.Settings.General.saveInterval
+        @timerSave = setTimeout callback, SystemApp.Settings.General.saveInterval
 
     # Save model data to the local storage using jquery.localData plugin.
     saveLocal: =>
@@ -213,7 +213,7 @@ class System.BaseModel extends Backbone.Model
         @timerSave = null
 
         options = {} if not options?
-        options.patch = System.App.Settings.General.savePatch
+        options.patch = SystemApp.Settings.General.savePatch
 
         # Override `success` and `error`. If these callbacks are passed, they'll be handled
         # later inside `saveSuccess` and `saveError`.
@@ -253,14 +253,14 @@ class System.BaseModel extends Backbone.Model
         @deleteLocal()
 
         options.successCallback? model, resp, options
-        System.App.consoleLog @typeName + ".save", "Success " + @id, resp
+        SystemApp.consoleLog @typeName + ".save", "Success " + @id, resp
 
     # Callback when the `save` is not completed successfully or had an error.
     saveError: (model, xhr, options) =>
         @saveLocal()
 
         options.errorCallback? model, xhr, options
-        System.App.consoleLog @typeName + ".save", "Error " + @id, xhr
+        SystemApp.consoleLog @typeName + ".save", "Error " + @id, xhr
 
     # Delete model data from local storage.
     deleteLocal: =>
@@ -362,7 +362,7 @@ class System.BaseCollection extends Backbone.Collection
             @onFetchCallback "Could not load from remote server.", null
             @onFetchCallback = null
 
-        System.App.consoleLog @typeName + ".fetch", "Fetch ERROR: " + @id, arguments
+        SystemApp.consoleLog @typeName + ".fetch", "Fetch ERROR: " + @id, arguments
 
     # Delete collection data from local storage.
     deleteLocal: =>

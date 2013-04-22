@@ -36,11 +36,11 @@ class System.StartView extends System.OverlayView
 
     # Bind the map list.
     bindMaps: =>
-        if System.App.Data.maps.fetching or System.App.Data.maps.models.length < 1
-            _.delay @bindMaps, System.App.Settings.General.refetchDelay
+        if SystemApp.Data.maps.fetching or SystemApp.Data.maps.models.length < 1
+            _.delay @bindMaps, SystemApp.Settings.General.refetchDelay
             return
 
-        @addMapToList item for item in System.App.Data.maps.models
+        @addMapToList item for item in SystemApp.Data.maps.models
 
     # Add a single [Map](map.html) to the `$mapList` element.
     addMapToList: (map) =>
@@ -51,7 +51,7 @@ class System.StartView extends System.OverlayView
 
         info = $(document.createElement "div")
         info.addClass "info"
-        info.html System.App.Messages.mapInfoStats.replace("#S", map.shapes().length).replace("#L", map.links().length)
+        info.html SystemApp.Messages.mapInfoStats.replace("#S", map.shapes().length).replace("#L", map.links().length)
 
         div = $(document.createElement "div")
         div.mouseenter map.id, @showMapPreview
@@ -69,11 +69,11 @@ class System.StartView extends System.OverlayView
 
     # When user clicks on a map name, open the map by changing the current URL.
     mapClick: (e) =>
-        System.App.routes.navigate "#map/" + e.data, {trigger: true}
+        SystemApp.routes.navigate "#map/" + e.data, {trigger: true}
 
     # Update the right image to show a preview of the current map under the mouse pointer.
     showMapPreview: (e) =>
-        @$imgPreview.attr "src", System.App.Settings.Map.thumbnailBaseUrl + e.data + ".png"
+        @$imgPreview.attr "src", SystemApp.Settings.Map.thumbnailBaseUrl + e.data + ".png"
         @$imgPreview.css "display", ""
         e.preventDefault()
         e.stopPropagation()

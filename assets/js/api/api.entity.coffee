@@ -12,7 +12,7 @@ System.Api.Entity =
     get: (filter) ->
         System.Api.log "Entity.get", filter
 
-        return System.Api.getFromCollection(System.App.Data.entities, filter)
+        return System.Api.getFromCollection(SystemApp.Data.entities, filter)
 
     # Return [Entity Objects](entityObject.html) based on the
     # specified [Entity Definition](entityDefinition.html) and filter.
@@ -27,7 +27,7 @@ System.Api.Entity =
         if entityDef.data?
             data = entityDef.data().models
         else
-            data = System.App.Data.entities.get entityDef
+            data = SystemApp.Data.entities.get entityDef
             data = entityDef?.data().models
 
         return System.Api.getFromCollection data, filter
@@ -40,5 +40,5 @@ System.Api.Entity =
     create: (props) ->
         System.Api.log "Entity.create", props
 
-        entity = System.App.Data.entities.create props
+        entity = SystemApp.Data.entities.create props
         return entity

@@ -6,7 +6,7 @@
 class System.MapLabelEditView extends System.BaseView
 
     tagName: "div"
-    className: System.App.Settings.LabelEdit.className
+    className: SystemApp.Settings.LabelEdit.className
 
     ox: 0                       # temporary value to hold the original X (left) position of the view
     oy: 0                       # temporary value to hold the original Y (top) position of the view
@@ -100,15 +100,15 @@ class System.MapLabelEditView extends System.BaseView
         # Create the simple label text field.
         @$txtCustomVarName = $ document.createElement "input"
         @$txtCustomVarName.attr "type", "text"
-        @$txtCustomVarName.attr "placeholder", System.App.Messages.customVarNameWatermark
-        @$txtCustomVarName.attr "title", System.App.Messages.tooltipVariableName
+        @$txtCustomVarName.attr "placeholder", SystemApp.Messages.customVarNameWatermark
+        @$txtCustomVarName.attr "title", SystemApp.Messages.tooltipVariableName
         @$txtCustomVarName.addClass "variable"
         @$txtCustomVarName.keyup @customVarNameKeyUp
 
         # Create the custom variable "code" textarea.
         @$txtCustomVarCode = $ document.createElement "textarea"
-        @$txtCustomVarCode.attr "placeholder",  System.App.Messages.customVarCodeWatermark
-        @$txtCustomVarCode.attr "title", System.App.Messages.tooltipVariableCode
+        @$txtCustomVarCode.attr "placeholder",  SystemApp.Messages.customVarCodeWatermark
+        @$txtCustomVarCode.attr "title", SystemApp.Messages.tooltipVariableCode
         @$txtCustomVarCode.addClass "variable"
         @$txtCustomVarCode.keyup @customVarCodeKeyUp
         @$txtCustomVarCode.bind "mousewheel", @editingMouseWheel
@@ -116,8 +116,8 @@ class System.MapLabelEditView extends System.BaseView
         # Create the "Save" custom variable button.
         @$butSaveCustomVar = $ document.createElement "button"
         @$butSaveCustomVar.addClass "variable save"
-        @$butSaveCustomVar.html System.App.Messages.saveVariable
-        @$butSaveCustomVar.attr "title", System.App.Messages.tooltipCreateVariable
+        @$butSaveCustomVar.html SystemApp.Messages.saveVariable
+        @$butSaveCustomVar.attr "title", SystemApp.Messages.tooltipCreateVariable
         @$butSaveCustomVar.click @customVarSaveClick
 
         # Create the custom variable name + code wrapper.
@@ -135,7 +135,7 @@ class System.MapLabelEditView extends System.BaseView
         # Create the "new custom variable" link
         @$linkCreateCustomVar = $ document.createElement "span"
         @$linkCreateCustomVar.addClass "create-variable"
-        @$linkCreateCustomVar.html System.App.Messages.createVariable
+        @$linkCreateCustomVar.html SystemApp.Messages.createVariable
         @$linkCreateCustomVar.click @showCustomVar
 
         # Create the autocomplete div and the current value span.
@@ -170,7 +170,7 @@ class System.MapLabelEditView extends System.BaseView
     # `saveCustomVar`.
     save: =>
         value = @simpleValue()
-        value = value + @customVarCodeValue() if value is System.App.Settings.General.evalPrefix
+        value = value + @customVarCodeValue() if value is SystemApp.Settings.General.evalPrefix
 
         @currentValue @simpleValue()
         @trigger "save", this, value
@@ -191,11 +191,11 @@ class System.MapLabelEditView extends System.BaseView
             customVar.friendlyId varName
             customVar.code varCode
 
-            System.App.Data.variables.add customVar
+            SystemApp.Data.variables.add customVar
             customVar.save()
 
         @customVarNameValue ""
-        @simpleValue System.App.Settings.General.dataBindingKey + System.App.Settings.Variable.bindingNamespace + "." + varName
+        @simpleValue SystemApp.Settings.General.dataBindingKey + SystemApp.Settings.Variable.bindingNamespace + "." + varName
         @showSimple()
 
     # Show the view with the specified value and position.
@@ -204,7 +204,7 @@ class System.MapLabelEditView extends System.BaseView
         $(document).keyup @documentKeyUp
 
         @stopListening()
-        @listenTo System.App.mapEvents, "zoom", @hide
+        @listenTo SystemApp.mapEvents, "zoom", @hide
 
         value = "" if not value?
 
@@ -214,9 +214,9 @@ class System.MapLabelEditView extends System.BaseView
         @oy = y
 
         @showSimple()
-        @currentValue System.App.Messages.current + ": " + value
+        @currentValue SystemApp.Messages.current + ": " + value
 
-        @$el.fadeIn System.App.Settings.LabelEdit.opacityInterval
+        @$el.fadeIn SystemApp.Settings.LabelEdit.opacityInterval
 
         @$txtSimple.focus()
 
@@ -227,7 +227,7 @@ class System.MapLabelEditView extends System.BaseView
         $(document).mousedown @editingMouseDown
 
         size = @simpleValue().length + 1
-        size = System.App.Settings.LabelEdit.minTxtSize if size < System.App.Settings.LabelEdit.minTxtSize
+        size = SystemApp.Settings.LabelEdit.minTxtSize if size < SystemApp.Settings.LabelEdit.minTxtSize
 
         @$txtSimple.attr "size", size
         @autoCompleteValue @simpleValue()
@@ -272,7 +272,7 @@ class System.MapLabelEditView extends System.BaseView
         $(document).unbind "keyup", @documentKeyUp
         @stopListening()
 
-        @$el.fadeOut System.App.Settings.LabelEdit.opacityInterval
+        @$el.fadeOut SystemApp.Settings.LabelEdit.opacityInterval
 
         @lastPressedKey = null
         @currentVariable = null
@@ -303,7 +303,7 @@ class System.MapLabelEditView extends System.BaseView
     parseValue: =>
         value = @simpleValue()
 
-        if System.App.DataUtil.hasAuditData value
+        if SystemApp.DataUtil.hasAuditData value
             @$txtSimple.addClass "highlight"
         else
             @$txtSimple.removeClass "highlight"
@@ -317,7 +317,7 @@ class System.MapLabelEditView extends System.BaseView
     # Check the current `$txtSimple` value and if it's a valid [Audit Data item](auditData.html)
     # then bind its contents to the `$autoCompleteDiv`.
     bindAutoComplete: =>
-        auditDataNamespace = System.App.Settings.General.dataBindingKey + System.App.Settings.AuditData.bindingNamespace
+        auditDataNamespace = SystemApp.Settings.General.dataBindingKey + SystemApp.Settings.AuditData.bindingNamespace
         value = @simpleValue()
 
         if value.indexOf(".") < 1
@@ -329,8 +329,8 @@ class System.MapLabelEditView extends System.BaseView
 
     # Populate the `$autoCompleteDiv` with a list of possible [AuditData](auditData.html) entities.
     bindAutoCompleteEntities: =>
-        auditDataNamespace = System.App.Settings.General.dataBindingKey + System.App.Settings.AuditData.bindingNamespace
-        variableNamespace = System.App.Settings.General.dataBindingKey + System.App.Settings.Variable.bindingNamespace
+        auditDataNamespace = SystemApp.Settings.General.dataBindingKey + SystemApp.Settings.AuditData.bindingNamespace
+        variableNamespace = SystemApp.Settings.General.dataBindingKey + SystemApp.Settings.Variable.bindingNamespace
         value = @simpleValue()
         arr = []
 
@@ -341,7 +341,7 @@ class System.MapLabelEditView extends System.BaseView
             ulCustomVar = $(document.createElement "ul")
             ulCustomVar.addClass "variable"
 
-            _.each System.App.Data.variables.models, (item) =>
+            _.each SystemApp.Data.variables.models, (item) =>
                 li = $(document.createElement "li")
 
                 name = $(document.createElement "span")
@@ -367,7 +367,7 @@ class System.MapLabelEditView extends System.BaseView
             ulAuditData = $(document.createElement "ul")
             ulAuditData.addClass "auditdata"
 
-            _.each System.App.Data.auditData.models, (item) =>
+            _.each SystemApp.Data.auditData.models, (item) =>
                 li = $(document.createElement "li")
                 li.attr "title", auditDataNamespace + "." + item.friendlyId() + "."
                 li.html item.friendlyId()
@@ -383,7 +383,7 @@ class System.MapLabelEditView extends System.BaseView
     # If no ``auditDataName`` is passed, then bind all found properties from all [AuditData](auditData.html) items.
     bindAutoCompleteProperties: (friendlyId) =>
         json = []
-        auditData = _.filter System.App.Data.auditData.models, (item) -> item.attributes.friendlyId.indexOf(friendlyId) >= 0
+        auditData = _.filter SystemApp.Data.auditData.models, (item) -> item.attributes.friendlyId.indexOf(friendlyId) >= 0
 
         if auditData.length > 0
             _.each auditData, (item) => json.push @auditDataDumper item
@@ -401,7 +401,7 @@ class System.MapLabelEditView extends System.BaseView
     # This is used by the property auto complete.
     auditDataDumper: (auditData) =>
         data = auditData.data()
-        path = System.App.Settings.General.dataBindingKey + System.App.Settings.AuditData.bindingNamespace + "." + auditData.friendlyId()
+        path = SystemApp.Settings.General.dataBindingKey + SystemApp.Settings.AuditData.bindingNamespace + "." + auditData.friendlyId()
         div = $(document.createElement "div")
 
         # Recursively parse and bind all properties to the autocomplete area.
@@ -491,7 +491,7 @@ class System.MapLabelEditView extends System.BaseView
     # When user is editing a label and clicks somewhere on the map, check for the
     # source element. If it's not part of this view then hide it.
     editingMouseDown: (e) =>
-        css = System.App.Settings.LabelEdit.className
+        css = SystemApp.Settings.LabelEdit.className
         src = $ e.target
         parent = src.parents ".#{css}"
         labelPosition = src.data "labelPosition"
@@ -518,7 +518,7 @@ class System.MapLabelEditView extends System.BaseView
     # When pressing keys on `$txtSimple`, check if the value is blank and the key being pressed
     # is the special key defined on the [Settings](settings.html). If so, starts the
     # autocomplete feature. Pressing "Enter" will save. And if user enters the eval prefix
-    # defined at `System.App.Settings.General.evalPrefix`, then call `showCustomVar`.
+    # defined at `SystemApp.Settings.General.evalPrefix`, then call `showCustomVar`.
     simpleKeyUp: (e) =>
         @parseValue()
         @save() if e.which is 13
@@ -542,19 +542,19 @@ class System.MapLabelEditView extends System.BaseView
         if name.length < 2
             @warnField @$txtCustomVarName
             @$txtCustomVarName.focus()
-            valMessage = {message: System.App.Messages.valNameIsRequired}
+            valMessage = {message: SystemApp.Messages.valNameIsRequired}
         else if code.indexOf("return") < 0
-            valMessage = {message: System.App.Messages.errEvalReturn}
+            valMessage = {message: SystemApp.Messages.errEvalReturn}
         else
-            valMessage = System.App.DataUtil.validateEval code
+            valMessage = SystemApp.DataUtil.validateEval code
 
         # Check if variable name is duplicate or not.
         if @currentVariable?
-            duplicateItem = System.App.Data.variables.getByFriendlyId name
+            duplicateItem = SystemApp.Data.variables.getByFriendlyId name
             if duplicateItem? and duplicateItem.length > 0 and duplicateItem[0].id isnt @currentVariable.id
                 @warnField @$txtCustomVarName
                 @$txtCustomVarName.focus()
-                valMessage = {message: System.App.Messages.valNameIsDuplicate}
+                valMessage = {message: SystemApp.Messages.valNameIsDuplicate}
 
         # If has a validation message, display it and stop here.
         if valMessage?
@@ -579,7 +579,7 @@ class System.MapLabelEditView extends System.BaseView
 
         @lastPressedKey = null
 
-        setTimeout @evalClearError, System.App.Settings.LabelEdit.evalErrorTimeout
+        setTimeout @evalClearError, SystemApp.Settings.LabelEdit.evalErrorTimeout
 
     # Clear the validation error message and set the `$txtCustomVarCode` back to its original text.
     evalClearError: =>

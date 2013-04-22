@@ -72,7 +72,7 @@ class System.AuditEvent extends System.BaseModel
 class System.AuditEventCollection extends System.BaseCollection
     typeName: "AuditEventCollection"
     model: System.AuditEvent
-    url: System.App.Settings.AuditEvent.url
+    url: SystemApp.Settings.AuditEvent.url
 
     # Set the comparator function to order the audit events collection by title.
     comparator: (auditEvent) -> return auditEvent.friendlyId()

@@ -33,7 +33,7 @@ class System.MapControlsMapTabView extends System.BaseView
         @setDom()
         @setEvents()
         @bindInitialState()
-        @bindDisplayProps System.App.Settings.Map.displayProps
+        @bindDisplayProps SystemApp.Settings.Map.displayProps
 
     # Dispose the map tab view.
     dispose: =>
@@ -78,16 +78,16 @@ class System.MapControlsMapTabView extends System.BaseView
         @$butExportSvg.click @exportToSvg
         @$butZIndexIdentify.click @zIndexIdentify
 
-        @listenTo System.App.mapEvents, "loaded", @bindMap
-        @listenTo System.App.mapEvents, "zoom", @setZoomLabel
-        @listenTo System.App.mapEvents, "edit:toggle", @setEnabled
+        @listenTo SystemApp.mapEvents, "loaded", @bindMap
+        @listenTo SystemApp.mapEvents, "zoom", @setZoomLabel
+        @listenTo SystemApp.mapEvents, "edit:toggle", @setEnabled
 
 
     # Set the initial state of map options based on the [User Settings](userSettings.html)
     # saved on the browser's local storage.
     bindInitialState: =>
-        @$selDisplayProps.val System.App.Data.userSettings.mapOverrideShapeTitle()
-        @$chkShowLinks.prop "checked", System.App.Data.userSettings.mapShowLinks()
+        @$selDisplayProps.val SystemApp.Data.userSettings.mapOverrideShapeTitle()
+        @$chkShowLinks.prop "checked", SystemApp.Data.userSettings.mapShowLinks()
 
 
     # HELPER PROPERTIES
@@ -108,19 +108,19 @@ class System.MapControlsMapTabView extends System.BaseView
     # Triggered whenever user changes the current shape's title property.
     onDisplayPropsChange: (e) =>
         val = @currentDisplayProperty()
-        System.App.mapEvents.trigger "shapes:overridetitle", val
-        System.App.Data.userSettings.mapOverrideShapeTitle val
+        SystemApp.mapEvents.trigger "shapes:overridetitle", val
+        SystemApp.Data.userSettings.mapOverrideShapeTitle val
         
 
     # Triggered whenever user toggles the "Show links" on or off.
     onShowLinksChange: (e) =>
         val = @isLinksVisible()
-        System.App.mapEvents.trigger "links:toggle", val
-        System.App.Data.userSettings.mapShowLinks val
+        SystemApp.mapEvents.trigger "links:toggle", val
+        SystemApp.Data.userSettings.mapShowLinks val
 
     # When user clicks on the zoom icons, trigger the zoom event on the `mapEvents` dispatcher.
     onZoom: (e) =>
-        System.App.mapEvents.trigger "zoom:#{e.data}"
+        SystemApp.mapEvents.trigger "zoom:#{e.data}"
 
     # Trigger whenever the current [Map](map.html) name has changed.
     setName: =>
@@ -130,19 +130,19 @@ class System.MapControlsMapTabView extends System.BaseView
 
     # Triggered whenever the current [Map](map.html) `paperSizeX` has changed, `$txtPaperSizeX` onBlur event.
     setPaperSizeX: =>
-        @setSize @$txtPaperSizeX, @model.paperSizeX, System.App.Settings.Map.minPaperSize
+        @setSize @$txtPaperSizeX, @model.paperSizeX, SystemApp.Settings.Map.minPaperSize
 
     # Triggered whenever the current [Map](map.html) `paperSizeY` has changed, `$txtPaperSizeY` onBlur event.
     setPaperSizeY: =>
-        @setSize @$txtPaperSizeY, @model.paperSizeY, System.App.Settings.Map.minPaperSize
+        @setSize @$txtPaperSizeY, @model.paperSizeY, SystemApp.Settings.Map.minPaperSize
 
     # Triggered whenever the current [Map](map.html) `gridSizeX` has changed, `$txtGridSizeX` onBlur event.
     setGridSizeX: =>
-        @setSize @$txtGridSizeX, @model.gridSizeX, System.App.Settings.Map.minGridSize
+        @setSize @$txtGridSizeX, @model.gridSizeX, SystemApp.Settings.Map.minGridSize
 
     # Triggered whenever the current [Map](map.html) `gridSizeY` has changed, `$txtGridSizeY` onBlur event.
     setGridSizeY: =>
-        @setSize @$txtGridSizeY, @model.gridSizeY, System.App.Settings.Map.minGridSize
+        @setSize @$txtGridSizeY, @model.gridSizeY, SystemApp.Settings.Map.minGridSize
 
     # Sets the "zoom" span, to display the current [Map View](mapView.html) zoom level.
     setZoomLabel: (zoomLevel) =>
@@ -220,7 +220,7 @@ class System.MapControlsMapTabView extends System.BaseView
 
     # Open the [script editor](scriptEditorView.html) to edit the map's init script.
     showInitScript: =>
-        System.App.routes.openScriptEditor @model, "initScript"
+        SystemApp.routes.openScriptEditor @model, "initScript"
 
 
     # EXPORT AND Z-INDEX
@@ -230,13 +230,13 @@ class System.MapControlsMapTabView extends System.BaseView
     # shapes. The z-index texts will get hidden after a few seconds, or if the user
     # presses the "Esc" key.
     zIndexIdentify: =>
-        System.App.mapEvents.trigger "zindex:toggle", true
+        SystemApp.mapEvents.trigger "zindex:toggle", true
 
         if @timerHideZIndex?
             clearTimeout @timerHideZIndex
             @timerHideZIndex = null
 
-        @timerHideZIndex = setTimeout @zIndexHide, System.App.Settings.Map.zIndexHideTimeout
+        @timerHideZIndex = setTimeout @zIndexHide, SystemApp.Settings.Map.zIndexHideTimeout
 
         $(document).keydown @zIndexKeyDown
 
@@ -253,7 +253,7 @@ class System.MapControlsMapTabView extends System.BaseView
             clearTimeout @timerHideZIndex
             @timerHideZIndex = null
 
-        System.App.mapEvents.trigger "zindex:toggle", false
+        SystemApp.mapEvents.trigger "zindex:toggle", false
 
     # Export to current [Map View](mapView.html) to a SVG image on a new browser window.
     exportToSvg: =>

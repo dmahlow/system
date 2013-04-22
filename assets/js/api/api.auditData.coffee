@@ -11,7 +11,7 @@ System.Api.AuditData =
     get: (filter) ->
         System.Api.log "AuditData.get", filter
 
-        return System.Api.getFromCollection System.App.Data.auditData, filter
+        return System.Api.getFromCollection SystemApp.Data.auditData, filter
 
 
     # CREATE, UPDATE, DELETE
@@ -21,5 +21,5 @@ System.Api.AuditData =
     create: (props) ->
         System.Api.log "AuditData.create", props
 
-        auditdata = System.App.Data.auditData.create props
+        auditdata = SystemApp.Data.auditData.create props
         return auditdata

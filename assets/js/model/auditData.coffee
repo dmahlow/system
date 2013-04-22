@@ -5,7 +5,7 @@
 class System.AuditData extends System.BaseModel
     typeName: "AuditData"
     defaults:
-        refreshInterval: System.App.Settings.AuditData.refreshInterval
+        refreshInterval: SystemApp.Settings.AuditData.refreshInterval
 
     # Holds the refresh error count. We'll use this to alert the user in case the audit data
     # couldn't be refreshed for more than X times - defined at the [Settings](settings.html).
@@ -58,11 +58,11 @@ class System.AuditData extends System.BaseModel
 
         # Data source URL must be a valid URL.
         if not /((http|https):\/\/(\w+:{0,1}\w*@)?(\S+)|)(:[0-9]+)?(\/|\/([\w#!:.?+=&%@!\-\/]))?/.test attrs.sourceUrl
-            return System.App.Messages.valInvalidUrl
+            return SystemApp.Messages.valInvalidUrl
 
         # Refresh interval can't be too low.
-        if attrs.refreshInterval < System.App.Settings.AuditData.minRefreshInterval
-            return System.App.Messages.valRefreshIntervalTooLow
+        if attrs.refreshInterval < SystemApp.Settings.AuditData.minRefreshInterval
+            return SystemApp.Messages.valRefreshIntervalTooLow
 
 
     # METHODS
@@ -78,7 +78,7 @@ class System.AuditData extends System.BaseModel
         @fetching = true
 
         $.ajax
-            url: System.App.Settings.General.remoteDownloaderUrl + "auditdata-" + @id
+            url: SystemApp.Settings.General.remoteDownloaderUrl + "auditdata-" + @id
             timeout: @refreshInterval() * 3
             cache: false
             dataType: "json"
@@ -103,7 +103,7 @@ class System.AuditData extends System.BaseModel
         @data resp
         @lastDataRefresh = new Date()
 
-        if @lastDataRefresh - @lastDataSave > System.App.Settings.AuditData.dataSaveInterval
+        if @lastDataRefresh - @lastDataSave > SystemApp.Settings.AuditData.dataSaveInterval
             @save()
             @lastDataSave = new Date()
 
@@ -123,7 +123,7 @@ class System.AuditData extends System.BaseModel
 
         # If the refresh error count is more than 2 times the value set to show an alert, then
         # reset it to 0 so the user will see the alert again soon.
-        if @refreshErrorCount > System.App.Settings.AuditData.alertOnErrorCount * 2
+        if @refreshErrorCount > SystemApp.Settings.AuditData.alertOnErrorCount * 2
             @refreshErrorCount = 0
 
         @trigger "refresh:error", this, error
@@ -149,7 +149,7 @@ class System.AuditData extends System.BaseModel
 
         # If the value is a number, make sure it's passed as Float and with 2 decimal cases.
         if newValue? and not isNaN(newValue)
-            newValue = parseFloat(newValue[0]).toFixed System.App.Settings.AuditData.decimalCases
+            newValue = parseFloat(newValue[0]).toFixed SystemApp.Settings.AuditData.decimalCases
 
         return newValue
 
@@ -162,4 +162,4 @@ class System.AuditData extends System.BaseModel
 class System.AuditDataCollection extends System.BaseCollection
 
     model: System.AuditData
-    url: System.App.Settings.AuditData.url
+    url: SystemApp.Settings.AuditData.url

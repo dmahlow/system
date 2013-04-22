@@ -81,7 +81,7 @@ class System.MapControlsShapeTabView extends System.BaseView
 
     # Bind events to DOM and other controls.
     setEvents: =>
-        @listenTo System.App.mapEvents, "edit:toggle", @setEnabled
+        @listenTo SystemApp.mapEvents, "edit:toggle", @setEnabled
 
         fields = [@$txtBackground, @$txtForeground, @$txtTitleForeground, @$txtStroke]
         for elm in fields
@@ -114,8 +114,8 @@ class System.MapControlsShapeTabView extends System.BaseView
 
     # When the view is first loaded, bind the initial and default values.
     bindInitial: =>
-        @$selIcon.append $(document.createElement "option").val("0").text(System.App.Messages.noIcon)
-        _.each System.App.Vectors, (item, key) => @$selIcon.append $(document.createElement "option").val(key).text(key)
+        @$selIcon.append $(document.createElement "option").val("0").text(SystemApp.Messages.noIcon)
+        _.each SystemApp.Vectors, (item, key) => @$selIcon.append $(document.createElement "option").val(key).text(key)
 
     # Bind a [Shape View](shapeView.html) or [Link View](linkView.html) to the control
     # and display its editable properties.
@@ -152,7 +152,7 @@ class System.MapControlsShapeTabView extends System.BaseView
                 @$chkRoundedCorners.prop "checked", @currentBoundView.model.roundedCorners()
                 @$el.find(".only-for-links").hide()
                 @$el.find(".not-for-links").show()
-                @$butDeleteShape.html System.App.Messages.removeShape
+                @$butDeleteShape.html SystemApp.Messages.removeShape
             # If selected item is a link, then hide all "not-for-links" properties.
             else
                 @$selArrowSource.val @currentBoundView.model.arrowSource()
@@ -160,7 +160,7 @@ class System.MapControlsShapeTabView extends System.BaseView
                 @$chkSmoothLink.prop "checked", @currentBoundView.model.smooth()
                 @$el.find(".not-for-links").hide()
                 @$el.find(".only-for-links").show()
-                @$butDeleteShape.html System.App.Messages.removeLink
+                @$butDeleteShape.html SystemApp.Messages.removeLink
 
             @$zIndexDiv.children("div").removeClass("active").eq(@currentBoundView.model.zIndex() - 1).addClass "active"
 

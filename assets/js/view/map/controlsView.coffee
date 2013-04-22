@@ -76,12 +76,12 @@ class System.MapControlsView extends System.BaseView
         @$chkAutoUpdate.change @setAutoUpdate
         @$imgFullscreen.click @parentView.toggleFullscreen
 
-        @listenTo System.App.mapEvents, "loaded", @bindMap
-        @listenTo System.App.mapEvents, "edit:toggle", @editSetState
+        @listenTo SystemApp.mapEvents, "loaded", @bindMap
+        @listenTo SystemApp.mapEvents, "edit:toggle", @editSetState
 
     # Bind the saved [User Settings](userSettings.html) and current [Data](data.html) to the map map controls.
     bindInitialState: =>
-        @$chkAutoUpdate.prop "checked", System.App.Data.userSettings.mapAutoRefresh()
+        @$chkAutoUpdate.prop "checked", SystemApp.Data.userSettings.mapAutoRefresh()
 
     # When window has loaded or resized, call this to resize the map controls accordingly.
     # TODO! Properly calculate the diff instead of using the 38 hard coded value.
@@ -128,7 +128,7 @@ class System.MapControlsView extends System.BaseView
         if value isnt false and (value is undefined or value.data is null)
             value = not (@$chkEditable.prop "checked")
 
-        System.App.mapEvents.trigger "edit:toggle", value
+        SystemApp.mapEvents.trigger "edit:toggle", value
 
     # Enable or disable the [AuditData](auditData.html) timers to auto-update
     # the values of related labels on the map.
@@ -143,13 +143,13 @@ class System.MapControlsView extends System.BaseView
         else
             @$imgAutoUpdate.addClass "disabled"
 
-        System.App.Data.autoUpdateEnabled = not value
-        System.App.Data.userSettings.mapAutoRefresh System.App.Data.autoUpdateEnable
+        SystemApp.Data.autoUpdateEnabled = not value
+        SystemApp.Data.userSettings.mapAutoRefresh SystemApp.Data.autoUpdateEnable
 
         if not value
-            System.App.Data.startTimers()
+            SystemApp.Data.startTimers()
         else
-            System.App.Data.stopTimers()
+            SystemApp.Data.stopTimers()
 
     # Hide the map controls and show the minimzed icon on the top right corner.
     hide: (e) =>

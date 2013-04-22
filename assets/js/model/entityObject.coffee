@@ -58,6 +58,6 @@ class System.EntityObjectCollection extends System.BaseCollection
     # property `sourceUrl`. If not parent model was set, return a generic "for-all" URL.
     url: =>
         if @parentModel?
-            return System.App.Settings.EntityObject.url + "/" + @parentModel.friendlyId()
+            return SystemApp.Settings.EntityObject.url + "/" + @parentModel.friendlyId()
         else
-            return System.App.Settings.EntityObject.url
+            return SystemApp.Settings.EntityObject.url

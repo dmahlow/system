@@ -100,51 +100,51 @@
 # APP VARIABLES
 # -----------------------------------------------------------------------------
 # The `startDate` tells when the app was started (page loaded).
-System.App.startDate = new Date()
+SystemApp.startDate = new Date()
 
 
 # ROUTES
 # -----------------------------------------------------------------------------
 # All routes should be defined inside the [Routes](routes.html) file.
-System.App.routes = null
+SystemApp.routes = null
 
 
 # EVENT DISPATCHERS
 # -----------------------------------------------------------------------------
 # Holds Backbone objects to dispatch events on a global scope.
-# Trigger events: `System.App.DISPATCHER.trigger "eventname", data`.
-# List to events: `System.App.DISPATCHER.on "eventname", method`.
-# Unbind events `System.App.DISPATCHER.off "eventname", method`.
-System.App.alertEvents = null
-System.App.dataEvents = null
-System.App.mapEvents = null
-System.App.menuEvents = null
-System.App.serverEvents = null
+# Trigger events: `SystemApp.DISPATCHER.trigger "eventname", data`.
+# List to events: `SystemApp.DISPATCHER.on "eventname", method`.
+# Unbind events `SystemApp.DISPATCHER.off "eventname", method`.
+SystemApp.alertEvents = null
+SystemApp.dataEvents = null
+SystemApp.mapEvents = null
+SystemApp.menuEvents = null
+SystemApp.serverEvents = null
 
 
 # IDLE TIMER
 # -----------------------------------------------------------------------------
 # This is used to detect fow how long the app has been idle, so it can execute
 # idle based actions (for example, refresh the browser every 12 hours).
-System.App.idleTime = 0
-System.App.timerIdleUpdate = null
+SystemApp.idleTime = 0
+SystemApp.timerIdleUpdate = null
 
 
 # VIEWS
 # -----------------------------------------------------------------------------
 # Define all the app views.
-System.App.alertView = null
-System.App.auditDataManagerView = null
-System.App.auditEventManagerView = null
-System.App.createMapView = null
-System.App.entityManagerView = null
-System.App.footerView = null
-System.App.helpView = null
-System.App.mapView = null
-System.App.menuView = null
-System.App.settingsView = null
-System.App.scriptEditorView = null
-System.App.startView = null
+SystemApp.alertView = null
+SystemApp.auditDataManagerView = null
+SystemApp.auditEventManagerView = null
+SystemApp.createMapView = null
+SystemApp.entityManagerView = null
+SystemApp.footerView = null
+SystemApp.helpView = null
+SystemApp.mapView = null
+SystemApp.menuView = null
+SystemApp.settingsView = null
+SystemApp.scriptEditorView = null
+SystemApp.startView = null
 
 
 # LOADING
@@ -152,7 +152,7 @@ System.App.startView = null
 
 # The "loading" image (DOM) which gets visible whenever the app
 # has any major view state change.
-System.App.$loading = null
+SystemApp.$loading = null
 
 
 # INIT AND DISPOSE
@@ -160,99 +160,99 @@ System.App.$loading = null
 
 # Inits the app. First prepare the views, them set the DOM cache,
 # load data to the Data object, init the menu and finally init the footer.
-System.App.init = ->
-    window.onerror = System.App.onError
+SystemApp.init = ->
+    window.onerror = SystemApp.onError
 
     # Create the Backbone "Routes" object.
-    System.App.routes = new System.Routes()
+    SystemApp.routes = new System.Routes()
 
     # Init events and data.
-    System.App.setEvents()
-    System.App.Data.init()
+    SystemApp.setEvents()
+    SystemApp.Data.init()
 
     # Set views and idle timer.
-    System.App.setDom()
-    System.App.setViews()
-    System.App.setIdleTimer()
+    SystemApp.setDom()
+    SystemApp.setViews()
+    SystemApp.setIdleTimer()
 
     # Load data collections.
-    System.App.Data.fetch()
+    SystemApp.Data.fetch()
 
     # Start the Socket.IO communcations.
-    System.App.Sockets.start()
+    SystemApp.Sockets.start()
 
     # Apply user settings to the UI.
-    System.App.initUserSettings()
+    SystemApp.initUserSettings()
 
     # Init the API, bind it to the "api" variable on the window.
     System.Api.init()
 
 # Change the app UI based on the current user settings.
 # Things like fullscreen, zoom, etc.
-System.App.initUserSettings = ->
-    if System.App.Data.userSettings.mapFullscreen()
-        System.App.mapView.toggleFullscreen true
-    if System.App.Data.userSettings.mapZoom() isnt 1
-        System.App.mapView.zoomSet System.App.Data.userSettings.mapZoom()
+SystemApp.initUserSettings = ->
+    if SystemApp.Data.userSettings.mapFullscreen()
+        SystemApp.mapView.toggleFullscreen true
+    if SystemApp.Data.userSettings.mapZoom() isnt 1
+        SystemApp.mapView.zoomSet SystemApp.Data.userSettings.mapZoom()
 
 # Set the DOM cache.
-System.App.setDom = ->
-    System.App.$loading = $ "#loading"
+SystemApp.setDom = ->
+    SystemApp.$loading = $ "#loading"
 
 # Init the menu, footer and settings.
-System.App.setViews = ->
-    System.App.alertView = new System.AlertView()
-    System.App.auditDataManagerView = new System.AuditDataManagerView()
-    System.App.auditEventManagerView = new System.AuditEventManagerView()
-    System.App.createMapView = new System.CreateMapView()
-    System.App.entityManagerView = new System.EntityManagerView()
-    System.App.footerView = new System.FooterView()
-    System.App.helpView = new System.HelpView()
-    System.App.mapView = new System.MapView()
-    System.App.menuView = new System.MenuView()
-    System.App.settingsView = new System.App.SettingsView()
-    System.App.scriptEditorView = new System.ScriptEditorView()
-    System.App.startView = new System.StartView()
+SystemApp.setViews = ->
+    SystemApp.alertView = new System.AlertView()
+    SystemApp.auditDataManagerView = new System.AuditDataManagerView()
+    SystemApp.auditEventManagerView = new System.AuditEventManagerView()
+    SystemApp.createMapView = new System.CreateMapView()
+    SystemApp.entityManagerView = new System.EntityManagerView()
+    SystemApp.footerView = new System.FooterView()
+    SystemApp.helpView = new System.HelpView()
+    SystemApp.mapView = new System.MapView()
+    SystemApp.menuView = new System.MenuView()
+    SystemApp.settingsView = new SystemApp.SettingsView()
+    SystemApp.scriptEditorView = new System.ScriptEditorView()
+    SystemApp.startView = new System.StartView()
 
 # Create event dispatchers. Bind and listen to app events.
-System.App.setEvents = ->
-    $(document).keydown System.App.suppressBackspace
-    $(document).keypress System.App.suppressBackspace
+SystemApp.setEvents = ->
+    $(document).keydown SystemApp.suppressBackspace
+    $(document).keypress SystemApp.suppressBackspace
 
-    System.App.alertEvents = _.clone(Backbone.Events)
-    System.App.dataEvents = _.clone(Backbone.Events)
-    System.App.mapEvents = _.clone(Backbone.Events)
-    System.App.menuEvents = _.clone(Backbone.Events)
-    System.App.serverEvents = _.clone(Backbone.Events)
+    SystemApp.alertEvents = _.clone(Backbone.Events)
+    SystemApp.dataEvents = _.clone(Backbone.Events)
+    SystemApp.mapEvents = _.clone(Backbone.Events)
+    SystemApp.menuEvents = _.clone(Backbone.Events)
+    SystemApp.serverEvents = _.clone(Backbone.Events)
 
-    System.App.dataEvents.on "load", System.App.start
+    SystemApp.dataEvents.on "load", SystemApp.start
 
 # Start the app after all major data has been loaded.
 # First add a timeout to hide the `loading` overlay, then start backbone's history.
 # If the hashtag is empty, show the [Start View](startView.html) automatically.
-System.App.start = ->
+SystemApp.start = ->
     now = new Date()
-    console.log "#{System.App.Settings.General.appTitle} START: #{now}"
+    console.log "#{SystemApp.Settings.General.appTitle} START: #{now}"
 
     # Start listening to model updates.
-    System.App.alertView.listenToModels true
+    SystemApp.alertView.listenToModels true
     
     Backbone.history.start()
 
 # Dispose the app (called when user leaves the page).
-System.App.dispose = ->
-    System.App.Sockets.stop()
-    System.App.alertView?.dispose()
-    System.App.auditEventManagerView?.dispose()
-    System.App.auditDataManagerView?.dispose()
-    System.App.createMapView?.dispose()
-    System.App.entityManagerView?.dispose()
-    System.App.footerView?.dispose()
-    System.App.helpView?.dispose()
-    System.App.mapView?.dispose()
-    System.App.menuView?.dispose()
-    System.App.settingsView?.dispose()
-    System.App.startView?.dispose()
+SystemApp.dispose = ->
+    SystemApp.Sockets.stop()
+    SystemApp.alertView?.dispose()
+    SystemApp.auditEventManagerView?.dispose()
+    SystemApp.auditDataManagerView?.dispose()
+    SystemApp.createMapView?.dispose()
+    SystemApp.entityManagerView?.dispose()
+    SystemApp.footerView?.dispose()
+    SystemApp.helpView?.dispose()
+    SystemApp.mapView?.dispose()
+    SystemApp.menuView?.dispose()
+    SystemApp.settingsView?.dispose()
+    SystemApp.startView?.dispose()
 
 
 # IDLE TIMER AND ACTIONS
@@ -260,24 +260,24 @@ System.App.dispose = ->
 
 # Start the idle timer handlers and bind the `resetIdleTime` to
 # the mouse move event on the document.
-System.App.setIdleTimer = ->
-    System.App.timerIdleUpdate = setInterval System.App.idleTimerTick, System.App.idleTimerInterval
-    $(document).mousemove System.App.resetIdleTime
+SystemApp.setIdleTimer = ->
+    SystemApp.timerIdleUpdate = setInterval SystemApp.idleTimerTick, SystemApp.idleTimerInterval
+    $(document).mousemove SystemApp.resetIdleTime
 
 # Tick the idle timer. This will increase the idleTime value by
 # X milliseconds - value defined at the [Settings](settings.html).
-System.App.idleTimerTick = ->
-    System.App.idleTime += System.App.idleTimerInterval
+SystemApp.idleTimerTick = ->
+    SystemApp.idleTime += SystemApp.idleTimerInterval
 
     # Check if page needs to be refreshed based on the `idleRefreshMinutes`
     # value on the [Settings](settings.html).
-    idleMinutes = System.App.idleTime / 60000
-    if idleMinutes >= System.App.Settings.idleRefreshMinutes
-        System.App.routes.refresh()
+    idleMinutes = SystemApp.idleTime / 60000
+    if idleMinutes >= SystemApp.Settings.idleRefreshMinutes
+        SystemApp.routes.refresh()
 
 # Reset the idle time counter by setting the variable `idleTime` to 0.
-System.App.resetIdleTime = ->
-    System.App.idleTime = 0
+SystemApp.resetIdleTime = ->
+    SystemApp.idleTime = 0
 
 
 # LOADING ICON METHODS
@@ -285,21 +285,21 @@ System.App.resetIdleTime = ->
 
 # Toggle the loading icon on or off (parameter enabled).
 # A fade in/out effect is applied.
-System.App.toggleLoading = (enabled) ->
+SystemApp.toggleLoading = (enabled) ->
     enabled = false if not enabled?
 
     if enabled
-        System.App.$loading.fadeIn System.App.Settings.General.fadeDelay
+        SystemApp.$loading.fadeIn SystemApp.Settings.General.fadeDelay
     else
-        System.App.$loading.fadeOut System.App.Settings.General.fadeDelay
+        SystemApp.$loading.fadeOut SystemApp.Settings.General.fadeDelay
 
 
 # HELPERS
 # -----------------------------------------------------------------------------
 
 # Enable or disable the `debug` mode.
-System.App.toggleDebug = (enabled) ->
-    System.App.debug = enabled
+SystemApp.toggleDebug = (enabled) ->
+    SystemApp.debug = enabled
     if enabled
         alertTitle = "ENABLED"
         alertMsg = "Most actions and events will be logged to the console."
@@ -307,10 +307,10 @@ System.App.toggleDebug = (enabled) ->
         alertTitle = "DISABLED"
         alertMsg = "Only errors will be logged to the console now."
 
-    System.App.alertEvents.trigger "footer", {title: "DEBUG #{alertTitle}", message: alertMsg}
+    SystemApp.alertEvents.trigger "footer", {title: "DEBUG #{alertTitle}", message: alertMsg}
 
 # Prevent accidental use of backspace which could trigger a `history.back()` on the page.
-System.App.suppressBackspace = (e) ->
+SystemApp.suppressBackspace = (e) ->
     if e.keyCode is 8 and not /input|textarea/i.test(e.target.nodeName)
         e.preventDefault()
         e.stopPropagation()
@@ -321,8 +321,8 @@ System.App.suppressBackspace = (e) ->
 # -----------------------------------------------------------------------------
 
 # Helper method to log to the console, but only if `debug` is set to true.
-System.App.consoleLog = (method, message, obj) ->
-    if System.App.Settings.General.debug
+SystemApp.consoleLog = (method, message, obj) ->
+    if SystemApp.Settings.General.debug
         if obj isnt undefined
             console.log method, message, obj
         else
@@ -330,10 +330,10 @@ System.App.consoleLog = (method, message, obj) ->
 
 # When an error occurs, log to the browser console and show the error message
 # on the footer - [Alert View](alertView.html).
-System.App.onError = (msg, url, line) ->
+SystemApp.onError = (msg, url, line) ->
     try
         console.error msg, url, line
-        System.App.alertEvents.trigger "footer", {title: "ERROR!", message: "#{msg} (line #{line})", isError: true}
+        SystemApp.alertEvents.trigger "footer", {title: "ERROR!", message: "#{msg} (line #{line})", isError: true}
     catch ex
         console.error "FATAL ERROR!", ex
     return false
@@ -342,4 +342,4 @@ System.App.onError = (msg, url, line) ->
 # STARTING
 # -----------------------------------------------------------------------------
 $(document).ready ->
-    System.App.init()
+    SystemApp.init()

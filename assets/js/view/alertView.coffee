@@ -51,10 +51,10 @@ class System.AlertView extends System.BaseView
     dispose: =>
         $(document).off "keydown", @keyDown
 
-        System.App.alertEvents.off "footer", @showFooter
-        System.App.serverEvents.off "error", @showServerError
+        SystemApp.alertEvents.off "footer", @showFooter
+        SystemApp.serverEvents.off "error", @showServerError
 
-        for collection in System.App.Data.allCollections
+        for collection in SystemApp.Data.allCollections
             collection.off "add", @modelAdded
             collection.off "remove", @modelRemoved
 
@@ -82,8 +82,8 @@ class System.AlertView extends System.BaseView
     setEvents: =>
         $(document).keydown @keyDown
 
-        System.App.alertEvents.on "footer", @showFooter
-        System.App.serverEvents.on "error", @showServerError
+        SystemApp.alertEvents.on "footer", @showFooter
+        SystemApp.serverEvents.on "error", @showServerError
 
 
     # LISTEN TO MODEL UPDATES
@@ -93,13 +93,13 @@ class System.AlertView extends System.BaseView
     # or removed from the [data](data.html) collections. Set `listen` to false to stop
     # listening to these events.
     listenToModels: (listen) =>
-        for collection in System.App.Data.allCollections
+        for collection in SystemApp.Data.allCollections
             collection.off "add", @modelAdded
             collection.off "remove", @modelRemoved
             collection.off "error", @modelError
 
         if listen
-            for collection in System.App.Data.allCollections
+            for collection in SystemApp.Data.allCollections
                 collection.on "add", @modelAdded
                 collection.on "remove", @modelRemoved
                 collection.on "error", @modelError
@@ -125,7 +125,7 @@ class System.AlertView extends System.BaseView
         alertObj.timestamp = new Date()
 
         if @lastFooterAlert?
-            timeoutLess = (alertObj.timestamp - @lastFooterAlert.timestamp) < System.App.Settings.Alert.similarTimeout
+            timeoutLess = (alertObj.timestamp - @lastFooterAlert.timestamp) < SystemApp.Settings.Alert.similarTimeout
             sameAlert = alertObj.title is @lastFooterAlert.title and alertObj.message is @lastFooterAlert.message
 
             # Avoid showing repeated alerts multiple times in a row.
@@ -184,15 +184,15 @@ class System.AlertView extends System.BaseView
         else
             @$wrapperFooter.addClass "ok"
 
-        delay = System.App.Settings.Alert.hideDelay
+        delay = SystemApp.Settings.Alert.hideDelay
         delay = delay * 2 if alertObj.isError
 
-        @$wrapperFooter.fadeIn System.App.Settings.Alert.opacityInterval
+        @$wrapperFooter.fadeIn SystemApp.Settings.Alert.opacityInterval
         @isFooterVisible = true
-        _.delay @hideFooter, delay + System.App.Settings.Alert.opacityInterval
+        _.delay @hideFooter, delay + SystemApp.Settings.Alert.opacityInterval
 
         # Log alerts to the console only if app is in debug mode.
-        if System.App.Settings.General.debug
+        if SystemApp.Settings.General.debug
             if alertObj.isError
                 console.warn "Alert Error", title, message
             else
@@ -201,7 +201,7 @@ class System.AlertView extends System.BaseView
     # Hide the footer alert and call `nextFooter` again to check for new alerts.
     hideFooter: =>
         @isFooterVisible = false
-        @$wrapperFooter.fadeOut System.App.Settings.Alert.opacityInterval, @nextFooter
+        @$wrapperFooter.fadeOut SystemApp.Settings.Alert.opacityInterval, @nextFooter
 
 
     # TOOLTIP ALERTS
@@ -212,7 +212,7 @@ class System.AlertView extends System.BaseView
         alertObj.timestamp = new Date()
 
         # Log alerts to the console only if app is in debug mode.
-        if System.App.Settings.General.debug
+        if SystemApp.Settings.General.debug
             if alertObj.isError
                 console.error "Alert", alertObj
             else
@@ -250,17 +250,17 @@ class System.AlertView extends System.BaseView
         if alertObj.clickAction?
             @$wrapperTooltip.click alertObj.clickAction
 
-        delay = System.App.Settings.Alert.hideDelay * 2
+        delay = SystemApp.Settings.Alert.hideDelay * 2
         delay = delay * 2 if alertObj.isError
 
-        @$wrapperTooltip.fadeIn System.App.Settings.Alert.opacityInterval
+        @$wrapperTooltip.fadeIn SystemApp.Settings.Alert.opacityInterval
         @isTooltipVisible = true
-        _.delay @hideTooltip, delay + System.App.Settings.Alert.opacityInterval
+        _.delay @hideTooltip, delay + SystemApp.Settings.Alert.opacityInterval
 
     # Hide a tooltip alert. NOT IMPLEMENTED YET!
     hideTooltip: =>
         @isTooltipVisible = false
-        @$wrapperTooltip.fadeOut System.App.Settings.Alert.opacityInterval, @nextTooltip
+        @$wrapperTooltip.fadeOut SystemApp.Settings.Alert.opacityInterval, @nextTooltip
 
 
     # SERVER ALERTS
@@ -269,8 +269,8 @@ class System.AlertView extends System.BaseView
     # Show an alert whenever an error happens on the node.js server.
     # This is triggered using Socket.IO.
     showServerError: (err) =>
-        if System.App.Settings.General.debug
-            @showFooter {isError: true, title: System.App.Messages.server + " " + err.title, message: err.message}
+        if SystemApp.Settings.General.debug
+            @showFooter {isError: true, title: SystemApp.Messages.server + " " + err.title, message: err.message}
 
 
     # KEYBOARD EVENTS

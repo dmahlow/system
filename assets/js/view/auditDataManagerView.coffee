@@ -17,7 +17,7 @@ class System.AuditDataManagerView extends System.OverlayView
 
     # Init the Audit Data overlay view.
     initialize: =>
-        @currentSettings = System.App.Settings.AuditData
+        @currentSettings = SystemApp.Settings.AuditData
         @overlayInit "#auditdata"
         @setDom()
         @setEvents()
@@ -66,7 +66,7 @@ class System.AuditDataManagerView extends System.OverlayView
     # Bind all [AuditData](auditData.html) information from the [data store](data.html).
     bindAuditData: =>
         @clear()
-        @addToModelsList item for item in System.App.Data.auditData.models
+        @addToModelsList item for item in SystemApp.Data.auditData.models
 
 
     # CREATING AUDIT DATA
@@ -82,9 +82,9 @@ class System.AuditDataManagerView extends System.OverlayView
             @warnField @$txtCreate
             return
         else
-            newId = System.App.DataUtil.normalize newId, true
+            newId = SystemApp.DataUtil.normalize newId, true
 
-        item = System.App.Data.auditData.create {friendlyId: newId}, {wait: true}
+        item = SystemApp.Data.auditData.create {friendlyId: newId}, {wait: true}
         @clearTextInputs()
 
     # If the `$txtCreate` field has focus, pressing Enter will call the `click`
@@ -130,15 +130,15 @@ class System.AuditDataManagerView extends System.OverlayView
         @bindAuditData()
 
         $(document).keyup @hasModelListKeyUp
-        System.App.Data.auditData.on "add", @addToModelsList
-        System.App.Data.auditData.on "remove", @removeFromModelsList
+        SystemApp.Data.auditData.on "add", @addToModelsList
+        SystemApp.Data.auditData.on "remove", @removeFromModelsList
 
     # Save the `model` (if there's one) when the overlay is closed,
     # and remove the `keyUp` from the document.
     onHide: =>
         $(document).unbind "keyup", @hasModelListKeyUp
-        System.App.Data.auditData.off "add", @addToModelsList
-        System.App.Data.auditData.off "remove", @removeFromModelsList
+        SystemApp.Data.auditData.off "add", @addToModelsList
+        SystemApp.Data.auditData.off "remove", @removeFromModelsList
 
         @model?.save()
         @model = null

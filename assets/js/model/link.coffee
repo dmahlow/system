@@ -6,16 +6,16 @@
 class System.Link extends System.BaseModel
     typeName: "Link"
     defaults:
-        arrowSource: System.App.Settings.Link.arrowSource
-        arrowTarget: System.App.Settings.Link.arrowTarget
-        fontSize: System.App.Settings.Link.fontSize
-        foreground: System.App.Settings.Link.foreground
-        labelOpacity: System.App.Settings.Link.labelOpacity
-        opacity: System.App.Settings.Link.opacity
-        smooth: System.App.Settings.Link.smooth
-        stroke: System.App.Settings.Link.stroke
-        strokeWidth: System.App.Settings.Link.strokeWidth
-        zIndex: System.App.Settings.Link.zIndex
+        arrowSource: SystemApp.Settings.Link.arrowSource
+        arrowTarget: SystemApp.Settings.Link.arrowTarget
+        fontSize: SystemApp.Settings.Link.fontSize
+        foreground: SystemApp.Settings.Link.foreground
+        labelOpacity: SystemApp.Settings.Link.labelOpacity
+        opacity: SystemApp.Settings.Link.opacity
+        smooth: SystemApp.Settings.Link.smooth
+        stroke: SystemApp.Settings.Link.stroke
+        strokeWidth: SystemApp.Settings.Link.strokeWidth
+        zIndex: SystemApp.Settings.Link.zIndex
 
 
     # SYNC

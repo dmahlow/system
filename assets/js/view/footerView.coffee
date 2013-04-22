@@ -49,8 +49,8 @@ class System.FooterView extends System.BaseView
 
     # Show (fade in) the footer bar.
     show: =>
-        @$el.fadeIn System.App.Settings.Footer.opacityInterval
+        @$el.fadeIn SystemApp.Settings.Footer.opacityInterval
 
     # Hide (fade out) the footer bar.
     hide: =>
-        @$el.fadeOut System.App.Settings.Footer.opacityInterval
+        @$el.fadeOut SystemApp.Settings.Footer.opacityInterval

@@ -2,7 +2,7 @@
 # --------------------------------------------------------------------------
 # This is a data manager for all collections and models used by System.
 
-System.App.Data =
+SystemApp.Data =
 
     autoUpdateEnabled: false
     timerRefreshLabels: null
@@ -45,8 +45,8 @@ System.App.Data =
         @auditData.on "sync", @startTimers
         @userSettings.off "change", @saveUserSettings
         @userSettings.on "change", @saveUserSettings
-        System.App.mapEvents.off "zoom", @userSettings.mapZoom
-        System.App.mapEvents.on "zoom", @userSettings.mapZoom
+        SystemApp.mapEvents.off "zoom", @userSettings.mapZoom
+        SystemApp.mapEvents.on "zoom", @userSettings.mapZoom
 
     # Fetch all collections in parallel.
     fetch: ->
@@ -76,16 +76,16 @@ System.App.Data =
 
     # Triggered after all data has loaded successfully.
     fetchFinished: (err, results) ->
-        System.App.consoleLog "Data.load", "Error loading data.", err if err?
-        System.App.dataEvents.trigger "load"
+        SystemApp.consoleLog "Data.load", "Error loading data.", err if err?
+        SystemApp.dataEvents.trigger "load"
 
         # Make sure that the entities collections have up-to-date data.
-        for entityDef in System.App.Data.entities.models
+        for entityDef in SystemApp.Data.entities.models
             url = entityDef.sourceUrl()
             data = entityDef.data()
             if data.length < 1 and url? and url isnt ""
                 entityDef.refreshData()
-                System.App.consoleLog("Data.fetchFinished",
+                SystemApp.consoleLog("Data.fetchFinished",
                                       "Entity Definition #{entityDef.friendlyId()} has no data. Force refreshing!", url)
 
 
@@ -101,18 +101,18 @@ System.App.Data =
         @maps.save()
         @userSettings.save()
 
-        System.App.alertEvents.trigger "footer", {title: System.App.Messages.dataSaved, message: System.App.Messages.okDataSavedLocally}
+        SystemApp.alertEvents.trigger "footer", {title: SystemApp.Messages.dataSaved, message: SystemApp.Messages.okDataSavedLocally}
 
     # Auto save user settings to local storage whenever any of its properties gets updated.
     saveUserSettings: ->
-        if System.App.Data.timerSaveUserSettings?
-            clearTimeout System.App.Data.timerSaveUserSettings
-            System.App.Data.timerSaveUserSettings = null
+        if SystemApp.Data.timerSaveUserSettings?
+            clearTimeout SystemApp.Data.timerSaveUserSettings
+            SystemApp.Data.timerSaveUserSettings = null
 
-        interval = System.App.Settings.General.saveInterval
-        callback = System.App.Data.userSettings.save
+        interval = SystemApp.Settings.General.saveInterval
+        callback = SystemApp.Data.userSettings.save
 
-        System.App.Data.timerSaveUserSettings = setTimeout callback, interval
+        SystemApp.Data.timerSaveUserSettings = setTimeout callback, interval
 
 
     # AUTOREFRESH TIMERS
@@ -120,21 +120,21 @@ System.App.Data =
 
     # Start the auto refreshing timers for [AuditData](auditData.html) and normal entities.
     startTimers: ->
-        return if not System.App.Data.autoUpdateEnabled
+        return if not SystemApp.Data.autoUpdateEnabled
 
-        System.App.consoleLog "Data.startTimers", "Auto Refresh Timers: STARTED"
-        System.App.Data.stopTimers true
+        SystemApp.consoleLog "Data.startTimers", "Auto Refresh Timers: STARTED"
+        SystemApp.Data.stopTimers true
 
         # Start the map refresh timer.
-        if not System.App.Data.timerRefreshLabels?
-            interval = setInterval System.App.mapView.refreshLabels, System.App.Data.userSettings.mapLabelRefreshInterval()
-            System.App.Data.timerRefreshLabels = interval
+        if not SystemApp.Data.timerRefreshLabels?
+            interval = setInterval SystemApp.mapView.refreshLabels, SystemApp.Data.userSettings.mapLabelRefreshInterval()
+            SystemApp.Data.timerRefreshLabels = interval
 
     # Stop and cancel the auto refreshing timers to update [Shape Labels]
     stopTimers: (doNotLog) ->
         if not doNotLog
-            System.App.consoleLog "Data.stopTimers", "Auto Refresh Timers: STOPPED"
+            SystemApp.consoleLog "Data.stopTimers", "Auto Refresh Timers: STOPPED"
 
-        if System.App.Data.timerRefreshLabels?
-            clearInterval System.App.Data.timerRefreshLabels
-            System.App.Data.timerRefreshLabels = null
+        if SystemApp.Data.timerRefreshLabels?
+            clearInterval SystemApp.Data.timerRefreshLabels
+            SystemApp.Data.timerRefreshLabels = null

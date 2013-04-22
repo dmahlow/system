@@ -47,9 +47,9 @@ class System.MapLinkLabelsView extends System.BaseView
 
     # Bind event listeners to the view.
     setEvents: =>
-        @listenTo System.App.mapEvents, "edit:toggle", @toggleEdit
-        @listenTo System.App.mapEvents, "zoom:in", @onZoom
-        @listenTo System.App.mapEvents, "zoom:out", @onZoom
+        @listenTo SystemApp.mapEvents, "edit:toggle", @toggleEdit
+        @listenTo SystemApp.mapEvents, "zoom:in", @onZoom
+        @listenTo SystemApp.mapEvents, "zoom:out", @onZoom
 
         @listenTo @model, "change:foreground", @setAllForeground
         @listenTo @model, "change:fontSize", @setAllFontSizes
@@ -108,11 +108,11 @@ class System.MapLinkLabelsView extends System.BaseView
         x = 0
         y = 0
         text = value
-        iconSize = System.App.Settings.Map.icoActionsSize
+        iconSize = SystemApp.Settings.Map.icoActionsSize
 
         # If label has an [AuditData](auditData.html) value bound or if it's an evaluation,
         # then show "..." before binding the values
-        text = System.App.Settings.AuditData.loadingText if System.App.DataUtil.hasDataBindingValue value
+        text = SystemApp.Settings.AuditData.loadingText if SystemApp.DataUtil.hasDataBindingValue value
 
         if svg?
 
@@ -152,8 +152,8 @@ class System.MapLinkLabelsView extends System.BaseView
 
         else
 
-            iconSvg = @parentView.parentView.paper.image System.App.Settings.Map.icoAddLabelUrl, 0, 0, iconSize, iconSize
-            iconSvg.attr {"x": x, "y": y, cursor: "pointer", opacity: System.App.Settings.Map.icoActionsOpacity}
+            iconSvg = @parentView.parentView.paper.image SystemApp.Settings.Map.icoAddLabelUrl, 0, 0, iconSize, iconSize
+            iconSvg.attr {"x": x, "y": y, cursor: "pointer", opacity: SystemApp.Settings.Map.icoActionsOpacity}
             iconSvg.click @click
             iconSvg.mouseover @iconMouseOver
             iconSvg.mouseout @iconMouseOut
@@ -167,12 +167,12 @@ class System.MapLinkLabelsView extends System.BaseView
         # Set opacity 1 on all labels.
         opacity = {"opacity": 1}
         svgs = @svgsLabels()
-        s?.animate(opacity, System.App.Settings.Map.blinkInterval) for s in svgs
+        s?.animate(opacity, SystemApp.Settings.Map.blinkInterval) for s in svgs
 
         # Set the opacity defined on the [Settings](settings.html), on all add label icons.
-        opacity = {"opacity": System.App.Settings.Map.icoActionsOpacity}
+        opacity = {"opacity": SystemApp.Settings.Map.icoActionsOpacity}
         svgs = @svgsIcons()
-        s?.animate(opacity, System.App.Settings.Map.blinkInterval) for s in svgs
+        s?.animate(opacity, SystemApp.Settings.Map.blinkInterval) for s in svgs
 
     # Hide the link labels and icons.
     hide: =>
@@ -180,18 +180,18 @@ class System.MapLinkLabelsView extends System.BaseView
 
         opacity = {"opacity": 0}
         svgs = @svgs()
-        s?.animate(opacity, System.App.Settings.Map.blinkInterval) for s in svgs
+        s?.animate(opacity, SystemApp.Settings.Map.blinkInterval) for s in svgs
 
     # Hide only the icons (where no label text has been defined).
     hideIcons: =>
         opacity = {"opacity": 0}
         svgs = @svgsIcons()
-        s?.animate(opacity, System.App.Settings.Map.blinkInterval) for s in svgs
+        s?.animate(opacity, SystemApp.Settings.Map.blinkInterval) for s in svgs
 
     # Set the label positions on the map. Please note that if the parent link
     # is not visible then this method will stop immediately.
     setPosition: =>
-        iconSize = System.App.Settings.Map.icoActionsSize
+        iconSize = SystemApp.Settings.Map.icoActionsSize
         iconHalfSize = iconSize / 2
 
         path = @parentView.svg.svgLine
@@ -245,14 +245,14 @@ class System.MapLinkLabelsView extends System.BaseView
     # When user hovers the mouse over an "add label" icon, set its opacity to 1,
     # unless the `isCreatingLink` property of the [Map View](mapView.html) is true.
     iconMouseOver: ->
-        return if System.App.mapView.isCreatingLink
+        return if SystemApp.mapView.isCreatingLink
         @attr {"opacity": 1}
 
     # When mouse leaves an "add label" icon, set its opacity to the value set on the [Settings](settings.html),
     # unless the `isCreatingLink` property of the [Map View](mapView.html) is true.
     iconMouseOut: ->
-        return if System.App.mapView.isCreatingLink
-        @attr {"opacity": System.App.Settings.Map.icoActionsOpacity}
+        return if SystemApp.mapView.isCreatingLink
+        @attr {"opacity": SystemApp.Settings.Map.icoActionsOpacity}
 
     # When user put map on "Edit Mode", show the label icons. If in locked mode, hide them.
     toggleEdit: (enabled) =>
@@ -287,7 +287,7 @@ class System.MapLinkLabelsView extends System.BaseView
         if not svg?
             return
 
-        newValue = System.App.DataUtil.getDataBindingValue value
+        newValue = SystemApp.DataUtil.getDataBindingValue value
         @setLabelValue svg, newValue
 
 

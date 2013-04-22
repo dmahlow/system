@@ -2,7 +2,7 @@
 # --------------------------------------------------------------------------
 # Represents the Settings overlay.
 
-class System.App.SettingsView extends System.OverlayView
+class SystemApp.SettingsView extends System.OverlayView
 
     $chkFullscreen: null             # the start maximized checkbox
     $chkAutoRefresh: null           # the autorefresh checkbox
@@ -48,11 +48,11 @@ class System.App.SettingsView extends System.OverlayView
         @$modifierMultiple = $ "#settings-modifierkeys-multiple"
         @$modifierToBack = $ "#settings-modifierkeys-toback"
 
-        @$chkFullscreen.prop "checked", System.App.Data.userSettings.mapFullscreen()
-        @$chkAutoRefresh.prop "checked", System.App.Data.userSettings.mapAutoRefresh()
-        @$chkDebug.prop "checked", System.App.debug
+        @$chkFullscreen.prop "checked", SystemApp.Data.userSettings.mapFullscreen()
+        @$chkAutoRefresh.prop "checked", SystemApp.Data.userSettings.mapAutoRefresh()
+        @$chkDebug.prop "checked", SystemApp.debug
 
-        @$debugNote.hide() if not System.App.debug
+        @$debugNote.hide() if not SystemApp.debug
 
     # Bind events to the DOM.
     setEvents: =>
@@ -82,7 +82,7 @@ class System.App.SettingsView extends System.OverlayView
     # Bind the server errors array to the `@$serverErrorsDiv`.
     bindServerErrors: =>
         result = ""
-        errorList = System.App.Sockets.serverErrors
+        errorList = SystemApp.Sockets.serverErrors
 
         _.each errorList, (err) ->
             time = err.timestamp.toTimeString()
@@ -94,7 +94,7 @@ class System.App.SettingsView extends System.OverlayView
 
     # Clear the server errors list.
     clearServerErrors: =>
-        System.App.alertView.serverErrors = []
+        SystemApp.alertView.serverErrors = []
         @$serverErrorsDiv.html "CLEARED!"
 
 
@@ -103,9 +103,9 @@ class System.App.SettingsView extends System.OverlayView
 
     # Bind the current set of modifier keys from local storage. If no
     bindModifierKeys: =>
-        @parseModifierKeys @$modifierDelete, System.App.Data.userSettings.modifierDelete()
-        @parseModifierKeys @$modifierMultiple, System.App.Data.userSettings.modifierMultiple()
-        @parseModifierKeys @$modifierToBack, System.App.Data.userSettings.modifierToBack()
+        @parseModifierKeys @$modifierDelete, SystemApp.Data.userSettings.modifierDelete()
+        @parseModifierKeys @$modifierMultiple, SystemApp.Data.userSettings.modifierMultiple()
+        @parseModifierKeys @$modifierToBack, SystemApp.Data.userSettings.modifierToBack()
 
     # Parse a combination of modifier keys and highlight the matched div's elements.
     parseModifierKeys: (div, combination) =>
@@ -142,7 +142,7 @@ class System.App.SettingsView extends System.OverlayView
         console.log "New modifier combination for #{modifierName}", modifierValue
 
         # Set the new modifier value and save the model ONLY locally.
-        System.App.Data.userSettings.set "modifier#{modifierName}", modifierValue
+        SystemApp.Data.userSettings.set "modifier#{modifierName}", modifierValue
 
 
     # SHOW AND HIDE
@@ -151,8 +151,8 @@ class System.App.SettingsView extends System.OverlayView
     # Bind data after showing the view, and listen to "server:error" events
     # to populate the `$serverErrorsDiv`.
     onShow: =>
-        System.App.serverEvents.off "error", @bindServerErrors
-        System.App.serverEvents.on "error", @bindServerErrors
+        SystemApp.serverEvents.off "error", @bindServerErrors
+        SystemApp.serverEvents.on "error", @bindServerErrors
 
         @bindLocalStorage()
         @bindServerErrors()
@@ -160,4 +160,4 @@ class System.App.SettingsView extends System.OverlayView
 
     # When view gets hidden, stop listening to the "server:error" events.
     onHide: =>
-        System.App.serverEvents.off "error", @bindServerErrors
+        SystemApp.serverEvents.off "error", @bindServerErrors

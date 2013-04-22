@@ -34,8 +34,8 @@ class System.MapLinkCreatorView extends System.MapLinkView
     render: (parentView) =>
         x = parentView.x()
         y = parentView.y()
-        stroke = System.App.Settings.Link.creatorStroke
-        width = System.App.Settings.Link.creatorWidth
+        stroke = SystemApp.Settings.Link.creatorStroke
+        width = SystemApp.Settings.Link.creatorWidth
 
         # When first rendering the link creator, a `parentView` will be passed and used
         # to set the source [shape view](shapeView.html) and the parent
@@ -44,17 +44,17 @@ class System.MapLinkCreatorView extends System.MapLinkView
             @source = parentView
             @parentView = parentView.parentView
 
-        @svgConnector = @parentView.paper.circle 0, 0, System.App.Settings.Map.icoActionsSize / 2 if @svgConnector is null
+        @svgConnector = @parentView.paper.circle 0, 0, SystemApp.Settings.Map.icoActionsSize / 2 if @svgConnector is null
         @svgConnector.attr {"stroke": stroke, "stroke-width": width}
         @svgConnector.toFront()
 
         @setPosition x, y
 
         # Set the link options.
-        stroke = System.App.Settings.Link.creatorStroke
-        width = System.App.Settings.Link.creatorWidth
-        text = System.App.Messages.newLink
-        smooth = System.App.Settings.Link.smooth
+        stroke = SystemApp.Settings.Link.creatorStroke
+        width = SystemApp.Settings.Link.creatorWidth
+        text = SystemApp.Messages.newLink
+        smooth = SystemApp.Settings.Link.smooth
         options = {stroke: stroke, width: width, labelStroke: stroke, text: text, smooth: smooth}
 
         # Create the link with the desired path and options.
@@ -64,8 +64,8 @@ class System.MapLinkCreatorView extends System.MapLinkView
     # top left position, so we still need to add half the width of the source
     # shape plus half the width of the connector itself.
     setPosition: (posX, posY) =>
-        posX = posX + @source.width() - System.App.Settings.Map.icoActionsSize / 2
-        posY = posY + System.App.Settings.Map.icoActionsSize / 2
+        posX = posX + @source.width() - SystemApp.Settings.Map.icoActionsSize / 2
+        posY = posY + SystemApp.Settings.Map.icoActionsSize / 2
 
         pos = { cx: posX, cy: posY }
 

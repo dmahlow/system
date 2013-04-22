@@ -29,7 +29,7 @@ class System.EntityManagerView extends System.OverlayView
 
     # Init the Entity Manager overlay view.
     initialize: =>
-        @currentSettings = System.App.Settings.EntityDefinition
+        @currentSettings = SystemApp.Settings.EntityDefinition
         @overlayInit "#entitymanager"
         @setDom()
         @setEvents()
@@ -68,8 +68,8 @@ class System.EntityManagerView extends System.OverlayView
         @$shapePreview = $ "#entitymanager-shape-preview > div"
 
         # Add dynamic attributes to input fields.
-        @$txtRefresh.attr "min", System.App.Settings.EntityDefinition.minRefreshInterval
-        @$txtRefresh.attr "max", System.App.Settings.EntityDefinition.maxRefreshInterval
+        @$txtRefresh.attr "min", SystemApp.Settings.EntityDefinition.minRefreshInterval
+        @$txtRefresh.attr "max", SystemApp.Settings.EntityDefinition.maxRefreshInterval
 
     # Bind events to the DOM. This will effectively update the `model` automatically
     # whenever any input field value gets changed.
@@ -112,7 +112,7 @@ class System.EntityManagerView extends System.OverlayView
     # Bind all [EntityDefinitions](entityDefinition.html) from the [data store](data.html).
     bindEntities: =>
         @clear()
-        @addToModelsList item for item in System.App.Data.entities.models
+        @addToModelsList item for item in SystemApp.Data.entities.models
 
 
     # CREATING ENTITIES
@@ -128,9 +128,9 @@ class System.EntityManagerView extends System.OverlayView
             @warnField @$txtCreate
             return
         else
-            newId = System.App.DataUtil.normalize newId, true
+            newId = SystemApp.DataUtil.normalize newId, true
 
-        System.App.Data.entities.create {friendlyId: newId}, {wait: true}
+        SystemApp.Data.entities.create {friendlyId: newId}, {wait: true}
         @clearTextInputs()
 
     # If the `$txtCreate` field has focus, pressing Enter will call the `click`
@@ -194,9 +194,9 @@ class System.EntityManagerView extends System.OverlayView
             "border": "#{@model.shapeStrokeWidth()}px solid #{@model.shapeStroke()}"
             "border-radius": borderRadius
             "font-size": "#{@model.shapeFontSize()}px"
-            "height": @model.shapeSizeY() * System.App.Settings.Map.gridSizeY - @model.shapeStrokeWidth()
+            "height": @model.shapeSizeY() * SystemApp.Settings.Map.gridSizeY - @model.shapeStrokeWidth()
             "opacity": @model.shapeOpacity()
-            "width": @model.shapeSizeX() * System.App.Settings.Map.gridSizeX - @model.shapeStrokeWidth()
+            "width": @model.shapeSizeX() * SystemApp.Settings.Map.gridSizeX - @model.shapeStrokeWidth()
 
         titleCss =
             "color": @model.shapeTitleForeground()
@@ -239,8 +239,8 @@ class System.EntityManagerView extends System.OverlayView
         @bindEntities()
 
         $(document).keyup @hasModelListKeyUp
-        @listenTo System.App.Data.entities, "add", @addToModelsList
-        @listenTo System.App.Data.entities, "remove", @removeFromModelsList
+        @listenTo SystemApp.Data.entities, "add", @addToModelsList
+        @listenTo SystemApp.Data.entities, "remove", @removeFromModelsList
 
     # Save the `model` (if there's one) when the overlay is closed,
     # and remove the `keyUp` from the document.

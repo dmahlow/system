@@ -78,12 +78,12 @@ class System.MenuView extends System.BaseView
         @$subMenuItems.mouseout false, @showSubItems
 
         # Listen to map and app events.
-        @listenTo System.App.Data.maps, "sync", @sortSubMenu
-        @listenTo System.App.Data.maps, "add", @createSubMap
-        @listenTo System.App.Data.maps, "remove", @removeSubMap
-        @listenTo System.App.mapEvents, "load", @onMapLoad
-        @listenTo System.App.menuEvents, "active:menu", @setActiveMenu
-        @listenTo System.App.menuEvents, "active:map", @setActiveMap
+        @listenTo SystemApp.Data.maps, "sync", @sortSubMenu
+        @listenTo SystemApp.Data.maps, "add", @createSubMap
+        @listenTo SystemApp.Data.maps, "remove", @removeSubMap
+        @listenTo SystemApp.mapEvents, "load", @onMapLoad
+        @listenTo SystemApp.menuEvents, "active:menu", @setActiveMenu
+        @listenTo SystemApp.menuEvents, "active:map", @setActiveMap
 
 
     # MAP MENU AND SUBMENUS
@@ -111,7 +111,7 @@ class System.MenuView extends System.BaseView
         # Create the map link.
         link = document.createElement "a"
         link = $ link
-        link.attr "id", System.App.Settings.Menu.subPrefix + mapId
+        link.attr "id", SystemApp.Settings.Menu.subPrefix + mapId
         link.attr "href", "#map/" + map.urlKey()
         link.addClass "menu-item"
         link.html mapName
@@ -122,7 +122,7 @@ class System.MenuView extends System.BaseView
         # If map was created less than 5 minutes ago, then make it italic so
         # users can easily identify it on the list. The 5 minutes value is defined
         # on the [Settings](settings.html).
-        if dateCreated? and (now - dateCreated) / 1000 < System.App.Settings.Map.isNewInterval
+        if dateCreated? and (now - dateCreated) / 1000 < SystemApp.Settings.Map.isNewInterval
             link.addClass "italic"
             @setActiveMap map
 
@@ -131,7 +131,7 @@ class System.MenuView extends System.BaseView
     removeSubMap: (map) =>
         try
             map.off()
-            element = $ "#" + System.App.Settings.Menu.subPrefix + map.id
+            element = $ "#" + SystemApp.Settings.Menu.subPrefix + map.id
             element.remove() if element.length > 0
         catch ex
             console.warn "Could not remove menu map #{map.id}. Maybe it was already removed?", ex
@@ -150,7 +150,7 @@ class System.MenuView extends System.BaseView
             @timerHideMenu = null
 
         if e.data is false
-            @timerHideMenu = window.setTimeout @toggleSubMenu, System.App.Settings.Menu.hideTimeout
+            @timerHideMenu = window.setTimeout @toggleSubMenu, SystemApp.Settings.Menu.hideTimeout
             return
 
         if e.data is true
@@ -180,7 +180,7 @@ class System.MenuView extends System.BaseView
     # and hide all submenus.
     menuClick: (e) =>
         @toggleSubMenu false
-        System.App.menuEvents.trigger e.data
+        SystemApp.menuEvents.trigger e.data
 
     # Set the active menu item by making it look like a selected tab.
     setActiveMenu: (menu) =>
@@ -189,7 +189,7 @@ class System.MenuView extends System.BaseView
 
     # Set the current active (highlighted) map on the menu.
     setActiveMap: (map) =>
-        sub = $ "##{System.App.Settings.Menu.subPrefix}#{map.id}"
+        sub = $ "##{SystemApp.Settings.Menu.subPrefix}#{map.id}"
         @$currentSub?.removeClass "active"
         @$currentSub = sub
 
@@ -200,6 +200,6 @@ class System.MenuView extends System.BaseView
     # Triggered when a submenu item, representing a [Map](map.html),
     # has its name changed by the server or by the user.
     updateMapInfo: (map) =>
-        link = $("#" + System.App.Settings.Menu.subPrefix + map.id)
+        link = $("#" + SystemApp.Settings.Menu.subPrefix + map.id)
         link.html map.name()
         link.attr "href", "#map/" + map.urlKey()

@@ -7,7 +7,7 @@
 
 # TODO! Transform the default client settings to plain JSON files instead of coffee classes.
 
-System.App.SettingsDefault =
+SystemApp.SettingsDefault =
 
     # GENERAL
     # ----------------------------------------------------------------------

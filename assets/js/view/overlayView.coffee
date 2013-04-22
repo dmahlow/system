@@ -93,7 +93,7 @@ class System.OverlayView extends System.BaseView
 
         # Set the footer text to the title of the overlay.
         # TODO! Stop calling footer view directly, use events instead.
-        System.App.footerView.setText @$el.find("h2:first").html()
+        SystemApp.footerView.setText @$el.find("h2:first").html()
 
         # Change the view based on what properties are set.
         @$menuItem.addClass("active") if @$menuItem?
@@ -116,7 +116,7 @@ class System.OverlayView extends System.BaseView
 
         # If the hide is called via mouse or keyboard action, reset the URL to the
         # current loaded map's URL.
-        System.App.mapEvents.trigger "url:reset" if e?.currentTarget?
+        SystemApp.mapEvents.trigger "url:reset" if e?.currentTarget?
 
 
     # RESIZE AND KEYBOARD EVENTS
@@ -125,8 +125,8 @@ class System.OverlayView extends System.BaseView
     # Resize the overlay to match the window width and height.
     resize: =>
         horizontalDiff = 30
-        horizontalDiff = horizontalDiff + System.App.mapView.mapControlsWidth if not @fullWidth
-        verticalDiff = 32 + System.App.footerView.height + System.App.menuView.height
+        horizontalDiff = horizontalDiff + SystemApp.mapView.mapControlsWidth if not @fullWidth
+        verticalDiff = 32 + SystemApp.footerView.height + SystemApp.menuView.height
 
         @$box.width $(window).innerWidth() - horizontalDiff
         @$box.height $(window).innerHeight() - verticalDiff
@@ -162,7 +162,7 @@ class System.OverlayView extends System.BaseView
         id = $(document.createElement "input")
         id.data "propertyname", "friendlyId"
         id.attr "type", "text"
-        id.attr "title", System.App.Messages.tooltipItemId
+        id.attr "title", SystemApp.Messages.tooltipItemId
         id.prop "readonly", true
         id.addClass "id"
         id.val item.friendlyId()
@@ -170,13 +170,13 @@ class System.OverlayView extends System.BaseView
 
         # The edit icon on the right of the row.
         editIcon = $(document.createElement "div")
-        editIcon.attr "title", System.App.Messages.tooltipEditItem
+        editIcon.attr "title", SystemApp.Messages.tooltipEditItem
         editIcon.addClass "edit"
         editIcon.click item, @clickEditIcon
 
         # The delete icon on the right of the row.
         delIcon = $(document.createElement "div")
-        delIcon.attr "title", System.App.Messages.tooltipDeleteItem
+        delIcon.attr "title", SystemApp.Messages.tooltipDeleteItem
         delIcon.addClass "delete"
         delIcon.click item, @clickDeleteIcon
 

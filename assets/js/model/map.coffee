@@ -6,11 +6,11 @@
 class System.Map extends System.BaseModel
     typeName: "Map"
     defaults:
-        background: System.App.Settings.Map.background
-        paperSizeX: System.App.Settings.Map.paperSizeX
-        paperSizeY: System.App.Settings.Map.paperSizeY
-        gridSizeX: System.App.Settings.Map.gridSizeX
-        gridSizeY: System.App.Settings.Map.gridSizeY
+        background: SystemApp.Settings.Map.background
+        paperSizeX: SystemApp.Settings.Map.paperSizeX
+        paperSizeY: SystemApp.Settings.Map.paperSizeY
+        gridSizeX: SystemApp.Settings.Map.gridSizeX
+        gridSizeY: SystemApp.Settings.Map.gridSizeY
         thumbnailDate: new Date(2000, 1, 1)
         silent: false
 
@@ -104,7 +104,7 @@ class System.Map extends System.BaseModel
 
     # Helper to get the map's URL key based on its name: replace all spaces and special characters.
     urlKey: =>
-        return System.App.DataUtil.getUrlKey @name()
+        return SystemApp.DataUtil.getUrlKey @name()
 
 
     # VALIDATE
@@ -115,23 +115,23 @@ class System.Map extends System.BaseModel
 
         # Name must be set.
         if not attrs.name? or attrs.name is ""
-            return System.App.Messages.valNameIsRequired
+            return SystemApp.Messages.valNameIsRequired
 
         # Grid size X can't be too low.
-        if not attrs.gridSizeX? or attrs.gridSizeX < System.App.Settings.Map.minGridSize
-            return System.App.Messages.valGridSizeTooSmall
+        if not attrs.gridSizeX? or attrs.gridSizeX < SystemApp.Settings.Map.minGridSize
+            return SystemApp.Messages.valGridSizeTooSmall
 
         # Grid size Y can't be too low.
-        if not attrs.gridSizeY? or attrs.gridSizeY < System.App.Settings.Map.minGridSize
-            return System.App.Messages.valGridSizeTooSmall
+        if not attrs.gridSizeY? or attrs.gridSizeY < SystemApp.Settings.Map.minGridSize
+            return SystemApp.Messages.valGridSizeTooSmall
 
         # Paper size X can't be too low.
-        if not attrs.paperSizeX? or attrs.paperSizeX < System.App.Settings.Map.minPaperSize
-            return System.App.Messages.valPaperSizeTooSmall
+        if not attrs.paperSizeX? or attrs.paperSizeX < SystemApp.Settings.Map.minPaperSize
+            return SystemApp.Messages.valPaperSizeTooSmall
 
         # Paper size Y can't be too low.
-        if not attrs.paperSizeY? or attrs.paperSizeY < System.App.Settings.Map.minPaperSize
-            return System.App.Messages.valPaperSizeTooSmall
+        if not attrs.paperSizeY? or attrs.paperSizeY < SystemApp.Settings.Map.minPaperSize
+            return SystemApp.Messages.valPaperSizeTooSmall
 
 
     # SHAPE AND LINK METHODS
@@ -175,7 +175,7 @@ class System.Map extends System.BaseModel
 class System.MapCollection extends System.BaseCollection
     typeName: "MapCollection"
     model: System.Map
-    url: System.App.Settings.Map.url
+    url: SystemApp.Settings.Map.url
 
     # Set the comparator function to order the maps collection by name.
     comparator: (map) -> return map.name()

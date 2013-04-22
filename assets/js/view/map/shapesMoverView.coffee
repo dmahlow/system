@@ -54,7 +54,7 @@ class System.MapShapesMoverView extends System.BaseView
         @remove()
 
         @svg = @parentView.paper.rect(0, 0, 0, 0, 0)
-        @svg.attr {"fill": System.App.Settings.MapMover.background, "opacity": 0, "cursor": "move"}
+        @svg.attr {"fill": SystemApp.Settings.MapMover.background, "opacity": 0, "cursor": "move"}
 
         @setElement @svg
 
@@ -80,7 +80,7 @@ class System.MapShapesMoverView extends System.BaseView
         @setSize 1, 1
         @setPosition x, y
 
-        @svg.attr {"opacity": System.App.Settings.MapMover.opacity}
+        @svg.attr {"opacity": SystemApp.Settings.MapMover.opacity}
         @svg.toFront()
 
         $(document).mousemove @mouseMoveResize
@@ -117,7 +117,7 @@ class System.MapShapesMoverView extends System.BaseView
 
             if Raphael.isPointInsideBBox box, shapeCenter.x, shapeCenter.y
                 @shapeViews.push view
-                view.createShadow System.App.Settings.MapMover.shadowColor
+                view.createShadow SystemApp.Settings.MapMover.shadowColor
 
         # If shapes were selected then set the drag handlers, otherwise hide the rectangle.
         if @shapeViews.length > 0
@@ -215,6 +215,6 @@ class System.MapShapesMoverView extends System.BaseView
     # Recreate all selected [Shape Views](shapeView.html) shadows, and bring the rectangle to front.
     dragEnd: (e) =>
         for view in @shapeViews
-            view.dragEnd e, System.App.Settings.MapMover.shadowColor
+            view.dragEnd e, SystemApp.Settings.MapMover.shadowColor
 
         @svg.toFront()

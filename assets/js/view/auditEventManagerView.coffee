@@ -21,7 +21,7 @@ class System.AuditEventManagerView extends System.OverlayView
 
     # Init the Audit Events overlay view.
     initialize: =>
-        @currentSettings = System.App.Settings.AuditEvent
+        @currentSettings = SystemApp.Settings.AuditEvent
         @overlayInit "#auditevents"
         @setDom()
         @setEvents()
@@ -84,7 +84,7 @@ class System.AuditEventManagerView extends System.OverlayView
     # Bind all [AuditEvent](auditEvent.html) from the [data store](data.html).
     bindAuditEvents: =>
         @clear()
-        @addToModelsList item for item in System.App.Data.auditEvents.models
+        @addToModelsList item for item in SystemApp.Data.auditEvents.models
 
 
     # CREATING AUDIT EVENTS
@@ -100,9 +100,9 @@ class System.AuditEventManagerView extends System.OverlayView
             @warnField @$txtCreate
             return
         else
-            newId = System.App.DataUtil.normalize newId, true
+            newId = SystemApp.DataUtil.normalize newId, true
 
-        System.App.Data.auditEvents.create {friendlyId: newId}, {wait: true}
+        SystemApp.Data.auditEvents.create {friendlyId: newId}, {wait: true}
         @clearTextInputs()
 
     # If the `$txtCreate` field has focus, pressing Enter will call the `click`
@@ -141,27 +141,27 @@ class System.AuditEventManagerView extends System.OverlayView
             @addRuleToGrid item for item in @model.rules().models
             @$rowAddRule.show()
         else
-            @$gridRules.append $(document.createElement "label").html(System.App.Messages.pleaseSelectAnAlert)
+            @$gridRules.append $(document.createElement "label").html(SystemApp.Messages.pleaseSelectAnAlert)
             @$rowAddRule.hide()
 
     # Add a single [Alert Rule](eventRule.html) to the `$gridRules`.
     addRuleToGrid: (rule) =>
         row = $(document.createElement "div")
-        row.attr "id", System.App.Settings.AuditEvent.rowRulePrefix + rule.id
+        row.attr "id", SystemApp.Settings.AuditEvent.rowRulePrefix + rule.id
         row.data "DataItem", rule
         row.addClass "row"
 
         source = $(document.createElement "input")
         source.data "PropertyName", "source"
         source.attr "type", "text"
-        source.attr "title", System.App.Messages.tooltipEventRuleSource
+        source.attr "title", SystemApp.Messages.tooltipEventRuleSource
         source.addClass "source"
         source.val rule.source()
         source.change rule, @inputOnChange
 
         comparator = $(document.createElement "select")
         comparator.data "PropertyName", "comparator"
-        comparator.attr "title", System.App.Messages.tooltipEventRuleComparator
+        comparator.attr "title", SystemApp.Messages.tooltipEventRuleComparator
         comparator.addClass "comparator"
         comparator.append($(document.createElement "option").html("="))
         comparator.append($(document.createElement "option").html("!="))
@@ -175,7 +175,7 @@ class System.AuditEventManagerView extends System.OverlayView
         target = $(document.createElement "input")
         target.data "PropertyName", "target"
         target.attr "type", "text"
-        source.attr "title", System.App.Messages.tooltipEventRuleTarget
+        source.attr "title", SystemApp.Messages.tooltipEventRuleTarget
         target.addClass "target"
         target.val rule.target()
         target.change rule, @inputOnChange
@@ -189,7 +189,7 @@ class System.AuditEventManagerView extends System.OverlayView
 
     # Remove the specified rule from the `$gridRules`.
     removeRuleFromGrid: (rule) =>
-        $("#" + System.App.Settings.AuditEvent.rowRulePrefix + rule.id).remove()
+        $("#" + SystemApp.Settings.AuditEvent.rowRulePrefix + rule.id).remove()
         @model?.save()
 
     # When user clicks the "Add rule" icon, add a new [Alert Rule](eventRule.html)
@@ -246,19 +246,19 @@ class System.AuditEventManagerView extends System.OverlayView
             @addActionToGrid item for item in @model.actions().models
             @$rowAddAction.show()
         else
-            @$gridActions.append $(document.createElement "label").html(System.App.Messages.pleaseSelectAnAlert)
+            @$gridActions.append $(document.createElement "label").html(SystemApp.Messages.pleaseSelectAnAlert)
             @$rowAddAction.hide()
 
     # Add a single [Alert Action](eventAction.html) to the `$gridActions`.
     addActionToGrid: (action) =>
         row = $(document.createElement "div")
-        row.attr "id", System.App.Settings.AuditEvent.rowActionPrefix + action.id
+        row.attr "id", SystemApp.Settings.AuditEvent.rowActionPrefix + action.id
         row.data "DataItem", action
         row.addClass "row"
 
         actionType = $(document.createElement "select")
         actionType.data "PropertyName", "actionType"
-        actionType.attr "title", System.App.Messages.tooltipEventActionType
+        actionType.attr "title", SystemApp.Messages.tooltipEventActionType
         actionType.addClass "type"
         actionType.append($(document.createElement "option").val("blink").html("blink"))
         actionType.append($(document.createElement "option").val("colorBg").html("background color"))
@@ -269,7 +269,7 @@ class System.AuditEventManagerView extends System.OverlayView
 
         actionValue = $(document.createElement "input")
         actionValue.data "PropertyName", "actionValue"
-        actionValue.attr "title", System.App.Messages.tooltipEventActionValue
+        actionValue.attr "title", SystemApp.Messages.tooltipEventActionValue
         actionValue.attr "type", "text"
         actionValue.addClass "value"
         actionValue.val action.actionValue()
@@ -283,7 +283,7 @@ class System.AuditEventManagerView extends System.OverlayView
 
     # Remove the specified action from the `$gridActions`.
     removeActionFromGrid: (action) =>
-        $("#" + System.App.Settings.AuditEvent.rowActionPrefix + action.id).remove()
+        $("#" + SystemApp.Settings.AuditEvent.rowActionPrefix + action.id).remove()
         @model?.save()
 
     # When user clicks the "Add action" icon, add a new [Alert Action](eventAction.html)
@@ -321,7 +321,7 @@ class System.AuditEventManagerView extends System.OverlayView
     # Create a "delete icon" on the DOM and append it to the specified row.
     appendDeleteIcon: (item, row) =>
         delIcon = $(document.createElement "div")
-        delIcon.attr "title", System.App.Messages.tooltipDeleteItem
+        delIcon.attr "title", SystemApp.Messages.tooltipDeleteItem
         delIcon.addClass "delete"
         delIcon.click item, @clickDeleteIcon
 
@@ -336,8 +336,8 @@ class System.AuditEventManagerView extends System.OverlayView
         @bindAuditEvents()
 
         $(document).keyup @hasModelListKeyUp
-        @listenTo System.App.Data.auditEvents, "add", @addToModelsList
-        @listenTo System.App.Data.auditEvents, "remove", @removeFromModelsList
+        @listenTo SystemApp.Data.auditEvents, "add", @addToModelsList
+        @listenTo SystemApp.Data.auditEvents, "remove", @removeFromModelsList
 
     # Save the `model` (if there's one) when the overlay is closed,
     # and remove the `keyUp` from the document.

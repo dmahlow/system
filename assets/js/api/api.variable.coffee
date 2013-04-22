@@ -11,7 +11,7 @@ System.Api.Variable =
     get: (filter) ->
         System.Api.log "Variable.get", filter
 
-        return System.Api.getFromCollection System.App.Data.variables, filter
+        return System.Api.getFromCollection SystemApp.Data.variables, filter
 
     # CREATE, UPDATE, DELETE
     # ----------------------------------------------------------------------
@@ -20,5 +20,5 @@ System.Api.Variable =
     create: (props) ->
         System.Api.log "Variable.create", props
 
-        variable = System.App.Data.variables.create props
+        variable = SystemApp.Data.variables.create props
         return variable

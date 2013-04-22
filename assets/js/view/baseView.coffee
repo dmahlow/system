@@ -47,7 +47,7 @@ class System.BaseView extends Backbone.View
     addToDom: (selector) =>
         return if not selector? or selector is ""
 
-        domId = System.App.DataUtil.normalize selector, true
+        domId = SystemApp.DataUtil.normalize selector, true
         @dom[domId] = $ selector
 
 
@@ -57,23 +57,23 @@ class System.BaseView extends Backbone.View
     # Set the window title and append the default app name on it.
     setTitle: (value) =>
         if value?
-            value = "#{value} - #{System.App.Settings.General.appTitle}"
+            value = "#{value} - #{SystemApp.Settings.General.appTitle}"
         else
-            value = System.App.Settings.General.appTitle
+            value = SystemApp.Settings.General.appTitle
         document.title = value
 
     # Warn the user by blinking the specified field with a red background.
     warnField: (field) =>
-        extraMs = System.App.Settings.General.elementBlinkInterval / 2
+        extraMs = SystemApp.Settings.General.elementBlinkInterval / 2
         redClass = "error"
 
 
         @addClass field, redClass
-        _.delay @removeClass, System.App.Settings.General.elementBlinkInterval, field, redClass
-        _.delay @addClass, System.App.Settings.General.elementBlinkInterval + extraMs, field, redClass
-        _.delay @removeClass, System.App.Settings.General.elementBlinkInterval * 2, field, redClass
-        _.delay @addClass, System.App.Settings.General.elementBlinkInterval * 2 + extraMs, field, redClass
-        _.delay @removeClass, System.App.Settings.General.elementBlinkInterval * 3, field, redClass
+        _.delay @removeClass, SystemApp.Settings.General.elementBlinkInterval, field, redClass
+        _.delay @addClass, SystemApp.Settings.General.elementBlinkInterval + extraMs, field, redClass
+        _.delay @removeClass, SystemApp.Settings.General.elementBlinkInterval * 2, field, redClass
+        _.delay @addClass, SystemApp.Settings.General.elementBlinkInterval * 2 + extraMs, field, redClass
+        _.delay @removeClass, SystemApp.Settings.General.elementBlinkInterval * 3, field, redClass
 
     # Add the specified class to an element.
     addClass: (el, className) =>
@@ -114,21 +114,21 @@ class System.BaseView extends Backbone.View
     isEventDelete: (e) =>
         if not e?
             return false
-        return @testModifierEvent(e, System.App.Data.userSettings.modifierDelete())
+        return @testModifierEvent(e, SystemApp.Data.userSettings.modifierDelete())
 
     # Check if user is pressing key combination for multiple selections (when selecting multiple shapes for example).
     # The default combination is "Shift + Left Click", set on the [Settings](settings.html).
     isEventMultiple: (e) =>
         if not e?
             return false
-        return @testModifierEvent(e, System.App.Data.userSettings.modifierMultiple())
+        return @testModifierEvent(e, SystemApp.Data.userSettings.modifierMultiple())
 
     # Check if user is pressing the key combination for "send to back" (when reordering map shapes for example).
     # The default combination is "Right Click", set on the [Settings](settings.html).
     isEventToBack: (e) =>
         if not e?
             return false
-        return @testModifierEvent(e, System.App.Data.userSettings.modifierToBack())
+        return @testModifierEvent(e, SystemApp.Data.userSettings.modifierToBack())
 
     # Test a modifier key combination against a keyboard / mouse event.
     testModifierEvent: (e, modifier) =>

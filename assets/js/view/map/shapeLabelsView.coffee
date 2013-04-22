@@ -78,9 +78,9 @@ class System.MapShapeLabelsView extends System.BaseView
 
     # Bind event listeners to the view.
     setEvents: =>
-        @listenTo System.App.mapEvents, "edit:toggle", @toggleEdit
-        @listenTo System.App.mapEvents, "zoom:in", @onZoom
-        @listenTo System.App.mapEvents, "zoom:out", @onZoom
+        @listenTo SystemApp.mapEvents, "edit:toggle", @toggleEdit
+        @listenTo SystemApp.mapEvents, "zoom:in", @onZoom
+        @listenTo SystemApp.mapEvents, "zoom:out", @onZoom
 
         @listenTo @model, "change:titleForeground", @setTitleForeground
         @listenTo @model, "change:foreground", @setAllForeground
@@ -172,7 +172,7 @@ class System.MapShapeLabelsView extends System.BaseView
         x = 0
         y = 0
         text = value
-        iconSize = System.App.Settings.Map.icoActionsSize
+        iconSize = SystemApp.Settings.Map.icoActionsSize
 
         if svg?
 
@@ -225,8 +225,8 @@ class System.MapShapeLabelsView extends System.BaseView
 
         else
 
-            iconSvg = @mapView.paper.image System.App.Settings.Map.icoAddLabelUrl, 0, 0, iconSize, iconSize
-            iconSvg.attr {"x": x, "y": y, cursor: "pointer", opacity: System.App.Settings.Map.icoActionsOpacity}
+            iconSvg = @mapView.paper.image SystemApp.Settings.Map.icoAddLabelUrl, 0, 0, iconSize, iconSize
+            iconSvg.attr {"x": x, "y": y, cursor: "pointer", opacity: SystemApp.Settings.Map.icoActionsOpacity}
             iconSvg.click @click
             iconSvg.mouseover @iconMouseOver
             iconSvg.mouseout @iconMouseOut
@@ -243,12 +243,12 @@ class System.MapShapeLabelsView extends System.BaseView
         # Set opacity 1 on all labels.
         opacity = {"opacity": 1}
         svgs = @svgsLabels()
-        s?.animate(opacity, System.App.Settings.Map.blinkInterval) for s in svgs
+        s?.animate(opacity, SystemApp.Settings.Map.blinkInterval) for s in svgs
 
         # Set the opacity defined on the [Settings](settings.html), on all add label icons.
-        opacity = {"opacity": System.App.Settings.Map.icoActionsOpacity}
+        opacity = {"opacity": SystemApp.Settings.Map.icoActionsOpacity}
         svgs = @svgsIcons()
-        s?.animate(opacity, System.App.Settings.Map.blinkInterval) for s in svgs
+        s?.animate(opacity, SystemApp.Settings.Map.blinkInterval) for s in svgs
 
     # Hide the shape labels and icons.
     hide: =>
@@ -257,13 +257,13 @@ class System.MapShapeLabelsView extends System.BaseView
 
         opacity = {"opacity": 0}
         svgs = @svgs()
-        s?.animate(opacity, System.App.Settings.Map.blinkInterval) for s in svgs
+        s?.animate(opacity, SystemApp.Settings.Map.blinkInterval) for s in svgs
 
     # Hide only the icons (where no label text has been defined).
     hideIcons: =>
         opacity = {"opacity": 0}
         svgs = @svgsIcons()
-        s?.animate(opacity, System.App.Settings.Map.blinkInterval) for s in svgs
+        s?.animate(opacity, SystemApp.Settings.Map.blinkInterval) for s in svgs
 
     # Set the label positions on the map, based on the specified left `posX`
     # and top `posY` parameters. Please note that if the labels are not visible
@@ -277,9 +277,9 @@ class System.MapShapeLabelsView extends System.BaseView
 
         parentWidth = @parentView.width()
         parentHeight = @parentView.height()
-        iconSize = System.App.Settings.Map.icoActionsSize
+        iconSize = SystemApp.Settings.Map.icoActionsSize
         iconHalfSize = iconSize / 2
-        border = @model.strokeWidth() + System.App.Settings.Map.labelPadding
+        border = @model.strokeWidth() + SystemApp.Settings.Map.labelPadding
 
         # Set default positioning objects.
         title = {"x": posX + parentWidth / 2, "y": posY - iconHalfSize}
@@ -334,14 +334,14 @@ class System.MapShapeLabelsView extends System.BaseView
     # When user hovers the mouse over an "add label" icon, set its opacity to 1,
     # unless the `isCreatingLink` property of the [Map View](mapView.html) is true.
     iconMouseOver: ->
-        return if System.App.mapView.isCreatingLink
+        return if SystemApp.mapView.isCreatingLink
         @attr {"opacity": 1}
 
     # When mouse leaves an "add label" icon, set its opacity to the value set on the [Settings](settings.html),
     # unless the `isCreatingLink` property of the [Map View](mapView.html) is true.
     iconMouseOut: ->
-        return if System.App.mapView.isCreatingLink
-        @attr {"opacity": System.App.Settings.Map.icoActionsOpacity}
+        return if SystemApp.mapView.isCreatingLink
+        @attr {"opacity": SystemApp.Settings.Map.icoActionsOpacity}
 
     # When user put map on "Edit Mode", show the label icons. If in locked mode, hide them.
     toggleEdit: (enabled) =>
@@ -410,7 +410,7 @@ class System.MapShapeLabelsView extends System.BaseView
         if not value? or value is ""
             newValue = ""
         else
-            newValue = System.App.DataUtil.getDataBindingValue value, @parentView
+            newValue = SystemApp.DataUtil.getDataBindingValue value, @parentView
 
         @setLabelValue svg, newValue
 
@@ -424,7 +424,7 @@ class System.MapShapeLabelsView extends System.BaseView
         eventIds = @model.auditEventIds()
 
         if eventIds? and eventIds.length > 0
-            @testAuditEvent System.App.Data.auditEvents.get(id) for id in eventIds
+            @testAuditEvent SystemApp.Data.auditEvents.get(id) for id in eventIds
 
     # Test a single [AuditEvent](auditEvent.html) against the shape's labels.
     testAuditEvent: (auditEvent) =>
@@ -446,20 +446,20 @@ class System.MapShapeLabelsView extends System.BaseView
     # When an [Audit ALert](auditEvent.html) has triggered an [Action](eventAction.html),
     # call this to change the [Shape View](shapeView.html) appearance.
     runEventAction: (event, action) =>
-        System.App.consoleLog "MapShapeLabelsView.runEventAction", "Audit Event " + event.friendlyId(), action.toString()
+        SystemApp.consoleLog "MapShapeLabelsView.runEventAction", "Audit Event " + event.friendlyId(), action.toString()
 
         switch action.actionType()
             when "blink"
                 value = action.actionValue()
-                value = System.App.Settings.AuditEvent.blinkTimes if not value? or value is ""
+                value = SystemApp.Settings.AuditEvent.blinkTimes if not value? or value is ""
                 @parentView.slowBlink value
             when "colorBg"
                 value = action.actionValue()
-                value = System.App.Settings.AuditEvent.defaultColor if not value? or value is ""
+                value = SystemApp.Settings.AuditEvent.defaultColor if not value? or value is ""
                 @parentView.setBackground this, value
             when "colorBorder"
                 value = action.actionValue()
-                value = System.App.Settings.AuditEvent.defaultColor if not value? or value is ""
+                value = SystemApp.Settings.AuditEvent.defaultColor if not value? or value is ""
                 @parentView.setStroke this, value
 
     # When an [AuditEvent](auditEvent.html) is not active anymore, clear it from the current

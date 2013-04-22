@@ -54,14 +54,14 @@ class System.MapControlsEntitiesTabView extends System.BaseView
         @$txtSearch.keyup @prepareSearch
 
         # When map is loaded on the [map view](mapView.html), bind it here.
-        @listenTo System.App.mapEvents, "loaded", @bindMap
+        @listenTo SystemApp.mapEvents, "loaded", @bindMap
 
         # Keep [entities](entityDefinition.html) in sync.
-        @listenTo System.App.Data.entities, "add", @entityAdded
-        @listenTo System.App.Data.entities, "remove", @entityRemoved
+        @listenTo SystemApp.Data.entities, "add", @entityAdded
+        @listenTo SystemApp.Data.entities, "remove", @entityRemoved
 
         # Entity filtering and searching can be triggered by other views.
-        @listenTo System.App.mapEvents, "edit:toggle", @setEnabled
+        @listenTo SystemApp.mapEvents, "edit:toggle", @setEnabled
 
     # Enable or disable adding shapes to the current [Map](map.html).
     setEnabled: (value) =>
@@ -77,9 +77,9 @@ class System.MapControlsEntitiesTabView extends System.BaseView
     # Toggles the visibility on or off, using a fade effect.
     toggleVisibility: (visible) =>
         if visible
-            @$el.fadeIn System.App.Settings.Map.opacityInterval
+            @$el.fadeIn SystemApp.Settings.Map.opacityInterval
         else
-            @$el.fadeOut System.App.Settings.Map.opacityInterval
+            @$el.fadeOut SystemApp.Settings.Map.opacityInterval
 
     # When window has loaded or resized, set the height to the parent's height.
     resize: =>
@@ -113,7 +113,7 @@ class System.MapControlsEntitiesTabView extends System.BaseView
     # When the entity's [data](entityObject.html) has entity objects deleted, remove them
     # from the `$list`.
     entityDataRemoved: (entityObject) =>
-        li = $ System.App.Settings.Map.entityListPrefix + entityObject.entityDefinitionId() + "-" + entityObject.id
+        li = $ SystemApp.Settings.Map.entityListPrefix + entityObject.entityDefinitionId() + "-" + entityObject.id
         li.remove()
 
 
@@ -140,8 +140,8 @@ class System.MapControlsEntitiesTabView extends System.BaseView
     # is NOT bound to any entity, thus its values are totally customizable.
     addCustomShapeToList: =>
         li = $(document.createElement "li")
-        li.attr "id", System.App.Settings.Map.entityListPrefix + "0"
-        li.html System.App.Settings.Shape.customText
+        li.attr "id", SystemApp.Settings.Map.entityListPrefix + "0"
+        li.html SystemApp.Settings.Shape.customText
         li.addClass "custom"
 
         # Add an empty span which represents the entity's count.
@@ -156,10 +156,10 @@ class System.MapControlsEntitiesTabView extends System.BaseView
     addToList: (obj) =>
         obj = obj.model if obj.model?
         definitionId = obj.entityDefinitionId()
-        definitionId = System.App.Settings.Shape.customId if not definitionId?
+        definitionId = SystemApp.Settings.Shape.customId if not definitionId?
 
         li = $(document.createElement "li")
-        li.attr "id", System.App.Settings.Map.entityListPrefix + definitionId + "-" + obj.id
+        li.attr "id", SystemApp.Settings.Map.entityListPrefix + definitionId + "-" + obj.id
         li.attr "title", obj.title()
         li.html obj.title()
         li.data "entity", obj
@@ -184,7 +184,7 @@ class System.MapControlsEntitiesTabView extends System.BaseView
         li.css "display", "none"
         li.mousedown @dragStart
         @$list.append li
-        li.fadeIn System.App.Settings.Map.opacityInterval
+        li.fadeIn SystemApp.Settings.Map.opacityInterval
 
     # Helper method to get the entity counter element based on a map shape.
     # Return the default "Custom Shape" list item in case no items are found for the
@@ -193,8 +193,8 @@ class System.MapControlsEntitiesTabView extends System.BaseView
         entityDefId = shape.entityDefinitionId()
         entityObjId = shape.entityObjectId()
 
-        li = $ "#" + System.App.Settings.Map.entityListPrefix + entityDefId + "-" + entityObjId
-        li = $ "#" + System.App.Settings.Map.entityListPrefix + "0" if li.length < 1
+        li = $ "#" + SystemApp.Settings.Map.entityListPrefix + entityDefId + "-" + entityObjId
+        li = $ "#" + SystemApp.Settings.Map.entityListPrefix + "0" if li.length < 1
 
         return li.find "span.count"
 
@@ -259,7 +259,7 @@ class System.MapControlsEntitiesTabView extends System.BaseView
             title = entityDefinition.objectTitleAttribute()
             sep = title.indexOf ","
             title = title.substring(0, sep) if title.indexOf(",") > 0
-            title = System.App.Settings.General.dataBindingKey + System.App.Settings.EntityObject.bindingNamespace + "." + title
+            title = SystemApp.Settings.General.dataBindingKey + SystemApp.Settings.EntityObject.bindingNamespace + "." + title
 
             # Set shape options based on the [entity definition](entityDefinition) template.
             shapeOptions.textTitle = title
@@ -294,10 +294,10 @@ class System.MapControlsEntitiesTabView extends System.BaseView
 
         li = $ e.target
         entity = li.data "entity"
-        background = System.App.Settings.Shape.background
-        foreground = System.App.Settings.Shape.foreground
-        sizeX = System.App.Settings.Shape.gridViewSizeX
-        sizeY = System.App.Settings.Shape.gridViewSizeY
+        background = SystemApp.Settings.Shape.background
+        foreground = SystemApp.Settings.Shape.foreground
+        sizeX = SystemApp.Settings.Shape.gridViewSizeX
+        sizeY = SystemApp.Settings.Shape.gridViewSizeY
 
         @$shapeDragger = li.clone false
         @$shapeDragger.addClass "shape-dragger"
@@ -358,7 +358,7 @@ class System.MapControlsEntitiesTabView extends System.BaseView
     searchFocus: =>
         value = @$txtSearch.val()
 
-        if value is System.App.Messages.searchWatermark
+        if value is SystemApp.Messages.searchWatermark
             @$txtSearch.removeClass "watermark"
             @$txtSearch.val ""
 
@@ -368,7 +368,7 @@ class System.MapControlsEntitiesTabView extends System.BaseView
 
         if value.replace(" ", "") is ""
             @$txtSearch.addClass "watermark"
-            @$txtSearch.val System.App.Messages.searchWatermark
+            @$txtSearch.val SystemApp.Messages.searchWatermark
 
     # Reset the `timerSearch`, which will be triggered in X miliseconds
     # defined on the [Settings](settings.html). Pressing the Esc key
@@ -378,7 +378,7 @@ class System.MapControlsEntitiesTabView extends System.BaseView
             @$txtSearch.val ""
 
         window.clearTimeout @timerSearch if @timerSearch isnt null
-        @timerSearch = window.setTimeout @search, System.App.Settings.General.searchDelay
+        @timerSearch = window.setTimeout @search, SystemApp.Settings.General.searchDelay
 
     # Filter the elements being shown on the entity list based on the `$txtSearch` value.
     # The "Custom shape..." is always shown on the results.

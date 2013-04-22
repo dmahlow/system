@@ -4,7 +4,7 @@
 # The tutorial steps are defined on the [tutorial.jade](tutorial.jade)
 # file, and its main ID is `#tutorial`.
 
-System.App.Tutorial =
+SystemApp.Tutorial =
 
     # Holds the joyride object and the "cancelbg" full size div.
     $tour: null
@@ -16,14 +16,14 @@ System.App.Tutorial =
     callbacks:
         # Step: Entities. Show entities manager.
         0: () ->
-            System.App.routes.openEntities()
+            SystemApp.routes.openEntities()
 
         # Step: Sample Entity Definitions. Create fake "MyEntity".
         2: () ->
             afterMachine = () ->
                 $("#entitymanager-but-create").click()
             addMachine = () ->
-                System.App.Tutorial.simulateTyping $("#entitymanager-txt-create"), "MyEntity", afterMachine
+                SystemApp.Tutorial.simulateTyping $("#entitymanager-txt-create"), "MyEntity", afterMachine
 
             addMachine()
 
@@ -33,21 +33,21 @@ System.App.Tutorial =
 
         # Step: Audit Data. Show audit data manager.
         5: () ->
-            System.App.routes.openAuditData()
+            SystemApp.routes.openAuditData()
 
         # Step: Audit Events. Show audit events manager.
         7: () ->
-            System.App.routes.openAuditEvents()
+            SystemApp.routes.openAuditEvents()
 
         # Step: Maps. Hide overlays and create a "My Test System" map but only if it doesn't exist.
         9: () ->
-            map = System.App.Data.maps.where {name: "My Test System"}
+            map = SystemApp.Data.maps.where {name: "My Test System"}
 
             if not map? or map.length < 1
-                map = System.App.Data.maps.create {dateCreated: new Date(), name: "My Test System"}
+                map = SystemApp.Data.maps.create {dateCreated: new Date(), name: "My Test System"}
 
-            System.App.routes.showOverlay false
-            System.App.routes.navigate "map/" + map.urlKey(), {trigger: true}
+            SystemApp.routes.showOverlay false
+            SystemApp.routes.navigate "map/" + map.urlKey(), {trigger: true}
 
         # Step: Adding Shapes to the Map.
         10: () ->
@@ -55,28 +55,28 @@ System.App.Tutorial =
 
     # Starts the tutorial by showing the "Create entities..." tip.
     start: ->
-        System.App.consoleLog "Tutorial", "Start at " + new Date()
+        SystemApp.consoleLog "Tutorial", "Start at " + new Date()
         @$cancelbg = $("#tutorial-cancelbg")
         @$cancelbg.show()
         @$tour = $("#tutorial").joyride {postStepCallback: @postStepCallback, postRideCallback: @postRideCallback}
 
     # Called each time the user clicks the "next step" button.
     postStepCallback: (index) ->
-        callback = System.App.Tutorial.callbacks[index]
+        callback = SystemApp.Tutorial.callbacks[index]
 
         if callback?
             callback()
-            System.App.consoleLog "Tutorial", "Step #{index} with callback."
+            SystemApp.consoleLog "Tutorial", "Step #{index} with callback."
         else
-            System.App.consoleLog "Tutorial", "Step #{index}."
+            SystemApp.consoleLog "Tutorial", "Step #{index}."
 
     # Called when tour has finished. This will effectively hide the `cancelbg`.
     postRideCallback: ->
-        System.App.consoleLog "Tutorial", "End at " + new Date()
-        System.App.Tutorial.$cancelbg.hide()
+        SystemApp.consoleLog "Tutorial", "End at " + new Date()
+        SystemApp.Tutorial.$cancelbg.hide()
 
         # Destroy "MyEntity".
-        System.App.Data.entities.getByFriendlyId("MyEntity")?.destroy()
+        SystemApp.Data.entities.getByFriendlyId("MyEntity")?.destroy()
 
 
     # HELPER METHODS

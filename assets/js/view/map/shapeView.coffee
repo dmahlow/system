@@ -28,10 +28,10 @@ class System.MapShapeView extends System.BaseView
     initialize: =>
         @linkViews = new Object()
 
-        @listenTo System.App.mapEvents, "edit:toggle", @toggleEdit
-        @listenTo System.App.mapEvents, "zoom:in", @onZoom
-        @listenTo System.App.mapEvents, "zoom:out", @onZoom
-        @listenTo System.App.mapEvents, "zindex:toggle", @toggleZIndexDisplay
+        @listenTo SystemApp.mapEvents, "edit:toggle", @toggleEdit
+        @listenTo SystemApp.mapEvents, "zoom:in", @onZoom
+        @listenTo SystemApp.mapEvents, "zoom:out", @onZoom
+        @listenTo SystemApp.mapEvents, "zindex:toggle", @toggleZIndexDisplay
 
         @listenTo @model, "change:background", @setBackground
         @listenTo @model, "change:titleForeground", @setTitleForeground
@@ -132,7 +132,7 @@ class System.MapShapeView extends System.BaseView
         definitionId = @model.entityDefinitionId()
         objectId = @model.entityObjectId()
 
-        entityDef = System.App.Data.entities.getByFriendlyId definitionId
+        entityDef = SystemApp.Data.entities.getByFriendlyId definitionId
 
         # Stop here if no entity definition is found.
         return if not entityDef?
@@ -141,7 +141,7 @@ class System.MapShapeView extends System.BaseView
         entityObj = entityDef.data().get objectId
         @model.entityObject = entityObj
 
-        System.App.consoleLog "MapShapeView.bindEntityObject", "#{definitionId}-#{objectId}", "Shape ID #{@model.id}"
+        SystemApp.consoleLog "MapShapeView.bindEntityObject", "#{definitionId}-#{objectId}", "Shape ID #{@model.id}"
 
     # Filter the related `mapView` links and set the `tempLinkViews` property.
     setLinkViews: =>
@@ -164,14 +164,14 @@ class System.MapShapeView extends System.BaseView
         else
             @svg.attr {"stroke": @model.stroke()}
             @svgIcon.attr {"fill": @model.stroke()}
-            _.delay @strokeUpdatedBackToSelected, System.App.Settings.Map.borderUpdatedDelay
+            _.delay @strokeUpdatedBackToSelected, SystemApp.Settings.Map.borderUpdatedDelay
 
     # Update the border width of the shape.
     setStrokeWidth: =>
         @svg.attr {"stroke-width": @model.strokeWidth()}
         @svgLinker.attr @getLinkerPositionAtt(@x(), @y())
         @labelsView.setPosition()
-        _.delay @strokeUpdatedBackToSelected, System.App.Settings.Map.borderUpdatedDelay
+        _.delay @strokeUpdatedBackToSelected, SystemApp.Settings.Map.borderUpdatedDelay
 
     # Update the font size of the shape labels.
     setFontSize: =>
@@ -194,7 +194,7 @@ class System.MapShapeView extends System.BaseView
         icon = @model.icon()
 
         if icon? and icon isnt "" and icon isnt "0"
-            @svgIcon.attr {"path": System.App.Vectors[icon]}
+            @svgIcon.attr {"path": SystemApp.Vectors[icon]}
             @setIconGeometry()
         else
             @svgIcon.attr {"path": ""}
@@ -202,7 +202,7 @@ class System.MapShapeView extends System.BaseView
     # Set the shape's corner style (squared if false, rounded if true).
     setRoundedCorners: =>
         if @model.roundedCorners()
-            radius = System.App.Settings.Map.cornerRadius
+            radius = SystemApp.Settings.Map.cornerRadius
         else
             radius = 0
 
@@ -263,7 +263,7 @@ class System.MapShapeView extends System.BaseView
 
         @removeShadow()
 
-        @svg.animate {"opacity": System.App.Settings.Map.opacityDrag}, System.App.Settings.Map.opacityInterval
+        @svg.animate {"opacity": SystemApp.Settings.Map.opacityDrag}, SystemApp.Settings.Map.opacityInterval
 
     # When user is dragging a shape, check if it's a new link creation and
     # if not, reset link positions.
@@ -282,7 +282,7 @@ class System.MapShapeView extends System.BaseView
         if not @parentView.editEnabled
             return
 
-        @svg?.animate {"opacity": @model.opacity()}, System.App.Settings.Map.opacityInterval
+        @svg?.animate {"opacity": @model.opacity()}, SystemApp.Settings.Map.opacityInterval
 
         if not @dragging
             return
@@ -352,8 +352,8 @@ class System.MapShapeView extends System.BaseView
         w = dx * @parentView.currentZoom + @ow
         h = dy * @parentView.currentZoom + @oh
 
-        minWidth = System.App.Settings.Map.minGridSizeBlocks * @parentView.model.gridSizeX()
-        minHeight = System.App.Settings.Map.minGridSizeBlocks * @parentView.model.gridSizeY()
+        minWidth = SystemApp.Settings.Map.minGridSizeBlocks * @parentView.model.gridSizeX()
+        minHeight = SystemApp.Settings.Map.minGridSizeBlocks * @parentView.model.gridSizeY()
 
         w = minWidth if w < minWidth
         h = minHeight if h < minHeight
@@ -397,7 +397,7 @@ class System.MapShapeView extends System.BaseView
         @setDimensions w + snapX, h + snapY, true
         @resetLinks false
 
-        _.delay @createShadow, System.App.Settings.Map.shadowDelay
+        _.delay @createShadow, SystemApp.Settings.Map.shadowDelay
 
 
     # LINKS AND CONNECTIONS
@@ -435,7 +435,7 @@ class System.MapShapeView extends System.BaseView
         if @linkCreatorView.target isnt pointedShape
             @linkCreatorView.target?.removeShadow()
             @linkCreatorView.target = pointedShape
-            @linkCreatorView.target?.createShadow System.App.Settings.Map.refShadowColor
+            @linkCreatorView.target?.createShadow SystemApp.Settings.Map.refShadowColor
 
     # Destroy the temporary link and if a current reference element
     # is highlighted, create and save the new link.
@@ -502,8 +502,8 @@ class System.MapShapeView extends System.BaseView
 
     # Render the svg on the [Map View](mapView.html).
     render: (mapView) =>
-        iconSize = System.App.Settings.Map.icoActionsSize
-        iconOpacity = System.App.Settings.Map.icoActionsOpacity
+        iconSize = SystemApp.Settings.Map.icoActionsSize
+        iconOpacity = SystemApp.Settings.Map.icoActionsOpacity
 
         @parentView = mapView if mapView?
 
@@ -521,14 +521,14 @@ class System.MapShapeView extends System.BaseView
             @bindSvgDefaults @svgIcon
 
         if not @svgLinker?
-            @svgLinker = @parentView.paper.image System.App.Settings.Map.icoLinkerUrl, 0, 0, iconSize, iconSize
+            @svgLinker = @parentView.paper.image SystemApp.Settings.Map.icoLinkerUrl, 0, 0, iconSize, iconSize
             @svgLinker.drag @linkCreatorMove, @linkCreatorStart, @linkCreatorEnd
             @svgLinker.mouseover @linkerMouseOver
             @svgLinker.mouseout @linkerMouseOut
             @bindSvgDefaults @svgLinker
 
         if not @svgResizer?
-            @svgResizer = @parentView.paper.image System.App.Settings.Map.icoResizeUrl, 0, 0, iconSize, iconSize
+            @svgResizer = @parentView.paper.image SystemApp.Settings.Map.icoResizeUrl, 0, 0, iconSize, iconSize
             @svgResizer.drag @resizeMove, @resizeStart, @resizeEnd
             @bindSvgDefaults @svgResizer
 
@@ -538,8 +538,8 @@ class System.MapShapeView extends System.BaseView
         @svg.attr {"fill": @model.background(), "stroke": @model.stroke(), "stroke-width": @model.strokeWidth()}
         @svg.attr {"fill-opacity": @model.opacity(), "cursor": "move"}
         @svgIcon.attr {"cursor": "pointer", "fill": @model.stroke(), "stroke": "none"}
-        @svgLinker.attr {"cursor": "pointer", "title": System.App.Messages.tooltipLinker, "opacity": iconOpacity}
-        @svgResizer.attr {"cursor": "nw-resize", "title": System.App.Messages.tooltipResize}
+        @svgLinker.attr {"cursor": "pointer", "title": SystemApp.Messages.tooltipLinker, "opacity": iconOpacity}
+        @svgResizer.attr {"cursor": "nw-resize", "title": SystemApp.Messages.tooltipResize}
 
         @labelsView.render this
 
@@ -571,7 +571,7 @@ class System.MapShapeView extends System.BaseView
         if not @svg?
             return
 
-        interval = System.App.Settings.Map.blinkInterval if not interval?
+        interval = SystemApp.Settings.Map.blinkInterval if not interval?
 
         bgOpacity = {"opacity": @model.opacity()}
         opacity = {"opacity": 1}
@@ -593,7 +593,7 @@ class System.MapShapeView extends System.BaseView
         if not @svg?
             return
 
-        interval = System.App.Settings.Map.blinkInterval if not interval?
+        interval = SystemApp.Settings.Map.blinkInterval if not interval?
 
         opacity = {"opacity": 0}
         @svg.animate opacity, interval
@@ -702,13 +702,13 @@ class System.MapShapeView extends System.BaseView
     # Should be at the very top of the shape.
     getTitlePositionAtt: (posX, posY) =>
         posX += @width() / 2 - 1
-        posY -= System.App.Settings.Map.titleOffsetY
+        posY -= SystemApp.Settings.Map.titleOffsetY
         return { x: posX, y: posY }
 
     # Get the link creator circle position attribute based on the X and Y values.
     # Should be around the right-middle center of the shape.
     getLinkerPositionAtt: (posX, posY) =>
-        posX += @width() - @model.strokeWidth() - System.App.Settings.Map.icoActionsSize
+        posX += @width() - @model.strokeWidth() - SystemApp.Settings.Map.icoActionsSize
         posY += @model.strokeWidth()
         return { x: posX, y: posY }
 
@@ -722,8 +722,8 @@ class System.MapShapeView extends System.BaseView
     # Get the image resizer position attribute based on the X and Y values.
     # Should be the bottom right corner of the shape.
     getResizerPositionAtt: (posX, posY) =>
-        posX += @width() - System.App.Settings.Map.icoActionsSize
-        posY += @height() - System.App.Settings.Map.icoActionsSize
+        posX += @width() - SystemApp.Settings.Map.icoActionsSize
+        posY += @height() - SystemApp.Settings.Map.icoActionsSize
         return { x: posX, y: posY }
 
     # Bring the shape and its associated elements (title, label, etc) to front.
@@ -833,12 +833,12 @@ class System.MapShapeView extends System.BaseView
 
     # When mouse leaves an "linker" icon, set its opacity to the value set on the [Settings](settings.html).
     linkerMouseOut: =>
-        @svgLinker?.attr {"opacity": System.App.Settings.Map.icoActionsOpacity}
+        @svgLinker?.attr {"opacity": SystemApp.Settings.Map.icoActionsOpacity}
 
     # Create a shadow behind the shape, with optional color and strength.
     createShadow: (color, strength) =>
-        color = System.App.Settings.Map.shadowColor if not color?
-        strength = System.App.Settings.Map.shadowStrength if not strength?
+        color = SystemApp.Settings.Map.shadowColor if not color?
+        strength = SystemApp.Settings.Map.shadowStrength if not strength?
 
         @svg.attr {"stroke": color, "stroke-width": strength}
 
@@ -853,16 +853,16 @@ class System.MapShapeView extends System.BaseView
         extraMs = 15
 
         @hide()
-        _.delay(@show, System.App.Settings.Map.blinkInterval + extraMs)
-        _.delay(@blink, System.App.Settings.Map.blinkInterval * 2 + extraMs * 2, times - 1, callback) if times > 1
-        _.delay(callback, System.App.Settings.Map.blinkInterval * 2 + extraMs * 4) if times is 1 and callback?
+        _.delay(@show, SystemApp.Settings.Map.blinkInterval + extraMs)
+        _.delay(@blink, SystemApp.Settings.Map.blinkInterval * 2 + extraMs * 2, times - 1, callback) if times > 1
+        _.delay(callback, SystemApp.Settings.Map.blinkInterval * 2 + extraMs * 4) if times is 1 and callback?
 
     # Slowly blink the entire shape with optional amount of times (default is 2). This is a recursive function.
     # If times is 1 and the `callback` is specified, call it when it has finished blinking.
     slowBlink: (times, callback) =>
         times = 2 if not times? or times is ""
 
-        @hide(System.App.Settings.Map.blinkSlowInterval)
-        _.delay(@show, System.App.Settings.Map.blinkSlowInterval, System.App.Settings.Map.blinkSlowInterval)
-        _.delay(@slowBlink, System.App.Settings.Map.blinkSlowInterval * 2, times - 1, callback) if times > 1
-        _.delay(callback, System.App.Settings.Map.blinkSlowInterval * 3) if times is 1 and callback?
+        @hide(SystemApp.Settings.Map.blinkSlowInterval)
+        _.delay(@show, SystemApp.Settings.Map.blinkSlowInterval, SystemApp.Settings.Map.blinkSlowInterval)
+        _.delay(@slowBlink, SystemApp.Settings.Map.blinkSlowInterval * 2, times - 1, callback) if times > 1
+        _.delay(callback, SystemApp.Settings.Map.blinkSlowInterval * 3) if times is 1 and callback?

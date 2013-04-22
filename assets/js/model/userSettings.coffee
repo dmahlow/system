@@ -13,10 +13,10 @@ class System.UserSettings extends System.BaseModel
         mapFullscreen: false
         mapOverrideShapeTitle: false
         mapZoom: 1
-        mapLabelRefreshInterval: System.App.Settings.Map.labelRefreshInterval
-        modifierDelete: System.App.Settings.User.modifierDelete
-        modifierMultiple: System.App.Settings.User.modifierMultiple
-        modifierToBack: System.App.Settings.User.modifierToBack
+        mapLabelRefreshInterval: SystemApp.Settings.Map.labelRefreshInterval
+        modifierDelete: SystemApp.Settings.User.modifierDelete
+        modifierMultiple: SystemApp.Settings.User.modifierMultiple
+        modifierToBack: SystemApp.Settings.User.modifierToBack
         slowDevice: false
 
 

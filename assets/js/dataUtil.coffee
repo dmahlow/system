@@ -2,7 +2,7 @@
 # --------------------------------------------------------------------------
 # Data parsing and processing utilities.
 
-System.App.DataUtil =
+SystemApp.DataUtil =
 
     # TEXT NORMALIZATION HELPERS
     # ----------------------------------------------------------------------
@@ -129,7 +129,7 @@ System.App.DataUtil =
         return false if not value? or value is ""
         value = value.toString()
 
-        namespace = System.App.Settings.General.dataBindingKey + System.App.Settings.AuditData.bindingNamespace
+        namespace = SystemApp.Settings.General.dataBindingKey + SystemApp.Settings.AuditData.bindingNamespace
         specialKeyIndex = value.indexOf namespace
         return false if specialKeyIndex < 0
 
@@ -145,7 +145,7 @@ System.App.DataUtil =
     getOnlyTheAuditDataProperty: (value) =>
         return false if not value? or value is ""
 
-        namespace = System.App.Settings.General.dataBindingKey + System.App.Settings.AuditData.bindingNamespace
+        namespace = SystemApp.Settings.General.dataBindingKey + SystemApp.Settings.AuditData.bindingNamespace
         specialKeyIndex = value.indexOf namespace
         value = value.substring specialKeyIndex
         spaceIndex = value.indexOf " "
@@ -160,7 +160,7 @@ System.App.DataUtil =
     getAuditDataValue: (value) ->
         return if not value?
 
-        namespace = System.App.Settings.General.dataBindingKey + System.App.Settings.AuditData.bindingNamespace
+        namespace = SystemApp.Settings.General.dataBindingKey + SystemApp.Settings.AuditData.bindingNamespace
         substr = value.substring(namespace.length + 1)
 
         dotPosition = substr.indexOf(".")
@@ -172,7 +172,7 @@ System.App.DataUtil =
         else
             friendlyId = substr.substring 0, bracketPosition
 
-        item = System.App.Data.auditData.getByFriendlyId friendlyId
+        item = SystemApp.Data.auditData.getByFriendlyId friendlyId
 
         if item?
             path = substr.substring(item.length + 1)
@@ -189,7 +189,7 @@ System.App.DataUtil =
         return false if not value? or value is ""
         value = value.toString()
 
-        namespace = System.App.Settings.General.dataBindingKey + System.App.Settings.Variable.bindingNamespace
+        namespace = SystemApp.Settings.General.dataBindingKey + SystemApp.Settings.Variable.bindingNamespace
         specialKeyIndex = value.indexOf namespace
         return false if specialKeyIndex < 0
 
@@ -201,7 +201,7 @@ System.App.DataUtil =
         if not value?
             return
 
-        namespace = System.App.Settings.General.dataBindingKey + System.App.Settings.Variable.bindingNamespace
+        namespace = SystemApp.Settings.General.dataBindingKey + SystemApp.Settings.Variable.bindingNamespace
         s = value.substring(namespace.length + 1)
 
         indexParentheses = s.indexOf "("
@@ -218,10 +218,10 @@ System.App.DataUtil =
         else
             friendlyId = s.substring 0
 
-        item = System.App.Data.variables.getByFriendlyId friendlyId
+        item = SystemApp.Data.variables.getByFriendlyId friendlyId
 
         if item?
-            return System.App.DataUtil.runEval item.code(), args
+            return SystemApp.DataUtil.runEval item.code(), args
         else
             return s
 
@@ -234,7 +234,7 @@ System.App.DataUtil =
         return false if not value? or value is ""
         value = value.toString()
 
-        namespace = System.App.Settings.General.dataBindingKey + System.App.Settings.EntityObject.bindingNamespace
+        namespace = SystemApp.Settings.General.dataBindingKey + SystemApp.Settings.EntityObject.bindingNamespace
         specialKeyIndex = value.indexOf namespace
         return false if specialKeyIndex < 0
 
@@ -248,7 +248,7 @@ System.App.DataUtil =
         if not value?
             return
 
-        namespace = System.App.Settings.General.dataBindingKey + System.App.Settings.EntityObject.bindingNamespace
+        namespace = SystemApp.Settings.General.dataBindingKey + SystemApp.Settings.EntityObject.bindingNamespace
         s = value.substring(namespace.length + 1)
         comma = s.indexOf ","
 
@@ -279,7 +279,7 @@ System.App.DataUtil =
     # Validate a Javascript eval. Will return null if it passes, otherwise
     # will return the validation error message.
     validateEval: (code) =>
-        code = System.App.DataUtil.translateEval code
+        code = SystemApp.DataUtil.translateEval code
 
         try
             f = new Function(code)
@@ -293,7 +293,7 @@ System.App.DataUtil =
     # Before running the code, it will be parsed to match any [AuditData](auditData.html)
     # or [Variable](variable.html) and translated with the correspondent values.
     runEval: (code, args) =>
-        code = System.App.DataUtil.translateEval code
+        code = SystemApp.DataUtil.translateEval code
 
         try
             f = new Function(code)
@@ -309,15 +309,15 @@ System.App.DataUtil =
 
     # Parse the code and translate helper keywords into real javascript objects and properties.
     # For example, `$MyAuditData.httpRequests[0]` will be replaced by
-    # `System.App.Data.auditData.models[0].data().httpRequests[0]`.
+    # `SystemApp.Data.auditData.models[0].data().httpRequests[0]`.
     translateEval: (code) =>
-        if not System.App.DataUtil.hasAuditData(code) and not System.App.DataUtil.hasHasVariable(code)
+        if not SystemApp.DataUtil.hasAuditData(code) and not SystemApp.DataUtil.hasHasVariable(code)
             return code
 
         # These replace calls should use the same special keys defined on the
         # [Settings](settings.html), for both Audit Data and Variables.
-        code = code.replace /\$+(\w+)(\W)/gi, "System.App.Data.auditData.getByFriendlyId('$1').data()$2"
-        code = code.replace /\$+(\w+)(\W)/gi, "System.App.Data.auditData.getByFriendlyId('$1').data()$2"
+        code = code.replace /\$+(\w+)(\W)/gi, "SystemApp.Data.auditData.getByFriendlyId('$1').data()$2"
+        code = code.replace /\$+(\w+)(\W)/gi, "SystemApp.Data.auditData.getByFriendlyId('$1').data()$2"
         return code
 
 
@@ -326,9 +326,9 @@ System.App.DataUtil =
 
     # Aggregate helper to check if there's dynamic data bound to the value.
     hasDataBindingValue: (value) =>
-        hasAuditData = System.App.DataUtil.hasAuditData value
-        hasCustomVar = System.App.DataUtil.hasHasVariable value
-        hasEntityAttribute = System.App.DataUtil.hasEntityAttribute value
+        hasAuditData = SystemApp.DataUtil.hasAuditData value
+        hasCustomVar = SystemApp.DataUtil.hasHasVariable value
+        hasEntityAttribute = SystemApp.DataUtil.hasEntityAttribute value
         return hasAuditData or hasCustomVar or hasEntityAttribute
 
     # Aggregate helper for all the binding types. If no special binding was
@@ -342,13 +342,13 @@ System.App.DataUtil =
 
         # Parse each value by checking if it represents a specific data.
         for s in splitValue
-            if s.substring(0, 1) is System.App.Settings.General.dataBindingKey
-                if System.App.DataUtil.hasAuditData s
-                    newValue += " " + System.App.DataUtil.getAuditDataValue s
-                else if System.App.DataUtil.hasHasVariable s
-                    newValue += " " + System.App.DataUtil.getVariableValue s
-                else if System.App.DataUtil.hasEntityAttribute s
-                    newValue += " " + System.App.DataUtil.getEntityAttributeValue s, ref
+            if s.substring(0, 1) is SystemApp.Settings.General.dataBindingKey
+                if SystemApp.DataUtil.hasAuditData s
+                    newValue += " " + SystemApp.DataUtil.getAuditDataValue s
+                else if SystemApp.DataUtil.hasHasVariable s
+                    newValue += " " + SystemApp.DataUtil.getVariableValue s
+                else if SystemApp.DataUtil.hasEntityAttribute s
+                    newValue += " " + SystemApp.DataUtil.getEntityAttributeValue s, ref
                 else
                     newValue += " " + s
             else
