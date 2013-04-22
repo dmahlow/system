@@ -22,7 +22,27 @@ module.exports = (app) ->
     lastModified = null
 
 
-    # MAIN ROUTES
+    # ADMIN PAGE
+    # ----------------------------------------------------------------------
+
+    # The main index page.
+    getAdmin = (req, res) ->
+        host = req.headers["host"]
+
+        # Check the last modified date.
+        lastModified = fs.statSync("./package.json").mtime if not lastModified?
+
+        options =
+            title: settings.General.appTitle,
+            port: settings.Web.port,
+            version: packageJson.version,
+            lastModified: lastModified,
+            roles: {admin: 1, mapcreate: 1, mapedit: 1, entities: 1, auditdata: 1, auditevents: 1, settings: 1}
+
+        res.render "admin", options
+
+
+    # MAIN PAGE
     # ----------------------------------------------------------------------
 
     # The main index page.
@@ -457,19 +477,14 @@ module.exports = (app) ->
         res.send "Error: #{method} - #{message}"
 
 
-    # LOGIN AND SECURITY
-    # ----------------------------------------------------------------------
-
-    # Authenticate using passportjs.
-    login = () ->
-        return passport.authenticate "local", {successRedirect: "/", failureRedirect: "/login"}
-
-
     # SET ROUTES
     # ----------------------------------------------------------------------
 
-    # Login.
-    app.get "/login", login
+    # Login using basic HTTP authentication.
+    app.get "/login", passport.authenticate("basic", {session: true}), (req, res) -> res.json req.user
+
+    # Admin page.
+    app.get "/admin", getAdmin
 
     # Main index.
     app.get "/", getIndex

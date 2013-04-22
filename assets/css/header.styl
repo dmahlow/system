@@ -49,7 +49,6 @@
     .menu-item
         border 1px solid Transparent
         color brightTextColor
-        cursor pointer
         display inline-block
         margin-right 10px
         padding 6px 13px 7px 13px
@@ -57,9 +56,10 @@
         text-decoration none
         z-index 9
 
-    .menu-item:hover, .menu-item.hover
+    a.menu-item:hover, .menu-item.hover
         background darkBgColor
         color darkHoverColor
+        cursor pointer
 
     .menu-item.active
         background-color overlayBackground

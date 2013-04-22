@@ -9,11 +9,12 @@
 
     // THe map list container.
     #start-maps > div
-        border-bottom 1px solid rgba(200, 200, 200, 0.5)
-        margin-right 510px
+        border-bottom 1px solid lightBgColor
 
     #start-maps > div:hover
-        border-bottom-color darkHoverColor
+        border-bottom-color lightHoverColor
+        .name
+            color lightHoverColor
 
     // The map names.
     .name
@@ -28,8 +29,7 @@
 
     // The map image preview.
     #start-map-preview
-        background rgba(255, 255, 252, 1)
-        border 1px solid rgba(200, 200, 200, 0.5)
+        background-color Transparent
+        border 1px solid lightHoverColor
         float right
         max-width 600px
-        padding 1px

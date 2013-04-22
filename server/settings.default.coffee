@@ -65,7 +65,7 @@ class SettingsDefault
         mapThumbSize: 600
 
 
-    # WEB (node.js server)
+    # WEB
     # ----------------------------------------------------------------------
     Web:
         # The amount of time to wait for new connection requests, in case the internet / network is broken.
@@ -94,6 +94,16 @@ class SettingsDefault
         port: 3003
         # Saves the `data` from the Audit Data and Entity Definitions on every third refresh by default.
         saveDataEveryRefresh: 3
+        # Default session security key.
+        sessionKey: "zal"
+
+    # SECURITY
+    # ----------------------------------------------------------------------
+    Security:
+        # Key used for session encryption.
+        sessionKey: "Ss!0nPROtw"
+        # Key used for user password encryption.
+        userPasswordKey: "P4sssYs13!"
 
 
 # Singleton implementation.

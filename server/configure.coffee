@@ -8,8 +8,10 @@ module.exports = (app, express) ->
     database = require "./database.coffee"
     logger = require "./logger.coffee"
     manager = require "./manager.coffee"
+    passport = require "passport"
     security = require "./security.coffee"
     settings = require "./settings.coffee"
+    sockets = require "./sockets.coffee"
 
     # Helper function to configure the app in OpenShift and AppFog.
     # Please note that this will only apply if the `Settings.Web.pass` is true.
@@ -44,6 +46,11 @@ module.exports = (app, express) ->
         # If the `Settings.Web.paas` is true, then override settings with environmental variables.
         configPaaS() if settings.Web.paas
 
+        # Init other modules.
+        logger.init()
+        manager.init()
+        security.init()
+
         # Sets the app path variables.
         app.viewsDir = settings.Paths.viewsDir
         app.publicDir = settings.Paths.publicDir
@@ -58,15 +65,15 @@ module.exports = (app, express) ->
         app.use express.bodyParser()
         app.use express.methodOverride()
         app.use express.cookieParser()
+        app.use express.session {secret: settings.Security.sessionKey}
+
+        # Init passport middleware.
+        app.use passport.initialize()
+        app.use passport.session()
 
         # Express routing.
         app.use app.router
         app.use express["static"] app.publicDir
-
-        # Init other modules.
-        logger.init()
-        manager.init()
-        security.init()
 
     # Config for development. Do not minify builds, and set debug to `true` in case it's unset.
     app.configure "development", ->
