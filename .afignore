@@ -2,4 +2,4 @@ assets/js/settings.coffee
 atlassian-ide-plugin.xml
 gh-pages/
 logs/*.log
-server/settings.coffee
+server/settings.json

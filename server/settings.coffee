@@ -1,13 +1,23 @@
 # DEFAULT SERVER SETTINGS
 # --------------------------------------------------------------------------
 # Has all default server side settings for the app. Please DOT NOT edit
-# this file unless you know excatly what you're doing. To change settings,
-# please use the `settings.coffee` file which will always override the ones
-# specified here.
+# this file unless you know excatly what you're doing. To override settings,
+# please edit (or create) a `settings.json` file containing the specific
+# keys and values to be overriden.
 
-# TODO! Transform the default server settings to plain JSON files instead of coffee classes.
+# For example to specific the application title, set debug mode and the DB
+# connection string, the `settings.json` should look like:
+# {
+#   "General": {
+#     "appTitle": "My System App",
+#     "debug": true
+#   },
+#   "Database" {
+#     "connString": "mongodb://my-mongodbhost.com/systemapp"
+#   }
+# }
 
-class SettingsDefault
+class Settings
 
     # GENERAL
     # ----------------------------------------------------------------------
@@ -108,8 +118,28 @@ class SettingsDefault
 
 # Singleton implementation.
 # --------------------------------------------------------------------------
-SettingsDefault.getInstance = ->
-    @instance = new SettingsDefault() if not @instance?
+Settings.getInstance = ->
+    if not @instance?
+        @instance = new Settings()
+
+        fs = require "fs"
+        filename = __dirname + "/settings.json"
+
+        # Check if there's a `settings.json` file, and overwrite settings if so.
+        if fs.existsSync filename
+            settingsJson = require filename
+
+            # Helper function to overwrite settings.
+            xtend = (source, target) ->
+                console.warn source, target
+                for prop, value of source
+                    if value?.constructor is Object
+                        xtend source[prop], target[prop]
+                    else
+                        target[prop] = source[prop]
+
+            xtend settingsJson, @instance
+
     return @instance
 
-module.exports = exports = SettingsDefault.getInstance()
+module.exports = exports = Settings.getInstance()
