@@ -4,7 +4,7 @@
 # the UI, such as blinking a shape, changing its background color or displaying
 # an alert on the footer.
 
-class System.EventAction extends System.BaseModel
+class SystemApp.EventAction extends SystemApp.BaseModel
     typeName: "EventAction"
     defaults:
         actionType: null    # the action type can be: blink, colorBg, colorBorder, footerMessage
@@ -49,9 +49,9 @@ class System.EventAction extends System.BaseModel
 # --------------------------------------------------------------------------
 # Represents a collection of event actions.
 
-class System.EventActionCollection extends System.BaseCollection
+class SystemApp.EventActionCollection extends SystemApp.BaseCollection
     typeName: "EventActionCollection"
-    model: System.EventAction
+    model: SystemApp.EventAction
 
     # Set the comparator function to order the alert actions collection by action type.
     comparator: (action) -> return action.actionType()

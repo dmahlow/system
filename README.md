@@ -94,11 +94,12 @@ database at MongoLab (http://mongolab.com). The connection string will be someth
 
 ## Configuring the server
 
-All server configuration settings are located on the file `server/settings.coffee`. If that file
-doesn't exist, please open the app on the browser first and it will be generated automatically.
-Or if you prefer you can duplicate the file `settings.base.coffee` and save it as `settings.coffee`.
+All basic server configuration settings are located on the file `server/settings.coffee`.
+If you want to override settings, please edit the `settings.json` file, or create one if
+it doesn't exist. Detailed instructions are available on on the top of
+the `server/settings.coffee` file.
 
-The following settings will certainly need your attention:
+The following settings might need your attention:
 
 ##### Settings.General
 `appTitle` - The app title, default is Zalando System. You can use something like "MyCompany System".

@@ -2,7 +2,7 @@
 # --------------------------------------------------------------------------
 # Contains all controls related to map manipulation, editing and filtering.
 
-class System.MapControlsView extends System.BaseView
+class SystemApp.MapControlsView extends SystemApp.BaseView
 
     # PROPERTIES, VARIABLES AND CHILD VIEWS
     # ----------------------------------------------------------------------
@@ -50,10 +50,10 @@ class System.MapControlsView extends System.BaseView
 
     # Set the child map control views.
     setChildViews: =>
-        @mapTabView = new System.MapControlsMapTabView this
-        @entitiesTabView = new System.MapControlsEntitiesTabView this
-        @shapeTabView = new System.MapControlsShapeTabView this
-        @inspectorTabView = new System.MapControlsInspectorTabView this
+        @mapTabView = new SystemApp.MapControlsMapTabView this
+        @entitiesTabView = new SystemApp.MapControlsEntitiesTabView this
+        @shapeTabView = new SystemApp.MapControlsShapeTabView this
+        @inspectorTabView = new SystemApp.MapControlsInspectorTabView this
 
     # Set the DOM elements cache.
     setDom: =>

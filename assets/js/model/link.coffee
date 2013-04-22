@@ -3,7 +3,7 @@
 # Represents a link (connection) between two shapes on the map.
 # Extends [Shape](shape.html).
 
-class System.Link extends System.BaseModel
+class SystemApp.Link extends SystemApp.BaseModel
     typeName: "Link"
     defaults:
         arrowSource: SystemApp.Settings.Link.arrowSource
@@ -138,9 +138,9 @@ class System.Link extends System.BaseModel
 # --------------------------------------------------------------------------
 # Represents a collection of links.
 
-class System.LinkCollection extends System.BaseCollection
+class SystemApp.LinkCollection extends SystemApp.BaseCollection
     typeName: "LinkCollection"
-    model: System.Link
+    model: SystemApp.Link
 
     # Override the default "create" method, as we don't need to sync
     # Shape models directly with the server.

@@ -3,7 +3,7 @@
 # Contains customizable user settings, which are saved on the browser's
 # Local Storage. This model is currently NOT sync'd with MongoDB!
 
-class System.UserSettings extends System.BaseModel
+class SystemApp.UserSettings extends SystemApp.BaseModel
     typeName: "UserSettings"
     defaults:
         mapAutoRefresh: true

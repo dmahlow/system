@@ -2,7 +2,7 @@
 # --------------------------------------------------------------------------
 # Represents a shape on the map.
 
-class System.MapShapeView extends System.BaseView
+class SystemApp.MapShapeView extends SystemApp.BaseView
 
     linkViews: null         # holds the temporary link views when moving / editing shapes around
     labelsView: null        # holds the 5 editable / dynamic labels of the shape
@@ -413,7 +413,7 @@ class System.MapShapeView extends System.BaseView
 
         @setTempPosition()
 
-        @linkCreatorView = new System.MapLinkCreatorView {model: new System.Link {sourceId: @model.id}}
+        @linkCreatorView = new SystemApp.MapLinkCreatorView {model: new SystemApp.Link {sourceId: @model.id}}
         @linkCreatorView.render this
 
     # Move the end of the temporary link while moving the mouse.
@@ -533,7 +533,7 @@ class System.MapShapeView extends System.BaseView
             @bindSvgDefaults @svgResizer
 
         if not @labelsView?
-            @labelsView = new System.MapShapeLabelsView(model: @model)
+            @labelsView = new SystemApp.MapShapeLabelsView(model: @model)
 
         @svg.attr {"fill": @model.background(), "stroke": @model.stroke(), "stroke-width": @model.strokeWidth()}
         @svg.attr {"fill-opacity": @model.opacity(), "cursor": "move"}

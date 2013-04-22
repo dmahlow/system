@@ -1,6 +1,6 @@
 # System DATA
 # --------------------------------------------------------------------------
-# This is a data manager for all collections and models used by System.
+# This is a data manager for all collections and models used by SystemApp.
 
 SystemApp.Data =
 
@@ -13,14 +13,14 @@ SystemApp.Data =
     # ----------------------------------------------------------------------
 
     # The current user's settings.
-    userSettings: new System.UserSettings()
+    userSettings: new SystemApp.UserSettings()
 
     # Holds the global collections for entities, maps, variables, events etc.
-    auditData: new System.AuditDataCollection()
-    auditEvents: new System.AuditEventCollection()
-    entities: new System.EntityDefinitionCollection()
-    maps: new System.MapCollection()
-    variables: new System.VariableCollection()
+    auditData: new SystemApp.AuditDataCollection()
+    auditEvents: new SystemApp.AuditEventCollection()
+    entities: new SystemApp.EntityDefinitionCollection()
+    maps: new SystemApp.MapCollection()
+    variables: new SystemApp.VariableCollection()
 
     # Helper array to iterate through all collections.
     allCollections: []

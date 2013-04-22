@@ -2,7 +2,7 @@
 # --------------------------------------------------------------------------
 # Represents audit data from a single or multiple machines / hosts / services.
 
-class System.AuditData extends System.BaseModel
+class SystemApp.AuditData extends SystemApp.BaseModel
     typeName: "AuditData"
     defaults:
         refreshInterval: SystemApp.Settings.AuditData.refreshInterval
@@ -159,7 +159,7 @@ class System.AuditData extends System.BaseModel
 # --------------------------------------------------------------------------
 # Represents a collection of audit data models.
 
-class System.AuditDataCollection extends System.BaseCollection
+class SystemApp.AuditDataCollection extends SystemApp.BaseCollection
 
-    model: System.AuditData
+    model: SystemApp.AuditData
     url: SystemApp.Settings.AuditData.url

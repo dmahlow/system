@@ -3,7 +3,7 @@
 # Variables are javascript blocks that can represent aggregated values,
 # calculations and combinations of different [AuditData](auditData.html) sources.
 
-class System.Variable extends System.BaseModel
+class SystemApp.Variable extends SystemApp.BaseModel
     typeName: "Variable"
     defaults:
         code: null     # the variable javascript code
@@ -23,9 +23,9 @@ class System.Variable extends System.BaseModel
 # --------------------------------------------------------------------------
 # Represents a collection of variables.
 
-class System.VariableCollection extends System.BaseCollection
+class SystemApp.VariableCollection extends SystemApp.BaseCollection
     typeName: "VariableCollection"
-    model: System.Variable
+    model: SystemApp.Variable
     url: SystemApp.Settings.Variable.url
 
     # Set the comparator function to order the variable collection by friendlyId.

@@ -2,7 +2,7 @@
 # --------------------------------------------------------------------------
 # Represents the Settings overlay.
 
-class SystemApp.SettingsView extends System.OverlayView
+class SystemApp.SettingsView extends SystemApp.OverlayView
 
     $chkFullscreen: null             # the start maximized checkbox
     $chkAutoRefresh: null           # the autorefresh checkbox

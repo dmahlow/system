@@ -2,7 +2,7 @@
 # --------------------------------------------------------------------------
 # Represents the audit data overlay.
 
-class System.AuditDataManagerView extends System.OverlayView
+class SystemApp.AuditDataManagerView extends SystemApp.OverlayView
 
     $txtCreate: null         # the text input used to create a new audit data
     $butCreate: null         # the button used to create a new audit data

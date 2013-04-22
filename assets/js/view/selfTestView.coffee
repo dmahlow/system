@@ -2,7 +2,7 @@
 # --------------------------------------------------------------------------
 # Represents the Self Test overlay used to troubleshoot the app.
 
-class System.SelfTestView extends System.OverlayView
+class SystemApp.SelfTestView extends SystemApp.OverlayView
 
 
     # INIT AND DISPOSE

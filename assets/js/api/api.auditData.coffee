@@ -2,16 +2,16 @@
 # --------------------------------------------------------------------------
 # System API - Audit Data interface. User to query and manage audit data.
 
-System.Api.AuditData =
+SystemApp.Api.AuditData =
 
     # GET
     # ----------------------------------------------------------------------
 
     # Return [AuditData](auditData.html) based on the specified filter.
     get: (filter) ->
-        System.Api.log "AuditData.get", filter
+        SystemApp.Api.log "AuditData.get", filter
 
-        return System.Api.getFromCollection SystemApp.Data.auditData, filter
+        return SystemApp.Api.getFromCollection SystemApp.Data.auditData, filter
 
 
     # CREATE, UPDATE, DELETE
@@ -19,7 +19,7 @@ System.Api.AuditData =
 
     # Create an [AuditData](auditData.html) with the specified properties.
     create: (props) ->
-        System.Api.log "AuditData.create", props
+        SystemApp.Api.log "AuditData.create", props
 
         auditdata = SystemApp.Data.auditData.create props
         return auditdata

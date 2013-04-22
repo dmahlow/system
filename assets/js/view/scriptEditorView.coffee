@@ -3,7 +3,7 @@
 # Overlay used to edit scripts and code snippets. At the moment it is used
 # only to edit [map](map.html) `initScript`.
 
-class System.ScriptEditorView extends System.OverlayView
+class SystemApp.ScriptEditorView extends SystemApp.OverlayView
 
     propertyName: null      # the property which should be updated with the script value, for example a map initScript.
     timerHideError: null    # cached timer to hide the error message

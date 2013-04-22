@@ -1,5 +1,5 @@
-// APP MASTER STYLE
-// ---------------------------------------------------------------
+// APP ADMIN STYLES
+// -------------------------------------------------------------------------
 
 // GLOBAL SIZING
 headerHeight = 33px
@@ -35,6 +35,20 @@ overlayLightBorder = 1px solid rgb(255, 255, 255)
 @import common
 @import header
 
+body
+    background-color overlayBackground
+
+// MENU
+// -------------------------------------------------------------------------
+
 // Title on admin pages.
 #menu-admintitle
     color lightTextColor !important
+
+// TABS
+// -------------------------------------------------------------------------
+
+// Admin tabs with top margin.
+.admin-tab
+    margin-top headerHeight
+    padding 20px

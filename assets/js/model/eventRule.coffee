@@ -5,7 +5,7 @@
 # or a static value. Alert rules are meant to be used inside
 # [AuditEvent](auditEvent.html) objects only.
 
-class System.EventRule extends System.BaseModel
+class SystemApp.EventRule extends SystemApp.BaseModel
     typeName: "EventRule"
     defaults:
         source: null        # the source value or audit data path to compare
@@ -100,9 +100,9 @@ class System.EventRule extends System.BaseModel
 # --------------------------------------------------------------------------
 # Represents a collection of event rules.
 
-class System.EventRuleCollection extends System.BaseCollection
+class SystemApp.EventRuleCollection extends SystemApp.BaseCollection
     typeName: "EventRuleCollection"
-    model: System.EventRule
+    model: SystemApp.EventRule
 
     # Set the comparator function to order the alert rules collection by source value.
     comparator: (rule) -> return rule.source()

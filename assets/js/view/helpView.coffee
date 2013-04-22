@@ -2,7 +2,7 @@
 # --------------------------------------------------------------------------
 # Represents the Help overlay.
 
-class System.HelpView extends System.OverlayView
+class SystemApp.HelpView extends SystemApp.OverlayView
 
 
     # INIT AND DISPOSE

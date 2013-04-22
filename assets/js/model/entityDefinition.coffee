@@ -3,7 +3,7 @@
 # Represents a single entity definition and structure. The entity objects
 # are represented by the [EntityObject](entityObject.html) model.
 
-class System.EntityDefinition extends System.BaseModel
+class SystemApp.EntityDefinition extends SystemApp.BaseModel
     typeName: "EntityDefinition"
     defaults:
         objectIdAttribute: SystemApp.Settings.EntityDefinition.objectIdAttribute
@@ -23,7 +23,7 @@ class System.EntityDefinition extends System.BaseModel
         shapeZIndex: SystemApp.Settings.Shape.zIndex
 
     relations:
-        data: System.EntityObjectCollection
+        data: SystemApp.EntityObjectCollection
 
 
     # PROPERTIES
@@ -32,7 +32,7 @@ class System.EntityDefinition extends System.BaseModel
     # Helper to get / set the entity objects data.
     data: (value) =>
         if value?
-            value = new System.EntityObjectCollection value if not value.typeName?
+            value = new SystemApp.EntityObjectCollection value if not value.typeName?
             @set "data", value
         @get "data"
 
@@ -161,9 +161,9 @@ class System.EntityDefinition extends System.BaseModel
 # --------------------------------------------------------------------------
 # Represents a collection of entity definitions.
 
-class System.EntityDefinitionCollection extends System.BaseCollection
+class SystemApp.EntityDefinitionCollection extends SystemApp.BaseCollection
     typeName: "EntityDefinitionCollection"
-    model: System.EntityDefinition
+    model: SystemApp.EntityDefinition
     url: SystemApp.Settings.EntityDefinition.url
 
     # Set the comparator function to order the entity definitions by friendlyId.

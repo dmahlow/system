@@ -3,7 +3,7 @@
 # Handle deep linking using the hashtag.
 # Implemented using the Backbone Router.
 
-class System.Routes extends Backbone.Router
+class SystemApp.Routes extends Backbone.Router
 
     routes:
         "": "openDefault"                   # the default route will change the view based on the last view state

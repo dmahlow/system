@@ -2,7 +2,7 @@
 # --------------------------------------------------------------------------
 # Represents the entities manager overlay.
 
-class System.EntityManagerView extends System.OverlayView
+class SystemApp.EntityManagerView extends SystemApp.OverlayView
 
     $txtCreate: null                # the text input used to create a new entity definition
     $butCreate: null                # the button used to create a new entity definition

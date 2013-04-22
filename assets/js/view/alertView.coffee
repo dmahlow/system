@@ -15,7 +15,7 @@
 # * (string) message: the alert message or description
 # * (bool) isError: if true, alert will show in red, if false will show in green
 
-class System.AlertView extends System.BaseView
+class SystemApp.AlertView extends SystemApp.BaseView
 
     serverErrors: []          # keep a list of errors that happened on the server side
     queueFooter: []           # queue of footer alerts to be displayed

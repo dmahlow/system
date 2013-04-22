@@ -4,7 +4,7 @@
 # Each link can have only one MapLinkLabelsView, but each MapLinkLabelsView can have up
 # to 3 editable labels (start, middle, end).
 
-class System.MapLinkLabelsView extends System.BaseView
+class SystemApp.MapLinkLabelsView extends SystemApp.BaseView
 
     currentEditingPosition: null        # holds the position which is being currently edited (Start, Center. End)
     labelEditView: null                 # holds a [Label Edit View](labelEditView.html), used to change label values
@@ -322,7 +322,7 @@ class System.MapLinkLabelsView extends System.BaseView
     # the user can edit or bind values from an [AuditData](auditData.html) to the label text.
     showEditLabel: (e) =>
         if not @labelEditView?
-            @labelEditView = new System.MapLabelEditView()
+            @labelEditView = new SystemApp.MapLabelEditView()
             @labelEditView.render this
             @labelEditView.on "save", @saveEditLabel
 

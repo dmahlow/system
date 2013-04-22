@@ -3,7 +3,7 @@
 # Represents the top menu with links to all sub-views of the app like maps,
 # settings, audit data, alerts and help overlay.
 
-class System.MenuView extends System.BaseView
+class SystemApp.MenuView extends SystemApp.BaseView
 
     height: 0                   # cached variable that holds the header height
     timerHideMenu: null         # timer to hide the menu after X milliseconds.

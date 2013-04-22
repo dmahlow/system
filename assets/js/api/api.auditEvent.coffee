@@ -2,16 +2,16 @@
 # --------------------------------------------------------------------------
 # System API - Audit Event interface. User to query and manage audit events.
 
-System.Api.AuditEvent =
+SystemApp.Api.AuditEvent =
 
     # GET
     # ----------------------------------------------------------------------
 
     # Return [Audit Events](auditEvents.html) based on the specified filter.
     get: (filter) ->
-        System.Api.log "AuditEvent.get", filter
+        SystemApp.Api.log "AuditEvent.get", filter
 
-        return System.Api.getFromCollection SystemApp.Data.auditEvents, filter
+        return SystemApp.Api.getFromCollection SystemApp.Data.auditEvents, filter
 
 
     # CREATE, UPDATE, DELETE
@@ -19,7 +19,7 @@ System.Api.AuditEvent =
 
     # Create an [Audit Events](auditEvents.html) with the specified properties.
     create: (props) ->
-        System.Api.log "AuditEvent.create", props
+        SystemApp.Api.log "AuditEvent.create", props
 
         auditevent = SystemApp.Data.auditEvents.create props
         return auditevent

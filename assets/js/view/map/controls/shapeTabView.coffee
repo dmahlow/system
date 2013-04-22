@@ -2,7 +2,7 @@
 # --------------------------------------------------------------------------
 # Represents the "Shape properties" tab inside a [Map Controls View](controlsView.html).
 
-class System.MapControlsShapeTabView extends System.BaseView
+class SystemApp.MapControlsShapeTabView extends SystemApp.BaseView
 
     currentBoundView: null # holds the current shape being shown
 
@@ -143,7 +143,7 @@ class System.MapControlsShapeTabView extends System.BaseView
             @$selOpacity.val @currentBoundView.model.opacity()
 
             # If the selected item is a shape, then hide all "only-for-links" properties.
-            if @currentBoundView.constructor is System.MapShapeView
+            if @currentBoundView.constructor is SystemApp.MapShapeView
                 @$selIcon.val @currentBoundView.model.icon()
                 @$txtBackground.val @currentBoundView.model.background()
                 @$txtBackground.keyup()

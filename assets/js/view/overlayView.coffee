@@ -3,7 +3,7 @@
 # Abstract overlay view containing helper methods for closing and tabs.
 # Used by all the overlays (Settings, Help, Audit Data Manager, etc...).
 
-class System.OverlayView extends System.BaseView
+class SystemApp.OverlayView extends SystemApp.BaseView
 
     closeOnFirstEsc: false  # when false, overlay will close on "double Esc", otherwise a single press will do it
     currentSettings: null   # define the settings container

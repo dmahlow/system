@@ -3,7 +3,7 @@
 # Represents the "Create new map" overlay what shows up when user
 # clicks a "Create new..." option on the sub menus.
 
-class System.CreateMapView extends System.OverlayView
+class SystemApp.CreateMapView extends SystemApp.OverlayView
 
     $txtName: null      # the text field to enter the new map name
     $menuItem: null     # the top menu DOM element

@@ -3,7 +3,7 @@
 # Represents a single entity object. Please note that the entity definitions
 # are represented by a [EntityDefinition](entityDefinition.html) model.
 
-class System.EntityObject extends System.BaseModel
+class SystemApp.EntityObject extends SystemApp.BaseModel
     typeName: "EntityObject"
     defaults:
         entityDefinitonId: null
@@ -50,9 +50,9 @@ class System.EntityObject extends System.BaseModel
 # --------------------------------------------------------------------------
 # Represents a collection of entity objects.
 
-class System.EntityObjectCollection extends System.BaseCollection
+class SystemApp.EntityObjectCollection extends SystemApp.BaseCollection
     typeName: "EntityObjectCollection"
-    model: System.EntityObject
+    model: SystemApp.EntityObject
 
     # URL should be set to the parent [entity definition](entityDefinition.html)
     # property `sourceUrl`. If not parent model was set, return a generic "for-all" URL.

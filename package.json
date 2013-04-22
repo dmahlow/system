@@ -1,6 +1,6 @@
 {
     "name":"System",
-    "version":"0.5.3",
+    "version":"0.5.4",
     "description":"A sleek and smart infrastructure mapping and monitoring tool by Zalando.",
     "homepage": "http://zalando.github.io/system/",
     "author":"Igor Ramadas",

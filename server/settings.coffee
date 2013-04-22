@@ -131,7 +131,6 @@ Settings.getInstance = ->
 
             # Helper function to overwrite settings.
             xtend = (source, target) ->
-                console.warn source, target
                 for prop, value of source
                     if value?.constructor is Object
                         xtend source[prop], target[prop]

@@ -2,7 +2,7 @@
 # --------------------------------------------------------------------------
 # Represents the Audit Events overlay.
 
-class System.AuditEventManagerView extends System.OverlayView
+class SystemApp.AuditEventManagerView extends SystemApp.OverlayView
 
     $txtCreate: null         # the text input used to create a new audit event
     $butCreate: null         # the button used to create a new audit event
@@ -210,7 +210,7 @@ class System.AuditEventManagerView extends System.OverlayView
             source.focus()
             return
 
-        rule = new System.EventRule()
+        rule = new SystemApp.EventRule()
         rule.generateId()
         rule.source sourceVal
         rule.target targetVal
@@ -296,7 +296,7 @@ class System.AuditEventManagerView extends System.OverlayView
         typeVal = type.val()
         valueVal = value.val()
 
-        action = new System.EventAction()
+        action = new SystemApp.EventAction()
         action.generateId()
         action.actionType typeVal
         action.actionValue valueVal

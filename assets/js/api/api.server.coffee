@@ -2,7 +2,7 @@
 # --------------------------------------------------------------------------
 # System API - Server interface.
 
-System.Api.Server =
+SystemApp.Api.Server =
 
     restart: ->
-        System.Api.log "Server.restart"
+        SystemApp.Api.log "Server.restart"

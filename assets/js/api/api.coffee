@@ -4,15 +4,15 @@
 # individual API methods into a single "api" object which should be accessible
 # directly from the window / document instance.
 
-System.Api =
+SystemApp.Api =
 
     # Property that defines if console logs are enabled.
     logsEnabled: false
 
     # Init the System API interface.
     init: ->
-        System.Api.log "INIT: " + new Date()
-        window.api = System.Api
+        SystemApp.Api.log "INIT: " + new Date()
+        window.api = SystemApp.Api
 
 
     # GET DATA
@@ -43,12 +43,12 @@ System.Api =
 
     # Enable API logs (will write to the console for every API call).
     enableLogs: ->
-        System.Api.logsEnabled = true
+        SystemApp.Api.logsEnabled = true
 
     # Disable API logs (will NOT write to the console for every API call).
     disableLogs: ->
-        System.Api.logsEnabled = false
+        SystemApp.Api.logsEnabled = false
 
     # Log to the console, but only if `logsEnabled` is true.
     log: (msg) ->
-        console.log "API", msg if System.Api.logsEnabled
+        console.log "API", msg if SystemApp.Api.logsEnabled

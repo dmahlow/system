@@ -3,7 +3,7 @@
 # Base abstract view class. All views MUST inherit from this one, as it has
 # some basic features like event triggering and elements disposing.
 
-class System.BaseView extends Backbone.View
+class SystemApp.BaseView extends Backbone.View
 
     # Holds the parent view. Please note that the parent view does not necessarily the parent DOM container.
     parentView: null

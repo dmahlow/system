@@ -2,7 +2,7 @@
 # --------------------------------------------------------------------------
 # Overlay that is shown whenever the user is selecting and moving multiple shapes on the map.
 
-class System.MapShapesMoverView extends System.BaseView
+class SystemApp.MapShapesMoverView extends SystemApp.BaseView
 
     svg: null           # the main SVG rectangle
     svgCount: null      # the SVG count / text

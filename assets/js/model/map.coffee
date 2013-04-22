@@ -3,7 +3,7 @@
 # Represents a map containing a collection of [Shapes](shape.html)
 # and [Links](link.html), and specific sizes and colours.
 
-class System.Map extends System.BaseModel
+class SystemApp.Map extends SystemApp.BaseModel
     typeName: "Map"
     defaults:
         background: SystemApp.Settings.Map.background
@@ -15,8 +15,8 @@ class System.Map extends System.BaseModel
         silent: false
 
     relations:
-        links: System.LinkCollection
-        shapes: System.ShapeCollection
+        links: SystemApp.LinkCollection
+        shapes: SystemApp.ShapeCollection
 
 
     # PROPERTIES
@@ -79,14 +79,14 @@ class System.Map extends System.BaseModel
     # Helper to get / set the shapes and their positions on the map. This must set as a [ShapeCollection](shape.html).
     shapes: (value) =>
         if value?
-            value = new System.ShapeCollection value if not value.typeName?
+            value = new SystemApp.ShapeCollection value if not value.typeName?
             @set "shapes", value
         @get "shapes"
 
     # Helper to get / set the links between shapes on the map. This must set as a [LinkCollection](link.html).
     links: (value) =>
         if value?
-            value = new System.LinkCollection value if not value.typeName?
+            value = new SystemApp.LinkCollection value if not value.typeName?
             @set "links", value
         @get "links"
 
@@ -172,9 +172,9 @@ class System.Map extends System.BaseModel
 # --------------------------------------------------------------------------
 # Represents a collection of maps.
 
-class System.MapCollection extends System.BaseCollection
+class SystemApp.MapCollection extends SystemApp.BaseCollection
     typeName: "MapCollection"
-    model: System.Map
+    model: SystemApp.Map
     url: SystemApp.Settings.Map.url
 
     # Set the comparator function to order the maps collection by name.

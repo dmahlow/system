@@ -3,7 +3,7 @@
 # Overlay that is shown whenever the user clicks an editable label on the map.
 # Right now this can happen on [Shape Views](shapeView.html) and [Link Views](linkView.html).
 
-class System.MapLabelEditView extends System.BaseView
+class SystemApp.MapLabelEditView extends SystemApp.BaseView
 
     tagName: "div"
     className: SystemApp.Settings.LabelEdit.className
@@ -187,7 +187,7 @@ class System.MapLabelEditView extends System.BaseView
             @currentVariable.code varCode
             @currentVariable.save()
         else
-            customVar = new System.Variable()
+            customVar = new SystemApp.Variable()
             customVar.friendlyId varName
             customVar.code varCode
 

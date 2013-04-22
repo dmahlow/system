@@ -3,7 +3,7 @@
 # This model represents shapes on a map. Shapes will have their layout and
 # properties defined depending on its related entity type.
 
-class System.Shape extends System.BaseModel
+class SystemApp.Shape extends SystemApp.BaseModel
     typeName: "Shape"
     defaults:
         background: SystemApp.Settings.Shape.background
@@ -212,9 +212,9 @@ class System.Shape extends System.BaseModel
 # --------------------------------------------------------------------------
 # Base abstract collection for all shapes.
 
-class System.ShapeCollection extends System.BaseCollection
+class SystemApp.ShapeCollection extends SystemApp.BaseCollection
     typeName: "ShapeCollection"
-    model: System.Shape
+    model: SystemApp.Shape
 
     # Override the default "create" method, as we don't need to sync
     # Shape models directly with the server.

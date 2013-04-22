@@ -2,7 +2,7 @@
 # --------------------------------------------------------------------------
 # Represents the "Shape properties" tab inside a [Map Controls View](controlsView.html).
 
-class System.MapControlsMapTabView extends System.BaseView
+class SystemApp.MapControlsMapTabView extends SystemApp.BaseView
 
     timerHideZIndex: null           # a timer to auto hide the z-index after user clicked the "Identify z-index" button
 

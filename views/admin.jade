@@ -3,7 +3,7 @@
 != css("admin")
 html
     head
-        title #{title}
+        title #{title} - Admin
         script(src="/socket.io/socket.io.js")
         link(type="image/x-icon", href="images/favico.png", rel="icon")
         meta(name="apple-mobile-web-app-capable", content="yes")
@@ -12,7 +12,10 @@ html
             #header
                 #menu
                     #menu-admintitle.menu-item #{title} Admin
-                    a#menu-createmap.menu-item(href="#createmap",title="Click to create a new map.") Dashboard
-                    a#menu-createmap.menu-item(href="#createmap",title="Click to create a new map.") Server Settings
-                    a#menu-maps.menu-item(href="#maps",title="View and open available maps.") Users and Roles
-                    a#menu-entities.menu-item(href="#entities",title="Open the Entities Manager.") Status
+                    a#menu-status.menu-item(href="#status",title="#{title} status and general info.") Status
+                    a#menu-serversettings.menu-item(href="#serversettings",title="Edit server configuration and settings.") Server Settings
+                    a#menu-clientsettings.menu-item(href="#clientsettings",title="Edit client (browser) configuration and settings.") Client Settings
+                    a#menu-users.menu-item(href="#users",title="User and roles management.") Users and Roles
+
+            #tab-dashboard.admin-tab
+                label test

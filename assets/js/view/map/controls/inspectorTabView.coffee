@@ -2,7 +2,7 @@
 # --------------------------------------------------------------------------
 # Represents the "Shape properties" tab inside a [Map Controls View](controlsView.html).
 
-class System.MapControlsInspectorTabView extends System.BaseView
+class SystemApp.MapControlsInspectorTabView extends SystemApp.BaseView
 
     # DOM ELEMENTS
     # ----------------------------------------------------------------------
@@ -188,7 +188,7 @@ class System.MapControlsInspectorTabView extends System.BaseView
         if not @currentBoundView?
             return
 
-        isShape = @currentBoundView.constructor is System.MapShapeView
+        isShape = @currentBoundView.constructor is SystemApp.MapShapeView
 
         if not isShape
             target = @parentView.parentView.shapeViews[@currentBoundView.model.targetId()]

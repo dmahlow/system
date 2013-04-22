@@ -4,14 +4,14 @@
 # [Alert Rules](eventRule.html) running against audit data or
 # static values.
 
-class System.AuditEvent extends System.BaseModel
+class SystemApp.AuditEvent extends SystemApp.BaseModel
     typeName: "AuditEvent"
     defaults:
         active: true
 
     relations:
-        actions: System.EventActionCollection
-        rules: System.EventRuleCollection
+        actions: SystemApp.EventActionCollection
+        rules: SystemApp.EventRuleCollection
 
 
     # PROPERTIES
@@ -26,14 +26,14 @@ class System.AuditEvent extends System.BaseModel
     # Helper to get / set the alert rules collection.
     rules: (value) =>
         if value?
-            value = new System.EventRuleCollection value if not value.typeName?
+            value = new SystemApp.EventRuleCollection value if not value.typeName?
             @set "rules", value
         @get "rules"
 
     # Helper to get / set the alert actions collection.
     actions: (value) =>
         if value?
-            value = new System.EventActionCollection value if not value.typeName?
+            value = new SystemApp.EventActionCollection value if not value.typeName?
             @set "actions", value
         @get "actions"
 
@@ -69,9 +69,9 @@ class System.AuditEvent extends System.BaseModel
 # --------------------------------------------------------------------------
 # Represents a collection of audit alerts.
 
-class System.AuditEventCollection extends System.BaseCollection
+class SystemApp.AuditEventCollection extends SystemApp.BaseCollection
     typeName: "AuditEventCollection"
-    model: System.AuditEvent
+    model: SystemApp.AuditEvent
     url: SystemApp.Settings.AuditEvent.url
 
     # Set the comparator function to order the audit events collection by title.

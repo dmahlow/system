@@ -2,7 +2,7 @@
 # --------------------------------------------------------------------------
 # Represents a link on the map, that might contain an attached label to it.
 
-class System.MapLinkView extends System.BaseView
+class SystemApp.MapLinkView extends SystemApp.BaseView
 
     visible: true          # cached variable to check if link is currently visible
     labelsView: null       # holds the 3 editable / dynamic labels of the link
@@ -81,7 +81,7 @@ class System.MapLinkView extends System.BaseView
             @parentView.paper.link @svg, options
 
         if not @labelsView?
-            @labelsView = new System.MapLinkLabelsView {model: @model}
+            @labelsView = new SystemApp.MapLinkLabelsView {model: @model}
 
         @labelsView.render this
 

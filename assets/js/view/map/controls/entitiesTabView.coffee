@@ -3,7 +3,7 @@
 # The overlay view containing the list of shapes available to be added to the
 # map. The overlay is shown only when the map is in edit mode.
 
-class System.MapControlsEntitiesTabView extends System.BaseView
+class SystemApp.MapControlsEntitiesTabView extends SystemApp.BaseView
 
     # Holds the timer to trigger the `search` method, so when user
     # changs the value of the `$txtSearch` it will actually search only

@@ -164,7 +164,7 @@ SystemApp.init = ->
     window.onerror = SystemApp.onError
 
     # Create the Backbone "Routes" object.
-    SystemApp.routes = new System.Routes()
+    SystemApp.routes = new SystemApp.Routes()
 
     # Init events and data.
     SystemApp.setEvents()
@@ -185,7 +185,7 @@ SystemApp.init = ->
     SystemApp.initUserSettings()
 
     # Init the API, bind it to the "api" variable on the window.
-    System.Api.init()
+    SystemApp.Api.init()
 
 # Change the app UI based on the current user settings.
 # Things like fullscreen, zoom, etc.
@@ -201,18 +201,18 @@ SystemApp.setDom = ->
 
 # Init the menu, footer and settings.
 SystemApp.setViews = ->
-    SystemApp.alertView = new System.AlertView()
-    SystemApp.auditDataManagerView = new System.AuditDataManagerView()
-    SystemApp.auditEventManagerView = new System.AuditEventManagerView()
-    SystemApp.createMapView = new System.CreateMapView()
-    SystemApp.entityManagerView = new System.EntityManagerView()
-    SystemApp.footerView = new System.FooterView()
-    SystemApp.helpView = new System.HelpView()
-    SystemApp.mapView = new System.MapView()
-    SystemApp.menuView = new System.MenuView()
+    SystemApp.alertView = new SystemApp.AlertView()
+    SystemApp.auditDataManagerView = new SystemApp.AuditDataManagerView()
+    SystemApp.auditEventManagerView = new SystemApp.AuditEventManagerView()
+    SystemApp.createMapView = new SystemApp.CreateMapView()
+    SystemApp.entityManagerView = new SystemApp.EntityManagerView()
+    SystemApp.footerView = new SystemApp.FooterView()
+    SystemApp.helpView = new SystemApp.HelpView()
+    SystemApp.mapView = new SystemApp.MapView()
+    SystemApp.menuView = new SystemApp.MenuView()
     SystemApp.settingsView = new SystemApp.SettingsView()
-    SystemApp.scriptEditorView = new System.ScriptEditorView()
-    SystemApp.startView = new System.StartView()
+    SystemApp.scriptEditorView = new SystemApp.ScriptEditorView()
+    SystemApp.startView = new SystemApp.StartView()
 
 # Create event dispatchers. Bind and listen to app events.
 SystemApp.setEvents = ->

@@ -2,7 +2,7 @@
 # --------------------------------------------------------------------------
 # Represents the page footer.
 
-class System.FooterView extends System.BaseView
+class SystemApp.FooterView extends SystemApp.BaseView
 
     height: 0               # cached variable that holds the footer height
 

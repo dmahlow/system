@@ -2,7 +2,7 @@
 # --------------------------------------------------------------------------
 # Represents the map view. This is the most important view of the app!
 
-class System.MapView extends System.BaseView
+class SystemApp.MapView extends SystemApp.BaseView
 
     paper: null                 # the Raphael paper object
     paperBg: null               # the paper background object or color string
@@ -52,8 +52,8 @@ class System.MapView extends System.BaseView
         @setEvents()
 
         # Child views.
-        @controlsView = new System.MapControlsView this
-        @shapesMoverView = new System.MapShapesMoverView this
+        @controlsView = new SystemApp.MapControlsView this
+        @shapesMoverView = new SystemApp.MapShapesMoverView this
 
         # Cached variable: are links visible?
         @isLinksVisible = @controlsView.isLinksVisible()
@@ -305,7 +305,7 @@ class System.MapView extends System.BaseView
     addShape: (shape, collection) =>
         return if not shape.id? or shape.id is ""
 
-        view = new System.MapShapeView {model: shape}
+        view = new SystemApp.MapShapeView {model: shape}
         view.bindEntityObject()
         view.render this
 
@@ -396,7 +396,7 @@ class System.MapView extends System.BaseView
         # Do not proceed if target or source shape is not valid.
         return if not sourceView? or not targetView?
 
-        view = new System.MapLinkView {model: item}
+        view = new SystemApp.MapLinkView {model: item}
         @linkViews[item.id] = view
 
         view.render this
@@ -635,7 +635,7 @@ class System.MapView extends System.BaseView
             if posY - y < SystemApp.Settings.Map.gridSizeY
                 y += SystemApp.Settings.Map.gridSizeY
 
-        return new System.Shape {x: x / SystemApp.Settings.Map.gridSizeX, y: y / SystemApp.Settings.Map.gridSizeY}
+        return new SystemApp.Shape {x: x / SystemApp.Settings.Map.gridSizeX, y: y / SystemApp.Settings.Map.gridSizeY}
 
 
     # Blink the selected [Shape](shapeView.html) on the map.

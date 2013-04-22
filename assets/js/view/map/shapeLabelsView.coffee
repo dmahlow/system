@@ -4,7 +4,7 @@
 # Each shape can have only one MapShapeLabelsView, but each MapShapeLabelsView can have up
 # to 5 editable labels (left, top, right, bottom, center).
 
-class System.MapShapeLabelsView extends System.BaseView
+class SystemApp.MapShapeLabelsView extends SystemApp.BaseView
 
     visible: true                       # cached variable to check if labels are visible or hidden
     currentEditingPosition: null        # holds the position which is being currently edited by the user
@@ -525,7 +525,7 @@ class System.MapShapeLabelsView extends System.BaseView
     # the user can edit or bind values from an [AuditData](auditData.html) to the label text.
     showEditLabel: (e) =>
         if not @labelEditView?
-            @labelEditView = new System.MapLabelEditView()
+            @labelEditView = new SystemApp.MapLabelEditView()
             @labelEditView.render this
             @labelEditView.on "save", @saveEditLabel
 

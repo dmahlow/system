@@ -3,7 +3,7 @@
 # Represents the Start overlay which is shown automatically when the user
 # opens the app for the first time.
 
-class System.StartView extends System.OverlayView
+class SystemApp.StartView extends SystemApp.OverlayView
 
     $mapList: null          # the UL containing all available maps
     $imgPreview: null       # the map image preview

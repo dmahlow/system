@@ -3,7 +3,7 @@
 # Represents a user on the system. The password will be stored as a hash
 # based on the username.
 
-class System.User extends System.BaseModel
+class SystemApp.User extends SystemApp.BaseModel
     typeName: "User"
     defaults:
         displayName: null   # the user display name
@@ -44,9 +44,9 @@ class System.User extends System.BaseModel
 # --------------------------------------------------------------------------
 # Represents a collection of users.
 
-class System.UserCollection extends System.BaseCollection
+class SystemApp.UserCollection extends SystemApp.BaseCollection
     typeName: "UserCollection"
-    model: System.User
+    model: SystemApp.User
     url: SystemApp.Settings.User.url
 
     # Set the comparator function to order the user collection by username.

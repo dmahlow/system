@@ -2,7 +2,7 @@
 # --------------------------------------------------------------------------
 # This is the base abstract model for all models of the System App.
 
-class System.BaseModel extends Backbone.Model
+class SystemApp.BaseModel extends Backbone.Model
 
     typeName: null
 
@@ -285,7 +285,7 @@ class System.BaseModel extends Backbone.Model
 # --------------------------------------------------------------------------
 # This is the base abstract collection for all collections of the System App.
 
-class System.BaseCollection extends Backbone.Collection
+class SystemApp.BaseCollection extends Backbone.Collection
 
     typeName: null
 

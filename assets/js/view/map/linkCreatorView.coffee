@@ -2,7 +2,7 @@
 # --------------------------------------------------------------------------
 # Represents a link creator view, used to create [links](link.html) between shapes.
 
-class System.MapLinkCreatorView extends System.MapLinkView
+class SystemApp.MapLinkCreatorView extends SystemApp.MapLinkView
 
     source: null        # the source view (usually got from mapView)
     target: null        # the target view (usually got from the mapView)
