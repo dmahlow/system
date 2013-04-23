@@ -86,7 +86,10 @@ class SystemApp.OverlayView extends SystemApp.BaseView
         $(window).resize @resize
 
         @resize()
-        @$rightCol.hide()
+
+        # Hide right column if list with models is present on the left
+        # and no item has been selected.
+        @$rightCol.hide() if @$modelsList?
 
         @lastPressedKey = null
         @$el.show()

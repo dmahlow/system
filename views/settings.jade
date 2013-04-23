@@ -109,10 +109,42 @@
 
         // About tab containing info about the app.
         div.tab.about(style="display:none")
-            h4 About
-            div
-                span App version: #{version}
-            div
-                span Running on port: #{port}
-            div
-                span Last updated: #{lastModified}
+            .left-col
+                h4 About
+                .panel
+                    div App version: #{version}
+                    div Running on port: #{serverPort}
+                    div Last updated: #{lastModified}
+                h4 Server status
+                .panel
+                    div OS: #{serverOS}
+                    div CPU Load: #{serverCpuLoad}
+                    div RAM Usage: #{serverRamLoad}%
+            .right-col
+                h4 Open-source software
+                img.opensource(src="images/opensource.png")
+                .panel.
+                    This softwares is based on the open-source System App by Zalando!
+                .panel
+                    div
+                        label App Homepage:
+                        a(href="https://systemapp.io") http://systemapp.io
+                    div
+                        label Zalando Tech:
+                        a(href="http://tech.zalando.com") http://tech.zalando.com
+                    div
+                        label Project Page:
+                        a(href="https://github.com/zalando/system") https://github.com/zalando/system
+                .license
+                    h4 License
+                    p.
+                        Copyright 2013 Zalando GmbH<br /><br />
+                        Licensed under the Apache License, Version 2.0 (the "License");<br />
+                        you may not use this file except in compliance with the License.<br />
+                        You may obtain a copy of the License at<br /><br />
+                            http://www.apache.org/licenses/LICENSE-2.0<br /><br />
+                        Unless required by applicable law or agreed to in writing, software<br />
+                        distributed under the License is distributed on an "AS IS" BASIS,<br />
+                        WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.<br />
+                        See the License for the specific language governing permissions and<br />
+                        limitations under the License.

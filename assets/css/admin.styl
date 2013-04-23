@@ -38,12 +38,35 @@ overlayLightBorder = 1px solid rgb(255, 255, 255)
 body
     background-color overlayBackground
 
+h2
+    margin-top 0
+
+input[type="checkbox"] + span
+input[type="radio"] + span
+    font 11px/22px Arial, Helvetica, sans-serif
+    height 20px
+    width 60px
+
+input[type="checkbox"] + span:before
+input[type="radio"] + span:before
+    height 20px
+    width 40%
+
+input[type="checkbox"] + span:after
+input[type="radio"] + span:after
+    height 22px
+
+input[type="checkbox"]:checked + span:after
+input[type="radio"]:checked + span:after
+    height 25px
+
 // MENU
 // -------------------------------------------------------------------------
 
 // Title on admin pages.
 #menu-admintitle
     color lightTextColor !important
+    font-family OpenSansBold
 
 // TABS
 // -------------------------------------------------------------------------
@@ -52,3 +75,10 @@ body
 .admin-tab
     margin-top headerHeight
     padding 20px
+
+// TABS: USERS
+// -------------------------------------------------------------------------
+
+#user-grid
+    .roles, .actions
+        display inline-block

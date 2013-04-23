@@ -24,7 +24,7 @@ class SystemApp.AdminView extends SystemApp.BaseView
     setDom: =>
         @setElement $ "#wrapper"
         @$menu = $ "#menu"
-        @$allMenus = @$menu.find ".menu-item"
+        @$allMenus = @$menu.find "a.menu-item"
 
     # Bind events to DOM.
     setEvents: =>

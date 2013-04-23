@@ -5,7 +5,7 @@ html
     head
         title #{title} - Admin
         script(src="/socket.io/socket.io.js")
-        link(type="image/x-icon", href="images/favico.png", rel="icon")
+        link(type="image/x-icon", href="images/favico-admin.png", rel="icon")
         meta(name="apple-mobile-web-app-capable", content="yes")
     body
         #wrapper
@@ -17,5 +17,37 @@ html
                     a#menu-clientsettings.menu-item(href="#clientsettings",title="Edit client (browser) configuration and settings.") Client Settings
                     a#menu-users.menu-item(href="#users",title="User and roles management.") Users and Roles
 
-            #tab-dashboard.admin-tab
-                label test
+            #tab-users.admin-tab
+                h2 User management
+                #user-grid
+                    div.row
+                        input.username(type="text")
+                        input.password(type="text")
+                        .roles
+                            label Admin
+                            label.toggle(for="role-admin",title="When on, audit data will get bound to the map automatically every X seconds")
+                                input.role-admin(type="checkbox",name="role-admin",checked="checked")
+                                span
+                            label Create Maps
+                            label.toggle(for="role-mapcreate",title="When on, audit data will get bound to the map automatically every X seconds")
+                                input.role-mapcreate(type="checkbox",name="role-mapcreate",checked="checked")
+                                span
+                            label Edit Maps
+                            label.toggle(for="role-mapedit",title="When on, audit data will get bound to the map automatically every X seconds")
+                                input.role-mapedit(type="checkbox",name="role-mapedit",checked="checked")
+                                span
+                            label Manage Entities
+                            label.toggle(for="role-entities",title="When on, audit data will get bound to the map automatically every X seconds")
+                                input.role-mapedit(type="checkbox",name="role-entities",checked="checked")
+                                span
+                            label Manage Audit Data
+                            label.toggle(for="role-auditdata",title="When on, audit data will get bound to the map automatically every X seconds")
+                                input.role-mapedit(type="checkbox",name="role-auditdata",checked="checked")
+                                span
+                            label Manage Audit Events
+                            label.toggle(for="role-auditevents",title="When on, audit data will get bound to the map automatically every X seconds")
+                                input.role-mapedit(type="checkbox",name="role-auditevents",checked="checked")
+                                span
+                        .actions
+                            img(src="../../images/but-edit.png")
+                            img(src="../../images/but-delete.png")

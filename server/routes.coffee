@@ -27,6 +27,7 @@ module.exports = (app) ->
 
     # The main index page.
     getAdmin = (req, res) ->
+        os = require "os"
         host = req.headers["host"]
 
         # Check the last modified date.
@@ -34,9 +35,12 @@ module.exports = (app) ->
 
         options =
             title: settings.General.appTitle,
-            port: settings.Web.port,
             version: packageJson.version,
             lastModified: lastModified,
+            serverPort: settings.Web.port,
+            serverOS: os.type() + " " + os.platform(),
+            serverCpuLoad: os.loadavg()[0],
+            serverRamLoad: Math.round(os.freemem() / ostotalmen() * 100),
             roles: {admin: 1, mapcreate: 1, mapedit: 1, entities: 1, auditdata: 1, auditevents: 1, settings: 1}
 
         res.render "admin", options
@@ -47,6 +51,8 @@ module.exports = (app) ->
 
     # The main index page.
     getIndex = (req, res) ->
+        os = require "os"
+        moment = require "moment"
         host = req.headers["host"]
 
         # Check the last modified date.
@@ -54,9 +60,12 @@ module.exports = (app) ->
 
         options =
             title: settings.General.appTitle,
-            port: settings.Web.port,
             version: packageJson.version,
-            lastModified: lastModified,
+            lastModified: moment(lastModified).format("YYYY-MM-DD hh:mm"),
+            serverPort: settings.Web.port,
+            serverOS: os.type() + " " + os.release(),
+            serverCpuLoad: os.loadavg()[0].toFixed(2),
+            serverRamLoad: (os.freemem() / os.totalmem() * 100).toFixed(2),
             roles: {admin: 1, mapcreate: 1, mapedit: 1, entities: 1, auditdata: 1, auditevents: 1, settings: 1}
 
         res.render "index", options
