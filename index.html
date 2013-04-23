@@ -2,268 +2,271 @@
 <html>
 <head>
     <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="chrome=1">
     <title>System App by Zalando</title>
     <link rel="stylesheet" href="stylesheets/styles.css">
     <link rel="stylesheet" href="stylesheets/pygment_trac.css">
+    <link type="image/x-icon" href="images/favico.png" rel="icon">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
     <script src="javascripts/respond.js"></script>
-    <!--[if lt IE 9]>
-    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
-    <![endif]-->
-    <!--[if lt IE 8]>
-    <link rel="stylesheet" href="stylesheets/ie.css">
-    <![endif]-->
     <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
 </head>
 <body>
-<div id="header">
-    <nav>
-        <li class="fork"><a href="https://github.com/zalando/system">Project Page</a></li>
-        <li class="downloads"><a href="https://github.com/zalando/system/zipball/master">ZIP</a></li>
-        <li class="downloads"><a href="https://github.com/zalando/system/tarball/master">TAR</a></li>
-        <li class="title">DOWNLOAD THE SYSTEM APP</li>
-    </nav>
-</div>
-<!-- end header -->
+    <div id="wrapper">
+        <div id="title">
+            <img src="images/beta.png" />
+            <h1>System App by Zalando</h1>
+            <p>A sleek and smart IT mapping and monitoring tool by Zalando.</p>
+        </div>
+        <div id="topfacts">
+            <div>
+                <h3>Visualize</h3>
+                <p>Create diagrams and maps of your infrastructure. Easy with drag'n drop objects,
+                   powerful with scriptable maps.</p>
+            </div>
+            <div>
+                <h3>Integrate</h3>
+                <p>Import your existing entities and data via JSON,
+                and System App will keep them in sync with your maps automatically.</p>
+            </div>
+            <div>
+                <h3>Monitor</h3>
+                <p>Bind external JSON audit data to your maps and trigger events or
+                   visual alerts depending on the monitored values.</p>
+            </div>
+        </div>
+        <div id="contents">
+            <h2>Installation</h2>
 
-<div class="wrapper">
+            <p>Felling lazy? Simply run the <code>./install.sh</code> script and it will try to do all the hard work for you.
+               It should work on Linux and OS X environments.</p>
 
-<section>
-<div id="title">
-    <h1>System App</h1>
-    <p>A sleek and smart infrastructure mapping and monitoring tool by Zalando.</p>
-</div>
+            <ol>
+                <li><p>Download the <code>./install.sh</code> and save it on the directory where you want to install the <em>System
+                                                                                                                             App</em>.
+                    <a href="http://github.com/zalando/system/raw/master/install.sh">http://github.com/zalando/system/raw/master/install.sh</a>
+                </p></li>
+                <li><p>Make it executable.
+                    <code>$ chmod +x install.sh</code></p></li>
+                <li><p>Run it as root and hope for the best :-)
+                    <code>$ sudo ./install.sh</code></p></li>
+            </ol>
+            <p>The script should tell you what's missing and ask if you want to install the missing dependencies.
+               As easy as just choosing "Yes" for everything.</p>
 
-<h2>Installation</h2>
+            <h3>Installing manually</h3>
 
-<p>Felling lazy? Simply run the <code>./install.sh</code> script and it will try to do all the hard work for you.
-    It should work on Linux and OS X environments.</p>
+            <p>If the install script doesn't work or if you prefer to do stuff manually, please make sure
+               you have installed on your system.</p>
 
-<ol>
-    <li><p>Download the <code>./install.sh</code> and save it on the directory where you want to install the <em>System
-        App</em>.
-        <a href="http://github.com/zalando/system/raw/master/install.sh">http://github.com/zalando/system/raw/master/install.sh</a>
-    </p></li>
-    <li><p>Make it executable.
-        <code>$ chmod +x install.sh</code></p></li>
-    <li><p>Run it as root and hope for the best :-)
-        <code>$ sudo ./install.sh</code></p></li>
-</ol>
-<p>The script should tell you what's missing and ask if you want to install the missing dependencies.
-    As easy as just choosing "Yes" for everything.</p>
+            <ul>
+                <li>Node.js (<a href="http://nodejs.org">http://nodejs.org</a>)</li>
+                <li>MongoDB (<a href="http://mongodb.org">http://mongodb.org</a>)</li>
+                <li>ImageMagick (<a href="http://www.imagemagick.org">http://www.imagemagick.org</a>)</li>
+            </ul>
+            <p>To install Node.js on Linux, please check:
+                <a href="http://github.com/joyent/node/wiki/Installing-Node.js-via-package-manager">http://github.com/joyent/node/wiki/Installing-Node.js-via-package-manager</a>
+            </p>
 
-<h3>Installing manually</h3>
+            <p>MongoDB can be downloaded from:
+                <a href="http://www.mongodb.org/downloads">http://www.mongodb.org/downloads</a></p>
 
-<p>If the install script doesn't work or if you prefer to do stuff manually, please make sure
-    you have installed on your system.</p>
+            <p>ImageMagick is necessary to generate map thumbnails. The app will actually run without it,
+               but then you won't have a "preview" of each map on the start screen.
+               To download ImageMagick go to:
+                <a href="http://www.imagemagick.org/script/binary-releases.php">http://www.imagemagick.org/script/binary-releases.php</a>
+            </p>
 
-<ul>
-    <li>Node.js (<a href="http://nodejs.org">http://nodejs.org</a>)</li>
-    <li>MongoDB (<a href="http://mongodb.org">http://mongodb.org</a>)</li>
-    <li>ImageMagick (<a href="http://www.imagemagick.org">http://www.imagemagick.org</a>)</li>
-</ul>
-<p>To install Node.js on Linux, please check:
-    <a href="http://github.com/joyent/node/wiki/Installing-Node.js-via-package-manager">http://github.com/joyent/node/wiki/Installing-Node.js-via-package-manager</a>
-</p>
+            <h3>Required Node.js modules</h3>
 
-<p>MongoDB can be downloaded from:
-    <a href="http://www.mongodb.org/downloads">http://www.mongodb.org/downloads</a></p>
+            <p>The easiest way to get the necessary modules is by running NPM install:</p>
 
-<p>ImageMagick is necessary to generate map thumbnails. The app will actually run without it,
-    but then you won't have a "preview" of each map on the start screen.
-    To download ImageMagick go to:
-    <a href="http://www.imagemagick.org/script/binary-releases.php">http://www.imagemagick.org/script/binary-releases.php</a>
-</p>
+            <p><code>$ npm install</code></p>
 
-<p>If you want to keep the documentation up-to-date, you'll need Zocco:
-    <a href="http://github.com/zalando/zocco">http://github.com/zalando/zocco</a></p>
+            <p>But in case you want to install any of these modules globally, use:</p>
 
-<h3>Required Node.js modules</h3>
+            <p><code>$ npm install -g module_name</code></p>
 
-<p>The easiest way to get the necessary modules is by running NPM install:</p>
+            <p>It's up to you to decide what should be installed globally and what should be local.
+               Any combination should work fine. We prefer going local.</p>
 
-<p><code>$ npm install</code></p>
+            <h3>Avoiding MongoDB installation</h3>
 
-<p>But in case you want to install any of these modules globally, use:</p>
+            <p>If you don't want to install and configure MongoDB locally, we suggest creating a free online
+               database at MongoLab (<a href="http://mongolab.com">http://mongolab.com</a>). The connection string will be
+               something like:</p>
 
-<p><code>$ npm install -g module_name</code></p>
+            <p><code>mongodb://your_user:your_password@ds033187.mongolab.com:33187/your_database?auto_reconnect</code></p>
 
-<p>It's up to you to decide what should be installed globally and what should be local.
-    Any combination should work fine. We prefer going local.</p>
+            <h2>Configuring the server</h2>
 
-<h3>Avoiding MongoDB installation</h3>
+            <p>All server configuration settings are located on the file <code>server/settings.coffee</code>.
+               The following <code>System.Settings</code> keys will certainly need your attention:</p>
 
-<p>If you don't want to install and configure MongoDB locally, we suggest creating a free online
-    database at MongoLab (<a href="http://mongolab.com">http://mongolab.com</a>). The connection string will be
-    something like:</p>
+            <h5>Settings.General</h5>
 
-<p><code>mongodb://your_user:your_password@ds033187.mongolab.com:33187/your_database?auto_reconnect</code></p>
+            <p>Change the <code>appTitle</code> and set your desired title. Something like "MyCompany System".
+               Make sure the <code>debug</code> is set to false before you deploy the app to production!</p>
 
-<h2>Configuring the server</h2>
+            <h5>Settings.Database.connString</h5>
 
-<p>All server configuration settings are located on the file <code>server/settings.coffee</code>.
-    The following <code>System.Settings</code> keys will certainly need your attention:</p>
+            <p>The MongoDB connection string. If you have MongoDB installed locally with no user and password,
+               the default should work fine.</p>
 
-<h5>Settings.General</h5>
+            <h5>Settings.Paths (all)</h5>
 
-<p>Change the <code>appTitle</code> and set your desired title. Something like "MyCompany System".
-    Make sure the <code>debug</code> is set to false before you deploy the app to production!</p>
+            <p>The default paths should work unless you have very specific restrictions on your environment.
+               Edit these values in case you need to save or fetch data from different folders,
+               for example saving the app logs on a global "/logs" location.</p>
 
-<h5>Settings.Database.connString</h5>
+            <h5>Settings.Web.defaultPort</h5>
 
-<p>The MongoDB connection string. If you have MongoDB installed locally with no user and password,
-    the default should work fine.</p>
+            <p>Port used by Node.js. The default 3003 should work fine if you have no firewall rules.</p>
 
-<h5>Settings.Paths (all)</h5>
+            <h2>Starting the server</h2>
 
-<p>The default paths should work unless you have very specific restrictions on your environment.
-    Edit these values in case you need to save or fetch data from different folders,
-    for example saving the app logs on a global "/logs" location.</p>
+            <p>To start the <em>System App</em>:</p>
 
-<h5>Settings.Web.defaultPort</h5>
+            <p><code>$ coffee server.coffee</code></p>
 
-<p>Port used by Node.js. The default 3003 should work fine if you have no firewall rules.</p>
+            <p>This will start Node.js under the port 3003 (or whatever port you have set on <code>Settings.Web.defaultPort</code>).
+               In case you don't have installed the module <em>coffee-script</em> globally, you'll have to run it from within the
+               node_modules directory, like this:</p>
 
-<h2>Starting the server</h2>
+            <p><code>$ ./node_modules/coffee-script/bin/coffee server.coffee</code></p>
 
-<p>To start the <em>System App</em>:</p>
+            <p>If it throws an error or if you can't access the app on the browser then you might have something wrong
+               on your <code>server/settings.coffee</code> file, or a firewall issue.</p>
 
-<p><code>$ coffee server.coffee</code></p>
+            <h3>Production vs. Debugging</h3>
 
-<p>This will start Node.js under the port 3003 (or whatever port you have set on <code>Settings.Web.defaultPort</code>).
-    In case you don't have installed the module <em>coffee-script</em> globally, you'll have to run it from within the
-    node_modules directory, like this:</p>
+            <p>By default Node.js will run in "Debug mode". If you're deploying and running on production,
+               you must set the <code>NODE_ENV</code> to "production" to avoid having all the debugging statements
+               logged to the console. Putting it simple:</p>
 
-<p><code>$ ./node_modules/coffee-script/bin/coffee server.coffee</code></p>
+            <p><code>$ NODE_ENV=production coffee server.coffee</code></p>
 
-<p>If it throws an error or if you can't access the app on the browser then you might have something wrong
-    on your <code>server/settings.coffee</code> file, or a firewall issue.</p>
+            <p>Please note that the <em>System App</em> will enter debug mode automatically when it runs under
+               the <code>localhost</code> hostname. In debug mode, most actions and procedures will be logged to the
+               console, both on the server and the client side.</p>
 
-<h3>Production vs. Debugging</h3>
+            <h3>Running the server "forever"</h3>
 
-<p>By default Node.js will run in "Debug mode". If you're deploying and running on production,
-    you must set the <code>NODE_ENV</code> to "production" to avoid having all the debugging statements
-    logged to the console. Putting it simple:</p>
+            <p>If you want the server to run like a service (so it restarts itself in case of crash / error / termination)
+               we recommend using the node module <em>forever</em>. You can install it using NPM globally like this:</p>
 
-<p><code>$ NODE_ENV=production coffee server.coffee</code></p>
+            <p><code>$ sudo npm install -g forever</code></p>
 
-<p>Please note that the <em>System App</em> will enter debug mode automatically when it runs under
-    the <code>localhost</code> hostname. In debug mode, most actions and procedures will be logged to the
-    console, both on the server and the client side.</p>
+            <p>To start <em>System</em> using <em>forever</em>, run it under the app root folder:</p>
 
-<h3>Running the server "forever"</h3>
+            <p><code>$ forever start -c coffee server.coffee</code></p>
 
-<p>If you want the server to run like a service (so it restarts itself in case of crash / error / termination)
-    we recommend using the node module <em>forever</em>. You can install it using NPM globally like this:</p>
+            <h2>Code implementation</h2>
 
-<p><code>$ sudo npm install -g forever</code></p>
+            <p>To make things easier to understand:</p>
 
-<p>To start <em>System</em> using <em>forever</em>, run it under the app root folder:</p>
+            <ul>
+                <li>All customizable settings are available on the <em>System.Settings</em> object, at the
+                    <code>/assets/js/settings.coffee</code>
+                    file.
+                </li>
+                <li>Non-HTML messages are set under the <em>System.Messages</em> object, file
+                    <code>/assets/js/messagess.coffee</code>.
+                </li>
+                <li>URL routes are set under a <em>System.Routes</em> object, file <code>/assets/js/routes.coffee</code>.</li>
+            </ul>
+            <p><em>System</em> uses the latest version of <a href="http://http://backbonejs.org/">Backbone</a> to implement models,
+                               collections and views.
+                               The maps are implemented using SVG and handled mainly by
+                <a href="http://raphaeljs.com/">Raphaël</a>. Other required
+                               libraries are
+                <a href="http://jquery.com/">jQuery</a>, <a href="http://underscorejs.org/">Underscore</a>,
+                <a href="http://goessner.net/articles/JsonPath/">JSONPath</a>.</p>
 
-<p><code>$ forever start -c coffee server.coffee</code></p>
+            <p>Having experience with the aforementioned libraries is not strictly necessary, but highly desirable in
+               case you want to customize the <em>System App</em>.</p>
 
-<h2>Code implementation</h2>
+            <h3>Models and collections</h3>
 
-<p>To make things easier to understand:</p>
+            <p>Models won't inherit directly from Backbone.Model. Instead we're using our own
+                <a href="base.html">System.BaseModel</a>,
+               which extends Backbone's model with special methods like <code>save</code>, <code>generateId</code>, etc. Same thing
+               for collections, which should inherit from <a href="base.html">System.BaseCollection</a>.</p>
 
-<ul>
-    <li>All customizable settings are available on the <em>System.Settings</em> object, at the <code>/assets/js/settings.coffee</code>
-        file.
-    </li>
-    <li>Non-HTML messages are set under the <em>System.Messages</em> object, file
-        <code>/assets/js/messagess.coffee</code>.
-    </li>
-    <li>URL routes are set under a <em>System.Routes</em> object, file <code>/assets/js/routes.coffee</code>.</li>
-</ul>
-<p><em>System</em> uses the latest version of <a href="http://http://backbonejs.org/">Backbone</a> to implement models,
-    collections and views.
-    The maps are implemented using SVG and handled mainly by <a href="http://raphaeljs.com/">Raphaël</a>. Other required
-    libraries are
-    <a href="http://jquery.com/">jQuery</a>, <a href="http://underscorejs.org/">Underscore</a>,
-    <a href="http://goessner.net/articles/JsonPath/">JSONPath</a>.</p>
+            <p>All models are located under the folder <code>/assets/js/models</code>, and each model has its own specific
+               collection
+               implemented at the end of the same file.</p>
 
-<p>Having experience with the aforementioned libraries is not strictly necessary, but highly desirable in
-    case you want to customize the <em>System App</em>.</p>
+            <h3>Views</h3>
 
-<h3>Models and collections</h3>
+            <p>The views are composed of:</p>
 
-<p>Models won't inherit directly from Backbone.Model. Instead we're using our own
-    <a href="base.html">System.BaseModel</a>,
-    which extends Backbone's model with special methods like <code>save</code>, <code>generateId</code>, etc. Same thing
-    for collections, which should inherit from <a href="base.html">System.BaseCollection</a>.</p>
+            <ul>
+                <li>HTML template using <a href="http://jade-lang.com/">Jade</a>, folder <code>/views</code>.</li>
+                <li>CSS styles using <a href="http://learnboost.github.com/stylus/">Stylus</a>, folder <code>/assets/css</code>.
+                </li>
+                <li>View controllers implemented with CoffeeScript, folder <code>/assets/js/view</code>.</li>
+            </ul>
+            <p>Just like models and collections, the app has its own <a href="baseView.html">System.BaseView</a>
+               which extends Backbone's view with extra helpers and utilities.</p>
 
-<p>All models are located under the folder <code>/assets/js/models</code>, and each model has its own specific
-    collection
-    implemented at the end of the same file.</p>
+            <h3>Database</h3>
 
-<h3>Views</h3>
+            <p><em>System</em> uses MongoDB to store its data, having the following collections:</p>
 
-<p>The views are composed of:</p>
+            <ul>
+                <li>
+                    <em>map</em> - stores all maps (Map model) including their referenced shapes and links.
+                </li>
+                <li>
+                    <em>entity</em> - store entity schemas (EntityDefinition model) and data (EntityObject model).
+                </li>
+                <li>
+                    <em>auditdata</em> - store all audit data definitions and data (AuditData model).
+                </li>
+                <li>
+                    <em>auditevent</em> - store all audit events and alerts (AuditEvent model).
+                </li>
+                <li>
+                    <em>variable</em> - stores custom JS variables (Variable model) created by users.
+                </li>
+                <li>
+                    <em>log</em> - logs all updates, inserts and deletes on the collections above.
+                </li>
+            </ul>
+            <p>The "log" collection is implemented for increased security and damage control. All updates, inserts
+               and deletions are logged there, and these records stay saved for 2 hours by default - you can
+               change this setting on the <a href="server/settings.html">Server Settings</a> file. As the logs
+               are stored in a separate collection and saved in async mode, performance stays roughly the same.</p>
 
-<ul>
-    <li>HTML template using <a href="http://jade-lang.com/">Jade</a>, folder <code>/views</code>.</li>
-    <li>CSS styles using <a href="http://learnboost.github.com/stylus/">Stylus</a>, folder <code>/assets/css</code>.
-    </li>
-    <li>View controllers implemented with CoffeeScript, folder <code>/assets/js/view</code>.</li>
-</ul>
-<p>Just like models and collections, the app has its own <a href="baseView.html">System.BaseView</a>
-    which extends Backbone's view with extra helpers and utilities.</p>
+            <h2>Common questions and answers</h2>
 
-<h3>Database</h3>
+            <h4>Which browsers are supported?</h4>
 
-<p><em>System</em> uses MongoDB to store its data, having the following collections:</p>
+            <p>Due to its pure-and-sleek-javascript-web-app nature, we recommend <em>Google Chrome</em> and in fact this is
+               the only browser that we use while developing and testing <em>System</em>. But as the app follows all major
+               web standards (HTML5, CSS3, SVG etc...), FireFox and Opera <em>should</em> work fine as well. If you want
+               to use IE, well... good luck with that.</p>
 
-<ul>
-    <li>
-        <em>map</em> - stores all maps (Map model) including their referenced shapes and links.
-    </li>
-    <li>
-        <em>entity</em> - store entity schemas (EntityDefinition model) and data (EntityObject model).
-    </li>
-    <li>
-        <em>auditdata</em> - store all audit data definitions and data (AuditData model).
-    </li>
-    <li>
-        <em>auditevent</em> - store all audit events and alerts (AuditEvent model).
-    </li>
-    <li>
-        <em>variable</em> - stores custom JS variables (Variable model) created by users.
-    </li>
-    <li>
-        <em>log</em> - logs all updates, inserts and deletes on the collections above.
-    </li>
-</ul>
-<p>The "log" collection is implemented for increased security and damage control. All updates, inserts
-    and deletions are logged there, and these records stay saved for 2 hours by default - you can
-    change this setting on the <a href="server/settings.html">Server Settings</a> file. As the logs
-    are stored in a separate collection and saved in async mode, performance stays roughly the same.</p>
+            <h4>Missing shapes to the map, shadows on incorrect placements, links not being saved... something's wrong!</h4>
 
-<h2>Common questions and answers</h2>
+            <p>The quick-and-dirty answer is: reload the page. The long answer: <em>System</em> depends on third-party
+               libraries and getting these libraries to work in sync together proved to be more challenging than
+               expected. We are working <em>hard</em> to pinpoint all these failures and get rid of them with our own
+               patches. But till we get there, if something weird happens refreshing the page will likely solve the problem.</p>
 
-<h4>Which browsers are supported?</h4>
+            <h4>Sometimes there's an asterisk * next to the shapes title. Why?</h4>
 
-<p>Due to its pure-and-sleek-javascript-web-app nature, we recommend <em>Google Chrome</em> and in fact this is
-    the only browser that we use while developing and testing <em>System</em>. But as the app follows all major
-    web standards (HTML5, CSS3, SVG etc...), FireFox and Opera <em>should</em> work fine as well. If you want
-    to use IE, well... good luck with that.</p>
+            <p>When you change the "Shape's title" dropdown (on the right bar &gt; Map View), it will bind the selected
+               value to the all shape titles. But sometimes the shape might not have that specific property,
+               so in this case the default property will get bound and that asterisk will be shown.</p>
 
-<h4>Missing shapes to the map, shadows on incorrect placements, links not being saved... something's wrong!</h4>
+            <h2>Need help?</h2>
 
-<p>The quick-and-dirty answer is: reload the page. The long answer: <em>System</em> depends on third-party
-    libraries and getting these libraries to work in sync together proved to be more challenging than
-    expected. We are working <em>hard</em> to pinpoint all these failures and get rid of them with our own
-    patches. But till we get there, if something weird happens refreshing the page will likely solve the problem.</p>
+            <p>Check the readme again! And then if you REALLY still need help please get in touch with Igor:
+                <a href="mailto:igor.ramadas@zalando.de">igor.ramadas@zalando.de</a></p>
 
-<h4>Sometimes there's an asterisk * next to the shapes title. Why?</h4>
-
-<p>When you change the "Shape's title" dropdown (on the right bar &gt; Map View), it will bind the selected
-    value to the all shape titles. But sometimes the shape might not have that specific property,
-    so in this case the default property will get bound and that asterisk will be shown.</p>
-
-<h2>Need help?</h2>
-
-<p>Check the readme again! And then if you REALLY still need help please get in touch with Igor:
-    <a href="mailto:igor.ramadas@zalando.de">igor.ramadas@zalando.de</a></p>
-
-<p><em>Have fun!</em></p>
+            <p><em>Have fun!</em></p>
+        </div>
+    </div>
+</body>
+</html>
