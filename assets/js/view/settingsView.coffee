@@ -8,13 +8,13 @@ class SystemApp.SettingsView extends SystemApp.OverlayView
     $chkAutoRefresh: null           # the autorefresh checkbox
     $chkDebug: null                 # the debug checkbox
     $debugNote: null                # the debug performance note
+    $modifierDelete: null           # the "Delete" modifier keys div
+    $modifierMultiple: null         # the "Multiple" modifier keys div
+    $modifierToBack: null           # the "To Back" modifier keys div
     $localStorageDiv: null          # the local storage contents wrapper
     $localStorageClearBut: null     # the "Clear local storage" button
     $serverErrorsDiv: null          # the server errors contents wrapper
     $serverErrorsClearBut: null     # the "Clear server errors" button
-    $modifierDelete: null           # the "Delete" modifier keys div
-    $modifierMultiple: null         # the "Multiple" modifier keys div
-    $modifierToBack: null           # the "To Back" modifier keys div
 
 
     # INIT AND DISPOSE
@@ -37,16 +37,16 @@ class SystemApp.SettingsView extends SystemApp.OverlayView
         @$chkFullscreen = $ "#settings-chk-fullscreen"
         @$chkAutoRefresh = $ "#settings-chk-autorefresh"
         @$chkDebug = $ "#settings-chk-debug"
-        @$debugNote = @$el.find ".general span.error"
+        @$debugNote = @$el.find ".options div.error"
+
+        @$modifierDelete = $ "#settings-modifierkeys-delete"
+        @$modifierMultiple = $ "#settings-modifierkeys-multiple"
+        @$modifierToBack = $ "#settings-modifierkeys-toback"
 
         @$localStorageDiv = $ "#settings-localstorage-contents"
         @$localStorageClearBut = $ "#settings-localstorage-clear-but"
         @$serverErrorsDiv = $ "#settings-servererrors-contents"
         @$serverErrorsClearBut = $ "#settings-servererrors-clear-but"
-
-        @$modifierDelete = $ "#settings-modifierkeys-delete"
-        @$modifierMultiple = $ "#settings-modifierkeys-multiple"
-        @$modifierToBack = $ "#settings-modifierkeys-toback"
 
         @$chkFullscreen.prop "checked", SystemApp.Data.userSettings.mapFullscreen()
         @$chkAutoRefresh.prop "checked", SystemApp.Data.userSettings.mapAutoRefresh()
@@ -56,46 +56,37 @@ class SystemApp.SettingsView extends SystemApp.OverlayView
 
     # Bind events to the DOM.
     setEvents: =>
+        @$chkFullscreen.click @toggleMapFullscreen
+        @$chkAutoRefresh.click @toggleMapAutoRefresh
+        @$chkDebug.click @toggleDebug
 
         @$localStorageClearBut.click @clearLocalStorage
         @$serverErrorsClearBut.click @clearServerErrors
 
-        @$el.find(".modifiers").click @modifierClick
+        @$el.find(".modifiers .group span").click @modifierClick
 
 
-    # LOCAL STORAGE
+    # OPTIONS
     # ----------------------------------------------------------------------
 
-    # Bind the local storage contents to the `@$localStorageDiv`.
-    bindLocalStorage: =>
-        @$localStorageDiv.html JSON.stringify(JSON.parse(localStorage.localData), null, 4)
+    # When user check/uncheck the "start maximized" map option.
+    toggleMapFullscreen: (e) =>
+        SystemApp.Data.userSettings.mapFullscreen @$chkFullscreen.prop "checked"
 
-    # Clear the local storage. Ask the user if he really wants to proceed, first.
-    clearLocalStorage: =>
-        $.localData.flush()
-        @$localStorageDiv.html "CLEARED!"
+    # When user check/uncheck the "auto refresh data" map option.
+    toggleMapAutoRefresh: (e) =>
+        SystemApp.Data.userSettings.mapAutoRefresh @$chkAutoRefresh.prop "checked"
 
+    # When user check/uncheck the "enable debug mode" option.
+    toggleDebug: (e) =>
+        value = @$chkDebug.prop "checked"
+        SystemApp.toggleDebug value
 
-    # SERVER ERRORS
-    # ----------------------------------------------------------------------
-
-    # Bind the server errors array to the `@$serverErrorsDiv`.
-    bindServerErrors: =>
-        result = ""
-        errorList = SystemApp.Sockets.serverErrors
-
-        _.each errorList, (err) ->
-            time = err.timestamp.toTimeString()
-            sep = time.indexOf "("
-            time = time.substring(0, sep - 1) if sep > 0
-            result += "#{err.title} #{err.message} at #{time}<br />"
-
-        @$serverErrorsDiv.html result
-
-    # Clear the server errors list.
-    clearServerErrors: =>
-        SystemApp.alertView.serverErrors = []
-        @$serverErrorsDiv.html "CLEARED!"
+        # Hide or show debug alert based on current debug status.
+        if value
+            @$debugNote.show()
+        else
+            @$debugNote.hide()
 
 
     # MODIFIER KEYS
@@ -143,6 +134,42 @@ class SystemApp.SettingsView extends SystemApp.OverlayView
 
         # Set the new modifier value and save the model ONLY locally.
         SystemApp.Data.userSettings.set "modifier#{modifierName}", modifierValue
+
+
+    # LOCAL STORAGE
+    # ----------------------------------------------------------------------
+
+    # Bind the local storage contents to the `@$localStorageDiv`.
+    bindLocalStorage: =>
+        @$localStorageDiv.html JSON.stringify(JSON.parse(localStorage.localData), null, 4)
+
+    # Clear the local storage. Ask the user if he really wants to proceed, first.
+    clearLocalStorage: =>
+        $.localData.flush()
+        @$localStorageDiv.html "CLEARED!"
+        SystemApp.Data.userSettings.save()
+
+
+    # SERVER ERRORS
+    # ----------------------------------------------------------------------
+
+    # Bind the server errors array to the `@$serverErrorsDiv`.
+    bindServerErrors: =>
+        result = ""
+        errorList = SystemApp.Sockets.serverErrors
+
+        _.each errorList, (err) ->
+            time = err.timestamp.toTimeString()
+            sep = time.indexOf "("
+            time = time.substring(0, sep - 1) if sep > 0
+            result += "#{err.title} #{err.message} at #{time}<br />"
+
+        @$serverErrorsDiv.html result
+
+    # Clear the server errors list.
+    clearServerErrors: =>
+        SystemApp.alertView.serverErrors = []
+        @$serverErrorsDiv.html "CLEARED!"
 
 
     # SHOW AND HIDE

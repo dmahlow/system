@@ -8,118 +8,127 @@
 
         // Tabs shown on top of the overlay: Startup, Local Storage, Server Logs and Keyboard.
         div.tab-headers
-            label(data-tab=".general",title="App general options.").active General options
+            label(data-tab=".options",title="App general options.").active App options
             label(data-tab=".localstorage",title="View and manage data on the browser's local storage.") Local storage
-            label(data-tab=".keyboard",title="View and manage keyboard shortcuts and modifier keys.") Keyboard
             label(data-tab=".serverlogs",title="List and view detailed server errors and logs.") Server logs
             label(data-tab=".about",title="About #{title}") About
 
         // Main app options.
-        div.tab.general
-            h4 Startup
-            div
-                span.control-label Start the app maximized
-                label.toggle(for="settings-chk-fullscreen",title="If ON, the app will start maximized - header, menu, map controls and footer will be hidden.")
-                    input#settings-chk-fullscreen(type="checkbox", name="settings-chk-fullscreen")
-                    span
-            div
-                span.control-label Auto refresh map labels
-                label.toggle(for="settings-chk-autorefresh",title="If ON, timers to refresh Audit Data and Map labels will start automatically when you load the app.")
-                    input#settings-chk-autorefresh(type="checkbox", name="settings-chk-autorefresh")
-                    span
-            div
-                span.control-label Enable debugging
-                label.toggle(for="settings-chk-debug",title="If ON, the app will log most actions and events to the console. Use ONLY if necessary!")
-                    input#settings-chk-debug(type="checkbox", name="settings-chk-debug")
-                    span
-                span.small.error Attention! Performance might be affected while running in debug mode. Use only if necessary.
+        div.tab.options
+            .left-col
+                h4 Troubleshooting
+                div
+                    span.control-label Slow device mode
+                    label.toggle(for="settings-chk-slowdevice",title="If ON, some UI elements and automated features will be scaled down so the app has a better performance on your device.")
+                        input#settings-chk-slowdevice(type="checkbox", name="settings-chk-slowdevice")
+                        span
+                div
+                    span.control-label Enable debug mode
+                    label.toggle(for="settings-chk-debug",title="If ON, the app will log most actions and events to the console. Use ONLY if necessary!")
+                        input#settings-chk-debug(type="checkbox", name="settings-chk-debug")
+                        span
+                    div.small.error.
+                        Attention! Performance might be affected while running the app in debug mode.<br />
+                        Use only if strictly necessary.
+
+            .right-col
+                h4 Map options
+                div
+                    span.control-label Start maximized
+                    label.toggle(for="settings-chk-fullscreen",title="If ON, the app will start maximized - header, menu, map controls and footer will be hidden.")
+                        input#settings-chk-fullscreen(type="checkbox", name="settings-chk-fullscreen")
+                        span
+                div
+                    span.control-label Auto refresh data
+                    label.toggle(for="settings-chk-autorefresh",title="If ON, timers to refresh Audit Data and Map labels will start automatically when you load the app.")
+                        input#settings-chk-autorefresh(type="checkbox", name="settings-chk-autorefresh")
+                        span
+                h4.topmargin Keyboard and shortcuts
+                .modifiers
+                    #settings-modifierkeys-delete(data-modifier="Delete")
+                        label Delete elements
+                        .group
+                            span.ctrl Ctrl
+                            span.shift Shift
+                            span.alt Alt
+                        strong +
+                        .group
+                            span.leftclick Left click
+                            span.rightclick Right click
+                    #settings-modifierkeys-multiple(data-modifier="Multiple")
+                        label Select multiple
+                        .group
+                            span.ctrl Ctrl
+                            span.shift Shift
+                            span.alt Alt
+                        strong +
+                        .group
+                            span.leftclick Left click
+                            span.rightclick Right click
+                    #settings-modifierkeys-toback(data-modifier="ToBack")
+                        label Send to back
+                        .group
+                            span.ctrl Ctrl
+                            span.shift Shift
+                            span.alt Alt
+                        strong +
+                        .group
+                            span.leftclick Left click
+                            span.rightclick Right click
+                    div
+                        label Save everything
+                        span#settings-short-ctrl-save.active Ctrl
+                        span#settings-short-shift-save Shift
+                        span#settings-short-alt-save Alt
+                        strong +
+                        span.active S
+                    div
+                        label Toggle edit mode
+                        span#settings-short-ctrl-save.active Ctrl
+                        span#settings-short-shift-save Shift
+                        span#settings-short-alt-save Alt
+                        strong +
+                        span.active E
+                    div
+                        label Data binding
+                        span#settings-short-ctrl-autocomplete Ctrl
+                        span#settings-short-shift-autocomplete Shift
+                        span#settings-short-alt-autocomplete Alt
+                        strong +
+                        span.active $
+                button#settings-modifiers-reset-but.undo Reset to default
 
         // Local storage tab to see and manage the local storage contents.
         div.tab.localstorage(style="display:none")
-            h4 Local storage
-            #settings-localstorage-contents
-            button#settings-localstorage-clear-but Clear local storage
-
-        // Keyboard tab to edit keyboard preferences and manage shortcuts.
-        div.tab.keyboard(style="display:none")
-            // The modifier keys are customizable and will highlight when
-            // mouse hovers any span.
-            .modifiers
-                h4 Modifier keys (customizable per user)
-                #settings-modifierkeys-delete(data-modifier="Delete")
-                    label Delete elements
-                    .group
-                        span.ctrl Ctrl
-                        span.shift Shift
-                        span.alt Alt
-                    strong +
-                    .group
-                        span.leftclick Left click
-                        span.rightclick Right click
-                #settings-modifierkeys-multiple(data-modifier="Multiple")
-                    label Select multiple
-                    .group
-                        span.ctrl Ctrl
-                        span.shift Shift
-                        span.alt Alt
-                    strong +
-                    .group
-                        span.leftclick Left click
-                        span.rightclick Right click
-                #settings-modifierkeys-toback(data-modifier="ToBack")
-                    label Send to back
-                    .group
-                        span.ctrl Ctrl
-                        span.shift Shift
-                        span.alt Alt
-                    strong +
-                    .group
-                        span.leftclick Left click
-                        span.rightclick Right click
-            // The shortcuts are not customizable. Static, no highlight on mouse over.
-            .shortcuts
-                h4 Shortcuts (fixed for all users)
-                div
-                    label Save everything
-                    span#settings-short-ctrl-save.active Ctrl
-                    span#settings-short-shift-save Shift
-                    span#settings-short-alt-save Alt
-                    strong +
-                    span.active S
-                div
-                    label Toggle edit mode
-                    span#settings-short-ctrl-save.active Ctrl
-                    span#settings-short-shift-save Shift
-                    span#settings-short-alt-save Alt
-                    strong +
-                    span.active E
-                div
-                    label Data binding
-                    span#settings-short-ctrl-autocomplete Ctrl
-                    span#settings-short-shift-autocomplete Shift
-                    span#settings-short-alt-autocomplete Alt
-                    strong +
-                    span.active $
+            .left-col
+                button#settings-localstorage-clear-but.delete Clear local storage
+            .right-col
+                h4 Local storage
+                #settings-localstorage-contents.preview-area
 
         // Server logs to see and troubleshoot server logs.
         div.tab.serverlogs(style="display:none")
-            h4 Server errors
-            #settings-servererrors-contents
-            button#settings-servererrors-clear-but Clear server errors
+            .left-col
+                button#settings-servererrors-clear-but.delete Clear server errors
+            .right-col
+                h4 Server errors
+                #settings-servererrors-contents.preview-area
 
         // About tab containing info about the app.
         div.tab.about(style="display:none")
             .left-col
-                h4 About
+                h4 App details
                 .panel
                     div App version: #{version}
                     div Running on port: #{serverPort}
                     div Last updated: #{lastModified}
-                h4 Server status
+                h4.topmargin Server status
                 .panel
+                    div Hostname: #{serverHostname}
                     div OS: #{serverOS}
                     div CPU Load: #{serverCpuLoad}
                     div RAM Usage: #{serverRamLoad}%
+                    div Uptime: #{serverUptime}
             .right-col
                 h4 Open-source software
                 img.opensource(src="images/opensource.png")
@@ -128,21 +137,24 @@
                 .panel
                     div
                         label App Homepage:
-                        a(href="https://systemapp.io") http://systemapp.io
+                        a(target="_blank", href="https://systemapp.io", title="The System App homepage") http://systemapp.io
                     div
                         label Zalando Tech:
-                        a(href="http://tech.zalando.com") http://tech.zalando.com
+                        a(target="_blank", href="http://tech.zalando.com", title="Zalando Technology website") http://tech.zalando.com
                     div
                         label Project Page:
-                        a(href="https://github.com/zalando/system") https://github.com/zalando/system
+                        a(target="_blank", href="https://github.com/zalando/system", title="Project page at GitHub") https://github.com/zalando/system
                 .license
                     h4 License
                     p.
-                        Copyright 2013 Zalando GmbH<br /><br />
+                        Copyright 2013 Zalando GmbH<br />
+                        <br />
                         Licensed under the Apache License, Version 2.0 (the "License");<br />
                         you may not use this file except in compliance with the License.<br />
-                        You may obtain a copy of the License at<br /><br />
-                            http://www.apache.org/licenses/LICENSE-2.0<br /><br />
+                        You may obtain a copy of the License at<br />
+                        <br />
+                        http://www.apache.org/licenses/LICENSE-2.0<br />
+                        <br />
                         Unless required by applicable law or agreed to in writing, software<br />
                         distributed under the License is distributed on an "AS IS" BASIS,<br />
                         WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.<br />

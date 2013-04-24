@@ -62,6 +62,8 @@ module.exports = (app) ->
             title: settings.General.appTitle,
             version: packageJson.version,
             lastModified: moment(lastModified).format("YYYY-MM-DD hh:mm"),
+            serverUptime: moment.duration(os.uptime(), "s").humanize(),
+            serverHostname: os.hostname(),
             serverPort: settings.Web.port,
             serverOS: os.type() + " " + os.release(),
             serverCpuLoad: os.loadavg()[0].toFixed(2),

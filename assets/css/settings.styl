@@ -1,13 +1,22 @@
 // SETTINGS VIEW STYLES
 // -------------------------------------------------------------------------
 
-monoFonts = Consolas,Monaco,Lucida Console,Liberation Mono,Courier New
-
 #settings > div
 
     // Bit of margin below the tab titles.
     h4
         margin-bottom 10px
+
+    // The options tab.
+    .options
+        .control-label
+            display inline-block
+            width 148px
+        .error
+            background errorBg
+            color brightTextColor
+            margin-right 10px
+            padding 5px
 
     .topmargin
         margin-top 24px
@@ -23,7 +32,6 @@ monoFonts = Consolas,Monaco,Lucida Console,Liberation Mono,Courier New
             width 130px
 
         span
-            border 1px solid rgba(0, 0, 0, 1)
             font-family monoFonts
             margin-right 5px
             padding 6px
@@ -36,50 +44,27 @@ monoFonts = Consolas,Monaco,Lucida Console,Liberation Mono,Courier New
         margin-top 16px
 
     .active
-        background rgba(60, 150, 70, 0.8)
+        background checkedBg
 
     .group
         display inline
 
-    .general
-        .control-label
-            display inline-block
-            width 200px
-
-    .error
-        color errorColor
-        margin-left 6px
-
     // The open source logo
     .opensource
         float left
-        margin-right 10px
+        margin-right 14px
 
     // The license paragraph with monospaced fonts.
     .license
-        margin-top 20px
+        margin-top 30px
         p
-            font-family "Lucida Console", Monaco, monospace
+            font-family monoFonts
 
-
-#settings-localstorage-contents
-    background rgba(200, 200, 200, 0.1)
-    border 1px solid rgba(200, 200, 200, 0.8)
-    clear both
-    height 250px
-    overflow auto
-    padding 5px
-    white-space pre-wrap
-
-
-#settings-servererrors-contents
-    background rgba(200, 200, 200, 0.1)
-    border 1px solid rgba(200, 200, 200, 0.8)
-    clear both
-    height 177px
-    overflow auto
-    padding 5px
-
-#settings-localstorage-clear-but, #settings-servererrors-clear-but
-    background-image url(../images/but-delete-small.png)
-    margin 20px 0 0 0
+    // Semi transparent textareas.
+    .preview-area
+        background rgba(200, 200, 200, 0.1)
+        border 1px solid lightBgColor
+        height 88%
+        overflow auto
+        padding 5px
+        white-space pre-wrap

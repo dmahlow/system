@@ -12,6 +12,7 @@ class SystemApp.OverlayView extends SystemApp.BaseView
 
     $box: null              # the overlay wrapper / box, which is in fact the first child div
     $close: null            # the close icon
+    $title: null            # the title is the H2 element
     $leftCol: null          # the left column
     $rightCol: null         # the right column
     $menuItem: null         # menu item corresponding to this overlay
@@ -34,6 +35,7 @@ class SystemApp.OverlayView extends SystemApp.BaseView
     setOverlayDom: =>
         @$box = @$el.children ".full-overlay-contents"
         @$close = @$box.children ".close"
+        @$title = @$box.children "h2"
 
         # Set tabs (some overlays might have no tabs).
         @$tabHeaders = @$el.find(".tab-headers").children("label")
@@ -131,8 +133,16 @@ class SystemApp.OverlayView extends SystemApp.BaseView
         horizontalDiff = horizontalDiff + SystemApp.mapView.mapControlsWidth if not @fullWidth
         verticalDiff = 32 + SystemApp.footerView.height + SystemApp.menuView.height
 
-        @$box.width $(window).innerWidth() - horizontalDiff
-        @$box.height $(window).innerHeight() - verticalDiff
+        # Calculate total dimensions.
+        totalWidth = $(window).innerWidth() - horizontalDiff
+        totalHeight = $(window).innerHeight() - verticalDiff
+        colHeight = totalHeight - 56
+
+        # Resize the box and columns.
+        @$box.width totalWidth
+        @$box.height totalHeight
+        @$leftCol.height colHeight
+        @$rightCol.height colHeight
 
     # When user presses a key while the help overlay is visible, check if it's Esc to close it.
     overlayKeyUp: (e) =>

@@ -1,26 +1,6 @@
 // COMMON STYLES
 // -------------------------------------------------------------------------
 
-// Import OpenSans font face.
-@font-face
-    font-family "OpenSans"
-    src url("../fonts/OpenSans-Regular-webfont.eot")
-    src url("../fonts/OpenSans-Regular-webfont.eot?#iefix") format("embedded-opentype"), url("../fonts/OpenSans-Regular-webfont.woff") format("woff"), url("../fonts/OpenSans-Regular-webfont.ttf") format("truetype")
-    font-weight normal
-    font-style normal
-@font-face
-    font-family "OpenSansLight"
-    src url("../fonts/OpenSans-Light-webfont.eot")
-    src url("../fonts/OpenSans-Light-webfont.eot?#iefix") format("embedded-opentype"), url("../fonts/OpenSans-Light-webfont.woff") format("woff"), url("../fonts/OpenSans-Light-webfont.ttf") format("truetype")
-    font-weight normal
-    font-style normal
-@font-face
-    font-family "OpenSansBold"
-    src url("../fonts/OpenSans-Bold-webfont.eot")
-    src url("../fonts/OpenSans-Bold-webfont.eot?#iefix") format("embedded-opentype"), url("../fonts/OpenSans-Bold-webfont.woff") format("woff"), url("../fonts/OpenSans-Bold-webfont.ttf") format("truetype")
-    font-weight normal
-    font-style normal
-
 // The body style.
 body
     background pageBgColor
@@ -100,7 +80,6 @@ a
 .red-bg
     background-color rgba(250, 80, 80, 0.9) !important
 
-
 // STYLED FORMS
 // -------------------------------------------------------------------------
 
@@ -110,7 +89,7 @@ a
 .toggle
     cursor pointer
     display inline-block
-    margin 4px
+    margin 3px
     -webkit-user-select none
     user-select none
     vertical-align middle
@@ -138,7 +117,7 @@ input[type="submit"]:disabled
 select
     background rgb(255, 255, 255)
     border-radius 0
-    border 1px solid rgb(160, 160, 160)
+    border 0
     font 14px/21px Arial, Helvetica, sans-serif
     padding 2px
     -webkit-appearance none
@@ -169,14 +148,21 @@ button.red:hover
 button.save
     background-image url(../images/but-save.png)
 
+// Buttons with a save icon.
+button.delete
+    background-image url(../images/but-delete.png)
+
 // Buttons with a edit icon.
 button.edit
     background-image url(../images/but-edit.png)
 
+// Buttons with undo icon.
+button.undo
+    background-image url(../images/but-undo.png)
+
 // When a text field is not valid, set it to red to alert the user
 input.error, textarea.error
-    background-color rgb(250, 170, 160)
-
+    background-color rgb(250, 170, 160) !important
 
 // STYLED CHECKBOXES AND RADIO BUTTONS
 // -------------------------------------------------------------------------
@@ -263,7 +249,7 @@ input[type="radio"] + span:after
 
 input[type="checkbox"]:checked + span
 input[type="radio"]:checked + span
-    background rgb(70, 160, 60)
+    background checkedBg
     color #FAFAFA
 
 input[type="checkbox"]:disabled + span

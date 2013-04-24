@@ -83,7 +83,7 @@
     .left-col
         border-right 1px solid darkHoverColor
         float left
-        min-height 460px
+        min-height 500px
         padding-right 3px
         width 242px
 
@@ -175,7 +175,7 @@
     // Right column has a border on the left and margin.
     .right-col
         margin-left 260px
-        max-width 634px
+        min-height 500px
 
         // Position form labels and input fields.
         .panel
@@ -207,15 +207,8 @@
             margin-left -1px
             width 60px
 
-        // If label has a toggle class, means it represents a checkbox so do not
-        // apply the panel label styling.
-        label.toggle
-            display inline !important
-            margin-left 0
-            width auto !important
-
     // All delete icons.
-    .delete
+    div.delete
         background url(../images/but-delete.png) no-repeat bottom
         cursor pointer
         display inline-block
@@ -225,11 +218,11 @@
         width 16px
 
     // When user clicks the delete icon, it gets red.
-    .delete-red
+    div.delete-red
         background-image url(../images/but-delete-red.png)
 
     // All edit icons.
-    .edit
+    div.edit
         background url(../images/but-edit.png) no-repeat bottom
         cursor pointer
         display inline-block

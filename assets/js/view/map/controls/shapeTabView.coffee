@@ -79,6 +79,9 @@ class SystemApp.MapControlsShapeTabView extends SystemApp.BaseView
         @$chkRoundedCorners.data "propertyName", "roundedCorners"
         @$chkSmoothLink.data "propertyName", "smooth"
 
+        # Hide editable forms initially.
+        @toggleForms false
+
     # Bind events to DOM and other controls.
     setEvents: =>
         @listenTo SystemApp.mapEvents, "edit:toggle", @setEnabled
@@ -126,6 +129,15 @@ class SystemApp.MapControlsShapeTabView extends SystemApp.BaseView
         @bindProperties()
         @resetDeleteShape()
 
+    # Show or hide forms depending on what's selected on the map.
+    toggleForms: (visible) =>
+        if visible
+            @$el.find("h6").hide()
+            @$el.find("h5,.panel").show()
+        else
+            @$el.find("h5,.panel").hide()
+            @$el.find("h6").show()
+
 
     # SHAPE EDITING TAB
     # ----------------------------------------------------------------------
@@ -165,14 +177,12 @@ class SystemApp.MapControlsShapeTabView extends SystemApp.BaseView
             @$zIndexDiv.children("div").removeClass("active").eq(@currentBoundView.model.zIndex() - 1).addClass "active"
 
             # Show all editable panels.
-            @$el.children("h6").hide()
-            @$el.children("h5,.panel").show()
+            @toggleForms true
 
         else
 
             # No shape(s) selected, so hide panels and show the h6 element with the "no shapes selected text".
-            @$el.children("h5,.panel").hide()
-            @$el.children("h6").show()
+            @toggleForms false
 
     # When user is pressing keys on any of the editable text fields, check for
     # the pressed key and if it's Enter, save the value to the model.

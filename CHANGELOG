@@ -4,7 +4,17 @@ SYSTEM APP CHANGE LOG
 - = removed features
 
 # -----------------------------------------------------------------------------
-
+  0.5.5, 2013.04.24
++ The "Settings" tab is now properly working. Some extra settings and
+  features will be added in the future.
+* Updated client libraries (in special jQuery 2.0.0).
+* Improved AlertView, avoids showing similar alerts in short periods of time.
+* Major refactoring, renamed System.App namespace to SystemApp on the client
+  models and views and changed the document ready init code.
+* Refactored the way the settings.coffee work on the server. Now it expects
+  a settings.json file with the user-specific settings.
+* Fixed bug: map controls for shapes and links would be visible and editable
+  even when no shape or link was selected.
 
 # -----------------------------------------------------------------------------
   0.5.3, 2013.04.19
@@ -21,7 +31,7 @@ SYSTEM APP CHANGE LOG
 # -----------------------------------------------------------------------------
   0.5.1, 2013.04.15
 + Code documentation is now available under /docs.
-  Docs are generated with Docco. See the new updateddocs.sh script for details.
+  Docs are generated with Docco. See the new updatedocs.sh script for details.
 + Alternative documentation is also available at CoffeeDoc:
   http://coffeedoc.info/github/zalando/system/master/
 * Improved layout and UI especially on Linux machines.

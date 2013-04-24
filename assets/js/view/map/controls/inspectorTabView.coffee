@@ -42,6 +42,9 @@ class SystemApp.MapControlsInspectorTabView extends SystemApp.BaseView
         @$linksDiv = $ "#map-ctl-shape-links"
         @$eventsDiv = $ "#map-ctl-shape-events"
 
+        # Hide editable forms initially.
+        @toggleForms false
+
     # Bind events to DOM and other controls.
     setEvents: =>
         $(window).resize @resize
@@ -85,6 +88,8 @@ class SystemApp.MapControlsInspectorTabView extends SystemApp.BaseView
 
         if @currentBoundView? and @currentBoundView.model?
 
+            console.warn @currentBoundView
+
             if @currentBoundView.linkViews?
                 _.each @currentBoundView.linkViews, (linkView) => linkView.model.on "change", @bindAllLinks
 
@@ -92,14 +97,12 @@ class SystemApp.MapControlsInspectorTabView extends SystemApp.BaseView
                 _.each @currentBoundView.shapeViews, (childView) => childView.model.on "change", @bindAllChildItems
 
             # Show all editable panels.
-            @$el.find("h6").hide()
-            @$el.find("h5,.panel").show()
+            @toggleForms true
 
         else
 
             # No shape(s) selected, so hide panels and show the h6 element with the "no shapes selected text".
-            @$el.find("h5,.panel").hide()
-            @$el.find("h6").show()
+            @toggleForms false
 
         # Bind attributes, related entities and links.
         @bindAllAttributes()
@@ -108,6 +111,16 @@ class SystemApp.MapControlsInspectorTabView extends SystemApp.BaseView
         @bindAllAuditEvents()
         @bindActiveAuditEvents()
         @resize()
+
+    # Show or hide forms depending on what's selected on the map.
+    toggleForms: (visible) =>
+        if visible
+            @$el.find("h6").hide()
+            @$el.find("h5,.panel").show()
+        else
+            @$el.find("h5,.panel").hide()
+            @$el.find("h6").show()
+
 
     # INSPECT PROPERTIES
     # ----------------------------------------------------------------------
