@@ -52,6 +52,7 @@ class SystemApp.AlertView extends SystemApp.BaseView
         $(document).off "keydown", @keyDown
 
         SystemApp.alertEvents.off "footer", @showFooter
+        SystemApp.alertEvents.off "tooltip", @showTooltip
         SystemApp.serverEvents.off "error", @showServerError
 
         for collection in SystemApp.Data.allCollections
@@ -73,9 +74,9 @@ class SystemApp.AlertView extends SystemApp.BaseView
         @$timeFooter = @$wrapperFooter.children "time"
 
         @$wrapperTooltip = $ "#alert-tooltip"
-        @$titleTooltip = @$wrapperTooltip.children "label"
-        @$msgTooltip = @$wrapperTooltip.children "span"
-        @$timeTooltip = @$wrapperTooltip.children "time"
+        @$titleTooltip = @$wrapperTooltip.find "div > label"
+        @$msgTooltip = @$wrapperTooltip.find "div > span"
+        @$timeTooltip = @$wrapperTooltip.find "div > time"
 
     # Set and bind alert events to the view. It will automatically listen to models
     # added and removed from all collections available on the [data store](data.html).
@@ -83,6 +84,7 @@ class SystemApp.AlertView extends SystemApp.BaseView
         $(document).keydown @keyDown
 
         SystemApp.alertEvents.on "footer", @showFooter
+        SystemApp.alertEvents.on "tooltip", @showTooltip
         SystemApp.serverEvents.on "error", @showServerError
 
 

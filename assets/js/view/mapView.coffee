@@ -284,7 +284,7 @@ class SystemApp.MapView extends SystemApp.BaseView
     # When user deletes (destroy) the current [Map](map.html), refresh the browser.
     mapRemoved: (map) =>
         SystemApp.alertEvents.trigger "footer", {removedModel: map}
-        SystemApp.toggleLoadding true
+        SystemApp.toggleLoading true
 
         reloadPage = -> window.open "/", "_self"
         setTimeout reloadPage, 1000

@@ -6,10 +6,12 @@ SystemApp.Messages =
 
     # TERMS
     # ----------------------------------------------------------------------
+    accessDenied: "Access denied!"
     auditDataRefresh: "Audit data refresh"
     availableSources: "Available sources..."
     cancel: "Cancel"
     createItem: "Create item"
+    createMaps: "create maps"
     createMapText: "Please enter the new map name..."
     createVariable: "Create new variable..."
     current: "Current value"
@@ -80,6 +82,7 @@ SystemApp.Messages =
     errEvalReturn: "Eval must have a return statement!"
     errMapDoesNotExist: "The specified map does not exist!"
     errMapNameExists: "There's already a map called #."
+    errNoPermissionTo: "You don't have the necessary permissions to #."
 
 
     # VALIDATION MESSAGES

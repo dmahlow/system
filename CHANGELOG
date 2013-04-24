@@ -5,8 +5,8 @@ SYSTEM APP CHANGE LOG
 
 # -----------------------------------------------------------------------------
   0.5.5, 2013.04.24
-+ The "Settings" tab is now properly working. Some extra settings and
-  features will be added in the future.
++ The "Settings" tab is now working. Some extra settings and features
+  will be added there in the future.
 * Updated client libraries (in special jQuery 2.0.0).
 * Improved AlertView, avoids showing similar alerts in short periods of time.
 * Major refactoring, renamed System.App namespace to SystemApp on the client

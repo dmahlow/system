@@ -40,6 +40,16 @@ class SystemApp.User extends SystemApp.BaseModel
         @get "username"
 
 
+    # METHODS
+    # ----------------------------------------------------------------------
+
+    # Check if user has a specific role. Returns true or false.
+    hasRole: (role) =>
+        return false
+        index = @roles().indexOf role
+        return (index > -1)
+
+
 # USER COLLECTION
 # --------------------------------------------------------------------------
 # Represents a collection of users.

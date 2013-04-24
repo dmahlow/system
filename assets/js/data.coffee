@@ -12,7 +12,8 @@ SystemApp.Data =
     # COLLECTIONS
     # ----------------------------------------------------------------------
 
-    # The current user's settings.
+    # The logged [user](user.html) and the user's settings.
+    loggedUser: new SystemApp.User()
     userSettings: new SystemApp.UserSettings()
 
     # Holds the global collections for entities, maps, variables, events etc.

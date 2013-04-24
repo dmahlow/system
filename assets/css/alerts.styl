@@ -1,13 +1,6 @@
 // ALERTS VIEW
 // -------------------------------------------------------------------------
 
-okBg = rgba(120, 250, 110, 0.55)
-errorBg = rgba(250, 100, 100, 0.55)
-
-
-// ALERTS: FOOTER
-// -------------------------------------------------------------------------
-
 #alert-footer
     background rgba(200, 200, 200, 0.4)
     color lightTextColor
@@ -27,33 +20,31 @@ errorBg = rgba(250, 100, 100, 0.55)
     span
         margin-right 10px
 
-
+// Normal and success messages in green.
 #alert-footer.ok
     background okBg
 
-
+// Error messages in red.
 #alert-footer.error
     background errorBg
 
 
-
-// ALERTS: TOOLTIP
-// -------------------------------------------------------------------------
-
 #alert-tooltip
-    border 1px solid rgba(250, 250, 250, 0.6)
-    box-shadow 0 0 42px 12px #707070
-    left 50%
-    margin auto
-    margin-left -302px
-    min-height 140px
-    min-width 300px
-    padding 8px
+    border 2px solid brightBgColor
+    border-left 0
+    border-right 0
+    box-shadow 0 0 80px 12px lightBgColor
+    left 0
+    margin 2px auto auto auto
     position fixed
-    top 30%
+    top headerHeight
+    width 100%
     z-index 99
     -webkit-user-select none
     user-select none
+
+    > div
+        padding 15px 19px 15px 19px
 
     // The tooltip alert message.
     span
@@ -63,14 +54,17 @@ errorBg = rgba(250, 100, 100, 0.55)
 
     // The tooltip alert title.
     label
-        border-bottom 1px solid rgba(250, 250, 250, 0.6)
         display block
-        font-size 130%
+        font-family OpenSansBold
+        font-size 22px
         padding 0 0 5px 0
 
+    // The tooltip alert time.
+    time
+        margin-top 20px
 
 #alert-tooltip.ok
-    background-color rgba(65, 175, 75, 0.92)
+    background-color okBg
 
 #alert-tooltip.error
-    background-color rgba(185, 55, 45, 0.92)
+    background-color errorBg

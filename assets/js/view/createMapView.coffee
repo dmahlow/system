@@ -1,7 +1,7 @@
 # CREATE MAP VIEW
 # --------------------------------------------------------------------------
 # Represents the "Create new map" overlay what shows up when user
-# clicks a "Create new..." option on the sub menus.
+# clicks a "Create new..." option on the top menu.
 
 class SystemApp.CreateMapView extends SystemApp.OverlayView
 
@@ -42,7 +42,13 @@ class SystemApp.CreateMapView extends SystemApp.OverlayView
         @$el.fadeOut SystemApp.Settings.General.fadeDelay
 
     # Show the view using a fade in effect and pass the entity type.
+    # If user has no "mapcreate" role, hide the view immediately.
     onShow: =>
+        if not SystemApp.Data.loggedUser.hasRole "mapcreate"
+            errorMsg = SystemApp.Messages.errNoPermissionTo.replace "#", SystemApp.Messages.createMaps
+            SystemApp.alertEvents.trigger "tooltip", {isError: true, title: SystemApp.Messages.accessDenied, message: errorMsg}
+            setTimeout @hide, 1
+
         $(document).keyup @keyUp
         SystemApp.footerView.setText SystemApp.Messages.createMapText
         @$el.fadeIn SystemApp.Settings.General.fadeDelay, @focus
