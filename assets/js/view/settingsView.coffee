@@ -45,8 +45,8 @@ class SystemApp.SettingsView extends SystemApp.OverlayView
 
         @$localStorageDiv = $ "#settings-localstorage-contents"
         @$localStorageClearBut = $ "#settings-localstorage-clear-but"
-        @$serverErrorsDiv = $ "#settings-servererrors-contents"
-        @$serverErrorsClearBut = $ "#settings-servererrors-clear-but"
+        @$serverLogsDiv = $ "#settings-serverlogs-contents"
+        @$serverLogsClearBut = $ "#settings-serverlogs-clear-but"
 
         @$chkFullscreen.prop "checked", SystemApp.Data.userSettings.mapFullscreen()
         @$chkAutoRefresh.prop "checked", SystemApp.Data.userSettings.mapAutoRefresh()
@@ -61,7 +61,7 @@ class SystemApp.SettingsView extends SystemApp.OverlayView
         @$chkDebug.click @toggleDebug
 
         @$localStorageClearBut.click @clearLocalStorage
-        @$serverErrorsClearBut.click @clearServerErrors
+        @$serverLogsClearBut.click @clearServerErrors
 
         @$el.find(".modifiers .group span").click @modifierClick
 
@@ -164,12 +164,12 @@ class SystemApp.SettingsView extends SystemApp.OverlayView
             time = time.substring(0, sep - 1) if sep > 0
             result += "#{err.title} #{err.message} at #{time}<br />"
 
-        @$serverErrorsDiv.html result
+        @$serverLogsDiv.html result
 
     # Clear the server errors list.
     clearServerErrors: =>
         SystemApp.alertView.serverErrors = []
-        @$serverErrorsDiv.html "CLEARED!"
+        @$serverLogDiv.html "CLEARED!"
 
 
     # SHOW AND HIDE
