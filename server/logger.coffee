@@ -37,6 +37,7 @@ class Logger
     # even when using Logentries for general logging.
     init: =>
         winston.exitOnError = false
+        winston.remove winston.transports.Console
 
         if settings.Log.logentriesToken? and settings.Log.logentriesToken isnt ""
             logentries = require("node-logentries").logger {token: settings.Log.logentriesToken}
@@ -55,17 +56,26 @@ class Logger
     # Log any object to the default transports as `info`.
     info: =>
         winston.info.apply this, arguments
-        console.log.apply this, arguments if settings.General.debug
+        if settings.General.debug
+            args = Array.prototype.slice.call arguments
+            args.unshift (new Date()).toTimeString().substring 0, 8
+            console.log.apply this, args
 
     # Log any object to the default transports as `warn`.
     warn: =>
         winston.warn.apply this, arguments
-        console.warn.apply this, arguments if settings.General.debug
+        if settings.General.debug
+            args = Array.prototype.slice.call arguments
+            args.unshift (new Date()).toTimeString().substring 0, 8
+            console.warn.apply this, args
 
     # Log any object to the default transports as `error`.
     error: =>
         winston.error.apply this, arguments
-        console.error.apply this, arguments if settings.General.debug
+        if settings.General.debug
+            args = Array.prototype.slice.call arguments
+            args.unshift (new Date()).toTimeString().substring 0, 8
+            console.error.apply this, args
 
 
     # QUERYING

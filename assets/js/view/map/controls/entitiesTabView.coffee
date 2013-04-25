@@ -91,12 +91,13 @@ class SystemApp.MapControlsEntitiesTabView extends SystemApp.BaseView
     # global [data](data.html), parse it and add its [objects](entityObject.html)
     # to the `$list`.
     entityAdded: (entityDef) =>
+        @listenTo entityDef, "change:data", @entityDataChanged
         @listenTo entityDef.data(), "add", @entityDataAdded
         @listenTo entityDef.data(), "remove", @entityDataRemoved
-        @listenTo entityDef.data(), "change", @entityDataChanged
+
         @entityDataAdded obj for obj in entityDef.data().models
 
-        SystemApp.consoleLog "MapControlsEntitiesTabView.entityAdded", entityDef.friendlyId()
+        SystemApp.consoleLog "MapControlsEntitiesTabView.entityAdded", entityDef
 
     # When an [Entity Definition](entityDefinition.html) is removed from the global
     # [data](data.html), also remove its related [objects](entityObject.html) from
@@ -106,29 +107,27 @@ class SystemApp.MapControlsEntitiesTabView extends SystemApp.BaseView
         className = entityDef.friendlyId().toLowerCase()
         $(".#{className}").remove()
 
-        SystemApp.consoleLog "MapControlsEntitiesTabView.entityRemoved", entityDef.friendlyId()
+        SystemApp.consoleLog "MapControlsEntitiesTabView.entityRemoved", entityDef
+
+    # When the entity's [data collection](entityObject.html) gets changed.
+    # This will effectively remove and re-add all entity objects to the list.
+    entityDataChanged: (entityDef) =>
+        className = entityDef.friendlyId().toLowerCase()
+        $(".#{className}").remove()
+        @addToList obj for obj in entityDef.data().models
+
+        SystemApp.consoleLog "MapControlsEntitiesTabView.entityDataChanged", entityDef
 
     # When the entity's [data](entityObject.html) gets new entity objects, add them
     # to the `$list`.
     entityDataAdded: (entityObject) =>
         @addToList entityObject
 
-        SystemApp.consoleLog "MapControlsEntitiesTabView.entityDataAdded", entityObject.id
-
-    # When any of the entity's [data](entityObject.html) gets changed.
-    entityDataChanged: (entityObject) =>
-        @entityDataRemoved entityObject
-        @addToList entityObject
-
-        SystemApp.consoleLog "MapControlsEntitiesTabView.entityDataChanged", entityObject.id
-
     # When the entity's [data](entityObject.html) has entity objects deleted, remove them
     # from the `$list`.
     entityDataRemoved: (entityObject) =>
         li = $ SystemApp.Settings.Map.entityListPrefix + entityObject.entityDefinitionId() + "-" + entityObject.id
         li.remove()
-
-        SystemApp.consoleLog "MapControlsEntitiesTabView.entityDataRemoved", entityObject.id
 
 
     # BINDING AND OPTIONS

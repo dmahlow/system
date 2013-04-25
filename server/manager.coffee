@@ -208,7 +208,10 @@ class Manager
                 if err1?
                     sockets.sendServerError "Manager: could not read #{localFile}.", err1
                 else
+                    if settings.General.debug
+                        logger.info "Manager.transmitDataToClients", localFile
 
+                    # Try parsing the data as JSON.
                     try
                         obj.data = JSON.parse result
                     catch err2
@@ -230,6 +233,8 @@ class Manager
                     if counter % settings.Web.saveDataEveryRefresh is 0
                         obj.data = database.cleanObjectForInsertion obj.data
                         dbCallback obj, {patch: true}
+        else
+            logger.error "Manager.transmitDataToClients", localFile, err
 
 
 # Singleton implementation

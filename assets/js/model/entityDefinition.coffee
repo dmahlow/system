@@ -33,6 +33,7 @@ class SystemApp.EntityDefinition extends SystemApp.BaseModel
     data: (value) =>
         if value?
             value = new SystemApp.EntityObjectCollection value if not value.typeName?
+            value.parentModel = this
             @set "data", value
         @get "data"
 

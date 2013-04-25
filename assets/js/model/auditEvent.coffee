@@ -27,6 +27,7 @@ class SystemApp.AuditEvent extends SystemApp.BaseModel
     rules: (value) =>
         if value?
             value = new SystemApp.EventRuleCollection value if not value.typeName?
+            value.parentModel = this
             @set "rules", value
         @get "rules"
 
@@ -34,6 +35,7 @@ class SystemApp.AuditEvent extends SystemApp.BaseModel
     actions: (value) =>
         if value?
             value = new SystemApp.EventActionCollection value if not value.typeName?
+            value.parentModel = this
             @set "actions", value
         @get "actions"
 
