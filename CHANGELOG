@@ -5,6 +5,9 @@ SYSTEM APP CHANGE LOG
 
 # -----------------------------------------------------------------------------
   0.5.6, 2013.04.25
++ Now you can pass options to the app via querystring:
+  ?debug=1 will activate debug mode
+  ?fullscreen=1 will set map to fullscreen automatically
 * Fixed bugs when adding and removing Entity Definitions, for example when
   removing it wouldn't clear the entity objects from the "Objects" tab
   on the map controls.

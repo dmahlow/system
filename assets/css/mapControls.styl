@@ -184,6 +184,7 @@
             margin 1px 5px 5px 1px
             padding 5px
 
+            // Highlight with dark color on mouse over, when not disabled.
             &:hover
                 background-color darkBgColor
 
@@ -209,9 +210,11 @@
             .count
                 display none
 
-    // When map is disabled, do not show mouse pointer on the list
+    // When map is disabled, do not show mouse pointer on the list and do not hover.
     ul.disabled li
         cursor default !important
+    ul.disabled li:hover
+        background-color inherit !important
 
 // The search field on the entities tab.
 #map-entity-list-search

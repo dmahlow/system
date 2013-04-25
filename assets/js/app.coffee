@@ -171,10 +171,11 @@ SystemApp.init = ->
     SystemApp.setEvents()
     SystemApp.Data.init()
 
-    # Set views and idle timer.
+    # Set views, options via querystrings and idle timer.
     SystemApp.setDom()
     SystemApp.setViews()
     SystemApp.setIdleTimer()
+    SystemApp.setQueryOptions()
 
     # Load data collections.
     SystemApp.Data.fetch()
@@ -228,12 +229,27 @@ SystemApp.setEvents = ->
 
     SystemApp.dataEvents.on "load", SystemApp.start
 
+# Toggle app options based on the passed querystrings.
+SystemApp.setQueryOptions = ->
+    query = location.href.substring location.href.indexOf "?"
+    qDebug = query.indexOf "debug=1"
+    qFullscreen = query.indexOf "fullscreen=1"
+
+    if qDebug >= 0
+        SystemApp.toggleDebug true
+
+    if qFullscreen >= 0
+        SystemApp.mapView.toggleFullscreen true
+
 # Start the app after all major data has been loaded.
 # First add a timeout to hide the `loading` overlay, then start backbone's history.
 # If the hashtag is empty, show the [Start View](startView.html) automatically.
 SystemApp.start = ->
     now = new Date()
     console.log "#{SystemApp.Settings.General.appTitle} START: #{now}"
+
+    # Disabled editing by default.
+    SystemApp.mapEvents.trigger "edit:toggle", false
 
     # Start listening to model updates.
     SystemApp.alertView.listenToModels true
@@ -300,7 +316,8 @@ SystemApp.toggleLoading = (enabled) ->
 
 # Enable or disable the `debug` mode.
 SystemApp.toggleDebug = (enabled) ->
-    SystemApp.debug = enabled
+    SystemApp.Settings.General.debug = enabled
+
     if enabled
         alertTitle = "ENABLED"
         alertMsg = "Most actions and events will be logged to the console."

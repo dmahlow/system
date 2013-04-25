@@ -1,4 +1,4 @@
-# System SOCKETS
+# SOCKETS
 # --------------------------------------------------------------------------
 # Handle Socket.IO communication with the Node.js server. Using sockets to
 # push messages from/to the server is much more efficient than pooling it
@@ -57,9 +57,6 @@ SystemApp.Sockets =
 
         updated.data entityDef.data
         updated.lastDataRefresh = new Date()
-
-        # Trigger the entity data refresh to the app.
-        SystemApp.dataEvents.trigger "entitydata:refresh", updated
 
     # Listen to [AuditData](auditData.html) refreshes.
     auditDataRefresh: (auditData) ->

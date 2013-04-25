@@ -50,9 +50,9 @@ class SystemApp.SettingsView extends SystemApp.OverlayView
 
         @$chkFullscreen.prop "checked", SystemApp.Data.userSettings.mapFullscreen()
         @$chkAutoRefresh.prop "checked", SystemApp.Data.userSettings.mapAutoRefresh()
-        @$chkDebug.prop "checked", SystemApp.debug
+        @$chkDebug.prop "checked", SystemApp.Settings.General.debug
 
-        @$debugNote.hide() if not SystemApp.debug
+        @$debugNote.hide() if not SystemApp.Settings.General.debug
 
     # Bind events to the DOM.
     setEvents: =>

@@ -109,7 +109,13 @@ class Manager
         # Set the timer. Interval is in seconds, so we must multiply by 1000.
         timer = setInterval callback, interval * 1000
 
+        # Call the refresh immediatelly so clients will get updated data straight away.
+        callback()
+
         @timersEntityRefresh.push timer
+
+        if settings.General.debug
+            logger.info "Manager.setEntityTimer", entityDef.friendlyId, interval + "ms"
 
     # Refresh the specified [Entity](entityDefinition.html) data. This will run ONLY
     # if there are connected clients, to avoid bandwidth and processing waste.
@@ -117,8 +123,12 @@ class Manager
         if sockets.getConnectionCount() < 1
             return
 
-        sync.download entityDef.sourceUrl, settings.Paths.downloadsDir + "entityobjects." + entityDef.friendlyId + ".json", (err, localFile) =>
-            @transmitDataToClients err, localFile, entityDef, sockets.sendEntityRefresh, database.setEntityDefinition
+        # Only proceed if the entity sourceUrl is set.
+        if entityDef.sourceUrl? and entityDef.sourceUrl isnt ""
+            sync.download entityDef.sourceUrl, settings.Paths.downloadsDir + "entityobjects." + entityDef.friendlyId + ".json", (err, localFile) =>
+                @transmitDataToClients err, localFile, entityDef, sockets.sendEntityRefresh, database.setEntityDefinition
+        else if settings.General.debug
+            logger.warn "Manager.refreshEntity", entityDef.friendlyId, "No sourceUrl set. Abort."
 
 
     # AUDIT DATA MANAGER
@@ -161,8 +171,11 @@ class Manager
             logger.warn "Audit Data refresh interval is too low: ID #{auditData.friendlyId}, interval #{auditData.refreshInterval} seconds."
 
         # Set the timer. Interval is in seconds, so we must multiply by 1000.
-        interval = interval * 1000
-        timer = setInterval callback, interval
+        timer = setInterval callback, interval * 1000
+
+        # Call the refresh immediatelly so clients will get updated data straight away.
+        callback()
+
         @timersAuditDataRefresh.push timer
 
         if settings.General.debug
@@ -174,8 +187,12 @@ class Manager
         if sockets.getConnectionCount() < 1
             return
 
-        sync.download auditData.sourceUrl, settings.Paths.downloadsDir + "auditdata." + auditData.friendlyId + ".json", (err, localFile) =>
-            @transmitDataToClients err, localFile, auditData, sockets.sendAuditDataRefresh, database.setAuditData
+        # Only proceed if the audit data sourceUrl is properly set.
+        if auditData.sourceUrl? and auditData.sourceUrl isnt ""
+            sync.download auditData.sourceUrl, settings.Paths.downloadsDir + "auditdata." + auditData.friendlyId + ".json", (err, localFile) =>
+                @transmitDataToClients err, localFile, auditData, sockets.sendAuditDataRefresh, database.setAuditData
+        else if settings.General.debug
+            logger.warn "Manager.refreshAuditData", auditData.friendlyId, "No sourceUrl set. Abort."
 
 
     # HELPER METHODS
