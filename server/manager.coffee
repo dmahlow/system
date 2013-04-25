@@ -73,6 +73,9 @@ class Manager
     # Init the [Entity](entityDefinition.html) refresh timers, by creating one interval
     # timer for each entity definition and transmitting the refreshed data to users via sockets.
     initEntityTimers: =>
+        if settings.General.debug
+            logger.info "Manager.initEntityTimers"
+
         @stopEntityTimers()
         database.getEntityDefinition null, @startEntityTimers
 
@@ -90,6 +93,8 @@ class Manager
             sockets.sendServerError "Manager: could not load Entity Definition items.", err
         else
             @setEntityTimer entityDef for entityDef in result
+            if settings.General.debug
+                logger.info "Manager.startEntityTimers", "Started timers for #{result.length} entities."
 
     # Add an [Entity](entityDefinition.html) refresh timer to the `timersEntityRefresh` array.
     setEntityTimer: (entityDef) =>
@@ -122,6 +127,9 @@ class Manager
     # Init the [AuditData](auditadta.html) refresh timers, by creating one interval
     # timer for each audit data and transmitting the refreshed data to users via sockets.
     initAuditDataTimers: =>
+        if settings.General.debug
+            logger.info "Manager.initAuditDataTimers"
+
         @stopAuditDataTimers()
         database.getAuditData null, @startAuditDataTimers
 
@@ -139,6 +147,8 @@ class Manager
             sockets.sendServerError "Manager: could not load Audit Data items.", err
         else
             @setAuditDataTimer auditData for auditData in result
+            if settings.General.debug
+                logger.info "Manager.startAuditDataTimers", "Started timers for #{result.length} audit data."
 
     # Add an [AuditData](auditadata.html) refresh timer to the `timersAuditDataRefresh` array.
     setAuditDataTimer: (auditData) =>

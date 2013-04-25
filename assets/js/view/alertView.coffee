@@ -252,8 +252,8 @@ class SystemApp.AlertView extends SystemApp.BaseView
         if alertObj.clickAction?
             @$wrapperTooltip.click alertObj.clickAction
 
-        delay = SystemApp.Settings.Alert.hideDelay * 2
-        delay = delay * 2 if alertObj.isError
+        delay = SystemApp.Settings.Alert.hideDelay
+        delay = delay if alertObj.isError
 
         @$wrapperTooltip.fadeIn SystemApp.Settings.Alert.opacityInterval
         @isTooltipVisible = true

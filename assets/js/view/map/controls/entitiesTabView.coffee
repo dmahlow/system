@@ -107,8 +107,9 @@ class SystemApp.MapControlsEntitiesTabView extends SystemApp.BaseView
     # [data](data.html), also remove its related [objects](entityObject.html) from
     # the `$list`.
     entityRemoved: (entityDef) =>
-        entityDef.data().off "add", @entityDataAdded
-        entityDef.data().off "remove", @entityDataRemoved
+        entityDef.data().off()
+        className = entityDef.friendlyId().toLowerCase()
+        $(".#{className}").remove()
 
     # When the entity's [data](entityObject.html) has entity objects deleted, remove them
     # from the `$list`.

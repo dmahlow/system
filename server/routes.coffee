@@ -85,9 +85,11 @@ module.exports = (app) ->
                 sendErrorResponse res, "Entity GET", err
 
     # Add or update an [Entity Definition](entityDefinition.html).
+    # This will also restart the entity timers on the server [manager](manager.html).
     postEntityDefinition = (req, res) ->
         database.setEntityDefinition getDocumentFromBody(req), null, (err, result) ->
             if result? and not err?
+                manager.initEntityTimers()
                 res.send minifyJson result
             else
                 sendErrorResponse res, "Entity POST", err
@@ -101,9 +103,11 @@ module.exports = (app) ->
                 sendErrorResponse res, "Entity PATCH", err
 
     # Delete an [Entity Definition](entityDefinition.html).
+    # This will also restart the entity timers on the server [manager](manager.html).
     deleteEntityDefinition = (req, res) ->
         database.deleteEntityDefinition getIdFromRequest(req), (err, result) ->
             if not err?
+                manager.initEntityTimers()
                 res.send ""
             else
                 sendErrorResponse res, "Entity DELETE", err
