@@ -17,7 +17,6 @@ class SystemApp.MapView extends SystemApp.BaseView
     mousePosY: 0                # current or last mouse Y position
     mapDivWidth: 0              # cached value of the map DIV width
     mapDivHeight: 0             # cached value of the map DIV height
-    mapControlsWidth: 0         # cached value of the [Map Controls](controlsView.html) DIV width
     overrideShapeTitle: null    # override the value / property name displayed of the shape's title
 
     editEnabled: false          # is the map in edit mode?
@@ -82,8 +81,6 @@ class SystemApp.MapView extends SystemApp.BaseView
         @$footerName = $ "#footer-maps-name"
         @$footerShape = $ "#footer-maps-shape"
         @$panningIcon = $ "#map-panning-icon"
-
-        @mapControlsWidth = $("#map-controls").outerWidth()
 
     # Bind events to the global app events, DOM elements and objects.
     setEvents: =>
@@ -442,14 +439,14 @@ class SystemApp.MapView extends SystemApp.BaseView
     panningMove: (e) =>
         @currentPanX -= (e.pageX - @mousePosX) * @currentZoom
         @currentPanY -= (e.pageY - @mousePosY) * @currentZoom
-        summedWidth = @mapDivWidth - @mapControlsWidth
+        sumWidth = @mapDivWidth - @controlsView.width
 
         # If there's a map bound, then check if the current pan X and Y values
         # are less than the maximum allowed values, which is the map's paper
         # width/height - the map's div `#map` width/height. This will ensure
         # that grid lines are always visible.
         if @model?
-            maxPanX = @model.paperSizeX() - summedWidth * @currentZoom
+            maxPanX = @model.paperSizeX() - sumWidth * @currentZoom
             maxPanY = @model.paperSizeY() - @mapDivHeight * @currentZoom
             @currentPanX = maxPanX if @currentPanX > maxPanX
             @currentPanY = maxPanY if @currentPanY > maxPanY
@@ -568,31 +565,6 @@ class SystemApp.MapView extends SystemApp.BaseView
         @gridLines.toBack()
 
         @paperBg.toBack()
-
-    # Toggle the fullscreen mode on or off. While on fullscreen, the app [Menu](menuView.html)
-    # and [Map Controls](controlsView.html) will be hidden.
-    toggleFullscreen: (fullscreen) =>
-        if not fullscreen? or fullscreen.originalEvent?
-            fullscreen = $("#header").is(":visible")
-
-        if fullscreen
-            $("#header").hide()
-            $("#footer").addClass("transparent")
-            $("body").addClass "fullscreen"
-            @controlsView?.hide()
-        else
-            $("#header").show()
-            $("#footer").removeClass("transparent")
-            $("body").removeClass "fullscreen"
-            @mapDivWidth = $(window).innerWidth()
-            @mapDivHeight = $(window).innerHeight() - $("#header").outerHeight() - $("#footer").outerHeight()
-            @$el.css "width", @mapDivWidth
-            @$el.css "height", @mapDivHeight
-
-        @mapControlsWidth = $("#map-controls").outerWidth()
-
-        # Save the current fullscreen state on the [User Settings](userSettings.html) model.
-        SystemApp.Data.userSettings.mapFullscreen fullscreen
 
     # Send the map background and grid lines to back of the paper.
     toBack: =>

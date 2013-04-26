@@ -3,9 +3,6 @@
 
 #header
 
-    // The fullscreen and refresh icons that sits on the top right of the screen.
-    img#top-img-fullscreen(src="images/ico-hidecontrols.png",title="Click to enable fullscreen mode.")
-
     // The menu containing navigation options.
     #menu
         if roles.admin || roles.mapcreate
@@ -35,3 +32,6 @@
         // The maps are bound inside this submenu div, which is shown and hidden dynamically
         // when mouse hovers the "Maps" menu. Position is fixed.
         #submenu-items
+
+// The fullscreen and refresh icons that sits on the top right of the screen.
+img#top-img-fullscreen(src="images/ico-hidecontrols.png",title="Click to enable fullscreen mode.")

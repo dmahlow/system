@@ -74,7 +74,7 @@ class SystemApp.MapControlsView extends SystemApp.BaseView
         @$tabHeaders.children("h4").click @tabClick
         @$chkEditable.change @setEnabled
         @$chkAutoUpdate.change @setAutoUpdate
-        @$imgFullscreen.click @parentView.toggleFullscreen
+        @$imgFullscreen.click @toggleFullscreen
 
         @listenTo SystemApp.mapEvents, "loaded", @bindMap
         @listenTo SystemApp.mapEvents, "edit:toggle", @editSetState
@@ -84,7 +84,7 @@ class SystemApp.MapControlsView extends SystemApp.BaseView
         @$chkAutoUpdate.prop "checked", SystemApp.Data.userSettings.mapAutoRefresh()
 
     # When window has loaded or resized, call this to resize the map controls accordingly.
-    # TODO! Properly calculate the diff instead of using the 38 hard coded value.
+    # TODO! Properly calculate the diff instead of using the hard coded value.
     resize: =>
         height = $(window).innerHeight() - $("#header").outerHeight() - $("#footer").outerHeight() - 1
         @$el.css "height", height
@@ -151,11 +151,45 @@ class SystemApp.MapControlsView extends SystemApp.BaseView
         else
             SystemApp.Data.stopTimers()
 
+    # Toggle the fullscreen mode on or off. While on fullscreen, the app [Menu](menuView.html)
+    # and [Map Controls](controlsView.html) will be hidden.
+    toggleFullscreen: (fullscreen) =>
+        if not fullscreen? or fullscreen.originalEvent?
+            fullscreen = $("#header").is(":visible")
+
+        if fullscreen
+
+            $("#header").hide()
+            $("#footer").addClass("transparent")
+            $("body").addClass "fullscreen"
+
+            @$imgFullscreen.attr "src", "images/ico-showcontrols.png"
+            @hide()
+
+            @width = 0
+
+        else
+
+            $("#header").show()
+            $("#footer").removeClass("transparent")
+            $("body").removeClass "fullscreen"
+
+            @$imgFullscreen.attr "src", "images/ico-hidecontrols.png"
+            @show()
+
+            @mapDivWidth = $(window).innerWidth()
+            @mapDivHeight = $(window).innerHeight() - $("#header").outerHeight() - $("#footer").outerHeight()
+            @parentView.$el.css "width", @mapDivWidth
+            @parentView.$el.css "height", @mapDivHeight
+
+            @width = @$el.outerWidth()
+
+        # Save the current fullscreen state on the [User Settings](userSettings.html) model.
+        SystemApp.Data.userSettings.mapFullscreen fullscreen
+
     # Hide the map controls and show the minimzed icon on the top right corner.
     hide: (e) =>
-        @$el.addClass "hidden"
-        @$el.css {"left": "", "bottom": ""}
-        @$el.click @show
+        @$el.hide()
 
         # If an event object is passed then stop its propagation and default behaviour.
         e?.stopPropagation()
@@ -163,10 +197,7 @@ class SystemApp.MapControlsView extends SystemApp.BaseView
 
     # Show the map controls and hide the minimzed icon.
     show: =>
-        @parentView.toggleFullscreen false
-
-        @$el.removeClass "hidden"
-        @$el.unbind "click", @show
+        @$el.show()
 
 
     # TABS HANDLING

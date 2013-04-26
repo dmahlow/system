@@ -232,14 +232,20 @@ SystemApp.setEvents = ->
 # Toggle app options based on the passed querystrings.
 SystemApp.setQueryOptions = ->
     query = location.href.substring location.href.indexOf "?"
-    qDebug = query.indexOf "debug=1"
-    qFullscreen = query.indexOf "fullscreen=1"
+    qDebug = query.indexOf("debug=") + 6
+    qDebug = query.substring qDebug, qDebug + 1
+    qFullscreen = query.indexOf("fullscreen=") + 11
+    qFullscreen = query.substring qFullscreen, qFullscreen + 1
 
-    if qDebug >= 0
+    if qDebug is "1"
         SystemApp.toggleDebug true
+    else if qDebug is "0"
+        SystemApp.toggleDebug false
 
-    if qFullscreen >= 0
-        SystemApp.mapView.toggleFullscreen true
+    if qFullscreen is "1"
+        SystemApp.mapView.controlsView.toggleFullscreen true
+    else if qFullscreen is "0"
+        SystemApp.mapView.controlsView.toggleFullscreen false
 
 # Start the app after all major data has been loaded.
 # First add a timeout to hide the `loading` overlay, then start backbone's history.

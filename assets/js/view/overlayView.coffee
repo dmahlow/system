@@ -130,7 +130,7 @@ class SystemApp.OverlayView extends SystemApp.BaseView
     # Resize the overlay to match the window width and height.
     resize: =>
         horizontalDiff = 30
-        horizontalDiff = horizontalDiff + SystemApp.mapView.mapControlsWidth if not @fullWidth
+        horizontalDiff = horizontalDiff + SystemApp.mapView.controlsView.width if not @fullWidth
         verticalDiff = 29 + SystemApp.footerView.height + SystemApp.menuView.height
 
         # Calculate total dimensions.
