@@ -15,6 +15,9 @@ SYSTEM APP CHANGE LOG
 * Improved console logging with timestamps.
 - External resources will be saved to the MongoDB always now, so we removed
   the "Web.saveDataEveryRefresh" setting.
+- The docs available at: http://coffeedoc.info/github/zalando/system/master/
+  have incorrect links, so please do not use these in the mean time. The
+  official docs are available under the /docs directory of the app.
 
 # -----------------------------------------------------------------------------
   0.5.5, 2013.04.24

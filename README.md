@@ -14,10 +14,6 @@ especially the CHANGELOG file. The final 1.0.0 version will be available by summ
 
 #### What's still not ready for prime time?
 
-- The `settings.coffee` file will be created automatically but only after the app has
-  started for the first time. We'll change this once we have the UI to manage these settings,
-  so when app is started for the first time a page with the settings manager will open
-  allowing the user to create its own customized settings.
 - User authentication. We're implementing basic HTTP authentication first, and LDAP will follow
   as soon as we get the basic stuff done.
 - Performance improvements on complex maps. SVG is slow, so we'll tweak our implementation to
@@ -31,6 +27,10 @@ especially the CHANGELOG file. The final 1.0.0 version will be available by summ
   someone editing it already.
 - External API with HTTP webhooks.
 - Self-healing features - app will self diagnose in case too many errors are triggered.
+- ~~The `settings.coffee` file will be created automatically but only after the app has
+  started for the first time. We'll change this once we have the UI to manage these settings,
+  so when app is started for the first time a page with the settings manager will open
+  allowing the user to create its own customized settings.~~
 
 ## Installation
 
