@@ -23,7 +23,7 @@ class Settings
     # ----------------------------------------------------------------------
     General:
         # The app title.
-        appTitle: "Zalando System"
+        appTitle: "System App"
         # When debug is true, more messages will be logged to file and console.
         debug: false
 
