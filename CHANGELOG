@@ -5,7 +5,7 @@ SYSTEM APP CHANGE LOG
 
 # -----------------------------------------------------------------------------
   0.5.6, 2013.04.26
-+ New official website: http://systemapp.io
++ New official website at http://systemapp.io
 + Now you can pass options to the app via querystring:
   ?debug=1 will activate debug mode
   ?fullscreen=1 will set map to fullscreen automatically
