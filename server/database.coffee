@@ -196,7 +196,7 @@ class Database
     # USERS
     # ----------------------------------------------------------------------
 
-    # Get a single or a list of {User}.
+    # Get {User} that matches the passed filter.
     getUser: (filter, callback) =>
         table = db.collection "user"
         @get table, filter, callback
