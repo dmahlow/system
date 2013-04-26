@@ -30,11 +30,17 @@ class SystemApp.EntityDefinition extends SystemApp.BaseModel
     # ----------------------------------------------------------------------
 
     # Helper to get / set the entity objects data.
+    # If a collection is already set, only updated its models.
     data: (value) =>
         if value?
-            value = new SystemApp.EntityObjectCollection value if not value.typeName?
-            value.parentModel = this
-            @set "data", value
+            currentValue = @get "data"
+            if currentValue?.typeName?
+                value = value.models if value.typeName?
+                currentValue.set value
+            else
+                value = new SystemApp.EntityObjectCollection(value) if not value.typeName?
+                value.parentModel = this
+                @set "data", value
         @get "data"
 
     # Helper to get / set the description of the entity.

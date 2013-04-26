@@ -228,11 +228,9 @@ class Manager
                         counter++
                     obj.refreshCount = counter
 
-                    # Save the updated data to the database on every third refresh. The default
-                    # value (3) is set on the [Server Settings](settings.html).
-                    if counter % settings.Web.saveDataEveryRefresh is 0
-                        obj.data = database.cleanObjectForInsertion obj.data
-                        dbCallback obj, {patch: true}
+                    # Save the updated data to the database.
+                    obj.data = database.cleanObjectForInsertion obj.data
+                    dbCallback obj, {patch: true}
         else
             logger.error "Manager.transmitDataToClients", localFile, err
 

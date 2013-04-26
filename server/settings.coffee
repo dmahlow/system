@@ -102,8 +102,6 @@ class Settings
         paas: true
         # The Node.js port to bind the app to.
         port: 3003
-        # Saves the `data` from the Audit Data and Entity Definitions on every third refresh by default.
-        saveDataEveryRefresh: 3
         # Default session security key.
         sessionKey: "zal"
 

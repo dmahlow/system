@@ -4,13 +4,17 @@ SYSTEM APP CHANGE LOG
 - = removed features
 
 # -----------------------------------------------------------------------------
-  0.5.6, 2013.04.25
+  0.5.6, 2013.04.26
++ New official website: http://systemapp.io
 + Now you can pass options to the app via querystring:
   ?debug=1 will activate debug mode
   ?fullscreen=1 will set map to fullscreen automatically
-* Fixed bugs when adding and removing Entity Definitions, for example when
-  removing it wouldn't clear the entity objects from the "Objects" tab
-  on the map controls.
+* Fixed syncing problems when adding/removing/editing Entity Definitions.
+  Most important changes were made on the manager.coffee (server side) and
+  entitiesTabView.coffee (client side).
+* Improved console logging with timestamps.
+- External resources will be saved to the MongoDB always now, so we removed
+  the "Web.saveDataEveryRefresh" setting.
 
 # -----------------------------------------------------------------------------
   0.5.5, 2013.04.24

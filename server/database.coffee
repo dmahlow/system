@@ -196,7 +196,7 @@ class Database
     # USERS
     # ----------------------------------------------------------------------
 
-    # Get [User](user.html).
+    # Get a single or a list of {User}.
     getUser: (filter, callback) =>
         table = db.collection "user"
         @get table, filter, callback

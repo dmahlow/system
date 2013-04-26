@@ -1,11 +1,13 @@
-# System App - Readme
+# System App by Zalando - Readme
 
-System monitoring and infrastructure mapping app by Zalando. Please note that the app is still in BETA
-so some features are not yet implemented, although it's quite usable in its current state.
-We recommend using Google Chrome but FireFox should work fine as well.
+**Official homepage** <http://systemapp.io>
+**Live demo** <http://systemapp.io/demo>
 
-There's a functional demo running on AppFog: <http://systemapp.rs.af.cm>
-Documentation can be found under the `/docs` directory of the app.
+The System App is a sleek, smart and open-source IT mapping and monitoring tool by Zalando.
+Please note that the app is still in BETA so some features are not yet implemented,
+although it's quite usable in its current state.
+
+Full documentation can be found under the `/docs` directory of the app.
 
 As the app is being developed on a daily basis, we recommend you to keep an eye on commits and
 especially the CHANGELOG file. The final 1.0.0 version will be available by summer 2013.

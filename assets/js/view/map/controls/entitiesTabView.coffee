@@ -5,19 +5,11 @@
 
 class SystemApp.MapControlsEntitiesTabView extends SystemApp.BaseView
 
-    # Holds the timer to trigger the `search` method, so when user
-    # changs the value of the `$txtSearch` it will actually search only
-    # after a few miliseconds.
-    timerSearch: null
+    $list: null             # the "Ul" element containing the entity items
+    $txtSearch: null        # the "Search" input field
+    $shapeDragger: null     # represents a copy of the current shape being dragged to the map
 
-
-    # DOM ELEMENTS
-    # ----------------------------------------------------------------------
-    # Sets the wrapper element and the list container.
-
-    $list: null           # the "Ul" element containing the entity items
-    $txtSearch: null      # the "Search" input field
-    $shapeDragger: null   # represents a copy of the current shape being dragged to the map
+    timerSearch: null       # holds the timer to trigger the `search` method
 
 
     # INIT AND DISPOSE
@@ -26,6 +18,8 @@ class SystemApp.MapControlsEntitiesTabView extends SystemApp.BaseView
     # Inits the view. Parent will be the [Map Controls View](controlsView.html).
     initialize: (parent) =>
         @baseInit parent
+
+        console.warn parent
 
         @mapView = parent.parentView
 
@@ -107,16 +101,27 @@ class SystemApp.MapControlsEntitiesTabView extends SystemApp.BaseView
         className = entityDef.friendlyId().toLowerCase()
         $(".#{className}").remove()
 
-        SystemApp.consoleLog "MapControlsEntitiesTabView.entityRemoved", entityDef
+        # If user is dragging / adding a shape which was removed, alert and cancel the dragging.
+        if @$shapeDragger?
+            entity = @$shapeDragger.data "entity"
+            if entity.entityDefinitionId() is entityDef.friendlyId()
+                @dragCancel()
+
+        SystemApp.consoleLog "MapControlsEntitiesTabView.entityRemoved", entityDef.friendlyId()
 
     # When the entity's [data collection](entityObject.html) gets changed.
     # This will effectively remove and re-add all entity objects to the list.
+    # Do not proceed if a shape is being dragged at the moment.
     entityDataChanged: (entityDef) =>
+        if @$shapeDragger?
+            SystemApp.consoleLog "MapControlsEntitiesTabView.entityDataChanged", "Canceled because a shape is being dragged!", entityDef.friendlyId()
+            return
+
         className = entityDef.friendlyId().toLowerCase()
         $(".#{className}").remove()
         @addToList obj for obj in entityDef.data().models
 
-        SystemApp.consoleLog "MapControlsEntitiesTabView.entityDataChanged", entityDef
+        SystemApp.consoleLog "MapControlsEntitiesTabView.entityDataChanged", entityDef.friendlyId()
 
     # When the entity's [data](entityObject.html) gets new entity objects, add them
     # to the `$list`.
@@ -259,10 +264,10 @@ class SystemApp.MapControlsEntitiesTabView extends SystemApp.BaseView
 
         shapeOptions = {}
 
-        x = (x * @mapView.currentZoom + viewBox.x) / (@model.gridSizeX())
+        x = (x * @mapView.currentZoom + viewBox.x) / (@mapView.model.gridSizeX())
         x = Math.round x
 
-        y = (y * @mapView.currentZoom + viewBox.y) / (@model.gridSizeY())
+        y = (y * @mapView.currentZoom + viewBox.y) / (@mapView.model.gridSizeY())
         y = Math.round y
 
         if entityObj?
@@ -302,9 +307,10 @@ class SystemApp.MapControlsEntitiesTabView extends SystemApp.BaseView
 
     # When user starts dragging a shape from the `$list`, clone it to the `$shapeDragger` variable.
     dragStart: (e) =>
-        if not @mapView.editEnabled
+        if not @mapView.editEnabled or not @mapView.model?
             return
 
+        # Get the list element and default shape settings.
         li = $ e.target
         entity = li.data "entity"
         background = SystemApp.Settings.Shape.background
@@ -323,10 +329,11 @@ class SystemApp.MapControlsEntitiesTabView extends SystemApp.BaseView
             sizeY = entityDef.get "shapeSizeY"
             @$shapeDragger.data "entity", entity
 
+        # Append CSS to the dragger.
         @$shapeDragger.css "background-color", background
         @$shapeDragger.css "color", foreground
-        @$shapeDragger.css "width", sizeX * @model.gridSizeX() * (1 / @mapView.currentZoom) - 30
-        @$shapeDragger.css "height", sizeY * @model.gridSizeY() * (1 / @mapView.currentZoom) - 10
+        @$shapeDragger.css "width", sizeX * @mapView.model.gridSizeX() * (1 / @mapView.currentZoom) - 30
+        @$shapeDragger.css "height", sizeY * @mapView.model.gridSizeY() * (1 / @mapView.currentZoom) - 10
 
         li.parent().append @$shapeDragger
 
@@ -354,14 +361,21 @@ class SystemApp.MapControlsEntitiesTabView extends SystemApp.BaseView
         @$shapeDragger?.remove()
         @$shapeDragger = null
 
-        target = document.elementFromPoint e.pageX, e.pageY
-        tag = target?.tagName
+        if e isnt false
+            target = document.elementFromPoint e.pageX, e.pageY
+            tag = target?.tagName
 
-        if tag is "svg" or tag is "rect" or tag is "circle" or tag is "path"
-            @addShapeToMap entity, e.pageX, e.pageY - 45
+            if tag is "svg" or tag is "rect" or tag is "circle" or tag is "path"
+                @addShapeToMap entity, e.pageX, e.pageY - 45
 
         e.preventDefault()
         e.stopPropagation()
+
+    # Cancel the dragging action. This will be mainyl called when a particular
+    # [entity object](entityObject.html) being dragged is removed from the server,
+    # this making it an invalid shape.
+    dragCancel: =>
+        @dragStop false
 
 
     # SEARCH AND FILTER

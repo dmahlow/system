@@ -26,17 +26,27 @@ class SystemApp.AuditEvent extends SystemApp.BaseModel
     # Helper to get / set the alert rules collection.
     rules: (value) =>
         if value?
-            value = new SystemApp.EventRuleCollection value if not value.typeName?
-            value.parentModel = this
-            @set "rules", value
+            currentValue = @get "rules"
+            if currentValue?.typeName?
+                value = value.models if value.typeName?
+                currentValue.set value
+            else
+                value = new SystemApp.EventRuleCollection(value) if not value.typeName?
+                value.parentModel = this
+                @set "rules", value
         @get "rules"
 
     # Helper to get / set the alert actions collection.
     actions: (value) =>
         if value?
-            value = new SystemApp.EventActionCollection value if not value.typeName?
-            value.parentModel = this
-            @set "actions", value
+            currentValue = @get "actions"
+            if currentValue?.typeName?
+                value = value.models if value.typeName?
+                currentValue.set value
+            else
+                value = new SystemApp.EventActionCollection(value) if not value.typeName?
+                value.parentModel = this
+                @set "actions", value
         @get "actions"
 
     # Helper to get / set the alert active (true or false).
