@@ -354,6 +354,8 @@ SystemApp.SettingsDefault =
         url: "json/variable"
         # The namespace used for data binding.
         bindingNamespace: "var"
+        # Prefix of DOM IDs set on each row representing an item on the VariableManagerView.
+        rowListPrefix: "list-variable-"
 
 
     # ALERT

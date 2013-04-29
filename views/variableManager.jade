@@ -1,0 +1,52 @@
+// VARIABLE MANAGER HTML
+// -------------------------------------------------------------------------
+
+#variables.full-overlay(style="display:none")
+    div.full-overlay-contents
+        img.close(src="images/ico-x.png")
+        h2 Variables
+
+        // Tabs shown on top of the overlay.
+        #variables-tabheaders.tab-headers
+            label(data-tab="#variables-tab-props",title="View and edit the selected variable's properties.").active Properties
+            label(data-tab="#variables-tab-preview",title="View the selected variable's preview.") Preview
+
+        // Audit Data list on the left.
+        .left-col
+            // This "Audit Data list" is populated via javascript.
+            #variables-list.models-list
+
+            .create
+                input#variables-txt-create(type="text",placeholder="New variable ID...",title="Enter the name of the new variable to be created.")
+                button#variables-but-create(title="Click to create a new variable with the specified ID.") Create
+
+            .notes.small.
+                Please note that only normal characters and numbers are allowed
+                on the ID field. Special characters and spaces will be normalized.
+
+        // The right panel has the tabs and forms for editing the variable.
+        .right-col
+
+            // Audit Data properties tab.
+            #variables-tab-props.tab
+                h4 Audit Data properties
+                .panel
+                    div
+                        label(for="variables-txt-description") Description:
+                        input#variable-txt-description.required.long(type="text",data-propertyname="description",title="Enter a quick description of this variable.")
+                    div
+                        label(for="variables-txt-url") Source URL:
+                        input#variable-txt-url.required.long(type="url",data-propertyname="sourceUrl",placeholder="http(s)://domain.com/path/to/variables/json",title="Enter the URL to the JSON resource for this variable, including http(s)://.")
+                    div
+                        label(for="variables-txt-refresh") Refresh:
+                        input#variable-txt-refresh.required.short(type="number",data-propertyname="refreshInterval",title="Data refresh interval in milliseconds. Minimum of 2000, for performance reasons.")
+                        span.spaced seconds
+
+            // Audit data preview tab.
+            #variables-tab-preview.tab(style="display:none")
+                #variables-preview
+
+        // Manage tab.
+       div.tab.reports(style="display:none")
+           div.
+               Reports will be available soon!

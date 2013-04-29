@@ -16,6 +16,7 @@ class SystemApp.Routes extends Backbone.Router
         "maps": "openStart"                 # open the [Start](startView.html) overlay
         "settings": "openSettings"          # open the [Settings](settingsView.html) overlay
         "start": "openStart"                # open the [Start](startView.html) overlay
+        "variables": "openVariables"        # open the [Variables Manager](variableManagerView.html) overlay
 
 
     # ROUTER METHODS
@@ -97,6 +98,11 @@ class SystemApp.Routes extends Backbone.Router
         SystemApp.consoleLog "ROUTE", "openStart"
         @showOverlay SystemApp.startView
 
+    # Show the [Variables Manager View](variableManagerView.html).
+    openVariables: =>
+        SystemApp.consoleLog "ROUTE", "openVariables"
+        @showOverlay SystemApp.variableManagerView
+
 
     # HELPER METHODS
     # ----------------------------------------------------------------------
@@ -113,7 +119,8 @@ class SystemApp.Routes extends Backbone.Router
             SystemApp.helpView,
             SystemApp.settingsView,
             SystemApp.scriptEditorView,
-            SystemApp.startView]
+            SystemApp.startView,
+            SystemApp.variableManagerView]
             view.hide() if overlay isnt view
 
         if overlay isnt false

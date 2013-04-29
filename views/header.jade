@@ -9,17 +9,11 @@
             a#menu-createmap.menu-item(href="#createmap",title="Click to create a new map.") Create Map
         a#menu-maps.menu-item(href="#maps",title="View and open available maps.") Maps...
         a#menu-entities.menu-item(href="#entities",title="Open the Entities Manager.") Entities
-        a#menu-auditdata.menu-item(href="#auditdata",title="Open the Audit Data manager dialog.") Audit Data
-        a#menu-auditevents.menu-item(href="#auditevents",title="Open the Audit Events manager dialog.") Audit Events
+        a#menu-variables.menu-item(href="#variables",title="Open the Variables Manager.") Variables
+        a#menu-auditdata.menu-item(href="#auditdata",title="Open the Audit Data manager.") Audit Data
+        a#menu-auditevents.menu-item(href="#auditevents",title="Open the Audit Events manager.") Audit Events
         a#menu-settings.menu-item(href="#settings",title="Open the Settings dialog.") Settings
         a#menu-help.menu-item(href="#help",title="Open the online Q&A and help center.") Help
-
-        // The "Edit ON/OFF" switch, which is shown only if the user has the necessary permissions.
-        .lock
-            img#top-img-lock(src="images/ico-locked.png",title="Map edit lock")
-            label.toggle(for="map-ctl-editable",title="When on, map will be locked")
-                input#map-ctl-editable(type="checkbox", name="map-ctl-editable", checked="checked")
-                span
 
         // The "Audit Data / alerts auto update" switch.
         .autoupdate
@@ -27,7 +21,13 @@
             label.toggle(for="map-ctl-autoupdate",title="When on, audit data will get bound to the map automatically every X seconds")
                 input#map-ctl-autoupdate(type="checkbox", name="map-ctl-autoupdate", checked="checked")
                 span
-        span#top-audit-data-outdated
+
+        // The "Edit ON/OFF" switch, which is shown only if the user has the necessary permissions.
+        .lock
+            img#top-img-lock(src="images/ico-locked.png",title="Map edit lock")
+            label.toggle(for="map-ctl-editable",title="When on, map will be locked")
+                input#map-ctl-editable(type="checkbox", name="map-ctl-editable", checked="checked")
+                span
 
         // The maps are bound inside this submenu div, which is shown and hidden dynamically
         // when mouse hovers the "Maps" menu. Position is fixed.

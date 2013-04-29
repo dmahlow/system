@@ -4,6 +4,17 @@ SYSTEM APP CHANGE LOG
 - = removed features
 
 # -----------------------------------------------------------------------------
+  0.6.0
++ Demo environment moved from Rackspace East to AWS Europe.
+  Now accessible via http://systemapp.io/demo
++ New "Variable Manager" view to add, edit and delete user created variables.
+* The "lock" and "auto refresh" toggles were moved to the right corner of the top menu.
+* Fixed bug with "toggleFullscreen" called on the MpView instead of MapControlsView.
+* Fixed bug with the search field not editable on the "Objects" tab on the map controls.
+* Refactored the "settings.coffee" file on the client side, pretty much like it was done on
+  server settings on release 0.5.5. Now expects a settings.json file to override settings.
+
+# -----------------------------------------------------------------------------
   0.5.6, 2013.04.26
 + New official website at http://systemapp.io
 + Now you can pass options to the app via querystring:
@@ -16,7 +27,7 @@ SYSTEM APP CHANGE LOG
 - External resources will be saved to the MongoDB always now, so we removed
   the "Web.saveDataEveryRefresh" setting.
 - The docs available at: http://coffeedoc.info/github/zalando/system/master/
-  have incorrect links, so please do not use these in the mean time. The
+  have incorrect links, so please do not use thvim settings.ese in the mean time. The
   official docs are available under the /docs directory of the app.
 
 # -----------------------------------------------------------------------------
@@ -27,7 +38,7 @@ SYSTEM APP CHANGE LOG
 * Improved AlertView, avoids showing similar alerts in short periods of time.
 * Major refactoring, renamed System.App namespace to SystemApp on the client
   models and views and changed the document ready init code.
-* Refactored the way the settings.coffee work on the server. Now it expects
+* Refactored the way the "settings.coffee" work on the server. Now it expects
   a settings.json file with the user-specific settings.
 * Fixed bug: map controls for shapes and links would be visible and editable
   even when no shape or link was selected.

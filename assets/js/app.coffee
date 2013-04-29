@@ -64,6 +64,7 @@
 #= require view/startView.coffee
 #= require view/createMapView.coffee
 #= require view/entityManagerView.coffee
+#= require view/variableManagerView.coffee
 #= require view/auditDataManagerView.coffee
 #= require view/auditEventManagerView.coffee
 #= require view/settingsView.coffee
@@ -146,6 +147,7 @@ SystemApp.menuView = null
 SystemApp.settingsView = null
 SystemApp.scriptEditorView = null
 SystemApp.startView = null
+SystemApp.variableManagerView = null
 
 
 # LOADING
@@ -175,7 +177,6 @@ SystemApp.init = ->
     SystemApp.setDom()
     SystemApp.setViews()
     SystemApp.setIdleTimer()
-    SystemApp.setQueryOptions()
 
     # Load data collections.
     SystemApp.Data.fetch()
@@ -183,19 +184,11 @@ SystemApp.init = ->
     # Start the Socket.IO communcations.
     SystemApp.Sockets.start()
 
-    # Apply user settings to the UI.
-    SystemApp.initUserSettings()
+    # Set UI options based on user settings and querystrings.
+    SystemApp.setUiOptions()
 
     # Init the API, bind it to the "api" variable on the window.
     SystemApp.Api.init()
-
-# Change the app UI based on the current user settings.
-# Things like fullscreen, zoom, etc.
-SystemApp.initUserSettings = ->
-    if SystemApp.Data.userSettings.mapFullscreen()
-        SystemApp.mapView.toggleFullscreen true
-    if SystemApp.Data.userSettings.mapZoom() isnt 1
-        SystemApp.mapView.zoomSet SystemApp.Data.userSettings.mapZoom()
 
 # Set the DOM cache.
 SystemApp.setDom = ->
@@ -215,6 +208,7 @@ SystemApp.setViews = ->
     SystemApp.settingsView = new SystemApp.SettingsView()
     SystemApp.scriptEditorView = new SystemApp.ScriptEditorView()
     SystemApp.startView = new SystemApp.StartView()
+    SystemApp.variableManagerView = new SystemApp.VariableManagerView()
 
 # Create event dispatchers. Bind and listen to app events.
 SystemApp.setEvents = ->
@@ -229,8 +223,8 @@ SystemApp.setEvents = ->
 
     SystemApp.dataEvents.on "load", SystemApp.start
 
-# Toggle app options based on the passed querystrings.
-SystemApp.setQueryOptions = ->
+# Toggle app options based on user settings and passed querystrings.
+SystemApp.setUiOptions = ->
     query = location.href.substring location.href.indexOf "?"
     qDebug = query.indexOf("debug=") + 6
     qDebug = query.substring qDebug, qDebug + 1
@@ -242,10 +236,17 @@ SystemApp.setQueryOptions = ->
     else if qDebug is "0"
         SystemApp.toggleDebug false
 
+    # Set fullscreen if `fullscreen` querystring is set, or if
+    # the `mapFullscreen` option is defined on the [user settings](userSettings.html).
     if qFullscreen is "1"
         SystemApp.mapView.controlsView.toggleFullscreen true
     else if qFullscreen is "0"
         SystemApp.mapView.controlsView.toggleFullscreen false
+    else if SystemApp.Data.userSettings.mapFullscreen()
+        SystemApp.mapView.controlsView.toggleFullscreen true
+    
+    if SystemApp.Data.userSettings.mapZoom() isnt 1
+        SystemApp.mapView.zoomSet SystemApp.Data.userSettings.mapZoom()
 
 # Start the app after all major data has been loaded.
 # First add a timeout to hide the `loading` overlay, then start backbone's history.
@@ -276,6 +277,7 @@ SystemApp.dispose = ->
     SystemApp.menuView?.dispose()
     SystemApp.settingsView?.dispose()
     SystemApp.startView?.dispose()
+    SystemApp.variableManagerView?.dispose()
 
 
 # IDLE TIMER AND ACTIONS

@@ -19,8 +19,6 @@ class SystemApp.MapControlsEntitiesTabView extends SystemApp.BaseView
     initialize: (parent) =>
         @baseInit parent
 
-        console.warn parent
-
         @mapView = parent.parentView
 
         @setDom()

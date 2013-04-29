@@ -12,6 +12,7 @@ class SystemApp.MenuView extends SystemApp.BaseView
     $menuCreateMap: null        # the "Create map" menu item
     $menuMaps: null             # the "Available maps" menu item
     $menuEntities: null         # the "Entities" menu item
+    $menuVariables: null        # the "Variables" menu item
     $menuAuditData: null        # the "Audit Data" menu item
     $menuAuditEvents: null      # the "Audit Events" menu item
     $menuSettings: null         # the "Settings" menu item
@@ -46,6 +47,7 @@ class SystemApp.MenuView extends SystemApp.BaseView
         @$menuCreateMap = $ "#menu-createmap"
         @$menuMaps = $ "#menu-maps"
         @$menuEntities = $ "#menu-entities"
+        @$menuVariables = $ "#menu-variables"
         @$menuAuditData = $ "#menu-auditdata"
         @$menuAuditEvents = $ "#menu-auditevents"
         @$menuSettings = $ "#menu-settings"
@@ -63,6 +65,7 @@ class SystemApp.MenuView extends SystemApp.BaseView
         @$menuCreateMap.click "click:createmap", @menuClick
         @$menuMaps.click "click:maps", @menuClick
         @$menuEntities.click "click:entities", @menuClick
+        @$menuVariables.click "click:variables", @menuClick
         @$menuAuditData.click "click:auditdata", @menuClick
         @$menuAuditEvents.click "click:auditevents", @menuClick
         @$menuSettings.click "click:settings", @menuClick
