@@ -1,13 +1,18 @@
-# AUDIT DATA MANAGER VIEW
+# VARIABLE MANAGER VIEW
 # --------------------------------------------------------------------------
 # Represents the Variables overlay.
 
 class SystemApp.VariableManagerView extends SystemApp.OverlayView
 
-    $txtCreate: null         # the text input used to create a new variable
-    $butCreate: null         # the button used to create a new variable
-    $txtDescription: null    # the "Description" textbox when editing an variable item
-    $txtCode: null      # the "URL" textbox when editing an variable item
+    $txtCreate: null        # the text input used to create a new variable
+    $butCreate: null        # the button used to create a new variable
+    $txtDescription: null   # the "Description" textbox when editing an variable item
+    $txtCode: null          # the "URL" textbox when editing an variable item
+    $butSave: null          # the "Save" button
+    $codeErrorMsg: null     # message shown if code is not valid
+
+    timerHideError: null    # cached timer to hide the error message
+
 
 
     # INIT AND DISPOSE
@@ -27,12 +32,14 @@ class SystemApp.VariableManagerView extends SystemApp.OverlayView
     # Set the DOM elements cache.
     setDom: =>
         @$menuItem = $ "#menu-variable"
-        @$modelsList = $ "#variable-list"
-        @$txtCreate = $ "#variable-txt-create"
-        @$butCreate = $ "#variable-but-create"
+        @$modelsList = $ "#variables-list"
+        @$txtCreate = $ "#variables-txt-create"
+        @$butCreate = $ "#variables-but-create"
 
-        @$txtDescription = $ "#variable-txt-description"
-        @$txtCode = $ "#variable-txt-code"
+        @$txtDescription = $ "#variables-txt-description"
+        @$txtCode = $ "#variables-txt-code"
+        @$butSave = $ "#variables-but-save"
+        @$codeErrorMsg = $ "#variables-code-error"
 
     # Bind events to the DOM.
     setEvents: =>
@@ -40,10 +47,10 @@ class SystemApp.VariableManagerView extends SystemApp.OverlayView
         @$txtCreate.keyup @createVariableKeyUp
 
         @$txtDescription.change @inputOnChange
-        @$txtCode.change @inputOnChange
+        @$butSave.click @validateAndSaveCode
 
 
-    # AUDIT DATA LIST
+    # VARIABLE LIST
     # ----------------------------------------------------------------------
 
     # Clear the current view by setting the `model` to null
@@ -63,7 +70,7 @@ class SystemApp.VariableManagerView extends SystemApp.OverlayView
         @addToModelsList item for item in SystemApp.Data.variables.models
 
 
-    # CREATING AUDIT DATA
+    # CREATING VARIABLE
     # ----------------------------------------------------------------------
 
     # When user clicks the "Add" variable button, add a new record to the
@@ -88,7 +95,7 @@ class SystemApp.VariableManagerView extends SystemApp.OverlayView
             @$butCreate.click()
 
 
-    # AUDIT DATA PROPERTIES
+    # VARIABLE PROPERTIES
     # ----------------------------------------------------------------------
 
     # Bind the variable information to the right form.
@@ -97,8 +104,6 @@ class SystemApp.VariableManagerView extends SystemApp.OverlayView
         if @model?
             @$txtDescription.val @model.description()
             @$txtCode.val @model.code()
-            @$txtRefresh.val @model.refreshInterval()
-            @$preview.html JSON.stringify @model.data(), null, 4
 
     # Force the current data to be refreshed and displayed on the right panel.
     refreshData: =>
@@ -114,6 +119,36 @@ class SystemApp.VariableManagerView extends SystemApp.OverlayView
     # This will show a message to the user.
     refreshDataError: (item, error) =>
         @$preview.html error
+
+    # Validate and save the script to the `code` property.
+    validateAndSaveCode: (e) =>
+        code = @$txtCode.val()
+        valMessage = SystemApp.DataUtil.validateEval code
+
+        # If has a validation message, display it and stop here.
+        if valMessage?
+            @showCodeError valMessage
+            return false
+
+        # All good? Save the code to the model.
+        @model.code code
+        @model.save()
+
+    # If script vaildation fails, show a message to the user.
+    showCodeError: (message) =>
+        @warnField @$txtCode
+
+        @$codeErrorMsg.html message
+        @$codeErrorMsg.show()
+
+        # Hide the error message after a few seconds.
+        clearTimeout(@timerHideError) if @timerHideError?
+        @timerHideError = setTimeout @hideCodeError, SystemApp.Settings.Alert.hideDelay
+
+    # Hide the error message and clear the `timerHideError` timeout.
+    hideCodeError: =>
+        @timerHideError = null
+        @$codeErrorMsg.hide()
 
 
     # SHOW AND HIDE

@@ -144,6 +144,10 @@ class SystemApp.OverlayView extends SystemApp.BaseView
         @$leftCol.height colHeight
         @$rightCol.height colHeight
 
+        # Resize the models list.
+        if @$modelsList?
+            @$modelsList.css "max-height", colHeight - 116
+
     # When user presses a key while the help overlay is visible, check if it's Esc to close it.
     overlayKeyUp: (e) =>
         keyCode = e.keyCode
@@ -193,15 +197,10 @@ class SystemApp.OverlayView extends SystemApp.BaseView
         delIcon.addClass "delete"
         delIcon.click item, @clickDeleteIcon
 
-        # Simulate an arrow using the `arrow` CSS class.
-        arrow = $(document.createElement "span")
-        arrow.addClass "arrow"
-
         # Append to the document.
         row.append id
         row.append editIcon
         row.append delIcon
-        wrapper.append arrow
         wrapper.append row
         @$modelsList.append wrapper
 
@@ -243,6 +242,7 @@ class SystemApp.OverlayView extends SystemApp.BaseView
         else
             clear = true
 
+        # Remove readonly property from the selected row.
         @$modelsList.find("div.active").removeClass "active"
         @$modelsList.find("input.id").prop "readonly", true
 
@@ -252,7 +252,6 @@ class SystemApp.OverlayView extends SystemApp.BaseView
         else
             @model = item
             @$rightCol.show()
-
             row.addClass "active"
             row.find("input.id").prop "readonly", false
 

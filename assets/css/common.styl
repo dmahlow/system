@@ -57,6 +57,18 @@ overlayBorder = 1px solid rgb(0, 0, 0)
 overlayLightBorder = 1px solid rgb(255, 255, 255)
 
 
+// STYLED SCROLLBARS
+// -------------------------------------------------------------------------
+::-webkit-scrollbar
+    background-color Transparent
+    width 13px
+
+::-webkit-scrollbar-thumb
+    background-color lightBgColor
+
+::-webkit-scrollbar-thumb:hover
+    background-color darkHoverColor !important
+
 // BODY AND LAYOUT
 // -------------------------------------------------------------------------
 
@@ -191,6 +203,11 @@ input[type="url"]
     font 14px/25px Arial, Helvetica, sans-serif
     padding-left 3px
     padding-right 3px
+    -webkit-appearance none
+
+textarea
+    border-radius 0
+    border 0
     -webkit-appearance none
 
 input[type="email"]:disabled,

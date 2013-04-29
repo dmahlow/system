@@ -1,12 +1,16 @@
 // VARIABLE MANAGER STYLES
 // -------------------------------------------------------------------------
 
-// Div to preview audit data contents.
-#auditdata-preview
-    background rgba(200, 200, 200, 0.1) url(../images/preview-bg.png) no-repeat center
-    border 1px solid rgba(200, 200, 200, 0.8)
-    height 440px
-    overflow auto
-    padding 5px
-    white-space pre-wrap
-    width auto
+#variables
+    span.error
+        color errorColor
+        margin-left 10px
+
+// The variable code textarea.
+#variables-txt-code
+    min-height 400px
+    width 80%
+
+// Save button must have left margin.
+#variables-but-save
+    margin-left 120px

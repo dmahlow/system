@@ -170,7 +170,6 @@ class SystemApp.MapLabelEditView extends SystemApp.BaseView
     # `saveCustomVar`.
     save: =>
         value = @simpleValue()
-        value = value + @customVarCodeValue() if value is SystemApp.Settings.General.evalPrefix
 
         @currentValue @simpleValue()
         @trigger "save", this, value
@@ -517,8 +516,7 @@ class SystemApp.MapLabelEditView extends SystemApp.BaseView
 
     # When pressing keys on `$txtSimple`, check if the value is blank and the key being pressed
     # is the special key defined on the [Settings](settings.html). If so, starts the
-    # autocomplete feature. Pressing "Enter" will save. And if user enters the eval prefix
-    # defined at `SystemApp.Settings.General.evalPrefix`, then call `showCustomVar`.
+    # autocomplete feature. Pressing "Enter" will save.
     simpleKeyUp: (e) =>
         @parseValue()
         @save() if e.which is 13

@@ -5,13 +5,13 @@
 
 class SystemApp.ScriptEditorView extends SystemApp.OverlayView
 
-    propertyName: null      # the property which should be updated with the script value, for example a map initScript.
-    timerHideError: null    # cached timer to hide the error message
-
-    $info: null             # the info text shown above the textarea
     $txtScriptValue: null   # the textarea with the current script value
+    $info: null             # the info text shown above the textarea
     $butSave: null          # the button used to save the script
     $errorMsg: null         # placeholder to show validation error messages
+
+    propertyName: null      # the property which should be updated with the script value, for example a map initScript.
+    timerHideError: null    # cached timer to hide the error message
 
     # INIT AND DISPOSE
     # ----------------------------------------------------------------------
@@ -29,8 +29,8 @@ class SystemApp.ScriptEditorView extends SystemApp.OverlayView
 
     # Set the DOM elements cache.
     setDom: =>
-        @$info = $ "#script-editor-info"
         @$txtScriptValue = $ "#script-editor-value"
+        @$info = $ "#script-editor-info"
         @$butSave = $ "#script-editor-but-save"
         @$errorMsg = @$el.find "span.error"
 
@@ -89,7 +89,7 @@ class SystemApp.ScriptEditorView extends SystemApp.OverlayView
         @$errorMsg.show()
 
         # Hide the error message after a few seconds.
-        clearTimeout @timerHideError if @timerHideError?
+        clearTimeout(@timerHideError) if @timerHideError?
         @timerHideError = setTimeout @hideError, SystemApp.Settings.Alert.hideDelay
 
     # Hide the error message and clear the `timerHideError` timeout.

@@ -9,11 +9,10 @@
         // Tabs shown on top of the overlay.
         #variables-tabheaders.tab-headers
             label(data-tab="#variables-tab-props",title="View and edit the selected variable's properties.").active Properties
-            label(data-tab="#variables-tab-preview",title="View the selected variable's preview.") Preview
 
-        // Audit Data list on the left.
+        // Variable list on the left.
         .left-col
-            // This "Audit Data list" is populated via javascript.
+            // This "Variable list" is populated via javascript.
             #variables-list.models-list
 
             .create
@@ -27,24 +26,20 @@
         // The right panel has the tabs and forms for editing the variable.
         .right-col
 
-            // Audit Data properties tab.
+            // Variable properties tab.
             #variables-tab-props.tab
-                h4 Audit Data properties
+                h4 Variable properties
                 .panel
                     div
                         label(for="variables-txt-description") Description:
-                        input#variable-txt-description.required.long(type="text",data-propertyname="description",title="Enter a quick description of this variable.")
+                        input#variables-txt-description.required.long(type="text",data-propertyname="description",title="Enter a quick description of this variable.")
                     div
-                        label(for="variables-txt-url") Source URL:
-                        input#variable-txt-url.required.long(type="url",data-propertyname="sourceUrl",placeholder="http(s)://domain.com/path/to/variables/json",title="Enter the URL to the JSON resource for this variable, including http(s)://.")
+                        label(for="variables-txt-code") Code:
+                        textarea#variables-txt-code.required.long(data-propertyname="code",placeholder="Enter the variable's javascript code here, with at least 1 return statement...",title="Enter the javascript code returned by this variable.")
                     div
-                        label(for="variables-txt-refresh") Refresh:
-                        input#variable-txt-refresh.required.short(type="number",data-propertyname="refreshInterval",title="Data refresh interval in milliseconds. Minimum of 2000, for performance reasons.")
-                        span.spaced seconds
+                        button#variables-but-save.save(title="Click to validate and save the script above.") Validate and save
+                        span#variables-code-error.error
 
-            // Audit data preview tab.
-            #variables-tab-preview.tab(style="display:none")
-                #variables-preview
 
         // Manage tab.
        div.tab.reports(style="display:none")

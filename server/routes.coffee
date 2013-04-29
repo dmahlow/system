@@ -58,6 +58,7 @@ module.exports = (app) ->
         # Check the last modified date.
         lastModified = fs.statSync("./package.json").mtime if not lastModified?
 
+        # Set render options.
         options =
             title: settings.General.appTitle,
             version: packageJson.version,

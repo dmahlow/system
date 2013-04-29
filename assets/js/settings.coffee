@@ -1,13 +1,10 @@
 # DEFAULT APP CLIENT SETTINGS
 # --------------------------------------------------------------------------
 # All default settings should be available here. Please DOT NOT edit
-# this file unless you know excatly what you're doing. To change settings,
-# please use the `settings.coffee` file which will always override the ones
-# specified here.
+# this file unless you know excatly what you're doing. To overwrite settings,
+# please edit (or create) the `settings.json` file on the same directory.
 
-# TODO! Transform the default client settings to plain JSON files instead of coffee classes.
-
-SystemApp.SettingsDefault =
+SystemApp.Settings =
 
     # GENERAL
     # ----------------------------------------------------------------------
@@ -27,8 +24,6 @@ SystemApp.SettingsDefault =
         dataBindingKey: "#"
         # Interval when blinking a form or HTMl field.
         elementBlinkInterval: 150
-        # Text that triggers / defines if the value being bound is an eval.
-        evalPrefix: "eval:"
         # Time in ms to fade in / out when using the show / hide methods of views.
         fadeDelay: 200
         # Refresh the browser if the page has been idle for more than X minutes.
@@ -388,6 +383,3 @@ SystemApp.SettingsDefault =
         modifierMultiple: "shift leftclick"
         # Default key combination to send shapes and links to the back of the map.
         modifierToBack: "rightclick"
-        # The secret key used to generate user passwords. We deeply recommend you
-        # to override this value on the [settings file](settings.html).
-        passwordSecretKey: "ZalsysH4S4"
