@@ -1,21 +1,25 @@
 # SERVER SYNC
 # --------------------------------------------------------------------------
-# Handles syncing data with external resources.
+# Handles syncing data (downloads and uploads) to external resources.
 
 class Sync
 
-    # Define the settings and sockets.
-    logger = require "./logger.coffee"
-    settings = require "./settings.coffee"
-    sockets = require "./sockets.coffee"
-
-    # Define the file system, url and http objects.
+    # Define required modules.
     fs = require "fs"
     http = require "http"
+    logger = require "./logger.coffee"
+    moment = require "moment"
+    settings = require "./settings.coffee"
+    sockets = require "./sockets.coffee"
     url = require "url"
 
     # Holds a copy of all files being downloaded.
     currentDownloads: {}
+
+    # Holds how many errors happened for downloads.
+    # If a download throws errors too many times, it will cancel all downloads for
+    # that specific URL for a brief period of time.
+    errorCounters: {}
 
     # Download an external file and save it to the local disk.
     # Do not proceed if `remoteUrl` is not valid, or if the file is already being
@@ -28,9 +32,19 @@ class Sync
         now = new Date()
         existing = @currentDownloads[localFile]
 
+        # Check existing download time.
         if existing? and now.getTime() - existing.date.getTime() < settings.Web.downloadTimeout
             logger.warn "Download aborted, already downloading!", localFile, existing
             return
+
+        # Check if the specified `remoteUrl` has failed to download repeatedly. If so, proceed
+        # only after some time (defined by the `connRestartInterval` web setting).
+        errorCount = @errorCounters[remoteUrl]
+        if errorCount?
+            if errorCount > settings.Web.connRestartInterval and moment().valueOf() < errorCount
+                if settings.General.debug
+                    logger.warn "Sync.download", "Abort because failed too many times before.", remoteUrl
+                return
 
         # Add it to the `currentDownloads` object to avoid having multiple downloads
         # of the same file at the same time.
@@ -67,9 +81,26 @@ class Sync
 
         # Helper function to proccess and notify the user about download errors.
         downloadError = (error) =>
-            logger.warn "Download error!", remoteUrl, error
+            counter = @errorCounters[remoteUrl]
 
-            # Send the error to the client using Socket.IO.
+            # Add up to the error counter.
+            if counter? and counter < settings.Web.alertAfterFailedDownloads
+                counter = counter + 1
+            else
+                counter = 1
+
+            # If download has failed many times, log and error instead of warning and
+            # update the `errorCounters` reference value with the current time plus
+            # the value specified on the `connRestartInterval` web setting.
+            if counter is settings.Web.alertAfterFailedDownloads
+                time = moment().add("ms", settings.Web.connRestartInterval).valueOf()
+                @errorCounters[remoteUrl] = time
+                logger.error "Sync.download", remoteUrl, error
+            else
+                @errorCounters[remoteUrl] = counter
+                logger.warn "Sync.download", remoteUrl, error
+
+            # Send error using Socket.IO.
             sockets.sendServerError "Download error: " + remoteUrl + " " + error.code
 
             # Callback passing the error object.
@@ -118,9 +149,10 @@ class Sync
 
                         # Remove download reference from `currentDownloads` when finished.
                         delete @currentDownloads[localFile]
+                        delete @errorCounters[remoteUrl]
 
                         if settings.General.debug
-                            logger.info "Sync.download", remoteUrl
+                            logger.info "Sync.download", remoteUrl, localFile
 
                     fileWriter.end()
                     fileWriter.destroySoon()
