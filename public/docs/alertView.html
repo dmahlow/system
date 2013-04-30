@@ -19,6 +19,11 @@
           <div id="jump_page">
             
               
+              <a class="source" href="admin.html">
+                admin.coffee
+              </a>
+            
+              
               <a class="source" href="api.auditData.html">
                 api.auditData.coffee
               </a>
@@ -134,6 +139,11 @@
               </a>
             
               
+              <a class="source" href="user.html">
+                user.coffee
+              </a>
+            
+              
               <a class="source" href="userSettings.html">
                 userSettings.coffee
               </a>
@@ -149,18 +159,8 @@
               </a>
             
               
-              <a class="source" href="settings.base.html">
-                settings.base.coffee
-              </a>
-            
-              
               <a class="source" href="settings.html">
                 settings.coffee
-              </a>
-            
-              
-              <a class="source" href="settings.default.html">
-                settings.default.coffee
               </a>
             
               
@@ -176,6 +176,11 @@
               
               <a class="source" href="vectors.html">
                 vectors.coffee
+              </a>
+            
+              
+              <a class="source" href="adminView.html">
+                adminView.coffee
               </a>
             
               
@@ -313,6 +318,11 @@
                 startView.coffee
               </a>
             
+              
+              <a class="source" href="variableManagerView.html">
+                variableManagerView.coffee
+              </a>
+            
           </div>
         </li>
       </ul>
@@ -363,7 +373,7 @@ receives an alert object with the following possible properties:</p>
 
             </div>
             
-            <div class="content"><div class='highlight'><pre><span class="class"><span class="keyword">class</span> <span class="title">System</span>.<span class="title">AlertView</span> <span class="keyword">extends</span> <span class="title">System</span>.<span class="title">BaseView</span></span>
+            <div class="content"><div class='highlight'><pre><span class="class"><span class="keyword">class</span> <span class="title">SystemApp</span>.<span class="title">AlertView</span> <span class="keyword">extends</span> <span class="title">SystemApp</span>.<span class="title">BaseView</span></span>
 
     serverErrors: []          <span class="comment"># keep a list of errors that happened on the server side</span>
     queueFooter: []           <span class="comment"># queue of footer alerts to be displayed</span>
@@ -453,10 +463,11 @@ receives an alert object with the following possible properties:</p>
             <div class="content"><div class='highlight'><pre>    dispose: =&gt;
         $(document).<span class="literal">off</span> <span class="string">"keydown"</span>, <span class="property">@keyDown</span>
 
-        System.App.alertEvents.<span class="literal">off</span> <span class="string">"footer"</span>, <span class="property">@showFooter</span>
-        System.App.serverEvents.<span class="literal">off</span> <span class="string">"error"</span>, <span class="property">@showServerError</span>
+        SystemApp.alertEvents.<span class="literal">off</span> <span class="string">"footer"</span>, <span class="property">@showFooter</span>
+        SystemApp.alertEvents.<span class="literal">off</span> <span class="string">"tooltip"</span>, <span class="property">@showTooltip</span>
+        SystemApp.serverEvents.<span class="literal">off</span> <span class="string">"error"</span>, <span class="property">@showServerError</span>
 
-        <span class="keyword">for</span> collection <span class="keyword">in</span> System.App.Data.allCollections
+        <span class="keyword">for</span> collection <span class="keyword">in</span> SystemApp.Data.allCollections
             collection.<span class="literal">off</span> <span class="string">"add"</span>, <span class="property">@modelAdded</span>
             collection.<span class="literal">off</span> <span class="string">"remove"</span>, <span class="property">@modelRemoved</span>
 
@@ -487,9 +498,9 @@ receives an alert object with the following possible properties:</p>
         <span class="property">@$timeFooter</span> = <span class="property">@$wrapperFooter</span>.children <span class="string">"time"</span>
 
         <span class="property">@$wrapperTooltip</span> = $ <span class="string">"#alert-tooltip"</span>
-        <span class="property">@$titleTooltip</span> = <span class="property">@$wrapperTooltip</span>.children <span class="string">"label"</span>
-        <span class="property">@$msgTooltip</span> = <span class="property">@$wrapperTooltip</span>.children <span class="string">"span"</span>
-        <span class="property">@$timeTooltip</span> = <span class="property">@$wrapperTooltip</span>.children <span class="string">"time"</span></pre></div></div>
+        <span class="property">@$titleTooltip</span> = <span class="property">@$wrapperTooltip</span>.find <span class="string">"div &gt; label"</span>
+        <span class="property">@$msgTooltip</span> = <span class="property">@$wrapperTooltip</span>.find <span class="string">"div &gt; span"</span>
+        <span class="property">@$timeTooltip</span> = <span class="property">@$wrapperTooltip</span>.find <span class="string">"div &gt; time"</span></pre></div></div>
             
         </li>
         
@@ -508,8 +519,9 @@ added and removed from all collections available on the <a href="data.html">data
             <div class="content"><div class='highlight'><pre>    setEvents: =&gt;
         $(document).keydown <span class="property">@keyDown</span>
 
-        System.App.alertEvents.<span class="literal">on</span> <span class="string">"footer"</span>, <span class="property">@showFooter</span>
-        System.App.serverEvents.<span class="literal">on</span> <span class="string">"error"</span>, <span class="property">@showServerError</span></pre></div></div>
+        SystemApp.alertEvents.<span class="literal">on</span> <span class="string">"footer"</span>, <span class="property">@showFooter</span>
+        SystemApp.alertEvents.<span class="literal">on</span> <span class="string">"tooltip"</span>, <span class="property">@showTooltip</span>
+        SystemApp.serverEvents.<span class="literal">on</span> <span class="string">"error"</span>, <span class="property">@showServerError</span></pre></div></div>
             
         </li>
         
@@ -540,13 +552,13 @@ listening to these events.</p>
             </div>
             
             <div class="content"><div class='highlight'><pre>    listenToModels: (listen) =&gt;
-        <span class="keyword">for</span> collection <span class="keyword">in</span> System.App.Data.allCollections
+        <span class="keyword">for</span> collection <span class="keyword">in</span> SystemApp.Data.allCollections
             collection.<span class="literal">off</span> <span class="string">"add"</span>, <span class="property">@modelAdded</span>
             collection.<span class="literal">off</span> <span class="string">"remove"</span>, <span class="property">@modelRemoved</span>
             collection.<span class="literal">off</span> <span class="string">"error"</span>, <span class="property">@modelError</span>
 
         <span class="keyword">if</span> listen
-            <span class="keyword">for</span> collection <span class="keyword">in</span> System.App.Data.allCollections
+            <span class="keyword">for</span> collection <span class="keyword">in</span> SystemApp.Data.allCollections
                 collection.<span class="literal">on</span> <span class="string">"add"</span>, <span class="property">@modelAdded</span>
                 collection.<span class="literal">on</span> <span class="string">"remove"</span>, <span class="property">@modelRemoved</span>
                 collection.<span class="literal">on</span> <span class="string">"error"</span>, <span class="property">@modelError</span></pre></div></div>
@@ -629,7 +641,7 @@ listening to these events.</p>
         alertObj.timestamp = <span class="keyword">new</span> Date()
 
         <span class="keyword">if</span> <span class="property">@lastFooterAlert</span>?
-            timeoutLess = (alertObj.timestamp - <span class="property">@lastFooterAlert</span>.timestamp) &lt; System.App.Settings.Alert.similarTimeout
+            timeoutLess = (alertObj.timestamp - <span class="property">@lastFooterAlert</span>.timestamp) &lt; SystemApp.Settings.Alert.similarTimeout
             sameAlert = alertObj.title <span class="keyword">is</span> <span class="property">@lastFooterAlert</span>.title <span class="keyword">and</span> alertObj.message <span class="keyword">is</span> <span class="property">@lastFooterAlert</span>.message</pre></div></div>
             
         </li>
@@ -736,12 +748,12 @@ Otherwise use the <code>title</code> and <code>message</code> properties of the 
         <span class="keyword">else</span>
             <span class="property">@$wrapperFooter</span>.addClass <span class="string">"ok"</span>
 
-        delay = System.App.Settings.Alert.hideDelay
+        delay = SystemApp.Settings.Alert.hideDelay
         delay = delay * <span class="number">2</span> <span class="keyword">if</span> alertObj.isError
 
-        <span class="property">@$wrapperFooter</span>.fadeIn System.App.Settings.Alert.opacityInterval
+        <span class="property">@$wrapperFooter</span>.fadeIn SystemApp.Settings.Alert.opacityInterval
         <span class="property">@isFooterVisible</span> = <span class="literal">true</span>
-        _.delay <span class="property">@hideFooter</span>, delay + System.App.Settings.Alert.opacityInterval</pre></div></div>
+        _.delay <span class="property">@hideFooter</span>, delay + SystemApp.Settings.Alert.opacityInterval</pre></div></div>
             
         </li>
         
@@ -756,7 +768,7 @@ Otherwise use the <code>title</code> and <code>message</code> properties of the 
 
             </div>
             
-            <div class="content"><div class='highlight'><pre>        <span class="keyword">if</span> System.App.Settings.General.debug
+            <div class="content"><div class='highlight'><pre>        <span class="keyword">if</span> SystemApp.Settings.General.debug
             <span class="keyword">if</span> alertObj.isError
                 console.warn <span class="string">"Alert Error"</span>, title, message
             <span class="keyword">else</span>
@@ -777,7 +789,7 @@ Otherwise use the <code>title</code> and <code>message</code> properties of the 
             
             <div class="content"><div class='highlight'><pre>    hideFooter: =&gt;
         <span class="property">@isFooterVisible</span> = <span class="literal">false</span>
-        <span class="property">@$wrapperFooter</span>.fadeOut System.App.Settings.Alert.opacityInterval, <span class="property">@nextFooter</span></pre></div></div>
+        <span class="property">@$wrapperFooter</span>.fadeOut SystemApp.Settings.Alert.opacityInterval, <span class="property">@nextFooter</span></pre></div></div>
             
         </li>
         
@@ -821,7 +833,7 @@ Otherwise use the <code>title</code> and <code>message</code> properties of the 
 
             </div>
             
-            <div class="content"><div class='highlight'><pre>        <span class="keyword">if</span> System.App.Settings.General.debug
+            <div class="content"><div class='highlight'><pre>        <span class="keyword">if</span> SystemApp.Settings.General.debug
             <span class="keyword">if</span> alertObj.isError
                 console.error <span class="string">"Alert"</span>, alertObj
             <span class="keyword">else</span>
@@ -907,12 +919,12 @@ Otherwise use the <code>title</code> and <code>message</code> properties of the 
             <div class="content"><div class='highlight'><pre>        <span class="keyword">if</span> alertObj.clickAction?
             <span class="property">@$wrapperTooltip</span>.click alertObj.clickAction
 
-        delay = System.App.Settings.Alert.hideDelay * <span class="number">2</span>
-        delay = delay * <span class="number">2</span> <span class="keyword">if</span> alertObj.isError
+        delay = SystemApp.Settings.Alert.hideDelay
+        delay = delay <span class="keyword">if</span> alertObj.isError
 
-        <span class="property">@$wrapperTooltip</span>.fadeIn System.App.Settings.Alert.opacityInterval
+        <span class="property">@$wrapperTooltip</span>.fadeIn SystemApp.Settings.Alert.opacityInterval
         <span class="property">@isTooltipVisible</span> = <span class="literal">true</span>
-        _.delay <span class="property">@hideTooltip</span>, delay + System.App.Settings.Alert.opacityInterval</pre></div></div>
+        _.delay <span class="property">@hideTooltip</span>, delay + SystemApp.Settings.Alert.opacityInterval</pre></div></div>
             
         </li>
         
@@ -929,7 +941,7 @@ Otherwise use the <code>title</code> and <code>message</code> properties of the 
             
             <div class="content"><div class='highlight'><pre>    hideTooltip: =&gt;
         <span class="property">@isTooltipVisible</span> = <span class="literal">false</span>
-        <span class="property">@$wrapperTooltip</span>.fadeOut System.App.Settings.Alert.opacityInterval, <span class="property">@nextTooltip</span></pre></div></div>
+        <span class="property">@$wrapperTooltip</span>.fadeOut SystemApp.Settings.Alert.opacityInterval, <span class="property">@nextTooltip</span></pre></div></div>
             
         </li>
         
@@ -959,8 +971,8 @@ This is triggered using Socket.IO.</p>
             </div>
             
             <div class="content"><div class='highlight'><pre>    showServerError: (err) =&gt;
-        <span class="keyword">if</span> System.App.Settings.General.debug
-            <span class="property">@showFooter</span> {isError: <span class="literal">true</span>, title: System.App.Messages.server + <span class="string">" "</span> + err.title, message: err.message}</pre></div></div>
+        <span class="keyword">if</span> SystemApp.Settings.General.debug
+            <span class="property">@showFooter</span> {isError: <span class="literal">true</span>, title: SystemApp.Messages.server + <span class="string">" "</span> + err.title, message: err.message}</pre></div></div>
             
         </li>
         

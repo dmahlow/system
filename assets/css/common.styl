@@ -46,10 +46,13 @@ lightHoverColor = rgb(140, 210, 50)
 darkHoverColor = rgb(90, 160, 30)
 tabBorderColor = rgb(60, 150, 20)
 checkedBg = rgb(60, 150, 50)
+inputTextColor = rgb(0, 0, 0)
+inputBgColor = rgb(250, 250, 250)
 
 okBg = rgb(90, 160, 30)
 errorBg = rgb(180, 40, 30)
 errorColor = rgb(180, 40, 30)
+errorLightColor = rgb(240, 100, 80)
 
 // OVERLAY PROPERTIES
 overlayBackground = rgb(40, 40, 40)
@@ -61,6 +64,7 @@ overlayLightBorder = 1px solid rgb(255, 255, 255)
 // -------------------------------------------------------------------------
 ::-webkit-scrollbar
     background-color Transparent
+    height 13px
     width 13px
 
 ::-webkit-scrollbar-thumb
@@ -187,7 +191,7 @@ input[type="submit"]:disabled
     opacity 0.6 !important
 
 select
-    background rgb(255, 255, 255)
+    background inputBgColor
     border-radius 0
     border 0
     font 14px/21px Arial, Helvetica, sans-serif
@@ -198,23 +202,28 @@ input[type="email"],
 input[type="number"],
 input[type="text"],
 input[type="url"]
+    background inputBgColor
     border-radius 0
     border 0
+    color inputTextColor
     font 14px/25px Arial, Helvetica, sans-serif
     padding-left 3px
     padding-right 3px
     -webkit-appearance none
 
 textarea
+    background inputBgColor
     border-radius 0
     border 0
+    color inputTextColor
     -webkit-appearance none
 
 input[type="email"]:disabled,
 input[type="number"]:disabled,
 input[type="text"]:disabled,
 input[type="url"]:disabled
-    color rgb(127, 127, 127)
+    background rgb(210, 210, 210)
+    color rgb(140, 140, 140)
 
 // Hover on red buttons.
 button.red:hover

@@ -49,18 +49,13 @@
               </a>
             
               
-              <a class="source" href="settings.base.html">
-                settings.base.coffee
+              <a class="source" href="security.html">
+                security.coffee
               </a>
             
               
               <a class="source" href="settings.html">
                 settings.coffee
-              </a>
-            
-              
-              <a class="source" href="settings.default.html">
-                settings.default.coffee
               </a>
             
               
@@ -492,7 +487,7 @@ download has finished and the file is totally written.</p>
             <div class="content"><div class='highlight'><pre>                        <span class="keyword">delete</span> <span class="property">@currentDownloads</span>[localFile]
 
                         <span class="keyword">if</span> settings.General.debug
-                            console.log <span class="string">"Sync.download"</span>, remoteUrl
+                            logger.info <span class="string">"Sync.download"</span>, remoteUrl
 
                     fileWriter.end()
                     fileWriter.destroySoon()</pre></div></div>

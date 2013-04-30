@@ -44,8 +44,9 @@ class SystemApp.User extends SystemApp.BaseModel
     # ----------------------------------------------------------------------
 
     # Check if user has a specific role. Returns true or false.
+    # TODO! This is returning ALWAYS true till we get the login page sorted out.
     hasRole: (role) =>
-        return false
+        return true
         index = @roles().indexOf role
         return (index > -1)
 

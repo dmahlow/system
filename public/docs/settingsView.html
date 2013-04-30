@@ -19,6 +19,11 @@
           <div id="jump_page">
             
               
+              <a class="source" href="admin.html">
+                admin.coffee
+              </a>
+            
+              
               <a class="source" href="api.auditData.html">
                 api.auditData.coffee
               </a>
@@ -134,6 +139,11 @@
               </a>
             
               
+              <a class="source" href="user.html">
+                user.coffee
+              </a>
+            
+              
               <a class="source" href="userSettings.html">
                 userSettings.coffee
               </a>
@@ -149,18 +159,8 @@
               </a>
             
               
-              <a class="source" href="settings.base.html">
-                settings.base.coffee
-              </a>
-            
-              
               <a class="source" href="settings.html">
                 settings.coffee
-              </a>
-            
-              
-              <a class="source" href="settings.default.html">
-                settings.default.coffee
               </a>
             
               
@@ -176,6 +176,11 @@
               
               <a class="source" href="vectors.html">
                 vectors.coffee
+              </a>
+            
+              
+              <a class="source" href="adminView.html">
+                adminView.coffee
               </a>
             
               
@@ -313,6 +318,11 @@
                 startView.coffee
               </a>
             
+              
+              <a class="source" href="variableManagerView.html">
+                variableManagerView.coffee
+              </a>
+            
           </div>
         </li>
       </ul>
@@ -350,15 +360,19 @@
 
             </div>
             
-            <div class="content"><div class='highlight'><pre><span class="class"><span class="keyword">class</span> <span class="title">System</span>.<span class="title">App</span>.<span class="title">SettingsView</span> <span class="keyword">extends</span> <span class="title">System</span>.<span class="title">OverlayView</span></span>
+            <div class="content"><div class='highlight'><pre><span class="class"><span class="keyword">class</span> <span class="title">SystemApp</span>.<span class="title">SettingsView</span> <span class="keyword">extends</span> <span class="title">SystemApp</span>.<span class="title">OverlayView</span></span>
 
-    $localStorageDiv: <span class="literal">null</span>        <span class="comment"># the local storage contents wrapper</span>
-    $localStorageClearBut: <span class="literal">null</span>   <span class="comment"># the "Clear local storage" button</span>
-    $serverErrorsDiv: <span class="literal">null</span>        <span class="comment"># the server errors contents wrapper</span>
-    $serverErrorsClearBut: <span class="literal">null</span>   <span class="comment"># the "Clear server errors" button</span>
-    $modifierDelete: <span class="literal">null</span>         <span class="comment"># the "Delete" modifier keys div</span>
-    $modifierMultiple: <span class="literal">null</span>       <span class="comment"># the "Multiple" modifier keys div</span>
-    $modifierToBack: <span class="literal">null</span>         <span class="comment"># the "To Back" modifier keys div</span></pre></div></div>
+    $chkFullscreen: <span class="literal">null</span>             <span class="comment"># the start maximized checkbox</span>
+    $chkAutoRefresh: <span class="literal">null</span>           <span class="comment"># the autorefresh checkbox</span>
+    $chkDebug: <span class="literal">null</span>                 <span class="comment"># the debug checkbox</span>
+    $debugNote: <span class="literal">null</span>                <span class="comment"># the debug performance note</span>
+    $modifierDelete: <span class="literal">null</span>           <span class="comment"># the "Delete" modifier keys div</span>
+    $modifierMultiple: <span class="literal">null</span>         <span class="comment"># the "Multiple" modifier keys div</span>
+    $modifierToBack: <span class="literal">null</span>           <span class="comment"># the "To Back" modifier keys div</span>
+    $localStorageDiv: <span class="literal">null</span>          <span class="comment"># the local storage contents wrapper</span>
+    $localStorageClearBut: <span class="literal">null</span>     <span class="comment"># the "Clear local storage" button</span>
+    $serverErrorsDiv: <span class="literal">null</span>          <span class="comment"># the server errors contents wrapper</span>
+    $serverErrorsClearBut: <span class="literal">null</span>     <span class="comment"># the "Clear server errors" button</span></pre></div></div>
             
         </li>
         
@@ -421,14 +435,27 @@
             </div>
             
             <div class="content"><div class='highlight'><pre>    setDom: =&gt;
-        <span class="property">@$localStorageDiv</span> = $ <span class="string">"#settings-localstorage-contents"</span>
-        <span class="property">@$localStorageClearBut</span> = $ <span class="string">"#settings-localstorage-clear-but"</span>
-        <span class="property">@$serverErrorsDiv</span> = $ <span class="string">"#settings-servererrors-contents"</span>
-        <span class="property">@$serverErrorsClearBut</span> = $ <span class="string">"#settings-servererrors-clear-but"</span>
+        <span class="property">@$menuItem</span> = $ <span class="string">"#menu-settings"</span>
+
+        <span class="property">@$chkFullscreen</span> = $ <span class="string">"#settings-chk-fullscreen"</span>
+        <span class="property">@$chkAutoRefresh</span> = $ <span class="string">"#settings-chk-autorefresh"</span>
+        <span class="property">@$chkDebug</span> = $ <span class="string">"#settings-chk-debug"</span>
+        <span class="property">@$debugNote</span> = <span class="property">@$el</span>.find <span class="string">".options div.error"</span>
 
         <span class="property">@$modifierDelete</span> = $ <span class="string">"#settings-modifierkeys-delete"</span>
         <span class="property">@$modifierMultiple</span> = $ <span class="string">"#settings-modifierkeys-multiple"</span>
-        <span class="property">@$modifierToBack</span> = $ <span class="string">"#settings-modifierkeys-toback"</span></pre></div></div>
+        <span class="property">@$modifierToBack</span> = $ <span class="string">"#settings-modifierkeys-toback"</span>
+
+        <span class="property">@$localStorageDiv</span> = $ <span class="string">"#settings-localstorage-contents"</span>
+        <span class="property">@$localStorageClearBut</span> = $ <span class="string">"#settings-localstorage-clear-but"</span>
+        <span class="property">@$serverLogsDiv</span> = $ <span class="string">"#settings-serverlogs-contents"</span>
+        <span class="property">@$serverLogsClearBut</span> = $ <span class="string">"#settings-serverlogs-clear-but"</span>
+
+        <span class="property">@$chkFullscreen</span>.prop <span class="string">"checked"</span>, SystemApp.Data.userSettings.mapFullscreen()
+        <span class="property">@$chkAutoRefresh</span>.prop <span class="string">"checked"</span>, SystemApp.Data.userSettings.mapAutoRefresh()
+        <span class="property">@$chkDebug</span>.prop <span class="string">"checked"</span>, SystemApp.Settings.General.debug
+
+        <span class="property">@$debugNote</span>.hide() <span class="keyword">if</span> <span class="keyword">not</span> SystemApp.Settings.General.debug</pre></div></div>
             
         </li>
         
@@ -444,10 +471,14 @@
             </div>
             
             <div class="content"><div class='highlight'><pre>    setEvents: =&gt;
-        <span class="property">@$localStorageClearBut</span>.click <span class="property">@clearLocalStorage</span>
-        <span class="property">@$serverErrorsClearBut</span>.click <span class="property">@clearServerErrors</span>
+        <span class="property">@$chkFullscreen</span>.click <span class="property">@toggleMapFullscreen</span>
+        <span class="property">@$chkAutoRefresh</span>.click <span class="property">@toggleMapAutoRefresh</span>
+        <span class="property">@$chkDebug</span>.click <span class="property">@toggleDebug</span>
 
-        <span class="property">@$el</span>.find(<span class="string">".modifiers"</span>).click <span class="property">@modifierClick</span></pre></div></div>
+        <span class="property">@$localStorageClearBut</span>.click <span class="property">@clearLocalStorage</span>
+        <span class="property">@$serverLogsClearBut</span>.click <span class="property">@clearServerErrors</span>
+
+        <span class="property">@$el</span>.find(<span class="string">".modifiers .group span"</span>).click <span class="property">@modifierClick</span></pre></div></div>
             
         </li>
         
@@ -458,7 +489,7 @@
               <div class="pilwrap for-h2">
                 <a class="pilcrow" href="#section-8">&#182;</a>
               </div>
-              <h2>LOCAL STORAGE</h2>
+              <h2>OPTIONS</h2>
 
             </div>
             
@@ -471,12 +502,12 @@
               <div class="pilwrap ">
                 <a class="pilcrow" href="#section-9">&#182;</a>
               </div>
-              <p>Bind the local storage contents to the <code>@$localStorageDiv</code>.</p>
+              <p>When user check/uncheck the &quot;start maximized&quot; map option.</p>
 
             </div>
             
-            <div class="content"><div class='highlight'><pre>    bindLocalStorage: =&gt;
-        <span class="property">@$localStorageDiv</span>.html JSON.stringify(JSON.parse(localStorage.localData), <span class="literal">null</span>, <span class="number">4</span>)</pre></div></div>
+            <div class="content"><div class='highlight'><pre>    toggleMapFullscreen: (e) =&gt;
+        SystemApp.Data.userSettings.mapFullscreen <span class="property">@$chkFullscreen</span>.prop <span class="string">"checked"</span></pre></div></div>
             
         </li>
         
@@ -487,13 +518,12 @@
               <div class="pilwrap ">
                 <a class="pilcrow" href="#section-10">&#182;</a>
               </div>
-              <p>Clear the local storage. Ask the user if he really wants to proceed, first.</p>
+              <p>When user check/uncheck the &quot;auto refresh data&quot; map option.</p>
 
             </div>
             
-            <div class="content"><div class='highlight'><pre>    clearLocalStorage: =&gt;
-        $.localData.flush()
-        <span class="property">@$localStorageDiv</span>.html <span class="string">"CLEARED!"</span></pre></div></div>
+            <div class="content"><div class='highlight'><pre>    toggleMapAutoRefresh: (e) =&gt;
+        SystemApp.Data.userSettings.mapAutoRefresh <span class="property">@$chkAutoRefresh</span>.prop <span class="string">"checked"</span></pre></div></div>
             
         </li>
         
@@ -501,12 +531,16 @@
         <li id="section-11">
             <div class="annotation">
               
-              <div class="pilwrap for-h2">
+              <div class="pilwrap ">
                 <a class="pilcrow" href="#section-11">&#182;</a>
               </div>
-              <h2>SERVER ERRORS</h2>
+              <p>When user check/uncheck the &quot;enable debug mode&quot; option.</p>
 
             </div>
+            
+            <div class="content"><div class='highlight'><pre>    toggleDebug: (e) =&gt;
+        value = <span class="property">@$chkDebug</span>.prop <span class="string">"checked"</span>
+        SystemApp.toggleDebug value</pre></div></div>
             
         </li>
         
@@ -517,21 +551,14 @@
               <div class="pilwrap ">
                 <a class="pilcrow" href="#section-12">&#182;</a>
               </div>
-              <p>Bind the server errors array to the <code>@$serverErrorsDiv</code>.</p>
+              <p>Hide or show debug alert based on current debug status.</p>
 
             </div>
             
-            <div class="content"><div class='highlight'><pre>    bindServerErrors: =&gt;
-        result = <span class="string">""</span>
-        errorList = System.App.Sockets.serverErrors
-
-        _.each errorList, (err) -&gt;
-            time = err.timestamp.toTimeString()
-            sep = time.indexOf <span class="string">"("</span>
-            time = time.substring(<span class="number">0</span>, sep - <span class="number">1</span>) <span class="keyword">if</span> sep &gt; <span class="number">0</span>
-            result += <span class="string">"<span class="subst">#{err.title}</span> <span class="subst">#{err.message}</span> at <span class="subst">#{time}</span>&lt;br /&gt;"</span>
-
-        <span class="property">@$serverErrorsDiv</span>.html result</pre></div></div>
+            <div class="content"><div class='highlight'><pre>        <span class="keyword">if</span> value
+            <span class="property">@$debugNote</span>.show()
+        <span class="keyword">else</span>
+            <span class="property">@$debugNote</span>.hide()</pre></div></div>
             
         </li>
         
@@ -539,16 +566,12 @@
         <li id="section-13">
             <div class="annotation">
               
-              <div class="pilwrap ">
+              <div class="pilwrap for-h2">
                 <a class="pilcrow" href="#section-13">&#182;</a>
               </div>
-              <p>Clear the server errors list.</p>
+              <h2>MODIFIER KEYS</h2>
 
             </div>
-            
-            <div class="content"><div class='highlight'><pre>    clearServerErrors: =&gt;
-        System.App.alertView.serverErrors = []
-        <span class="property">@$serverErrorsDiv</span>.html <span class="string">"CLEARED!"</span></pre></div></div>
             
         </li>
         
@@ -556,12 +579,17 @@
         <li id="section-14">
             <div class="annotation">
               
-              <div class="pilwrap for-h2">
+              <div class="pilwrap ">
                 <a class="pilcrow" href="#section-14">&#182;</a>
               </div>
-              <h2>MODIFIER KEYS</h2>
+              <p>Bind the current set of modifier keys from local storage. If no</p>
 
             </div>
+            
+            <div class="content"><div class='highlight'><pre>    bindModifierKeys: =&gt;
+        <span class="property">@parseModifierKeys</span> <span class="property">@$modifierDelete</span>, SystemApp.Data.userSettings.modifierDelete()
+        <span class="property">@parseModifierKeys</span> <span class="property">@$modifierMultiple</span>, SystemApp.Data.userSettings.modifierMultiple()
+        <span class="property">@parseModifierKeys</span> <span class="property">@$modifierToBack</span>, SystemApp.Data.userSettings.modifierToBack()</pre></div></div>
             
         </li>
         
@@ -571,24 +599,6 @@
               
               <div class="pilwrap ">
                 <a class="pilcrow" href="#section-15">&#182;</a>
-              </div>
-              <p>Bind the current set of modifier keys from local storage. If no</p>
-
-            </div>
-            
-            <div class="content"><div class='highlight'><pre>    bindModifierKeys: =&gt;
-        <span class="property">@parseModifierKeys</span> <span class="property">@$modifierDelete</span>, System.App.Data.userSettings.modifierDelete()
-        <span class="property">@parseModifierKeys</span> <span class="property">@$modifierMultiple</span>, System.App.Data.userSettings.modifierMultiple()
-        <span class="property">@parseModifierKeys</span> <span class="property">@$modifierToBack</span>, System.App.Data.userSettings.modifierToBack()</pre></div></div>
-            
-        </li>
-        
-        
-        <li id="section-16">
-            <div class="annotation">
-              
-              <div class="pilwrap ">
-                <a class="pilcrow" href="#section-16">&#182;</a>
               </div>
               <p>Parse a combination of modifier keys and highlight the matched div&#39;s elements.</p>
 
@@ -602,18 +612,21 @@
         </li>
         
         
-        <li id="section-17">
+        <li id="section-16">
             <div class="annotation">
               
               <div class="pilwrap ">
-                <a class="pilcrow" href="#section-17">&#182;</a>
+                <a class="pilcrow" href="#section-16">&#182;</a>
               </div>
               <p>When user clicks on a modifier span, highlight it and save to the current
-<a href="userSettings.html">User Settings</a>.</p>
+<a href="userSettings.html">User Settings</a>.
+TODO! Refactor this handler to prevent duplicates, then edit the UserSettings accordingly.</p>
 
             </div>
             
             <div class="content"><div class='highlight'><pre>    modifierClick: (e) =&gt;
+        <span class="keyword">return</span>;
+
         src = $ e.target
         parent = src.parent()
         modifierWrapper = parent.parent()
@@ -623,11 +636,11 @@
         </li>
         
         
-        <li id="section-18">
+        <li id="section-17">
             <div class="annotation">
               
               <div class="pilwrap ">
-                <a class="pilcrow" href="#section-18">&#182;</a>
+                <a class="pilcrow" href="#section-17">&#182;</a>
               </div>
               <p>If span is already selected, set <code>empty</code> to true to unselect it.</p>
 
@@ -644,11 +657,11 @@
         </li>
         
         
-        <li id="section-19">
+        <li id="section-18">
             <div class="annotation">
               
               <div class="pilwrap ">
-                <a class="pilcrow" href="#section-19">&#182;</a>
+                <a class="pilcrow" href="#section-18">&#182;</a>
               </div>
               <p>Get active elements and generate the modifier value based on their
 classe names, excluding the <code>.active</code> class and trimmed down.</p>
@@ -666,17 +679,30 @@ classe names, excluding the <code>.active</code> class and trimmed down.</p>
         </li>
         
         
-        <li id="section-20">
+        <li id="section-19">
             <div class="annotation">
               
               <div class="pilwrap ">
-                <a class="pilcrow" href="#section-20">&#182;</a>
+                <a class="pilcrow" href="#section-19">&#182;</a>
               </div>
               <p>Set the new modifier value and save the model ONLY locally.</p>
 
             </div>
             
-            <div class="content"><div class='highlight'><pre>        System.App.Data.userSettings.set <span class="string">"modifier<span class="subst">#{modifierName}</span>"</span>, modifierValue</pre></div></div>
+            <div class="content"><div class='highlight'><pre>        SystemApp.Data.userSettings.set <span class="string">"modifier<span class="subst">#{modifierName}</span>"</span>, modifierValue</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-20">
+            <div class="annotation">
+              
+              <div class="pilwrap for-h2">
+                <a class="pilcrow" href="#section-20">&#182;</a>
+              </div>
+              <h2>LOCAL STORAGE</h2>
+
+            </div>
             
         </li>
         
@@ -684,12 +710,15 @@ classe names, excluding the <code>.active</code> class and trimmed down.</p>
         <li id="section-21">
             <div class="annotation">
               
-              <div class="pilwrap for-h2">
+              <div class="pilwrap ">
                 <a class="pilcrow" href="#section-21">&#182;</a>
               </div>
-              <h2>SHOW AND HIDE</h2>
+              <p>Bind the local storage contents to the <code>@$localStorageDiv</code>.</p>
 
             </div>
+            
+            <div class="content"><div class='highlight'><pre>    bindLocalStorage: =&gt;
+        <span class="property">@$localStorageDiv</span>.html JSON.stringify(JSON.parse(localStorage.localData), <span class="literal">null</span>, <span class="number">4</span>)</pre></div></div>
             
         </li>
         
@@ -700,14 +729,100 @@ classe names, excluding the <code>.active</code> class and trimmed down.</p>
               <div class="pilwrap ">
                 <a class="pilcrow" href="#section-22">&#182;</a>
               </div>
+              <p>Clear the local storage. Ask the user if he really wants to proceed, first.</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>    clearLocalStorage: =&gt;
+        $.localData.flush()
+        <span class="property">@$localStorageDiv</span>.html <span class="string">"CLEARED!"</span>
+        SystemApp.Data.userSettings.save()</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-23">
+            <div class="annotation">
+              
+              <div class="pilwrap for-h2">
+                <a class="pilcrow" href="#section-23">&#182;</a>
+              </div>
+              <h2>SERVER ERRORS</h2>
+
+            </div>
+            
+        </li>
+        
+        
+        <li id="section-24">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-24">&#182;</a>
+              </div>
+              <p>Bind the server errors array to the <code>@$serverErrorsDiv</code>.</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>    bindServerErrors: =&gt;
+        result = <span class="string">""</span>
+        errorList = SystemApp.Sockets.serverErrors
+
+        _.each errorList, (err) -&gt;
+            time = err.timestamp.toTimeString()
+            sep = time.indexOf <span class="string">"("</span>
+            time = time.substring(<span class="number">0</span>, sep - <span class="number">1</span>) <span class="keyword">if</span> sep &gt; <span class="number">0</span>
+            result += <span class="string">"<span class="subst">#{err.title}</span> <span class="subst">#{err.message}</span> at <span class="subst">#{time}</span>&lt;br /&gt;"</span>
+
+        <span class="property">@$serverLogsDiv</span>.html result</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-25">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-25">&#182;</a>
+              </div>
+              <p>Clear the server errors list.</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>    clearServerErrors: =&gt;
+        SystemApp.alertView.serverErrors = []
+        <span class="property">@$serverLogDiv</span>.html <span class="string">"CLEARED!"</span></pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-26">
+            <div class="annotation">
+              
+              <div class="pilwrap for-h2">
+                <a class="pilcrow" href="#section-26">&#182;</a>
+              </div>
+              <h2>SHOW AND HIDE</h2>
+
+            </div>
+            
+        </li>
+        
+        
+        <li id="section-27">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-27">&#182;</a>
+              </div>
               <p>Bind data after showing the view, and listen to &quot;server:error&quot; events
 to populate the <code>$serverErrorsDiv</code>.</p>
 
             </div>
             
             <div class="content"><div class='highlight'><pre>    onShow: =&gt;
-        System.App.serverEvents.<span class="literal">off</span> <span class="string">"error"</span>, <span class="property">@bindServerErrors</span>
-        System.App.serverEvents.<span class="literal">on</span> <span class="string">"error"</span>, <span class="property">@bindServerErrors</span>
+        SystemApp.serverEvents.<span class="literal">off</span> <span class="string">"error"</span>, <span class="property">@bindServerErrors</span>
+        SystemApp.serverEvents.<span class="literal">on</span> <span class="string">"error"</span>, <span class="property">@bindServerErrors</span>
 
         <span class="property">@bindLocalStorage</span>()
         <span class="property">@bindServerErrors</span>()
@@ -716,18 +831,18 @@ to populate the <code>$serverErrorsDiv</code>.</p>
         </li>
         
         
-        <li id="section-23">
+        <li id="section-28">
             <div class="annotation">
               
               <div class="pilwrap ">
-                <a class="pilcrow" href="#section-23">&#182;</a>
+                <a class="pilcrow" href="#section-28">&#182;</a>
               </div>
               <p>When view gets hidden, stop listening to the &quot;server:error&quot; events.</p>
 
             </div>
             
             <div class="content"><div class='highlight'><pre>    onHide: =&gt;
-        System.App.serverEvents.<span class="literal">off</span> <span class="string">"error"</span>, <span class="property">@bindServerErrors</span></pre></div></div>
+        SystemApp.serverEvents.<span class="literal">off</span> <span class="string">"error"</span>, <span class="property">@bindServerErrors</span></pre></div></div>
             
         </li>
         

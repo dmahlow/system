@@ -8,11 +8,21 @@ SYSTEM APP CHANGE LOG
 + Demo environment moved from Rackspace East to AWS Europe.
   Now accessible via http://systemapp.io/demo
 + New "Variable Manager" view to add, edit and delete user created variables.
++ Added vertical overflow (scrollbars) if needed on overlay lists.
++ Scrollbars are now styled and feels more integrated on Webkit browsers.
+* When editing shape labels, the z-index of the label editor view will be set
+  and incremented when there's more than 1 label editor visible.
 * The "lock" and "auto refresh" toggles were moved to the right corner of the top menu.
 * Fixed bug with "toggleFullscreen" called on the MpView instead of MapControlsView.
 * Fixed bug with the search field not editable on the "Objects" tab on the map controls.
-* Refactored the "settings.coffee" file on the client side, pretty much like it was done on
-  server settings on release 0.5.5. Now expects a settings.json file to override settings.
+* Fixed Logentries integration bugs (binding to wrong Winston object).
+* Fixed incorrect checks for permissions when creating and editing maps.
+* IMPORTANT! Debug is now true by default while the app is still in beta. We'll set the default
+  to false again once it reaches a state considered stable enough for production environments.
+- Removed the "settings.base.coffee" file on the client side. Settings will be refactored soon
+  having a single settings file for both server and client settings.
+- Removed the user editable modifier keys on the Settings View till we get the validations in
+  place on the UI. These will be enabled again on a future release.
 
 # -----------------------------------------------------------------------------
   0.5.6, 2013.04.26

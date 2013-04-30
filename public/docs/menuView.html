@@ -19,6 +19,11 @@
           <div id="jump_page">
             
               
+              <a class="source" href="admin.html">
+                admin.coffee
+              </a>
+            
+              
               <a class="source" href="api.auditData.html">
                 api.auditData.coffee
               </a>
@@ -134,6 +139,11 @@
               </a>
             
               
+              <a class="source" href="user.html">
+                user.coffee
+              </a>
+            
+              
               <a class="source" href="userSettings.html">
                 userSettings.coffee
               </a>
@@ -149,18 +159,8 @@
               </a>
             
               
-              <a class="source" href="settings.base.html">
-                settings.base.coffee
-              </a>
-            
-              
               <a class="source" href="settings.html">
                 settings.coffee
-              </a>
-            
-              
-              <a class="source" href="settings.default.html">
-                settings.default.coffee
               </a>
             
               
@@ -176,6 +176,11 @@
               
               <a class="source" href="vectors.html">
                 vectors.coffee
+              </a>
+            
+              
+              <a class="source" href="adminView.html">
+                adminView.coffee
               </a>
             
               
@@ -313,6 +318,11 @@
                 startView.coffee
               </a>
             
+              
+              <a class="source" href="variableManagerView.html">
+                variableManagerView.coffee
+              </a>
+            
           </div>
         </li>
       </ul>
@@ -351,7 +361,7 @@ settings, audit data, alerts and help overlay.</p>
 
             </div>
             
-            <div class="content"><div class='highlight'><pre><span class="class"><span class="keyword">class</span> <span class="title">System</span>.<span class="title">MenuView</span> <span class="keyword">extends</span> <span class="title">System</span>.<span class="title">BaseView</span></span>
+            <div class="content"><div class='highlight'><pre><span class="class"><span class="keyword">class</span> <span class="title">SystemApp</span>.<span class="title">MenuView</span> <span class="keyword">extends</span> <span class="title">SystemApp</span>.<span class="title">BaseView</span></span>
 
     height: <span class="number">0</span>                   <span class="comment"># cached variable that holds the header height</span>
     timerHideMenu: <span class="literal">null</span>         <span class="comment"># timer to hide the menu after X milliseconds.</span>
@@ -360,6 +370,7 @@ settings, audit data, alerts and help overlay.</p>
     $menuCreateMap: <span class="literal">null</span>        <span class="comment"># the "Create map" menu item</span>
     $menuMaps: <span class="literal">null</span>             <span class="comment"># the "Available maps" menu item</span>
     $menuEntities: <span class="literal">null</span>         <span class="comment"># the "Entities" menu item</span>
+    $menuVariables: <span class="literal">null</span>        <span class="comment"># the "Variables" menu item</span>
     $menuAuditData: <span class="literal">null</span>        <span class="comment"># the "Audit Data" menu item</span>
     $menuAuditEvents: <span class="literal">null</span>      <span class="comment"># the "Audit Events" menu item</span>
     $menuSettings: <span class="literal">null</span>         <span class="comment"># the "Settings" menu item</span>
@@ -439,6 +450,7 @@ submenu list with all available maps.</p>
         <span class="property">@$menuCreateMap</span> = $ <span class="string">"#menu-createmap"</span>
         <span class="property">@$menuMaps</span> = $ <span class="string">"#menu-maps"</span>
         <span class="property">@$menuEntities</span> = $ <span class="string">"#menu-entities"</span>
+        <span class="property">@$menuVariables</span> = $ <span class="string">"#menu-variables"</span>
         <span class="property">@$menuAuditData</span> = $ <span class="string">"#menu-auditdata"</span>
         <span class="property">@$menuAuditEvents</span> = $ <span class="string">"#menu-auditevents"</span>
         <span class="property">@$menuSettings</span> = $ <span class="string">"#menu-settings"</span>
@@ -468,24 +480,11 @@ submenu list with all available maps.</p>
         <span class="property">@$menuCreateMap</span>.click <span class="string">"click:createmap"</span>, <span class="property">@menuClick</span>
         <span class="property">@$menuMaps</span>.click <span class="string">"click:maps"</span>, <span class="property">@menuClick</span>
         <span class="property">@$menuEntities</span>.click <span class="string">"click:entities"</span>, <span class="property">@menuClick</span>
+        <span class="property">@$menuVariables</span>.click <span class="string">"click:variables"</span>, <span class="property">@menuClick</span>
         <span class="property">@$menuAuditData</span>.click <span class="string">"click:auditdata"</span>, <span class="property">@menuClick</span>
         <span class="property">@$menuAuditEvents</span>.click <span class="string">"click:auditevents"</span>, <span class="property">@menuClick</span>
         <span class="property">@$menuSettings</span>.click <span class="string">"click:settings"</span>, <span class="property">@menuClick</span>
-        <span class="property">@$menuHelp</span>.click <span class="string">"click:help"</span>, <span class="property">@menuClick</span>
-
-        <span class="property">@$menuMaps</span>.click <span class="property">@showSubItems</span>
-        <span class="property">@$menuMaps</span>.mouseover <span class="property">@showSubItems</span>
-        <span class="property">@$menuMaps</span>.mouseout <span class="literal">false</span>, <span class="property">@showSubItems</span>
-
-        <span class="property">@$subMenuItems</span>.mouseover <span class="literal">true</span>, <span class="property">@showSubItems</span>
-        <span class="property">@$subMenuItems</span>.mouseout <span class="literal">false</span>, <span class="property">@showSubItems</span>
-
-        <span class="property">@listenTo</span> System.App.Data.maps, <span class="string">"sync"</span>, <span class="property">@sortSubMenu</span>
-        <span class="property">@listenTo</span> System.App.Data.maps, <span class="string">"add"</span>, <span class="property">@createSubMap</span>
-        <span class="property">@listenTo</span> System.App.Data.maps, <span class="string">"remove"</span>, <span class="property">@removeSubMap</span>
-        <span class="property">@listenTo</span> System.App.mapEvents, <span class="string">"load"</span>, <span class="property">@onMapLoad</span>
-        <span class="property">@listenTo</span> System.App.menuEvents, <span class="string">"active:menu"</span>, <span class="property">@setActiveMenu</span>
-        <span class="property">@listenTo</span> System.App.menuEvents, <span class="string">"active:map"</span>, <span class="property">@setActiveMap</span></pre></div></div>
+        <span class="property">@$menuHelp</span>.click <span class="string">"click:help"</span>, <span class="property">@menuClick</span></pre></div></div>
             
         </li>
         
@@ -493,12 +492,14 @@ submenu list with all available maps.</p>
         <li id="section-8">
             <div class="annotation">
               
-              <div class="pilwrap for-h2">
+              <div class="pilwrap ">
                 <a class="pilcrow" href="#section-8">&#182;</a>
               </div>
-              <h2>MAP MENU AND SUBMENUS</h2>
+              <p>Make sure submenu with maps is hidden when user clicks the &quot;Maps...&quot; option.</p>
 
             </div>
+            
+            <div class="content"><div class='highlight'><pre>        <span class="property">@$menuMaps</span>.click () =&gt; <span class="property">@toggleSubMenu</span> <span class="literal">false</span></pre></div></div>
             
         </li>
         
@@ -508,6 +509,57 @@ submenu list with all available maps.</p>
               
               <div class="pilwrap ">
                 <a class="pilcrow" href="#section-9">&#182;</a>
+              </div>
+              <p>Show and hide submenu on mouse over and out.</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>        <span class="property">@$menuMaps</span>.mouseover <span class="property">@showSubItems</span>
+        <span class="property">@$menuMaps</span>.mouseout <span class="literal">false</span>, <span class="property">@showSubItems</span>
+        <span class="property">@$subMenuItems</span>.mouseover <span class="literal">true</span>, <span class="property">@showSubItems</span>
+        <span class="property">@$subMenuItems</span>.mouseout <span class="literal">false</span>, <span class="property">@showSubItems</span></pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-10">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-10">&#182;</a>
+              </div>
+              <p>Listen to map and app events.</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>        <span class="property">@listenTo</span> SystemApp.Data.maps, <span class="string">"sync"</span>, <span class="property">@sortSubMenu</span>
+        <span class="property">@listenTo</span> SystemApp.Data.maps, <span class="string">"add"</span>, <span class="property">@createSubMap</span>
+        <span class="property">@listenTo</span> SystemApp.Data.maps, <span class="string">"remove"</span>, <span class="property">@removeSubMap</span>
+        <span class="property">@listenTo</span> SystemApp.mapEvents, <span class="string">"load"</span>, <span class="property">@onMapLoad</span>
+        <span class="property">@listenTo</span> SystemApp.menuEvents, <span class="string">"active:menu"</span>, <span class="property">@setActiveMenu</span>
+        <span class="property">@listenTo</span> SystemApp.menuEvents, <span class="string">"active:map"</span>, <span class="property">@setActiveMap</span></pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-11">
+            <div class="annotation">
+              
+              <div class="pilwrap for-h2">
+                <a class="pilcrow" href="#section-11">&#182;</a>
+              </div>
+              <h2>MAP MENU AND SUBMENUS</h2>
+
+            </div>
+            
+        </li>
+        
+        
+        <li id="section-12">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-12">&#182;</a>
               </div>
               <p>When a <a href="map.html">map</a> is loaded on the main <a href="mapView.html">map view</a>,
 set the &quot;Maps&quot; menu to active.</p>
@@ -520,11 +572,11 @@ set the &quot;Maps&quot; menu to active.</p>
         </li>
         
         
-        <li id="section-10">
+        <li id="section-13">
             <div class="annotation">
               
               <div class="pilwrap ">
-                <a class="pilcrow" href="#section-10">&#182;</a>
+                <a class="pilcrow" href="#section-13">&#182;</a>
               </div>
               <p>Add a single div to the <code>$subMenuItems</code>, which represents
 a <a href="map.html">Map</a>. If firstBind is true, it means the menu hasn&#39;t been populated before,
@@ -540,11 +592,11 @@ otherwise it&#39;s a newly created <a href="map.html">Map</a> being added.</p>
         </li>
         
         
-        <li id="section-11">
+        <li id="section-14">
             <div class="annotation">
               
               <div class="pilwrap ">
-                <a class="pilcrow" href="#section-11">&#182;</a>
+                <a class="pilcrow" href="#section-14">&#182;</a>
               </div>
               <p>Map properties and date as cached variables.</p>
 
@@ -558,11 +610,11 @@ otherwise it&#39;s a newly created <a href="map.html">Map</a> being added.</p>
         </li>
         
         
-        <li id="section-12">
+        <li id="section-15">
             <div class="annotation">
               
               <div class="pilwrap ">
-                <a class="pilcrow" href="#section-12">&#182;</a>
+                <a class="pilcrow" href="#section-15">&#182;</a>
               </div>
               <p>Create the map link.</p>
 
@@ -570,7 +622,7 @@ otherwise it&#39;s a newly created <a href="map.html">Map</a> being added.</p>
             
             <div class="content"><div class='highlight'><pre>        link = document.createElement <span class="string">"a"</span>
         link = $ link
-        link.attr <span class="string">"id"</span>, System.App.Settings.Menu.subPrefix + mapId
+        link.attr <span class="string">"id"</span>, SystemApp.Settings.Menu.subPrefix + mapId
         link.attr <span class="string">"href"</span>, <span class="string">"#map/"</span> + map.urlKey()
         link.addClass <span class="string">"menu-item"</span>
         link.html mapName
@@ -581,11 +633,11 @@ otherwise it&#39;s a newly created <a href="map.html">Map</a> being added.</p>
         </li>
         
         
-        <li id="section-13">
+        <li id="section-16">
             <div class="annotation">
               
               <div class="pilwrap ">
-                <a class="pilcrow" href="#section-13">&#182;</a>
+                <a class="pilcrow" href="#section-16">&#182;</a>
               </div>
               <p>If map was created less than 5 minutes ago, then make it italic so
 users can easily identify it on the list. The 5 minutes value is defined
@@ -593,18 +645,18 @@ on the <a href="settings.html">Settings</a>.</p>
 
             </div>
             
-            <div class="content"><div class='highlight'><pre>        <span class="keyword">if</span> dateCreated? <span class="keyword">and</span> (now - dateCreated) / <span class="number">1000</span> &lt; System.App.Settings.Map.isNewInterval
+            <div class="content"><div class='highlight'><pre>        <span class="keyword">if</span> dateCreated? <span class="keyword">and</span> (now - dateCreated) / <span class="number">1000</span> &lt; SystemApp.Settings.Map.isNewInterval
             link.addClass <span class="string">"italic"</span>
             <span class="property">@setActiveMap</span> map</pre></div></div>
             
         </li>
         
         
-        <li id="section-14">
+        <li id="section-17">
             <div class="annotation">
               
               <div class="pilwrap ">
-                <a class="pilcrow" href="#section-14">&#182;</a>
+                <a class="pilcrow" href="#section-17">&#182;</a>
               </div>
               <p>Remove an exisiting div representing a <a href="map.html">Map</a>. Fired whenever
 an item is removed from the main <a href="data.html">Map Collection</a>.</p>
@@ -614,7 +666,7 @@ an item is removed from the main <a href="data.html">Map Collection</a>.</p>
             <div class="content"><div class='highlight'><pre>    removeSubMap: (map) =&gt;
         <span class="keyword">try</span>
             map.<span class="literal">off</span>()
-            element = $ <span class="string">"#"</span> + System.App.Settings.Menu.subPrefix + map.id
+            element = $ <span class="string">"#"</span> + SystemApp.Settings.Menu.subPrefix + map.id
             element.remove() <span class="keyword">if</span> element.length &gt; <span class="number">0</span>
         <span class="keyword">catch</span> ex
             console.warn <span class="string">"Could not remove menu map <span class="subst">#{map.id}</span>. Maybe it was already removed?"</span>, ex</pre></div></div>
@@ -622,11 +674,11 @@ an item is removed from the main <a href="data.html">Map Collection</a>.</p>
         </li>
         
         
-        <li id="section-15">
+        <li id="section-18">
             <div class="annotation">
               
               <div class="pilwrap ">
-                <a class="pilcrow" href="#section-15">&#182;</a>
+                <a class="pilcrow" href="#section-18">&#182;</a>
               </div>
               <p>Show or hide submenu items based on e.data, which can
 be the source element, true to keep it shown, or false to force hide.
@@ -645,7 +697,7 @@ which have that specific data type (datacenter, or machine, or host, or view...)
             <span class="property">@timerHideMenu</span> = <span class="literal">null</span>
 
         <span class="keyword">if</span> e.data <span class="keyword">is</span> <span class="literal">false</span>
-            <span class="property">@timerHideMenu</span> = window.setTimeout <span class="property">@toggleSubMenu</span>, System.App.Settings.Menu.hideTimeout
+            <span class="property">@timerHideMenu</span> = window.setTimeout <span class="property">@toggleSubMenu</span>, SystemApp.Settings.Menu.hideTimeout
             <span class="keyword">return</span>
 
         <span class="keyword">if</span> e.data <span class="keyword">is</span> <span class="literal">true</span>
@@ -657,11 +709,11 @@ which have that specific data type (datacenter, or machine, or host, or view...)
         </li>
         
         
-        <li id="section-16">
+        <li id="section-19">
             <div class="annotation">
               
               <div class="pilwrap ">
-                <a class="pilcrow" href="#section-16">&#182;</a>
+                <a class="pilcrow" href="#section-19">&#182;</a>
               </div>
               <p>Show or hide the submenu items div, depending on the parameter <code>show</code>.</p>
 
@@ -669,18 +721,20 @@ which have that specific data type (datacenter, or machine, or host, or view...)
             
             <div class="content"><div class='highlight'><pre>    toggleSubMenu: (show) =&gt;
         <span class="keyword">if</span> show? <span class="keyword">and</span> show
+            <span class="property">@$menuMaps</span>.addClass <span class="string">"hover"</span>
             <span class="property">@$subMenuItems</span>.show()
         <span class="keyword">else</span>
+            <span class="property">@$menuMaps</span>.removeClass <span class="string">"hover"</span>
             <span class="property">@$subMenuItems</span>.hide()</pre></div></div>
             
         </li>
         
         
-        <li id="section-17">
+        <li id="section-20">
             <div class="annotation">
               
               <div class="pilwrap ">
-                <a class="pilcrow" href="#section-17">&#182;</a>
+                <a class="pilcrow" href="#section-20">&#182;</a>
               </div>
               <p>Sort the items on the map submenu.</p>
 
@@ -692,11 +746,11 @@ which have that specific data type (datacenter, or machine, or host, or view...)
         </li>
         
         
-        <li id="section-18">
+        <li id="section-21">
             <div class="annotation">
               
               <div class="pilwrap for-h2">
-                <a class="pilcrow" href="#section-18">&#182;</a>
+                <a class="pilcrow" href="#section-21">&#182;</a>
               </div>
               <h2>MAP INTERACTIONS</h2>
 
@@ -705,11 +759,11 @@ which have that specific data type (datacenter, or machine, or host, or view...)
         </li>
         
         
-        <li id="section-19">
+        <li id="section-22">
             <div class="annotation">
               
               <div class="pilwrap ">
-                <a class="pilcrow" href="#section-19">&#182;</a>
+                <a class="pilcrow" href="#section-22">&#182;</a>
               </div>
               <p>When user clicks a menu button, trigger the event data
 and hide all submenus.</p>
@@ -718,16 +772,16 @@ and hide all submenus.</p>
             
             <div class="content"><div class='highlight'><pre>    menuClick: (e) =&gt;
         <span class="property">@toggleSubMenu</span> <span class="literal">false</span>
-        System.App.menuEvents.trigger e.data</pre></div></div>
+        SystemApp.menuEvents.trigger e.data</pre></div></div>
             
         </li>
         
         
-        <li id="section-20">
+        <li id="section-23">
             <div class="annotation">
               
               <div class="pilwrap ">
-                <a class="pilcrow" href="#section-20">&#182;</a>
+                <a class="pilcrow" href="#section-23">&#182;</a>
               </div>
               <p>Set the active menu item by making it look like a selected tab.</p>
 
@@ -740,18 +794,18 @@ and hide all submenus.</p>
         </li>
         
         
-        <li id="section-21">
+        <li id="section-24">
             <div class="annotation">
               
               <div class="pilwrap ">
-                <a class="pilcrow" href="#section-21">&#182;</a>
+                <a class="pilcrow" href="#section-24">&#182;</a>
               </div>
               <p>Set the current active (highlighted) map on the menu.</p>
 
             </div>
             
             <div class="content"><div class='highlight'><pre>    setActiveMap: (map) =&gt;
-        sub = $ <span class="string">"#<span class="subst">#{System.App.Settings.Menu.subPrefix}</span><span class="subst">#{map.id}</span>"</span>
+        sub = $ <span class="string">"#<span class="subst">#{SystemApp.Settings.Menu.subPrefix}</span><span class="subst">#{map.id}</span>"</span>
         <span class="property">@$currentSub</span>?.removeClass <span class="string">"active"</span>
         <span class="property">@$currentSub</span> = sub
 
@@ -762,11 +816,11 @@ and hide all submenus.</p>
         </li>
         
         
-        <li id="section-22">
+        <li id="section-25">
             <div class="annotation">
               
               <div class="pilwrap ">
-                <a class="pilcrow" href="#section-22">&#182;</a>
+                <a class="pilcrow" href="#section-25">&#182;</a>
               </div>
               <p>Triggered when a submenu item, representing a <a href="map.html">Map</a>,
 has its name changed by the server or by the user.</p>
@@ -774,7 +828,7 @@ has its name changed by the server or by the user.</p>
             </div>
             
             <div class="content"><div class='highlight'><pre>    updateMapInfo: (map) =&gt;
-        link = $(<span class="string">"#"</span> + System.App.Settings.Menu.subPrefix + map.id)
+        link = $(<span class="string">"#"</span> + SystemApp.Settings.Menu.subPrefix + map.id)
         link.html map.name()
         link.attr <span class="string">"href"</span>, <span class="string">"#map/"</span> + map.urlKey()</pre></div></div>
             

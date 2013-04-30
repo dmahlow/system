@@ -69,7 +69,7 @@ module.exports = (app) ->
             serverOS: os.type() + " " + os.release(),
             serverCpuLoad: os.loadavg()[0].toFixed(2),
             serverRamLoad: (os.freemem() / os.totalmem() * 100).toFixed(2),
-            roles: {admin: 1, mapcreate: 1, mapedit: 1, entities: 1, auditdata: 1, auditevents: 1, settings: 1}
+            roles: {admin: true}
 
         res.render "index", options
 

@@ -19,6 +19,11 @@
           <div id="jump_page">
             
               
+              <a class="source" href="admin.html">
+                admin.coffee
+              </a>
+            
+              
               <a class="source" href="api.auditData.html">
                 api.auditData.coffee
               </a>
@@ -134,6 +139,11 @@
               </a>
             
               
+              <a class="source" href="user.html">
+                user.coffee
+              </a>
+            
+              
               <a class="source" href="userSettings.html">
                 userSettings.coffee
               </a>
@@ -149,18 +159,8 @@
               </a>
             
               
-              <a class="source" href="settings.base.html">
-                settings.base.coffee
-              </a>
-            
-              
               <a class="source" href="settings.html">
                 settings.coffee
-              </a>
-            
-              
-              <a class="source" href="settings.default.html">
-                settings.default.coffee
               </a>
             
               
@@ -176,6 +176,11 @@
               
               <a class="source" href="vectors.html">
                 vectors.coffee
+              </a>
+            
+              
+              <a class="source" href="adminView.html">
+                adminView.coffee
               </a>
             
               
@@ -313,6 +318,11 @@
                 startView.coffee
               </a>
             
+              
+              <a class="source" href="variableManagerView.html">
+                variableManagerView.coffee
+              </a>
+            
           </div>
         </li>
       </ul>
@@ -386,8 +396,7 @@
               <div class="pilwrap ">
                 <a class="pilcrow" href="#section-4">&#182;</a>
               </div>
-              <p>= require settings.default.coffee
-= require settings.coffee
+              <p>= require settings.coffee
 = require messages.coffee
 = require vectors.coffee
 = require routes.coffee
@@ -416,6 +425,7 @@
 = require model/eventAction.coffee
 = require model/auditEvent.coffee
 = require model/variable.coffee
+= require model/user.coffee
 = require model/userSettings.coffee</p>
 <h2>APP DATA, SOCKETS, TUTORIAL</h2>
 
@@ -468,6 +478,7 @@
 = require view/startView.coffee
 = require view/createMapView.coffee
 = require view/entityManagerView.coffee
+= require view/variableManagerView.coffee
 = require view/auditDataManagerView.coffee
 = require view/auditEventManagerView.coffee
 = require view/settingsView.coffee
@@ -533,15 +544,11 @@
               <div class="pilwrap ">
                 <a class="pilcrow" href="#section-11">&#182;</a>
               </div>
-              <p>To enable editing (inserting, updating, deleting) data on the app the
-user must access with the special querystring: ?godmode=true.
-To enable debugging messages, use ?debug=true.
-The <code>startDate</code> tells when the app was started (page loaded).</p>
+              <p>The <code>startDate</code> tells when the app was started (page loaded).</p>
 
             </div>
             
-            <div class="content"><div class='highlight'><pre>System.App.godMode = <span class="literal">false</span>
-System.App.startDate = <span class="keyword">new</span> Date()</pre></div></div>
+            <div class="content"><div class='highlight'><pre>SystemApp.startDate = <span class="keyword">new</span> Date()</pre></div></div>
             
         </li>
         
@@ -569,7 +576,7 @@ System.App.startDate = <span class="keyword">new</span> Date()</pre></div></div>
 
             </div>
             
-            <div class="content"><div class='highlight'><pre>System.App.routes = <span class="literal">null</span></pre></div></div>
+            <div class="content"><div class='highlight'><pre>SystemApp.routes = <span class="literal">null</span></pre></div></div>
             
         </li>
         
@@ -594,17 +601,17 @@ System.App.startDate = <span class="keyword">new</span> Date()</pre></div></div>
                 <a class="pilcrow" href="#section-15">&#182;</a>
               </div>
               <p>Holds Backbone objects to dispatch events on a global scope.
-Trigger events: <code>System.App.DISPATCHER.trigger &quot;eventname&quot;, data</code>.
-List to events: <code>System.App.DISPATCHER.on &quot;eventname&quot;, method</code>.
-Unbind events <code>System.App.DISPATCHER.off &quot;eventname&quot;, method</code>.</p>
+Trigger events: <code>SystemApp.DISPATCHER.trigger &quot;eventname&quot;, data</code>.
+List to events: <code>SystemApp.DISPATCHER.on &quot;eventname&quot;, method</code>.
+Unbind events <code>SystemApp.DISPATCHER.off &quot;eventname&quot;, method</code>.</p>
 
             </div>
             
-            <div class="content"><div class='highlight'><pre>System.App.alertEvents = <span class="literal">null</span>
-System.App.dataEvents = <span class="literal">null</span>
-System.App.mapEvents = <span class="literal">null</span>
-System.App.menuEvents = <span class="literal">null</span>
-System.App.serverEvents = <span class="literal">null</span></pre></div></div>
+            <div class="content"><div class='highlight'><pre>SystemApp.alertEvents = <span class="literal">null</span>
+SystemApp.dataEvents = <span class="literal">null</span>
+SystemApp.mapEvents = <span class="literal">null</span>
+SystemApp.menuEvents = <span class="literal">null</span>
+SystemApp.serverEvents = <span class="literal">null</span></pre></div></div>
             
         </li>
         
@@ -633,8 +640,8 @@ idle based actions (for example, refresh the browser every 12 hours).</p>
 
             </div>
             
-            <div class="content"><div class='highlight'><pre>System.App.idleTime = <span class="number">0</span>
-System.App.timerIdleUpdate = <span class="literal">null</span></pre></div></div>
+            <div class="content"><div class='highlight'><pre>SystemApp.idleTime = <span class="number">0</span>
+SystemApp.timerIdleUpdate = <span class="literal">null</span></pre></div></div>
             
         </li>
         
@@ -662,18 +669,19 @@ System.App.timerIdleUpdate = <span class="literal">null</span></pre></div></div>
 
             </div>
             
-            <div class="content"><div class='highlight'><pre>System.App.alertView = <span class="literal">null</span>
-System.App.auditDataManagerView = <span class="literal">null</span>
-System.App.auditEventManagerView = <span class="literal">null</span>
-System.App.createMapView = <span class="literal">null</span>
-System.App.entityManagerView = <span class="literal">null</span>
-System.App.footerView = <span class="literal">null</span>
-System.App.helpView = <span class="literal">null</span>
-System.App.mapView = <span class="literal">null</span>
-System.App.menuView = <span class="literal">null</span>
-System.App.settingsView = <span class="literal">null</span>
-System.App.scriptEditorView = <span class="literal">null</span>
-System.App.startView = <span class="literal">null</span></pre></div></div>
+            <div class="content"><div class='highlight'><pre>SystemApp.alertView = <span class="literal">null</span>
+SystemApp.auditDataManagerView = <span class="literal">null</span>
+SystemApp.auditEventManagerView = <span class="literal">null</span>
+SystemApp.createMapView = <span class="literal">null</span>
+SystemApp.entityManagerView = <span class="literal">null</span>
+SystemApp.footerView = <span class="literal">null</span>
+SystemApp.helpView = <span class="literal">null</span>
+SystemApp.mapView = <span class="literal">null</span>
+SystemApp.menuView = <span class="literal">null</span>
+SystemApp.settingsView = <span class="literal">null</span>
+SystemApp.scriptEditorView = <span class="literal">null</span>
+SystemApp.startView = <span class="literal">null</span>
+SystemApp.variableManagerView = <span class="literal">null</span></pre></div></div>
             
         </li>
         
@@ -702,7 +710,7 @@ has any major view state change.</p>
 
             </div>
             
-            <div class="content"><div class='highlight'><pre>System.App.$loading = <span class="literal">null</span></pre></div></div>
+            <div class="content"><div class='highlight'><pre>SystemApp.$loading = <span class="literal">null</span></pre></div></div>
             
         </li>
         
@@ -731,8 +739,8 @@ load data to the Data object, init the menu and finally init the footer.</p>
 
             </div>
             
-            <div class="content"><div class='highlight'><pre>System.App.<span class="function"><span class="title">init</span></span> = -&gt;
-    window.onerror = System.App.onError</pre></div></div>
+            <div class="content"><div class='highlight'><pre>SystemApp.<span class="function"><span class="title">init</span></span> = -&gt;
+    window.onerror = SystemApp.onError</pre></div></div>
             
         </li>
         
@@ -747,7 +755,7 @@ load data to the Data object, init the menu and finally init the footer.</p>
 
             </div>
             
-            <div class="content"><div class='highlight'><pre>    System.App.routes = <span class="keyword">new</span> System.Routes()</pre></div></div>
+            <div class="content"><div class='highlight'><pre>    SystemApp.routes = <span class="keyword">new</span> SystemApp.Routes()</pre></div></div>
             
         </li>
         
@@ -762,8 +770,8 @@ load data to the Data object, init the menu and finally init the footer.</p>
 
             </div>
             
-            <div class="content"><div class='highlight'><pre>    System.App.setEvents()
-    System.App.Data.init()</pre></div></div>
+            <div class="content"><div class='highlight'><pre>    SystemApp.setEvents()
+    SystemApp.Data.init()</pre></div></div>
             
         </li>
         
@@ -774,13 +782,13 @@ load data to the Data object, init the menu and finally init the footer.</p>
               <div class="pilwrap ">
                 <a class="pilcrow" href="#section-26">&#182;</a>
               </div>
-              <p>Set views and idle timer.</p>
+              <p>Set views, options via querystrings and idle timer.</p>
 
             </div>
             
-            <div class="content"><div class='highlight'><pre>    System.App.setDom()
-    System.App.setViews()
-    System.App.setIdleTimer()</pre></div></div>
+            <div class="content"><div class='highlight'><pre>    SystemApp.setDom()
+    SystemApp.setViews()
+    SystemApp.setIdleTimer()</pre></div></div>
             
         </li>
         
@@ -795,7 +803,7 @@ load data to the Data object, init the menu and finally init the footer.</p>
 
             </div>
             
-            <div class="content"><div class='highlight'><pre>    System.App.Data.fetch()</pre></div></div>
+            <div class="content"><div class='highlight'><pre>    SystemApp.Data.fetch()</pre></div></div>
             
         </li>
         
@@ -810,7 +818,7 @@ load data to the Data object, init the menu and finally init the footer.</p>
 
             </div>
             
-            <div class="content"><div class='highlight'><pre>    System.App.Sockets.start()</pre></div></div>
+            <div class="content"><div class='highlight'><pre>    SystemApp.Sockets.start()</pre></div></div>
             
         </li>
         
@@ -821,11 +829,11 @@ load data to the Data object, init the menu and finally init the footer.</p>
               <div class="pilwrap ">
                 <a class="pilcrow" href="#section-29">&#182;</a>
               </div>
-              <p>Apply user settings to the UI.</p>
+              <p>Set UI options based on user settings and querystrings.</p>
 
             </div>
             
-            <div class="content"><div class='highlight'><pre>    System.App.initUserSettings()</pre></div></div>
+            <div class="content"><div class='highlight'><pre>    SystemApp.setUiOptions()</pre></div></div>
             
         </li>
         
@@ -840,7 +848,7 @@ load data to the Data object, init the menu and finally init the footer.</p>
 
             </div>
             
-            <div class="content"><div class='highlight'><pre>    System.Api.init()</pre></div></div>
+            <div class="content"><div class='highlight'><pre>    SystemApp.Api.init()</pre></div></div>
             
         </li>
         
@@ -851,16 +859,12 @@ load data to the Data object, init the menu and finally init the footer.</p>
               <div class="pilwrap ">
                 <a class="pilcrow" href="#section-31">&#182;</a>
               </div>
-              <p>Change the app UI based on the current user settings.
-Things like fullscreen, zoom, etc.</p>
+              <p>Set the DOM cache.</p>
 
             </div>
             
-            <div class="content"><div class='highlight'><pre>System.App.<span class="function"><span class="title">initUserSettings</span></span> = -&gt;
-    <span class="keyword">if</span> System.App.Data.userSettings.mapFullscreen()
-        System.App.mapView.toggleFullscreen <span class="literal">true</span>
-    <span class="keyword">if</span> System.App.Data.userSettings.mapZoom() <span class="keyword">isnt</span> <span class="number">1</span>
-        System.App.mapView.zoomSet System.App.Data.userSettings.mapZoom()</pre></div></div>
+            <div class="content"><div class='highlight'><pre>SystemApp.<span class="function"><span class="title">setDom</span></span> = -&gt;
+    SystemApp.$loading = $ <span class="string">"#loading"</span></pre></div></div>
             
         </li>
         
@@ -871,12 +875,24 @@ Things like fullscreen, zoom, etc.</p>
               <div class="pilwrap ">
                 <a class="pilcrow" href="#section-32">&#182;</a>
               </div>
-              <p>Set the DOM cache.</p>
+              <p>Init the menu, footer and settings.</p>
 
             </div>
             
-            <div class="content"><div class='highlight'><pre>System.App.<span class="function"><span class="title">setDom</span></span> = -&gt;
-    System.App.$loading = $ <span class="string">"#loading"</span></pre></div></div>
+            <div class="content"><div class='highlight'><pre>SystemApp.<span class="function"><span class="title">setViews</span></span> = -&gt;
+    SystemApp.alertView = <span class="keyword">new</span> SystemApp.AlertView()
+    SystemApp.auditDataManagerView = <span class="keyword">new</span> SystemApp.AuditDataManagerView()
+    SystemApp.auditEventManagerView = <span class="keyword">new</span> SystemApp.AuditEventManagerView()
+    SystemApp.createMapView = <span class="keyword">new</span> SystemApp.CreateMapView()
+    SystemApp.entityManagerView = <span class="keyword">new</span> SystemApp.EntityManagerView()
+    SystemApp.footerView = <span class="keyword">new</span> SystemApp.FooterView()
+    SystemApp.helpView = <span class="keyword">new</span> SystemApp.HelpView()
+    SystemApp.mapView = <span class="keyword">new</span> SystemApp.MapView()
+    SystemApp.menuView = <span class="keyword">new</span> SystemApp.MenuView()
+    SystemApp.settingsView = <span class="keyword">new</span> SystemApp.SettingsView()
+    SystemApp.scriptEditorView = <span class="keyword">new</span> SystemApp.ScriptEditorView()
+    SystemApp.startView = <span class="keyword">new</span> SystemApp.StartView()
+    SystemApp.variableManagerView = <span class="keyword">new</span> SystemApp.VariableManagerView()</pre></div></div>
             
         </li>
         
@@ -887,23 +903,21 @@ Things like fullscreen, zoom, etc.</p>
               <div class="pilwrap ">
                 <a class="pilcrow" href="#section-33">&#182;</a>
               </div>
-              <p>Init the menu, footer and settings.</p>
+              <p>Create event dispatchers. Bind and listen to app events.</p>
 
             </div>
             
-            <div class="content"><div class='highlight'><pre>System.App.<span class="function"><span class="title">setViews</span></span> = -&gt;
-    System.App.alertView = <span class="keyword">new</span> System.AlertView()
-    System.App.auditDataManagerView = <span class="keyword">new</span> System.AuditDataManagerView()
-    System.App.auditEventManagerView = <span class="keyword">new</span> System.AuditEventManagerView()
-    System.App.createMapView = <span class="keyword">new</span> System.CreateMapView()
-    System.App.entityManagerView = <span class="keyword">new</span> System.EntityManagerView()
-    System.App.footerView = <span class="keyword">new</span> System.FooterView()
-    System.App.helpView = <span class="keyword">new</span> System.HelpView()
-    System.App.mapView = <span class="keyword">new</span> System.MapView()
-    System.App.menuView = <span class="keyword">new</span> System.MenuView()
-    System.App.settingsView = <span class="keyword">new</span> System.App.SettingsView()
-    System.App.scriptEditorView = <span class="keyword">new</span> System.ScriptEditorView()
-    System.App.startView = <span class="keyword">new</span> System.StartView()</pre></div></div>
+            <div class="content"><div class='highlight'><pre>SystemApp.<span class="function"><span class="title">setEvents</span></span> = -&gt;
+    $(document).keydown SystemApp.suppressBackspace
+    $(document).keypress SystemApp.suppressBackspace
+
+    SystemApp.alertEvents = _.clone(Backbone.Events)
+    SystemApp.dataEvents = _.clone(Backbone.Events)
+    SystemApp.mapEvents = _.clone(Backbone.Events)
+    SystemApp.menuEvents = _.clone(Backbone.Events)
+    SystemApp.serverEvents = _.clone(Backbone.Events)
+
+    SystemApp.dataEvents.<span class="literal">on</span> <span class="string">"load"</span>, SystemApp.start</pre></div></div>
             
         </li>
         
@@ -914,21 +928,21 @@ Things like fullscreen, zoom, etc.</p>
               <div class="pilwrap ">
                 <a class="pilcrow" href="#section-34">&#182;</a>
               </div>
-              <p>Create event dispatchers. Bind and listen to app events.</p>
+              <p>Toggle app options based on user settings and passed querystrings.</p>
 
             </div>
             
-            <div class="content"><div class='highlight'><pre>System.App.<span class="function"><span class="title">setEvents</span></span> = -&gt;
-    $(document).keydown System.App.suppressBackspace
-    $(document).keypress System.App.suppressBackspace
+            <div class="content"><div class='highlight'><pre>SystemApp.<span class="function"><span class="title">setUiOptions</span></span> = -&gt;
+    query = location.href.substring location.href.indexOf <span class="string">"?"</span>
+    qDebug = query.indexOf(<span class="string">"debug="</span>) + <span class="number">6</span>
+    qDebug = query.substring qDebug, qDebug + <span class="number">1</span>
+    qFullscreen = query.indexOf(<span class="string">"fullscreen="</span>) + <span class="number">11</span>
+    qFullscreen = query.substring qFullscreen, qFullscreen + <span class="number">1</span>
 
-    System.App.alertEvents = _.clone(Backbone.Events)
-    System.App.dataEvents = _.clone(Backbone.Events)
-    System.App.mapEvents = _.clone(Backbone.Events)
-    System.App.menuEvents = _.clone(Backbone.Events)
-    System.App.serverEvents = _.clone(Backbone.Events)
-
-    System.App.dataEvents.<span class="literal">on</span> <span class="string">"load"</span>, System.App.start</pre></div></div>
+    <span class="keyword">if</span> qDebug <span class="keyword">is</span> <span class="string">"1"</span>
+        SystemApp.toggleDebug <span class="literal">true</span>
+    <span class="keyword">else</span> <span class="keyword">if</span> qDebug <span class="keyword">is</span> <span class="string">"0"</span>
+        SystemApp.toggleDebug <span class="literal">false</span></pre></div></div>
             
         </li>
         
@@ -939,17 +953,20 @@ Things like fullscreen, zoom, etc.</p>
               <div class="pilwrap ">
                 <a class="pilcrow" href="#section-35">&#182;</a>
               </div>
-              <p>Start the app after all major data has been loaded.
-First add a timeout to hide the <code>loading</code> overlay, then start backbone&#39;s history.
-If the hashtag is empty, show the <a href="startView.html">Start View</a> automatically.</p>
+              <p>Set fullscreen if <code>fullscreen</code> querystring is set, or if
+the <code>mapFullscreen</code> option is defined on the <a href="userSettings.html">user settings</a>.</p>
 
             </div>
             
-            <div class="content"><div class='highlight'><pre>System.App.<span class="function"><span class="title">start</span></span> = -&gt;
-    now = <span class="keyword">new</span> Date()
-    console.log <span class="string">"<span class="subst">#{System.App.Settings.General.appTitle}</span> START: <span class="subst">#{now}</span>"</span>
-
-    System.App.checkGodMode()</pre></div></div>
+            <div class="content"><div class='highlight'><pre>    <span class="keyword">if</span> qFullscreen <span class="keyword">is</span> <span class="string">"1"</span>
+        SystemApp.mapView.controlsView.toggleFullscreen <span class="literal">true</span>
+    <span class="keyword">else</span> <span class="keyword">if</span> qFullscreen <span class="keyword">is</span> <span class="string">"0"</span>
+        SystemApp.mapView.controlsView.toggleFullscreen <span class="literal">false</span>
+    <span class="keyword">else</span> <span class="keyword">if</span> SystemApp.Data.userSettings.mapFullscreen()
+        SystemApp.mapView.controlsView.toggleFullscreen <span class="literal">true</span>
+    
+    <span class="keyword">if</span> SystemApp.Data.userSettings.mapZoom() <span class="keyword">isnt</span> <span class="number">1</span>
+        SystemApp.mapView.zoomSet SystemApp.Data.userSettings.mapZoom()</pre></div></div>
             
         </li>
         
@@ -960,13 +977,15 @@ If the hashtag is empty, show the <a href="startView.html">Start View</a> automa
               <div class="pilwrap ">
                 <a class="pilcrow" href="#section-36">&#182;</a>
               </div>
-              <p>Start listening to model updates.</p>
+              <p>Start the app after all major data has been loaded.
+First add a timeout to hide the <code>loading</code> overlay, then start backbone&#39;s history.
+If the hashtag is empty, show the <a href="startView.html">Start View</a> automatically.</p>
 
             </div>
             
-            <div class="content"><div class='highlight'><pre>    System.App.alertView.listenToModels <span class="literal">true</span>
-    
-    Backbone.history.start()</pre></div></div>
+            <div class="content"><div class='highlight'><pre>SystemApp.<span class="function"><span class="title">start</span></span> = -&gt;
+    now = <span class="keyword">new</span> Date()
+    console.log <span class="string">"<span class="subst">#{SystemApp.Settings.General.appTitle}</span> START: <span class="subst">#{now}</span>"</span></pre></div></div>
             
         </li>
         
@@ -977,23 +996,11 @@ If the hashtag is empty, show the <a href="startView.html">Start View</a> automa
               <div class="pilwrap ">
                 <a class="pilcrow" href="#section-37">&#182;</a>
               </div>
-              <p>Dispose the app (called when user leaves the page).</p>
+              <p>Disabled editing by default.</p>
 
             </div>
             
-            <div class="content"><div class='highlight'><pre>System.App.<span class="function"><span class="title">dispose</span></span> = -&gt;
-    System.App.Sockets.stop()
-    System.App.alertView?.dispose()
-    System.App.auditEventManagerView?.dispose()
-    System.App.auditDataManagerView?.dispose()
-    System.App.createMapView?.dispose()
-    System.App.entityManagerView?.dispose()
-    System.App.footerView?.dispose()
-    System.App.helpView?.dispose()
-    System.App.mapView?.dispose()
-    System.App.menuView?.dispose()
-    System.App.settingsView?.dispose()
-    System.App.startView?.dispose()</pre></div></div>
+            <div class="content"><div class='highlight'><pre>    SystemApp.mapEvents.trigger <span class="string">"edit:toggle"</span>, <span class="literal">false</span></pre></div></div>
             
         </li>
         
@@ -1001,12 +1008,16 @@ If the hashtag is empty, show the <a href="startView.html">Start View</a> automa
         <li id="section-38">
             <div class="annotation">
               
-              <div class="pilwrap for-h2">
+              <div class="pilwrap ">
                 <a class="pilcrow" href="#section-38">&#182;</a>
               </div>
-              <h2>SECURITY</h2>
+              <p>Start listening to model updates.</p>
 
             </div>
+            
+            <div class="content"><div class='highlight'><pre>    SystemApp.alertView.listenToModels <span class="literal">true</span>
+    
+    Backbone.history.start()</pre></div></div>
             
         </li>
         
@@ -1017,18 +1028,24 @@ If the hashtag is empty, show the <a href="startView.html">Start View</a> automa
               <div class="pilwrap ">
                 <a class="pilcrow" href="#section-39">&#182;</a>
               </div>
-              <p>Called on init to check if user has entered the special ?godmode=1 query string,
-or if the app is running under the localhost domain.
-Users can create and update data with no restrictions when in God Mode.</p>
+              <p>Dispose the app (called when user leaves the page).</p>
 
             </div>
             
-            <div class="content"><div class='highlight'><pre>System.App.<span class="function"><span class="title">checkGodMode</span></span> = -&gt;
-    godEnable = location.href.indexOf(<span class="string">"?godmode=1"</span>) &gt;= <span class="number">0</span> <span class="keyword">or</span> location.hostname <span class="keyword">is</span> <span class="string">"localhost"</span>
-
-    <span class="keyword">if</span> godEnable &gt; <span class="number">0</span> <span class="keyword">or</span> <span class="keyword">not</span> System.App.Settings.General.restrictedMode
-        System.App.godMode = <span class="literal">true</span>
-        <span class="keyword">return</span></pre></div></div>
+            <div class="content"><div class='highlight'><pre>SystemApp.<span class="function"><span class="title">dispose</span></span> = -&gt;
+    SystemApp.Sockets.stop()
+    SystemApp.alertView?.dispose()
+    SystemApp.auditEventManagerView?.dispose()
+    SystemApp.auditDataManagerView?.dispose()
+    SystemApp.createMapView?.dispose()
+    SystemApp.entityManagerView?.dispose()
+    SystemApp.footerView?.dispose()
+    SystemApp.helpView?.dispose()
+    SystemApp.mapView?.dispose()
+    SystemApp.menuView?.dispose()
+    SystemApp.settingsView?.dispose()
+    SystemApp.startView?.dispose()
+    SystemApp.variableManagerView?.dispose()</pre></div></div>
             
         </li>
         
@@ -1036,15 +1053,12 @@ Users can create and update data with no restrictions when in God Mode.</p>
         <li id="section-40">
             <div class="annotation">
               
-              <div class="pilwrap ">
+              <div class="pilwrap for-h2">
                 <a class="pilcrow" href="#section-40">&#182;</a>
               </div>
-              <p>Add a style to hide the delete and add icons.</p>
+              <h2>IDLE TIMER AND ACTIONS</h2>
 
             </div>
-            
-            <div class="content"><div class='highlight'><pre>    headStyle = <span class="string">".full-overlay-contents .delete, .full-overlay-contents .add, .addrow{display:none !important}"</span>
-    $(<span class="string">"&lt;style type='text/css'&gt;<span class="subst">#{headStyle}</span>&lt;/style&gt;"</span>).appendTo(<span class="string">"head"</span>)</pre></div></div>
             
         </li>
         
@@ -1055,12 +1069,14 @@ Users can create and update data with no restrictions when in God Mode.</p>
               <div class="pilwrap ">
                 <a class="pilcrow" href="#section-41">&#182;</a>
               </div>
-              <p>Hide the locker div on the header and the &quot;Delete map&quot; button.</p>
+              <p>Start the idle timer handlers and bind the <code>resetIdleTime</code> to
+the mouse move event on the document.</p>
 
             </div>
             
-            <div class="content"><div class='highlight'><pre>    $(<span class="string">"div.lock"</span>).hide()
-    $(<span class="string">"#map-ctl-delete"</span>).hide()</pre></div></div>
+            <div class="content"><div class='highlight'><pre>SystemApp.<span class="function"><span class="title">setIdleTimer</span></span> = -&gt;
+    SystemApp.timerIdleUpdate = setInterval SystemApp.idleTimerTick, SystemApp.idleTimerInterval
+    $(document).mousemove SystemApp.resetIdleTime</pre></div></div>
             
         </li>
         
@@ -1071,11 +1087,13 @@ Users can create and update data with no restrictions when in God Mode.</p>
               <div class="pilwrap ">
                 <a class="pilcrow" href="#section-42">&#182;</a>
               </div>
-              <p>Hide the Audit Data / Audit Event overlay buttons and inputs.</p>
+              <p>Tick the idle timer. This will increase the idleTime value by
+X milliseconds - value defined at the <a href="settings.html">Settings</a>.</p>
 
             </div>
             
-            <div class="content"><div class='highlight'><pre>    $(<span class="string">".delete"</span>).hide()</pre></div></div>
+            <div class="content"><div class='highlight'><pre>SystemApp.<span class="function"><span class="title">idleTimerTick</span></span> = -&gt;
+    SystemApp.idleTime += SystemApp.idleTimerInterval</pre></div></div>
             
         </li>
         
@@ -1086,14 +1104,14 @@ Users can create and update data with no restrictions when in God Mode.</p>
               <div class="pilwrap ">
                 <a class="pilcrow" href="#section-43">&#182;</a>
               </div>
-              <p>Bind a function to hide input fields when data is loaded to the Audit Data / Audit Events overlay.</p>
+              <p>Check if page needs to be refreshed based on the <code>idleRefreshMinutes</code>
+value on the <a href="settings.html">Settings</a>.</p>
 
             </div>
             
-            <div class="content"><div class='highlight'><pre>    $(<span class="string">"#auditdata"</span>).find(<span class="string">"input,select,textarea"</span>).prop(<span class="string">"disabled"</span>, <span class="literal">true</span>).attr(<span class="string">"readonly"</span>, <span class="literal">true</span>)
-    $(<span class="string">"#auditevents"</span>).find(<span class="string">"input,select,textarea"</span>).prop(<span class="string">"disabled"</span>, <span class="literal">true</span>).attr(<span class="string">"readonly"</span>, <span class="literal">true</span>)
-    $(<span class="string">"#entitymanager"</span>).find(<span class="string">"input,select,textarea"</span>).prop(<span class="string">"disabled"</span>, <span class="literal">true</span>).attr(<span class="string">"readonly"</span>, <span class="literal">true</span>)
-    $(<span class="string">"#map-ctl-init-script"</span>).prop(<span class="string">"disabled"</span>, <span class="literal">true</span>)</pre></div></div>
+            <div class="content"><div class='highlight'><pre>    idleMinutes = SystemApp.idleTime / <span class="number">60000</span>
+    <span class="keyword">if</span> idleMinutes &gt;= SystemApp.Settings.idleRefreshMinutes
+        SystemApp.routes.refresh()</pre></div></div>
             
         </li>
         
@@ -1101,12 +1119,15 @@ Users can create and update data with no restrictions when in God Mode.</p>
         <li id="section-44">
             <div class="annotation">
               
-              <div class="pilwrap for-h2">
+              <div class="pilwrap ">
                 <a class="pilcrow" href="#section-44">&#182;</a>
               </div>
-              <h2>IDLE TIMER AND ACTIONS</h2>
+              <p>Reset the idle time counter by setting the variable <code>idleTime</code> to 0.</p>
 
             </div>
+            
+            <div class="content"><div class='highlight'><pre>SystemApp.<span class="function"><span class="title">resetIdleTime</span></span> = -&gt;
+    SystemApp.idleTime = <span class="number">0</span></pre></div></div>
             
         </li>
         
@@ -1114,17 +1135,12 @@ Users can create and update data with no restrictions when in God Mode.</p>
         <li id="section-45">
             <div class="annotation">
               
-              <div class="pilwrap ">
+              <div class="pilwrap for-h2">
                 <a class="pilcrow" href="#section-45">&#182;</a>
               </div>
-              <p>Start the idle timer handlers and bind the <code>resetIdleTime</code> to
-the mouse move event on the document.</p>
+              <h2>LOADING ICON METHODS</h2>
 
             </div>
-            
-            <div class="content"><div class='highlight'><pre>System.App.<span class="function"><span class="title">setIdleTimer</span></span> = -&gt;
-    System.App.timerIdleUpdate = setInterval System.App.idleTimerTick, System.App.idleTimerInterval
-    $(document).mousemove System.App.resetIdleTime</pre></div></div>
             
         </li>
         
@@ -1135,13 +1151,18 @@ the mouse move event on the document.</p>
               <div class="pilwrap ">
                 <a class="pilcrow" href="#section-46">&#182;</a>
               </div>
-              <p>Tick the idle timer. This will increase the idleTime value by
-X milliseconds - value defined at the <a href="settings.html">Settings</a>.</p>
+              <p>Toggle the loading icon on or off (parameter enabled).
+A fade in/out effect is applied.</p>
 
             </div>
             
-            <div class="content"><div class='highlight'><pre>System.App.<span class="function"><span class="title">idleTimerTick</span></span> = -&gt;
-    System.App.idleTime += System.App.idleTimerInterval</pre></div></div>
+            <div class="content"><div class='highlight'><pre>SystemApp.<span class="function"><span class="title">toggleLoading</span></span> = (enabled) -&gt;
+    enabled = <span class="literal">false</span> <span class="keyword">if</span> <span class="keyword">not</span> enabled?
+
+    <span class="keyword">if</span> enabled
+        SystemApp.$loading.fadeIn SystemApp.Settings.General.fadeDelay
+    <span class="keyword">else</span>
+        SystemApp.$loading.fadeOut SystemApp.Settings.General.fadeDelay</pre></div></div>
             
         </li>
         
@@ -1149,17 +1170,12 @@ X milliseconds - value defined at the <a href="settings.html">Settings</a>.</p>
         <li id="section-47">
             <div class="annotation">
               
-              <div class="pilwrap ">
+              <div class="pilwrap for-h2">
                 <a class="pilcrow" href="#section-47">&#182;</a>
               </div>
-              <p>Check if page needs to be refreshed based on the <code>idleRefreshMinutes</code>
-value on the <a href="settings.html">Settings</a>.</p>
+              <h2>HELPERS</h2>
 
             </div>
-            
-            <div class="content"><div class='highlight'><pre>    idleMinutes = System.App.idleTime / <span class="number">60000</span>
-    <span class="keyword">if</span> idleMinutes &gt;= System.App.Settings.idleRefreshMinutes
-        System.App.routes.refresh()</pre></div></div>
             
         </li>
         
@@ -1170,12 +1186,21 @@ value on the <a href="settings.html">Settings</a>.</p>
               <div class="pilwrap ">
                 <a class="pilcrow" href="#section-48">&#182;</a>
               </div>
-              <p>Reset the idle time counter by setting the variable <code>idleTime</code> to 0.</p>
+              <p>Enable or disable the <code>debug</code> mode.</p>
 
             </div>
             
-            <div class="content"><div class='highlight'><pre>System.App.<span class="function"><span class="title">resetIdleTime</span></span> = -&gt;
-    System.App.idleTime = <span class="number">0</span></pre></div></div>
+            <div class="content"><div class='highlight'><pre>SystemApp.<span class="function"><span class="title">toggleDebug</span></span> = (enabled) -&gt;
+    SystemApp.Settings.General.debug = enabled
+
+    <span class="keyword">if</span> enabled
+        alertTitle = <span class="string">"ENABLED"</span>
+        alertMsg = <span class="string">"Most actions and events will be logged to the console."</span>
+    <span class="keyword">else</span>
+        alertTitle = <span class="string">"DISABLED"</span>
+        alertMsg = <span class="string">"Only errors will be logged to the console now."</span>
+
+    SystemApp.alertEvents.trigger <span class="string">"footer"</span>, {title: <span class="string">"DEBUG <span class="subst">#{alertTitle}</span>"</span>, message: alertMsg}</pre></div></div>
             
         </li>
         
@@ -1183,12 +1208,18 @@ value on the <a href="settings.html">Settings</a>.</p>
         <li id="section-49">
             <div class="annotation">
               
-              <div class="pilwrap for-h2">
+              <div class="pilwrap ">
                 <a class="pilcrow" href="#section-49">&#182;</a>
               </div>
-              <h2>LOADING ICON METHODS</h2>
+              <p>Prevent accidental use of backspace which could trigger a <code>history.back()</code> on the page.</p>
 
             </div>
+            
+            <div class="content"><div class='highlight'><pre>SystemApp.<span class="function"><span class="title">suppressBackspace</span></span> = (e) -&gt;
+    <span class="keyword">if</span> e.keyCode <span class="keyword">is</span> <span class="number">8</span> <span class="keyword">and</span> <span class="keyword">not</span> <span class="regexp">/input|textarea/i</span>.test(e.target.nodeName)
+        e.preventDefault()
+        e.stopPropagation()
+        <span class="keyword">return</span> <span class="literal">false</span></pre></div></div>
             
         </li>
         
@@ -1196,21 +1227,12 @@ value on the <a href="settings.html">Settings</a>.</p>
         <li id="section-50">
             <div class="annotation">
               
-              <div class="pilwrap ">
+              <div class="pilwrap for-h2">
                 <a class="pilcrow" href="#section-50">&#182;</a>
               </div>
-              <p>Toggle the loading icon on or off (parameter enabled).
-A fade in/out effect is applied.</p>
+              <h2>DEBUGGING AND ERROR LOGGING</h2>
 
             </div>
-            
-            <div class="content"><div class='highlight'><pre>System.App.<span class="function"><span class="title">toggleLoading</span></span> = (enabled) -&gt;
-    enabled = <span class="literal">false</span> <span class="keyword">if</span> <span class="keyword">not</span> enabled?
-
-    <span class="keyword">if</span> enabled
-        System.App.$loading.fadeIn System.App.Settings.General.fadeDelay
-    <span class="keyword">else</span>
-        System.App.$loading.fadeOut System.App.Settings.General.fadeDelay</pre></div></div>
             
         </li>
         
@@ -1218,12 +1240,19 @@ A fade in/out effect is applied.</p>
         <li id="section-51">
             <div class="annotation">
               
-              <div class="pilwrap for-h2">
+              <div class="pilwrap ">
                 <a class="pilcrow" href="#section-51">&#182;</a>
               </div>
-              <h2>HELPERS</h2>
+              <p>Helper method to log to the console, but only if <code>debug</code> is set to true.</p>
 
             </div>
+            
+            <div class="content"><div class='highlight'><pre>SystemApp.<span class="function"><span class="title">consoleLog</span></span> = (method, message, obj) -&gt;
+    <span class="keyword">if</span> SystemApp.Settings.General.debug
+        <span class="keyword">if</span> obj <span class="keyword">isnt</span> <span class="literal">undefined</span>
+            console.log method, message, obj
+        <span class="keyword">else</span>
+            console.log method, message</pre></div></div>
             
         </li>
         
@@ -1234,15 +1263,18 @@ A fade in/out effect is applied.</p>
               <div class="pilwrap ">
                 <a class="pilcrow" href="#section-52">&#182;</a>
               </div>
-              <p>Prevent accidental use of backspace which could trigger a <code>history.back()</code> on the page.</p>
+              <p>When an error occurs, log to the browser console and show the error message
+on the footer - <a href="alertView.html">Alert View</a>.</p>
 
             </div>
             
-            <div class="content"><div class='highlight'><pre>System.App.<span class="function"><span class="title">suppressBackspace</span></span> = (e) -&gt;
-    <span class="keyword">if</span> e.keyCode <span class="keyword">is</span> <span class="number">8</span> <span class="keyword">and</span> <span class="keyword">not</span> <span class="regexp">/input|textarea/i</span>.test(e.target.nodeName)
-        e.preventDefault()
-        e.stopPropagation()
-        <span class="keyword">return</span> <span class="literal">false</span></pre></div></div>
+            <div class="content"><div class='highlight'><pre>SystemApp.<span class="function"><span class="title">onError</span></span> = (msg, url, line) -&gt;
+    <span class="keyword">try</span>
+        console.error msg, url, line
+        SystemApp.alertEvents.trigger <span class="string">"footer"</span>, {title: <span class="string">"ERROR!"</span>, message: <span class="string">"<span class="subst">#{msg}</span> (line <span class="subst">#{line}</span>)"</span>, isError: <span class="literal">true</span>}
+    <span class="keyword">catch</span> ex
+        console.error <span class="string">"FATAL ERROR!"</span>, ex
+    <span class="keyword">return</span> <span class="literal">false</span></pre></div></div>
             
         </li>
         
@@ -1253,7 +1285,7 @@ A fade in/out effect is applied.</p>
               <div class="pilwrap for-h2">
                 <a class="pilcrow" href="#section-53">&#182;</a>
               </div>
-              <h2>DEBUGGING AND ERROR LOGGING</h2>
+              <h2>STARTING</h2>
 
             </div>
             
@@ -1266,16 +1298,10 @@ A fade in/out effect is applied.</p>
               <div class="pilwrap ">
                 <a class="pilcrow" href="#section-54">&#182;</a>
               </div>
-              <p>Helper method to log to the console, but only if <code>debug</code> is set to true.</p>
-
+              
             </div>
             
-            <div class="content"><div class='highlight'><pre>System.App.<span class="function"><span class="title">consoleLog</span></span> = (method, message, obj) -&gt;
-    <span class="keyword">if</span> System.App.Settings.General.debug
-        <span class="keyword">if</span> obj <span class="keyword">isnt</span> <span class="literal">undefined</span>
-            console.log method, message, obj
-        <span class="keyword">else</span>
-            console.log method, message</pre></div></div>
+            <div class="content"><div class='highlight'><pre>$(document).ready -&gt;</pre></div></div>
             
         </li>
         
@@ -1286,18 +1312,12 @@ A fade in/out effect is applied.</p>
               <div class="pilwrap ">
                 <a class="pilcrow" href="#section-55">&#182;</a>
               </div>
-              <p>When an error occurs, log to the browser console and show the error message
-on the footer - <a href="alertView.html">Alert View</a>.</p>
+              <p>Temporary namespace redirection, this will be removed SOON!!!</p>
 
             </div>
             
-            <div class="content"><div class='highlight'><pre>System.App.<span class="function"><span class="title">onError</span></span> = (msg, url, line) -&gt;
-    <span class="keyword">try</span>
-        console.error msg, url, line
-        System.App.alertEvents.trigger <span class="string">"footer"</span>, {title: <span class="string">"ERROR!"</span>, message: <span class="string">"<span class="subst">#{msg}</span> (line <span class="subst">#{line}</span>)"</span>, isError: <span class="literal">true</span>}
-    <span class="keyword">catch</span> ex
-        console.error <span class="string">"FATAL ERROR!"</span>, ex
-    <span class="keyword">return</span> <span class="literal">false</span></pre></div></div>
+            <div class="content"><div class='highlight'><pre>    System = <span class="keyword">new</span> Object()
+    System.App = SystemApp</pre></div></div>
             
         </li>
         
@@ -1305,27 +1325,14 @@ on the footer - <a href="alertView.html">Alert View</a>.</p>
         <li id="section-56">
             <div class="annotation">
               
-              <div class="pilwrap for-h2">
+              <div class="pilwrap ">
                 <a class="pilcrow" href="#section-56">&#182;</a>
               </div>
-              <h2>STARTING</h2>
+              <p>Init the app.</p>
 
             </div>
             
-        </li>
-        
-        
-        <li id="section-57">
-            <div class="annotation">
-              
-              <div class="pilwrap ">
-                <a class="pilcrow" href="#section-57">&#182;</a>
-              </div>
-              
-            </div>
-            
-            <div class="content"><div class='highlight'><pre>$(document).ready -&gt;
-    System.App.init()</pre></div></div>
+            <div class="content"><div class='highlight'><pre>    SystemApp.init()</pre></div></div>
             
         </li>
         

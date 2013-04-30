@@ -19,6 +19,11 @@
           <div id="jump_page">
             
               
+              <a class="source" href="admin.html">
+                admin.coffee
+              </a>
+            
+              
               <a class="source" href="api.auditData.html">
                 api.auditData.coffee
               </a>
@@ -134,6 +139,11 @@
               </a>
             
               
+              <a class="source" href="user.html">
+                user.coffee
+              </a>
+            
+              
               <a class="source" href="userSettings.html">
                 userSettings.coffee
               </a>
@@ -149,18 +159,8 @@
               </a>
             
               
-              <a class="source" href="settings.base.html">
-                settings.base.coffee
-              </a>
-            
-              
               <a class="source" href="settings.html">
                 settings.coffee
-              </a>
-            
-              
-              <a class="source" href="settings.default.html">
-                settings.default.coffee
               </a>
             
               
@@ -176,6 +176,11 @@
               
               <a class="source" href="vectors.html">
                 vectors.coffee
+              </a>
+            
+              
+              <a class="source" href="adminView.html">
+                adminView.coffee
               </a>
             
               
@@ -313,6 +318,11 @@
                 startView.coffee
               </a>
             
+              
+              <a class="source" href="variableManagerView.html">
+                variableManagerView.coffee
+              </a>
+            
           </div>
         </li>
       </ul>
@@ -350,7 +360,7 @@
 
             </div>
             
-            <div class="content"><div class='highlight'><pre><span class="class"><span class="keyword">class</span> <span class="title">System</span>.<span class="title">MapView</span> <span class="keyword">extends</span> <span class="title">System</span>.<span class="title">BaseView</span></span>
+            <div class="content"><div class='highlight'><pre><span class="class"><span class="keyword">class</span> <span class="title">SystemApp</span>.<span class="title">MapView</span> <span class="keyword">extends</span> <span class="title">SystemApp</span>.<span class="title">BaseView</span></span>
 
     paper: <span class="literal">null</span>                 <span class="comment"># the Raphael paper object</span>
     paperBg: <span class="literal">null</span>               <span class="comment"># the paper background object or color string</span>
@@ -365,7 +375,6 @@
     mousePosY: <span class="number">0</span>                <span class="comment"># current or last mouse Y position</span>
     mapDivWidth: <span class="number">0</span>              <span class="comment"># cached value of the map DIV width</span>
     mapDivHeight: <span class="number">0</span>             <span class="comment"># cached value of the map DIV height</span>
-    mapControlsWidth: <span class="number">0</span>         <span class="comment"># cached value of the [Map Controls](controlsView.html) DIV width</span>
     overrideShapeTitle: <span class="literal">null</span>    <span class="comment"># override the value / property name displayed of the shape's title</span>
 
     editEnabled: <span class="literal">false</span>          <span class="comment"># is the map in edit mode?</span>
@@ -454,8 +463,8 @@
 
             </div>
             
-            <div class="content"><div class='highlight'><pre>        <span class="property">@controlsView</span> = <span class="keyword">new</span> System.MapControlsView <span class="keyword">this</span>
-        <span class="property">@shapesMoverView</span> = <span class="keyword">new</span> System.MapShapesMoverView <span class="keyword">this</span></pre></div></div>
+            <div class="content"><div class='highlight'><pre>        <span class="property">@controlsView</span> = <span class="keyword">new</span> SystemApp.MapControlsView <span class="keyword">this</span>
+        <span class="property">@shapesMoverView</span> = <span class="keyword">new</span> SystemApp.MapShapesMoverView <span class="keyword">this</span></pre></div></div>
             
         </li>
         
@@ -519,9 +528,7 @@
         <span class="property">@$footer</span> = $ <span class="string">"#footer-maps"</span>
         <span class="property">@$footerName</span> = $ <span class="string">"#footer-maps-name"</span>
         <span class="property">@$footerShape</span> = $ <span class="string">"#footer-maps-shape"</span>
-        <span class="property">@$panningIcon</span> = $ <span class="string">"#map-panning-icon"</span>
-
-        <span class="property">@mapControlsWidth</span> = $(<span class="string">"#map-controls"</span>).outerWidth()</pre></div></div>
+        <span class="property">@$panningIcon</span> = $ <span class="string">"#map-panning-icon"</span></pre></div></div>
             
         </li>
         
@@ -537,15 +544,15 @@
             </div>
             
             <div class="content"><div class='highlight'><pre>    setEvents: =&gt;
-        <span class="property">@listenTo</span> System.App.mapEvents, <span class="string">"url:reset"</span>, <span class="property">@resetUrl</span>
-        <span class="property">@listenTo</span> System.App.mapEvents, <span class="string">"background:toggle"</span>, <span class="property">@toggleBackground</span>
-        <span class="property">@listenTo</span> System.App.mapEvents, <span class="string">"edit:toggle"</span>, <span class="property">@toggleEdit</span>
-        <span class="property">@listenTo</span> System.App.mapEvents, <span class="string">"links:toggle"</span>, <span class="property">@toggleLinks</span>
-        <span class="property">@listenTo</span> System.App.mapEvents, <span class="string">"shapes:overridetitle"</span>, <span class="property">@setOverrideShapeTitle</span>
-        <span class="property">@listenTo</span> System.App.mapEvents, <span class="string">"zoom:in"</span>, <span class="property">@zoomIn</span>
-        <span class="property">@listenTo</span> System.App.mapEvents, <span class="string">"zoom:out"</span>, <span class="property">@zoomOut</span>
-        <span class="property">@listenTo</span> System.App.mapEvents, <span class="string">"selected:blink"</span>, <span class="property">@blinkSelectedShapes</span>
-        <span class="property">@listenTo</span> System.App.dataEvents, <span class="string">"auditdata:refresh"</span>, <span class="property">@auditDataRefresh</span></pre></div></div>
+        <span class="property">@listenTo</span> SystemApp.mapEvents, <span class="string">"url:reset"</span>, <span class="property">@resetUrl</span>
+        <span class="property">@listenTo</span> SystemApp.mapEvents, <span class="string">"background:toggle"</span>, <span class="property">@toggleBackground</span>
+        <span class="property">@listenTo</span> SystemApp.mapEvents, <span class="string">"edit:toggle"</span>, <span class="property">@toggleEdit</span>
+        <span class="property">@listenTo</span> SystemApp.mapEvents, <span class="string">"links:toggle"</span>, <span class="property">@toggleLinks</span>
+        <span class="property">@listenTo</span> SystemApp.mapEvents, <span class="string">"shapes:overridetitle"</span>, <span class="property">@setOverrideShapeTitle</span>
+        <span class="property">@listenTo</span> SystemApp.mapEvents, <span class="string">"zoom:in"</span>, <span class="property">@zoomIn</span>
+        <span class="property">@listenTo</span> SystemApp.mapEvents, <span class="string">"zoom:out"</span>, <span class="property">@zoomOut</span>
+        <span class="property">@listenTo</span> SystemApp.mapEvents, <span class="string">"selected:blink"</span>, <span class="property">@blinkSelectedShapes</span>
+        <span class="property">@listenTo</span> SystemApp.dataEvents, <span class="string">"auditdata:refresh"</span>, <span class="property">@auditDataRefresh</span></pre></div></div>
             
         </li>
         
@@ -596,8 +603,8 @@
             </div>
             
             <div class="content"><div class='highlight'><pre>    setPaper: =&gt;
-        width = System.App.Settings.Map.paperSizeX
-        height = System.App.Settings.Map.paperSizeY
+        width = SystemApp.Settings.Map.paperSizeX
+        height = SystemApp.Settings.Map.paperSizeY
 
         <span class="property">@paper</span> = <span class="keyword">new</span> Raphael <span class="string">"map"</span>, width, height</pre></div></div>
             
@@ -778,8 +785,8 @@
             </div>
             
             <div class="content"><div class='highlight'><pre>    bindMap: (map) =&gt;
-        console.profile <span class="string">"MapView.bindMap"</span> <span class="keyword">if</span> System.App.Settings.General.profile
-        System.App.consoleLog <span class="string">"MapView.bindMap"</span>, <span class="string">"<span class="subst">#{map.name()}</span>, <span class="subst">#{map.shapes().length}</span> shapes, <span class="subst">#{map.links().length}</span> links"</span>
+        console.profile <span class="string">"MapView.bindMap"</span> <span class="keyword">if</span> SystemApp.Settings.General.profile
+        SystemApp.consoleLog <span class="string">"MapView.bindMap"</span>, <span class="string">"<span class="subst">#{map.name()}</span>, <span class="subst">#{map.shapes().length}</span> shapes, <span class="subst">#{map.links().length}</span> links"</span>
 
         <span class="property">@model</span>?.save()
         <span class="property">@clear</span>()</pre></div></div>
@@ -910,7 +917,7 @@
             </div>
             
             <div class="content"><div class='highlight'><pre>        initScript = map.initScript()
-        System.App.DataUtil.runEval initScript <span class="keyword">if</span> initScript? <span class="keyword">and</span> initScript <span class="keyword">isnt</span> <span class="string">""</span></pre></div></div>
+        SystemApp.DataUtil.runEval initScript <span class="keyword">if</span> initScript? <span class="keyword">and</span> initScript <span class="keyword">isnt</span> <span class="string">""</span></pre></div></div>
             
         </li>
         
@@ -925,10 +932,10 @@
 
             </div>
             
-            <div class="content"><div class='highlight'><pre>        System.App.mapEvents.trigger <span class="string">"loaded"</span>, map
-        System.App.toggleLoading <span class="literal">false</span>
+            <div class="content"><div class='highlight'><pre>        SystemApp.mapEvents.trigger <span class="string">"loaded"</span>, map
+        SystemApp.toggleLoading <span class="literal">false</span>
 
-        console.profileEnd <span class="string">"MapView.bindMap"</span> <span class="keyword">if</span> System.App.Settings.General.profile</pre></div></div>
+        console.profileEnd <span class="string">"MapView.bindMap"</span> <span class="keyword">if</span> SystemApp.Settings.General.profile</pre></div></div>
             
         </li>
         
@@ -982,7 +989,7 @@
         <span class="keyword">else</span>
             <span class="property">@paperBg</span> = <span class="property">@paper</span>.rect(<span class="number">0</span>, <span class="number">0</span>, <span class="property">@paper</span>.width, <span class="property">@paper</span>.height).attr {fill: <span class="property">@paperBg</span>}
 
-        <span class="property">@paperBg</span>.node.id = System.App.Settings.Map.id</pre></div></div>
+        <span class="property">@paperBg</span>.node.id = SystemApp.Settings.Map.id</pre></div></div>
             
         </li>
         
@@ -1107,7 +1114,7 @@ to reflect the selected shape&#39;s active alerts.</p>
             </div>
             
             <div class="content"><div class='highlight'><pre>    mapSaved: (map) =&gt;
-        System.App.alertEvents.trigger <span class="string">"footer"</span>, {savedModel: map}</pre></div></div>
+        SystemApp.alertEvents.trigger <span class="string">"footer"</span>, {savedModel: map}</pre></div></div>
             
         </li>
         
@@ -1123,8 +1130,8 @@ to reflect the selected shape&#39;s active alerts.</p>
             </div>
             
             <div class="content"><div class='highlight'><pre>    mapRemoved: (map) =&gt;
-        System.App.alertEvents.trigger <span class="string">"footer"</span>, {removedModel: map}
-        System.App.toggleLoadding <span class="literal">true</span>
+        SystemApp.alertEvents.trigger <span class="string">"footer"</span>, {removedModel: map}
+        SystemApp.toggleLoading <span class="literal">true</span>
 
         <span class="function"><span class="title">reloadPage</span></span> = -&gt; window.open <span class="string">"/"</span>, <span class="string">"_self"</span>
         setTimeout reloadPage, <span class="number">1000</span></pre></div></div>
@@ -1178,7 +1185,7 @@ an ID present.</p>
             <div class="content"><div class='highlight'><pre>    addShape: (shape, collection) =&gt;
         <span class="keyword">return</span> <span class="keyword">if</span> <span class="keyword">not</span> shape.id? <span class="keyword">or</span> shape.id <span class="keyword">is</span> <span class="string">""</span>
 
-        view = <span class="keyword">new</span> System.MapShapeView {model: shape}
+        view = <span class="keyword">new</span> SystemApp.MapShapeView {model: shape}
         view.bindEntityObject()
         view.render <span class="keyword">this</span>
 
@@ -1339,7 +1346,7 @@ Otherwise show the shape&#39;s title text.</p>
             </div>
             
             <div class="content"><div class='highlight'><pre>    setOverrideShapeTitle: (prop) =&gt;
-        System.App.consoleLog <span class="string">"MapView.setOverrideShapeTitle"</span>, prop</pre></div></div>
+        SystemApp.consoleLog <span class="string">"MapView.setOverrideShapeTitle"</span>, prop</pre></div></div>
             
         </li>
         
@@ -1356,7 +1363,7 @@ entity object namespace before its value.</p>
             </div>
             
             <div class="content"><div class='highlight'><pre>        <span class="keyword">if</span> prop? <span class="keyword">and</span> prop <span class="keyword">isnt</span> <span class="string">""</span>
-            prop = <span class="string">"<span class="subst">#{System.App.Settings.General.dataBindingKey}</span><span class="subst">#{System.App.Settings.EntityObject.bindingNamespace}</span>.<span class="subst">#{prop}</span>"</span>
+            prop = <span class="string">"<span class="subst">#{SystemApp.Settings.General.dataBindingKey}</span><span class="subst">#{SystemApp.Settings.EntityObject.bindingNamespace}</span>.<span class="subst">#{prop}</span>"</span>
 
         <span class="property">@overrideShapeTitle</span> = prop
         _.each <span class="property">@shapeViews</span>, (view) =&gt; view.labelsView.refreshTitle()</pre></div></div>
@@ -1422,7 +1429,7 @@ entity object namespace before its value.</p>
             
             <div class="content"><div class='highlight'><pre>        <span class="keyword">return</span> <span class="keyword">if</span> <span class="keyword">not</span> sourceView? <span class="keyword">or</span> <span class="keyword">not</span> targetView?
 
-        view = <span class="keyword">new</span> System.MapLinkView {model: item}
+        view = <span class="keyword">new</span> SystemApp.MapLinkView {model: item}
         <span class="property">@linkViews</span>[item.id] = view
 
         view.render <span class="keyword">this</span>
@@ -1549,7 +1556,7 @@ Please note that it is NOT possible to go outside the map bounds.</p>
             <div class="content"><div class='highlight'><pre>    panningMove: (e) =&gt;
         <span class="property">@currentPanX</span> -= (e.pageX - <span class="property">@mousePosX</span>) * <span class="property">@currentZoom</span>
         <span class="property">@currentPanY</span> -= (e.pageY - <span class="property">@mousePosY</span>) * <span class="property">@currentZoom</span>
-        summedWidth = <span class="property">@mapDivWidth</span> - <span class="property">@mapControlsWidth</span></pre></div></div>
+        sumWidth = <span class="property">@mapDivWidth</span> - <span class="property">@controlsView</span>.width</pre></div></div>
             
         </li>
         
@@ -1568,7 +1575,7 @@ that grid lines are always visible.</p>
             </div>
             
             <div class="content"><div class='highlight'><pre>        <span class="keyword">if</span> <span class="property">@model</span>?
-            maxPanX = <span class="property">@model</span>.paperSizeX() - summedWidth * <span class="property">@currentZoom</span>
+            maxPanX = <span class="property">@model</span>.paperSizeX() - sumWidth * <span class="property">@currentZoom</span>
             maxPanY = <span class="property">@model</span>.paperSizeY() - <span class="property">@mapDivHeight</span> * <span class="property">@currentZoom</span>
             <span class="property">@currentPanX</span> = maxPanX <span class="keyword">if</span> <span class="property">@currentPanX</span> &gt; maxPanX
             <span class="property">@currentPanY</span> = maxPanY <span class="keyword">if</span> <span class="property">@currentPanY</span> &gt; maxPanY</pre></div></div>
@@ -1663,8 +1670,8 @@ The max and min zoom values are defined on the <a href="settings.html">Settings<
             </div>
             
             <div class="content"><div class='highlight'><pre>    setViewBox: =&gt;
-        <span class="property">@currentZoom</span> = System.App.Settings.Map.minZoom <span class="keyword">if</span> <span class="property">@currentZoom</span> &lt; System.App.Settings.Map.minZoom
-        <span class="property">@currentZoom</span> = System.App.Settings.Map.maxZoom <span class="keyword">if</span> <span class="property">@currentZoom</span> &gt; System.App.Settings.Map.maxZoom
+        <span class="property">@currentZoom</span> = SystemApp.Settings.Map.minZoom <span class="keyword">if</span> <span class="property">@currentZoom</span> &lt; SystemApp.Settings.Map.minZoom
+        <span class="property">@currentZoom</span> = SystemApp.Settings.Map.maxZoom <span class="keyword">if</span> <span class="property">@currentZoom</span> &gt; SystemApp.Settings.Map.maxZoom
 
         boxWidth = <span class="property">@paper</span>.width * <span class="property">@currentZoom</span>
         boxHeight = <span class="property">@paper</span>.height * <span class="property">@currentZoom</span>
@@ -1674,7 +1681,7 @@ The max and min zoom values are defined on the <a href="settings.html">Settings<
 
         <span class="property">@paper</span>.setViewBox(<span class="property">@currentPanX</span>, <span class="property">@currentPanY</span>, boxWidth, boxHeight, <span class="literal">true</span>)
 
-        System.App.mapEvents.trigger <span class="string">"zoom"</span>, <span class="property">@currentZoom</span></pre></div></div>
+        SystemApp.mapEvents.trigger <span class="string">"zoom"</span>, <span class="property">@currentZoom</span></pre></div></div>
             
         </li>
         
@@ -1693,7 +1700,7 @@ Save zoom to the <a href="userSettings.html">user settings</a>.</p>
             <div class="content"><div class='highlight'><pre>    zoomSet: (value) =&gt;
         <span class="property">@currentZoom</span> = value
         <span class="property">@setViewBox</span>()
-        System.App.Data.userSettings.mapZoom value</pre></div></div>
+        SystemApp.Data.userSettings.mapZoom value</pre></div></div>
             
         </li>
         
@@ -1709,7 +1716,7 @@ Save zoom to the <a href="userSettings.html">user settings</a>.</p>
             </div>
             
             <div class="content"><div class='highlight'><pre>    zoomIn: (amount) =&gt;
-        amount = System.App.Settings.Map.zoomStep <span class="keyword">if</span> <span class="keyword">not</span> amount?
+        amount = SystemApp.Settings.Map.zoomStep <span class="keyword">if</span> <span class="keyword">not</span> amount?
         <span class="property">@zoomSet</span> <span class="property">@currentZoom</span> - amount</pre></div></div>
             
         </li>
@@ -1726,7 +1733,7 @@ Save zoom to the <a href="userSettings.html">user settings</a>.</p>
             </div>
             
             <div class="content"><div class='highlight'><pre>    zoomOut: (amount) =&gt;
-        amount = System.App.Settings.Map.zoomStep <span class="keyword">if</span> <span class="keyword">not</span> amount?
+        amount = SystemApp.Settings.Map.zoomStep <span class="keyword">if</span> <span class="keyword">not</span> amount?
         <span class="property">@zoomSet</span> <span class="property">@currentZoom</span> + amount</pre></div></div>
             
         </li>
@@ -1827,7 +1834,7 @@ edit mode, and off when not editable.</p>
             <span class="keyword">while</span> i++ &lt; lengthY
                 pathString += <span class="string">"M0 "</span> + i * sizeY + <span class="string">"H"</span> + <span class="property">@paper</span>.width
 
-        <span class="property">@gridLines</span> = <span class="property">@paper</span>.path(pathString).attr(<span class="string">"stroke"</span>, System.App.Settings.Map.gridStroke)
+        <span class="property">@gridLines</span> = <span class="property">@paper</span>.path(pathString).attr(<span class="string">"stroke"</span>, SystemApp.Settings.Map.gridStroke)
         <span class="property">@gridLines</span>.toBack()
 
         <span class="property">@paperBg</span>.toBack()</pre></div></div>
@@ -1841,55 +1848,6 @@ edit mode, and off when not editable.</p>
               <div class="pilwrap ">
                 <a class="pilcrow" href="#section-81">&#182;</a>
               </div>
-              <p>Toggle the fullscreen mode on or off. While on fullscreen, the app <a href="menuView.html">Menu</a>
-and <a href="controlsView.html">Map Controls</a> will be hidden.</p>
-
-            </div>
-            
-            <div class="content"><div class='highlight'><pre>    toggleFullscreen: (fullscreen) =&gt;
-        <span class="keyword">if</span> <span class="keyword">not</span> fullscreen? <span class="keyword">or</span> fullscreen.originalEvent?
-            fullscreen = $(<span class="string">"#header"</span>).<span class="keyword">is</span>(<span class="string">":visible"</span>)
-
-        <span class="keyword">if</span> fullscreen
-            $(<span class="string">"#header"</span>).hide()
-            $(<span class="string">"#footer"</span>).addClass(<span class="string">"transparent"</span>)
-            $(<span class="string">"body"</span>).addClass <span class="string">"fullscreen"</span>
-            <span class="property">@controlsView</span>?.hide()
-        <span class="keyword">else</span>
-            $(<span class="string">"#header"</span>).show()
-            $(<span class="string">"#footer"</span>).removeClass(<span class="string">"transparent"</span>)
-            $(<span class="string">"body"</span>).removeClass <span class="string">"fullscreen"</span>
-            <span class="property">@mapDivWidth</span> = $(window).innerWidth()
-            <span class="property">@mapDivHeight</span> = $(window).innerHeight() - $(<span class="string">"#header"</span>).outerHeight() - $(<span class="string">"#footer"</span>).outerHeight()
-            <span class="property">@$el</span>.css <span class="string">"width"</span>, <span class="property">@mapDivWidth</span>
-            <span class="property">@$el</span>.css <span class="string">"height"</span>, <span class="property">@mapDivHeight</span>
-
-        <span class="property">@mapControlsWidth</span> = $(<span class="string">"#map-controls"</span>).outerWidth()</pre></div></div>
-            
-        </li>
-        
-        
-        <li id="section-82">
-            <div class="annotation">
-              
-              <div class="pilwrap ">
-                <a class="pilcrow" href="#section-82">&#182;</a>
-              </div>
-              <p>Save the current fullscreen state on the <a href="userSettings.html">User Settings</a> model.</p>
-
-            </div>
-            
-            <div class="content"><div class='highlight'><pre>        System.App.Data.userSettings.mapFullscreen fullscreen</pre></div></div>
-            
-        </li>
-        
-        
-        <li id="section-83">
-            <div class="annotation">
-              
-              <div class="pilwrap ">
-                <a class="pilcrow" href="#section-83">&#182;</a>
-              </div>
               <p>Send the map background and grid lines to back of the paper.</p>
 
             </div>
@@ -1901,11 +1859,11 @@ and <a href="controlsView.html">Map Controls</a> will be hidden.</p>
         </li>
         
         
-        <li id="section-84">
+        <li id="section-82">
             <div class="annotation">
               
               <div class="pilwrap ">
-                <a class="pilcrow" href="#section-84">&#182;</a>
+                <a class="pilcrow" href="#section-82">&#182;</a>
               </div>
               <p>Set position of a shape view based on grid X and Y. The absolute size of the grid blocks
 are defined on the <a href="settings.html">Settings</a>.</p>
@@ -1919,11 +1877,11 @@ are defined on the <a href="settings.html">Settings</a>.</p>
         </li>
         
         
-        <li id="section-85">
+        <li id="section-83">
             <div class="annotation">
               
               <div class="pilwrap ">
-                <a class="pilcrow" href="#section-85">&#182;</a>
+                <a class="pilcrow" href="#section-83">&#182;</a>
               </div>
               <p>Regroup the specified <a href="shapeView.html">Shape View</a> or <a href="linkView.html">Link View</a> to the
 value set in its model&#39;s <code>zIndex</code> property.</p>
@@ -1937,18 +1895,18 @@ value set in its model&#39;s <code>zIndex</code> property.</p>
             <span class="keyword">try</span>
                 svg.node.parentNode.removeChild svg.node <span class="keyword">if</span> svg?
             <span class="keyword">catch</span> ex
-                System.App.consoleLog <span class="string">"MapView.regroupElement"</span>, <span class="string">"Can't remove element from SVG group."</span>, svg
+                SystemApp.consoleLog <span class="string">"MapView.regroupElement"</span>, <span class="string">"Can't remove element from SVG group."</span>, svg
 
         <span class="property">@stackGroups</span>[view.model.zIndex()].push svgs</pre></div></div>
             
         </li>
         
         
-        <li id="section-86">
+        <li id="section-84">
             <div class="annotation">
               
               <div class="pilwrap ">
-                <a class="pilcrow" href="#section-86">&#182;</a>
+                <a class="pilcrow" href="#section-84">&#182;</a>
               </div>
               <p>Get a <a href="entityListView.html">Shape}(shape.html) object with the first x/y free position on the map grid.
 This method is called to position the shapes when they&#39;re added from
@@ -1964,22 +1922,22 @@ the [Entity List View</a> overlay.</p>
             posX = view.x()
             posY = view.y()
 
-            <span class="keyword">if</span> posX - x &lt; System.App.Settings.Map.gridSizeX
-                x += System.App.Settings.Map.gridSizeX
+            <span class="keyword">if</span> posX - x &lt; SystemApp.Settings.Map.gridSizeX
+                x += SystemApp.Settings.Map.gridSizeX
 
-            <span class="keyword">if</span> posY - y &lt; System.App.Settings.Map.gridSizeY
-                y += System.App.Settings.Map.gridSizeY
+            <span class="keyword">if</span> posY - y &lt; SystemApp.Settings.Map.gridSizeY
+                y += SystemApp.Settings.Map.gridSizeY
 
-        <span class="keyword">return</span> <span class="keyword">new</span> System.Shape {x: x / System.App.Settings.Map.gridSizeX, y: y / System.App.Settings.Map.gridSizeY}</pre></div></div>
+        <span class="keyword">return</span> <span class="keyword">new</span> SystemApp.Shape {x: x / SystemApp.Settings.Map.gridSizeX, y: y / SystemApp.Settings.Map.gridSizeY}</pre></div></div>
             
         </li>
         
         
-        <li id="section-87">
+        <li id="section-85">
             <div class="annotation">
               
               <div class="pilwrap ">
-                <a class="pilcrow" href="#section-87">&#182;</a>
+                <a class="pilcrow" href="#section-85">&#182;</a>
               </div>
               <p>Blink the selected <a href="shapeView.html">Shape</a> on the map.</p>
 
@@ -1991,11 +1949,11 @@ the [Entity List View</a> overlay.</p>
         </li>
         
         
-        <li id="section-88">
+        <li id="section-86">
             <div class="annotation">
               
               <div class="pilwrap for-h2">
-                <a class="pilcrow" href="#section-88">&#182;</a>
+                <a class="pilcrow" href="#section-86">&#182;</a>
               </div>
               <h2>KEYBOARD EVENTS</h2>
 
@@ -2004,11 +1962,11 @@ the [Entity List View</a> overlay.</p>
         </li>
         
         
-        <li id="section-89">
+        <li id="section-87">
             <div class="annotation">
               
               <div class="pilwrap ">
-                <a class="pilcrow" href="#section-89">&#182;</a>
+                <a class="pilcrow" href="#section-87">&#182;</a>
               </div>
               <p>When user presses a key. Pressing &quot;Ctrl+S&quot; will save the current map,
 and pressing &quot;Esc&quot; twice will unselect the any selected shapes.</p>
@@ -2021,11 +1979,11 @@ and pressing &quot;Esc&quot; twice will unselect the any selected shapes.</p>
         </li>
         
         
-        <li id="section-90">
+        <li id="section-88">
             <div class="annotation">
               
               <div class="pilwrap ">
-                <a class="pilcrow" href="#section-90">&#182;</a>
+                <a class="pilcrow" href="#section-88">&#182;</a>
               </div>
               <p>User pressed &quot;Ctrl+S&quot;, so save everything.</p>
 
@@ -2039,29 +1997,29 @@ and pressing &quot;Esc&quot; twice will unselect the any selected shapes.</p>
         </li>
         
         
-        <li id="section-91">
+        <li id="section-89">
             <div class="annotation">
               
               <div class="pilwrap ">
-                <a class="pilcrow" href="#section-91">&#182;</a>
+                <a class="pilcrow" href="#section-89">&#182;</a>
               </div>
               <p>User pressed &quot;Ctrl+E&quot;, so toggle the edit mode.</p>
 
             </div>
             
-            <div class="content"><div class='highlight'><pre>        <span class="keyword">else</span> <span class="keyword">if</span> e.ctrlKey <span class="keyword">and</span> keyCode <span class="keyword">is</span> <span class="number">69</span> <span class="keyword">and</span> System.App.godMode
-            System.App.mapEvents.trigger <span class="string">"edit:toggle"</span>, <span class="keyword">not</span> <span class="property">@editEnabled</span>
+            <div class="content"><div class='highlight'><pre>        <span class="keyword">else</span> <span class="keyword">if</span> e.ctrlKey <span class="keyword">and</span> keyCode <span class="keyword">is</span> <span class="number">69</span>
+            SystemApp.mapEvents.trigger <span class="string">"edit:toggle"</span>, <span class="keyword">not</span> <span class="property">@editEnabled</span>
             e.preventDefault()
             e.stopPropagation()</pre></div></div>
             
         </li>
         
         
-        <li id="section-92">
+        <li id="section-90">
             <div class="annotation">
               
               <div class="pilwrap ">
-                <a class="pilcrow" href="#section-92">&#182;</a>
+                <a class="pilcrow" href="#section-90">&#182;</a>
               </div>
               <p>User pressed &quot;Esc&quot; twice in a row, so deselect the current shape.</p>
 
@@ -2074,11 +2032,11 @@ and pressing &quot;Esc&quot; twice will unselect the any selected shapes.</p>
         </li>
         
         
-        <li id="section-93">
+        <li id="section-91">
             <div class="annotation">
               
               <div class="pilwrap ">
-                <a class="pilcrow" href="#section-93">&#182;</a>
+                <a class="pilcrow" href="#section-91">&#182;</a>
               </div>
               <p>User pressed &quot;F11&quot;, go to fullscreen mode.</p>
 
@@ -2092,11 +2050,11 @@ and pressing &quot;Esc&quot; twice will unselect the any selected shapes.</p>
         </li>
         
         
-        <li id="section-94">
+        <li id="section-92">
             <div class="annotation">
               
               <div class="pilwrap ">
-                <a class="pilcrow" href="#section-94">&#182;</a>
+                <a class="pilcrow" href="#section-92">&#182;</a>
               </div>
               <p>Set the last pressed key code.</p>
 
@@ -2107,11 +2065,11 @@ and pressing &quot;Esc&quot; twice will unselect the any selected shapes.</p>
         </li>
         
         
-        <li id="section-95">
+        <li id="section-93">
             <div class="annotation">
               
               <div class="pilwrap for-h2">
-                <a class="pilcrow" href="#section-95">&#182;</a>
+                <a class="pilcrow" href="#section-93">&#182;</a>
               </div>
               <h2>MOUSE EVENTS</h2>
 
@@ -2120,11 +2078,11 @@ and pressing &quot;Esc&quot; twice will unselect the any selected shapes.</p>
         </li>
         
         
-        <li id="section-96">
+        <li id="section-94">
             <div class="annotation">
               
               <div class="pilwrap ">
-                <a class="pilcrow" href="#section-96">&#182;</a>
+                <a class="pilcrow" href="#section-94">&#182;</a>
               </div>
               <p>Triggered when user clicks the map. If clicking with left button, prepares map to pan.</p>
 
@@ -2137,28 +2095,28 @@ and pressing &quot;Esc&quot; twice will unselect the any selected shapes.</p>
         </li>
         
         
-        <li id="section-97">
+        <li id="section-95">
             <div class="annotation">
               
               <div class="pilwrap ">
-                <a class="pilcrow" href="#section-97">&#182;</a>
+                <a class="pilcrow" href="#section-95">&#182;</a>
               </div>
               <p>Temp variables to check where the user clicked.</p>
 
             </div>
             
             <div class="content"><div class='highlight'><pre>        isBaseSvgTag = src.tagName <span class="keyword">isnt</span> <span class="string">"svg"</span>
-        isMapTag = targetId <span class="keyword">isnt</span> System.App.Settings.Map.id
-        isGridLine = targetId.indexOf(System.App.Settings.Map.gridIdPrefix) &lt; <span class="number">0</span></pre></div></div>
+        isMapTag = targetId <span class="keyword">isnt</span> SystemApp.Settings.Map.id
+        isGridLine = targetId.indexOf(SystemApp.Settings.Map.gridIdPrefix) &lt; <span class="number">0</span></pre></div></div>
             
         </li>
         
         
-        <li id="section-98">
+        <li id="section-96">
             <div class="annotation">
               
               <div class="pilwrap ">
-                <a class="pilcrow" href="#section-98">&#182;</a>
+                <a class="pilcrow" href="#section-96">&#182;</a>
               </div>
               <p>If click wasn&#39;t on the map background or any of the grid lines, do not proceed with panning.</p>
 
@@ -2170,28 +2128,28 @@ and pressing &quot;Esc&quot; twice will unselect the any selected shapes.</p>
         </li>
         
         
-        <li id="section-99">
+        <li id="section-97">
             <div class="annotation">
               
               <div class="pilwrap ">
-                <a class="pilcrow" href="#section-99">&#182;</a>
+                <a class="pilcrow" href="#section-97">&#182;</a>
               </div>
               <p>If user clicked on a blank area, deselect the current <a href="shapeView.html">Shape View</a>.</p>
 
             </div>
             
-            <div class="content"><div class='highlight'><pre>        <span class="keyword">if</span> targetId <span class="keyword">is</span> System.App.Settings.Map.id
+            <div class="content"><div class='highlight'><pre>        <span class="keyword">if</span> targetId <span class="keyword">is</span> SystemApp.Settings.Map.id
             <span class="property">@shapesMoverView</span>.hide()
             <span class="property">@setCurrentElement</span> <span class="literal">null</span></pre></div></div>
             
         </li>
         
         
-        <li id="section-100">
+        <li id="section-98">
             <div class="annotation">
               
               <div class="pilwrap ">
-                <a class="pilcrow" href="#section-100">&#182;</a>
+                <a class="pilcrow" href="#section-98">&#182;</a>
               </div>
               <p>If pressing Shift, then start selecting multiple elements with the <a href="shapesMoverView.html">Shapes Mover View</a>.</p>
 
@@ -2205,11 +2163,11 @@ and pressing &quot;Esc&quot; twice will unselect the any selected shapes.</p>
         </li>
         
         
-        <li id="section-101">
+        <li id="section-99">
             <div class="annotation">
               
               <div class="pilwrap ">
-                <a class="pilcrow" href="#section-101">&#182;</a>
+                <a class="pilcrow" href="#section-99">&#182;</a>
               </div>
               <p>Triggered when user moves the mouse around the map. If <code>isPanning</code> is true
 then pan the map with the amount of pixels from the mouse down location.</p>
@@ -2223,11 +2181,11 @@ then pan the map with the amount of pixels from the mouse down location.</p>
         </li>
         
         
-        <li id="section-102">
+        <li id="section-100">
             <div class="annotation">
               
               <div class="pilwrap ">
-                <a class="pilcrow" href="#section-102">&#182;</a>
+                <a class="pilcrow" href="#section-100">&#182;</a>
               </div>
               <p>Triggered when user releases mouse button on the map. Set <code>isPanning</code> to false
 and restore the default mouse cursor.</p>
@@ -2241,11 +2199,11 @@ and restore the default mouse cursor.</p>
         </li>
         
         
-        <li id="section-103">
+        <li id="section-101">
             <div class="annotation">
               
               <div class="pilwrap ">
-                <a class="pilcrow" href="#section-103">&#182;</a>
+                <a class="pilcrow" href="#section-101">&#182;</a>
               </div>
               <p>Triggered when user scrolls the mouse wheel. Scrolling will change the map zoom.</p>
 
@@ -2258,9 +2216,9 @@ and restore the default mouse cursor.</p>
         delta = e.originalEvent.wheelDeltaY
 
         <span class="keyword">if</span> delta &gt; <span class="number">0</span>
-            System.App.mapEvents.trigger <span class="string">"zoom:in"</span>
+            SystemApp.mapEvents.trigger <span class="string">"zoom:in"</span>
         <span class="keyword">else</span>
-            System.App.mapEvents.trigger <span class="string">"zoom:out"</span>
+            SystemApp.mapEvents.trigger <span class="string">"zoom:out"</span>
 
         e.stopPropagation()
         e.preventDefault()</pre></div></div>
@@ -2268,11 +2226,11 @@ and restore the default mouse cursor.</p>
         </li>
         
         
-        <li id="section-104">
+        <li id="section-102">
             <div class="annotation">
               
               <div class="pilwrap ">
-                <a class="pilcrow" href="#section-104">&#182;</a>
+                <a class="pilcrow" href="#section-102">&#182;</a>
               </div>
               <p>Triggered when user right click the map. This will cancel the default context menu.</p>
 
@@ -2284,11 +2242,11 @@ and restore the default mouse cursor.</p>
         </li>
         
         
-        <li id="section-105">
+        <li id="section-103">
             <div class="annotation">
               
               <div class="pilwrap ">
-                <a class="pilcrow" href="#section-105">&#182;</a>
+                <a class="pilcrow" href="#section-103">&#182;</a>
               </div>
               <p>Triggered when user double clicks the map. This will reset the map position to top left corner.</p>
 
@@ -2312,11 +2270,11 @@ and restore the default mouse cursor.</p>
         </li>
         
         
-        <li id="section-106">
+        <li id="section-104">
             <div class="annotation">
               
               <div class="pilwrap for-h2">
-                <a class="pilcrow" href="#section-106">&#182;</a>
+                <a class="pilcrow" href="#section-104">&#182;</a>
               </div>
               <h2>MAP PROPERTY CHANGES</h2>
 
@@ -2325,11 +2283,11 @@ and restore the default mouse cursor.</p>
         </li>
         
         
-        <li id="section-107">
+        <li id="section-105">
             <div class="annotation">
               
               <div class="pilwrap ">
-                <a class="pilcrow" href="#section-107">&#182;</a>
+                <a class="pilcrow" href="#section-105">&#182;</a>
               </div>
               <p>Triggered when the current <a href="map.html">Map</a> <code>name</code> has changed.</p>
 
@@ -2343,11 +2301,11 @@ and restore the default mouse cursor.</p>
         </li>
         
         
-        <li id="section-108">
+        <li id="section-106">
             <div class="annotation">
               
               <div class="pilwrap ">
-                <a class="pilcrow" href="#section-108">&#182;</a>
+                <a class="pilcrow" href="#section-106">&#182;</a>
               </div>
               <p>Triggered when the current <a href="map.html">Map</a> <code>paperSizeX</code> or <code>paperSizeY</code> has changed.</p>
 
@@ -2364,11 +2322,11 @@ and restore the default mouse cursor.</p>
         </li>
         
         
-        <li id="section-109">
+        <li id="section-107">
             <div class="annotation">
               
               <div class="pilwrap ">
-                <a class="pilcrow" href="#section-109">&#182;</a>
+                <a class="pilcrow" href="#section-107">&#182;</a>
               </div>
               <p>Triggered when the current <a href="map.html">Map</a> <code>gridSizeX</code> or <code>gridSizeY</code> has changed.</p>
 
@@ -2388,15 +2346,50 @@ and restore the default mouse cursor.</p>
         </li>
         
         
-        <li id="section-110">
+        <li id="section-108">
             <div class="annotation">
               
               <div class="pilwrap for-h2">
-                <a class="pilcrow" href="#section-110">&#182;</a>
+                <a class="pilcrow" href="#section-108">&#182;</a>
               </div>
               <h2>AUDIT DATA AND ALERTS</h2>
 
             </div>
+            
+        </li>
+        
+        
+        <li id="section-109">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-109">&#182;</a>
+              </div>
+              <p>When user deletes (destroy) an <a href="auditData.html">AuditData</a>, reload
+the whole page.</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>    auditDataRemoved: (auditData) =&gt;
+        SystemApp.alertEvents.trigger <span class="string">"footer"</span>, {removedModel: auditData}
+        _.delay location.reload, SystemApp.Settings.General.refetchDelay</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-110">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-110">&#182;</a>
+              </div>
+              <p>When an <a href="auditData.html">AuditData</a> has been refreshed, run it against
+all registered <a href="auditEvent.html">Audit Events</a>.</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>    auditDataRefresh: (auditData) =&gt;
+        _.each SystemApp.Data.auditEvents.models, (alert) -&gt; alert.run()</pre></div></div>
             
         </li>
         
@@ -2407,14 +2400,12 @@ and restore the default mouse cursor.</p>
               <div class="pilwrap ">
                 <a class="pilcrow" href="#section-111">&#182;</a>
               </div>
-              <p>When user deletes (destroy) an <a href="auditData.html">AuditData</a>, reload
-the whole page.</p>
+              <p>Trigger a &quot;footer message&quot; action.</p>
 
             </div>
             
-            <div class="content"><div class='highlight'><pre>    auditDataRemoved: (auditData) =&gt;
-        System.App.alertEvents.trigger <span class="string">"footer"</span>, {removedModel: auditData}
-        _.delay location.reload, System.App.Settings.General.refetchDelay</pre></div></div>
+            <div class="content"><div class='highlight'><pre>    auditEventFooterMessage: (alertObj, action, matchedRules) =&gt;
+        SystemApp.alertEvents.trigger <span class="string">"footer"</span>, {title: <span class="string">"ALERT!!!"</span>, message: action.actionValue(), isError: <span class="literal">true</span>}</pre></div></div>
             
         </li>
         
@@ -2422,16 +2413,12 @@ the whole page.</p>
         <li id="section-112">
             <div class="annotation">
               
-              <div class="pilwrap ">
+              <div class="pilwrap for-h2">
                 <a class="pilcrow" href="#section-112">&#182;</a>
               </div>
-              <p>When an <a href="auditData.html">AuditData</a> has been refreshed, run it against
-all registered <a href="auditEvent.html">Audit Events</a>.</p>
+              <h2>URL AND FOOTER PROPERTIES</h2>
 
             </div>
-            
-            <div class="content"><div class='highlight'><pre>    auditDataRefresh: (auditData) =&gt;
-        _.each System.App.Data.auditEvents.models, (alert) -&gt; alert.run()</pre></div></div>
             
         </li>
         
@@ -2442,35 +2429,6 @@ all registered <a href="auditEvent.html">Audit Events</a>.</p>
               <div class="pilwrap ">
                 <a class="pilcrow" href="#section-113">&#182;</a>
               </div>
-              <p>Trigger a &quot;footer message&quot; action.</p>
-
-            </div>
-            
-            <div class="content"><div class='highlight'><pre>    auditEventFooterMessage: (alertObj, action, matchedRules) =&gt;
-        System.App.alertEvents.trigger <span class="string">"footer"</span>, {title: <span class="string">"ALERT!!!"</span>, message: action.actionValue(), isError: <span class="literal">true</span>}</pre></div></div>
-            
-        </li>
-        
-        
-        <li id="section-114">
-            <div class="annotation">
-              
-              <div class="pilwrap for-h2">
-                <a class="pilcrow" href="#section-114">&#182;</a>
-              </div>
-              <h2>URL AND FOOTER PROPERTIES</h2>
-
-            </div>
-            
-        </li>
-        
-        
-        <li id="section-115">
-            <div class="annotation">
-              
-              <div class="pilwrap ">
-                <a class="pilcrow" href="#section-115">&#182;</a>
-              </div>
               <p>Reset the URL to the current&#39;s map URL. This is triggered mainly when user closes
 an open overlay, so we can properly keep track of page history.
 This will NOT trigger the backbone route event - it only updates the URL.</p>
@@ -2479,19 +2437,19 @@ This will NOT trigger the backbone route event - it only updates the URL.</p>
             
             <div class="content"><div class='highlight'><pre>    resetUrl: =&gt;
         <span class="keyword">if</span> <span class="property">@model</span>?
-            System.App.routes.navigate <span class="string">"map/"</span> + <span class="property">@model</span>.urlKey(), {trigger: <span class="literal">false</span>}
-            System.App.consoleLog <span class="string">"MapView.resetUrl"</span>, <span class="string">"Current map's URL: "</span> + <span class="property">@model</span>.urlKey()
+            SystemApp.routes.navigate <span class="string">"map/"</span> + <span class="property">@model</span>.urlKey(), {trigger: <span class="literal">false</span>}
+            SystemApp.consoleLog <span class="string">"MapView.resetUrl"</span>, <span class="string">"Current map's URL: "</span> + <span class="property">@model</span>.urlKey()
         <span class="keyword">else</span>
-            System.App.routes.navigate <span class="string">""</span>, {trigger: <span class="literal">false</span>}</pre></div></div>
+            SystemApp.routes.navigate <span class="string">""</span>, {trigger: <span class="literal">false</span>}</pre></div></div>
             
         </li>
         
         
-        <li id="section-116">
+        <li id="section-114">
             <div class="annotation">
               
               <div class="pilwrap ">
-                <a class="pilcrow" href="#section-116">&#182;</a>
+                <a class="pilcrow" href="#section-114">&#182;</a>
               </div>
               <p>Bind the map name to the footer.</p>
 
@@ -2504,28 +2462,28 @@ This will NOT trigger the backbone route event - it only updates the URL.</p>
         </li>
         
         
-        <li id="section-117">
+        <li id="section-115">
             <div class="annotation">
               
               <div class="pilwrap ">
-                <a class="pilcrow" href="#section-117">&#182;</a>
+                <a class="pilcrow" href="#section-115">&#182;</a>
               </div>
               <p>Show the current selected shape name on the footer.</p>
 
             </div>
             
             <div class="content"><div class='highlight'><pre>    setFooterShape: (shape) =&gt;
-        shape = System.App.Messages.noShapeSelected <span class="keyword">if</span> shape <span class="keyword">is</span> <span class="literal">undefined</span> <span class="keyword">or</span> shape <span class="keyword">is</span> <span class="literal">null</span> <span class="keyword">or</span> shape <span class="keyword">is</span> <span class="string">""</span>
+        shape = SystemApp.Messages.noShapeSelected <span class="keyword">if</span> shape <span class="keyword">is</span> <span class="literal">undefined</span> <span class="keyword">or</span> shape <span class="keyword">is</span> <span class="literal">null</span> <span class="keyword">or</span> shape <span class="keyword">is</span> <span class="string">""</span>
         <span class="property">@$footerShape</span>.html shape</pre></div></div>
             
         </li>
         
         
-        <li id="section-118">
+        <li id="section-116">
             <div class="annotation">
               
               <div class="pilwrap for-h2">
-                <a class="pilcrow" href="#section-118">&#182;</a>
+                <a class="pilcrow" href="#section-116">&#182;</a>
               </div>
               <h2>THUMBNAILS</h2>
 
@@ -2534,11 +2492,11 @@ This will NOT trigger the backbone route event - it only updates the URL.</p>
         </li>
         
         
-        <li id="section-119">
+        <li id="section-117">
             <div class="annotation">
               
               <div class="pilwrap ">
-                <a class="pilcrow" href="#section-119">&#182;</a>
+                <a class="pilcrow" href="#section-117">&#182;</a>
               </div>
               <p>Post the SVG representation of the map to the server to
 generate the SVG and PNG thumbnails.</p>
@@ -2557,23 +2515,23 @@ generate the SVG and PNG thumbnails.</p>
         </li>
         
         
-        <li id="section-120">
+        <li id="section-118">
             <div class="annotation">
               
               <div class="pilwrap ">
-                <a class="pilcrow" href="#section-120">&#182;</a>
+                <a class="pilcrow" href="#section-118">&#182;</a>
               </div>
               <p>If a thumbnail was generated less than 5 minutes ago, do nothing.</p>
 
             </div>
             
-            <div class="content"><div class='highlight'><pre>        <span class="keyword">if</span> now.getTime() - thumbnailDate.getTime() &lt; System.App.Settings.Map.thumbnailExpires
+            <div class="content"><div class='highlight'><pre>        <span class="keyword">if</span> now.getTime() - thumbnailDate.getTime() &lt; SystemApp.Settings.Map.thumbnailExpires
             <span class="keyword">return</span>
 
         <span class="property">@model</span>.thumbnailDate now
 
         $.ajax
-            url: System.App.Settings.Map.thumbnailBaseUrl + <span class="property">@model</span>.id
+            url: SystemApp.Settings.Map.thumbnailBaseUrl + <span class="property">@model</span>.id
             cache: <span class="literal">false</span>
             dataType: <span class="string">"json"</span>
             type: <span class="string">"POST"</span>

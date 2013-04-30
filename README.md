@@ -101,7 +101,7 @@ The following settings will need your attention:
 - `connString` - The MongoDB connection string. Default is host "localhost", database "systemapp".
 
 ##### Settings.Web
-- `defaultPort` - The port used by the Node.js server, default is 3003.
+- `port` - The port used by the Node.js server, default is 3003.
 - `paas` - Set to true if you're deploying to common PaaS services. More info below.
 
 ##### Deploying to PaaS

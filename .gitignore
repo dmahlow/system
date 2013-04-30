@@ -1,3 +1,5 @@
+.idea/
+.openshift/
 atlassian-ide-plugin.xml
 gh-pages/
 logs/*.log

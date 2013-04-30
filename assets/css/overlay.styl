@@ -77,6 +77,8 @@
 
     // Tab containers.
     .tab
+        max-height 100%
+
         h4
             margin-top 0
 
@@ -150,8 +152,8 @@
 
             // Active input fields should look editable.
             input[type="text"]
-                background-color rgba(250, 250, 250, 1) !important
-                color rgba(30, 30, 30, 1) !important
+                background-color inputBgColor !important
+                color inputTextColor !important
 
         // Show arrow when row is active.
         .row.active span.arrow

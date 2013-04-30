@@ -10,6 +10,7 @@ class SystemApp.MapView extends SystemApp.BaseView
     hoverShape: null            # the current shape pointed by the mouse
     lastPressedKey: null        # the last keyboard key pressed by the user
 
+    zIndexMax: 100              # the maximum z-index of an element inside the map
     currentZoom: 1              # current map zoom
     currentPanX: 0              # current pan X position
     currentPanY: 0              # current pan Y position

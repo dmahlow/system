@@ -19,6 +19,11 @@
           <div id="jump_page">
             
               
+              <a class="source" href="admin.html">
+                admin.coffee
+              </a>
+            
+              
               <a class="source" href="api.auditData.html">
                 api.auditData.coffee
               </a>
@@ -134,6 +139,11 @@
               </a>
             
               
+              <a class="source" href="user.html">
+                user.coffee
+              </a>
+            
+              
               <a class="source" href="userSettings.html">
                 userSettings.coffee
               </a>
@@ -149,18 +159,8 @@
               </a>
             
               
-              <a class="source" href="settings.base.html">
-                settings.base.coffee
-              </a>
-            
-              
               <a class="source" href="settings.html">
                 settings.coffee
-              </a>
-            
-              
-              <a class="source" href="settings.default.html">
-                settings.default.coffee
               </a>
             
               
@@ -176,6 +176,11 @@
               
               <a class="source" href="vectors.html">
                 vectors.coffee
+              </a>
+            
+              
+              <a class="source" href="adminView.html">
+                adminView.coffee
               </a>
             
               
@@ -313,6 +318,11 @@
                 startView.coffee
               </a>
             
+              
+              <a class="source" href="variableManagerView.html">
+                variableManagerView.coffee
+              </a>
+            
           </div>
         </li>
       </ul>
@@ -350,7 +360,7 @@
 
             </div>
             
-            <div class="content"><div class='highlight'><pre>System.Api.Map =</pre></div></div>
+            <div class="content"><div class='highlight'><pre>SystemApp.Api.Map =</pre></div></div>
             
         </li>
         
@@ -367,7 +377,7 @@ maps are open at the moment.</p>
             </div>
             
             <div class="content"><div class='highlight'><pre>    current: -&gt;
-        <span class="keyword">return</span> System.App.mapView.model</pre></div></div>
+        <span class="keyword">return</span> SystemApp.mapView.model</pre></div></div>
             
         </li>
         
@@ -396,9 +406,9 @@ maps are open at the moment.</p>
             </div>
             
             <div class="content"><div class='highlight'><pre>    get: (filter) -&gt;
-        System.Api.log <span class="string">"Map.get"</span>, filter
+        SystemApp.Api.log <span class="string">"Map.get"</span>, filter
 
-        <span class="keyword">return</span> System.Api.getFromCollection System.App.Data.maps, filter</pre></div></div>
+        <span class="keyword">return</span> SystemApp.Api.getFromCollection SystemApp.Data.maps, filter</pre></div></div>
             
         </li>
         
@@ -414,9 +424,9 @@ maps are open at the moment.</p>
             </div>
             
             <div class="content"><div class='highlight'><pre>    getShapes: (filter) -&gt;
-        System.Api.log <span class="string">"Map.getShapes"</span>, filter
+        SystemApp.Api.log <span class="string">"Map.getShapes"</span>, filter
 
-        map = System.Api.Map.current()</pre></div></div>
+        map = SystemApp.Api.Map.current()</pre></div></div>
             
         </li>
         
@@ -433,7 +443,7 @@ maps are open at the moment.</p>
             
             <div class="content"><div class='highlight'><pre>        <span class="keyword">return</span> <span class="literal">null</span> <span class="keyword">if</span> <span class="keyword">not</span> map?
 
-        <span class="keyword">return</span> System.Api.getFromCollection map.shapes(), filter</pre></div></div>
+        <span class="keyword">return</span> SystemApp.Api.getFromCollection map.shapes(), filter</pre></div></div>
             
         </li>
         
@@ -462,9 +472,9 @@ maps are open at the moment.</p>
             </div>
             
             <div class="content"><div class='highlight'><pre>    create: (props) -&gt;
-        System.Api.log <span class="string">"Map.create"</span>, props
+        SystemApp.Api.log <span class="string">"Map.create"</span>, props
 
-        map = System.App.Data.maps.create props
+        map = SystemApp.Data.maps.create props
         <span class="keyword">return</span> map</pre></div></div>
             
         </li>
@@ -481,9 +491,9 @@ maps are open at the moment.</p>
             </div>
             
             <div class="content"><div class='highlight'><pre>    createShape: (props) -&gt;
-        System.Api.log <span class="string">"Map.addShape"</span>, props
+        SystemApp.Api.log <span class="string">"Map.addShape"</span>, props
 
-        map = System.Api.Map.current()</pre></div></div>
+        map = SystemApp.Api.Map.current()</pre></div></div>
             
         </li>
         
@@ -529,7 +539,7 @@ maps are open at the moment.</p>
             </div>
             
             <div class="content"><div class='highlight'><pre>    refreshLabels: () -&gt;
-        System.App.mapView.refreshLabels()</pre></div></div>
+        SystemApp.mapView.refreshLabels()</pre></div></div>
             
         </li>
         

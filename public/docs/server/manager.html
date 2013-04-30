@@ -49,18 +49,13 @@
               </a>
             
               
-              <a class="source" href="settings.base.html">
-                settings.base.coffee
+              <a class="source" href="security.html">
+                security.coffee
               </a>
             
               
               <a class="source" href="settings.html">
                 settings.coffee
-              </a>
-            
-              
-              <a class="source" href="settings.default.html">
-                settings.default.coffee
               </a>
             
               
@@ -335,6 +330,9 @@ timer for each entity definition and transmitting the refreshed data to users vi
             </div>
             
             <div class="content"><div class='highlight'><pre>    initEntityTimers: =&gt;
+        <span class="keyword">if</span> settings.General.debug
+            logger.info <span class="string">"Manager.initEntityTimers"</span>
+
         <span class="property">@stopEntityTimers</span>()
         database.getEntityDefinition <span class="literal">null</span>, <span class="property">@startEntityTimers</span></pre></div></div>
             
@@ -375,7 +373,9 @@ and error (if any) in result of the <code>getAuditData</code> database call.</p>
         <span class="keyword">if</span> err?
             sockets.sendServerError <span class="string">"Manager: could not load Entity Definition items."</span>, err
         <span class="keyword">else</span>
-            <span class="property">@setEntityTimer</span> entityDef <span class="keyword">for</span> entityDef <span class="keyword">in</span> result</pre></div></div>
+            <span class="property">@setEntityTimer</span> entityDef <span class="keyword">for</span> entityDef <span class="keyword">in</span> result
+            <span class="keyword">if</span> settings.General.debug
+                logger.info <span class="string">"Manager.startEntityTimers"</span>, <span class="string">"Started timers for <span class="subst">#{result.length}</span> entities."</span></pre></div></div>
             
         </li>
         
@@ -424,9 +424,7 @@ and error (if any) in result of the <code>getAuditData</code> database call.</p>
 
             </div>
             
-            <div class="content"><div class='highlight'><pre>        timer = setInterval callback, interval * <span class="number">1000</span>
-
-        <span class="property">@timersEntityRefresh</span>.push timer</pre></div></div>
+            <div class="content"><div class='highlight'><pre>        timer = setInterval callback, interval * <span class="number">1000</span></pre></div></div>
             
         </li>
         
@@ -437,17 +435,16 @@ and error (if any) in result of the <code>getAuditData</code> database call.</p>
               <div class="pilwrap ">
                 <a class="pilcrow" href="#section-22">&#182;</a>
               </div>
-              <p>Refresh the specified <a href="entityDefinition.html">Entity</a> data. This will run ONLY
-if there are connected clients, to avoid bandwidth and processing waste.</p>
+              <p>Call the refresh immediatelly so clients will get updated data straight away.</p>
 
             </div>
             
-            <div class="content"><div class='highlight'><pre>    refreshEntity: (entityDef) =&gt;
-        <span class="keyword">if</span> sockets.getConnectionCount() &lt; <span class="number">1</span>
-            <span class="keyword">return</span>
+            <div class="content"><div class='highlight'><pre>        callback()
 
-        sync.download entityDef.sourceUrl, settings.Paths.downloadsDir + <span class="string">"entityobjects."</span> + entityDef.friendlyId + <span class="string">".json"</span>, (err, localFile) =&gt;
-            <span class="property">@transmitDataToClients</span> err, localFile, entityDef, sockets.sendEntityRefresh, database.setEntityDefinition</pre></div></div>
+        <span class="property">@timersEntityRefresh</span>.push timer
+
+        <span class="keyword">if</span> settings.General.debug
+            logger.info <span class="string">"Manager.setEntityTimer"</span>, entityDef.friendlyId, interval + <span class="string">"ms"</span></pre></div></div>
             
         </li>
         
@@ -455,12 +452,17 @@ if there are connected clients, to avoid bandwidth and processing waste.</p>
         <li id="section-23">
             <div class="annotation">
               
-              <div class="pilwrap for-h2">
+              <div class="pilwrap ">
                 <a class="pilcrow" href="#section-23">&#182;</a>
               </div>
-              <h2>AUDIT DATA MANAGER</h2>
+              <p>Refresh the specified <a href="entityDefinition.html">Entity</a> data. This will run ONLY
+if there are connected clients, to avoid bandwidth and processing waste.</p>
 
             </div>
+            
+            <div class="content"><div class='highlight'><pre>    refreshEntity: (entityDef) =&gt;
+        <span class="keyword">if</span> sockets.getConnectionCount() &lt; <span class="number">1</span>
+            <span class="keyword">return</span></pre></div></div>
             
         </li>
         
@@ -471,14 +473,15 @@ if there are connected clients, to avoid bandwidth and processing waste.</p>
               <div class="pilwrap ">
                 <a class="pilcrow" href="#section-24">&#182;</a>
               </div>
-              <p>Init the <a href="auditadta.html">AuditData</a> refresh timers, by creating one interval
-timer for each audit data and transmitting the refreshed data to users via sockets.</p>
+              <p>Only proceed if the entity sourceUrl is set.</p>
 
             </div>
             
-            <div class="content"><div class='highlight'><pre>    initAuditDataTimers: =&gt;
-        <span class="property">@stopAuditDataTimers</span>()
-        database.getAuditData <span class="literal">null</span>, <span class="property">@startAuditDataTimers</span></pre></div></div>
+            <div class="content"><div class='highlight'><pre>        <span class="keyword">if</span> entityDef.sourceUrl? <span class="keyword">and</span> entityDef.sourceUrl <span class="keyword">isnt</span> <span class="string">""</span>
+            sync.download entityDef.sourceUrl, settings.Paths.downloadsDir + <span class="string">"entityobjects."</span> + entityDef.friendlyId + <span class="string">".json"</span>, (err, localFile) =&gt;
+                <span class="property">@transmitDataToClients</span> err, localFile, entityDef, sockets.sendEntityRefresh, database.setEntityDefinition
+        <span class="keyword">else</span> <span class="keyword">if</span> settings.General.debug
+            logger.warn <span class="string">"Manager.refreshEntity"</span>, entityDef.friendlyId, <span class="string">"No sourceUrl set. Abort."</span></pre></div></div>
             
         </li>
         
@@ -486,8 +489,42 @@ timer for each audit data and transmitting the refreshed data to users via socke
         <li id="section-25">
             <div class="annotation">
               
-              <div class="pilwrap ">
+              <div class="pilwrap for-h2">
                 <a class="pilcrow" href="#section-25">&#182;</a>
+              </div>
+              <h2>AUDIT DATA MANAGER</h2>
+
+            </div>
+            
+        </li>
+        
+        
+        <li id="section-26">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-26">&#182;</a>
+              </div>
+              <p>Init the <a href="auditadta.html">AuditData</a> refresh timers, by creating one interval
+timer for each audit data and transmitting the refreshed data to users via sockets.</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>    initAuditDataTimers: =&gt;
+        <span class="keyword">if</span> settings.General.debug
+            logger.info <span class="string">"Manager.initAuditDataTimers"</span>
+
+        <span class="property">@stopAuditDataTimers</span>()
+        database.getAuditData <span class="literal">null</span>, <span class="property">@startAuditDataTimers</span></pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-27">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-27">&#182;</a>
               </div>
               <p>Stop all running <a href="auditData.html">AuditData</a> refresh timers and
 clear the <code>timersAuditDataRefresh</code> array.</p>
@@ -502,11 +539,11 @@ clear the <code>timersAuditDataRefresh</code> array.</p>
         </li>
         
         
-        <li id="section-26">
+        <li id="section-28">
             <div class="annotation">
               
               <div class="pilwrap ">
-                <a class="pilcrow" href="#section-26">&#182;</a>
+                <a class="pilcrow" href="#section-28">&#182;</a>
               </div>
               <p>Start the <a href="auditData.html">AuditData</a> timers based on the returned items
 and error (if any) in result of the <code>getAuditData</code> database call.</p>
@@ -517,16 +554,18 @@ and error (if any) in result of the <code>getAuditData</code> database call.</p>
         <span class="keyword">if</span> err?
             sockets.sendServerError <span class="string">"Manager: could not load Audit Data items."</span>, err
         <span class="keyword">else</span>
-            <span class="property">@setAuditDataTimer</span> auditData <span class="keyword">for</span> auditData <span class="keyword">in</span> result</pre></div></div>
+            <span class="property">@setAuditDataTimer</span> auditData <span class="keyword">for</span> auditData <span class="keyword">in</span> result
+            <span class="keyword">if</span> settings.General.debug
+                logger.info <span class="string">"Manager.startAuditDataTimers"</span>, <span class="string">"Started timers for <span class="subst">#{result.length}</span> audit data."</span></pre></div></div>
             
         </li>
         
         
-        <li id="section-27">
+        <li id="section-29">
             <div class="annotation">
               
               <div class="pilwrap ">
-                <a class="pilcrow" href="#section-27">&#182;</a>
+                <a class="pilcrow" href="#section-29">&#182;</a>
               </div>
               <p>Add an <a href="auditadata.html">AuditData</a> refresh timer to the <code>timersAuditDataRefresh</code> array.</p>
 
@@ -539,11 +578,11 @@ and error (if any) in result of the <code>getAuditData</code> database call.</p>
         </li>
         
         
-        <li id="section-28">
+        <li id="section-30">
             <div class="annotation">
               
               <div class="pilwrap ">
-                <a class="pilcrow" href="#section-28">&#182;</a>
+                <a class="pilcrow" href="#section-30">&#182;</a>
               </div>
               <p>Make sure interval is at least 2 seconds.</p>
 
@@ -556,56 +595,17 @@ and error (if any) in result of the <code>getAuditData</code> database call.</p>
         </li>
         
         
-        <li id="section-29">
+        <li id="section-31">
             <div class="annotation">
               
               <div class="pilwrap ">
-                <a class="pilcrow" href="#section-29">&#182;</a>
+                <a class="pilcrow" href="#section-31">&#182;</a>
               </div>
               <p>Set the timer. Interval is in seconds, so we must multiply by 1000.</p>
 
             </div>
             
-            <div class="content"><div class='highlight'><pre>        interval = interval * <span class="number">1000</span>
-        timer = setInterval callback, interval
-        <span class="property">@timersAuditDataRefresh</span>.push timer
-
-        <span class="keyword">if</span> settings.General.debug
-            console.log <span class="string">"Manager.setAuditDataTimer"</span>, auditData.friendlyId, interval + <span class="string">"ms"</span></pre></div></div>
-            
-        </li>
-        
-        
-        <li id="section-30">
-            <div class="annotation">
-              
-              <div class="pilwrap ">
-                <a class="pilcrow" href="#section-30">&#182;</a>
-              </div>
-              <p>Refresh the specified <a href="auditData.html">AuditData</a> records. This will run ONLY
-if there are connected clients, to avoid bandwidth and processing waste.</p>
-
-            </div>
-            
-            <div class="content"><div class='highlight'><pre>    refreshAuditData: (auditData) =&gt;
-        <span class="keyword">if</span> sockets.getConnectionCount() &lt; <span class="number">1</span>
-            <span class="keyword">return</span>
-
-        sync.download auditData.sourceUrl, settings.Paths.downloadsDir + <span class="string">"auditdata."</span> + auditData.friendlyId + <span class="string">".json"</span>, (err, localFile) =&gt;
-            <span class="property">@transmitDataToClients</span> err, localFile, auditData, sockets.sendAuditDataRefresh, database.setAuditData</pre></div></div>
-            
-        </li>
-        
-        
-        <li id="section-31">
-            <div class="annotation">
-              
-              <div class="pilwrap for-h2">
-                <a class="pilcrow" href="#section-31">&#182;</a>
-              </div>
-              <h2>HELPER METHODS</h2>
-
-            </div>
+            <div class="content"><div class='highlight'><pre>        timer = setInterval callback, interval * <span class="number">1000</span></pre></div></div>
             
         </li>
         
@@ -615,6 +615,76 @@ if there are connected clients, to avoid bandwidth and processing waste.</p>
               
               <div class="pilwrap ">
                 <a class="pilcrow" href="#section-32">&#182;</a>
+              </div>
+              <p>Call the refresh immediatelly so clients will get updated data straight away.</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>        callback()
+
+        <span class="property">@timersAuditDataRefresh</span>.push timer
+
+        <span class="keyword">if</span> settings.General.debug
+            logger.info <span class="string">"Manager.setAuditDataTimer"</span>, auditData.friendlyId, interval + <span class="string">"ms"</span></pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-33">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-33">&#182;</a>
+              </div>
+              <p>Refresh the specified <a href="auditData.html">AuditData</a> records. This will run ONLY
+if there are connected clients, to avoid bandwidth and processing waste.</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>    refreshAuditData: (auditData) =&gt;
+        <span class="keyword">if</span> sockets.getConnectionCount() &lt; <span class="number">1</span>
+            <span class="keyword">return</span></pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-34">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-34">&#182;</a>
+              </div>
+              <p>Only proceed if the audit data sourceUrl is properly set.</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>        <span class="keyword">if</span> auditData.sourceUrl? <span class="keyword">and</span> auditData.sourceUrl <span class="keyword">isnt</span> <span class="string">""</span>
+            sync.download auditData.sourceUrl, settings.Paths.downloadsDir + <span class="string">"auditdata."</span> + auditData.friendlyId + <span class="string">".json"</span>, (err, localFile) =&gt;
+                <span class="property">@transmitDataToClients</span> err, localFile, auditData, sockets.sendAuditDataRefresh, database.setAuditData
+        <span class="keyword">else</span> <span class="keyword">if</span> settings.General.debug
+            logger.warn <span class="string">"Manager.refreshAuditData"</span>, auditData.friendlyId, <span class="string">"No sourceUrl set. Abort."</span></pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-35">
+            <div class="annotation">
+              
+              <div class="pilwrap for-h2">
+                <a class="pilcrow" href="#section-35">&#182;</a>
+              </div>
+              <h2>HELPER METHODS</h2>
+
+            </div>
+            
+        </li>
+        
+        
+        <li id="section-36">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-36">&#182;</a>
               </div>
               <p>Transmit refreshed <code>data</code> to the connected clients/browsers via Socket.IO.
 This can be for example the <code>data</code> attribute of an <a href="auditData..html">AuditData</a> or
@@ -629,26 +699,38 @@ The <code>socketsCallback</code> and <code>dbCallback</code> are called against 
                 <span class="keyword">if</span> err1?
                     sockets.sendServerError <span class="string">"Manager: could not read <span class="subst">#{localFile}</span>."</span>, err1
                 <span class="keyword">else</span>
+                    <span class="keyword">if</span> settings.General.debug
+                        logger.info <span class="string">"Manager.transmitDataToClients"</span>, localFile</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-37">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-37">&#182;</a>
+              </div>
+              <p>Try parsing the data as JSON.</p>
 
-                    <span class="keyword">try</span>
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>                    <span class="keyword">try</span>
                         obj.data = JSON.parse result
                     <span class="keyword">catch</span> err2
                         logger.error err2
                         <span class="keyword">return</span>
-
-                    <span class="keyword">if</span> settings.General.debug
-                        console.log <span class="string">"Manager.transmitDataToClients"</span>, obj.friendlyId, localFile
 
                     socketsCallback obj</pre></div></div>
             
         </li>
         
         
-        <li id="section-33">
+        <li id="section-38">
             <div class="annotation">
               
               <div class="pilwrap ">
-                <a class="pilcrow" href="#section-33">&#182;</a>
+                <a class="pilcrow" href="#section-38">&#182;</a>
               </div>
               <p>Verify and increase the refresh count.</p>
 
@@ -664,29 +746,29 @@ The <code>socketsCallback</code> and <code>dbCallback</code> are called against 
         </li>
         
         
-        <li id="section-34">
+        <li id="section-39">
             <div class="annotation">
               
               <div class="pilwrap ">
-                <a class="pilcrow" href="#section-34">&#182;</a>
+                <a class="pilcrow" href="#section-39">&#182;</a>
               </div>
-              <p>Save the updated data to the database on every third refresh. The default
-value (3) is set on the <a href="settings.html">Server Settings</a>.</p>
+              <p>Save the updated data to the database.</p>
 
             </div>
             
-            <div class="content"><div class='highlight'><pre>                    <span class="keyword">if</span> counter % settings.Web.saveDataEveryRefresh <span class="keyword">is</span> <span class="number">0</span>
-                        obj.data = database.cleanObjectForInsertion obj.data
-                        dbCallback obj, {patch: <span class="literal">true</span>}</pre></div></div>
+            <div class="content"><div class='highlight'><pre>                    obj.data = database.cleanObjectForInsertion obj.data
+                    dbCallback obj, {patch: <span class="literal">true</span>}
+        <span class="keyword">else</span>
+            logger.error <span class="string">"Manager.transmitDataToClients"</span>, localFile, err</pre></div></div>
             
         </li>
         
         
-        <li id="section-35">
+        <li id="section-40">
             <div class="annotation">
               
               <div class="pilwrap for-h2">
-                <a class="pilcrow" href="#section-35">&#182;</a>
+                <a class="pilcrow" href="#section-40">&#182;</a>
               </div>
               <h2>Singleton implementation</h2>
 
@@ -695,11 +777,11 @@ value (3) is set on the <a href="settings.html">Server Settings</a>.</p>
         </li>
         
         
-        <li id="section-36">
+        <li id="section-41">
             <div class="annotation">
               
               <div class="pilwrap ">
-                <a class="pilcrow" href="#section-36">&#182;</a>
+                <a class="pilcrow" href="#section-41">&#182;</a>
               </div>
               
             </div>

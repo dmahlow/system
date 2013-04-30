@@ -40,8 +40,12 @@ module.exports = (app, express) ->
     # handlers and init all the necessary modules.
     app.configure ->
         process.setMaxListeners 30
-        process.on "uncaughtException", (err) -> sockets.sendServerError "Proc unhandled exception!", err
-        app.on "uncaughtException", (err) -> sockets.sendServerError "App unhandled exception!", err
+        process.on "uncaughtException", (err) ->
+            sockets.sendServerError "Proc unhandled exception!", err
+            console.error "Proc unhandled exception!", err
+        app.on "uncaughtException", (err) ->
+            sockets.sendServerError "App unhandled exception!", err
+            console.error "App unhandled exception!", err
 
         # If the `Settings.Web.paas` is true, then override settings with environmental variables.
         configPaaS() if settings.Web.paas

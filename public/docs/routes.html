@@ -19,6 +19,11 @@
           <div id="jump_page">
             
               
+              <a class="source" href="admin.html">
+                admin.coffee
+              </a>
+            
+              
               <a class="source" href="api.auditData.html">
                 api.auditData.coffee
               </a>
@@ -134,6 +139,11 @@
               </a>
             
               
+              <a class="source" href="user.html">
+                user.coffee
+              </a>
+            
+              
               <a class="source" href="userSettings.html">
                 userSettings.coffee
               </a>
@@ -149,18 +159,8 @@
               </a>
             
               
-              <a class="source" href="settings.base.html">
-                settings.base.coffee
-              </a>
-            
-              
               <a class="source" href="settings.html">
                 settings.coffee
-              </a>
-            
-              
-              <a class="source" href="settings.default.html">
-                settings.default.coffee
               </a>
             
               
@@ -176,6 +176,11 @@
               
               <a class="source" href="vectors.html">
                 vectors.coffee
+              </a>
+            
+              
+              <a class="source" href="adminView.html">
+                adminView.coffee
               </a>
             
               
@@ -313,6 +318,11 @@
                 startView.coffee
               </a>
             
+              
+              <a class="source" href="variableManagerView.html">
+                variableManagerView.coffee
+              </a>
+            
           </div>
         </li>
       </ul>
@@ -351,7 +361,7 @@ Implemented using the Backbone Router.</p>
 
             </div>
             
-            <div class="content"><div class='highlight'><pre><span class="class"><span class="keyword">class</span> <span class="title">System</span>.<span class="title">Routes</span> <span class="keyword">extends</span> <span class="title">Backbone</span>.<span class="title">Router</span></span>
+            <div class="content"><div class='highlight'><pre><span class="class"><span class="keyword">class</span> <span class="title">SystemApp</span>.<span class="title">Routes</span> <span class="keyword">extends</span> <span class="title">Backbone</span>.<span class="title">Router</span></span>
 
     routes:
         <span class="string">""</span>: <span class="string">"openDefault"</span>                   <span class="comment"># the default route will change the view based on the last view state</span>
@@ -363,7 +373,8 @@ Implemented using the Backbone Router.</p>
         <span class="string">"help"</span>: <span class="string">"openHelp"</span>                  <span class="comment"># open the [Help](helpView.html) overlay</span>
         <span class="string">"maps"</span>: <span class="string">"openStart"</span>                 <span class="comment"># open the [Start](startView.html) overlay</span>
         <span class="string">"settings"</span>: <span class="string">"openSettings"</span>          <span class="comment"># open the [Settings](settingsView.html) overlay</span>
-        <span class="string">"start"</span>: <span class="string">"openStart"</span>                <span class="comment"># open the [Start](startView.html) overlay</span></pre></div></div>
+        <span class="string">"start"</span>: <span class="string">"openStart"</span>                <span class="comment"># open the [Start](startView.html) overlay</span>
+        <span class="string">"variables"</span>: <span class="string">"openVariables"</span>        <span class="comment"># open the [Variables Manager](variableManagerView.html) overlay</span></pre></div></div>
             
         </li>
         
@@ -393,7 +404,7 @@ then open the <a href="startView.html">start view</a>.</p>
             </div>
             
             <div class="content"><div class='highlight'><pre>    openDefault: =&gt;
-        <span class="keyword">if</span> System.App.mapView.model?
+        <span class="keyword">if</span> SystemApp.mapView.model?
             <span class="property">@showOverlay</span> <span class="literal">false</span>
         <span class="keyword">else</span>
             <span class="property">@openStart</span>()</pre></div></div>
@@ -413,15 +424,12 @@ If the map is invalid, then show a <a href="alertView.html">Footer Alert</a>.</p
             </div>
             
             <div class="content"><div class='highlight'><pre>    openMap: (id) =&gt;
-        System.App.consoleLog <span class="string">"ROUTE"</span>, <span class="string">"openMap"</span>, id
+        SystemApp.consoleLog <span class="string">"ROUTE"</span>, <span class="string">"openMap"</span>, id
 
-        System.App.auditDataManagerView.hide()
-        System.App.settingsView.hide()
-        System.App.startView.hide()
-        System.App.helpView.hide()
-
-        <span class="keyword">if</span> <span class="keyword">not</span> System.App.godMode
-            System.App.mapEvents.trigger <span class="string">"edit:toggle"</span>, <span class="literal">false</span></pre></div></div>
+        SystemApp.auditDataManagerView.hide()
+        SystemApp.settingsView.hide()
+        SystemApp.startView.hide()
+        SystemApp.helpView.hide()</pre></div></div>
             
         </li>
         
@@ -437,7 +445,7 @@ If the map is invalid, then show a <a href="alertView.html">Footer Alert</a>.</p
             </div>
             
             <div class="content"><div class='highlight'><pre>        <span class="keyword">if</span> <span class="keyword">not</span> id? <span class="keyword">or</span> id <span class="keyword">is</span> <span class="number">0</span>
-            System.App.mapView.bindMap <span class="literal">null</span>
+            SystemApp.mapView.bindMap <span class="literal">null</span>
             <span class="keyword">return</span></pre></div></div>
             
         </li>
@@ -453,16 +461,16 @@ If the map is invalid, then show a <a href="alertView.html">Footer Alert</a>.</p
 
             </div>
             
-            <div class="content"><div class='highlight'><pre>        map = _.find System.App.Data.maps.models, (item) -&gt; item.urlKey() <span class="keyword">is</span> System.App.DataUtil.getUrlKey id
-        map = System.App.Data.maps.get(id) <span class="keyword">if</span> <span class="keyword">not</span> map?
+            <div class="content"><div class='highlight'><pre>        map = _.find SystemApp.Data.maps.models, (item) -&gt; item.urlKey() <span class="keyword">is</span> SystemApp.DataUtil.getUrlKey id
+        map = SystemApp.Data.maps.get(id) <span class="keyword">if</span> <span class="keyword">not</span> map?
 
         <span class="keyword">if</span> map?
-            System.App.mapView.bindMap map
-            System.App.menuEvents.trigger <span class="string">"active:map"</span>, map
+            SystemApp.mapView.bindMap map
+            SystemApp.menuEvents.trigger <span class="string">"active:map"</span>, map
             <span class="property">@showOverlay</span> <span class="literal">false</span>
         <span class="keyword">else</span>
-            msg = System.App.Messages.errMapDoesNotExist
-            System.App.alertEvents.trigger <span class="string">"footer"</span>, {isError: <span class="literal">true</span>, title: System.App.Messages.error, message: msg}
+            msg = SystemApp.Messages.errMapDoesNotExist
+            SystemApp.alertEvents.trigger <span class="string">"footer"</span>, {isError: <span class="literal">true</span>, title: SystemApp.Messages.error, message: msg}
             <span class="property">@navigate</span> <span class="string">""</span>, {trigger: <span class="literal">false</span>}</pre></div></div>
             
         </li>
@@ -479,8 +487,8 @@ If the map is invalid, then show a <a href="alertView.html">Footer Alert</a>.</p
             </div>
             
             <div class="content"><div class='highlight'><pre>    openAuditData: =&gt;
-        System.App.consoleLog <span class="string">"ROUTE"</span>, <span class="string">"openAuditData"</span>
-        <span class="property">@showOverlay</span> System.App.auditDataManagerView</pre></div></div>
+        SystemApp.consoleLog <span class="string">"ROUTE"</span>, <span class="string">"openAuditData"</span>
+        <span class="property">@showOverlay</span> SystemApp.auditDataManagerView</pre></div></div>
             
         </li>
         
@@ -496,8 +504,8 @@ If the map is invalid, then show a <a href="alertView.html">Footer Alert</a>.</p
             </div>
             
             <div class="content"><div class='highlight'><pre>    openAuditEvents: =&gt;
-        System.App.consoleLog <span class="string">"ROUTE"</span>, <span class="string">"openAuditEvents"</span>
-        <span class="property">@showOverlay</span> System.App.auditEventManagerView</pre></div></div>
+        SystemApp.consoleLog <span class="string">"ROUTE"</span>, <span class="string">"openAuditEvents"</span>
+        <span class="property">@showOverlay</span> SystemApp.auditEventManagerView</pre></div></div>
             
         </li>
         
@@ -513,8 +521,8 @@ If the map is invalid, then show a <a href="alertView.html">Footer Alert</a>.</p
             </div>
             
             <div class="content"><div class='highlight'><pre>    openCreateMap: =&gt;
-        System.App.consoleLog <span class="string">"ROUTE"</span>, <span class="string">"openCreateMap"</span>
-        <span class="property">@showOverlay</span> System.App.createMapView</pre></div></div>
+        SystemApp.consoleLog <span class="string">"ROUTE"</span>, <span class="string">"openCreateMap"</span>
+        <span class="property">@showOverlay</span> SystemApp.createMapView</pre></div></div>
             
         </li>
         
@@ -530,8 +538,8 @@ If the map is invalid, then show a <a href="alertView.html">Footer Alert</a>.</p
             </div>
             
             <div class="content"><div class='highlight'><pre>    openEntities: =&gt;
-        System.App.consoleLog <span class="string">"ROUTE"</span>, <span class="string">"openEntities"</span>
-        <span class="property">@showOverlay</span> System.App.entityManagerView</pre></div></div>
+        SystemApp.consoleLog <span class="string">"ROUTE"</span>, <span class="string">"openEntities"</span>
+        <span class="property">@showOverlay</span> SystemApp.entityManagerView</pre></div></div>
             
         </li>
         
@@ -547,8 +555,8 @@ If the map is invalid, then show a <a href="alertView.html">Footer Alert</a>.</p
             </div>
             
             <div class="content"><div class='highlight'><pre>    openHelp: =&gt;
-        System.App.consoleLog <span class="string">"ROUTE"</span>, <span class="string">"openHelp"</span>
-        <span class="property">@showOverlay</span> System.App.helpView</pre></div></div>
+        SystemApp.consoleLog <span class="string">"ROUTE"</span>, <span class="string">"openHelp"</span>
+        <span class="property">@showOverlay</span> SystemApp.helpView</pre></div></div>
             
         </li>
         
@@ -564,8 +572,8 @@ If the map is invalid, then show a <a href="alertView.html">Footer Alert</a>.</p
             </div>
             
             <div class="content"><div class='highlight'><pre>    openSettings: =&gt;
-        System.App.consoleLog <span class="string">"ROUTE"</span>, <span class="string">"openSettings"</span>
-        <span class="property">@showOverlay</span> System.App.settingsView</pre></div></div>
+        SystemApp.consoleLog <span class="string">"ROUTE"</span>, <span class="string">"openSettings"</span>
+        <span class="property">@showOverlay</span> SystemApp.settingsView</pre></div></div>
             
         </li>
         
@@ -581,8 +589,8 @@ If the map is invalid, then show a <a href="alertView.html">Footer Alert</a>.</p
             </div>
             
             <div class="content"><div class='highlight'><pre>    openScriptEditor: (model, propertyName) =&gt;
-        System.App.consoleLog <span class="string">"ROUTE"</span>, <span class="string">"openScriptEditor"</span>
-        <span class="property">@showOverlay</span> System.App.scriptEditorView, model, propertyName</pre></div></div>
+        SystemApp.consoleLog <span class="string">"ROUTE"</span>, <span class="string">"openScriptEditor"</span>
+        <span class="property">@showOverlay</span> SystemApp.scriptEditorView, model, propertyName</pre></div></div>
             
         </li>
         
@@ -598,8 +606,8 @@ If the map is invalid, then show a <a href="alertView.html">Footer Alert</a>.</p
             </div>
             
             <div class="content"><div class='highlight'><pre>    openStart: =&gt;
-        System.App.consoleLog <span class="string">"ROUTE"</span>, <span class="string">"openStart"</span>
-        <span class="property">@showOverlay</span> System.App.startView</pre></div></div>
+        SystemApp.consoleLog <span class="string">"ROUTE"</span>, <span class="string">"openStart"</span>
+        <span class="property">@showOverlay</span> SystemApp.startView</pre></div></div>
             
         </li>
         
@@ -607,12 +615,16 @@ If the map is invalid, then show a <a href="alertView.html">Footer Alert</a>.</p
         <li id="section-16">
             <div class="annotation">
               
-              <div class="pilwrap for-h2">
+              <div class="pilwrap ">
                 <a class="pilcrow" href="#section-16">&#182;</a>
               </div>
-              <h2>HELPER METHODS</h2>
+              <p>Show the <a href="variableManagerView.html">Variables Manager View</a>.</p>
 
             </div>
+            
+            <div class="content"><div class='highlight'><pre>    openVariables: =&gt;
+        SystemApp.consoleLog <span class="string">"ROUTE"</span>, <span class="string">"openVariables"</span>
+        <span class="property">@showOverlay</span> SystemApp.variableManagerView</pre></div></div>
             
         </li>
         
@@ -620,30 +632,12 @@ If the map is invalid, then show a <a href="alertView.html">Footer Alert</a>.</p
         <li id="section-17">
             <div class="annotation">
               
-              <div class="pilwrap ">
+              <div class="pilwrap for-h2">
                 <a class="pilcrow" href="#section-17">&#182;</a>
               </div>
-              <p>Hide all overlays (if there&#39;s any open) and show the specified view.
-The new overlay can receive up to 2 parameters.
-TODO! Refactor and use events to properly hide the other overlays!</p>
+              <h2>HELPER METHODS</h2>
 
             </div>
-            
-            <div class="content"><div class='highlight'><pre>    showOverlay: (overlay, param1, param2) =&gt;
-        <span class="keyword">for</span> view <span class="keyword">in</span> [
-            System.App.auditDataManagerView,
-            System.App.auditEventManagerView,
-            System.App.createMapView,
-            System.App.entityManagerView,
-            System.App.helpView,
-            System.App.settingsView,
-            System.App.scriptEditorView,
-            System.App.startView]
-            view.hide() <span class="keyword">if</span> overlay <span class="keyword">isnt</span> view
-
-        <span class="keyword">if</span> overlay <span class="keyword">isnt</span> <span class="literal">false</span>
-            System.App.toggleLoading <span class="literal">false</span>
-            overlay.show param1, param2</pre></div></div>
             
         </li>
         
@@ -654,13 +648,45 @@ TODO! Refactor and use events to properly hide the other overlays!</p>
               <div class="pilwrap ">
                 <a class="pilcrow" href="#section-18">&#182;</a>
               </div>
+              <p>Hide all overlays (if there&#39;s any open) and show the specified view.
+The new overlay can receive up to 2 parameters.
+TODO! Refactor and use events to properly hide the other overlays!</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>    showOverlay: (overlay, param1, param2) =&gt;
+        <span class="keyword">for</span> view <span class="keyword">in</span> [
+            SystemApp.auditDataManagerView,
+            SystemApp.auditEventManagerView,
+            SystemApp.createMapView,
+            SystemApp.entityManagerView,
+            SystemApp.helpView,
+            SystemApp.settingsView,
+            SystemApp.scriptEditorView,
+            SystemApp.startView,
+            SystemApp.variableManagerView]
+            view.hide() <span class="keyword">if</span> overlay <span class="keyword">isnt</span> view
+
+        <span class="keyword">if</span> overlay <span class="keyword">isnt</span> <span class="literal">false</span>
+            SystemApp.toggleLoading <span class="literal">false</span>
+            overlay.show param1, param2</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-19">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-19">&#182;</a>
+              </div>
               <p>Refresh the current view if it&#39;s specified on the event, or the whole
 page if view is left unspecified.</p>
 
             </div>
             
             <div class="content"><div class='highlight'><pre>    refresh: =&gt;
-        System.App.consoleLog <span class="string">"ROUTE"</span>, <span class="string">"Refresh current page"</span>
+        SystemApp.consoleLog <span class="string">"ROUTE"</span>, <span class="string">"Refresh current page"</span>
         window.document.location.href = window.location.href</pre></div></div>
             
         </li>

@@ -34,9 +34,7 @@ class SystemApp.MapLabelEditView extends SystemApp.BaseView
     # Base dispose for all shapes.
     dispose: =>
         @hide()
-
         @currentVariable = null
-
         @baseDispose()
 
 
@@ -202,6 +200,9 @@ class SystemApp.MapLabelEditView extends SystemApp.BaseView
         $(document).unbind "keyup", @documentKeyUp
         $(document).keyup @documentKeyUp
 
+        @$el.unbind "click", @setFocus
+        @$el.click @setFocus
+
         @stopListening()
         @listenTo SystemApp.mapEvents, "zoom", @hide
 
@@ -215,7 +216,7 @@ class SystemApp.MapLabelEditView extends SystemApp.BaseView
         @showSimple()
         @currentValue SystemApp.Messages.current + ": " + value
 
-        @$el.fadeIn SystemApp.Settings.LabelEdit.opacityInterval
+        @$el.show()
 
         @$txtSimple.focus()
 
@@ -269,9 +270,11 @@ class SystemApp.MapLabelEditView extends SystemApp.BaseView
     hide: =>
         $(document).unbind "mousedown", @editingMouseDown
         $(document).unbind "keyup", @documentKeyUp
+        @$el.unbind "click", @setFocus
+
         @stopListening()
 
-        @$el.fadeOut SystemApp.Settings.LabelEdit.opacityInterval
+        @$el.hide()
 
         @lastPressedKey = null
         @currentVariable = null
@@ -297,6 +300,12 @@ class SystemApp.MapLabelEditView extends SystemApp.BaseView
 
         @$el.css "left", x
         @$el.css "top", y
+        @setFocus()
+
+    # Shift focus to the view by increasing its z-index.
+    setFocus: (e) =>
+        @$el.css "z-index", @mapView.zIndexMax
+        @mapView.zIndexMax = @mapView.zIndexMax + 1
 
     # Check if user is writing a static value, or binding to an [AuditData](auditData.html} using a special key.
     parseValue: =>

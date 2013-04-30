@@ -36,6 +36,7 @@ class SystemApp.MapControlsView extends SystemApp.BaseView
         @setEvents()
         @bindInitialState()
         @resize()
+        @width = @$el.outerWidth()
 
     # Clear controls and unbind events.
     dispose: =>
@@ -166,8 +167,6 @@ class SystemApp.MapControlsView extends SystemApp.BaseView
             @$imgFullscreen.attr "src", "images/ico-showcontrols.png"
             @hide()
 
-            @width = 0
-
         else
 
             $("#header").show()
@@ -182,14 +181,13 @@ class SystemApp.MapControlsView extends SystemApp.BaseView
             @parentView.$el.css "width", @mapDivWidth
             @parentView.$el.css "height", @mapDivHeight
 
-            @width = @$el.outerWidth()
-
         # Save the current fullscreen state on the [User Settings](userSettings.html) model.
         SystemApp.Data.userSettings.mapFullscreen fullscreen
 
     # Hide the map controls and show the minimzed icon on the top right corner.
     hide: (e) =>
         @$el.hide()
+        @width = 0
 
         # If an event object is passed then stop its propagation and default behaviour.
         e?.stopPropagation()
@@ -198,6 +196,7 @@ class SystemApp.MapControlsView extends SystemApp.BaseView
     # Show the map controls and hide the minimzed icon.
     show: =>
         @$el.show()
+        @width = @$el.outerWidth()
 
 
     # TABS HANDLING

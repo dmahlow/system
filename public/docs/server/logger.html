@@ -49,18 +49,13 @@
               </a>
             
               
-              <a class="source" href="settings.base.html">
-                settings.base.coffee
+              <a class="source" href="security.html">
+                security.coffee
               </a>
             
               
               <a class="source" href="settings.html">
                 settings.coffee
-              </a>
-            
-              
-              <a class="source" href="settings.default.html">
-                settings.default.coffee
               </a>
             
               
@@ -141,8 +136,7 @@
             </div>
             
             <div class="content"><div class='highlight'><pre>    logentries = <span class="literal">null</span>
-    winstonObj = require <span class="string">"winston"</span>
-    winston = <span class="keyword">new</span> winstonObj.Logger {exitOnError: <span class="literal">false</span>}</pre></div></div>
+    winston = require <span class="string">"winston"</span></pre></div></div>
             
         </li>
         
@@ -176,25 +170,8 @@ is reached - value set on <a href="settings.html">Settings</a>, default 1MB.</p>
         <li id="section-6">
             <div class="annotation">
               
-              <div class="pilwrap ">
-                <a class="pilcrow" href="#section-6">&#182;</a>
-              </div>
-              <p>Holds the last info and warn messages to avoid logging duplicates.
-Errors are always logged.</p>
-
-            </div>
-            
-            <div class="content"><div class='highlight'><pre>    lastInfo: <span class="literal">null</span>
-    lastWarn: <span class="literal">null</span></pre></div></div>
-            
-        </li>
-        
-        
-        <li id="section-7">
-            <div class="annotation">
-              
               <div class="pilwrap for-h2">
-                <a class="pilcrow" href="#section-7">&#182;</a>
+                <a class="pilcrow" href="#section-6">&#182;</a>
               </div>
               <h2>INIT</h2>
 
@@ -203,11 +180,11 @@ Errors are always logged.</p>
         </li>
         
         
-        <li id="section-8">
+        <li id="section-7">
             <div class="annotation">
               
               <div class="pilwrap ">
-                <a class="pilcrow" href="#section-8">&#182;</a>
+                <a class="pilcrow" href="#section-7">&#182;</a>
               </div>
               <p>Init the Logger. If <code>settings.Log.logentriesToken</code> is valid, logs will be dispatched
 to the Logentries service (<a href="http://logentries.com">http://logentries.com</a>). Otherwise a file transport will be
@@ -219,15 +196,31 @@ even when using Logentries for general logging.</p>
             </div>
             
             <div class="content"><div class='highlight'><pre>    init: =&gt;
+        winston.exitOnError = <span class="literal">false</span>
+        winston.remove winston.transports.Console
+
         <span class="keyword">if</span> settings.Log.logentriesToken? <span class="keyword">and</span> settings.Log.logentriesToken <span class="keyword">isnt</span> <span class="string">""</span>
             logentries = require(<span class="string">"node-logentries"</span>).logger {token: settings.Log.logentriesToken}
             logentries.winston winstonObj
         <span class="keyword">else</span>
             filename = settings.Paths.logsDir + getLogFilename()
-            winston.add winstonObj.transports.File, {timestamp: <span class="literal">true</span>, filename: filename, maxsize: settings.Log.maxFileSize}
+            winston.add winston.transports.File, {timestamp: <span class="literal">true</span>, filename: filename, maxsize: settings.Log.maxFileSize}
 
-        winston.handleExceptions(<span class="keyword">new</span> winstonObj.transports.File {filename: settings.Paths.logsDir + <span class="string">"exceptions.log"</span>})
+        winston.handleExceptions(<span class="keyword">new</span> winston.transports.File {filename: settings.Paths.logsDir + <span class="string">"exceptions.log"</span>})
         winston.info <span class="string">"WINSTON LOGGING STARTED!"</span></pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-8">
+            <div class="annotation">
+              
+              <div class="pilwrap for-h2">
+                <a class="pilcrow" href="#section-8">&#182;</a>
+              </div>
+              <h2>LOGGING</h2>
+
+            </div>
             
         </li>
         
@@ -235,12 +228,19 @@ even when using Logentries for general logging.</p>
         <li id="section-9">
             <div class="annotation">
               
-              <div class="pilwrap for-h2">
+              <div class="pilwrap ">
                 <a class="pilcrow" href="#section-9">&#182;</a>
               </div>
-              <h2>LOGGING</h2>
+              <p>Log any object to the default transports as <code>info</code>.</p>
 
             </div>
+            
+            <div class="content"><div class='highlight'><pre>    info: =&gt;
+        winston.info.apply <span class="keyword">this</span>, arguments
+        <span class="keyword">if</span> settings.General.debug
+            args = Array.prototype.slice.call arguments
+            args.unshift (<span class="keyword">new</span> Date()).toTimeString().substring <span class="number">0</span>, <span class="number">8</span>
+            console.log.apply <span class="keyword">this</span>, args</pre></div></div>
             
         </li>
         
@@ -251,18 +251,16 @@ even when using Logentries for general logging.</p>
               <div class="pilwrap ">
                 <a class="pilcrow" href="#section-10">&#182;</a>
               </div>
-              <p>Log any object to the default transports as <code>info</code>.</p>
+              <p>Log any object to the default transports as <code>warn</code>.</p>
 
             </div>
             
-            <div class="content"><div class='highlight'><pre>    info: =&gt;
-        obj = JSON.stringify arguments
-        <span class="keyword">return</span> <span class="keyword">if</span> obj <span class="keyword">is</span> <span class="property">@lastInfo</span>
-
-        winston.info obj
-        <span class="property">@lastInfo</span> = obj
-
-        console.log.apply <span class="keyword">this</span>, arguments <span class="keyword">if</span> settings.General.debug</pre></div></div>
+            <div class="content"><div class='highlight'><pre>    warn: =&gt;
+        winston.warn.apply <span class="keyword">this</span>, arguments
+        <span class="keyword">if</span> settings.General.debug
+            args = Array.prototype.slice.call arguments
+            args.unshift (<span class="keyword">new</span> Date()).toTimeString().substring <span class="number">0</span>, <span class="number">8</span>
+            console.warn.apply <span class="keyword">this</span>, args</pre></div></div>
             
         </li>
         
@@ -273,18 +271,16 @@ even when using Logentries for general logging.</p>
               <div class="pilwrap ">
                 <a class="pilcrow" href="#section-11">&#182;</a>
               </div>
-              <p>Log any object to the default transports as <code>warn</code>.</p>
+              <p>Log any object to the default transports as <code>error</code>.</p>
 
             </div>
             
-            <div class="content"><div class='highlight'><pre>    warn: =&gt;
-        obj = JSON.stringify arguments
-        <span class="keyword">return</span> <span class="keyword">if</span> obj <span class="keyword">is</span> <span class="property">@lastWarn</span>
-
-        winston.warn obj
-        <span class="property">@lastWarn</span> = obj
-
-        console.warn.apply <span class="keyword">this</span>, arguments <span class="keyword">if</span> settings.General.debug</pre></div></div>
+            <div class="content"><div class='highlight'><pre>    error: =&gt;
+        winston.error.apply <span class="keyword">this</span>, arguments
+        <span class="keyword">if</span> settings.General.debug
+            args = Array.prototype.slice.call arguments
+            args.unshift (<span class="keyword">new</span> Date()).toTimeString().substring <span class="number">0</span>, <span class="number">8</span>
+            console.error.apply <span class="keyword">this</span>, args</pre></div></div>
             
         </li>
         
@@ -292,27 +288,8 @@ even when using Logentries for general logging.</p>
         <li id="section-12">
             <div class="annotation">
               
-              <div class="pilwrap ">
-                <a class="pilcrow" href="#section-12">&#182;</a>
-              </div>
-              <p>Log any object to the default transports as <code>error</code>.</p>
-
-            </div>
-            
-            <div class="content"><div class='highlight'><pre>    error: =&gt;
-        obj = JSON.stringify arguments
-        winston.error obj
-
-        console.error.apply <span class="keyword">this</span>, arguments <span class="keyword">if</span> settings.General.debug</pre></div></div>
-            
-        </li>
-        
-        
-        <li id="section-13">
-            <div class="annotation">
-              
               <div class="pilwrap for-h2">
-                <a class="pilcrow" href="#section-13">&#182;</a>
+                <a class="pilcrow" href="#section-12">&#182;</a>
               </div>
               <h2>QUERYING</h2>
 
@@ -321,11 +298,11 @@ even when using Logentries for general logging.</p>
         </li>
         
         
-        <li id="section-14">
+        <li id="section-13">
             <div class="annotation">
               
               <div class="pilwrap ">
-                <a class="pilcrow" href="#section-14">&#182;</a>
+                <a class="pilcrow" href="#section-13">&#182;</a>
               </div>
               <p>Return a list of all logs for the past 24 hours, value defined on
 the <a href="settings.html">Server Settings</a>. A callback must be passed
@@ -344,11 +321,11 @@ to handle the results.</p>
         </li>
         
         
-        <li id="section-15">
+        <li id="section-14">
             <div class="annotation">
               
               <div class="pilwrap for-h2">
-                <a class="pilcrow" href="#section-15">&#182;</a>
+                <a class="pilcrow" href="#section-14">&#182;</a>
               </div>
               <h2>CLEANING</h2>
 
@@ -357,11 +334,11 @@ to handle the results.</p>
         </li>
         
         
-        <li id="section-16">
+        <li id="section-15">
             <div class="annotation">
               
               <div class="pilwrap ">
-                <a class="pilcrow" href="#section-16">&#182;</a>
+                <a class="pilcrow" href="#section-15">&#182;</a>
               </div>
               <p>Delete old log files. The param <code>maxDays</code> is optional, default is 30
 and set on the <a href="settings.html">server settings</a>.</p>
@@ -379,11 +356,11 @@ and set on the <a href="settings.html">server settings</a>.</p>
         </li>
         
         
-        <li id="section-17">
+        <li id="section-16">
             <div class="annotation">
               
               <div class="pilwrap ">
-                <a class="pilcrow" href="#section-17">&#182;</a>
+                <a class="pilcrow" href="#section-16">&#182;</a>
               </div>
               <p>Make sure we don&#39;t delete the <code>_dirinfo</code> file.</p>
 
@@ -398,11 +375,11 @@ and set on the <a href="settings.html">server settings</a>.</p>
         </li>
         
         
-        <li id="section-18">
+        <li id="section-17">
             <div class="annotation">
               
               <div class="pilwrap ">
-                <a class="pilcrow" href="#section-18">&#182;</a>
+                <a class="pilcrow" href="#section-17">&#182;</a>
               </div>
               <p>Only delete older files!</p>
 
@@ -415,11 +392,11 @@ and set on the <a href="settings.html">server settings</a>.</p>
         </li>
         
         
-        <li id="section-19">
+        <li id="section-18">
             <div class="annotation">
               
               <div class="pilwrap for-h2">
-                <a class="pilcrow" href="#section-19">&#182;</a>
+                <a class="pilcrow" href="#section-18">&#182;</a>
               </div>
               <h2>Singleton implementation</h2>
 
@@ -428,11 +405,11 @@ and set on the <a href="settings.html">server settings</a>.</p>
         </li>
         
         
-        <li id="section-20">
+        <li id="section-19">
             <div class="annotation">
               
               <div class="pilwrap ">
-                <a class="pilcrow" href="#section-20">&#182;</a>
+                <a class="pilcrow" href="#section-19">&#182;</a>
               </div>
               
             </div>

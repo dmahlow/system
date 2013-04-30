@@ -74,23 +74,27 @@ class SystemApp.UserSettings extends SystemApp.BaseModel
 
     # MODIFIER KEYS
     # ----------------------------------------------------------------------
+    # TODO! After refactoring the settings UI, enable user defined modifiers again.
 
     # Helper to get / set the "Delete" modifier combination keys. Default is "Ctrl + Left Click".
     modifierDelete: (value) =>
         if value?
             @set "modifierDelete", value
+        return SystemApp.Settings.User.modifierDelete
         @get "modifierDelete"
 
     # Helper to get / set the "Multiple" modifier combination keys. Default is "Shift".
     modifierMultiple: (value) =>
         if value?
             @set "modifierMultiple", value
+        return SystemApp.Settings.User.modifierMultiple
         @get "modifierMultiple"
 
     # OBSOLETE!!! Helper to get / set the "To Back" modifier combination keys.
     modifierToBack: (value) =>
         if value?
             @set "modifierToBack", value
+        return SystemApp.Settings.User.modifierToBack
         @get "modifierToBack"
 
 

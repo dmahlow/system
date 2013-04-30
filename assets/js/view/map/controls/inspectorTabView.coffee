@@ -88,8 +88,6 @@ class SystemApp.MapControlsInspectorTabView extends SystemApp.BaseView
 
         if @currentBoundView? and @currentBoundView.model?
 
-            console.warn @currentBoundView
-
             if @currentBoundView.linkViews?
                 _.each @currentBoundView.linkViews, (linkView) => linkView.model.on "change", @bindAllLinks
 

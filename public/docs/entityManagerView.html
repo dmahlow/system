@@ -19,6 +19,11 @@
           <div id="jump_page">
             
               
+              <a class="source" href="admin.html">
+                admin.coffee
+              </a>
+            
+              
               <a class="source" href="api.auditData.html">
                 api.auditData.coffee
               </a>
@@ -134,6 +139,11 @@
               </a>
             
               
+              <a class="source" href="user.html">
+                user.coffee
+              </a>
+            
+              
               <a class="source" href="userSettings.html">
                 userSettings.coffee
               </a>
@@ -149,18 +159,8 @@
               </a>
             
               
-              <a class="source" href="settings.base.html">
-                settings.base.coffee
-              </a>
-            
-              
               <a class="source" href="settings.html">
                 settings.coffee
-              </a>
-            
-              
-              <a class="source" href="settings.default.html">
-                settings.default.coffee
               </a>
             
               
@@ -176,6 +176,11 @@
               
               <a class="source" href="vectors.html">
                 vectors.coffee
+              </a>
+            
+              
+              <a class="source" href="adminView.html">
+                adminView.coffee
               </a>
             
               
@@ -313,6 +318,11 @@
                 startView.coffee
               </a>
             
+              
+              <a class="source" href="variableManagerView.html">
+                variableManagerView.coffee
+              </a>
+            
           </div>
         </li>
       </ul>
@@ -350,7 +360,7 @@
 
             </div>
             
-            <div class="content"><div class='highlight'><pre><span class="class"><span class="keyword">class</span> <span class="title">System</span>.<span class="title">EntityManagerView</span> <span class="keyword">extends</span> <span class="title">System</span>.<span class="title">OverlayView</span></span>
+            <div class="content"><div class='highlight'><pre><span class="class"><span class="keyword">class</span> <span class="title">SystemApp</span>.<span class="title">EntityManagerView</span> <span class="keyword">extends</span> <span class="title">SystemApp</span>.<span class="title">OverlayView</span></span>
 
     $txtCreate: <span class="literal">null</span>                <span class="comment"># the text input used to create a new entity definition</span>
     $butCreate: <span class="literal">null</span>                <span class="comment"># the button used to create a new entity definition</span>
@@ -398,7 +408,7 @@
             </div>
             
             <div class="content"><div class='highlight'><pre>    initialize: =&gt;
-        <span class="property">@currentSettings</span> = System.App.Settings.EntityDefinition
+        <span class="property">@currentSettings</span> = SystemApp.Settings.EntityDefinition
         <span class="property">@overlayInit</span> <span class="string">"#entitymanager"</span>
         <span class="property">@setDom</span>()
         <span class="property">@setEvents</span>()</pre></div></div>
@@ -509,8 +519,8 @@
 
             </div>
             
-            <div class="content"><div class='highlight'><pre>        <span class="property">@$txtRefresh</span>.attr <span class="string">"min"</span>, System.App.Settings.EntityDefinition.minRefreshInterval
-        <span class="property">@$txtRefresh</span>.attr <span class="string">"max"</span>, System.App.Settings.EntityDefinition.maxRefreshInterval</pre></div></div>
+            <div class="content"><div class='highlight'><pre>        <span class="property">@$txtRefresh</span>.attr <span class="string">"min"</span>, SystemApp.Settings.EntityDefinition.minRefreshInterval
+        <span class="property">@$txtRefresh</span>.attr <span class="string">"max"</span>, SystemApp.Settings.EntityDefinition.maxRefreshInterval</pre></div></div>
             
         </li>
         
@@ -610,7 +620,7 @@ and emptying the <code>$modelsList</code>.</p>
             
             <div class="content"><div class='highlight'><pre>    bindEntities: =&gt;
         <span class="property">@clear</span>()
-        <span class="property">@addToModelsList</span> item <span class="keyword">for</span> item <span class="keyword">in</span> System.App.Data.entities.models</pre></div></div>
+        <span class="property">@addToModelsList</span> item <span class="keyword">for</span> item <span class="keyword">in</span> SystemApp.Data.entities.models</pre></div></div>
             
         </li>
         
@@ -659,9 +669,9 @@ and emptying the <code>$modelsList</code>.</p>
             <span class="property">@warnField</span> <span class="property">@$txtCreate</span>
             <span class="keyword">return</span>
         <span class="keyword">else</span>
-            newId = System.App.DataUtil.normalize newId, <span class="literal">true</span>
+            newId = SystemApp.DataUtil.normalize newId, <span class="literal">true</span>
 
-        System.App.Data.entities.create {friendlyId: newId}, {wait: <span class="literal">true</span>}
+        SystemApp.Data.entities.create {friendlyId: newId}, {wait: <span class="literal">true</span>}
         <span class="property">@clearTextInputs</span>()</pre></div></div>
             
         </li>
@@ -806,9 +816,9 @@ If not entity is being edited, hide the shape template preview.</p>
             <span class="string">"border"</span>: <span class="string">"<span class="subst">#{@model.shapeStrokeWidth()}</span>px solid <span class="subst">#{@model.shapeStroke()}</span>"</span>
             <span class="string">"border-radius"</span>: borderRadius
             <span class="string">"font-size"</span>: <span class="string">"<span class="subst">#{@model.shapeFontSize()}</span>px"</span>
-            <span class="string">"height"</span>: <span class="property">@model</span>.shapeSizeY() * System.App.Settings.Map.gridSizeY - <span class="property">@model</span>.shapeStrokeWidth()
+            <span class="string">"height"</span>: <span class="property">@model</span>.shapeSizeY() * SystemApp.Settings.Map.gridSizeY - <span class="property">@model</span>.shapeStrokeWidth()
             <span class="string">"opacity"</span>: <span class="property">@model</span>.shapeOpacity()
-            <span class="string">"width"</span>: <span class="property">@model</span>.shapeSizeX() * System.App.Settings.Map.gridSizeX - <span class="property">@model</span>.shapeStrokeWidth()
+            <span class="string">"width"</span>: <span class="property">@model</span>.shapeSizeX() * SystemApp.Settings.Map.gridSizeX - <span class="property">@model</span>.shapeStrokeWidth()
 
         titleCss =
             <span class="string">"color"</span>: <span class="property">@model</span>.shapeTitleForeground()
@@ -893,8 +903,8 @@ and save the new value by calling the generic <code>inputOnChange</code>.</p>
         <span class="property">@bindEntities</span>()
 
         $(document).keyup <span class="property">@hasModelListKeyUp</span>
-        <span class="property">@listenTo</span> System.App.Data.entities, <span class="string">"add"</span>, <span class="property">@addToModelsList</span>
-        <span class="property">@listenTo</span> System.App.Data.entities, <span class="string">"remove"</span>, <span class="property">@removeFromModelsList</span></pre></div></div>
+        <span class="property">@listenTo</span> SystemApp.Data.entities, <span class="string">"add"</span>, <span class="property">@addToModelsList</span>
+        <span class="property">@listenTo</span> SystemApp.Data.entities, <span class="string">"remove"</span>, <span class="property">@removeFromModelsList</span></pre></div></div>
             
         </li>
         

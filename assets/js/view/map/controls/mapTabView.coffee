@@ -166,7 +166,9 @@ class SystemApp.MapControlsMapTabView extends SystemApp.BaseView
 
     # Enable or disable editing the current [Map](map.html) settings.
     setEnabled: (value) =>
-        formElements = [@$el, @$txtName, @$txtPaperSizeX, @$txtPaperSizeY, @$txtGridSizeX, @$txtGridSizeY, @$butDelete]
+        formElements = [@$el, @$txtName, @$txtPaperSizeX, @$txtPaperSizeY,
+                        @$txtGridSizeX, @$txtGridSizeY,
+                        @$butInitScript, @$butDelete]
 
         if not value
             for elm in formElements
@@ -220,7 +222,8 @@ class SystemApp.MapControlsMapTabView extends SystemApp.BaseView
 
     # Open the [script editor](scriptEditorView.html) to edit the map's init script.
     showInitScript: =>
-        SystemApp.routes.openScriptEditor @model, "initScript"
+        if @model?
+            SystemApp.routes.openScriptEditor @model, "initScript"
 
 
     # EXPORT AND Z-INDEX
@@ -257,6 +260,8 @@ class SystemApp.MapControlsMapTabView extends SystemApp.BaseView
 
     # Export to current [Map View](mapView.html) to a SVG image on a new browser window.
     exportToSvg: =>
+        return if not @model?
+
         @parentView.parentView.setCurrentElement null
         newWindow = window.open "about:blank", "ExportSVG"
         newWindow.document.title = "Exported SVG: " + @model.name()

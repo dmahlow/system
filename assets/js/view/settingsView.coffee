@@ -106,7 +106,10 @@ class SystemApp.SettingsView extends SystemApp.OverlayView
 
     # When user clicks on a modifier span, highlight it and save to the current
     # [User Settings](userSettings.html).
+    # TODO! Refactor this handler to prevent duplicates, then edit the UserSettings accordingly.
     modifierClick: (e) =>
+        return;
+
         src = $ e.target
         parent = src.parent()
         modifierWrapper = parent.parent()

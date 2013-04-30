@@ -49,18 +49,13 @@
               </a>
             
               
-              <a class="source" href="settings.base.html">
-                settings.base.coffee
+              <a class="source" href="security.html">
+                security.coffee
               </a>
             
               
               <a class="source" href="settings.html">
                 settings.coffee
-              </a>
-            
-              
-              <a class="source" href="settings.default.html">
-                settings.default.coffee
               </a>
             
               
@@ -293,7 +288,7 @@ disconnects from the app.</p>
         <span class="property">@io</span>.sockets.emit <span class="string">"server:error"</span>, {title: title, message: errorMessage.toString().replace(<span class="string">":"</span>, <span class="string">" "</span>)}
 
         <span class="keyword">if</span> settings.General.debug
-            console.warn <span class="string">"Sockets.sendServerError"</span>, errorMessage</pre></div></div>
+            logger.warn <span class="string">"Sockets.sendServerError"</span>, errorMessage</pre></div></div>
             
         </li>
         

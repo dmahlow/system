@@ -49,18 +49,13 @@
               </a>
             
               
-              <a class="source" href="settings.base.html">
-                settings.base.coffee
+              <a class="source" href="security.html">
+                security.coffee
               </a>
             
               
               <a class="source" href="settings.html">
                 settings.coffee
-              </a>
-            
-              
-              <a class="source" href="settings.default.html">
-                settings.default.coffee
               </a>
             
               
@@ -126,7 +121,12 @@
             </div>
             
             <div class="content"><div class='highlight'><pre>    database = require <span class="string">"./database.coffee"</span>
-    settings = require <span class="string">"./settings.coffee"</span></pre></div></div>
+    logger = require <span class="string">"./logger.coffee"</span>
+    manager = require <span class="string">"./manager.coffee"</span>
+    passport = require <span class="string">"passport"</span>
+    security = require <span class="string">"./security.coffee"</span>
+    settings = require <span class="string">"./settings.coffee"</span>
+    sockets = require <span class="string">"./sockets.coffee"</span></pre></div></div>
             
         </li>
         
@@ -198,10 +198,7 @@ Please note that this will only apply if the <code>Settings.Web.pass</code> is t
             </div>
             
             <div class="content"><div class='highlight'><pre>        logentries = process.env.LOGENTRIES_TOKEN
-        settings.Log.logentriesToken = logentries <span class="keyword">if</span> logentries? <span class="keyword">and</span> logentries <span class="keyword">isnt</span> <span class="string">""</span>
-
-    app.configure -&gt;
-        configPaaS() <span class="keyword">if</span> settings.Web.paas</pre></div></div>
+        settings.Log.logentriesToken = logentries <span class="keyword">if</span> logentries? <span class="keyword">and</span> logentries <span class="keyword">isnt</span> <span class="string">""</span></pre></div></div>
             
         </li>
         
@@ -211,6 +208,57 @@ Please note that this will only apply if the <code>Settings.Web.pass</code> is t
               
               <div class="pilwrap ">
                 <a class="pilcrow" href="#section-8">&#182;</a>
+              </div>
+              <p>Common configuration for all envrionments. This will tweak process settings, bind error
+handlers and init all the necessary modules.</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>    app.configure -&gt;
+        process.setMaxListeners <span class="number">30</span>
+        process.<span class="literal">on</span> <span class="string">"uncaughtException"</span>, (err) -&gt; sockets.sendServerError <span class="string">"Proc unhandled exception!"</span>, err
+        app.<span class="literal">on</span> <span class="string">"uncaughtException"</span>, (err) -&gt; sockets.sendServerError <span class="string">"App unhandled exception!"</span>, err</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-9">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-9">&#182;</a>
+              </div>
+              <p>If the <code>Settings.Web.paas</code> is true, then override settings with environmental variables.</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>        configPaaS() <span class="keyword">if</span> settings.Web.paas</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-10">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-10">&#182;</a>
+              </div>
+              <p>Init other modules.</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>        logger.init()
+        manager.init()
+        security.init()</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-11">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-11">&#182;</a>
               </div>
               <p>Sets the app path variables.</p>
 
@@ -223,11 +271,11 @@ Please note that this will only apply if the <code>Settings.Web.pass</code> is t
         </li>
         
         
-        <li id="section-9">
+        <li id="section-12">
             <div class="annotation">
               
               <div class="pilwrap ">
-                <a class="pilcrow" href="#section-9">&#182;</a>
+                <a class="pilcrow" href="#section-12">&#182;</a>
               </div>
               <p>Set view options, use Jade.</p>
 
@@ -240,11 +288,11 @@ Please note that this will only apply if the <code>Settings.Web.pass</code> is t
         </li>
         
         
-        <li id="section-10">
+        <li id="section-13">
             <div class="annotation">
               
               <div class="pilwrap ">
-                <a class="pilcrow" href="#section-10">&#182;</a>
+                <a class="pilcrow" href="#section-13">&#182;</a>
               </div>
               <p>Set express methods.</p>
 
@@ -252,16 +300,33 @@ Please note that this will only apply if the <code>Settings.Web.pass</code> is t
             
             <div class="content"><div class='highlight'><pre>        app.use express.bodyParser()
         app.use express.methodOverride()
-        app.use express.cookieParser()</pre></div></div>
+        app.use express.cookieParser()
+        app.use express.session {secret: settings.Security.sessionKey}</pre></div></div>
             
         </li>
         
         
-        <li id="section-11">
+        <li id="section-14">
             <div class="annotation">
               
               <div class="pilwrap ">
-                <a class="pilcrow" href="#section-11">&#182;</a>
+                <a class="pilcrow" href="#section-14">&#182;</a>
+              </div>
+              <p>Init passport middleware.</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>        app.use passport.initialize()
+        app.use passport.session()</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-15">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-15">&#182;</a>
               </div>
               <p>Express routing.</p>
 
@@ -273,40 +338,40 @@ Please note that this will only apply if the <code>Settings.Web.pass</code> is t
         </li>
         
         
-        <li id="section-12">
+        <li id="section-16">
             <div class="annotation">
               
               <div class="pilwrap ">
-                <a class="pilcrow" href="#section-12">&#182;</a>
+                <a class="pilcrow" href="#section-16">&#182;</a>
               </div>
-              <p>Config for development.</p>
+              <p>Config for development. Do not minify builds, and set debug to <code>true</code> in case it&#39;s unset.</p>
 
             </div>
             
             <div class="content"><div class='highlight'><pre>    app.configure <span class="string">"development"</span>, -&gt;
         settings.General.debug = <span class="literal">true</span> <span class="keyword">if</span> <span class="keyword">not</span> settings.General.debug?
 
-        ConnectAssets = (require <span class="string">"connect-assets"</span>) {build: <span class="literal">true</span>, minifyBuilds: <span class="literal">false</span>}
+        ConnectAssets = (require <span class="string">"connect-assets"</span>) {build: <span class="literal">true</span>, buildDir: <span class="literal">false</span>, minifyBuilds: <span class="literal">false</span>}
         app.use ConnectAssets
         app.use express.errorHandler {dumpExceptions: <span class="literal">true</span>, showStack: <span class="literal">true</span>}</pre></div></div>
             
         </li>
         
         
-        <li id="section-13">
+        <li id="section-17">
             <div class="annotation">
               
               <div class="pilwrap ">
-                <a class="pilcrow" href="#section-13">&#182;</a>
+                <a class="pilcrow" href="#section-17">&#182;</a>
               </div>
-              <p>Config for production. JS and CSS will be minified.</p>
+              <p>Config for production. JS and CSS will be minified. Set debug to <code>false</code> in case it&#39;s unset.</p>
 
             </div>
             
             <div class="content"><div class='highlight'><pre>    app.configure <span class="string">"production"</span>, -&gt;
         settings.General.debug = <span class="literal">false</span> <span class="keyword">if</span> <span class="keyword">not</span> settings.General.debug?
 
-        ConnectAssets = (require <span class="string">"connect-assets"</span>) {build: <span class="literal">true</span>, minifyBuilds: <span class="literal">true</span>}
+        ConnectAssets = (require <span class="string">"connect-assets"</span>) {build: <span class="literal">true</span>, buildDir: <span class="literal">false</span>, minifyBuilds: <span class="literal">true</span>}
         app.use ConnectAssets
         app.use express.errorHandler()</pre></div></div>
             

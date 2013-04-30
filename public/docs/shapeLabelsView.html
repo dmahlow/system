@@ -19,6 +19,11 @@
           <div id="jump_page">
             
               
+              <a class="source" href="admin.html">
+                admin.coffee
+              </a>
+            
+              
               <a class="source" href="api.auditData.html">
                 api.auditData.coffee
               </a>
@@ -134,6 +139,11 @@
               </a>
             
               
+              <a class="source" href="user.html">
+                user.coffee
+              </a>
+            
+              
               <a class="source" href="userSettings.html">
                 userSettings.coffee
               </a>
@@ -149,18 +159,8 @@
               </a>
             
               
-              <a class="source" href="settings.base.html">
-                settings.base.coffee
-              </a>
-            
-              
               <a class="source" href="settings.html">
                 settings.coffee
-              </a>
-            
-              
-              <a class="source" href="settings.default.html">
-                settings.default.coffee
               </a>
             
               
@@ -176,6 +176,11 @@
               
               <a class="source" href="vectors.html">
                 vectors.coffee
+              </a>
+            
+              
+              <a class="source" href="adminView.html">
+                adminView.coffee
               </a>
             
               
@@ -313,6 +318,11 @@
                 startView.coffee
               </a>
             
+              
+              <a class="source" href="variableManagerView.html">
+                variableManagerView.coffee
+              </a>
+            
           </div>
         </li>
       </ul>
@@ -352,7 +362,7 @@ to 5 editable labels (left, top, right, bottom, center).</p>
 
             </div>
             
-            <div class="content"><div class='highlight'><pre><span class="class"><span class="keyword">class</span> <span class="title">System</span>.<span class="title">MapShapeLabelsView</span> <span class="keyword">extends</span> <span class="title">System</span>.<span class="title">BaseView</span></span>
+            <div class="content"><div class='highlight'><pre><span class="class"><span class="keyword">class</span> <span class="title">SystemApp</span>.<span class="title">MapShapeLabelsView</span> <span class="keyword">extends</span> <span class="title">SystemApp</span>.<span class="title">BaseView</span></span>
 
     visible: <span class="literal">true</span>                       <span class="comment"># cached variable to check if labels are visible or hidden</span>
     currentEditingPosition: <span class="literal">null</span>        <span class="comment"># holds the position which is being currently edited by the user</span></pre></div></div>
@@ -496,9 +506,9 @@ to 5 editable labels (left, top, right, bottom, center).</p>
             </div>
             
             <div class="content"><div class='highlight'><pre>    setEvents: =&gt;
-        <span class="property">@listenTo</span> System.App.mapEvents, <span class="string">"edit:toggle"</span>, <span class="property">@toggleEdit</span>
-        <span class="property">@listenTo</span> System.App.mapEvents, <span class="string">"zoom:in"</span>, <span class="property">@onZoom</span>
-        <span class="property">@listenTo</span> System.App.mapEvents, <span class="string">"zoom:out"</span>, <span class="property">@onZoom</span>
+        <span class="property">@listenTo</span> SystemApp.mapEvents, <span class="string">"edit:toggle"</span>, <span class="property">@toggleEdit</span>
+        <span class="property">@listenTo</span> SystemApp.mapEvents, <span class="string">"zoom:in"</span>, <span class="property">@onZoom</span>
+        <span class="property">@listenTo</span> SystemApp.mapEvents, <span class="string">"zoom:out"</span>, <span class="property">@onZoom</span>
 
         <span class="property">@listenTo</span> <span class="property">@model</span>, <span class="string">"change:titleForeground"</span>, <span class="property">@setTitleForeground</span>
         <span class="property">@listenTo</span> <span class="property">@model</span>, <span class="string">"change:foreground"</span>, <span class="property">@setAllForeground</span>
@@ -692,7 +702,7 @@ to its parent <a href="shapeView.html">Shape View</a>.</p>
         x = <span class="number">0</span>
         y = <span class="number">0</span>
         text = value
-        iconSize = System.App.Settings.Map.icoActionsSize
+        iconSize = SystemApp.Settings.Map.icoActionsSize
 
         <span class="keyword">if</span> svg?</pre></div></div>
             
@@ -769,8 +779,8 @@ before recreating it on a new icon.</p>
 
         <span class="keyword">else</span>
 
-            iconSvg = <span class="property">@mapView</span>.paper.image System.App.Settings.Map.icoAddLabelUrl, <span class="number">0</span>, <span class="number">0</span>, iconSize, iconSize
-            iconSvg.attr {<span class="string">"x"</span>: x, <span class="string">"y"</span>: y, cursor: <span class="string">"pointer"</span>, opacity: System.App.Settings.Map.icoActionsOpacity}
+            iconSvg = <span class="property">@mapView</span>.paper.image SystemApp.Settings.Map.icoAddLabelUrl, <span class="number">0</span>, <span class="number">0</span>, iconSize, iconSize
+            iconSvg.attr {<span class="string">"x"</span>: x, <span class="string">"y"</span>: y, cursor: <span class="string">"pointer"</span>, opacity: SystemApp.Settings.Map.icoActionsOpacity}
             iconSvg.click <span class="property">@click</span>
             iconSvg.mouseover <span class="property">@iconMouseOver</span>
             iconSvg.mouseout <span class="property">@iconMouseOut</span>
@@ -811,7 +821,7 @@ before recreating it on a new icon.</p>
             
             <div class="content"><div class='highlight'><pre>        opacity = {<span class="string">"opacity"</span>: <span class="number">1</span>}
         svgs = <span class="property">@svgsLabels</span>()
-        s?.animate(opacity, System.App.Settings.Map.blinkInterval) <span class="keyword">for</span> s <span class="keyword">in</span> svgs</pre></div></div>
+        s?.animate(opacity, SystemApp.Settings.Map.blinkInterval) <span class="keyword">for</span> s <span class="keyword">in</span> svgs</pre></div></div>
             
         </li>
         
@@ -826,9 +836,9 @@ before recreating it on a new icon.</p>
 
             </div>
             
-            <div class="content"><div class='highlight'><pre>        opacity = {<span class="string">"opacity"</span>: System.App.Settings.Map.icoActionsOpacity}
+            <div class="content"><div class='highlight'><pre>        opacity = {<span class="string">"opacity"</span>: SystemApp.Settings.Map.icoActionsOpacity}
         svgs = <span class="property">@svgsIcons</span>()
-        s?.animate(opacity, System.App.Settings.Map.blinkInterval) <span class="keyword">for</span> s <span class="keyword">in</span> svgs</pre></div></div>
+        s?.animate(opacity, SystemApp.Settings.Map.blinkInterval) <span class="keyword">for</span> s <span class="keyword">in</span> svgs</pre></div></div>
             
         </li>
         
@@ -849,7 +859,7 @@ before recreating it on a new icon.</p>
 
         opacity = {<span class="string">"opacity"</span>: <span class="number">0</span>}
         svgs = <span class="property">@svgs</span>()
-        s?.animate(opacity, System.App.Settings.Map.blinkInterval) <span class="keyword">for</span> s <span class="keyword">in</span> svgs</pre></div></div>
+        s?.animate(opacity, SystemApp.Settings.Map.blinkInterval) <span class="keyword">for</span> s <span class="keyword">in</span> svgs</pre></div></div>
             
         </li>
         
@@ -867,7 +877,7 @@ before recreating it on a new icon.</p>
             <div class="content"><div class='highlight'><pre>    hideIcons: =&gt;
         opacity = {<span class="string">"opacity"</span>: <span class="number">0</span>}
         svgs = <span class="property">@svgsIcons</span>()
-        s?.animate(opacity, System.App.Settings.Map.blinkInterval) <span class="keyword">for</span> s <span class="keyword">in</span> svgs</pre></div></div>
+        s?.animate(opacity, SystemApp.Settings.Map.blinkInterval) <span class="keyword">for</span> s <span class="keyword">in</span> svgs</pre></div></div>
             
         </li>
         
@@ -893,9 +903,9 @@ then this method will stop immediately.</p>
 
         parentWidth = <span class="property">@parentView</span>.width()
         parentHeight = <span class="property">@parentView</span>.height()
-        iconSize = System.App.Settings.Map.icoActionsSize
+        iconSize = SystemApp.Settings.Map.icoActionsSize
         iconHalfSize = iconSize / <span class="number">2</span>
-        border = <span class="property">@model</span>.strokeWidth() + System.App.Settings.Map.labelPadding</pre></div></div>
+        border = <span class="property">@model</span>.strokeWidth() + SystemApp.Settings.Map.labelPadding</pre></div></div>
             
         </li>
         
@@ -1034,7 +1044,7 @@ unless the <code>isCreatingLink</code> property of the <a href="mapView.html">Ma
             </div>
             
             <div class="content"><div class='highlight'><pre>    iconMouseOver: -&gt;
-        <span class="keyword">return</span> <span class="keyword">if</span> System.App.mapView.isCreatingLink
+        <span class="keyword">return</span> <span class="keyword">if</span> SystemApp.mapView.isCreatingLink
         <span class="property">@attr</span> {<span class="string">"opacity"</span>: <span class="number">1</span>}</pre></div></div>
             
         </li>
@@ -1052,8 +1062,8 @@ unless the <code>isCreatingLink</code> property of the <a href="mapView.html">Ma
             </div>
             
             <div class="content"><div class='highlight'><pre>    iconMouseOut: -&gt;
-        <span class="keyword">return</span> <span class="keyword">if</span> System.App.mapView.isCreatingLink
-        <span class="property">@attr</span> {<span class="string">"opacity"</span>: System.App.Settings.Map.icoActionsOpacity}</pre></div></div>
+        <span class="keyword">return</span> <span class="keyword">if</span> SystemApp.mapView.isCreatingLink
+        <span class="property">@attr</span> {<span class="string">"opacity"</span>: SystemApp.Settings.Map.icoActionsOpacity}</pre></div></div>
             
         </li>
         
@@ -1215,7 +1225,7 @@ a <a href="variable.html">Variable</a> and set it to the specified label.</p>
         <span class="keyword">if</span> <span class="keyword">not</span> value? <span class="keyword">or</span> value <span class="keyword">is</span> <span class="string">""</span>
             newValue = <span class="string">""</span>
         <span class="keyword">else</span>
-            newValue = System.App.DataUtil.getDataBindingValue value, <span class="property">@parentView</span>
+            newValue = SystemApp.DataUtil.getDataBindingValue value, <span class="property">@parentView</span>
 
         <span class="property">@setLabelValue</span> svg, newValue</pre></div></div>
             
@@ -1250,7 +1260,7 @@ and if so, run these alerts.</p>
         eventIds = <span class="property">@model</span>.auditEventIds()
 
         <span class="keyword">if</span> eventIds? <span class="keyword">and</span> eventIds.length &gt; <span class="number">0</span>
-            <span class="property">@testAuditEvent</span> System.App.Data.auditEvents.get(id) <span class="keyword">for</span> id <span class="keyword">in</span> eventIds</pre></div></div>
+            <span class="property">@testAuditEvent</span> SystemApp.Data.auditEvents.get(id) <span class="keyword">for</span> id <span class="keyword">in</span> eventIds</pre></div></div>
             
         </li>
         
@@ -1308,20 +1318,20 @@ call this to change the <a href="shapeView.html">Shape View</a> appearance.</p>
             </div>
             
             <div class="content"><div class='highlight'><pre>    runEventAction: (event, action) =&gt;
-        System.App.consoleLog <span class="string">"MapShapeLabelsView.runEventAction"</span>, <span class="string">"Audit Event "</span> + event.friendlyId(), action.toString()
+        SystemApp.consoleLog <span class="string">"MapShapeLabelsView.runEventAction"</span>, <span class="string">"Audit Event "</span> + event.friendlyId(), action.toString()
 
         <span class="keyword">switch</span> action.actionType()
             <span class="keyword">when</span> <span class="string">"blink"</span>
                 value = action.actionValue()
-                value = System.App.Settings.AuditEvent.blinkTimes <span class="keyword">if</span> <span class="keyword">not</span> value? <span class="keyword">or</span> value <span class="keyword">is</span> <span class="string">""</span>
+                value = SystemApp.Settings.AuditEvent.blinkTimes <span class="keyword">if</span> <span class="keyword">not</span> value? <span class="keyword">or</span> value <span class="keyword">is</span> <span class="string">""</span>
                 <span class="property">@parentView</span>.slowBlink value
             <span class="keyword">when</span> <span class="string">"colorBg"</span>
                 value = action.actionValue()
-                value = System.App.Settings.AuditEvent.defaultColor <span class="keyword">if</span> <span class="keyword">not</span> value? <span class="keyword">or</span> value <span class="keyword">is</span> <span class="string">""</span>
+                value = SystemApp.Settings.AuditEvent.defaultColor <span class="keyword">if</span> <span class="keyword">not</span> value? <span class="keyword">or</span> value <span class="keyword">is</span> <span class="string">""</span>
                 <span class="property">@parentView</span>.setBackground <span class="keyword">this</span>, value
             <span class="keyword">when</span> <span class="string">"colorBorder"</span>
                 value = action.actionValue()
-                value = System.App.Settings.AuditEvent.defaultColor <span class="keyword">if</span> <span class="keyword">not</span> value? <span class="keyword">or</span> value <span class="keyword">is</span> <span class="string">""</span>
+                value = SystemApp.Settings.AuditEvent.defaultColor <span class="keyword">if</span> <span class="keyword">not</span> value? <span class="keyword">or</span> value <span class="keyword">is</span> <span class="string">""</span>
                 <span class="property">@parentView</span>.setStroke <span class="keyword">this</span>, value</pre></div></div>
             
         </li>
@@ -1468,7 +1478,7 @@ the user can edit or bind values from an <a href="auditData.html">AuditData</a> 
             
             <div class="content"><div class='highlight'><pre>    showEditLabel: (e) =&gt;
         <span class="keyword">if</span> <span class="keyword">not</span> <span class="property">@labelEditView</span>?
-            <span class="property">@labelEditView</span> = <span class="keyword">new</span> System.MapLabelEditView()
+            <span class="property">@labelEditView</span> = <span class="keyword">new</span> SystemApp.MapLabelEditView()
             <span class="property">@labelEditView</span>.render <span class="keyword">this</span>
             <span class="property">@labelEditView</span>.<span class="literal">on</span> <span class="string">"save"</span>, <span class="property">@saveEditLabel</span>
 

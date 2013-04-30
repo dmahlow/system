@@ -19,6 +19,11 @@
           <div id="jump_page">
             
               
+              <a class="source" href="admin.html">
+                admin.coffee
+              </a>
+            
+              
               <a class="source" href="api.auditData.html">
                 api.auditData.coffee
               </a>
@@ -134,6 +139,11 @@
               </a>
             
               
+              <a class="source" href="user.html">
+                user.coffee
+              </a>
+            
+              
               <a class="source" href="userSettings.html">
                 userSettings.coffee
               </a>
@@ -149,18 +159,8 @@
               </a>
             
               
-              <a class="source" href="settings.base.html">
-                settings.base.coffee
-              </a>
-            
-              
               <a class="source" href="settings.html">
                 settings.coffee
-              </a>
-            
-              
-              <a class="source" href="settings.default.html">
-                settings.default.coffee
               </a>
             
               
@@ -176,6 +176,11 @@
               
               <a class="source" href="vectors.html">
                 vectors.coffee
+              </a>
+            
+              
+              <a class="source" href="adminView.html">
+                adminView.coffee
               </a>
             
               
@@ -313,6 +318,11 @@
                 startView.coffee
               </a>
             
+              
+              <a class="source" href="variableManagerView.html">
+                variableManagerView.coffee
+              </a>
+            
           </div>
         </li>
       </ul>
@@ -350,7 +360,7 @@
 
             </div>
             
-            <div class="content"><div class='highlight'><pre><span class="class"><span class="keyword">class</span> <span class="title">System</span>.<span class="title">MapControlsShapeTabView</span> <span class="keyword">extends</span> <span class="title">System</span>.<span class="title">BaseView</span></span>
+            <div class="content"><div class='highlight'><pre><span class="class"><span class="keyword">class</span> <span class="title">SystemApp</span>.<span class="title">MapControlsShapeTabView</span> <span class="keyword">extends</span> <span class="title">SystemApp</span>.<span class="title">BaseView</span></span>
 
     currentBoundView: <span class="literal">null</span> <span class="comment"># holds the current shape being shown</span></pre></div></div>
             
@@ -515,12 +525,27 @@ TODO! Move the data propertyname to the JADE files.</p>
               <div class="pilwrap ">
                 <a class="pilcrow" href="#section-10">&#182;</a>
               </div>
+              <p>Hide editable forms initially.</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>        <span class="property">@toggleForms</span> <span class="literal">false</span></pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-11">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-11">&#182;</a>
+              </div>
               <p>Bind events to DOM and other controls.</p>
 
             </div>
             
             <div class="content"><div class='highlight'><pre>    setEvents: =&gt;
-        <span class="property">@listenTo</span> System.App.mapEvents, <span class="string">"edit:toggle"</span>, <span class="property">@setEnabled</span>
+        <span class="property">@listenTo</span> SystemApp.mapEvents, <span class="string">"edit:toggle"</span>, <span class="property">@setEnabled</span>
 
         fields = [<span class="property">@$txtBackground</span>, <span class="property">@$txtForeground</span>, <span class="property">@$txtTitleForeground</span>, <span class="property">@$txtStroke</span>]
         <span class="keyword">for</span> elm <span class="keyword">in</span> fields
@@ -539,11 +564,11 @@ TODO! Move the data propertyname to the JADE files.</p>
         </li>
         
         
-        <li id="section-11">
+        <li id="section-12">
             <div class="annotation">
               
               <div class="pilwrap ">
-                <a class="pilcrow" href="#section-11">&#182;</a>
+                <a class="pilcrow" href="#section-12">&#182;</a>
               </div>
               <p>Enable or disable editing the current <a href="shape.html">Shape</a> properties.</p>
 
@@ -562,32 +587,15 @@ TODO! Move the data propertyname to the JADE files.</p>
         </li>
         
         
-        <li id="section-12">
+        <li id="section-13">
             <div class="annotation">
               
               <div class="pilwrap for-h2">
-                <a class="pilcrow" href="#section-12">&#182;</a>
+                <a class="pilcrow" href="#section-13">&#182;</a>
               </div>
               <h2>BINDING AND CLEARING</h2>
 
             </div>
-            
-        </li>
-        
-        
-        <li id="section-13">
-            <div class="annotation">
-              
-              <div class="pilwrap ">
-                <a class="pilcrow" href="#section-13">&#182;</a>
-              </div>
-              <p>When the view is first loaded, bind the initial and default values.</p>
-
-            </div>
-            
-            <div class="content"><div class='highlight'><pre>    bindInitial: =&gt;
-        <span class="property">@$selIcon</span>.append $(document.createElement <span class="string">"option"</span>).val(<span class="string">"0"</span>).text(System.App.Messages.noIcon)
-        _.each System.App.Vectors, (item, key) =&gt; <span class="property">@$selIcon</span>.append $(document.createElement <span class="string">"option"</span>).val(key).text(key)</pre></div></div>
             
         </li>
         
@@ -597,6 +605,23 @@ TODO! Move the data propertyname to the JADE files.</p>
               
               <div class="pilwrap ">
                 <a class="pilcrow" href="#section-14">&#182;</a>
+              </div>
+              <p>When the view is first loaded, bind the initial and default values.</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>    bindInitial: =&gt;
+        <span class="property">@$selIcon</span>.append $(document.createElement <span class="string">"option"</span>).val(<span class="string">"0"</span>).text(SystemApp.Messages.noIcon)
+        _.each SystemApp.Vectors, (item, key) =&gt; <span class="property">@$selIcon</span>.append $(document.createElement <span class="string">"option"</span>).val(key).text(key)</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-15">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-15">&#182;</a>
               </div>
               <p>Bind a <a href="shapeView.html">Shape View</a> or <a href="linkView.html">Link View</a> to the control
 and display its editable properties.</p>
@@ -613,11 +638,32 @@ and display its editable properties.</p>
         </li>
         
         
-        <li id="section-15">
+        <li id="section-16">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-16">&#182;</a>
+              </div>
+              <p>Show or hide forms depending on what&#39;s selected on the map.</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>    toggleForms: (visible) =&gt;
+        <span class="keyword">if</span> visible
+            <span class="property">@$el</span>.find(<span class="string">"h6"</span>).hide()
+            <span class="property">@$el</span>.find(<span class="string">"h5,.panel"</span>).show()
+        <span class="keyword">else</span>
+            <span class="property">@$el</span>.find(<span class="string">"h5,.panel"</span>).hide()
+            <span class="property">@$el</span>.find(<span class="string">"h6"</span>).show()</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-17">
             <div class="annotation">
               
               <div class="pilwrap for-h2">
-                <a class="pilcrow" href="#section-15">&#182;</a>
+                <a class="pilcrow" href="#section-17">&#182;</a>
               </div>
               <h2>SHAPE EDITING TAB</h2>
 
@@ -626,11 +672,11 @@ and display its editable properties.</p>
         </li>
         
         
-        <li id="section-16">
+        <li id="section-18">
             <div class="annotation">
               
               <div class="pilwrap ">
-                <a class="pilcrow" href="#section-16">&#182;</a>
+                <a class="pilcrow" href="#section-18">&#182;</a>
               </div>
               <p>Bind all editable properties of the current <a href="shape.html">Shape</a>
 or <a href="link.html">Link</a> to the &quot;Element properties&quot; tab.</p>
@@ -650,17 +696,17 @@ or <a href="link.html">Link</a> to the &quot;Element properties&quot; tab.</p>
         </li>
         
         
-        <li id="section-17">
+        <li id="section-19">
             <div class="annotation">
               
               <div class="pilwrap ">
-                <a class="pilcrow" href="#section-17">&#182;</a>
+                <a class="pilcrow" href="#section-19">&#182;</a>
               </div>
               <p>If the selected item is a shape, then hide all &quot;only-for-links&quot; properties.</p>
 
             </div>
             
-            <div class="content"><div class='highlight'><pre>            <span class="keyword">if</span> <span class="property">@currentBoundView</span>.constructor <span class="keyword">is</span> System.MapShapeView
+            <div class="content"><div class='highlight'><pre>            <span class="keyword">if</span> <span class="property">@currentBoundView</span>.constructor <span class="keyword">is</span> SystemApp.MapShapeView
                 <span class="property">@$selIcon</span>.val <span class="property">@currentBoundView</span>.model.icon()
                 <span class="property">@$txtBackground</span>.val <span class="property">@currentBoundView</span>.model.background()
                 <span class="property">@$txtBackground</span>.keyup()
@@ -669,16 +715,16 @@ or <a href="link.html">Link</a> to the &quot;Element properties&quot; tab.</p>
                 <span class="property">@$chkRoundedCorners</span>.prop <span class="string">"checked"</span>, <span class="property">@currentBoundView</span>.model.roundedCorners()
                 <span class="property">@$el</span>.find(<span class="string">".only-for-links"</span>).hide()
                 <span class="property">@$el</span>.find(<span class="string">".not-for-links"</span>).show()
-                <span class="property">@$butDeleteShape</span>.html System.App.Messages.removeShape</pre></div></div>
+                <span class="property">@$butDeleteShape</span>.html SystemApp.Messages.removeShape</pre></div></div>
             
         </li>
         
         
-        <li id="section-18">
+        <li id="section-20">
             <div class="annotation">
               
               <div class="pilwrap ">
-                <a class="pilcrow" href="#section-18">&#182;</a>
+                <a class="pilcrow" href="#section-20">&#182;</a>
               </div>
               <p>If selected item is a link, then hide all &quot;not-for-links&quot; properties.</p>
 
@@ -690,43 +736,9 @@ or <a href="link.html">Link</a> to the &quot;Element properties&quot; tab.</p>
                 <span class="property">@$chkSmoothLink</span>.prop <span class="string">"checked"</span>, <span class="property">@currentBoundView</span>.model.smooth()
                 <span class="property">@$el</span>.find(<span class="string">".not-for-links"</span>).hide()
                 <span class="property">@$el</span>.find(<span class="string">".only-for-links"</span>).show()
-                <span class="property">@$butDeleteShape</span>.html System.App.Messages.removeLink
+                <span class="property">@$butDeleteShape</span>.html SystemApp.Messages.removeLink
 
             <span class="property">@$zIndexDiv</span>.children(<span class="string">"div"</span>).removeClass(<span class="string">"active"</span>).eq(<span class="property">@currentBoundView</span>.model.zIndex() - <span class="number">1</span>).addClass <span class="string">"active"</span></pre></div></div>
-            
-        </li>
-        
-        
-        <li id="section-19">
-            <div class="annotation">
-              
-              <div class="pilwrap ">
-                <a class="pilcrow" href="#section-19">&#182;</a>
-              </div>
-              <p>Show all editable panels.</p>
-
-            </div>
-            
-            <div class="content"><div class='highlight'><pre>            <span class="property">@$el</span>.children(<span class="string">"h6"</span>).hide()
-            <span class="property">@$el</span>.children(<span class="string">"h5,.panel"</span>).show()
-
-        <span class="keyword">else</span></pre></div></div>
-            
-        </li>
-        
-        
-        <li id="section-20">
-            <div class="annotation">
-              
-              <div class="pilwrap ">
-                <a class="pilcrow" href="#section-20">&#182;</a>
-              </div>
-              <p>No shape(s) selected, so hide panels and show the h6 element with the &quot;no shapes selected text&quot;.</p>
-
-            </div>
-            
-            <div class="content"><div class='highlight'><pre>            <span class="property">@$el</span>.children(<span class="string">"h5,.panel"</span>).hide()
-            <span class="property">@$el</span>.children(<span class="string">"h6"</span>).show()</pre></div></div>
             
         </li>
         
@@ -736,6 +748,38 @@ or <a href="link.html">Link</a> to the &quot;Element properties&quot; tab.</p>
               
               <div class="pilwrap ">
                 <a class="pilcrow" href="#section-21">&#182;</a>
+              </div>
+              <p>Show all editable panels.</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>            <span class="property">@toggleForms</span> <span class="literal">true</span>
+
+        <span class="keyword">else</span></pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-22">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-22">&#182;</a>
+              </div>
+              <p>No shape(s) selected, so hide panels and show the h6 element with the &quot;no shapes selected text&quot;.</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>            <span class="property">@toggleForms</span> <span class="literal">false</span></pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-23">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-23">&#182;</a>
               </div>
               <p>When user is pressing keys on any of the editable text fields, check for
 the pressed key and if it&#39;s Enter, save the value to the model.</p>
@@ -756,11 +800,11 @@ the pressed key and if it&#39;s Enter, save the value to the model.</p>
         </li>
         
         
-        <li id="section-22">
+        <li id="section-24">
             <div class="annotation">
               
               <div class="pilwrap ">
-                <a class="pilcrow" href="#section-22">&#182;</a>
+                <a class="pilcrow" href="#section-24">&#182;</a>
               </div>
               <p>When a text field of the editable properties losts focus, changes or gets clicked,
 saves the new value to the current <a href="shape.html">Shape</a> model.</p>
@@ -782,11 +826,11 @@ saves the new value to the current <a href="shape.html">Shape</a> model.</p>
         </li>
         
         
-        <li id="section-23">
+        <li id="section-25">
             <div class="annotation">
               
               <div class="pilwrap ">
-                <a class="pilcrow" href="#section-23">&#182;</a>
+                <a class="pilcrow" href="#section-25">&#182;</a>
               </div>
               <p>Make sure numeric values are saved as numbers, not string.</p>
 
@@ -805,11 +849,11 @@ saves the new value to the current <a href="shape.html">Shape</a> model.</p>
         </li>
         
         
-        <li id="section-24">
+        <li id="section-26">
             <div class="annotation">
               
               <div class="pilwrap ">
-                <a class="pilcrow" href="#section-24">&#182;</a>
+                <a class="pilcrow" href="#section-26">&#182;</a>
               </div>
               <p>Saves the selected stack lavel (z-index) to the current
 <a href="shape.html">Shape</a>.</p>
@@ -831,11 +875,11 @@ saves the new value to the current <a href="shape.html">Shape</a> model.</p>
         </li>
         
         
-        <li id="section-25">
+        <li id="section-27">
             <div class="annotation">
               
               <div class="pilwrap ">
-                <a class="pilcrow" href="#section-25">&#182;</a>
+                <a class="pilcrow" href="#section-27">&#182;</a>
               </div>
               <p>Clicks the &quot;Remove shape&quot; button, show the &quot;Confirm&quot; button
 right next to it so user can confirm the shape removal.</p>
@@ -849,11 +893,11 @@ right next to it so user can confirm the shape removal.</p>
         </li>
         
         
-        <li id="section-26">
+        <li id="section-28">
             <div class="annotation">
               
               <div class="pilwrap ">
-                <a class="pilcrow" href="#section-26">&#182;</a>
+                <a class="pilcrow" href="#section-28">&#182;</a>
               </div>
               <p>User clicks the &quot;Confirm&quot; button, so proceed with shape removal.</p>
 
@@ -866,11 +910,11 @@ right next to it so user can confirm the shape removal.</p>
         </li>
         
         
-        <li id="section-27">
+        <li id="section-29">
             <div class="annotation">
               
               <div class="pilwrap ">
-                <a class="pilcrow" href="#section-27">&#182;</a>
+                <a class="pilcrow" href="#section-29">&#182;</a>
               </div>
               <p>Deselect any previously selected shapes on the map.</p>
 
@@ -881,11 +925,11 @@ right next to it so user can confirm the shape removal.</p>
         </li>
         
         
-        <li id="section-28">
+        <li id="section-30">
             <div class="annotation">
               
               <div class="pilwrap ">
-                <a class="pilcrow" href="#section-28">&#182;</a>
+                <a class="pilcrow" href="#section-30">&#182;</a>
               </div>
               <p>Hide the &quot;Confirm&quot; shape removal button if user clicks anywhere on the page
 while the button is visible, or after user confirms the deletion.</p>

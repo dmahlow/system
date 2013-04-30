@@ -41,13 +41,13 @@ class Logger
 
         if settings.Log.logentriesToken? and settings.Log.logentriesToken isnt ""
             logentries = require("node-logentries").logger {token: settings.Log.logentriesToken}
-            logentries.winston winstonObj
+            logentries.winston winston
         else
             filename = settings.Paths.logsDir + getLogFilename()
             winston.add winston.transports.File, {timestamp: true, filename: filename, maxsize: settings.Log.maxFileSize}
 
         winston.handleExceptions(new winston.transports.File {filename: settings.Paths.logsDir + "exceptions.log"})
-        winston.info "WINSTON LOGGING STARTED!"
+        winston.info "LOGGING STARTED!"
 
 
     # LOGGING

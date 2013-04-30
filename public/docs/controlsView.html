@@ -19,6 +19,11 @@
           <div id="jump_page">
             
               
+              <a class="source" href="admin.html">
+                admin.coffee
+              </a>
+            
+              
               <a class="source" href="api.auditData.html">
                 api.auditData.coffee
               </a>
@@ -134,6 +139,11 @@
               </a>
             
               
+              <a class="source" href="user.html">
+                user.coffee
+              </a>
+            
+              
               <a class="source" href="userSettings.html">
                 userSettings.coffee
               </a>
@@ -149,18 +159,8 @@
               </a>
             
               
-              <a class="source" href="settings.base.html">
-                settings.base.coffee
-              </a>
-            
-              
               <a class="source" href="settings.html">
                 settings.coffee
-              </a>
-            
-              
-              <a class="source" href="settings.default.html">
-                settings.default.coffee
               </a>
             
               
@@ -176,6 +176,11 @@
               
               <a class="source" href="vectors.html">
                 vectors.coffee
+              </a>
+            
+              
+              <a class="source" href="adminView.html">
+                adminView.coffee
               </a>
             
               
@@ -313,6 +318,11 @@
                 startView.coffee
               </a>
             
+              
+              <a class="source" href="variableManagerView.html">
+                variableManagerView.coffee
+              </a>
+            
           </div>
         </li>
       </ul>
@@ -350,7 +360,7 @@
 
             </div>
             
-            <div class="content"><div class='highlight'><pre><span class="class"><span class="keyword">class</span> <span class="title">System</span>.<span class="title">MapControlsView</span> <span class="keyword">extends</span> <span class="title">System</span>.<span class="title">BaseView</span></span></pre></div></div>
+            <div class="content"><div class='highlight'><pre><span class="class"><span class="keyword">class</span> <span class="title">SystemApp</span>.<span class="title">MapControlsView</span> <span class="keyword">extends</span> <span class="title">SystemApp</span>.<span class="title">BaseView</span></span></pre></div></div>
             
         </li>
         
@@ -412,7 +422,6 @@
     $imgLock: <span class="literal">null</span>             <span class="comment"># the top "Lock" icon</span>
     $imgAutoUpdate: <span class="literal">null</span>       <span class="comment"># the top "Timer auto-update" icon</span>
     $imgFullscreen: <span class="literal">null</span>       <span class="comment"># the top right "Fullscreen" icon</span>
-    $imgRefresh: <span class="literal">null</span>          <span class="comment"># the top right "Refresh" icon</span>
     $tabDivs: <span class="literal">null</span>             <span class="comment"># the tab divs (each div is a tab)</span>
     $tabHeaders: <span class="literal">null</span>          <span class="comment"># to get each h4 element on the tab headers</span></pre></div></div>
             
@@ -448,7 +457,8 @@
         <span class="property">@setChildViews</span>()
         <span class="property">@setEvents</span>()
         <span class="property">@bindInitialState</span>()
-        <span class="property">@resize</span>()</pre></div></div>
+        <span class="property">@resize</span>()
+        <span class="property">@width</span> = <span class="property">@$el</span>.outerWidth()</pre></div></div>
             
         </li>
         
@@ -487,10 +497,10 @@
             </div>
             
             <div class="content"><div class='highlight'><pre>    setChildViews: =&gt;
-        <span class="property">@mapTabView</span> = <span class="keyword">new</span> System.MapControlsMapTabView <span class="keyword">this</span>
-        <span class="property">@entitiesTabView</span> = <span class="keyword">new</span> System.MapControlsEntitiesTabView <span class="keyword">this</span>
-        <span class="property">@shapeTabView</span> = <span class="keyword">new</span> System.MapControlsShapeTabView <span class="keyword">this</span>
-        <span class="property">@inspectorTabView</span> = <span class="keyword">new</span> System.MapControlsInspectorTabView <span class="keyword">this</span></pre></div></div>
+        <span class="property">@mapTabView</span> = <span class="keyword">new</span> SystemApp.MapControlsMapTabView <span class="keyword">this</span>
+        <span class="property">@entitiesTabView</span> = <span class="keyword">new</span> SystemApp.MapControlsEntitiesTabView <span class="keyword">this</span>
+        <span class="property">@shapeTabView</span> = <span class="keyword">new</span> SystemApp.MapControlsShapeTabView <span class="keyword">this</span>
+        <span class="property">@inspectorTabView</span> = <span class="keyword">new</span> SystemApp.MapControlsInspectorTabView <span class="keyword">this</span></pre></div></div>
             
         </li>
         
@@ -514,8 +524,7 @@
         <span class="property">@$chkAutoUpdate</span> = $ <span class="string">"#map-ctl-autoupdate"</span>
         <span class="property">@$imgLock</span> = $ <span class="string">"#top-img-lock"</span>
         <span class="property">@$imgAutoUpdate</span> = $ <span class="string">"#top-img-autoupdate"</span>
-        <span class="property">@$imgFullscreen</span> = $ <span class="string">"#top-img-fullscreen"</span>
-        <span class="property">@$imgRefresh</span> = $ <span class="string">"#top-img-refresh"</span></pre></div></div>
+        <span class="property">@$imgFullscreen</span> = $ <span class="string">"#top-img-fullscreen"</span></pre></div></div>
             
         </li>
         
@@ -536,11 +545,10 @@
         <span class="property">@$tabHeaders</span>.children(<span class="string">"h4"</span>).click <span class="property">@tabClick</span>
         <span class="property">@$chkEditable</span>.change <span class="property">@setEnabled</span>
         <span class="property">@$chkAutoUpdate</span>.change <span class="property">@setAutoUpdate</span>
-        <span class="property">@$imgFullscreen</span>.click <span class="property">@parentView</span>.toggleFullscreen
-        <span class="property">@$imgRefresh</span>.click System.App.routes.refresh
+        <span class="property">@$imgFullscreen</span>.click <span class="property">@toggleFullscreen</span>
 
-        <span class="property">@listenTo</span> System.App.mapEvents, <span class="string">"loaded"</span>, <span class="property">@bindMap</span>
-        <span class="property">@listenTo</span> System.App.mapEvents, <span class="string">"edit:toggle"</span>, <span class="property">@editSetState</span></pre></div></div>
+        <span class="property">@listenTo</span> SystemApp.mapEvents, <span class="string">"loaded"</span>, <span class="property">@bindMap</span>
+        <span class="property">@listenTo</span> SystemApp.mapEvents, <span class="string">"edit:toggle"</span>, <span class="property">@editSetState</span></pre></div></div>
             
         </li>
         
@@ -556,7 +564,7 @@
             </div>
             
             <div class="content"><div class='highlight'><pre>    bindInitialState: =&gt;
-        <span class="property">@$chkAutoUpdate</span>.prop <span class="string">"checked"</span>, System.App.Data.userSettings.mapAuditAutoUpdate()</pre></div></div>
+        <span class="property">@$chkAutoUpdate</span>.prop <span class="string">"checked"</span>, SystemApp.Data.userSettings.mapAutoRefresh()</pre></div></div>
             
         </li>
         
@@ -568,7 +576,7 @@
                 <a class="pilcrow" href="#section-14">&#182;</a>
               </div>
               <p>When window has loaded or resized, call this to resize the map controls accordingly.
-TODO! Properly calculate the diff instead of using the 38 hard coded value.</p>
+TODO! Properly calculate the diff instead of using the hard coded value.</p>
 
             </div>
             
@@ -703,7 +711,7 @@ TODO! Properly calculate the diff instead of using the 38 hard coded value.</p>
         <span class="keyword">if</span> value <span class="keyword">isnt</span> <span class="literal">false</span> <span class="keyword">and</span> (value <span class="keyword">is</span> <span class="literal">undefined</span> <span class="keyword">or</span> value.data <span class="keyword">is</span> <span class="literal">null</span>)
             value = <span class="keyword">not</span> (<span class="property">@$chkEditable</span>.prop <span class="string">"checked"</span>)
 
-        System.App.mapEvents.trigger <span class="string">"edit:toggle"</span>, value</pre></div></div>
+        SystemApp.mapEvents.trigger <span class="string">"edit:toggle"</span>, value</pre></div></div>
             
         </li>
         
@@ -726,18 +734,17 @@ the values of related labels on the map.</p>
         <span class="property">@$chkAutoUpdate</span>.prop <span class="string">"checked"</span>, <span class="keyword">not</span> value
 
         <span class="keyword">if</span> <span class="keyword">not</span> value
-            <span class="property">@checkAuditDataStatus</span>()
-            <span class="property">@$imgAutoUpdate</span>.attr <span class="string">"src"</span>, <span class="string">"images/ico-autoupdate-on.png"</span>
+            <span class="property">@$imgAutoUpdate</span>.removeClass <span class="string">"disabled"</span>
         <span class="keyword">else</span>
-            <span class="property">@$imgAutoUpdate</span>.attr <span class="string">"src"</span>, <span class="string">"images/ico-autoupdate-off.png"</span>
+            <span class="property">@$imgAutoUpdate</span>.addClass <span class="string">"disabled"</span>
 
-        System.App.Data.autoUpdateEnabled = <span class="keyword">not</span> value
-        System.App.Data.userSettings.mapAuditAutoUpdate System.App.Data.autoUpdateEnable
+        SystemApp.Data.autoUpdateEnabled = <span class="keyword">not</span> value
+        SystemApp.Data.userSettings.mapAutoRefresh SystemApp.Data.autoUpdateEnable
 
         <span class="keyword">if</span> <span class="keyword">not</span> value
-            System.App.Data.startTimers()
+            SystemApp.Data.startTimers()
         <span class="keyword">else</span>
-            System.App.Data.stopTimers()</pre></div></div>
+            SystemApp.Data.stopTimers()</pre></div></div>
             
         </li>
         
@@ -748,14 +755,37 @@ the values of related labels on the map.</p>
               <div class="pilwrap ">
                 <a class="pilcrow" href="#section-24">&#182;</a>
               </div>
-              <p>Hide the map controls and show the minimzed icon on the top right corner.</p>
+              <p>Toggle the fullscreen mode on or off. While on fullscreen, the app <a href="menuView.html">Menu</a>
+and <a href="controlsView.html">Map Controls</a> will be hidden.</p>
 
             </div>
             
-            <div class="content"><div class='highlight'><pre>    hide: (e) =&gt;
-        <span class="property">@$el</span>.addClass <span class="string">"hidden"</span>
-        <span class="property">@$el</span>.css {<span class="string">"left"</span>: <span class="string">""</span>, <span class="string">"bottom"</span>: <span class="string">""</span>}
-        <span class="property">@$el</span>.click <span class="property">@show</span></pre></div></div>
+            <div class="content"><div class='highlight'><pre>    toggleFullscreen: (fullscreen) =&gt;
+        <span class="keyword">if</span> <span class="keyword">not</span> fullscreen? <span class="keyword">or</span> fullscreen.originalEvent?
+            fullscreen = $(<span class="string">"#header"</span>).<span class="keyword">is</span>(<span class="string">":visible"</span>)
+
+        <span class="keyword">if</span> fullscreen
+
+            $(<span class="string">"#header"</span>).hide()
+            $(<span class="string">"#footer"</span>).addClass(<span class="string">"transparent"</span>)
+            $(<span class="string">"body"</span>).addClass <span class="string">"fullscreen"</span>
+
+            <span class="property">@$imgFullscreen</span>.attr <span class="string">"src"</span>, <span class="string">"images/ico-showcontrols.png"</span>
+            <span class="property">@hide</span>()
+
+        <span class="keyword">else</span>
+
+            $(<span class="string">"#header"</span>).show()
+            $(<span class="string">"#footer"</span>).removeClass(<span class="string">"transparent"</span>)
+            $(<span class="string">"body"</span>).removeClass <span class="string">"fullscreen"</span>
+
+            <span class="property">@$imgFullscreen</span>.attr <span class="string">"src"</span>, <span class="string">"images/ico-hidecontrols.png"</span>
+            <span class="property">@show</span>()
+
+            <span class="property">@mapDivWidth</span> = $(window).innerWidth()
+            <span class="property">@mapDivHeight</span> = $(window).innerHeight() - $(<span class="string">"#header"</span>).outerHeight() - $(<span class="string">"#footer"</span>).outerHeight()
+            <span class="property">@parentView</span>.$el.css <span class="string">"width"</span>, <span class="property">@mapDivWidth</span>
+            <span class="property">@parentView</span>.$el.css <span class="string">"height"</span>, <span class="property">@mapDivHeight</span></pre></div></div>
             
         </li>
         
@@ -765,6 +795,38 @@ the values of related labels on the map.</p>
               
               <div class="pilwrap ">
                 <a class="pilcrow" href="#section-25">&#182;</a>
+              </div>
+              <p>Save the current fullscreen state on the <a href="userSettings.html">User Settings</a> model.</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>        SystemApp.Data.userSettings.mapFullscreen fullscreen</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-26">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-26">&#182;</a>
+              </div>
+              <p>Hide the map controls and show the minimzed icon on the top right corner.</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>    hide: (e) =&gt;
+        <span class="property">@$el</span>.hide()
+        <span class="property">@width</span> = <span class="number">0</span></pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-27">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-27">&#182;</a>
               </div>
               <p>If an event object is passed then stop its propagation and default behaviour.</p>
 
@@ -776,30 +838,28 @@ the values of related labels on the map.</p>
         </li>
         
         
-        <li id="section-26">
+        <li id="section-28">
             <div class="annotation">
               
               <div class="pilwrap ">
-                <a class="pilcrow" href="#section-26">&#182;</a>
+                <a class="pilcrow" href="#section-28">&#182;</a>
               </div>
               <p>Show the map controls and hide the minimzed icon.</p>
 
             </div>
             
             <div class="content"><div class='highlight'><pre>    show: =&gt;
-        <span class="property">@parentView</span>.toggleFullscreen <span class="literal">false</span>
-
-        <span class="property">@$el</span>.removeClass <span class="string">"hidden"</span>
-        <span class="property">@$el</span>.unbind <span class="string">"click"</span>, <span class="property">@show</span></pre></div></div>
+        <span class="property">@$el</span>.show()
+        <span class="property">@width</span> = <span class="property">@$el</span>.outerWidth()</pre></div></div>
             
         </li>
         
         
-        <li id="section-27">
+        <li id="section-29">
             <div class="annotation">
               
               <div class="pilwrap for-h2">
-                <a class="pilcrow" href="#section-27">&#182;</a>
+                <a class="pilcrow" href="#section-29">&#182;</a>
               </div>
               <h2>TABS HANDLING</h2>
 
@@ -808,11 +868,11 @@ the values of related labels on the map.</p>
         </li>
         
         
-        <li id="section-28">
+        <li id="section-30">
             <div class="annotation">
               
               <div class="pilwrap ">
-                <a class="pilcrow" href="#section-28">&#182;</a>
+                <a class="pilcrow" href="#section-30">&#182;</a>
               </div>
               <p>Hide the map controls and show the minimzed icon on the top right corner.</p>
 

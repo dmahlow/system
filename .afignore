@@ -1,4 +1,7 @@
+.git/
+.idea/
+.openshift/
 atlassian-ide-plugin.xml
 gh-pages/
-logs/*.log
+logs/
 server/settings.json

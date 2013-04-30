@@ -19,6 +19,11 @@
           <div id="jump_page">
             
               
+              <a class="source" href="admin.html">
+                admin.coffee
+              </a>
+            
+              
               <a class="source" href="api.auditData.html">
                 api.auditData.coffee
               </a>
@@ -134,6 +139,11 @@
               </a>
             
               
+              <a class="source" href="user.html">
+                user.coffee
+              </a>
+            
+              
               <a class="source" href="userSettings.html">
                 userSettings.coffee
               </a>
@@ -149,18 +159,8 @@
               </a>
             
               
-              <a class="source" href="settings.base.html">
-                settings.base.coffee
-              </a>
-            
-              
               <a class="source" href="settings.html">
                 settings.coffee
-              </a>
-            
-              
-              <a class="source" href="settings.default.html">
-                settings.default.coffee
               </a>
             
               
@@ -176,6 +176,11 @@
               
               <a class="source" href="vectors.html">
                 vectors.coffee
+              </a>
+            
+              
+              <a class="source" href="adminView.html">
+                adminView.coffee
               </a>
             
               
@@ -313,6 +318,11 @@
                 startView.coffee
               </a>
             
+              
+              <a class="source" href="variableManagerView.html">
+                variableManagerView.coffee
+              </a>
+            
           </div>
         </li>
       </ul>
@@ -351,20 +361,20 @@ and <a href="link.html">Links</a>, and specific sizes and colours.</p>
 
             </div>
             
-            <div class="content"><div class='highlight'><pre><span class="class"><span class="keyword">class</span> <span class="title">System</span>.<span class="title">Map</span> <span class="keyword">extends</span> <span class="title">System</span>.<span class="title">BaseModel</span></span>
+            <div class="content"><div class='highlight'><pre><span class="class"><span class="keyword">class</span> <span class="title">SystemApp</span>.<span class="title">Map</span> <span class="keyword">extends</span> <span class="title">SystemApp</span>.<span class="title">BaseModel</span></span>
     typeName: <span class="string">"Map"</span>
     defaults:
-        background: System.App.Settings.Map.background
-        paperSizeX: System.App.Settings.Map.paperSizeX
-        paperSizeY: System.App.Settings.Map.paperSizeY
-        gridSizeX: System.App.Settings.Map.gridSizeX
-        gridSizeY: System.App.Settings.Map.gridSizeY
-        silent: <span class="literal">false</span>
+        background: SystemApp.Settings.Map.background
+        paperSizeX: SystemApp.Settings.Map.paperSizeX
+        paperSizeY: SystemApp.Settings.Map.paperSizeY
+        gridSizeX: SystemApp.Settings.Map.gridSizeX
+        gridSizeY: SystemApp.Settings.Map.gridSizeY
         thumbnailDate: <span class="keyword">new</span> Date(<span class="number">2000</span>, <span class="number">1</span>, <span class="number">1</span>)
+        silent: <span class="literal">false</span>
 
     relations:
-        links: System.LinkCollection
-        shapes: System.ShapeCollection</pre></div></div>
+        links: SystemApp.LinkCollection
+        shapes: SystemApp.ShapeCollection</pre></div></div>
             
         </li>
         
@@ -556,7 +566,7 @@ and <a href="link.html">Links</a>, and specific sizes and colours.</p>
             
             <div class="content"><div class='highlight'><pre>    shapes: (value) =&gt;
         <span class="keyword">if</span> value?
-            value = <span class="keyword">new</span> System.ShapeCollection value <span class="keyword">if</span> <span class="keyword">not</span> value.typeName?
+            value = <span class="keyword">new</span> SystemApp.ShapeCollection value <span class="keyword">if</span> <span class="keyword">not</span> value.typeName?
             <span class="property">@set</span> <span class="string">"shapes"</span>, value
         <span class="property">@get</span> <span class="string">"shapes"</span></pre></div></div>
             
@@ -575,7 +585,7 @@ and <a href="link.html">Links</a>, and specific sizes and colours.</p>
             
             <div class="content"><div class='highlight'><pre>    links: (value) =&gt;
         <span class="keyword">if</span> value?
-            value = <span class="keyword">new</span> System.LinkCollection value <span class="keyword">if</span> <span class="keyword">not</span> value.typeName?
+            value = <span class="keyword">new</span> SystemApp.LinkCollection value <span class="keyword">if</span> <span class="keyword">not</span> value.typeName?
             <span class="property">@set</span> <span class="string">"links"</span>, value
         <span class="property">@get</span> <span class="string">"links"</span></pre></div></div>
             
@@ -606,12 +616,14 @@ and <a href="link.html">Links</a>, and specific sizes and colours.</p>
               <div class="pilwrap ">
                 <a class="pilcrow" href="#section-16">&#182;</a>
               </div>
-              <p>Helper to get the map&#39;s URL key based on its name: replace all spaces and special characters.</p>
+              <p>Helper to get / set the username who created the map.</p>
 
             </div>
             
-            <div class="content"><div class='highlight'><pre>    urlKey: =&gt;
-        <span class="keyword">return</span> System.App.DataUtil.getUrlKey <span class="property">@name</span>()</pre></div></div>
+            <div class="content"><div class='highlight'><pre>    createdByUser: (value) =&gt;
+        <span class="keyword">if</span> value?
+            <span class="property">@set</span> <span class="string">"createdByUser"</span>, value
+        <span class="property">@get</span> <span class="string">"createdByUser"</span></pre></div></div>
             
         </li>
         
@@ -619,12 +631,15 @@ and <a href="link.html">Links</a>, and specific sizes and colours.</p>
         <li id="section-17">
             <div class="annotation">
               
-              <div class="pilwrap for-h2">
+              <div class="pilwrap ">
                 <a class="pilcrow" href="#section-17">&#182;</a>
               </div>
-              <h2>VALIDATE</h2>
+              <p>Helper to get the map&#39;s URL key based on its name: replace all spaces and special characters.</p>
 
             </div>
+            
+            <div class="content"><div class='highlight'><pre>    urlKey: =&gt;
+        <span class="keyword">return</span> SystemApp.DataUtil.getUrlKey <span class="property">@name</span>()</pre></div></div>
             
         </li>
         
@@ -632,14 +647,12 @@ and <a href="link.html">Links</a>, and specific sizes and colours.</p>
         <li id="section-18">
             <div class="annotation">
               
-              <div class="pilwrap ">
+              <div class="pilwrap for-h2">
                 <a class="pilcrow" href="#section-18">&#182;</a>
               </div>
-              <p>All validation rules should be put inside this method.</p>
+              <h2>VALIDATE</h2>
 
             </div>
-            
-            <div class="content"><div class='highlight'><pre>    validate: (attrs) =&gt;</pre></div></div>
             
         </li>
         
@@ -650,12 +663,11 @@ and <a href="link.html">Links</a>, and specific sizes and colours.</p>
               <div class="pilwrap ">
                 <a class="pilcrow" href="#section-19">&#182;</a>
               </div>
-              <p>Name must be set.</p>
+              <p>All validation rules should be put inside this method.</p>
 
             </div>
             
-            <div class="content"><div class='highlight'><pre>        <span class="keyword">if</span> <span class="keyword">not</span> attrs.name? <span class="keyword">or</span> attrs.name <span class="keyword">is</span> <span class="string">""</span>
-            <span class="keyword">return</span> System.App.Messages.valNameIsRequired</pre></div></div>
+            <div class="content"><div class='highlight'><pre>    validate: (attrs) =&gt;</pre></div></div>
             
         </li>
         
@@ -666,12 +678,12 @@ and <a href="link.html">Links</a>, and specific sizes and colours.</p>
               <div class="pilwrap ">
                 <a class="pilcrow" href="#section-20">&#182;</a>
               </div>
-              <p>Grid size X can&#39;t be too low.</p>
+              <p>Name must be set.</p>
 
             </div>
             
-            <div class="content"><div class='highlight'><pre>        <span class="keyword">if</span> <span class="keyword">not</span> attrs.gridSizeX? <span class="keyword">or</span> attrs.gridSizeX &lt; System.App.Settings.Map.minGridSize
-            <span class="keyword">return</span> System.App.Messages.valGridSizeTooSmall</pre></div></div>
+            <div class="content"><div class='highlight'><pre>        <span class="keyword">if</span> <span class="keyword">not</span> attrs.name? <span class="keyword">or</span> attrs.name <span class="keyword">is</span> <span class="string">""</span>
+            <span class="keyword">return</span> SystemApp.Messages.valNameIsRequired</pre></div></div>
             
         </li>
         
@@ -682,12 +694,12 @@ and <a href="link.html">Links</a>, and specific sizes and colours.</p>
               <div class="pilwrap ">
                 <a class="pilcrow" href="#section-21">&#182;</a>
               </div>
-              <p>Grid size Y can&#39;t be too low.</p>
+              <p>Grid size X can&#39;t be too low.</p>
 
             </div>
             
-            <div class="content"><div class='highlight'><pre>        <span class="keyword">if</span> <span class="keyword">not</span> attrs.gridSizeY? <span class="keyword">or</span> attrs.gridSizeY &lt; System.App.Settings.Map.minGridSize
-            <span class="keyword">return</span> System.App.Messages.valGridSizeTooSmall</pre></div></div>
+            <div class="content"><div class='highlight'><pre>        <span class="keyword">if</span> <span class="keyword">not</span> attrs.gridSizeX? <span class="keyword">or</span> attrs.gridSizeX &lt; SystemApp.Settings.Map.minGridSize
+            <span class="keyword">return</span> SystemApp.Messages.valGridSizeTooSmall</pre></div></div>
             
         </li>
         
@@ -698,12 +710,12 @@ and <a href="link.html">Links</a>, and specific sizes and colours.</p>
               <div class="pilwrap ">
                 <a class="pilcrow" href="#section-22">&#182;</a>
               </div>
-              <p>Paper size X can&#39;t be too low.</p>
+              <p>Grid size Y can&#39;t be too low.</p>
 
             </div>
             
-            <div class="content"><div class='highlight'><pre>        <span class="keyword">if</span> <span class="keyword">not</span> attrs.paperSizeX? <span class="keyword">or</span> attrs.paperSizeX &lt; System.App.Settings.Map.minPaperSize
-            <span class="keyword">return</span> System.App.Messages.valPaperSizeTooSmall</pre></div></div>
+            <div class="content"><div class='highlight'><pre>        <span class="keyword">if</span> <span class="keyword">not</span> attrs.gridSizeY? <span class="keyword">or</span> attrs.gridSizeY &lt; SystemApp.Settings.Map.minGridSize
+            <span class="keyword">return</span> SystemApp.Messages.valGridSizeTooSmall</pre></div></div>
             
         </li>
         
@@ -714,12 +726,12 @@ and <a href="link.html">Links</a>, and specific sizes and colours.</p>
               <div class="pilwrap ">
                 <a class="pilcrow" href="#section-23">&#182;</a>
               </div>
-              <p>Paper size Y can&#39;t be too low.</p>
+              <p>Paper size X can&#39;t be too low.</p>
 
             </div>
             
-            <div class="content"><div class='highlight'><pre>        <span class="keyword">if</span> <span class="keyword">not</span> attrs.paperSizeY? <span class="keyword">or</span> attrs.paperSizeY &lt; System.App.Settings.Map.minPaperSize
-            <span class="keyword">return</span> System.App.Messages.valPaperSizeTooSmall</pre></div></div>
+            <div class="content"><div class='highlight'><pre>        <span class="keyword">if</span> <span class="keyword">not</span> attrs.paperSizeX? <span class="keyword">or</span> attrs.paperSizeX &lt; SystemApp.Settings.Map.minPaperSize
+            <span class="keyword">return</span> SystemApp.Messages.valPaperSizeTooSmall</pre></div></div>
             
         </li>
         
@@ -727,8 +739,24 @@ and <a href="link.html">Links</a>, and specific sizes and colours.</p>
         <li id="section-24">
             <div class="annotation">
               
-              <div class="pilwrap for-h2">
+              <div class="pilwrap ">
                 <a class="pilcrow" href="#section-24">&#182;</a>
+              </div>
+              <p>Paper size Y can&#39;t be too low.</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>        <span class="keyword">if</span> <span class="keyword">not</span> attrs.paperSizeY? <span class="keyword">or</span> attrs.paperSizeY &lt; SystemApp.Settings.Map.minPaperSize
+            <span class="keyword">return</span> SystemApp.Messages.valPaperSizeTooSmall</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-25">
+            <div class="annotation">
+              
+              <div class="pilwrap for-h2">
+                <a class="pilcrow" href="#section-25">&#182;</a>
               </div>
               <h2>SHAPE AND LINK METHODS</h2>
 
@@ -737,11 +765,11 @@ and <a href="link.html">Links</a>, and specific sizes and colours.</p>
         </li>
         
         
-        <li id="section-25">
+        <li id="section-26">
             <div class="annotation">
               
               <div class="pilwrap ">
-                <a class="pilcrow" href="#section-25">&#182;</a>
+                <a class="pilcrow" href="#section-26">&#182;</a>
               </div>
               <p>Removes a <a href="shape.html">Shape</a> from the <code>shapes</code> collection.</p>
 
@@ -756,11 +784,11 @@ and <a href="link.html">Links</a>, and specific sizes and colours.</p>
         </li>
         
         
-        <li id="section-26">
+        <li id="section-27">
             <div class="annotation">
               
               <div class="pilwrap ">
-                <a class="pilcrow" href="#section-26">&#182;</a>
+                <a class="pilcrow" href="#section-27">&#182;</a>
               </div>
               <p>Removes a all links related to the specified <a href="shape.html">Shape</a> from the <code>links</code> collection.</p>
 
@@ -774,11 +802,11 @@ and <a href="link.html">Links</a>, and specific sizes and colours.</p>
         </li>
         
         
-        <li id="section-27">
+        <li id="section-28">
             <div class="annotation">
               
               <div class="pilwrap ">
-                <a class="pilcrow" href="#section-27">&#182;</a>
+                <a class="pilcrow" href="#section-28">&#182;</a>
               </div>
               <p>Remove a <a href="link.html">Link</a> from the <code>links</code> collection.</p>
 
@@ -791,11 +819,11 @@ and <a href="link.html">Links</a>, and specific sizes and colours.</p>
         </li>
         
         
-        <li id="section-28">
+        <li id="section-29">
             <div class="annotation">
               
               <div class="pilwrap ">
-                <a class="pilcrow" href="#section-28">&#182;</a>
+                <a class="pilcrow" href="#section-29">&#182;</a>
               </div>
               <p>Clear all links which have invalid <code>sourceId</code> or <code>targetId</code>.</p>
 
@@ -815,33 +843,15 @@ and <a href="link.html">Links</a>, and specific sizes and colours.</p>
         </li>
         
         
-        <li id="section-29">
+        <li id="section-30">
             <div class="annotation">
               
               <div class="pilwrap for-h2">
-                <a class="pilcrow" href="#section-29">&#182;</a>
+                <a class="pilcrow" href="#section-30">&#182;</a>
               </div>
               <h2>MAP COLLECTION</h2>
 
             </div>
-            
-        </li>
-        
-        
-        <li id="section-30">
-            <div class="annotation">
-              
-              <div class="pilwrap ">
-                <a class="pilcrow" href="#section-30">&#182;</a>
-              </div>
-              <p>Represents a collection of maps.</p>
-
-            </div>
-            
-            <div class="content"><div class='highlight'><pre><span class="class"><span class="keyword">class</span> <span class="title">System</span>.<span class="title">MapCollection</span> <span class="keyword">extends</span> <span class="title">System</span>.<span class="title">BaseCollection</span></span>
-    typeName: <span class="string">"MapCollection"</span>
-    model: System.Map
-    url: System.App.Settings.Map.url</pre></div></div>
             
         </li>
         
@@ -851,6 +861,24 @@ and <a href="link.html">Links</a>, and specific sizes and colours.</p>
               
               <div class="pilwrap ">
                 <a class="pilcrow" href="#section-31">&#182;</a>
+              </div>
+              <p>Represents a collection of maps.</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre><span class="class"><span class="keyword">class</span> <span class="title">SystemApp</span>.<span class="title">MapCollection</span> <span class="keyword">extends</span> <span class="title">SystemApp</span>.<span class="title">BaseCollection</span></span>
+    typeName: <span class="string">"MapCollection"</span>
+    model: SystemApp.Map
+    url: SystemApp.Settings.Map.url</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-32">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-32">&#182;</a>
               </div>
               <p>Set the comparator function to order the maps collection by name.</p>
 

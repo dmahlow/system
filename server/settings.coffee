@@ -25,7 +25,7 @@ class Settings
         # The app title.
         appTitle: "System App"
         # When debug is true, more messages will be logged to file and console.
-        debug: false
+        debug: true
 
 
     # DATABASE

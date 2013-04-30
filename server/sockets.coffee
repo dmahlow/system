@@ -55,11 +55,13 @@ class Sockets
 
     # Send a server error JSON to the clients, containing a title and message.
     sendServerError: (title, errorMessage) =>
+        if not @io?
+            if settings.General.debug
+                console.error "Sockets.sendServerError", "Sockets object was not initiated yet!"
+            return
+
         errorMessage = "Unknown error" if not errorMessage?
         @io.sockets.emit "server:error", {title: title, message: errorMessage.toString().replace(":", " ")}
-
-        if settings.General.debug
-            logger.warn "Sockets.sendServerError", errorMessage
 
 
 # Singleton implementation

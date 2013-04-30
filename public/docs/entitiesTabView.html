@@ -19,6 +19,11 @@
           <div id="jump_page">
             
               
+              <a class="source" href="admin.html">
+                admin.coffee
+              </a>
+            
+              
               <a class="source" href="api.auditData.html">
                 api.auditData.coffee
               </a>
@@ -134,6 +139,11 @@
               </a>
             
               
+              <a class="source" href="user.html">
+                user.coffee
+              </a>
+            
+              
               <a class="source" href="userSettings.html">
                 userSettings.coffee
               </a>
@@ -149,18 +159,8 @@
               </a>
             
               
-              <a class="source" href="settings.base.html">
-                settings.base.coffee
-              </a>
-            
-              
               <a class="source" href="settings.html">
                 settings.coffee
-              </a>
-            
-              
-              <a class="source" href="settings.default.html">
-                settings.default.coffee
               </a>
             
               
@@ -176,6 +176,11 @@
               
               <a class="source" href="vectors.html">
                 vectors.coffee
+              </a>
+            
+              
+              <a class="source" href="adminView.html">
+                adminView.coffee
               </a>
             
               
@@ -313,6 +318,11 @@
                 startView.coffee
               </a>
             
+              
+              <a class="source" href="variableManagerView.html">
+                variableManagerView.coffee
+              </a>
+            
           </div>
         </li>
       </ul>
@@ -351,7 +361,13 @@ map. The overlay is shown only when the map is in edit mode.</p>
 
             </div>
             
-            <div class="content"><div class='highlight'><pre><span class="class"><span class="keyword">class</span> <span class="title">System</span>.<span class="title">MapControlsEntitiesTabView</span> <span class="keyword">extends</span> <span class="title">System</span>.<span class="title">BaseView</span></span></pre></div></div>
+            <div class="content"><div class='highlight'><pre><span class="class"><span class="keyword">class</span> <span class="title">SystemApp</span>.<span class="title">MapControlsEntitiesTabView</span> <span class="keyword">extends</span> <span class="title">SystemApp</span>.<span class="title">BaseView</span></span>
+
+    $list: <span class="literal">null</span>             <span class="comment"># the "Ul" element containing the entity items</span>
+    $txtSearch: <span class="literal">null</span>        <span class="comment"># the "Search" input field</span>
+    $shapeDragger: <span class="literal">null</span>     <span class="comment"># represents a copy of the current shape being dragged to the map</span>
+
+    timerSearch: <span class="literal">null</span>       <span class="comment"># holds the timer to trigger the `search` method</span></pre></div></div>
             
         </li>
         
@@ -359,55 +375,8 @@ map. The overlay is shown only when the map is in edit mode.</p>
         <li id="section-3">
             <div class="annotation">
               
-              <div class="pilwrap ">
+              <div class="pilwrap for-h2">
                 <a class="pilcrow" href="#section-3">&#182;</a>
-              </div>
-              <p>Holds the timer to trigger the <code>search</code> method, so when user
-changs the value of the <code>$txtSearch</code> it will actually search only
-after a few miliseconds.</p>
-
-            </div>
-            
-            <div class="content"><div class='highlight'><pre>    timerSearch: <span class="literal">null</span></pre></div></div>
-            
-        </li>
-        
-        
-        <li id="section-4">
-            <div class="annotation">
-              
-              <div class="pilwrap for-h2">
-                <a class="pilcrow" href="#section-4">&#182;</a>
-              </div>
-              <h2>DOM ELEMENTS</h2>
-
-            </div>
-            
-        </li>
-        
-        
-        <li id="section-5">
-            <div class="annotation">
-              
-              <div class="pilwrap ">
-                <a class="pilcrow" href="#section-5">&#182;</a>
-              </div>
-              <p>Sets the wrapper element and the list container.</p>
-
-            </div>
-            
-            <div class="content"><div class='highlight'><pre>    $list: <span class="literal">null</span>           <span class="comment"># the "Ul" element containing the entity items</span>
-    $txtSearch: <span class="literal">null</span>      <span class="comment"># the "Search" input field</span>
-    $shapeDragger: <span class="literal">null</span>   <span class="comment"># represents a copy of the current shape being dragged to the map</span></pre></div></div>
-            
-        </li>
-        
-        
-        <li id="section-6">
-            <div class="annotation">
-              
-              <div class="pilwrap for-h2">
-                <a class="pilcrow" href="#section-6">&#182;</a>
               </div>
               <h2>INIT AND DISPOSE</h2>
 
@@ -416,11 +385,11 @@ after a few miliseconds.</p>
         </li>
         
         
-        <li id="section-7">
+        <li id="section-4">
             <div class="annotation">
               
               <div class="pilwrap ">
-                <a class="pilcrow" href="#section-7">&#182;</a>
+                <a class="pilcrow" href="#section-4">&#182;</a>
               </div>
               <p>Inits the view. Parent will be the <a href="controlsView.html">Map Controls View</a>.</p>
 
@@ -439,11 +408,11 @@ after a few miliseconds.</p>
         </li>
         
         
-        <li id="section-8">
+        <li id="section-5">
             <div class="annotation">
               
               <div class="pilwrap ">
-                <a class="pilcrow" href="#section-8">&#182;</a>
+                <a class="pilcrow" href="#section-5">&#182;</a>
               </div>
               <p>Dispose the view.</p>
 
@@ -456,11 +425,11 @@ after a few miliseconds.</p>
         </li>
         
         
-        <li id="section-9">
+        <li id="section-6">
             <div class="annotation">
               
               <div class="pilwrap ">
-                <a class="pilcrow" href="#section-9">&#182;</a>
+                <a class="pilcrow" href="#section-6">&#182;</a>
               </div>
               <p>Set the DOM elements cache.</p>
 
@@ -474,11 +443,11 @@ after a few miliseconds.</p>
         </li>
         
         
-        <li id="section-10">
+        <li id="section-7">
             <div class="annotation">
               
               <div class="pilwrap ">
-                <a class="pilcrow" href="#section-10">&#182;</a>
+                <a class="pilcrow" href="#section-7">&#182;</a>
               </div>
               <p>Bind events to DOM and other controls.</p>
 
@@ -494,57 +463,43 @@ after a few miliseconds.</p>
         </li>
         
         
-        <li id="section-11">
+        <li id="section-8">
             <div class="annotation">
               
               <div class="pilwrap ">
-                <a class="pilcrow" href="#section-11">&#182;</a>
+                <a class="pilcrow" href="#section-8">&#182;</a>
               </div>
               <p>When map is loaded on the <a href="mapView.html">map view</a>, bind it here.</p>
 
             </div>
             
-            <div class="content"><div class='highlight'><pre>        <span class="property">@listenTo</span> System.App.mapEvents, <span class="string">"loaded"</span>, <span class="property">@bindMap</span></pre></div></div>
+            <div class="content"><div class='highlight'><pre>        <span class="property">@listenTo</span> SystemApp.mapEvents, <span class="string">"loaded"</span>, <span class="property">@bindMap</span>
+        <span class="property">@listenTo</span> SystemApp.mapEvents, <span class="string">"edit:toggle"</span>, <span class="property">@setEnabled</span></pre></div></div>
             
         </li>
         
         
-        <li id="section-12">
+        <li id="section-9">
             <div class="annotation">
               
               <div class="pilwrap ">
-                <a class="pilcrow" href="#section-12">&#182;</a>
+                <a class="pilcrow" href="#section-9">&#182;</a>
               </div>
               <p>Keep <a href="entityDefinition.html">entities</a> in sync.</p>
 
             </div>
             
-            <div class="content"><div class='highlight'><pre>        <span class="property">@listenTo</span> System.App.Data.entities, <span class="string">"add"</span>, <span class="property">@entityAdded</span>
-        <span class="property">@listenTo</span> System.App.Data.entities, <span class="string">"remove"</span>, <span class="property">@entityRemoved</span></pre></div></div>
+            <div class="content"><div class='highlight'><pre>        <span class="property">@listenTo</span> SystemApp.Data.entities, <span class="string">"add"</span>, <span class="property">@entityAdded</span>
+        <span class="property">@listenTo</span> SystemApp.Data.entities, <span class="string">"remove"</span>, <span class="property">@entityRemoved</span></pre></div></div>
             
         </li>
         
         
-        <li id="section-13">
+        <li id="section-10">
             <div class="annotation">
               
               <div class="pilwrap ">
-                <a class="pilcrow" href="#section-13">&#182;</a>
-              </div>
-              <p>Entity filtering and searching can be triggered by other views.</p>
-
-            </div>
-            
-            <div class="content"><div class='highlight'><pre>        <span class="property">@listenTo</span> System.App.mapEvents, <span class="string">"edit:toggle"</span>, <span class="property">@setEnabled</span></pre></div></div>
-            
-        </li>
-        
-        
-        <li id="section-14">
-            <div class="annotation">
-              
-              <div class="pilwrap ">
-                <a class="pilcrow" href="#section-14">&#182;</a>
+                <a class="pilcrow" href="#section-10">&#182;</a>
               </div>
               <p>Enable or disable adding shapes to the current <a href="map.html">Map</a>.</p>
 
@@ -563,11 +518,11 @@ after a few miliseconds.</p>
         </li>
         
         
-        <li id="section-15">
+        <li id="section-11">
             <div class="annotation">
               
               <div class="pilwrap ">
-                <a class="pilcrow" href="#section-15">&#182;</a>
+                <a class="pilcrow" href="#section-11">&#182;</a>
               </div>
               <p>Toggles the visibility on or off, using a fade effect.</p>
 
@@ -575,18 +530,18 @@ after a few miliseconds.</p>
             
             <div class="content"><div class='highlight'><pre>    toggleVisibility: (visible) =&gt;
         <span class="keyword">if</span> visible
-            <span class="property">@$el</span>.fadeIn System.App.Settings.Map.opacityInterval
+            <span class="property">@$el</span>.fadeIn SystemApp.Settings.Map.opacityInterval
         <span class="keyword">else</span>
-            <span class="property">@$el</span>.fadeOut System.App.Settings.Map.opacityInterval</pre></div></div>
+            <span class="property">@$el</span>.fadeOut SystemApp.Settings.Map.opacityInterval</pre></div></div>
             
         </li>
         
         
-        <li id="section-16">
+        <li id="section-12">
             <div class="annotation">
               
               <div class="pilwrap ">
-                <a class="pilcrow" href="#section-16">&#182;</a>
+                <a class="pilcrow" href="#section-12">&#182;</a>
               </div>
               <p>When window has loaded or resized, set the height to the parent&#39;s height.</p>
 
@@ -598,15 +553,105 @@ after a few miliseconds.</p>
         </li>
         
         
-        <li id="section-17">
+        <li id="section-13">
             <div class="annotation">
               
               <div class="pilwrap for-h2">
-                <a class="pilcrow" href="#section-17">&#182;</a>
+                <a class="pilcrow" href="#section-13">&#182;</a>
               </div>
               <h2>ENTITY SYNC</h2>
 
             </div>
+            
+        </li>
+        
+        
+        <li id="section-14">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-14">&#182;</a>
+              </div>
+              <p>When a new <a href="entityDefinition.html">Entity Definition</a> is added on the
+global <a href="data.html">data</a>, parse it and add its <a href="entityObject.html">objects</a>
+to the <code>$list</code>.</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>    entityAdded: (entityDef) =&gt;
+        <span class="property">@listenTo</span> entityDef, <span class="string">"change:data"</span>, <span class="property">@entityDataChanged</span>
+        <span class="property">@listenTo</span> entityDef.data(), <span class="string">"add"</span>, <span class="property">@entityDataAdded</span>
+        <span class="property">@listenTo</span> entityDef.data(), <span class="string">"remove"</span>, <span class="property">@entityDataRemoved</span>
+
+        <span class="property">@entityDataAdded</span> obj <span class="keyword">for</span> obj <span class="keyword">in</span> entityDef.data().models
+
+        SystemApp.consoleLog <span class="string">"MapControlsEntitiesTabView.entityAdded"</span>, entityDef</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-15">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-15">&#182;</a>
+              </div>
+              <p>When an <a href="entityDefinition.html">Entity Definition</a> is removed from the global
+<a href="data.html">data</a>, also remove its related <a href="entityObject.html">objects</a> from
+the <code>$list</code>.</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>    entityRemoved: (entityDef) =&gt;
+        <span class="property">@stopListening</span> entityDef.data()
+        className = entityDef.friendlyId().toLowerCase()
+        $(<span class="string">".<span class="subst">#{className}</span>"</span>).remove()</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-16">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-16">&#182;</a>
+              </div>
+              <p>If user is dragging / adding a shape which was removed, alert and cancel the dragging.</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>        <span class="keyword">if</span> <span class="property">@$shapeDragger</span>?
+            entity = <span class="property">@$shapeDragger</span>.data <span class="string">"entity"</span>
+            <span class="keyword">if</span> entity.entityDefinitionId() <span class="keyword">is</span> entityDef.friendlyId()
+                <span class="property">@dragCancel</span>()
+
+        SystemApp.consoleLog <span class="string">"MapControlsEntitiesTabView.entityRemoved"</span>, entityDef.friendlyId()</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-17">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-17">&#182;</a>
+              </div>
+              <p>When the entity&#39;s <a href="entityObject.html">data collection</a> gets changed.
+This will effectively remove and re-add all entity objects to the list.
+Do not proceed if a shape is being dragged at the moment.</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>    entityDataChanged: (entityDef) =&gt;
+        <span class="keyword">if</span> <span class="property">@$shapeDragger</span>?
+            SystemApp.consoleLog <span class="string">"MapControlsEntitiesTabView.entityDataChanged"</span>, <span class="string">"Canceled because a shape is being dragged!"</span>, entityDef.friendlyId()
+            <span class="keyword">return</span>
+
+        className = entityDef.friendlyId().toLowerCase()
+        $(<span class="string">".<span class="subst">#{className}</span>"</span>).remove()
+        <span class="property">@addToList</span> obj <span class="keyword">for</span> obj <span class="keyword">in</span> entityDef.data().models
+
+        SystemApp.consoleLog <span class="string">"MapControlsEntitiesTabView.entityDataChanged"</span>, entityDef.friendlyId()</pre></div></div>
             
         </li>
         
@@ -616,27 +661,6 @@ after a few miliseconds.</p>
               
               <div class="pilwrap ">
                 <a class="pilcrow" href="#section-18">&#182;</a>
-              </div>
-              <p>When a new <a href="entityDefinition.html">Entity Definition</a> is added on the
-global <a href="data.html">data</a>, parse it and add its <a href="entityObject.html">objects</a>
-to the <code>$list</code>.</p>
-
-            </div>
-            
-            <div class="content"><div class='highlight'><pre>    entityAdded: (entityDef) =&gt;
-        <span class="property">@listenTo</span> entityDef.data(), <span class="string">"add"</span>, <span class="property">@entityDataAdded</span>
-        <span class="property">@listenTo</span> entityDef.data(), <span class="string">"remove"</span>, <span class="property">@entityDataRemoved</span>
-
-        <span class="property">@entityDataAdded</span> obj <span class="keyword">for</span> obj <span class="keyword">in</span> entityDef.data().models</pre></div></div>
-            
-        </li>
-        
-        
-        <li id="section-19">
-            <div class="annotation">
-              
-              <div class="pilwrap ">
-                <a class="pilcrow" href="#section-19">&#182;</a>
               </div>
               <p>When the entity&#39;s <a href="entityObject.html">data</a> gets new entity objects, add them
 to the <code>$list</code>.</p>
@@ -649,21 +673,33 @@ to the <code>$list</code>.</p>
         </li>
         
         
-        <li id="section-20">
+        <li id="section-19">
             <div class="annotation">
               
               <div class="pilwrap ">
-                <a class="pilcrow" href="#section-20">&#182;</a>
+                <a class="pilcrow" href="#section-19">&#182;</a>
               </div>
-              <p>When an <a href="entityDefinition.html">Entity Definition</a> is removed from the global
-<a href="data.html">data</a>, also remove its related <a href="entityObject.html">objects</a> from
-the <code>$list</code>.</p>
+              <p>When the entity&#39;s <a href="entityObject.html">data</a> has entity objects deleted, remove them
+from the <code>$list</code>.</p>
 
             </div>
             
-            <div class="content"><div class='highlight'><pre>    entityRemoved: (entityDef) =&gt;
-        entityDef.data().<span class="literal">off</span> <span class="string">"add"</span>, <span class="property">@entityDataAdded</span>
-        entityDef.data().<span class="literal">off</span> <span class="string">"remove"</span>, <span class="property">@entityDataRemoved</span></pre></div></div>
+            <div class="content"><div class='highlight'><pre>    entityDataRemoved: (entityObject) =&gt;
+        li = $ SystemApp.Settings.Map.entityListPrefix + entityObject.entityDefinitionId() + <span class="string">"-"</span> + entityObject.id
+        li.remove()</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-20">
+            <div class="annotation">
+              
+              <div class="pilwrap for-h2">
+                <a class="pilcrow" href="#section-20">&#182;</a>
+              </div>
+              <h2>BINDING AND OPTIONS</h2>
+
+            </div>
             
         </li>
         
@@ -673,37 +709,6 @@ the <code>$list</code>.</p>
               
               <div class="pilwrap ">
                 <a class="pilcrow" href="#section-21">&#182;</a>
-              </div>
-              <p>When the entity&#39;s <a href="entityObject.html">data</a> has entity objects deleted, remove them
-from the <code>$list</code>.</p>
-
-            </div>
-            
-            <div class="content"><div class='highlight'><pre>    entityDataRemoved: (entityObject) =&gt;
-        li = $ System.App.Settings.Map.entityListPrefix + entityObject.entityDefinitionId() + <span class="string">"-"</span> + entityObject.id
-        li.remove()</pre></div></div>
-            
-        </li>
-        
-        
-        <li id="section-22">
-            <div class="annotation">
-              
-              <div class="pilwrap for-h2">
-                <a class="pilcrow" href="#section-22">&#182;</a>
-              </div>
-              <h2>BINDING AND OPTIONS</h2>
-
-            </div>
-            
-        </li>
-        
-        
-        <li id="section-23">
-            <div class="annotation">
-              
-              <div class="pilwrap ">
-                <a class="pilcrow" href="#section-23">&#182;</a>
               </div>
               <p>Removes all entity objects from the <code>$list</code>.</p>
 
@@ -715,11 +720,11 @@ from the <code>$list</code>.</p>
         </li>
         
         
-        <li id="section-24">
+        <li id="section-22">
             <div class="annotation">
               
               <div class="pilwrap ">
-                <a class="pilcrow" href="#section-24">&#182;</a>
+                <a class="pilcrow" href="#section-22">&#182;</a>
               </div>
               <p>Bind map to control. Listen to the <code>add</code> and <code>remove</code> events on the
 current map&#39;s shapes collection, and set the entity count.</p>
@@ -739,11 +744,11 @@ current map&#39;s shapes collection, and set the entity count.</p>
         </li>
         
         
-        <li id="section-25">
+        <li id="section-23">
             <div class="annotation">
               
               <div class="pilwrap ">
-                <a class="pilcrow" href="#section-25">&#182;</a>
+                <a class="pilcrow" href="#section-23">&#182;</a>
               </div>
               <p>Add the &quot;custom shape&quot; to the top of the entity list. This shape
 is NOT bound to any entity, thus its values are totally customizable.</p>
@@ -752,18 +757,18 @@ is NOT bound to any entity, thus its values are totally customizable.</p>
             
             <div class="content"><div class='highlight'><pre>    addCustomShapeToList: =&gt;
         li = $(document.createElement <span class="string">"li"</span>)
-        li.attr <span class="string">"id"</span>, System.App.Settings.Map.entityListPrefix + <span class="string">"0"</span>
-        li.html System.App.Settings.Shape.customText
+        li.attr <span class="string">"id"</span>, SystemApp.Settings.Map.entityListPrefix + <span class="string">"0"</span>
+        li.html SystemApp.Settings.Shape.customText
         li.addClass <span class="string">"custom"</span></pre></div></div>
             
         </li>
         
         
-        <li id="section-26">
+        <li id="section-24">
             <div class="annotation">
               
               <div class="pilwrap ">
-                <a class="pilcrow" href="#section-26">&#182;</a>
+                <a class="pilcrow" href="#section-24">&#182;</a>
               </div>
               <p>Add an empty span which represents the entity&#39;s count.</p>
 
@@ -779,11 +784,11 @@ is NOT bound to any entity, thus its values are totally customizable.</p>
         </li>
         
         
-        <li id="section-27">
+        <li id="section-25">
             <div class="annotation">
               
               <div class="pilwrap ">
-                <a class="pilcrow" href="#section-27">&#182;</a>
+                <a class="pilcrow" href="#section-25">&#182;</a>
               </div>
               <p>Bind a single entity to the <code>$list</code> element.</p>
 
@@ -792,10 +797,10 @@ is NOT bound to any entity, thus its values are totally customizable.</p>
             <div class="content"><div class='highlight'><pre>    addToList: (obj) =&gt;
         obj = obj.model <span class="keyword">if</span> obj.model?
         definitionId = obj.entityDefinitionId()
-        definitionId = System.App.Settings.Shape.customId <span class="keyword">if</span> <span class="keyword">not</span> definitionId?
+        definitionId = SystemApp.Settings.Shape.customId <span class="keyword">if</span> <span class="keyword">not</span> definitionId?
 
         li = $(document.createElement <span class="string">"li"</span>)
-        li.attr <span class="string">"id"</span>, System.App.Settings.Map.entityListPrefix + definitionId + <span class="string">"-"</span> + obj.id
+        li.attr <span class="string">"id"</span>, SystemApp.Settings.Map.entityListPrefix + definitionId + <span class="string">"-"</span> + obj.id
         li.attr <span class="string">"title"</span>, obj.title()
         li.html obj.title()
         li.data <span class="string">"entity"</span>, obj
@@ -804,11 +809,11 @@ is NOT bound to any entity, thus its values are totally customizable.</p>
         </li>
         
         
-        <li id="section-28">
+        <li id="section-26">
             <div class="annotation">
               
               <div class="pilwrap ">
-                <a class="pilcrow" href="#section-28">&#182;</a>
+                <a class="pilcrow" href="#section-26">&#182;</a>
               </div>
               <p>Add a small text showing the type of entity (set by the <code>entityDefinitionId</code>).</p>
 
@@ -821,11 +826,11 @@ is NOT bound to any entity, thus its values are totally customizable.</p>
         </li>
         
         
-        <li id="section-29">
+        <li id="section-27">
             <div class="annotation">
               
               <div class="pilwrap ">
-                <a class="pilcrow" href="#section-29">&#182;</a>
+                <a class="pilcrow" href="#section-27">&#182;</a>
               </div>
               <p>Add an empty span which represents the entity&#39;s count.</p>
 
@@ -842,11 +847,11 @@ is NOT bound to any entity, thus its values are totally customizable.</p>
         </li>
         
         
-        <li id="section-30">
+        <li id="section-28">
             <div class="annotation">
               
               <div class="pilwrap ">
-                <a class="pilcrow" href="#section-30">&#182;</a>
+                <a class="pilcrow" href="#section-28">&#182;</a>
               </div>
               <p>Add a list item to the <code>$list</code> entitiies list, and fade it into view.</p>
 
@@ -856,16 +861,16 @@ is NOT bound to any entity, thus its values are totally customizable.</p>
         li.css <span class="string">"display"</span>, <span class="string">"none"</span>
         li.mousedown <span class="property">@dragStart</span>
         <span class="property">@$list</span>.append li
-        li.fadeIn System.App.Settings.Map.opacityInterval</pre></div></div>
+        li.fadeIn SystemApp.Settings.Map.opacityInterval</pre></div></div>
             
         </li>
         
         
-        <li id="section-31">
+        <li id="section-29">
             <div class="annotation">
               
               <div class="pilwrap ">
-                <a class="pilcrow" href="#section-31">&#182;</a>
+                <a class="pilcrow" href="#section-29">&#182;</a>
               </div>
               <p>Helper method to get the entity counter element based on a map shape.
 Return the default &quot;Custom Shape&quot; list item in case no items are found for the
@@ -877,19 +882,19 @@ specified <a href="shape.html">Shape</a>.</p>
         entityDefId = shape.entityDefinitionId()
         entityObjId = shape.entityObjectId()
 
-        li = $ <span class="string">"#"</span> + System.App.Settings.Map.entityListPrefix + entityDefId + <span class="string">"-"</span> + entityObjId
-        li = $ <span class="string">"#"</span> + System.App.Settings.Map.entityListPrefix + <span class="string">"0"</span> <span class="keyword">if</span> li.length &lt; <span class="number">1</span>
+        li = $ <span class="string">"#"</span> + SystemApp.Settings.Map.entityListPrefix + entityDefId + <span class="string">"-"</span> + entityObjId
+        li = $ <span class="string">"#"</span> + SystemApp.Settings.Map.entityListPrefix + <span class="string">"0"</span> <span class="keyword">if</span> li.length &lt; <span class="number">1</span>
 
         <span class="keyword">return</span> li.find <span class="string">"span.count"</span></pre></div></div>
             
         </li>
         
         
-        <li id="section-32">
+        <li id="section-30">
             <div class="annotation">
               
               <div class="pilwrap ">
-                <a class="pilcrow" href="#section-32">&#182;</a>
+                <a class="pilcrow" href="#section-30">&#182;</a>
               </div>
               <p>Reset the shape&#39;s count. This will clear all the <code>span</code> elements inside each list
 item, and reset their values to the correct count based on the current map.</p>
@@ -903,11 +908,11 @@ item, and reset their values to the correct count based on the current map.</p>
         </li>
         
         
-        <li id="section-33">
+        <li id="section-31">
             <div class="annotation">
               
               <div class="pilwrap ">
-                <a class="pilcrow" href="#section-33">&#182;</a>
+                <a class="pilcrow" href="#section-31">&#182;</a>
               </div>
               <p>When shape is added to the map, check its entity type and update
 its &quot;count&quot; to the current value + 1 on the <code>$list</code>.</p>
@@ -920,11 +925,11 @@ its &quot;count&quot; to the current value + 1 on the <code>$list</code>.</p>
         </li>
         
         
-        <li id="section-34">
+        <li id="section-32">
             <div class="annotation">
               
               <div class="pilwrap ">
-                <a class="pilcrow" href="#section-34">&#182;</a>
+                <a class="pilcrow" href="#section-32">&#182;</a>
               </div>
               <p>Check the current count, or consider 0 if the span is empty.</p>
 
@@ -938,11 +943,11 @@ its &quot;count&quot; to the current value + 1 on the <code>$list</code>.</p>
         </li>
         
         
-        <li id="section-35">
+        <li id="section-33">
             <div class="annotation">
               
               <div class="pilwrap ">
-                <a class="pilcrow" href="#section-35">&#182;</a>
+                <a class="pilcrow" href="#section-33">&#182;</a>
               </div>
               <p>Subtract - 1 if the <code>subtract</code> parameter is true, otherwise add + 1.</p>
 
@@ -956,11 +961,11 @@ its &quot;count&quot; to the current value + 1 on the <code>$list</code>.</p>
         </li>
         
         
-        <li id="section-36">
+        <li id="section-34">
             <div class="annotation">
               
               <div class="pilwrap ">
-                <a class="pilcrow" href="#section-36">&#182;</a>
+                <a class="pilcrow" href="#section-34">&#182;</a>
               </div>
               <p>Update the span value.</p>
 
@@ -974,11 +979,11 @@ its &quot;count&quot; to the current value + 1 on the <code>$list</code>.</p>
         </li>
         
         
-        <li id="section-37">
+        <li id="section-35">
             <div class="annotation">
               
               <div class="pilwrap ">
-                <a class="pilcrow" href="#section-37">&#182;</a>
+                <a class="pilcrow" href="#section-35">&#182;</a>
               </div>
               <p>When shape is added to the map, check its entity definition ID and update
 its &quot;count&quot; to the current value + 1 on the <code>$list</code>. If no item is found,
@@ -992,11 +997,11 @@ consider it being a Custom Shape.</p>
         </li>
         
         
-        <li id="section-38">
+        <li id="section-36">
             <div class="annotation">
               
               <div class="pilwrap ">
-                <a class="pilcrow" href="#section-38">&#182;</a>
+                <a class="pilcrow" href="#section-36">&#182;</a>
               </div>
               <p>When shape is removed from the map, check its entity definition ID and update
 its &quot;count&quot; to the current value - 1 on the <code>$list</code>. If no item is found,
@@ -1010,11 +1015,11 @@ consider it being a Custom Shape.</p>
         </li>
         
         
-        <li id="section-39">
+        <li id="section-37">
             <div class="annotation">
               
               <div class="pilwrap ">
-                <a class="pilcrow" href="#section-39">&#182;</a>
+                <a class="pilcrow" href="#section-37">&#182;</a>
               </div>
               <p>Add a shape to the current map. If <code>x</code> and <code>y</code> are passed,
 shape will be added on that specific position on the map.</p>
@@ -1026,10 +1031,10 @@ shape will be added on that specific position on the map.</p>
 
         shapeOptions = {}
 
-        x = (x * <span class="property">@mapView</span>.currentZoom + viewBox.x) / (<span class="property">@model</span>.gridSizeX())
+        x = (x * <span class="property">@mapView</span>.currentZoom + viewBox.x) / (<span class="property">@mapView</span>.model.gridSizeX())
         x = Math.round x
 
-        y = (y * <span class="property">@mapView</span>.currentZoom + viewBox.y) / (<span class="property">@model</span>.gridSizeY())
+        y = (y * <span class="property">@mapView</span>.currentZoom + viewBox.y) / (<span class="property">@mapView</span>.model.gridSizeY())
         y = Math.round y
 
         <span class="keyword">if</span> entityObj?
@@ -1038,11 +1043,11 @@ shape will be added on that specific position on the map.</p>
         </li>
         
         
-        <li id="section-40">
+        <li id="section-38">
             <div class="annotation">
               
               <div class="pilwrap ">
-                <a class="pilcrow" href="#section-40">&#182;</a>
+                <a class="pilcrow" href="#section-38">&#182;</a>
               </div>
               <p>Build the title property text, which should look similar to &quot;#obj.name&quot;.</p>
 
@@ -1051,16 +1056,16 @@ shape will be added on that specific position on the map.</p>
             <div class="content"><div class='highlight'><pre>            title = entityDefinition.objectTitleAttribute()
             sep = title.indexOf <span class="string">","</span>
             title = title.substring(<span class="number">0</span>, sep) <span class="keyword">if</span> title.indexOf(<span class="string">","</span>) &gt; <span class="number">0</span>
-            title = System.App.Settings.General.dataBindingKey + System.App.Settings.EntityObject.bindingNamespace + <span class="string">"."</span> + title</pre></div></div>
+            title = SystemApp.Settings.General.dataBindingKey + SystemApp.Settings.EntityObject.bindingNamespace + <span class="string">"."</span> + title</pre></div></div>
             
         </li>
         
         
-        <li id="section-41">
+        <li id="section-39">
             <div class="annotation">
               
               <div class="pilwrap ">
-                <a class="pilcrow" href="#section-41">&#182;</a>
+                <a class="pilcrow" href="#section-39">&#182;</a>
               </div>
               <p>Set shape options based on the <a href="entityDefinition">entity definition</a> template.</p>
 
@@ -1090,11 +1095,11 @@ shape will be added on that specific position on the map.</p>
         </li>
         
         
-        <li id="section-42">
+        <li id="section-40">
             <div class="annotation">
               
               <div class="pilwrap for-h2">
-                <a class="pilcrow" href="#section-42">&#182;</a>
+                <a class="pilcrow" href="#section-40">&#182;</a>
               </div>
               <h2>DRAGGING SHAPES</h2>
 
@@ -1103,26 +1108,39 @@ shape will be added on that specific position on the map.</p>
         </li>
         
         
-        <li id="section-43">
+        <li id="section-41">
             <div class="annotation">
               
               <div class="pilwrap ">
-                <a class="pilcrow" href="#section-43">&#182;</a>
+                <a class="pilcrow" href="#section-41">&#182;</a>
               </div>
               <p>When user starts dragging a shape from the <code>$list</code>, clone it to the <code>$shapeDragger</code> variable.</p>
 
             </div>
             
             <div class="content"><div class='highlight'><pre>    dragStart: (e) =&gt;
-        <span class="keyword">if</span> <span class="keyword">not</span> <span class="property">@mapView</span>.editEnabled
-            <span class="keyword">return</span>
+        <span class="keyword">if</span> <span class="keyword">not</span> <span class="property">@mapView</span>.editEnabled <span class="keyword">or</span> <span class="keyword">not</span> <span class="property">@mapView</span>.model?
+            <span class="keyword">return</span></pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-42">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-42">&#182;</a>
+              </div>
+              <p>Get the list element and default shape settings.</p>
 
-        li = $ e.target
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>        li = $ e.target
         entity = li.data <span class="string">"entity"</span>
-        background = System.App.Settings.Shape.background
-        foreground = System.App.Settings.Shape.foreground
-        sizeX = System.App.Settings.Shape.gridViewSizeX
-        sizeY = System.App.Settings.Shape.gridViewSizeY
+        background = SystemApp.Settings.Shape.background
+        foreground = SystemApp.Settings.Shape.foreground
+        sizeX = SystemApp.Settings.Shape.gridViewSizeX
+        sizeY = SystemApp.Settings.Shape.gridViewSizeY
 
         <span class="property">@$shapeDragger</span> = li.clone <span class="literal">false</span>
         <span class="property">@$shapeDragger</span>.addClass <span class="string">"shape-dragger"</span>
@@ -1133,12 +1151,25 @@ shape will be added on that specific position on the map.</p>
             foreground = entityDef.get <span class="string">"shapeForeground"</span>
             sizeX = entityDef.get <span class="string">"shapeSizeX"</span>
             sizeY = entityDef.get <span class="string">"shapeSizeY"</span>
-            <span class="property">@$shapeDragger</span>.data <span class="string">"entity"</span>, entity
+            <span class="property">@$shapeDragger</span>.data <span class="string">"entity"</span>, entity</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-43">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-43">&#182;</a>
+              </div>
+              <p>Append CSS to the dragger.</p>
 
-        <span class="property">@$shapeDragger</span>.css <span class="string">"background-color"</span>, background
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>        <span class="property">@$shapeDragger</span>.css <span class="string">"background-color"</span>, background
         <span class="property">@$shapeDragger</span>.css <span class="string">"color"</span>, foreground
-        <span class="property">@$shapeDragger</span>.css <span class="string">"width"</span>, sizeX * <span class="property">@model</span>.gridSizeX() * (<span class="number">1</span> / <span class="property">@mapView</span>.currentZoom) - <span class="number">30</span>
-        <span class="property">@$shapeDragger</span>.css <span class="string">"height"</span>, sizeY * <span class="property">@model</span>.gridSizeY() * (<span class="number">1</span> / <span class="property">@mapView</span>.currentZoom) - <span class="number">10</span>
+        <span class="property">@$shapeDragger</span>.css <span class="string">"width"</span>, sizeX * <span class="property">@mapView</span>.model.gridSizeX() * (<span class="number">1</span> / <span class="property">@mapView</span>.currentZoom) - <span class="number">30</span>
+        <span class="property">@$shapeDragger</span>.css <span class="string">"height"</span>, sizeY * <span class="property">@mapView</span>.model.gridSizeY() * (<span class="number">1</span> / <span class="property">@mapView</span>.currentZoom) - <span class="number">10</span>
 
         li.parent().append <span class="property">@$shapeDragger</span>
 
@@ -1190,11 +1221,12 @@ Finally destroy the <code>$shapeDragger</code>.</p>
         <span class="property">@$shapeDragger</span>?.remove()
         <span class="property">@$shapeDragger</span> = <span class="literal">null</span>
 
-        target = document.elementFromPoint e.pageX, e.pageY
-        tag = target?.tagName
+        <span class="keyword">if</span> e <span class="keyword">isnt</span> <span class="literal">false</span>
+            target = document.elementFromPoint e.pageX, e.pageY
+            tag = target?.tagName
 
-        <span class="keyword">if</span> tag <span class="keyword">is</span> <span class="string">"svg"</span> <span class="keyword">or</span> tag <span class="keyword">is</span> <span class="string">"rect"</span> <span class="keyword">or</span> tag <span class="keyword">is</span> <span class="string">"circle"</span> <span class="keyword">or</span> tag <span class="keyword">is</span> <span class="string">"path"</span>
-            <span class="property">@addShapeToMap</span> entity, e.pageX, e.pageY - <span class="number">45</span>
+            <span class="keyword">if</span> tag <span class="keyword">is</span> <span class="string">"svg"</span> <span class="keyword">or</span> tag <span class="keyword">is</span> <span class="string">"rect"</span> <span class="keyword">or</span> tag <span class="keyword">is</span> <span class="string">"circle"</span> <span class="keyword">or</span> tag <span class="keyword">is</span> <span class="string">"path"</span>
+                <span class="property">@addShapeToMap</span> entity, e.pageX, e.pageY - <span class="number">45</span>
 
         e.preventDefault()
         e.stopPropagation()</pre></div></div>
@@ -1205,12 +1237,17 @@ Finally destroy the <code>$shapeDragger</code>.</p>
         <li id="section-46">
             <div class="annotation">
               
-              <div class="pilwrap for-h2">
+              <div class="pilwrap ">
                 <a class="pilcrow" href="#section-46">&#182;</a>
               </div>
-              <h2>SEARCH AND FILTER</h2>
+              <p>Cancel the dragging action. This will be mainyl called when a particular
+<a href="entityObject.html">entity object</a> being dragged is removed from the server,
+this making it an invalid shape.</p>
 
             </div>
+            
+            <div class="content"><div class='highlight'><pre>    dragCancel: =&gt;
+        <span class="property">@dragStop</span> <span class="literal">false</span></pre></div></div>
             
         </li>
         
@@ -1218,19 +1255,12 @@ Finally destroy the <code>$shapeDragger</code>.</p>
         <li id="section-47">
             <div class="annotation">
               
-              <div class="pilwrap ">
+              <div class="pilwrap for-h2">
                 <a class="pilcrow" href="#section-47">&#182;</a>
               </div>
-              <p>When the search input field gets focus, remove its watermark (if there&#39;s one).</p>
+              <h2>SEARCH AND FILTER</h2>
 
             </div>
-            
-            <div class="content"><div class='highlight'><pre>    searchFocus: =&gt;
-        value = <span class="property">@$txtSearch</span>.val()
-
-        <span class="keyword">if</span> value <span class="keyword">is</span> System.App.Messages.searchWatermark
-            <span class="property">@$txtSearch</span>.removeClass <span class="string">"watermark"</span>
-            <span class="property">@$txtSearch</span>.val <span class="string">""</span></pre></div></div>
             
         </li>
         
@@ -1241,16 +1271,16 @@ Finally destroy the <code>$shapeDragger</code>.</p>
               <div class="pilwrap ">
                 <a class="pilcrow" href="#section-48">&#182;</a>
               </div>
-              <p>When the search input field lots focus, add a watermark in case its text value is empty.</p>
+              <p>When the search input field gets focus, remove its watermark (if there&#39;s one).</p>
 
             </div>
             
-            <div class="content"><div class='highlight'><pre>    searchBlur: =&gt;
+            <div class="content"><div class='highlight'><pre>    searchFocus: =&gt;
         value = <span class="property">@$txtSearch</span>.val()
 
-        <span class="keyword">if</span> value.replace(<span class="string">" "</span>, <span class="string">""</span>) <span class="keyword">is</span> <span class="string">""</span>
-            <span class="property">@$txtSearch</span>.addClass <span class="string">"watermark"</span>
-            <span class="property">@$txtSearch</span>.val System.App.Messages.searchWatermark</pre></div></div>
+        <span class="keyword">if</span> value <span class="keyword">is</span> SystemApp.Messages.searchWatermark
+            <span class="property">@$txtSearch</span>.removeClass <span class="string">"watermark"</span>
+            <span class="property">@$txtSearch</span>.val <span class="string">""</span></pre></div></div>
             
         </li>
         
@@ -1260,6 +1290,26 @@ Finally destroy the <code>$shapeDragger</code>.</p>
               
               <div class="pilwrap ">
                 <a class="pilcrow" href="#section-49">&#182;</a>
+              </div>
+              <p>When the search input field lots focus, add a watermark in case its text value is empty.</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>    searchBlur: =&gt;
+        value = <span class="property">@$txtSearch</span>.val()
+
+        <span class="keyword">if</span> value.replace(<span class="string">" "</span>, <span class="string">""</span>) <span class="keyword">is</span> <span class="string">""</span>
+            <span class="property">@$txtSearch</span>.addClass <span class="string">"watermark"</span>
+            <span class="property">@$txtSearch</span>.val SystemApp.Messages.searchWatermark</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-50">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-50">&#182;</a>
               </div>
               <p>Reset the <code>timerSearch</code>, which will be triggered in X miliseconds
 defined on the <a href="settings.html">Settings</a>. Pressing the Esc key
@@ -1272,16 +1322,16 @@ will clear the search text field.</p>
             <span class="property">@$txtSearch</span>.val <span class="string">""</span>
 
         window.clearTimeout <span class="property">@timerSearch</span> <span class="keyword">if</span> <span class="property">@timerSearch</span> <span class="keyword">isnt</span> <span class="literal">null</span>
-        <span class="property">@timerSearch</span> = window.setTimeout <span class="property">@search</span>, System.App.Settings.General.searchDelay</pre></div></div>
+        <span class="property">@timerSearch</span> = window.setTimeout <span class="property">@search</span>, SystemApp.Settings.General.searchDelay</pre></div></div>
             
         </li>
         
         
-        <li id="section-50">
+        <li id="section-51">
             <div class="annotation">
               
               <div class="pilwrap ">
-                <a class="pilcrow" href="#section-50">&#182;</a>
+                <a class="pilcrow" href="#section-51">&#182;</a>
               </div>
               <p>Filter the elements being shown on the entity list based on the <code>$txtSearch</code> value.
 The &quot;Custom shape...&quot; is always shown on the results.</p>
@@ -1296,11 +1346,11 @@ The &quot;Custom shape...&quot; is always shown on the results.</p>
         </li>
         
         
-        <li id="section-51">
+        <li id="section-52">
             <div class="annotation">
               
               <div class="pilwrap ">
-                <a class="pilcrow" href="#section-51">&#182;</a>
+                <a class="pilcrow" href="#section-52">&#182;</a>
               </div>
               <p>If value is empty, show everything.</p>
 
@@ -1317,11 +1367,11 @@ The &quot;Custom shape...&quot; is always shown on the results.</p>
         </li>
         
         
-        <li id="section-52">
+        <li id="section-53">
             <div class="annotation">
               
               <div class="pilwrap ">
-                <a class="pilcrow" href="#section-52">&#182;</a>
+                <a class="pilcrow" href="#section-53">&#182;</a>
               </div>
               <p>Search for a valid eval separator.</p>
 
@@ -1334,11 +1384,11 @@ The &quot;Custom shape...&quot; is always shown on the results.</p>
         </li>
         
         
-        <li id="section-53">
+        <li id="section-54">
             <div class="annotation">
               
               <div class="pilwrap ">
-                <a class="pilcrow" href="#section-53">&#182;</a>
+                <a class="pilcrow" href="#section-54">&#182;</a>
               </div>
               <p>If the separator is the first character, then search based on the quantity.
 For example =2 will show all entities which are added twice to the map,
@@ -1367,11 +1417,11 @@ and &gt;4 will show all entities which are added more than 4 times to the map.</
         </li>
         
         
-        <li id="section-54">
+        <li id="section-55">
             <div class="annotation">
               
               <div class="pilwrap ">
-                <a class="pilcrow" href="#section-54">&#182;</a>
+                <a class="pilcrow" href="#section-55">&#182;</a>
               </div>
               <p>If the <code>prop</code> variable is empty, do a normal value comparison against the
 text, otherwise it means it&#39;s an evaluation so do a dirty <code>eval()</code>

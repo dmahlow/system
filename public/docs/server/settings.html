@@ -49,18 +49,13 @@
               </a>
             
               
-              <a class="source" href="settings.base.html">
-                settings.base.coffee
+              <a class="source" href="security.html">
+                security.coffee
               </a>
             
               
               <a class="source" href="settings.html">
                 settings.coffee
-              </a>
-            
-              
-              <a class="source" href="settings.default.html">
-                settings.default.coffee
               </a>
             
               
@@ -93,7 +88,7 @@
               <div class="pilwrap for-h2">
                 <a class="pilcrow" href="#section-1">&#182;</a>
               </div>
-              <h2>SERVER SETTINGS (USER DEFINED)</h2>
+              <h2>DEFAULT SERVER SETTINGS</h2>
 
             </div>
             
@@ -106,8 +101,21 @@
               <div class="pilwrap ">
                 <a class="pilcrow" href="#section-2">&#182;</a>
               </div>
-              <p>Has all server side settings for the app. This will override the default
-settings set on the <code>settings.default.coffee</code> file.</p>
+              <p>Has all default server side settings for the app. Please DOT NOT edit
+this file unless you know excatly what you&#39;re doing. To override settings,
+please edit (or create) a <code>settings.json</code> file containing the specific
+keys and values to be overriden.</p>
+<p>For example to specific the application title, set debug mode and the DB
+connection string, the <code>settings.json</code> should look like:
+{
+  &quot;General&quot;: {
+    &quot;appTitle&quot;: &quot;My System App&quot;,
+    &quot;debug&quot;: true
+  },
+  &quot;Database&quot; {
+    &quot;connString&quot;: &quot;mongodb://my-mongodbhost.com/systemapp&quot;
+  }
+}</p>
 
             </div>
             
@@ -138,8 +146,7 @@ settings set on the <code>settings.default.coffee</code> file.</p>
               
             </div>
             
-            <div class="content"><div class='highlight'><pre>    General:
-        appTitle: <span class="string">"Zalando System"</span></pre></div></div>
+            <div class="content"><div class='highlight'><pre>    General:</pre></div></div>
             
         </li>
         
@@ -147,12 +154,14 @@ settings set on the <code>settings.default.coffee</code> file.</p>
         <li id="section-5">
             <div class="annotation">
               
-              <div class="pilwrap for-h2">
+              <div class="pilwrap ">
                 <a class="pilcrow" href="#section-5">&#182;</a>
               </div>
-              <h2>DATABASE</h2>
+              <p>The app title.</p>
 
             </div>
+            
+            <div class="content"><div class='highlight'><pre>        appTitle: <span class="string">"System App"</span></pre></div></div>
             
         </li>
         
@@ -163,11 +172,11 @@ settings set on the <code>settings.default.coffee</code> file.</p>
               <div class="pilwrap ">
                 <a class="pilcrow" href="#section-6">&#182;</a>
               </div>
-              
+              <p>When debug is true, more messages will be logged to file and console.</p>
+
             </div>
             
-            <div class="content"><div class='highlight'><pre>    Database:
-        connString: <span class="string">"mongodb://localhost/servermon"</span></pre></div></div>
+            <div class="content"><div class='highlight'><pre>        debug: <span class="literal">false</span></pre></div></div>
             
         </li>
         
@@ -178,7 +187,7 @@ settings set on the <code>settings.default.coffee</code> file.</p>
               <div class="pilwrap for-h2">
                 <a class="pilcrow" href="#section-7">&#182;</a>
               </div>
-              <h2>WEB</h2>
+              <h2>DATABASE</h2>
 
             </div>
             
@@ -194,10 +203,7 @@ settings set on the <code>settings.default.coffee</code> file.</p>
               
             </div>
             
-            <div class="content"><div class='highlight'><pre>    Web:
-        downloaderUser: <span class="string">"systemapp"</span>
-        downloaderPassword: <span class="string">"MV8pog0DDqB6"</span>
-        downloaderHeaders: {<span class="string">"App-Key"</span>: <span class="string">"epi5h0tmvctr45dtfec7yc27uh2qearb"</span>}</pre></div></div>
+            <div class="content"><div class='highlight'><pre>    Database:</pre></div></div>
             
         </li>
         
@@ -205,12 +211,14 @@ settings set on the <code>settings.default.coffee</code> file.</p>
         <li id="section-9">
             <div class="annotation">
               
-              <div class="pilwrap for-h2">
+              <div class="pilwrap ">
                 <a class="pilcrow" href="#section-9">&#182;</a>
               </div>
-              <h2>Singleton implementation</h2>
+              <p>Connection string to MongoDB.</p>
 
             </div>
+            
+            <div class="content"><div class='highlight'><pre>        connString: <span class="string">"mongodb://localhost/systemapp"</span></pre></div></div>
             
         </li>
         
@@ -221,22 +229,568 @@ settings set on the <code>settings.default.coffee</code> file.</p>
               <div class="pilwrap ">
                 <a class="pilcrow" href="#section-10">&#182;</a>
               </div>
+              <p>Wait for flush to file system before acknowlegement? Default is false.</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>        fsync: <span class="literal">false</span></pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-11">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-11">&#182;</a>
+              </div>
+              <p>For how many hours should the DB keep insert/update/delete logs? Default is 3 hours.</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>        logExpires: <span class="number">3</span></pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-12">
+            <div class="annotation">
+              
+              <div class="pilwrap for-h2">
+                <a class="pilcrow" href="#section-12">&#182;</a>
+              </div>
+              <h2>PATHS</h2>
+
+            </div>
+            
+        </li>
+        
+        
+        <li id="section-13">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-13">&#182;</a>
+              </div>
+              
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>    Paths:</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-14">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-14">&#182;</a>
+              </div>
+              <p>Path to the logs directory.</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>        logsDir: <span class="string">"./logs/"</span></pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-15">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-15">&#182;</a>
+              </div>
+              <p>Path to the Jade views directory.</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>        viewsDir: <span class="string">"./views/"</span></pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-16">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-16">&#182;</a>
+              </div>
+              <p>Path to the public static folder.</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>        publicDir: <span class="string">"./public/"</span></pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-17">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-17">&#182;</a>
+              </div>
+              <p>Path where downloads will be stored.</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>        downloadsDir: <span class="string">"./public/downloads/"</span></pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-18">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-18">&#182;</a>
+              </div>
+              <p>Path where images are stored.</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>        imagesDir: <span class="string">"./public/images/"</span></pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-19">
+            <div class="annotation">
+              
+              <div class="pilwrap for-h2">
+                <a class="pilcrow" href="#section-19">&#182;</a>
+              </div>
+              <h2>LOGGING</h2>
+
+            </div>
+            
+        </li>
+        
+        
+        <li id="section-20">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-20">&#182;</a>
+              </div>
+              
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>    Log:</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-21">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-21">&#182;</a>
+              </div>
+              <p>Delete log files older than 30 days by default.</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>        cleanOldDays: <span class="number">30</span></pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-22">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-22">&#182;</a>
+              </div>
+              <p>Max filesize for each log is around 1MB.</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>        maxFileSize: <span class="number">1024000</span></pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-23">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-23">&#182;</a>
+              </div>
+              <p>Recent log list is for the last 24 hours.</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>        recentMinutes: <span class="number">1440</span></pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-24">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-24">&#182;</a>
+              </div>
+              <p>Token for the Logentries service. If left null or blank, logs will be saved to the /logs
+directory. If a valid token is specified, logs will be saved ONLY to Logentries.</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>        logentriesToken: <span class="literal">null</span></pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-25">
+            <div class="annotation">
+              
+              <div class="pilwrap for-h2">
+                <a class="pilcrow" href="#section-25">&#182;</a>
+              </div>
+              <h2>IMAGES</h2>
+
+            </div>
+            
+        </li>
+        
+        
+        <li id="section-26">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-26">&#182;</a>
+              </div>
+              
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>    Images:</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-27">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-27">&#182;</a>
+              </div>
+              <p>Size of map thumbnails (width).</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>        mapThumbSize: <span class="number">600</span></pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-28">
+            <div class="annotation">
+              
+              <div class="pilwrap for-h2">
+                <a class="pilcrow" href="#section-28">&#182;</a>
+              </div>
+              <h2>WEB</h2>
+
+            </div>
+            
+        </li>
+        
+        
+        <li id="section-29">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-29">&#182;</a>
+              </div>
+              
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>    Web:</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-30">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-30">&#182;</a>
+              </div>
+              <p>The amount of time to wait for new connection requests, in case the internet / network is broken.</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>        connRestartInterval: <span class="number">60000</span></pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-31">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-31">&#182;</a>
+              </div>
+              <p>Timeout to wait for downloads to complete</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>        downloadTimeout: <span class="number">30000</span></pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-32">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-32">&#182;</a>
+              </div>
+              <p>Auth user and password when downloading external contents (Audit Data and Entity Objects, for example).
+Please note that whis will be used for ALL requests. If you need to pass credentials for only a specific
+URL, use the <code>http://username:password@domain.com/path</code> format on that particular URL.</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>        downloaderUser: <span class="literal">null</span>
+        downloaderPassword: <span class="literal">null</span></pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-33">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-33">&#182;</a>
+              </div>
+              <p>Headers to add to requests when downloading external contents, accepting key:value properties.
+For example the Pingdom API requires an <code>App-Key</code> to be passed, so you could add here:
+{&quot;App-Key&quot;:&quot;my-pingdom-api-key&quot;}.</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>        downloaderHeaders: <span class="literal">null</span></pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-34">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-34">&#182;</a>
+              </div>
+              <p>The cache interval to refresh entities JSON external files (DataCenter, Machine, Host and Service).</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>        entitiesCacheInterval: <span class="number">30000</span></pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-35">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-35">&#182;</a>
+              </div>
+              <p>The minimum time between external data refresh, in seconds.</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>        minimumRefreshInterval: <span class="number">3</span></pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-36">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-36">&#182;</a>
+              </div>
+              <p>If true, all JSON response will be minified before passed to the clients.</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>        minifyJsonResponse: <span class="literal">true</span></pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-37">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-37">&#182;</a>
+              </div>
+              <p>If true, some settings might be overriden by cloud environment variables (AppFog and OpenShift, for example).
+Web IP, port, and logentriesToken are among the settings that might be altered if <code>paas</code> is true.</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>        paas: <span class="literal">true</span></pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-38">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-38">&#182;</a>
+              </div>
+              <p>The Node.js port to bind the app to.</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>        port: <span class="number">3003</span></pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-39">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-39">&#182;</a>
+              </div>
+              <p>Default session security key.</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>        sessionKey: <span class="string">"zal"</span></pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-40">
+            <div class="annotation">
+              
+              <div class="pilwrap for-h2">
+                <a class="pilcrow" href="#section-40">&#182;</a>
+              </div>
+              <h2>SECURITY</h2>
+
+            </div>
+            
+        </li>
+        
+        
+        <li id="section-41">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-41">&#182;</a>
+              </div>
+              
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>    Security:</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-42">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-42">&#182;</a>
+              </div>
+              <p>Key used for session encryption.</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>        sessionKey: <span class="string">"Ss!0nPROtw"</span></pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-43">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-43">&#182;</a>
+              </div>
+              <p>Key used for user password encryption.</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>        userPasswordKey: <span class="string">"P4sssYs13!"</span></pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-44">
+            <div class="annotation">
+              
+              <div class="pilwrap for-h2">
+                <a class="pilcrow" href="#section-44">&#182;</a>
+              </div>
+              <h2>Singleton implementation.</h2>
+
+            </div>
+            
+        </li>
+        
+        
+        <li id="section-45">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-45">&#182;</a>
+              </div>
               
             </div>
             
             <div class="content"><div class='highlight'><pre>Settings.<span class="function"><span class="title">getInstance</span></span> = -&gt;
     <span class="keyword">if</span> <span class="keyword">not</span> <span class="property">@instance</span>?
-        <span class="function"><span class="title">xtend</span></span> = (source, target) -&gt;
-            <span class="keyword">for</span> prop, value <span class="keyword">of</span> source
-                <span class="keyword">if</span> value?.constructor <span class="keyword">is</span> Object
-                    target[prop] = {} <span class="keyword">if</span> <span class="keyword">not</span> target[prop]?
-                    xtend source[prop], target[prop]
-                <span class="keyword">else</span>
-                    target[prop] = source[prop] <span class="keyword">if</span> <span class="keyword">not</span> target[prop]?
-
         <span class="property">@instance</span> = <span class="keyword">new</span> Settings()
-        settingsDefault = require <span class="string">"./settings.default.coffee"</span>
-        xtend settingsDefault, <span class="property">@instance</span>
+
+        fs = require <span class="string">"fs"</span>
+        filename = __dirname + <span class="string">"/settings.json"</span></pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-46">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-46">&#182;</a>
+              </div>
+              <p>Check if there&#39;s a <code>settings.json</code> file, and overwrite settings if so.</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>        <span class="keyword">if</span> fs.existsSync filename
+            settingsJson = require filename</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-47">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-47">&#182;</a>
+              </div>
+              <p>Helper function to overwrite settings.</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>            <span class="function"><span class="title">xtend</span></span> = (source, target) -&gt;
+                <span class="keyword">for</span> prop, value <span class="keyword">of</span> source
+                    <span class="keyword">if</span> value?.constructor <span class="keyword">is</span> Object
+                        xtend source[prop], target[prop]
+                    <span class="keyword">else</span>
+                        target[prop] = source[prop]
+
+            xtend settingsJson, <span class="property">@instance</span>
 
     <span class="keyword">return</span> <span class="property">@instance</span>
 
