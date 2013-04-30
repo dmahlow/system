@@ -32,7 +32,7 @@ body
 {
     background: rgb(0, 0, 0);
     color: rgb(250, 240, 230);
-    font: 16px/1.5 "OpenSansRegular", "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font: 16px/1.5 "OpenSansRegular", "Helvetica Neue", Helvetica, Arial;
     margin: 0;
     padding: 0;
     -webkit-font-smoothing: antialiased;
@@ -42,7 +42,7 @@ h1, h2, h3, h4, h5, h6
 {
     color: rgb(255, 255, 255);
     margin: 0 0 10px;
-    font-family: 'OpenSansRegular', "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-family: 'OpenSansRegular', "Helvetica Neue", Helvetica, Arial;
     font-weight: normal;
 }
 
@@ -108,9 +108,14 @@ ul
     list-style-image: url("../images/bullet.png");
 }
 
+ul.extramargin li
+{
+    margin-bottom: 10px;
+}
+
 strong
 {
-    font-family: 'OpenSansBold', "Helvetica Neue", Helvetica, Arial, sans-serif !important;
+    font-family: 'OpenSansBold', "Helvetica Neue", Helvetica, Arial !important;
     font-weight: normal;
 }
 
@@ -170,14 +175,14 @@ pre code
 dt
 {
     color: #F0E7D5;
-    font-family: 'OpenSansBold', "Helvetica Neue", Helvetica, Arial, sans-serif !important;
+    font-family: 'OpenSansBold', "Helvetica Neue", Helvetica, Arial !important;
     font-weight: normal;
 }
 
 #wrapper
 {
     margin: 0 auto 0 auto;
-    padding: 0 10px 30px 10px;
+    padding: 0 10px 0 10px;
     position: relative;
     text-align: left;
 }
@@ -230,9 +235,45 @@ dt
     text-align: left;
 }
 
+#topdemo
+{
+    font-family: 'OpenSansBold', "Helvetica Neue", Helvetica, Arial;
+    margin: auto;
+    text-align: center;
+}
+
+#footer
+{
+    background-color: transparent !important;
+    margin: 20px auto 20px auto;
+}
+
+#footer > img
+{
+    float: left;
+    margin-right: 10px;
+}
+
+#footer > div
+{
+    margin: 6px 0 0 0;
+}
+
+#footer a
+{
+    color: #EE8027;
+    float: right;
+    margin-left: 12px;
+}
+
+#footer a:hover
+{
+    color: rgb(250, 240, 230);
+}
+
 .panel
 {
-    background: rgb(33, 33, 33);
+    background-color: rgb(33, 33, 33);
     margin: auto;
     max-width: 770px;
     padding: 10px;

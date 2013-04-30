@@ -34,108 +34,168 @@
                    visual alerts depending on the monitored values.</p>
             </div>
         </div>
+        <div id="topdemo">
+            Want to see it in action? Check the <a href="http://systemapp.io/demo">online demo</a>!
+        </div>
         <div id="contents">
             <h2>Installation</h2>
-            <div class="panel">
-                <p>Felling lazy? Simply download and run the <a href="https://raw.github.com/zalando/system/master/install.sh" title="Download the System App install script.">./install.sh</a> file and let the magic happen.</p>
-                <ol>
+            <div class="panel installation">
+                <p>Felling lazy? Simply download and run the <a href="https://raw.github.com/zalando/system/master/install.sh" title="Download the System App install script.">install.sh</a> file and let the magic happen.</p>
+                <ul class="extramargin">
                     <li>
-                        <code>$ curl https://raw.github.com/zalando/system/master/install.sh
-                        <br />or<br />
-                        $ wget https://raw.github.com/zalando/system/master/install.sh</code>
+                        Download...<br />
+                        <code>$ curl https://raw.github.com/zalando/system/master/install.sh</code>
                     </li>
                     <li>
+                        Make it executable...<br />
                         <code>$ chmod +x install.sh</code>
                     </li>
                     <li>
+                        Run!<br />
                         <code>$ ./install.sh</code>
                     </li>
-                </ol>
-
-                <p>The script should tell you which dependencies are missing and ask if you want to install them.</p>
+                </ul>
+                <p>
+                    The script should tell you which dependencies are missing, ask if you want to
+                    install them, download the latest stable source code and install required modules.
+                </p>
 
                 <h3>Installing manually</h3>
 
                 <p>
-                    If you want to install it manualy, please make sure you have Node.js, MongoDB and
-                    ImageMagick on your system.
+                    If you want to install it manually, please make sure you have installed:
+                </p>
+                <ul>
+                    <li>Node.js (0.8.x +)</li>
+                    <li>MongoDB (1.8.2 +)</li>
+                    <li>ImageMagick (optional to generate map thumbnails)</li>
+                </ul>
+                <p>
+                    Download the latest source code from GitHub:
+                    <br />
+                    <code>$ git clone https://github.com/zalando/system.git ./</code>
                 </p>
 
             </div>
 
             <h2>Configuring the server</h2>
-            <div class="panel">
+            <div class="panel configuring">
                 <p>
-                    All server configuration settings are located on the file <code>server/settings.coffee</code>.
+                    All default server configuration settings are located on the file
+                    <code>server/settings.coffee</code>. If you want to override settings, please edit (or create)
+                    the <code>server/settings.json</code> file with your own values. Detailed instructions are
+                    available on top of the <code>server/settings.coffee</code> file.
+                </p>
+                <p>
                     The following <code>System.Settings</code> keys will certainly need your attention:
                 </p>
 
                 <h5>Settings.General</h5>
-                <p>
-                    Change the <code>appTitle</code> and set your desired title. Something like "MyCompany System".
-                    Make sure the <code>debug</code> is set to false before you deploy the app to production!
-                </p>
+                <ul>
+                    <li>
+                        <code>appTitle</code> Sets the desired title for the app, something like "MyCompany System".
+                    </li>
+                    <li>
+                        <code>debug</code> This should be set to false on production environments for obvious reasons.
+                    </li>
+                </ul>
 
                 <h5>Settings.Database</h5>
+                <ul>
+                    <li>
+                        <code>connString</code> MongoDB connection string. Default is host "localhost", db "systemapp".
+                    </li>
+                </ul>
+
+
+                <h5>Settings.Web</h5>
+                <ul>
+                    <li>
+                        <code>port</code> The port used by the Node.js server, default is 3003.
+                    </li>
+                    <li>
+                        <code>paas</code> Set to true if you're deploying to common PaaS services. More info below.
+                    </li>
+                </ul>
+
+                <h5>Deploying to PaaS</h5>
                 <p>
-                    She <code>connString</code> with the MongoDB connection string. If you have MongoDB installed locally with no user and password,
-                    the default should work fine.
+                    The System App can be easily deployed to AppFog, OpenShift and Heroku. The only requirement is
+                    that you set <code>Settings.Web.paas</code> to true.
+                    In this case it will overwrite a few settings with environment variables, like:
+                </p>
+                <ul>
+                    <li>
+                        The Node.js web <code>port</code> will be automatically set.
+                    </li>
+                    <li>
+                        If your PaaS app has a MongoDB bound to it, the <code>connString</code> will be automatically set.
+                    </li>
+                    <li>
+                        It will use Logentries for logging if you have enabled it on your AppFog account.
+                    </li>
+                </ul>
+                <p>
+                    The <code>paas</code> setting is true by default.
+                </p>
+            </div>
+
+            <h2>Running the app</h2>
+            <div class="panel starting">
+                <p>To start the System App server, run the server.js file using node:</p>
+                <p><code>$ node server.js</code></p>
+                <p>
+                    This will start the app server. If you haven't touched the settings, opening
+                    http://localhost:3003 on your browser should work.
                 </p>
 
-                <h5>Settings.Paths (all)</h5>
-                <p>The default paths should work unless you have very specific restrictions on your environment.
-                   Edit these values in case you need to save or fetch data from different folders,
-                   for example saving the app logs on a global "/logs" location.</p>
-
-                <h5>Settings.Web.defaultPort</h5>
-
-                <p>Port used by Node.js. The default 3003 should work fine if you have no firewall rules.</p>
-
-                <h2>Starting the server</h2>
-
-                <p>To start the <em>System App</em>:</p>
-
-                <p><code>$ coffee server.coffee</code></p>
-
-                <p>This will start Node.js under the port 3003 (or whatever port you have set on <code>Settings.Web.defaultPort</code>).
-                   In case you don't have installed the module <em>coffee-script</em> globally, you'll have to run it from within the
-                   node_modules directory, like this:</p>
-
-                <p><code>$ ./node_modules/coffee-script/bin/coffee server.coffee</code></p>
-
-                <p>If it throws an error or if you can't access the app on the browser then you might have something wrong
-                   on your <code>server/settings.coffee</code> file, or a firewall issue.</p>
-
                 <h3>Production vs. Debugging</h3>
+                <p>
+                    By default Node.js will run in "Debug mode". If you're deploying and running on production,
+                    you must set the <code>NODE_ENV</code> to "production" to avoid having all the debugging statements
+                    logged to the console. Putting it simple:
+                </p>
+                <p><code>$ NODE_ENV=production node server.js</code></p>
+                <p>
+                    Please note that the System App will enter debug mode automatically when it runs under
+                    the <code>localhost</code> or a <code>.local</code> hostname. In debug mode, most actions
+                    and procedures will be logged with details so performance might be affected.
+                </p>
 
-                <p>By default Node.js will run in "Debug mode". If you're deploying and running on production,
-                   you must set the <code>NODE_ENV</code> to "production" to avoid having all the debugging statements
-                   logged to the console. Putting it simple:</p>
-
-                <p><code>$ NODE_ENV=production coffee server.coffee</code></p>
-
-                <p>Please note that the <em>System App</em> will enter debug mode automatically when it runs under
-                   the <code>localhost</code> hostname. In debug mode, most actions and procedures will be logged to the
-                   console, both on the server and the client side.</p>
-
-                <h3>Running the server "forever"</h3>
-
-                <p>If you want the server to run like a service (so it restarts itself in case of crash / error / termination)
-                   we recommend using the node module <em>forever</em>. You can install it using NPM globally like this:</p>
-
+                <h3>Running the server forever</h3>
+                <p>
+                    If you want the server to run like a service (so it restarts itself in case
+                    of crash / error / termination) we recommend using the <em>forever</em> module.
+                    You can install it (globally) using NPM:
+                </p>
                 <p><code>$ sudo npm install -g forever</code></p>
-
-                <p>To start <em>System</em> using <em>forever</em>, run it under the app root folder:</p>
-
-                <p><code>$ forever start -c coffee server.coffee</code></p>
+                <p>
+                    To start the System App using <em>forever</em>, run it under the app root folder:
+                </p>
+                <p><code>$ forever start -c node server.js</code></p>
             </div>
 
             <h2>Need help?</h2>
             <div class="panel">
-                <p>Check the readme again! And then if you REALLY still need help please get in touch with Igor:
-                    <a href="mailto:igor.ramadas@zalando.de">igor.ramadas@zalando.de</a></p>
+                <p>
+                    The app has a built-in Help section with the most common questions and answers.
+                    <br />
+                    The source-code documentation is also available under <code>/docs</code>.
+                </p>
+                <p>
+                    If you have an issue or found a bug, please post it on our
+                    <a href="https://github.com/zalando/system/issues" title="System App Issues on GitHub">GitHub project page</a>.
+                </p>
+            </div>
+        </div>
 
-                <p><em>Have fun!</em></p>
+        <div id="footer" class="panel">
+            <img src="images/zalando.png" />
+            <div>
+                <strong>Zalando</strong>
+                <a href="http://www.zalando.com" title="Zalando Global website">Zalando.com</a>
+                <a href="http://tech.zalando.com" title="Zalando - The Most Fashionable Tech Company">Tech Blog</a>
+                <a href="https://github.com/zalando" title="Zalando open-source projects at GitHub">Projects on GitHub</a>
             </div>
         </div>
     </div>

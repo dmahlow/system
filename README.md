@@ -1,4 +1,4 @@
-# GitHub pages for the Zalando System App
+# System App by Zalando
 
-Homepage: <http://zalando.github.io/system/>.
-Project page: <https://github.com/zalando/system>.
+Homepage: http://systemapp.io
+Project page: https://github.com/zalando/system
