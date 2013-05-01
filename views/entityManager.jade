@@ -16,13 +16,14 @@
             // This "Entity Definitions list" is populated via javascript.
             #entitymanager-list.models-list
 
-            div.create
-                input#entitymanager-txt-create(type="text",placeholder="New entity ID...",title="Enter the name of the new entity definition to be created.")
-                button#entitymanager-but-create(title="Click to create a new entity definition with the specified ID.") Create
+            if roles.admin || roles.entities
+                div.create
+                    input#entitymanager-txt-create(type="text",placeholder="New entity ID...",title="Enter the name of the new entity definition to be created.")
+                    button#entitymanager-but-create(title="Click to create a new entity definition with the specified ID.") Create
 
-            div.notes.small.
-                Please note that only normal characters and numbers are allowed
-                on the ID field. Special characters and spaces will be normalized.
+                div.notes.small.
+                    Please note that only normal characters and numbers are allowed
+                    on the ID field. Special characters and spaces will be normalized.
 
         // The right panel has tabs and forms to edit the entity definition.
         .right-col

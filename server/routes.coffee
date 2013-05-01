@@ -36,12 +36,7 @@ module.exports = (app) ->
         options =
             title: settings.General.appTitle,
             version: packageJson.version,
-            lastModified: lastModified,
-            serverPort: settings.Web.port,
-            serverOS: os.type() + " " + os.platform(),
-            serverCpuLoad: os.loadavg()[0],
-            serverRamLoad: Math.round(os.freemem() / ostotalmen() * 100),
-            roles: {admin: 1, mapcreate: 1, mapedit: 1, entities: 1, auditdata: 1, auditevents: 1, settings: 1}
+            lastModified: lastModified
 
         res.render "admin", options
 
@@ -51,6 +46,10 @@ module.exports = (app) ->
 
     # The main index page.
     getIndex = (req, res) ->
+        if not req.user?
+            res.redirect "/login"
+            return
+
         os = require "os"
         moment = require "moment"
         host = req.headers["host"]
@@ -69,7 +68,7 @@ module.exports = (app) ->
             serverOS: os.type() + " " + os.release(),
             serverCpuLoad: os.loadavg()[0].toFixed(2),
             serverRamLoad: (os.freemem() / os.totalmem() * 100).toFixed(2),
-            roles: {admin: true}
+            roles: req.user.roles
 
         res.render "index", options
 
@@ -315,35 +314,35 @@ module.exports = (app) ->
 
     # Get a single or a collection of [Users](user.html).
     getUser = (req, res) ->
-        database.getMap getIdFromRequest(req), (err, result) ->
+        database.getUser getIdFromRequest(req), (err, result) ->
             if result? and not err?
                 res.send minifyJson result
             else
-                sendErrorResponse res, "Map GET", err
+                sendErrorResponse res, "User GET", err
 
     # Add or update a [Users](user.html).
     postUser = (req, res) ->
-        database.setMap getDocumentFromBody(req), null, (err, result) ->
+        database.setUser getDocumentFromBody(req), null, (err, result) ->
             if result? and not err?
                 res.send minifyJson result
             else
-                sendErrorResponse res, "Map POST", err
+                sendErrorResponse res, "User POST", err
 
     # Patch only the specified properties of a [Users](user.html).
     patchUser = (req, res) ->
-        database.setMap getDocumentFromBody(req), {patch: true}, (err, result) ->
+        database.setUser getDocumentFromBody(req), {patch: true}, (err, result) ->
             if result? and not err?
                 res.send minifyJson result
             else
-                sendErrorResponse res, "Map PATCH", err
+                sendErrorResponse res, "User PATCH", err
 
     # Delete a [Users](user.html).
     deleteUser = (req, res) ->
-        database.deleteMap getIdFromRequest(req), (err, result) ->
+        database.deleteUser getIdFromRequest(req), (err, result) ->
             if not err?
                 res.send ""
             else
-                sendErrorResponse res, "Map DELETE", err
+                sendErrorResponse res, "User DELETE", err
 
 
     # PROXY DOWNLOAD
@@ -497,7 +496,7 @@ module.exports = (app) ->
     # ----------------------------------------------------------------------
 
     # Login using basic HTTP authentication.
-    app.get "/login", passport.authenticate("basic", {session: true}), (req, res) -> res.json req.user
+    app.get "/login", passport.authenticate("basic", {session: true, successRedirect: "/"}), (req, res) -> res.json req.user
 
     # Admin page.
     app.get "/admin", getAdmin

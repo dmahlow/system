@@ -16,7 +16,6 @@
 
 # APP UTILS AND MANAGERS
 # -----------------------------------------------------------------------------
-#= require settings.default.coffee
 #= require settings.coffee
 #= require messages.coffee
 #= require dataUtil.coffee
@@ -34,6 +33,7 @@
 #= require model/eventAction.coffee
 #= require model/auditEvent.coffee
 #= require model/variable.coffee
+#= require model/user.coffee
 #= require model/userSettings.coffee
 
 # APP DATA, SOCKETS, TUTORIAL

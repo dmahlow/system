@@ -78,8 +78,11 @@ class Settings
     # WEB
     # ----------------------------------------------------------------------
     Web:
-        # The amount of time to wait for new connection requests, in case the internet / network is broken.
-        connRestartInterval: 60000
+        # Generate an error alert after a download has failed X manytimes.
+        alertAfterFailedDownloads: 5
+        # The amount of time to wait for new connection requests, in case the internet
+        # or network is down. Time in milliseconds.
+        connRestartInterval: 120000
         # Timeout to wait for downloads to complete
         downloadTimeout: 30000
         # Auth user and password when downloading external contents (Audit Data and Entity Objects, for example).
@@ -91,8 +94,6 @@ class Settings
         # For example the Pingdom API requires an `App-Key` to be passed, so you could add here:
         # {"App-Key":"my-pingdom-api-key"}.
         downloaderHeaders: null
-        # The cache interval to refresh entities JSON external files (DataCenter, Machine, Host and Service).
-        entitiesCacheInterval: 30000
         # The minimum time between external data refresh, in seconds.
         minimumRefreshInterval: 3
         # If true, all JSON response will be minified before passed to the clients.
@@ -102,8 +103,6 @@ class Settings
         paas: true
         # The Node.js port to bind the app to.
         port: 3003
-        # Default session security key.
-        sessionKey: "zal"
 
     # SECURITY
     # ----------------------------------------------------------------------

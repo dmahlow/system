@@ -8,7 +8,7 @@ class SystemApp.User extends SystemApp.BaseModel
     defaults:
         displayName: null   # the user display name
         password: null      # the user password
-        roles: null         # the user roles array
+        roles: {}           # the user roles object
         username: null      # the username
 
 
@@ -44,11 +44,8 @@ class SystemApp.User extends SystemApp.BaseModel
     # ----------------------------------------------------------------------
 
     # Check if user has a specific role. Returns true or false.
-    # TODO! This is returning ALWAYS true till we get the login page sorted out.
     hasRole: (role) =>
-        return true
-        index = @roles().indexOf role
-        return (index > -1)
+        return @roles()[role] is true
 
 
 # USER COLLECTION

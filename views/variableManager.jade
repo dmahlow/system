@@ -15,13 +15,14 @@
             // This "Variable list" is populated via javascript.
             #variables-list.models-list
 
-            .create
-                input#variables-txt-create(type="text",placeholder="New variable ID...",title="Enter the name of the new variable to be created.")
-                button#variables-but-create(title="Click to create a new variable with the specified ID.") Create
+            if roles.admin || roles.variables
+                .create
+                    input#variables-txt-create(type="text",placeholder="New variable ID...",title="Enter the name of the new variable to be created.")
+                    button#variables-but-create(title="Click to create a new variable with the specified ID.") Create
 
-            .notes.small.
-                Please note that only normal characters and numbers are allowed
-                on the ID field. Special characters and spaces will be normalized.
+                .notes.small.
+                    Please note that only normal characters and numbers are allowed
+                    on the ID field. Special characters and spaces will be normalized.
 
         // The right panel has the tabs and forms for editing the variable.
         .right-col

@@ -19,35 +19,37 @@ html
 
             #tab-users.admin-tab
                 h2 User management
+                .row.edit
+                    div
+                        strong Create user
+                    input.username(type="text",placeholder="username",title="Enter the username.")
+                    input.password(type="text",placeholder="password",title="Enter the user's password.")
+                    .roles
+                        label Admin
+                        label.toggle(for="role-admin",title="When on, audit data will get bound to the map automatically every X seconds")
+                            input.role-admin(type="checkbox",name="role-admin",checked="checked")
+                            span
+                        label Create Maps
+                        label.toggle(for="role-mapcreate",title="When on, audit data will get bound to the map automatically every X seconds")
+                            input.role-mapcreate(type="checkbox",name="role-mapcreate",checked="checked")
+                            span
+                        label Edit Maps
+                        label.toggle(for="role-mapedit",title="When on, audit data will get bound to the map automatically every X seconds")
+                            input.role-mapedit(type="checkbox",name="role-mapedit",checked="checked")
+                            span
+                        label Manage Entities
+                        label.toggle(for="role-entities",title="When on, audit data will get bound to the map automatically every X seconds")
+                            input.role-mapedit(type="checkbox",name="role-entities",checked="checked")
+                            span
+                        label Manage Audit Data
+                        label.toggle(for="role-auditdata",title="When on, audit data will get bound to the map automatically every X seconds")
+                            input.role-mapedit(type="checkbox",name="role-auditdata",checked="checked")
+                            span
+                        label Manage Audit Events
+                        label.toggle(for="role-auditevents",title="When on, audit data will get bound to the map automatically every X seconds")
+                            input.role-mapedit(type="checkbox",name="role-auditevents",checked="checked")
+                            span
+                    .actions
+                        img(src="../../images/but-edit.png")
+                        img(src="../../images/but-delete.png")
                 #user-grid
-                    div.row
-                        input.username(type="text")
-                        input.password(type="text")
-                        .roles
-                            label Admin
-                            label.toggle(for="role-admin",title="When on, audit data will get bound to the map automatically every X seconds")
-                                input.role-admin(type="checkbox",name="role-admin",checked="checked")
-                                span
-                            label Create Maps
-                            label.toggle(for="role-mapcreate",title="When on, audit data will get bound to the map automatically every X seconds")
-                                input.role-mapcreate(type="checkbox",name="role-mapcreate",checked="checked")
-                                span
-                            label Edit Maps
-                            label.toggle(for="role-mapedit",title="When on, audit data will get bound to the map automatically every X seconds")
-                                input.role-mapedit(type="checkbox",name="role-mapedit",checked="checked")
-                                span
-                            label Manage Entities
-                            label.toggle(for="role-entities",title="When on, audit data will get bound to the map automatically every X seconds")
-                                input.role-mapedit(type="checkbox",name="role-entities",checked="checked")
-                                span
-                            label Manage Audit Data
-                            label.toggle(for="role-auditdata",title="When on, audit data will get bound to the map automatically every X seconds")
-                                input.role-mapedit(type="checkbox",name="role-auditdata",checked="checked")
-                                span
-                            label Manage Audit Events
-                            label.toggle(for="role-auditevents",title="When on, audit data will get bound to the map automatically every X seconds")
-                                input.role-mapedit(type="checkbox",name="role-auditevents",checked="checked")
-                                span
-                        .actions
-                            img(src="../../images/but-edit.png")
-                            img(src="../../images/but-delete.png")

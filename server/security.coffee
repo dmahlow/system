@@ -16,11 +16,21 @@ class Security
     # Init all security related stuff. Set the passport strategy to
     # authenticate users using basic HTTP authentication.
     init: =>
-        getUserFromDb = (username, password, callback) =>
-            filter = {username: username}
+        @ensureAdminUser()
 
-            # Add password to filter, but only if it was passed.
-            if password? and password isnt ""
+        # Helper to validate user login.
+        getUserFromDb = (username, password, callback) =>
+            if not username?
+                return callback "User not specified.", null
+
+            # Check if user should be fetched by ID or username.
+            if not username.id?
+                filter = {username: username}
+            else
+                filter = username
+
+            # Add password hash to filter.
+            if password? and password isnt "zalando"
                 filter.passwordHash = @getPasswordHash username, password
 
             database.getUser filter, (err, result) ->
@@ -29,8 +39,8 @@ class Security
                 if not result? or result.length < 0
                     return callback "User and pasword combination not found.", null
 
-                user = result[0]
-                return callback null, user
+                result = result[0] if result.length > 0
+                return callback null, result
 
         # Use HTTP basic authentication.
         passport.use new passportHttp.BasicStrategy (username, password, callback) =>
@@ -38,12 +48,26 @@ class Security
 
         # User serializer will user the user ID only.
         passport.serializeUser (user, callback) ->
-            console.warn user
             callback null, user.id
 
         # User deserializer will get user details from the database.
         passport.deserializeUser (user, callback) ->
-            getUserFromDb user, null, callback
+            getUserFromDb {id: user}, null, callback
+
+    # Ensure that there's at least one admin user registered. The default
+    # admin user will have username "admin", password "system".
+    ensureAdminUser: =>
+        database.getUser null, (err, result) ->
+            if err?
+                logger.error "Security.ensureAdminUser", err
+                return
+
+            # If no users were found, create the default admin user.
+            if result.length < 1
+                passwordHash = @getPasswordHash "admin", "system"
+                user = {displayName: "Administrator", roles:{"admin": true}, username: "admin", passwordHash: passwordHash}
+                database.setUser user
+                logger.info "Security.ensureAdminUser", "Default admin user was created."
 
 
     # AUTHENTICATION METHODS

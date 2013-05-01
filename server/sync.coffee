@@ -41,10 +41,13 @@ class Sync
         # only after some time (defined by the `connRestartInterval` web setting).
         errorCount = @errorCounters[remoteUrl]
         if errorCount?
-            if errorCount > settings.Web.connRestartInterval and moment().valueOf() < errorCount
-                if settings.General.debug
-                    logger.warn "Sync.download", "Abort because failed too many times before.", remoteUrl
-                return
+            if errorCount > settings.Web.connRestartInterval
+                if moment().valueOf() < errorCount
+                    if settings.General.debug
+                        logger.warn "Sync.download", "Abort because failed too many times before.", remoteUrl
+                    return
+                else
+                    delete @errorCounters[remoteUrl]
 
         # Add it to the `currentDownloads` object to avoid having multiple downloads
         # of the same file at the same time.

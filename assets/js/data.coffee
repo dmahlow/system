@@ -21,6 +21,7 @@ SystemApp.Data =
     auditEvents: new SystemApp.AuditEventCollection()
     entities: new SystemApp.EntityDefinitionCollection()
     maps: new SystemApp.MapCollection()
+    users: new SystemApp.UserCollection()
     variables: new SystemApp.VariableCollection()
 
     # Helper array to iterate through all collections.

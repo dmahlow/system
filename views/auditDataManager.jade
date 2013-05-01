@@ -16,13 +16,14 @@
             // This "Audit Data list" is populated via javascript.
             #auditdata-list.models-list
 
-            .create
-                input#auditdata-txt-create(type="text",placeholder="New audit data ID...",title="Enter the name of the new audit data to be created.")
-                button#auditdata-but-create(title="Click to create a new audit data with the specified ID.") Create
+            if roles.admin || roles.auditdata
+                .create
+                    input#auditdata-txt-create(type="text",placeholder="New audit data ID...",title="Enter the name of the new audit data to be created.")
+                    button#auditdata-but-create(title="Click to create a new audit data with the specified ID.") Create
 
-            .notes.small.
-                Please note that only normal characters and numbers are allowed
-                on the ID field. Special characters and spaces will be normalized.
+                .notes.small.
+                    Please note that only normal characters and numbers are allowed
+                    on the ID field. Special characters and spaces will be normalized.
 
         // The right panel has the tabs and forms for editing the audit data.
         .right-col

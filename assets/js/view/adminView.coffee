@@ -6,6 +6,7 @@ class SystemApp.AdminView extends SystemApp.BaseView
 
     $menu: null         # the menu wrapper on the top
     $allMenus: null     # array with all menu items
+    $userGrid: null    # the users grid
 
 
     # INIT AND DISPOSE
@@ -16,6 +17,9 @@ class SystemApp.AdminView extends SystemApp.BaseView
         @setDom()
         @setEvents()
 
+        SystemApp.Data.users.onFetchCallback = @bindUsers
+        SystemApp.Data.users.fetch()
+
     # Dispose the menu view.
     dispose: =>
         @baseDispose()
@@ -25,6 +29,8 @@ class SystemApp.AdminView extends SystemApp.BaseView
         @setElement $ "#wrapper"
         @$menu = $ "#menu"
         @$allMenus = @$menu.find "a.menu-item"
+
+        @$userGrid = $ "#user-grid"
 
     # Bind events to DOM.
     setEvents: =>
@@ -38,3 +44,15 @@ class SystemApp.AdminView extends SystemApp.BaseView
     menuClick: (e) =>
         @$allMenus.removeClass "active"
         $(e.target).addClass "active"
+
+
+    # USERS AND ROLES
+    # ----------------------------------------------------------------------
+
+    # Bind registered users to the users grid.
+    bindUsers: =>
+        for u in SystemApp.Data.users.models
+            console.warn u
+            username = $(document.createElement "span")
+            username.html u.username()
+            @$userGrid.append username
