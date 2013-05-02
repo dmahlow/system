@@ -5,6 +5,7 @@
 module.exports = (app) ->
 
     # Define required modules.
+    _ = require "lodash"
     logger = require "./logger.coffee"
     database = require "./database.coffee"
     fs = require "fs"
@@ -31,45 +32,30 @@ module.exports = (app) ->
             res.redirect "/login"
             return
 
-        os = require "os"
-        moment = require "moment"
-        host = req.headers["host"]
+        options =  getResponseOptions req
 
-        # Check the last modified date.
-        lastModified = fs.statSync("./package.json").mtime if not lastModified?
-
-        # Set render options.
-        options =
-            title: settings.General.appTitle,
-            version: packageJson.version,
-            lastModified: moment(lastModified).format("YYYY-MM-DD hh:mm"),
-            serverUptime: moment.duration(os.uptime(), "s").humanize(),
-            serverHostname: os.hostname(),
-            serverPort: settings.Web.port,
-            serverOS: os.type() + " " + os.release(),
-            serverCpuLoad: os.loadavg()[0].toFixed(2),
-            serverRamLoad: (os.freemem() / os.totalmem() * 100).toFixed(2),
-            roles: req.user.roles
-
+        # Render the index page.
         res.render "index", options
 
 
     # ADMIN ROUTES
     # ----------------------------------------------------------------------
 
-    # The main index page.
+    # The main index page. Only users with the "admin" role will be able to
+    # access this page.
     getAdmin = (req, res) ->
-        os = require "os"
-        host = req.headers["host"]
+        if not req.user?
+            res.redirect "/login"
+            return
 
-        # Check the last modified date.
-        lastModified = fs.statSync("./package.json").mtime if not lastModified?
+        options =  getResponseOptions req
 
-        options =
-            title: settings.General.appTitle,
-            version: packageJson.version,
-            lastModified: lastModified
+        # Make sure user has admin role.
+        if options.roles.admin isnt true
+            res.redirect "/401"
+            return
 
+        # Render the admin page.
         res.render "admin", options
 
     # Run the system upgrader.
@@ -494,6 +480,35 @@ module.exports = (app) ->
         obj.id = req.params.id if not obj.id?
         return obj
 
+    # Get default app and server variables to be sent with responses.
+    getResponseOptions = (req) ->
+        os = require "os"
+        moment = require "moment"
+        host = req.headers["host"]
+
+        # Check the last modified date.
+        lastModified = fs.statSync("./package.json").mtime if not lastModified?
+
+        # Create easy-to-use roles object.
+        roles = {}
+        for r in req.user.roles
+            roles[r] = true
+
+        # Set render options.
+        options =
+            title: settings.General.appTitle,
+            version: packageJson.version,
+            lastModified: moment(lastModified).format("YYYY-MM-DD hh:mm"),
+            serverUptime: moment.duration(os.uptime(), "s").humanize(),
+            serverHostname: os.hostname(),
+            serverPort: settings.Web.port,
+            serverOS: os.type() + " " + os.release(),
+            serverCpuLoad: os.loadavg()[0].toFixed(2),
+            serverRamLoad: (os.freemem() / os.totalmem() * 100).toFixed(2),
+            roles: roles
+
+        return options
+
     # When the server can't return a valid result,
     # send an error response with status code 500.
     sendErrorResponse = (res, method, message) ->
@@ -507,7 +522,7 @@ module.exports = (app) ->
     # ----------------------------------------------------------------------
 
     # Login using basic HTTP authentication.
-    passportOptions = {session: true, successRedirect: "/", failureRedirect: "/401"}
+    passportOptions = {session: true, successRedirect: "/"}
     app.get "/login", passport.authenticate("basic", passportOptions), (req, res) -> res.send req.user.username
 
     # Main index.

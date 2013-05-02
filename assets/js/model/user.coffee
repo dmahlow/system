@@ -7,9 +7,9 @@ class SystemApp.User extends SystemApp.BaseModel
     typeName: "User"
     defaults:
         displayName: null   # the user display name
-        password: null      # the user password
-        roles: {}           # the user roles object
+        passwordHash: null  # the user password hash
         username: null      # the username
+        roles: []           # the user roles array
 
 
     # PROPERTIES
@@ -21,17 +21,11 @@ class SystemApp.User extends SystemApp.BaseModel
             @set "displayName", value
         @get "displayName"
 
-    # Helper to get / set the user's password.
-    password: (value) =>
+    # Helper to get / set the user's password hash.
+    passwordHash: (value) =>
         if value?
-            @set "password", value
-        @get "password"
-
-    # Helper to get / set the user roles.
-    roles: (value) =>
-        if value?
-            @set "roles", value
-        @get "roles"
+            @set "passwordHash", value
+        @get "passwordHash"
 
     # Helper to get / set the user's username.
     username: (value) =>
@@ -39,13 +33,20 @@ class SystemApp.User extends SystemApp.BaseModel
             @set "username", value
         @get "username"
 
+    # Helper to get / set the user roles.
+    roles: (value) =>
+        if value?
+            @set "roles", value
+        @get "roles"
+
 
     # METHODS
     # ----------------------------------------------------------------------
 
     # Check if user has a specific role. Returns true or false.
     hasRole: (role) =>
-        return @roles()[role] is true
+        index = @roles().indexOf role
+        return (index > -1)
 
 
 # USER COLLECTION
@@ -58,4 +59,4 @@ class SystemApp.UserCollection extends SystemApp.BaseCollection
     url: SystemApp.Settings.User.url
 
     # Set the comparator function to order the user collection by username.
-    comparator: (user) -> return user.username()
+    comparator: (user) -> return user.us

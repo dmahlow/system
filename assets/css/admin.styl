@@ -3,29 +3,17 @@
 @import header
 
 body
-    background-color overlayBackground
+    background-color darkBgColor
 
+// Tab page headers are H2 elements.
 h2
+    border-bottom 3px solid darkHoverColor
     margin-top 0
+    padding-bottom 4px
 
-input[type="checkbox"] + span
-input[type="radio"] + span
-    font 11px/22px Arial, Helvetica, sans-serif
-    height 20px
-    width 60px
-
-input[type="checkbox"] + span:before
-input[type="radio"] + span:before
-    height 20px
-    width 40%
-
-input[type="checkbox"] + span:after
-input[type="radio"] + span:after
-    height 22px
-
-input[type="checkbox"]:checked + span:after
-input[type="radio"]:checked + span:after
-    height 25px
+// Sub / panel headers are H4 elements.
+h4
+    margin-bottom 2px
 
 // MENU
 // -------------------------------------------------------------------------
@@ -41,11 +29,37 @@ input[type="radio"]:checked + span:after
 // Admin tabs with top margin.
 .admin-tab
     margin-top headerHeight
-    padding 20px
+    padding 16px
+
+// Shared grid and row styles.
+.grid
+    background mediumBgColor
+    div.row > div
+        display inline-block
+        padding 5px
+    div.actions > img
+        margin 0 5px 0 5px
+        vertical-align bottom
 
 // TABS: USERS
 // -------------------------------------------------------------------------
 
+// The users tab.
 #tab-users
-    .roles, .actions
-        display inline-block
+    div.edit
+        // Spaced roles.
+        div.roles
+            .toggle
+                margin-left 2px
+                margin-right 4px
+            label.role
+                margin-right 12px
+
+// The users grid.
+#user-grid
+    div.displayName
+        width 30%
+    div.username
+        width 20%
+    div.roles
+        width 30%

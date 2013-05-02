@@ -52,7 +52,6 @@ class SystemApp.AdminView extends SystemApp.BaseView
     # Bind registered users to the users grid.
     bindUsers: =>
         for u in SystemApp.Data.users.models
-            console.warn u
-            username = $(document.createElement "span")
-            username.html u.username()
-            @$userGrid.append username
+            props = {displayName: u.displayName(), username: u.username(), roles: u.roles().join()}
+            row = _.template $("#template-user-grid-row").html(), props
+            @$userGrid.append row

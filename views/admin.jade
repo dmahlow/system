@@ -17,39 +17,39 @@ html
                     a#menu-clientsettings.menu-item(href="#clientsettings",title="Edit client (browser) configuration and settings.") Client Settings
                     a#menu-users.menu-item(href="#users",title="User and roles management.") Users and Roles
 
+            #tab-status(style="display:none").admin-tab
+
+            #tab-serversettings(style="display:none").admin-tab
+
+            #tab-clientsettings(style="display:none").admin-tab
+
             #tab-users.admin-tab
                 h2 User management
                 .row.edit
-                    div
-                        strong Create user
+                    h4 Create new user
                     input.username(type="text",placeholder="username",title="Enter the username.")
                     input.password(type="text",placeholder="password",title="Enter the user's password.")
                     .roles
-                        label Admin
-                        label.toggle(for="role-admin",title="When on, audit data will get bound to the map automatically every X seconds")
-                            input.role-admin(type="checkbox",name="role-admin",checked="checked")
-                            span
-                        label Create Maps
-                        label.toggle(for="role-mapcreate",title="When on, audit data will get bound to the map automatically every X seconds")
-                            input.role-mapcreate(type="checkbox",name="role-mapcreate",checked="checked")
-                            span
-                        label Edit Maps
-                        label.toggle(for="role-mapedit",title="When on, audit data will get bound to the map automatically every X seconds")
-                            input.role-mapedit(type="checkbox",name="role-mapedit",checked="checked")
-                            span
-                        label Manage Entities
-                        label.toggle(for="role-entities",title="When on, audit data will get bound to the map automatically every X seconds")
-                            input.role-mapedit(type="checkbox",name="role-entities",checked="checked")
-                            span
-                        label Manage Audit Data
-                        label.toggle(for="role-auditdata",title="When on, audit data will get bound to the map automatically every X seconds")
-                            input.role-mapedit(type="checkbox",name="role-auditdata",checked="checked")
-                            span
-                        label Manage Audit Events
-                        label.toggle(for="role-auditevents",title="When on, audit data will get bound to the map automatically every X seconds")
-                            input.role-mapedit(type="checkbox",name="role-auditevents",checked="checked")
-                            span
-                    .actions
-                        img(src="../../images/but-edit.png")
-                        img(src="../../images/but-delete.png")
-                #user-grid
+                        input#chk-role-admin(type="checkbox",name="chk-role-admin")
+                        label.role Admin
+                        input#chk-role-mapcreate(type="checkbox",name="chk-role-mapcreate")
+                        label.role Create Maps
+                        input#chk-role-mapedit(type="checkbox",name="chk-role-mapedit")
+                        label.role Edit Maps
+                        input#chk-role-mapedit(type="checkbox",name="chk-role-entities")
+                        label.role Manage Entities
+                        input#chk-role-mapedit(type="checkbox",name="chk-role-auditdata")
+                        label.role Manage Audit Data
+                        input#chk-role-mapedit(type="checkbox",name="chk-role-auditevents",checked="checked")
+                        label.role Manage Audit Events
+                    button#but-save-user.save Save user
+                h4 Registered users
+                #user-grid.grid
+                script#template-user-grid-row(type="text/template")
+                    .row
+                        .displayName <%= displayName %>
+                        .username <%= username %>
+                        .roles <%= roles %>
+                        .actions
+                            img(src="../../images/but-edit.png")
+                            img(src="../../images/but-delete.png")

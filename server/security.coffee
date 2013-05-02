@@ -19,19 +19,19 @@ class Security
         @ensureAdminUser()
 
         # Helper to validate user login.
-        validateUser = (username, password, callback) =>
-            if not username?
+        validateUser = (user, password, callback) =>
+            if not user?
                 return callback null, false, {message: "Username was not specified."}
 
             # Check if user should be fetched by ID or username.
-            if not username.id?
-                filter = {username: username}
+            if not user.id?
+                filter = {username: user}
             else
-                filter = username
+                filter = user
 
             # Add password hash to filter.
             if password? and password isnt "zalando"
-                filter.passwordHash = @getPasswordHash username, password
+                filter.passwordHash = @getPasswordHash user, password
 
             database.getUser filter, (err, result) ->
                 if err?

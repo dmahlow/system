@@ -19,14 +19,14 @@
         .autoupdate
             img#top-img-autoupdate(src="images/ico-refresh.png",title="Audit data auto-update enabled")
             label.toggle(for="map-ctl-autoupdate",title="When on, audit data will get bound to the map automatically every X seconds")
-                input#map-ctl-autoupdate(type="checkbox", name="map-ctl-autoupdate", checked="checked")
+                input#map-ctl-autoupdate(type="checkbox",name="map-ctl-autoupdate",checked="checked")
                 span
 
         // The "Edit ON/OFF" switch, which is shown only if the user has the necessary permissions.
         .lock
             img#top-img-lock(src="images/ico-locked.png",title="Map edit lock")
             label.toggle(for="map-ctl-editable",title="When on, map will be locked")
-                input#map-ctl-editable(type="checkbox", name="map-ctl-editable", checked="checked")
+                input#map-ctl-editable(type="checkbox",name="map-ctl-editable",checked="checked")
                 span
 
         // The maps are bound inside this submenu div, which is shown and hidden dynamically
