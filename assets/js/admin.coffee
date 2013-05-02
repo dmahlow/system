@@ -45,6 +45,7 @@
 # -----------------------------------------------------------------------------
 #= require view/baseView.coffee
 #= require view/adminView.coffee
+#= require view/admin/userTabView.coffee
 
 
 # ROUTES

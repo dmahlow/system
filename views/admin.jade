@@ -11,11 +11,12 @@ html
         #wrapper
             #header
                 #menu
-                    #menu-admintitle.menu-item #{title} Admin
+                    #menu-admintitle.menu-item #{title} - Admin
                     a#menu-status.menu-item(href="#status",title="#{title} status and general info.") Status
                     a#menu-serversettings.menu-item(href="#serversettings",title="Edit server configuration and settings.") Server Settings
                     a#menu-clientsettings.menu-item(href="#clientsettings",title="Edit client (browser) configuration and settings.") Client Settings
-                    a#menu-users.menu-item(href="#users",title="User and roles management.") Users and Roles
+                    a#menu-users.menu-item.active(href="#users",title="User and roles management.") Users and Roles
+                    a#menu-back(href="/",title="Go back to the app main screen.") Back to the app...
 
             #tab-status(style="display:none").admin-tab
 
@@ -25,25 +26,33 @@ html
 
             #tab-users.admin-tab
                 h2 User management
-                .row.edit
-                    h4 Create new user
-                    input.username(type="text",placeholder="username",title="Enter the username.")
-                    input.password(type="text",placeholder="password",title="Enter the user's password.")
+                h4 Create new user
+                fieldset.edit
+                    input#user-txt-display-name.username(type="text",placeholder="display name",title="Enter the user's display name or full name (NOT the username).")
+                    input#user-txt-username.username(type="text",placeholder="username",title="Enter the username.")
+                    input#user-txt-password.password(type="text",placeholder="password",title="Enter the user's password.")
+                    input#user-txt-password-confirm.password(type="text",placeholder="confirm password",title="Confirm the user's password.")
+                    button#user-but-save.save Add user
                     .roles
-                        input#chk-role-admin(type="checkbox",name="chk-role-admin")
-                        label.role Admin
-                        input#chk-role-mapcreate(type="checkbox",name="chk-role-mapcreate")
-                        label.role Create Maps
-                        input#chk-role-mapedit(type="checkbox",name="chk-role-mapedit")
-                        label.role Edit Maps
-                        input#chk-role-mapedit(type="checkbox",name="chk-role-entities")
-                        label.role Manage Entities
-                        input#chk-role-mapedit(type="checkbox",name="chk-role-auditdata")
-                        label.role Manage Audit Data
-                        input#chk-role-mapedit(type="checkbox",name="chk-role-auditevents",checked="checked")
-                        label.role Manage Audit Events
-                    button#but-save-user.save Save user
+                        strong Roles:
+                        input#user-chk-role-admin(type="checkbox",name="user-chk-roles",value="admin")
+                        label(for="user-chk-role-") Admin
+                        input#user-chk-role-mapcreate(type="checkbox",name="user-chk-roles",value="mapcreate")
+                        label(for="user-chk-role-mapcreate") Create Maps
+                        input#user-chk-role-mapedit(type="checkbox",name="user-chk-roles",value="mapedit")
+                        label(for="user-chk-role-mapedit") Edit Maps
+                        input#user-chk-role-entities(type="checkbox",name="user-chk-roles",value="entities")
+                        label(for="user-chk-role-entities") Manage Entities
+                        input#user-chk-role-auditdata(type="checkbox",name="user-chk-roles",value="auditdata")
+                        label(for="user-chk-role-auditdata") Manage Audit Data
+                        input#user-chk-role-auditevents(type="checkbox",name="user-chk-roles",value="auditevents")
+                        label(for="user-chk-role-auditevents") Manage Audit Events
                 h4 Registered users
+                .grid-header
+                    .displayName Display name
+                    .username Username
+                    .roles Roles
+                    .actions Actions
                 #user-grid.grid
                 script#template-user-grid-row(type="text/template")
                     .row
@@ -51,5 +60,5 @@ html
                         .username <%= username %>
                         .roles <%= roles %>
                         .actions
-                            img(src="../../images/but-edit.png")
-                            img(src="../../images/but-delete.png")
+                            img.edit(src="../../images/but-edit.png")
+                            img.delete(src="../../images/but-delete.png")

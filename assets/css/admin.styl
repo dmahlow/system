@@ -3,17 +3,30 @@
 @import header
 
 body
-    background-color darkBgColor
+    background-color overlayBackground
 
 // Tab page headers are H2 elements.
 h2
-    border-bottom 3px solid darkHoverColor
+    border-bottom 3px solid lightHoverColor
     margin-top 0
     padding-bottom 4px
 
 // Sub / panel headers are H4 elements.
 h4
+    font-size 16px
     margin-bottom 2px
+
+// Fieldsets are used to edit data. Button has less margin.
+fieldset
+    border 0
+    margin 0
+    padding 0
+    button
+        margin 0
+        padding-top 2px
+        padding-bottom 2px
+    input[type="text"]
+        margin 0 10px 0 0
 
 // MENU
 // -------------------------------------------------------------------------
@@ -22,6 +35,15 @@ h4
 #menu-admintitle
     color lightTextColor !important
     font-family OpenSansBold
+
+// Back link.
+#menu-back
+    float right
+    font-size 12px
+    margin 9px 12px 0 0
+
+#menu-back:hover
+    color lightHoverColor
 
 // TABS
 // -------------------------------------------------------------------------
@@ -34,32 +56,50 @@ h4
 // Shared grid and row styles.
 .grid
     background mediumBgColor
+
+    // Rows with padding.
     div.row > div
         display inline-block
         padding 5px
+
+    // Action icons.
     div.actions > img
+        cursor pointer
         margin 0 5px 0 5px
         vertical-align bottom
+
+    // Highlight active rows.
+    .active
+        background darkHoverColor
+        color brightTextColor
+
+// Grid header row.
+.grid-header
+    background lightBgColor
+    color brightTextColor
+    div
+        display inline-block
+        padding 5px
 
 // TABS: USERS
 // -------------------------------------------------------------------------
 
 // The users tab.
 #tab-users
-    div.edit
+    fieldset.edit
+        input[type="text"]
+            width 180px
         // Spaced roles.
         div.roles
-            .toggle
-                margin-left 2px
-                margin-right 4px
-            label.role
+            margin 8px 0 8px 0
+            label, strong
                 margin-right 12px
 
-// The users grid.
-#user-grid
-    div.displayName
-        width 30%
-    div.username
-        width 20%
-    div.roles
-        width 30%
+    .grid, .grid-header
+        // Grid rows with specific sizes.
+        div.displayName
+            width 28%
+        div.username
+            width 20%
+        div.roles
+            width 38%
