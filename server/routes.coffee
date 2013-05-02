@@ -22,26 +22,7 @@ module.exports = (app) ->
     lastModified = null
 
 
-    # ADMIN PAGE
-    # ----------------------------------------------------------------------
-
-    # The main index page.
-    getAdmin = (req, res) ->
-        os = require "os"
-        host = req.headers["host"]
-
-        # Check the last modified date.
-        lastModified = fs.statSync("./package.json").mtime if not lastModified?
-
-        options =
-            title: settings.General.appTitle,
-            version: packageJson.version,
-            lastModified: lastModified
-
-        res.render "admin", options
-
-
-    # MAIN PAGE
+    # MAIN ROUTE
     # ----------------------------------------------------------------------
 
     # The main index page.
@@ -73,7 +54,36 @@ module.exports = (app) ->
         res.render "index", options
 
 
-    # ENTITIES
+    # ADMIN ROUTES
+    # ----------------------------------------------------------------------
+
+    # The main index page.
+    getAdmin = (req, res) ->
+        os = require "os"
+        host = req.headers["host"]
+
+        # Check the last modified date.
+        lastModified = fs.statSync("./package.json").mtime if not lastModified?
+
+        options =
+            title: settings.General.appTitle,
+            version: packageJson.version,
+            lastModified: lastModified
+
+        res.render "admin", options
+
+    # Run the system upgrader.
+    runUpgrade = (req, res) ->
+        files = fs.readdirSync "./upgrade/"
+
+        for f in files
+            if f.indexOf(".coffee") > 0
+                require "../upgrade/" + f
+
+        res.send "UPGRADED!!!"
+
+
+    # ENTITY ROUTES
     # ----------------------------------------------------------------------
 
     # Get a single or a collection of [Entity Definitions](entityDefinition.html).
@@ -148,7 +158,7 @@ module.exports = (app) ->
                 sendErrorResponse res, "Entity Data GET", err
 
 
-    # AUDIT DATA
+    # AUDIT DATA ROUTES
     # ----------------------------------------------------------------------
 
     # Get all [AuditData](auditData.html).
@@ -185,7 +195,7 @@ module.exports = (app) ->
                 sendErrorResponse res, "Audit Data DELETE", err
 
 
-    # AUDIT EVENTS
+    # AUDIT EVENT ROUTES
     # ----------------------------------------------------------------------
 
     # Get a single or a collection of [Audit Events](auditEvent.html).
@@ -221,7 +231,7 @@ module.exports = (app) ->
                 sendErrorResponse res, "Audit Event DELETE", err
 
 
-    # VARIABLES
+    # VARIABLE ROUTES
     # ----------------------------------------------------------------------
 
     # Get a single or a collection of [Variables](variable.html).
@@ -257,7 +267,7 @@ module.exports = (app) ->
                 sendErrorResponse res, "Variable DELETE", err
 
 
-    # MAPS
+    # MAP ROUTES
     # ----------------------------------------------------------------------
 
     # Get a single or a collection of [Maps](map.html).
@@ -309,7 +319,7 @@ module.exports = (app) ->
                 imaging.svgToPng svgPath, settings.Images.mapThumbSize
 
 
-    # USERS
+    # USER ROUTES
     # ----------------------------------------------------------------------
 
     # Get a single or a collection of [Users](user.html).
@@ -366,8 +376,22 @@ module.exports = (app) ->
                         res.send data.toString()
 
 
-    # SERVER INFO AND UPDATE
+    # STATUS ROUTES
     # ----------------------------------------------------------------------
+
+    # Get the system status page.
+    getStatus = (req, res) ->
+        res.json { status: "ok" }
+
+    # Error 401 (not authorized) page.
+    get401 = (req, res) ->
+        res.status 401
+        res.render "status401", title: settings.General.appTitle,
+
+    # Error 404 (not found) page.
+    get404 = (req, res) ->
+        res.status 404
+        res.render "status404", title: settings.General.appTitle,
 
     # Get the list of server logs for the past 24 hours. Value can be changed on
     # the [Server Settings](settings.html).
@@ -378,19 +402,6 @@ module.exports = (app) ->
             else
                 res.json err
 
-    # Get the system status page.
-    getStatus = (req, res) ->
-        res.json { status: "ok" }
-
-    # Run the system upgrader.
-    runUpgrade = (req, res) ->
-        files = fs.readdirSync "./upgrade/"
-
-        for f in files
-            if f.indexOf(".coffee") > 0
-                require "../upgrade/" + f
-
-        res.send "UPGRADED!!!"
 
     # HELPER METHODS
     # ----------------------------------------------------------------------
@@ -492,17 +503,32 @@ module.exports = (app) ->
         res.send "Error: #{method} - #{message}"
 
 
-    # SET ROUTES
+    # SET MAIN ROUTES
     # ----------------------------------------------------------------------
 
     # Login using basic HTTP authentication.
-    app.get "/login", passport.authenticate("basic", {session: true, successRedirect: "/"}), (req, res) -> res.json req.user
-
-    # Admin page.
-    app.get "/admin", getAdmin
+    passportOptions = {session: true, successRedirect: "/", failureRedirect: "/401"}
+    app.get "/login", passport.authenticate("basic", passportOptions), (req, res) -> res.send req.user.username
 
     # Main index.
     app.get "/", getIndex
+
+
+    # SET ADMIN ROUTES
+    # ----------------------------------------------------------------------
+
+    # Admin area.
+    app.get "/admin", getAdmin
+
+    # Upgrader page.
+    app.get "/upgrade", runUpgrade
+
+    # Server status and log routes.
+    app.get "/logs/recent", getLogsRecent
+
+
+    # SET DATA AND SPECIAL ROUTES
+    # ----------------------------------------------------------------------
 
     # Entity definition routes.
     app.get     "/json/entitydefinition",     getEntityDefinition
@@ -561,7 +587,11 @@ module.exports = (app) ->
     # External downloader.
     app.post    "/downloader/:filename", downloader
 
-    # Server status and log routes.
-    app.get     "/status",        getStatus
-    app.get     "/logs/recent",   getLogsRecent
-    app.get     "/upgrade",       runUpgrade
+
+    # SET STATUS ROUTES
+    # ----------------------------------------------------------------------
+
+    # Error and status routes.
+    app.get "/status", getStatus
+    app.get "/401", get401
+    app.get "/404", get404

@@ -19,9 +19,9 @@ class Security
         @ensureAdminUser()
 
         # Helper to validate user login.
-        getUserFromDb = (username, password, callback) =>
+        validateUser = (username, password, callback) =>
             if not username?
-                return callback "User not specified.", null
+                return callback null, false, {message: "Username was not specified."}
 
             # Check if user should be fetched by ID or username.
             if not username.id?
@@ -37,14 +37,14 @@ class Security
                 if err?
                     return callback err
                 if not result? or result.length < 0
-                    return callback "User and pasword combination not found.", null
+                    return callback null, false, {message: "User and password combination not found."}
 
                 result = result[0] if result.length > 0
                 return callback null, result
 
         # Use HTTP basic authentication.
         passport.use new passportHttp.BasicStrategy (username, password, callback) =>
-            getUserFromDb username, password, callback
+            validateUser username, password, callback
 
         # User serializer will user the user ID only.
         passport.serializeUser (user, callback) ->
@@ -52,7 +52,7 @@ class Security
 
         # User deserializer will get user details from the database.
         passport.deserializeUser (user, callback) ->
-            getUserFromDb {id: user}, null, callback
+            validateUser {id: user}, null, callback
 
     # Ensure that there's at least one admin user registered. The default
     # admin user will have username "admin", password "system".

@@ -107,6 +107,8 @@ class Settings
     # SECURITY
     # ----------------------------------------------------------------------
     Security:
+        # Redirect user to 401 page after X failed logins.
+        maxFailedLogins: 3
         # Key used for session encryption.
         sessionKey: "Ss!0nPROtw"
         # Key used for user password encryption.
