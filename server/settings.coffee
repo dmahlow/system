@@ -107,6 +107,9 @@ class Settings
     # SECURITY
     # ----------------------------------------------------------------------
     Security:
+        # If true, users will be able to see the app in read-only mode when not authenticated.
+        # In this case, to authenticate, they'll have to manually go to the /login page.
+        guestEnabled: true
         # Redirect user to 401 page after X failed logins.
         maxFailedLogins: 3
         # Key used for session encryption.

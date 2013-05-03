@@ -19,6 +19,7 @@ SYSTEM APP CHANGE LOG
 * Fixed bug with the search field not editable on the "Objects" tab on the map controls.
 * Fixed Logentries integration bugs (binding to wrong Winston object).
 * Fixed incorrect checks for permissions when creating and editing maps.
+* Created folder for routers: appRouter.coffee (main) and adminRouter.coffee (for admin area).
 * IMPORTANT! Debug is now true by default while the app is still in beta. We'll set the default
   to false again once it reaches a state considered stable enough for production environments.
 - Removed the "settings.base.coffee" file on the client side. Settings will be refactored soon

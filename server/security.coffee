@@ -18,10 +18,15 @@ class Security
     init: =>
         @ensureAdminUser()
 
-        # Helper to validate user login.
+        # Helper to validate user login. If no user was specified and [settings](settings.html)
+        # allow guest access, then log as guest.
         validateUser = (user, password, callback) =>
-            if not user?
-                return callback null, false, {message: "Username was not specified."}
+            if not user? or user is "" or user is "guest"
+                if settings.Security.guestEnabled
+                    guest = {id: "guest", username: "guest", displayName: "Guest", roles: ["guest"]}
+                    return callback null, guest
+                else
+                    return callback null, false, {message: "Username was not specified."}
 
             # Check if user should be fetched by ID or username.
             if not user.id?

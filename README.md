@@ -13,7 +13,8 @@ The final 1.0.0 version is expected to be ready by the end of Q2 2013.
 
 #### What's still not ready for prime time?
 
-- User authentication. We're implementing basic HTTP authentication first, with LDAP following next.
+- ~~User authentication. We're implementing basic HTTP authentication first,~~ LDAP following next.
+- Admin area to manage server, settings and users directly on the browser.
 - Performance improvements on complex maps. SVG is slow, so we'll tweak our implementation to
   minimze DOM queries and whenever possible use hardware accelerated features on rendering.
 - Editing and moving multiple shapes simultaneously on a map by selecting them holding Ctrl.

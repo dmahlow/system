@@ -5,7 +5,6 @@
 module.exports = (app) ->
 
     # Define required modules.
-    _ = require "lodash"
     logger = require "./logger.coffee"
     database = require "./database.coffee"
     fs = require "fs"
@@ -612,6 +611,7 @@ module.exports = (app) ->
         return options
 
     # Return an object with the user roles, based on the authenticated user's roles array.
+    # Please note that the "admin" role will be returned always for the online demo.
     getUserRoles = (req) =>
         roles = {}
         return roles if not req.user?
