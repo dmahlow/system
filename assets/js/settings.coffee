@@ -383,3 +383,5 @@ SystemApp.Settings =
         modifierMultiple: "shift leftclick"
         # Default key combination to send shapes and links to the back of the map.
         modifierToBack: "rightclick"
+        # Prefix of each row representing a user on a list or grid.
+        rowListPrefix: "list-user-"

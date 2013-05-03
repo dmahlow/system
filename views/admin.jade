@@ -32,7 +32,7 @@ html
                     input#user-txt-username.username(type="text",placeholder="username",title="Enter the username.")
                     input#user-txt-password.password(type="text",placeholder="password",title="Enter the user's password.")
                     input#user-txt-password-confirm.password(type="text",placeholder="confirm password",title="Confirm the user's password.")
-                    button#user-but-save.save Add user
+                    button#user-but-save.save Save user
                     .roles
                         strong Roles:
                         input#user-chk-role-admin(type="checkbox",name="user-chk-roles",value="admin")
@@ -60,5 +60,5 @@ html
                         .username <%= username %>
                         .roles <%= roles %>
                         .actions
-                            img.edit(src="../../images/but-edit.png")
-                            img.delete(src="../../images/but-delete.png")
+                            .edit
+                            .delete

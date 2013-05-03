@@ -44,6 +44,9 @@ class SystemApp.AdminUserTabView extends SystemApp.BaseView
 
     # Bind events to DOM.
     setEvents: =>
+        @listenTo SystemApp.Data.users, "add", @addUserToGrid
+        @listenTo SystemApp.Data.users, "remove", @removeUserFromGrid
+
         @$butSave.click @saveUser
 
 
@@ -78,25 +81,56 @@ class SystemApp.AdminUserTabView extends SystemApp.BaseView
                 roles.push $(chk).val()
 
         # Create model with specified attributes.
-        user = new SystemApp.User {displayName: displayName, username: username, password: password, roles: roles}
+        props = {displayName: displayName, username: username, password: password, roles: roles}
+        user = SystemApp.Data.users.create props, {wait: true}
 
 
     # USERS GRID
     # ----------------------------------------------------------------------
 
+    # When a new user is added to the users collection.
+    addUserToGrid: (user) =>
+        props = {displayName: user.displayName(), username: user.username(), roles: user.roles().join(", ")}
+        row = _.template $("#template-user-grid-row").html(), props
+        row = $ row
+
+        # Set row ID.
+        row.attr "id", SystemApp.Settings.User.rowListPrefix + user.id
+
+        # Bind edit and delete events.
+        row.find(".actions .edit").click user, @editClick
+        row.find(".actions .delete").click user, @deleteClick
+
+        # Append row to the `$userGrid`.
+        @$userGrid.append row
+
+    # When a user is removed from the users collection.
+    removeUserFromGrid: (user) =>
+        row = $(SystemApp.Settings.User.rowListPrefix + user.id)
+        row.remove()
+
     # Bind registered users to the users grid.
     bindUsers: =>
-        for u in SystemApp.Data.users.models
-            props = {displayName: u.displayName(), username: u.username(), roles: u.roles().join()}
-            row = _.template $("#template-user-grid-row").html(), props
-            row = $ row
-
-            row.find("img.edit").click @editClick
-
-            @$userGrid.append row
+        @$userGrid.empty()
+        @addUserToGrid(user) for user in SystemApp.Data.users.models
 
     # When user clicks the "edit" icon, highlight the row and bind user details
     # to the top form so it can be edited.
     editClick: (e) =>
         row = $(e.target).parent().parent()
         row.addClass "active"
+
+    # When user clicks the "delete" icon, make it red and if clicking again,
+    # remove the user from the database and the row from the `$userGrid`.
+    deleteClick: (e) =>
+        e.preventDefault()
+        e.stopPropagation()
+
+        src = $ e.currentTarget
+
+        # If the icon is red, then confirm the deletion by removing the row's associated model
+        # from the [data store](data.html).
+        if src.hasClass "delete-red"
+            e.data.destroy()
+        else
+            src.addClass "delete-red"
