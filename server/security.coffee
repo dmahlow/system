@@ -57,7 +57,10 @@ class Security
 
         # User deserializer will get user details from the database.
         passport.deserializeUser (user, callback) ->
-            validateUser {id: user}, null, callback
+            if user is "guest"
+                validateUser "guest", null, callback
+            else
+                validateUser {id: user}, null, callback
 
     # Ensure that there's at least one admin user registered. The default
     # admin user will have username "admin", password "system".
