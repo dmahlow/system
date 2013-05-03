@@ -11,6 +11,7 @@ module.exports = (app) ->
     imaging = require "./imaging.coffee"
     manager = require "./manager.coffee"
     passport = require "passport"
+    security = require "./security.coffee"
     settings = require "./settings.coffee"
     sockets = require "./sockets.coffee"
     sync = require "./sync.coffee"
@@ -406,7 +407,13 @@ module.exports = (app) ->
             sendForbiddenResponse res, "User POST"
             return
 
-        database.setUser getDocumentFromBody(req), null, (err, result) ->
+        # Make sure user password hash is set.
+        user = getDocumentFromBody req
+        if user.password?
+            user["passwordHash"] = security.getPasswordHash user.username, user.password
+            delete user["password"]
+
+        database.setUser user, null, (err, result) ->
             if result? and not err?
                 # Make sure password is removed, and send the result.
                 delete result["password"]
@@ -421,7 +428,13 @@ module.exports = (app) ->
             sendForbiddenResponse res, "User PATCH"
             return
 
-        database.setUser getDocumentFromBody(req), {patch: true}, (err, result) ->
+        # Make sure user password hash is set.
+        user = getDocumentFromBody req
+        if user.password?
+            user["passwordHash"] = security.getPasswordHash user.username, user.password
+            delete user["password"]
+
+        database.setUser user, {patch: true}, (err, result) ->
             if result? and not err?
                 # Make sure password is removed, and send the result.
                 delete result["password"]

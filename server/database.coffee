@@ -4,12 +4,12 @@
 
 class Database
 
-    # Define the logger and settings.
+    # Define required modules.
+    mongo = require "mongoskin"
     logger = require "./logger.coffee"
     settings = require "./settings.coffee"
 
-    # Define mongoskin and set the default connection string.
-    mongo = require "mongoskin"
+    # Define the default connection object.
     db = mongo.db settings.Database.connString, {fsync: settings.Database.fsync}
 
 
