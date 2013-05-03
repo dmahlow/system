@@ -23,7 +23,7 @@ class Security
         validateUser = (user, password, callback) =>
             if not user? or user is "" or user is "guest"
                 if settings.Security.guestEnabled
-                    guest = {id: "guest", username: "guest", displayName: "Guest", roles: ["guest"]}
+                    guest = {id: "guest", username: "guest", displayName: "Guest", roles: ["admin"]}
                     return callback null, guest
                 else
                     return callback null, false, {message: "Username was not specified."}
