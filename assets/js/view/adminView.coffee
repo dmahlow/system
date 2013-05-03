@@ -4,10 +4,13 @@
 
 class SystemApp.AdminView extends SystemApp.BaseView
 
-    $menu: null         # the menu wrapper on the top
-    $allMenus: null     # array with all menu items
+    routes: null
 
+    # Specific tab views.
     tabUser: null       # the "User and roles" tab view
+
+    # DOM elements.
+    $menu: null         # the menu wrapper on the top
 
 
     # INIT AND DISPOSE
@@ -15,9 +18,10 @@ class SystemApp.AdminView extends SystemApp.BaseView
 
     # Init the admin view by settings the DOM and events.
     initialize: =>
-        @setDom()
-        @setEvents()
         @tabUser = new SystemApp.AdminUserTabView()
+        @routes = new SystemApp.AdminRoutes()
+        @setDom()
+        Backbone.history.start()
 
     # Dispose the menu view.
     dispose: =>
@@ -27,17 +31,3 @@ class SystemApp.AdminView extends SystemApp.BaseView
     setDom: =>
         @setElement $ "#wrapper"
         @$menu = $ "#menu"
-        @$allMenus = @$menu.find "a.menu-item"
-
-    # Bind events to DOM.
-    setEvents: =>
-        @$allMenus.click @menuClick
-
-
-    # MENU
-    # ----------------------------------------------------------------------
-
-    # When user clicks a menu button, make it active.
-    menuClick: (e) =>
-        @$allMenus.removeClass "active"
-        $(e.target).addClass "active"

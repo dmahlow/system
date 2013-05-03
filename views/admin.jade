@@ -13,18 +13,18 @@ html
                 #menu
                     #menu-admintitle.menu-item #{title} - Admin
                     a#menu-status.menu-item(href="#status",title="#{title} status and general info.") Status
-                    a#menu-serversettings.menu-item(href="#serversettings",title="Edit server configuration and settings.") Server Settings
-                    a#menu-clientsettings.menu-item(href="#clientsettings",title="Edit client (browser) configuration and settings.") Client Settings
-                    a#menu-users.menu-item.active(href="#users",title="User and roles management.") Users and Roles
+                    a#menu-server.menu-item(href="#server",title="Edit server configuration and settings.") Server Settings
+                    a#menu-client.menu-item(href="#client",title="Edit client (browser) configuration and settings.") Client Settings
+                    a#menu-user.menu-item.active(href="#user",title="User and roles management.") Users and Roles
                     a#menu-back(href="/",title="Go back to the app main screen.") Back to the app...
 
             #tab-status(style="display:none").admin-tab
 
-            #tab-serversettings(style="display:none").admin-tab
+            #tab-server(style="display:none").admin-tab
 
-            #tab-clientsettings(style="display:none").admin-tab
+            #tab-client(style="display:none").admin-tab
 
-            #tab-users.admin-tab
+            #tab-user.admin-tab
                 h2 User management
                 h4 Create new user
                 fieldset.edit

@@ -12,6 +12,8 @@ class SystemApp.AdminUserTabView extends SystemApp.BaseView
     $butSave: null              # the "Save user" button
     $userGrid: null             # the users grid
 
+    selectedUser: null          # the user beind edited at the moment
+
 
 
     # INIT AND DISPOSE
@@ -52,6 +54,19 @@ class SystemApp.AdminUserTabView extends SystemApp.BaseView
 
     # EDITING USERS
     # ----------------------------------------------------------------------
+
+    # Bind the current selected [user](user.html) to the editing form.
+    bindUserForm: =>
+        @$txtDisplayName.val @selectedUser.displayName()
+        @$txtUsername.val @selectedUser.username()
+
+        for c in @$chkRoles
+            chk = $ c
+            if @selectedUser.hasRole chk.val()
+                chk.prop "checked", true
+            else
+                chk.prop "checked", false
+
 
     # When user clicks the "Save user" button, validate the form and save.
     saveUser: (e) =>
@@ -106,7 +121,7 @@ class SystemApp.AdminUserTabView extends SystemApp.BaseView
 
     # When a user is removed from the users collection.
     removeUserFromGrid: (user) =>
-        row = $(SystemApp.Settings.User.rowListPrefix + user.id)
+        row = $("#" + SystemApp.Settings.User.rowListPrefix + user.id)
         row.remove()
 
     # Bind registered users to the users grid.
@@ -117,8 +132,16 @@ class SystemApp.AdminUserTabView extends SystemApp.BaseView
     # When user clicks the "edit" icon, highlight the row and bind user details
     # to the top form so it can be edited.
     editClick: (e) =>
+        if @selectedUser?
+            $("#" + SystemApp.Settings.User.rowListPrefix + @selectedUser.id).removeClass "active"
+
+        # Highlight the clicked row.
         row = $(e.target).parent().parent()
         row.addClass "active"
+
+        # Set `selectedUser` and bind to the edit form.
+        @selectedUser = e.data
+        @bindUserForm()
 
     # When user clicks the "delete" icon, make it red and if clicking again,
     # remove the user from the database and the row from the `$userGrid`.

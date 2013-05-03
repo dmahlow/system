@@ -19,13 +19,13 @@
 #= require lib/raphael.link.js
 #= require lib/raphael.group.js
 
-# APP UTILS AND MANAGERS
+# APP MODULES
 # -----------------------------------------------------------------------------
 #= require settings.coffee
 #= require messages.coffee
 #= require vectors.coffee
-#= require routes.coffee
 #= require dataUtil.coffee
+#= require routes/appRoutes.coffee
 
 # APP MODELS
 # -----------------------------------------------------------------------------
@@ -166,7 +166,7 @@ SystemApp.init = ->
     window.onerror = SystemApp.onError
 
     # Create the Backbone "Routes" object.
-    SystemApp.routes = new SystemApp.Routes()
+    SystemApp.routes = new SystemApp.AppRoutes()
 
     # Init events and data.
     SystemApp.setEvents()

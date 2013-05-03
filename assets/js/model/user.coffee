@@ -7,9 +7,11 @@ class SystemApp.User extends SystemApp.BaseModel
     typeName: "User"
     defaults:
         displayName: null   # the user display name
+        lastAccess: null    # last access date and time
         passwordHash: null  # the user password hash
-        username: null      # the username
         roles: []           # the user roles array
+        username: null      # the username
+
 
 
     # PROPERTIES
@@ -21,23 +23,29 @@ class SystemApp.User extends SystemApp.BaseModel
             @set "displayName", value
         @get "displayName"
 
+    # Helper to get / set the user's last access datetime.
+    lastAccess: (value) =>
+        if value?
+            @set "lastAccess", value
+        @get "lastAccess"
+
     # Helper to get / set the user's password hash.
     passwordHash: (value) =>
         if value?
             @set "passwordHash", value
         @get "passwordHash"
 
-    # Helper to get / set the user's username.
-    username: (value) =>
-        if value?
-            @set "username", value
-        @get "username"
-
     # Helper to get / set the user roles.
     roles: (value) =>
         if value?
             @set "roles", value
         @get "roles"
+
+    # Helper to get / set the user's username.
+    username: (value) =>
+        if value?
+            @set "username", value
+        @get "username"
 
 
     # METHODS

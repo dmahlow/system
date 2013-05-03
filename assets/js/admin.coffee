@@ -19,6 +19,7 @@
 #= require settings.coffee
 #= require messages.coffee
 #= require dataUtil.coffee
+#= require routes/adminRoutes.coffee
 
 # APP MODELS
 # -----------------------------------------------------------------------------
