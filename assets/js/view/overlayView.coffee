@@ -209,7 +209,8 @@ class SystemApp.OverlayView extends SystemApp.BaseView
 
     # Remove the specified model from the `$modelsList`.
     removeFromModelsList: (item) =>
-        $("#" + @currentSettings.rowListPrefix + item.id).remove()
+        row = $("#" + @currentSettings.rowListPrefix + item.id)
+        @modelElementRemove row
 
     # When user clicks on the edit icon on a row, call the `selectModel` method.
     clickEditIcon: (e) =>

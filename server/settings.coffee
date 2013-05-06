@@ -35,8 +35,8 @@ class Settings
         connString: "mongodb://localhost/systemapp"
         # Wait for flush to file system before acknowlegement? Default is false.
         fsync: false
-        # For how many hours should the DB keep insert/update/delete logs? Default is 3 hours.
-        logExpires: 3
+        # For how many hours should the DB keep insert/update/delete logs? Default is 2 hours.
+        logExpires: 2
 
 
     # PATHS
@@ -114,6 +114,8 @@ class Settings
         maxFailedLogins: 3
         # Key used for session encryption.
         sessionKey: "Ss!0nPROtw"
+        # For how many seconds should the logged users cache keep data?
+        userCacheExpires: 60
         # Key used for user password encryption.
         userPasswordKey: "P4sssYs13!"
 

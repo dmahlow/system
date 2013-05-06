@@ -9,13 +9,19 @@ class Security
     crypto = require "crypto"
     database = require "./database.coffee"
     logger = require "./logger.coffee"
+    moment = require "moment"
     passport = require "passport"
     passportHttp = require "passport-http"
     settings = require "./settings.coffee"
 
+    # Cache with logged users to avoid hitting the database all the time.
+    # The default expirty time is 1 minute.
+    cachedUsers: null
+
     # Init all security related stuff. Set the passport strategy to
     # authenticate users using basic HTTP authentication.
     init: =>
+        @cachedUsers = {}
         @ensureAdminUser()
 
         # Helper to validate user login. If no user was specified and [settings](settings.html)
@@ -23,7 +29,7 @@ class Security
         validateUser = (user, password, callback) =>
             if not user? or user is "" or user is "guest"
                 if settings.Security.guestEnabled
-                    guest = {id: "guest", username: "guest", displayName: "Guest", roles: ["admin"]}
+                    guest = {id: "guest", displayName: "Guest", username: "guest", roles: ["guest"]}
                     return callback null, guest
                 else
                     return callback null, false, {message: "Username was not specified."}
@@ -32,19 +38,33 @@ class Security
             if not user.id?
                 filter = {username: user}
             else
+                fromCache = @cachedUsers[user.id]
                 filter = user
+
+            # Check if user was previously cached. If not valid, delete from cache.
+            if fromCache?
+                if fromCache.cacheExpiryDate.isAfter moment()
+                    callback null, fromCache
+                    return
+                delete @cachedUsers[user.id]
 
             # Add password hash to filter.
             if password? and password isnt "zalando"
                 filter.passwordHash = @getPasswordHash user, password
 
-            database.getUser filter, (err, result) ->
+            database.getUser filter, (err, result) =>
                 if err?
                     return callback err
                 if not result? or result.length < 0
                     return callback null, false, {message: "User and password combination not found."}
 
                 result = result[0] if result.length > 0
+
+                # Set expiry date for the user cache.
+                result.cacheExpiryDate = moment().add "s", settings.Security.userCacheExpires
+                @cachedUsers[result.id] = result
+
+                # Return the login callback.
                 return callback null, result
 
         # Use HTTP basic authentication.
@@ -73,7 +93,7 @@ class Security
             # If no users were found, create the default admin user.
             if result.length < 1
                 passwordHash = @getPasswordHash "admin", "system"
-                user = {displayName: "Administrator", roles:{"admin": true}, username: "admin", passwordHash: passwordHash}
+                user = {displayName: "Administrator", username: "admin", roles:["admin"], passwordHash: passwordHash}
                 database.setUser user
                 logger.info "Security.ensureAdminUser", "Default admin user was created."
 

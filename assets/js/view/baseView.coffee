@@ -78,7 +78,7 @@ class SystemApp.BaseView extends Backbone.View
     # Remove a DOM element representing a model from the view. This will add the class "removed"
     # and then fade the element out.
     modelElementRemove: (el) =>
-        el.addClass "removed"
+        el.removeClass("active").addClass "removed"
         el.fadeOut SystemApp.Settings.General.fadeRemoveDelay, () -> el.remove()
 
     # Add the specified class to an element.
