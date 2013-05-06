@@ -26,6 +26,8 @@ SystemApp.Settings =
         elementBlinkInterval: 150
         # Time in ms to fade in / out when using the show / hide methods of views.
         fadeDelay: 200
+        # Time in ms to fade out removed elements on the view.
+        fadeRemoveDelay: 800
         # Refresh the browser if the page has been idle for more than X minutes.
         idleRefreshMinutes: 60
         # The idle timer interval (tick every X milliseconds).

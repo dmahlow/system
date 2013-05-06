@@ -12,19 +12,34 @@ html
             #header
                 #menu
                     #menu-admintitle.menu-item #{title} - Admin
-                    a#menu-status.menu-item(href="#status",title="#{title} status and general info.") Status
+                    a#menu-status.menu-item.active(href="#status",title="#{title} status and general info.") Status
                     a#menu-server.menu-item(href="#server",title="Edit server configuration and settings.") Server Settings
                     a#menu-client.menu-item(href="#client",title="Edit client (browser) configuration and settings.") Client Settings
-                    a#menu-user.menu-item.active(href="#user",title="User and roles management.") Users and Roles
+                    a#menu-users.menu-item(href="#users",title="User and roles management.") Users and Roles
+                    a#menu-tools.menu-item(href="#tools",title="Tools to manage and control #{title}.") Tools
                     a#menu-back(href="/",title="Go back to the app main screen.") Back to the app...
 
-            #tab-status(style="display:none").admin-tab
+            // The Status tab.
+            // ----------------------------------------------------------------
+            #tab-status.admin-tab
+                h2 Status
+                div Not available yet!
 
-            #tab-server(style="display:none").admin-tab
+            // The Server Settings tab.
+            // ----------------------------------------------------------------
+            #tab-server.admin-tab(style="display:none")
+                h2 Server Settings
+                div Not available yet!
 
-            #tab-client(style="display:none").admin-tab
+            // The Client Settings tab.
+            // ----------------------------------------------------------------
+            #tab-client.admin-tab(style="display:none")
+                h2 Client Settings
+                div Not available yet!
 
-            #tab-user.admin-tab
+            // The Users and Roles tab.
+            // ----------------------------------------------------------------
+            #tab-users.admin-tab(style="display:none")
                 h2 User management
                 h4 Create new user
                 fieldset.edit
@@ -62,3 +77,9 @@ html
                         .actions
                             .edit
                             .delete
+
+            // The Tools tab.
+            // ----------------------------------------------------------------
+            #tab-tools.admin-tab(style="display:none")
+                h2 Tools
+                div Not available yet!

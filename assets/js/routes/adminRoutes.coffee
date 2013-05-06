@@ -9,8 +9,9 @@ class SystemApp.AdminRoutes extends Backbone.Router
         "": "openStatusTab"         # open the status tab by default
         "status": "openStatusTab"   # open the status tab
         "server": "openServerTab"   # open the server tab
-        "client": "openClientTab"    # open the client tab
-        "user": "openUserTab"      # open the users tab
+        "client": "openClientTab"   # open the client tab
+        "users": "openUsersTab"     # open the users tab
+        "tools": "openToolsTab"     # open the tools tab
 
 
     # ROUTER METHODS
@@ -39,5 +40,9 @@ class SystemApp.AdminRoutes extends Backbone.Router
         @openTab "client"
 
     # Show the "Users and Roles" tab.
-    openUserTab: =>
-        @openTab "user"
+    openUsersTab: =>
+        @openTab "users"
+
+    # Show the "Tools" tab.
+    openToolsTab: =>
+        @openTab "tools"

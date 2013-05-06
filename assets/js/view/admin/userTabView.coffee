@@ -51,12 +51,21 @@ class SystemApp.AdminUserTabView extends SystemApp.BaseView
 
         @$butSave.click @saveUser
 
+        $(document).keyup @keyUp
+
 
     # EDITING USERS
     # ----------------------------------------------------------------------
 
     # Bind the current selected [user](user.html) to the editing form.
     bindUserForm: =>
+        if not @selectedUser?
+            @$txtDisplayName.val ""
+            @$txtUsername.val ""
+            @$txtPassword.val ""
+            @$txtPasswordConfirm.val ""
+            return
+
         @$txtDisplayName.val @selectedUser.displayName()
         @$txtUsername.val @selectedUser.username()
 
@@ -122,7 +131,7 @@ class SystemApp.AdminUserTabView extends SystemApp.BaseView
     # When a user is removed from the users collection.
     removeUserFromGrid: (user) =>
         row = $("#" + SystemApp.Settings.User.rowListPrefix + user.id)
-        row.remove()
+        @modelElementRemove row
 
     # Bind registered users to the users grid.
     bindUsers: =>
@@ -157,3 +166,20 @@ class SystemApp.AdminUserTabView extends SystemApp.BaseView
             e.data.destroy()
         else
             src.addClass "delete-red"
+
+
+    # HELPER METHODS
+    # ----------------------------------------------------------------------
+
+    # When user presses a key, check if it's Esc to cancel pending actions like
+    # editing user details or deleting a user.
+    keyUp: (e) =>
+        keyCode = e.keyCode
+
+        if keyCode is 27
+            @$el.find("div.delete").removeClass "delete-red"
+            @$el.find("div.row").removeClass "active"
+            @selectedUser = null
+            @bindUserForm()
+
+        @lastPressedKey = keyCode
