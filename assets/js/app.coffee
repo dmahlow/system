@@ -367,10 +367,5 @@ SystemApp.onError = (msg, url, line) ->
 # STARTING
 # -----------------------------------------------------------------------------
 $(document).ready ->
-
-    # Temporary namespace redirection, this will be removed SOON!!!
-    System = new Object()
-    System.App = SystemApp
-
     # Init the app.
     SystemApp.init()

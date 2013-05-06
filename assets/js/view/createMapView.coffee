@@ -47,7 +47,14 @@ class SystemApp.CreateMapView extends SystemApp.OverlayView
         if not SystemApp.Data.loggedUser.hasRole "mapcreate"
             errorMsg = SystemApp.Messages.errNoPermissionTo.replace "#", SystemApp.Messages.createMaps
             SystemApp.alertEvents.trigger "tooltip", {isError: true, title: SystemApp.Messages.accessDenied, message: errorMsg}
-            setTimeout @hide, 1
+
+            # Cancel the view and go to previous screen.
+            cancelShow = =>
+                @hide()
+                window.history.back()
+            setTimeout cancelShow, 10
+
+            return
 
         $(document).keyup @keyUp
         SystemApp.footerView.setText SystemApp.Messages.createMapText

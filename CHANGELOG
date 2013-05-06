@@ -15,6 +15,7 @@ SYSTEM APP CHANGE LOG
 * When editing shape labels, the z-index of the label editor view will be set
   and incremented when there's more than 1 label editor visible.
 * The "lock" and "auto refresh" toggles were moved to the right corner of the top menu.
+* Fixed tutorial init bugs (because of namespace updates from System.App to SystemApp).
 * Fixed bug with "toggleFullscreen" called on the MpView instead of MapControlsView.
 * Fixed bug with the search field not editable on the "Objects" tab on the map controls.
 * Fixed Logentries integration bugs (binding to wrong Winston object).
