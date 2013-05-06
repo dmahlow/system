@@ -29,7 +29,7 @@ class Security
         validateUser = (user, password, callback) =>
             if not user? or user is "" or user is "guest"
                 if settings.Security.guestEnabled
-                    guest = {id: "guest", displayName: "Guest", username: "guest", roles: ["guest"]}
+                    guest = {id: "guest", displayName: "Guest", username: "guest", roles: ["admin"]}
                     return callback null, guest
                 else
                     return callback null, false, {message: "Username was not specified."}
@@ -41,21 +41,21 @@ class Security
                 fromCache = @cachedUsers[user.id]
                 filter = user
 
-            # Check if user was previously cached. If not valid, delete from cache.
-            if fromCache?
-                if fromCache.cacheExpiryDate.isAfter moment()
-                    callback null, fromCache
-                    return
-                delete @cachedUsers[user.id]
-
             # Add password hash to filter.
-            if password? and password isnt "zalando"
+            if password isnt false
                 filter.passwordHash = @getPasswordHash user, password
 
+            # Check if user was previously cached. If not valid, delete from cache.
+            if fromCache?.cacheExpiryDate?
+                if fromCache.cacheExpiryDate.isAfter(moment()) and fromCache.passwordHash is filter.passwordHash
+                    return callback null, fromCache
+                delete @cachedUsers[user.id]
+
+            # Get user from database.
             database.getUser filter, (err, result) =>
                 if err?
                     return callback err
-                if not result? or result.length < 0
+                else if not result? or result.length < 1
                     return callback null, false, {message: "User and password combination not found."}
 
                 result = result[0] if result.length > 0
@@ -80,18 +80,18 @@ class Security
             if user is "guest"
                 validateUser "guest", null, callback
             else
-                validateUser {id: user}, null, callback
+                validateUser {id: user}, false, callback
 
     # Ensure that there's at least one admin user registered. The default
     # admin user will have username "admin", password "system".
     ensureAdminUser: =>
-        database.getUser null, (err, result) ->
+        database.getUser null, (err, result) =>
             if err?
                 logger.error "Security.ensureAdminUser", err
                 return
 
             # If no users were found, create the default admin user.
-            if result.length < 1
+            if not result? or result.length < 1
                 passwordHash = @getPasswordHash "admin", "system"
                 user = {displayName: "Administrator", username: "admin", roles:["admin"], passwordHash: passwordHash}
                 database.setUser user
