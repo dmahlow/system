@@ -6,11 +6,10 @@ class SystemApp.AdminView extends SystemApp.BaseView
 
     routes: null
 
-    # Specific tab views.
-    tabUser: null       # the "User and roles" tab view
+    tabUsers: null  # the "Users and roles" tab view
+    tabTools: null  # the "Tools" tab view
 
-    # DOM elements.
-    $menu: null         # the menu wrapper on the top
+    $menu: null     # the menu wrapper on the top
 
 
     # INIT AND DISPOSE
@@ -18,7 +17,8 @@ class SystemApp.AdminView extends SystemApp.BaseView
 
     # Init the admin view by settings the DOM and events.
     initialize: =>
-        @tabUser = new SystemApp.AdminUserTabView()
+        @tabUsers = new SystemApp.AdminUsersTabView()
+        @tabTools = new SystemApp.AdminToolsTabView()
         @routes = new SystemApp.AdminRoutes()
         @setDom()
         Backbone.history.start()

@@ -38,7 +38,7 @@ class Sockets
         return Object.keys(@io.sockets.manager.open).length
 
 
-    # ENTITIES AND AUDIT DATA
+    # TRIGGER: ENTITIES AND AUDIT DATA
     # ----------------------------------------------------------------------
 
     # Send updated [Entity Definition data](entityObject.html) to the clients.
@@ -50,7 +50,7 @@ class Sockets
         @io.sockets.emit "auditdata:refresh", auditData
 
 
-    # SERVER LOGS AND ERRORS
+    # TRIGGER: SERVER LOGS AND ERRORS
     # ----------------------------------------------------------------------
 
     # Send a server error JSON to the clients, containing a title and message.
@@ -62,6 +62,15 @@ class Sockets
 
         errorMessage = "Unknown error" if not errorMessage?
         @io.sockets.emit "server:error", {title: title, message: errorMessage.toString().replace(":", " ")}
+
+
+    # LISTEN: CLIENT COMMANDS
+    # ----------------------------------------------------------------------
+
+    # When an admin user triggers the "clients:refresh" command, resend it
+    # to all connected clients so they'll get the page refreshed.
+    onClientsRefresh: (data) =>
+        @io.sockets.emit "clients:refresh", data
 
 
 # Singleton implementation

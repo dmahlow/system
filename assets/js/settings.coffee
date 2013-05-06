@@ -387,3 +387,10 @@ SystemApp.Settings =
         modifierToBack: "rightclick"
         # Prefix of each row representing a user on a list or grid.
         rowListPrefix: "list-user-"
+
+
+    # SOCKET SETTINGS
+    # ----------------------------------------------------------------------
+    Sockets:
+        # Default "clients:refresh" command is 10 seconds.
+        clientRefreshSeconds: 10

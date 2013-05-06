@@ -19,11 +19,11 @@ SystemApp.Sockets =
             url = window.location
             @socket = io.connect "http://#{url.hostname}:#{url.port}"
 
-        @socket.on "server:connectionCounter", @serverConnectionCounter
-        @socket.on "server:error", @serverError
-        @socket.on "entitydata:refresh", @entityDataRefresh
-        @socket.on "auditdata:refresh", @auditDataRefresh
-        @socket.on "app:reload", @appReload
+        @socket.on "server:connectionCounter", @onServerConnectionCounter
+        @socket.on "server:error", @onServerError
+        @socket.on "entitydata:refresh", @onEntityDataRefresh
+        @socket.on "auditdata:refresh", @onAuditDataRefresh
+        @socket.on "clients:refresh", @onClientRefresh
 
     # Stop listening to all socket messages from the server. Please note that this
     # will NOT kill the socket connection.
@@ -31,23 +31,23 @@ SystemApp.Sockets =
         @socket.off()
 
 
-    # SOCKET METHODS
+    # SOCKET LISTEN
     # ----------------------------------------------------------------------
 
     # Listen to connection counter updates. This happens everytime someone a new browser
     # window pointing to the System app is opened or closed.
-    serverConnectionCounter: (count) =>
+    onServerConnectionCounter: (count) =>
         SystemApp.footerView.setOnlineUsers count
 
     # listen to server errors. A [footer alert](alertView.html) will be shown
     # and errors can also be listed on the [Settings menu](menuView.html).
-    serverError: (err) ->
+    onServerError: (err) ->
         err.timestamp = new Date()
         SystemApp.Sockets.serverErrors.push err
         SystemApp.serverEvents.trigger "error", err
 
     # Listen to [Entity Definition data](entityObject.html) refreshes.
-    entityDataRefresh: (entityDef) ->
+    onEntityDataRefresh: (entityDef) ->
         updated = SystemApp.Data.entities.getByFriendlyId entityDef.friendlyId
 
         # Only proceed if entity was found on the [data store](data.html).
@@ -59,7 +59,7 @@ SystemApp.Sockets =
         updated.lastDataRefresh = new Date()
 
     # Listen to [AuditData](auditData.html) refreshes.
-    auditDataRefresh: (auditData) ->
+    onAuditDataRefresh: (auditData) ->
         updated = SystemApp.Data.auditData.getByFriendlyId auditData.friendlyId
 
         # Only proceed if entity was found on the [data store](data.html).
@@ -74,5 +74,21 @@ SystemApp.Sockets =
         SystemApp.dataEvents.trigger "auditdata:refresh", updated
 
     # Force reload the app by refreshing the browser window.
-    appReload: =>
+    onClientRefresh: =>
         SystemApp.routes.refresh()
+
+
+    # SOCKET SEND
+    # ----------------------------------------------------------------------
+
+    # Trigger the "clients:refresh" command on all connected browsers. This will force
+    # clients to refresh the window in X seconds.
+    sendClientRefresh: (seconds) =>
+        if not SystemApp.Data.loggerUser.hasRole "admin"
+            console.warn "You don't have the necessary permissions to trigger this event!"
+            return
+
+        # Default seconds is 10.
+        seconds = SystemApp.Settings.Sockets.clientRefreshSeconds if not seconds?
+
+        @socket.emit "clients:refresh", {seconds: seconds}

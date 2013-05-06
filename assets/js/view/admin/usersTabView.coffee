@@ -1,8 +1,8 @@
-# ADMIN USER TAB VIEW
+# ADMIN USERS TAB VIEW
 # --------------------------------------------------------------------------
 # Represents the "Users and Roles" tab on the admin area.
 
-class SystemApp.AdminUserTabView extends SystemApp.BaseView
+class SystemApp.AdminUsersTabView extends SystemApp.BaseView
 
     $txtDisplayName: null       # the "display name" text field
     $txtUsername: null          # the "username" text field
