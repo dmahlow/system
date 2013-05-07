@@ -523,11 +523,7 @@ class SystemApp.MapView extends SystemApp.BaseView
     # the [user settings](userSettings.html), to achieve better performance.
     afterZoomSet: =>
         SystemApp.Data.userSettings.mapZoom @currentZoom
-
-        # Update font sizes on all labels.
-        _.each @shapeViews, (view) =>
-            view.setFontSize()
-            view.labelsView.setAllFontSizes()
+        SystemApp.mapEvents.trigger "zoom:set"
 
         @timerAfterZoom = null
 

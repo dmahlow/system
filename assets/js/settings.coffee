@@ -196,7 +196,7 @@ SystemApp.Settings =
         # Zoom step while zooming (0.10 means will zoom in or out 10%).
         zoomStep: 0.10
         # How long to wait before updating labels whem zooming, in milliseconds.
-        zoomUpdateDelay: 600
+        zoomUpdateDelay: 400
         # Properties to ignore on the shape details tab.
         ignoreDisplayProps: "0,format,background,foreground,fontSize,stroke,strokeWidth," +
                             "map_position_x,map_position_y,physical_machine,sizeX,sizeY,roundedCorners,zIndex"

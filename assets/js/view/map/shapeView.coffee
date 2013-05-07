@@ -29,6 +29,7 @@ class SystemApp.MapShapeView extends SystemApp.BaseView
         @linkViews = new Object()
 
         @listenTo SystemApp.mapEvents, "edit:toggle", @toggleEdit
+        @listenTo SystemApp.mapEvents, "zoom:set", @onZoom
         @listenTo SystemApp.mapEvents, "zindex:toggle", @toggleZIndexDisplay
 
         @listenTo @model, "change:background", @setBackground
@@ -763,6 +764,10 @@ class SystemApp.MapShapeView extends SystemApp.BaseView
         else
             @svgLinker.hide()
             @svgResizer.hide()
+
+    # When user zooms in or out, resize the shape title accordingly.
+    onZoom: =>
+        @setFontSize()
 
     # Toggles the text showing the z-index (stack level) of the shape, represented
     # by the element `svgZIndex`. If the parameter ``visible`` is not passed, then
