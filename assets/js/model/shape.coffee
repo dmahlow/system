@@ -69,6 +69,12 @@ class SystemApp.Shape extends SystemApp.BaseModel
             @set "icon", value
         @get "icon"
 
+    # Helper to get / set the shape's icon full size (true or false).
+    iconFull: (value) =>
+        if value?
+            @set "iconFull", value
+        @get "iconFull"
+
     # Helper to get / set the shape opacity level, from 0.5 to 1;
     opacity: (value) =>
         if value?
@@ -206,6 +212,21 @@ class SystemApp.Shape extends SystemApp.BaseModel
         if value?
             @set "entityObjectId", value
         @get "entityObjectId"
+
+
+    # EXTRA PROPERTIES
+    # ----------------------------------------------------------------------
+
+    # Helper to check if shape has a full size icon.
+    hasFullIcon: =>
+        icon = @icon()
+        return icon? and icon isnt "" and icon isnt 0 and @iconFull()
+
+    # Helper to get the computed stroke width (will always be 0 if shape has a full icon).
+    strokeWidthComputed: =>
+        if @hasFullIcon()
+            return 0
+        return @strokeWidth()
 
 
 # SHAPE COLLECTION

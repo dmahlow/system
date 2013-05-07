@@ -18,7 +18,6 @@ class SystemApp.MapShapeView extends SystemApp.BaseView
     oh: 0                   # temporary shape height when resizing
     resizing: false         # is the shape being resized?
     dragging: false         # is the shape dragging?
-    fullSizeIcon: false     # true if icon is in full size mode, false if it isn't
 
 
     # INIT AND DISPOSE
@@ -40,6 +39,7 @@ class SystemApp.MapShapeView extends SystemApp.BaseView
         @listenTo @model, "change:opacity", @setOpacity
         @listenTo @model, "change:zIndex", @setZIndex
         @listenTo @model, "change:icon", @setIcon
+        @listenTo @model, "change:iconFull", @setIconFull
         @listenTo @model, "change:roundedCorners", @setRoundedCorners
 
         @baseInit()
@@ -117,10 +117,6 @@ class SystemApp.MapShapeView extends SystemApp.BaseView
         v = @model.sizeY() * @parentView.model.gridSizeY() if v is undefined or v < 1
         return v
 
-    # Helper method to check if the shape has an icon set.
-    hasIcon: =>
-        icon = @model.icon()
-        return icon? and icon isnt "" and icon isnt 0
 
     # VIEW UPDATE EVENTS
     # ----------------------------------------------------------------------
@@ -167,7 +163,7 @@ class SystemApp.MapShapeView extends SystemApp.BaseView
 
     # Update the border width of the shape.
     setStrokeWidth: =>
-        @svg.attr {"stroke-width": @model.strokeWidth()}
+        @svg.attr {"stroke-width": @model.strokeWidthComputed()}
         @svgLinker.attr @getLinkerPositionAtt(@x(), @y())
         @labelsView.setPosition()
         _.delay @strokeUpdatedBackToSelected, SystemApp.Settings.Map.borderUpdatedDelay
@@ -197,6 +193,17 @@ class SystemApp.MapShapeView extends SystemApp.BaseView
             @setIconGeometry()
         else
             @svgIcon.attr {"path": ""}
+
+    # Toggle the full size icon ON or OFF. The shape's borders will be hidden
+    # and its icon (if there's one) will be resized to the full size.
+    setIconFull: =>
+        if @model.hasFullIcon()
+            @svg.attr {"fill-opacity": 0}
+        else
+            @svg.attr {"fill-opacity": @model.opacity()}
+
+        @setStrokeWidth()
+        @setIconGeometry()
 
     # Set the shape's corner style (squared if false, rounded if true).
     setRoundedCorners: =>
@@ -534,7 +541,7 @@ class SystemApp.MapShapeView extends SystemApp.BaseView
         if not @labelsView?
             @labelsView = new SystemApp.MapShapeLabelsView(model: @model)
 
-        @svg.attr {"fill": @model.background(), "stroke": @model.stroke(), "stroke-width": @model.strokeWidth()}
+        @svg.attr {"fill": @model.background(), "stroke": @model.stroke(), "stroke-width": @model.strokeWidthComputed()}
         @svg.attr {"fill-opacity": @model.opacity(), "cursor": "move"}
         @svgIcon.attr {"cursor": "pointer", "fill": @model.stroke(), "stroke": "none"}
         @svgLinker.attr {"cursor": "pointer", "title": SystemApp.Messages.tooltipLinker, "opacity": iconOpacity}
@@ -673,7 +680,7 @@ class SystemApp.MapShapeView extends SystemApp.BaseView
     # Set the positon and scale of the shape's icon. The values depend
     # if shape is in `fullSizeIcon`.
     setIconGeometry: (posX, posY) =>
-        if @fullSizeIcon and @hasIcon()
+        if @model.hasFullIcon()
             posX = @x() if not posX?
             posY = @y() if not posY?
             scaleW = ((@width() - 2) / @svgIcon.getBBox(true).width).toFixed(2)
@@ -707,8 +714,8 @@ class SystemApp.MapShapeView extends SystemApp.BaseView
     # Get the link creator circle position attribute based on the X and Y values.
     # Should be around the right-middle center of the shape.
     getLinkerPositionAtt: (posX, posY) =>
-        posX += @width() - @model.strokeWidth() - SystemApp.Settings.Map.icoActionsSize
-        posY += @model.strokeWidth()
+        posX += @width() - @model.strokeWidthComputed() - SystemApp.Settings.Map.icoActionsSize
+        posY += @model.strokeWidthComputed()
         return { x: posX, y: posY }
 
     # Get the "z-index identifier" text position. This SVG element is shown
@@ -803,19 +810,6 @@ class SystemApp.MapShapeView extends SystemApp.BaseView
         @svgZIndex.remove()
         @svgZIndex = null
 
-    # Toggle the full size icon. The shape's borders will be hidden
-    # and its icon (if there's one) will be resized to the full size.
-    toggleFullSizeIcon: (fullsize) =>
-        @fullSizeIcon = fullsize
-
-        if fullsize and @hasIcon()
-            @svg.attr {"fill-opacity": 0}
-        else
-            @svg.attr {"fill-opacity": @model.opacity()}
-
-        @setStrokeWidth()
-        @setIconGeometry()
-
 
     # HIGHLIGHT AND SHADOW
     # ----------------------------------------------------------------------
@@ -837,7 +831,7 @@ class SystemApp.MapShapeView extends SystemApp.BaseView
 
     # Remove the shadow from the shape (if there's one present).
     removeShadow: =>
-        @svg?.attr {"stroke": @model.stroke(), "stroke-width": @model.strokeWidth()}
+        @svg?.attr {"stroke": @model.stroke(), "stroke-width": @model.strokeWidthComputed()}
 
     # Blink the entire shape with optional amount of times (default is 2). This is a recursive function.
     # If times is 1 and the `callback` is specified, call it when it has finished blinking.

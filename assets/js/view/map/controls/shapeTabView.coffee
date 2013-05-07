@@ -20,8 +20,9 @@ class SystemApp.MapControlsShapeTabView extends SystemApp.BaseView
     $selArrowSource: null           # the "Source arrow style" select field
     $selArrowTarget: null           # the "Target arrow style" select field
     $selOpacity: null               # the "Opacity" select field
-    $chkRoundedCorners: null        # the "Rounded corners" checkbox/toggle
-    $chkSmoothLink: null            # the "Smooth link" checkbox/toggle
+    $chkIconFull: null              # the "Full size icon" toggle
+    $chkRoundedCorners: null        # the "Rounded corners" toggle
+    $chkSmoothLink: null            # the "Smooth link" toggle
     $zIndexDiv: null                # the "Stack level/z-index" wrapper
     $butDeleteShape: null           # the "Remove shape" button
     $butConfirmDeleteShape: null    # the "Confirm" button to remove a shape from the map
@@ -56,6 +57,7 @@ class SystemApp.MapControlsShapeTabView extends SystemApp.BaseView
         @$selArrowSource = $ "#map-ctl-link-arrow-source"
         @$selArrowTarget = $ "#map-ctl-link-arrow-target"
         @$selOpacity = $ "#map-ctl-shape-opacity"
+        @$chkIconFull = $ "#map-ctl-shape-icon-full"
         @$chkRoundedCorners = $ "#map-ctl-shape-roundedcorners"
         @$chkSmoothLink = $ "#map-ctl-link-smooth"
 
@@ -65,8 +67,6 @@ class SystemApp.MapControlsShapeTabView extends SystemApp.BaseView
         @$butConfirmDeleteShape = $ "#map-ctl-shape-confirmdelete"
 
         # Set propertyName data on all editable fields.
-        # TODO! Move the data propertyname to the JADE files.
-        @$selIcon.data "propertyName", "icon"
         @$txtBackground.data "propertyName", "background"
         @$txtForeground.data "propertyName", "foreground"
         @$txtTitleForeground.data "propertyName", "titleForeground"
@@ -76,6 +76,8 @@ class SystemApp.MapControlsShapeTabView extends SystemApp.BaseView
         @$selOpacity.data "propertyName", "opacity"
         @$selArrowSource.data "propertyName", "arrowSource"
         @$selArrowTarget.data "propertyName", "arrowTarget"
+        @$selIcon.data "propertyName", "icon"
+        @$chkIconFull.data "propertyName", "iconFull"
         @$chkRoundedCorners.data "propertyName", "roundedCorners"
         @$chkSmoothLink.data "propertyName", "smooth"
 
@@ -92,13 +94,16 @@ class SystemApp.MapControlsShapeTabView extends SystemApp.BaseView
             elm.blur @editablePropertySave
 
         selects = [@$selIcon, @$selStrokeWidth, @$selFontSize, @$selOpacity, @$selArrowSource, @$selArrowTarget,
-                   @$chkRoundedCorners, @$chkSmoothLink]
+                   @$chkIconFull, @$chkRoundedCorners, @$chkSmoothLink]
         for elm in selects
             elm.change @editablePropertySave
 
         @$zIndexDiv.children("div").click @zIndexSave
         @$butDeleteShape.click @deleteShapeClick
         @$butConfirmDeleteShape.click @confirmDeleteShapeClick
+
+        # Disable the "full icon" toggle when no icon is selected.
+        @$selIcon.change @selIconChanged
 
     # Enable or disable editing the current [Shape](shape.html) properties.
     setEnabled: (value) =>
@@ -161,6 +166,7 @@ class SystemApp.MapControlsShapeTabView extends SystemApp.BaseView
                 @$txtBackground.keyup()
                 @$txtTitleForeground.val @currentBoundView.model.titleForeground()
                 @$txtTitleForeground.keyup()
+                @$chkIconFull.prop "checked", @currentBoundView.model.iconFull()
                 @$chkRoundedCorners.prop "checked", @currentBoundView.model.roundedCorners()
                 @$el.find(".only-for-links").hide()
                 @$el.find(".not-for-links").show()
@@ -210,7 +216,7 @@ class SystemApp.MapControlsShapeTabView extends SystemApp.BaseView
             value = src.prop "checked"
         else
             value = src.val()
-            if typeof not isNaN value
+            if not isNaN(value)
                 # Make sure numeric values are saved as numbers, not string.
                 value = parseFloat value
 
@@ -220,6 +226,13 @@ class SystemApp.MapControlsShapeTabView extends SystemApp.BaseView
             @parentView.model.save()
         else
             src.val @currentBoundView.model.get propertyName
+
+    # When user selects no icon, disable the "full icon" toggle.
+    selIconChanged: =>
+        if @$selIcon.val().toString() is "0"
+            @$chkIconFull.attr("disabled", "disabled").addClass "disabled"
+        else
+            @$chkIconFull.removeAttr("disabled").removeClass "disabled"
 
     # Saves the selected stack lavel (z-index) to the current
     # [Shape](shape.html).

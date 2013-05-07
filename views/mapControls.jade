@@ -111,6 +111,11 @@
                 label.control-label(for="map-ctl-shape-icon") Icon
                 select#map-ctl-shape-icon(disabled="disabled",title="Select the shape's icon.")
             div.not-for-links
+                label.control-label Full size icon
+                label.toggle(for="map-ctl-shape-icon-full",title="If ON, the selected icon will have the full shape size instead of being right before the shape's title.")
+                    input#map-ctl-shape-icon-full(type="checkbox", name="map-ctl-shape-icon-full", checked="checked")
+                    span
+            div.not-for-links
                 label.control-label Rounded corners
                 label.toggle(for="map-ctl-shape-roundedcorners",title="If ON, the shape will have rounded corners. If OFF, squared corners.")
                     input#map-ctl-shape-roundedcorners(type="checkbox", name="map-ctl-shape-roundedcorners", checked="checked")
@@ -151,14 +156,6 @@
         h6 No shape(s) or link(s) selected
         h5 Attributes
         #map-ctl-inspector-attributes.panel
-
-        // h5 Related objects
-        // .panel
-        //    span No related objects!
-        //    #map-ctl-shape-parent-child
-        //        span No child entities.
-        //    #map-ctl-shape-links
-        //        span No connections.
 
         h5 Attached events
         .panel

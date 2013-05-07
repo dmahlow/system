@@ -223,9 +223,9 @@ class SystemApp.MapControlsView extends SystemApp.BaseView
         tabDiv.show()
 
     # When user clicks the "Inspector" tab, call its `resize` handler.
-    tabInspectorClick: (e) =>
+    tabInspectorClick: =>
         @inspectorTabView.resize()
 
     # When user clicks the "Objects" tab, call its `resize` handler.
-    tabEntitiesClick: (e) =>
+    tabEntitiesClick: =>
         @entitiesTabView.resize()
