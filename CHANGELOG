@@ -5,8 +5,9 @@ SYSTEM APP CHANGE LOG
 
 # -----------------------------------------------------------------------------
   0.6.1
-+ Maps now have an owner (user defined by the "createdByUserId" property).
++ Maps now have an owner (defined by the "createdByUserId" property).
 + New zoom implementation, zooming in and out is now way faster than before.
+* Better UI implementation for debugging notice and general alerts.
 * Fixed incorrect checks for permissions on the client side. The "loggedUser"
   object wasn't being set, and this all client permission checks were invalid.
 

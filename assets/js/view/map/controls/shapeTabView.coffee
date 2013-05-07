@@ -210,10 +210,9 @@ class SystemApp.MapControlsShapeTabView extends SystemApp.BaseView
             value = src.prop "checked"
         else
             value = src.val()
-
-        # Make sure numeric values are saved as numbers, not string.
-        if not isNaN value
-            value = parseFloat value
+            if typeof not isNaN value
+                # Make sure numeric values are saved as numbers, not string.
+                value = parseFloat value
 
         if value? and value isnt ""
             @currentBoundView.model.set propertyName, value

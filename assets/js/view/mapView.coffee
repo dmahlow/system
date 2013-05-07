@@ -836,6 +836,7 @@ class SystemApp.MapView extends SystemApp.BaseView
         if now.getTime() - thumbnailDate.getTime() < SystemApp.Settings.Map.thumbnailExpires
             return
 
+        # Update thumbnail date and generate new thumbnail using an AJAX post.
         @model.thumbnailDate now
 
         $.ajax

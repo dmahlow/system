@@ -176,7 +176,7 @@
                 background-color darkBgColor
 
             span
-                color darkHoverColor
+                color lightHoverColor
 
             span.type
                 float left
@@ -259,6 +259,14 @@
         opacity 1 !important
         position relative !important
 
+    // Force labels to be in light text.
+    label
+        color lightTextColor
+
+    // Highlight checked labels.
+    input:checked + label
+        color lightHoverColor
+
     // Add an alert icon on active alerts.
     .active
         background url(../images/ico-warning.png) no-repeat 98% center
@@ -276,15 +284,15 @@
         div
             margin-bottom 6px !important
 
-        // The attribute names.
-        label
-            margin-right 12px
-            min-width 100px
-
         // The attribute values.
         span
-            color lightHoverColor
             font-style italic
 
 #map-ctl-inspector-attributes
     max-height 80%
+
+    // The attribute names are green.
+    label
+        color lightHoverColor
+        margin-right 12px
+        min-width 100px

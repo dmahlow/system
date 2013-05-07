@@ -23,7 +23,8 @@ class SystemApp.MapControlsView extends SystemApp.BaseView
     $imgFullscreen: null       # the top right "Fullscreen" icon
     $tabDivs: null             # the tab divs (each div is a tab)
     $tabHeaders: null          # to get each h4 element on the tab headers
-
+    $tabInspectorHeader: null  # the "Inspector" tab header
+    $tabEntitiesHeader: null   # the "Objects" tab header
 
     # INIT AND DISPOSE
     # ----------------------------------------------------------------------
@@ -35,6 +36,7 @@ class SystemApp.MapControlsView extends SystemApp.BaseView
         @setChildViews()
         @setEvents()
         @bindInitialState()
+
         @resize()
         @width = @$el.outerWidth()
 
@@ -68,14 +70,21 @@ class SystemApp.MapControlsView extends SystemApp.BaseView
         @$imgAutoUpdate = $ "#top-img-autoupdate"
         @$imgFullscreen = $ "#top-img-fullscreen"
 
+        @$tabInspectorHeader = $ "#map-ctl-tab-header-inspector"
+        @$tabEntitiesHeader = $ "#map-ctl-tab-header-entities"
+
     # Bind events to DOM and other controls.
     setEvents: =>
         $(window).resize @resize
 
-        @$tabHeaders.children("h4").click @tabClick
         @$chkEditable.change @setEnabled
         @$chkAutoUpdate.change @setAutoUpdate
         @$imgFullscreen.click @toggleFullscreen
+
+        # Bind click to tab headers.
+        @$tabHeaders.children("h4").click @tabClick
+        @$tabInspectorHeader.click @tabInspectorClick
+        @$tabEntitiesHeader.click @tabEntitiesClick
 
         @listenTo SystemApp.mapEvents, "loaded", @bindMap
         @listenTo SystemApp.mapEvents, "edit:toggle", @editSetState
@@ -212,3 +221,11 @@ class SystemApp.MapControlsView extends SystemApp.BaseView
 
         @$tabDivs.hide()
         tabDiv.show()
+
+    # When user clicks the "Inspector" tab, call its `resize` handler.
+    tabInspectorClick: (e) =>
+        @inspectorTabView.resize()
+
+    # When user clicks the "Objects" tab, call its `resize` handler.
+    tabEntitiesClick: (e) =>
+        @entitiesTabView.resize()

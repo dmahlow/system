@@ -331,7 +331,14 @@ module.exports = (app) ->
             sendForbiddenResponse res, "Map POST"
             return
 
-        database.setMap getDocumentFromBody(req), null, (err, result) ->
+        # Get map from request body.
+        map = getDocumentFromBody req
+
+        # If map is new, set the `createdByUserId` to the current logged user's ID.
+        if not map.id? or map.id is ""
+            map.createdByUserId = req.user.id
+
+        database.setMap map, null, (err, result) ->
             if result? and not err?
                 res.send minifyJson result
             else
@@ -379,9 +386,13 @@ module.exports = (app) ->
 
         fs.writeFile svgPath, svg, (err) ->
             if err?
-                logger.error "Thumbnail SVG save error.", err
+                sendErrorResponse res, "Map Thumbnail POST", err
             else
-                imaging.svgToPng svgPath, settings.Images.mapThumbSize
+                imaging.svgToPng svgPath, settings.Images.mapThumbSize, (err2, result) ->
+                    if err2?
+                        sendErrorResponse res, "Map Thumbnail POST", err2
+                    else
+                        res.send result
 
 
     # USER ROUTES
