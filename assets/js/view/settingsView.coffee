@@ -48,12 +48,6 @@ class SystemApp.SettingsView extends SystemApp.OverlayView
         @$serverLogsDiv = $ "#settings-serverlogs-contents"
         @$serverLogsClearBut = $ "#settings-serverlogs-clear-but"
 
-        @$chkFullscreen.prop "checked", SystemApp.Data.userSettings.mapFullscreen()
-        @$chkAutoRefresh.prop "checked", SystemApp.Data.userSettings.mapAutoRefresh()
-        @$chkDebug.prop "checked", SystemApp.Settings.General.debug
-
-        @$debugNote.hide() if not SystemApp.Settings.General.debug
-
     # Bind events to the DOM.
     setEvents: =>
         @$chkFullscreen.click @toggleMapFullscreen
@@ -68,6 +62,14 @@ class SystemApp.SettingsView extends SystemApp.OverlayView
 
     # OPTIONS
     # ----------------------------------------------------------------------
+
+    # Bind options and general user settings to the view.
+    bindOptions: =>
+        @$chkFullscreen.prop "checked", SystemApp.Data.userSettings.mapFullscreen()
+        @$chkAutoRefresh.prop "checked", SystemApp.Data.userSettings.mapAutoRefresh()
+        @$chkDebug.prop "checked", SystemApp.Settings.General.debug
+
+        @$debugNote.hide() if not SystemApp.Settings.General.debug
 
     # When user check/uncheck the "start maximized" map option.
     toggleMapFullscreen: (e) =>
@@ -184,6 +186,7 @@ class SystemApp.SettingsView extends SystemApp.OverlayView
         SystemApp.serverEvents.off "error", @bindServerErrors
         SystemApp.serverEvents.on "error", @bindServerErrors
 
+        @bindOptions()
         @bindLocalStorage()
         @bindServerErrors()
         @bindModifierKeys()

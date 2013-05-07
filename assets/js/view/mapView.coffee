@@ -264,8 +264,10 @@ class SystemApp.MapView extends SystemApp.BaseView
 
     # Refresh current map's [Shape Labels](shapeLabelsView.html) and
     # [Link Labels](linkLabelsView.html). This will also update the [Shape Details View](shapeDetailsView.html)
-    # to reflect the selected shape's active alerts.
+    # to reflect the selected shape's active alerts. Refresh will be aborted if user is panning the map.
     refreshLabels: =>
+        return if @isPanning
+
         _.each @shapeViews, (view) -> view.labelsView.bindAllLabelsData()
         _.each @linkViews, (view) -> view.labelsView.bindAllLabelsData()
 

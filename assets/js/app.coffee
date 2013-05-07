@@ -149,12 +149,13 @@ SystemApp.startView = null
 SystemApp.variableManagerView = null
 
 
-# LOADING
+# DOM CACHE
 # -----------------------------------------------------------------------------
 
 # The "loading" image (DOM) which gets visible whenever the app
-# has any major view state change.
+# has any major view state change, and the "debug" notice element.
 SystemApp.$loading = null
+SystemApp.$debug = null
 
 
 # INIT AND DISPOSE
@@ -192,6 +193,7 @@ SystemApp.init = ->
 # Set the DOM cache.
 SystemApp.setDom = ->
     SystemApp.$loading = $ "#loading"
+    SystemApp.$debug = $ "#footer-debug"
 
 # Init the menu, footer and settings.
 SystemApp.setViews = ->
@@ -326,13 +328,9 @@ SystemApp.toggleDebug = (enabled) ->
     SystemApp.Settings.General.debug = enabled
 
     if enabled
-        alertTitle = "ENABLED"
-        alertMsg = "Most actions and events will be logged to the console."
+        SystemApp.$debug.show()
     else
-        alertTitle = "DISABLED"
-        alertMsg = "Only errors will be logged to the console now."
-
-    SystemApp.alertEvents.trigger "footer", {title: "DEBUG #{alertTitle}", message: alertMsg}
+        SystemApp.$debug.hide()
 
 # Prevent accidental use of backspace which could trigger a `history.back()` on the page.
 SystemApp.suppressBackspace = (e) ->
