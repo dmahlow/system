@@ -5,6 +5,7 @@
 class Database
 
     # Define required modules.
+    _ = require "lodash"
     mongo = require "mongoskin"
     logger = require "./logger.coffee"
     settings = require "./settings.coffee"
@@ -37,7 +38,14 @@ class Database
     # The `callback` is mandatory here.
     get: (table, filter, callback) =>
         if settings.General.debug
-            logger.info "Database.get", table.collectionName, filter
+            # Remove password fields from the logged string!
+            if filter?
+                cleanFilter = _.cloneDeep filter
+                delete cleanFilter["password"]
+                delete cleanFilter["passwordHash"]
+            else
+                cleanFilter = null
+            logger.info "Database.get", table.collectionName, cleanFilter
 
         if filter?
             if filter.id?
