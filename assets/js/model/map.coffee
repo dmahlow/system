@@ -6,6 +6,7 @@
 class SystemApp.Map extends SystemApp.BaseModel
     typeName: "Map"
     defaults:
+        createdByUserId: null
         background: SystemApp.Settings.Map.background
         paperSizeX: SystemApp.Settings.Map.paperSizeX
         paperSizeY: SystemApp.Settings.Map.paperSizeY
@@ -21,6 +22,12 @@ class SystemApp.Map extends SystemApp.BaseModel
 
     # PROPERTIES
     # ----------------------------------------------------------------------
+
+    # Helper to get / set the ID of user who created the map.
+    createdByUserId: (value) =>
+        if value?
+            @set "createdByUserId", value
+        @get "createdByUserId"
 
     # Helper to get / set the map name.
     name: (value) =>

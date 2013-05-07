@@ -390,12 +390,15 @@ module.exports = (app) ->
     # Get a single or a collection of [Users](user.html).
     getUser = (req, res) ->
         roles = getUserRoles req
-        if not roles.admin
-            sendForbiddenResponse res, "User GET"
-            return
 
         database.getUser getIdFromRequest(req), (err, result) ->
             if result? and not err?
+
+                # Check user permissions.
+                if not roles.admin and result.id isnt req.user.id
+                    sendForbiddenResponse res, "User GET"
+                    return
+
                 res.send minifyJson result
             else
                 sendErrorResponse res, "User GET", err
@@ -403,12 +406,14 @@ module.exports = (app) ->
     # Add or update a [Users](user.html).
     postUser = (req, res) ->
         roles = getUserRoles req
-        if not roles.admin
+        user = getDocumentFromBody req
+
+        # Check user permissions.
+        if not roles.admin and user.id isnt req.user.id
             sendForbiddenResponse res, "User POST"
             return
 
-        # Make sure user password hash is set.
-        user = getDocumentFromBody req
+        # Make sure password hash is set and remove clear text password.
         if user.password?
             user["passwordHash"] = security.getPasswordHash user.username, user.password
             delete user["password"]
@@ -424,7 +429,10 @@ module.exports = (app) ->
     # Patch only the specified properties of a [Users](user.html).
     patchUser = (req, res) ->
         roles = getUserRoles req
-        if not roles.admin
+        user = getDocumentFromBody req
+
+        # Check user permissions.
+        if not roles.admin and user.id isnt req.user.id
             sendForbiddenResponse res, "User PATCH"
             return
 
@@ -445,6 +453,8 @@ module.exports = (app) ->
     # Delete a [Users](user.html).
     deleteUser = (req, res) ->
         roles = getUserRoles req
+
+        # Check user permissions.
         if not roles.admin
             sendForbiddenResponse res, "User DELETE"
             return

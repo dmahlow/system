@@ -4,6 +4,12 @@ SYSTEM APP CHANGE LOG
 - = removed features
 
 # -----------------------------------------------------------------------------
+  0.6.1
++ Maps now have an owner (user defined by the "createdByUserId" property).
+* Fixed incorrect checks for permissions on the client side. The "loggedUser"
+  object wasn't being set, and this all client permission checks were invalid.
+
+# -----------------------------------------------------------------------------
   0.6.0, 2013.05.06
 + Demo environment moved from Rackspace East to AWS Europe.
   Now accessible via http://systemapp.io/demo

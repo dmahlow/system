@@ -53,8 +53,9 @@ class SystemApp.User extends SystemApp.BaseModel
 
     # Check if user has a specific role. Returns true or false.
     hasRole: (role) =>
+        admin = @roles().indexOf "admin"
         index = @roles().indexOf role
-        return (index > -1)
+        return  (admin > -1) or (index > -1)
 
 
 # USER COLLECTION
