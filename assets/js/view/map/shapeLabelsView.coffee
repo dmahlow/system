@@ -79,8 +79,6 @@ class SystemApp.MapShapeLabelsView extends SystemApp.BaseView
     # Bind event listeners to the view.
     setEvents: =>
         @listenTo SystemApp.mapEvents, "edit:toggle", @toggleEdit
-        @listenTo SystemApp.mapEvents, "zoom:in", @onZoom
-        @listenTo SystemApp.mapEvents, "zoom:out", @onZoom
 
         @listenTo @model, "change:titleForeground", @setTitleForeground
         @listenTo @model, "change:foreground", @setAllForeground
@@ -161,7 +159,6 @@ class SystemApp.MapShapeLabelsView extends SystemApp.BaseView
         @toggleEdit @mapView.editEnabled
 
         @setPosition()
-        @onZoom()
 
         return this
 
@@ -555,13 +552,6 @@ class SystemApp.MapShapeLabelsView extends SystemApp.BaseView
 
     # TEXT SIZE AND ZOOM
     # ----------------------------------------------------------------------
-
-    # When user zooms in or out, check the current zoom level and resize
-    # the labels accordingly. Fonts size will increase when zooming out,
-    # but won't decrease when zooming in (zoom more than 1).
-    onZoom: (e) =>
-        return if @mapView.currentZoom < 1
-        @setAllFontSizes e
 
     # The the foreground color for the specified label.
     setForeground: (svg, color) =>

@@ -31,11 +31,13 @@ SystemApp.Data =
     # ----------------------------------------------------------------------
 
     # Load all JSON files from server and sets a success and error callback.
-    # While loading, the `fetching` property of the collection will be set
-    # to true.
+    # While loading, the `fetching` property of collections will be set true.
     init: ->
-        @allCollections = [@auditData, @auditEvents, @entities, @maps, @variables]
+        @loggedUser.url = SystemApp.Settings.User.loggedUrl
+        @loggedUser.fetch()
         @userSettings.fetch()
+
+        @allCollections = [@auditData, @auditEvents, @entities, @maps, @variables]
 
         @timerRefreshLabels = null
         @autoUpdateEnabled = @userSettings.mapAutoRefresh()

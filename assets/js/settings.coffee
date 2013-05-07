@@ -195,6 +195,8 @@ SystemApp.Settings =
         zIndexHideTimeout: 5000
         # Zoom step while zooming (0.10 means will zoom in or out 10%).
         zoomStep: 0.10
+        # How long to wait before updating labels whem zooming, in milliseconds.
+        zoomUpdateDelay: 600
         # Properties to ignore on the shape details tab.
         ignoreDisplayProps: "0,format,background,foreground,fontSize,stroke,strokeWidth," +
                             "map_position_x,map_position_y,physical_machine,sizeX,sizeY,roundedCorners,zIndex"
@@ -379,6 +381,8 @@ SystemApp.Settings =
     User:
         # The url to the user's JSON.
         url: "json/user"
+        # The url to the logged user's JSON.
+        loggedUrl: "json/user/logged"
         # Default key combination to delete shapes and links.
         modifierDelete: "ctrl rightclick"
         # Default key combination to select multiple shapes or items.

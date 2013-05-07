@@ -389,15 +389,27 @@ module.exports = (app) ->
 
     # Get a single or a collection of [Users](user.html).
     getUser = (req, res) ->
+        if not req.user?
+            sendForbiddenResponse res, "User GET"
+            return
+
         roles = getUserRoles req
 
-        database.getUser getIdFromRequest(req), (err, result) ->
+        # Check if should get the logged user's details.
+        id = getIdFromRequest(req)
+        id = req.user.id if id is "logged"
+
+        database.getUser id, (err, result) ->
             if result? and not err?
 
                 # Check user permissions.
                 if not roles.admin and result.id isnt req.user.id
                     sendForbiddenResponse res, "User GET"
                     return
+
+                # Make sure password fields are removed.
+                delete result["passwordHash"]
+                delete result["password"]
 
                 res.send minifyJson result
             else
@@ -420,8 +432,10 @@ module.exports = (app) ->
 
         database.setUser user, null, (err, result) ->
             if result? and not err?
-                # Make sure password is removed, and send the result.
+                # Make sure password fields are removed.
+                delete result["passwordHash"]
                 delete result["password"]
+
                 res.send minifyJson result
             else
                 sendErrorResponse res, "User POST", err
@@ -444,8 +458,10 @@ module.exports = (app) ->
 
         database.setUser user, {patch: true}, (err, result) ->
             if result? and not err?
-                # Make sure password is removed, and send the result.
+                # Make sure password fields are removed.
+                delete result["passwordHash"]
                 delete result["password"]
+
                 res.send minifyJson result
             else
                 sendErrorResponse res, "User PATCH", err

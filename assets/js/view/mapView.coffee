@@ -32,6 +32,8 @@ class SystemApp.MapView extends SystemApp.BaseView
     linkViews: null             # holds current map's ([Link Views](linkView.html))
     gridLines: null             # array, holds all grid lines (when toggled on)
 
+    timerAfterZoom: null        # timer to trigger the `afterZoomSet` method
+
 
     # DOM ELEMENTS
     # ----------------------------------------------------------------------
@@ -180,7 +182,6 @@ class SystemApp.MapView extends SystemApp.BaseView
         @paper.setSize map.paperSizeX(), map.paperSizeY()
 
         # Bind map data.
-        @bindMapEvents()
         @bindMapBg()
         @bindMapGroups()
         @bindShapes()
@@ -202,6 +203,9 @@ class SystemApp.MapView extends SystemApp.BaseView
         # The other views that a new map has loaded.
         SystemApp.mapEvents.trigger "loaded", map
         SystemApp.toggleLoading false
+
+        # Finally bind map events.
+        @bindMapEvents()
 
         console.profileEnd "MapView.bindMap" if SystemApp.Settings.General.profile
 
@@ -495,13 +499,6 @@ class SystemApp.MapView extends SystemApp.BaseView
 
         SystemApp.mapEvents.trigger "zoom", @currentZoom
 
-    # Set the `currentZoom` variable and update the view.
-    # Save zoom to the [user settings](userSettings.html).
-    zoomSet: (value) =>
-        @currentZoom = value
-        @setViewBox()
-        SystemApp.Data.userSettings.mapZoom value
-
     # Zoom in, with optional `amount` parameter.
     zoomIn: (amount) =>
         amount = SystemApp.Settings.Map.zoomStep if not amount?
@@ -511,6 +508,28 @@ class SystemApp.MapView extends SystemApp.BaseView
     zoomOut: (amount) =>
         amount = SystemApp.Settings.Map.zoomStep if not amount?
         @zoomSet @currentZoom + amount
+
+    # Set the `currentZoom` variable and update the view.
+    # Save zoom to the [user settings](userSettings.html).
+    zoomSet: (value) =>
+        @currentZoom = value
+        @setViewBox()
+
+        if @timerAfterZoom?
+            clearTimeout @timerAfterZoom
+        @timerAfterZoom = setTimeout @afterZoomSet, SystemApp.Settings.Map.zoomUpdateDelay
+
+    # Delayed trigger to update font sizes on labels and save zoom to
+    # the [user settings](userSettings.html), to achieve better performance.
+    afterZoomSet: =>
+        SystemApp.Data.userSettings.mapZoom @currentZoom
+
+        # Update font sizes on all labels.
+        _.each @shapeViews, (view) =>
+            view.setFontSize()
+            view.labelsView.setAllFontSizes()
+
+        @timerAfterZoom = null
 
     # Toggle the `editEnabled` on or off.
     toggleEdit: (enabled) =>
