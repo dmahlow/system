@@ -33,5 +33,5 @@ class SystemApp.AdminToolsTabView extends SystemApp.BaseView
     # ----------------------------------------------------------------------
 
     # Trigger a command to force refresh all client windows (browsers).
-    refreshClients: (e) =>
-        console.log 1
+    refreshClients: =>
+        SystemApp.Sockets.sendClientsRefresh()

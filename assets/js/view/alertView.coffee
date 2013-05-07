@@ -186,8 +186,9 @@ class SystemApp.AlertView extends SystemApp.BaseView
         else
             @$wrapperFooter.addClass "ok"
 
-        delay = SystemApp.Settings.Alert.hideDelay
-        delay = delay * 2 if alertObj.isError
+        # If no `delay` is passed, use the default one.
+        delay = alertObj.delay
+        delay = SystemApp.Settings.Alert.hideDelay if not delay?
 
         @$wrapperFooter.fadeIn SystemApp.Settings.Alert.opacityInterval
         @isFooterVisible = true
@@ -248,18 +249,23 @@ class SystemApp.AlertView extends SystemApp.BaseView
         else
             @$wrapperTooltip.addClass "ok"
 
+        # If `hideOnClick` is not false, bind hide to click event.
+        if alertObj isnt false
+            @$wrapperTooltip.click @hideTooltip()
+
         # Bind the click action to the tooltip container, if there's one specified.
         if alertObj.clickAction?
             @$wrapperTooltip.click alertObj.clickAction
 
-        delay = SystemApp.Settings.Alert.hideDelay
-        delay = delay if alertObj.isError
+        # If no `delay` is passed, use the default one.
+        delay = alertObj.delay
+        delay = SystemApp.Settings.Alert.hideDelay if not delay?
 
         @$wrapperTooltip.fadeIn SystemApp.Settings.Alert.opacityInterval
         @isTooltipVisible = true
         _.delay @hideTooltip, delay + SystemApp.Settings.Alert.opacityInterval
 
-    # Hide a tooltip alert. NOT IMPLEMENTED YET!
+    # Hide a tooltip alert.
     hideTooltip: =>
         @isTooltipVisible = false
         @$wrapperTooltip.fadeOut SystemApp.Settings.Alert.opacityInterval, @nextTooltip

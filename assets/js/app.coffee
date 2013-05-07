@@ -18,6 +18,7 @@
 #= require lib/raphael.js
 #= require lib/raphael.link.js
 #= require lib/raphael.group.js
+#= require lib/moment.js
 
 # APP MODULES
 # -----------------------------------------------------------------------------

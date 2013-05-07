@@ -396,5 +396,5 @@ SystemApp.Settings =
     # SOCKET SETTINGS
     # ----------------------------------------------------------------------
     Sockets:
-        # Default "clients:refresh" command is 10 seconds.
-        clientRefreshSeconds: 10
+        # Default "clients:refresh" command is 60 seconds.
+        clientRefreshSeconds: 60

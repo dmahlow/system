@@ -13,6 +13,7 @@
 #= require lib/lodash.js
 #= require lib/backbone.js
 #= require lib/async.js
+#= require lib/moment.js
 
 # APP UTILS AND MANAGERS
 # -----------------------------------------------------------------------------
@@ -101,4 +102,6 @@ SystemApp.onError = (msg, url, line) ->
 # STARTING
 # -----------------------------------------------------------------------------
 $(document).ready ->
+    SystemApp.Data.init()
+    SystemApp.Sockets.start()
     SystemApp.init()

@@ -49,8 +49,9 @@ SystemApp.Data =
         @auditData.on "sync", @startTimers
         @userSettings.off "change", @saveUserSettings
         @userSettings.on "change", @saveUserSettings
-        SystemApp.mapEvents.off "zoom", @userSettings.mapZoom
-        SystemApp.mapEvents.on "zoom", @userSettings.mapZoom
+
+        SystemApp.mapEvents?.off "zoom", @userSettings.mapZoom
+        SystemApp.mapEvents?.on "zoom", @userSettings.mapZoom
 
     # Fetch all collections in parallel.
     fetch: ->
@@ -81,7 +82,7 @@ SystemApp.Data =
     # Triggered after all data has loaded successfully.
     fetchFinished: (err, results) ->
         SystemApp.consoleLog "Data.load", "Error loading data.", err if err?
-        SystemApp.dataEvents.trigger "load"
+        SystemApp.dataEvents?.trigger "load"
 
         # Make sure that the entities collections have up-to-date data.
         for entityDef in SystemApp.Data.entities.models
@@ -105,7 +106,7 @@ SystemApp.Data =
         @maps.save()
         @userSettings.save()
 
-        SystemApp.alertEvents.trigger "footer", {title: SystemApp.Messages.dataSaved, message: SystemApp.Messages.okDataSavedLocally}
+        SystemApp.alertEvents?.trigger "footer", {title: SystemApp.Messages.dataSaved, message: SystemApp.Messages.okDataSavedLocally}
 
     # Auto save user settings to local storage whenever any of its properties gets updated.
     saveUserSettings: ->

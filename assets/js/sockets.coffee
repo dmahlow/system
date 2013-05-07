@@ -23,7 +23,7 @@ SystemApp.Sockets =
         @socket.on "server:error", @onServerError
         @socket.on "entitydata:refresh", @onEntityDataRefresh
         @socket.on "auditdata:refresh", @onAuditDataRefresh
-        @socket.on "clients:refresh", @onClientRefresh
+        @socket.on "clients:refresh", @onClientsRefresh
 
     # Stop listening to all socket messages from the server. Please note that this
     # will NOT kill the socket connection.
@@ -36,8 +36,8 @@ SystemApp.Sockets =
 
     # Listen to connection counter updates. This happens everytime someone a new browser
     # window pointing to the System app is opened or closed.
-    onServerConnectionCounter: (count) =>
-        SystemApp.footerView.setOnlineUsers count
+    onServerConnectionCounter: (count) ->
+        SystemApp.footerView?.setOnlineUsers count
 
     # listen to server errors. A [footer alert](alertView.html) will be shown
     # and errors can also be listed on the [Settings menu](menuView.html).
@@ -74,21 +74,23 @@ SystemApp.Sockets =
         SystemApp.dataEvents.trigger "auditdata:refresh", updated
 
     # Force reload the app by refreshing the browser window.
-    onClientRefresh: =>
-        SystemApp.routes.refresh()
+    onClientsRefresh: (data) ->
+        ms = data.seconds * 1000
+        SystemApp.routes?.refresh ms
 
 
-    # SOCKET SEND
+     # SOCKET SEND
     # ----------------------------------------------------------------------
 
     # Trigger the "clients:refresh" command on all connected browsers. This will force
     # clients to refresh the window in X seconds.
-    sendClientRefresh: (seconds) =>
-        if not SystemApp.Data.loggerUser.hasRole "admin"
+    sendClientsRefresh: (seconds) ->
+        if not SystemApp.Data.loggedUser.hasRole("admin")
             SystemApp.consoleLog "Sockets.sendClientRefresh", "You don't have the necessary permissions!"
             return
 
         # Default seconds is 10.
         seconds = SystemApp.Settings.Sockets.clientRefreshSeconds if not seconds?
 
-        @socket.emit "clients:refresh", {seconds: seconds}
+        # Emit event.
+        SystemApp.Sockets.socket.emit "clients:refresh", {seconds: seconds}

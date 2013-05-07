@@ -30,12 +30,15 @@ class Sockets
         @io.sockets.on "connection", (socket) =>
             @io.sockets.emit "server:connectionCounter", @getConnectionCount()
 
-            socket.on "disconnect", =>
-                @io.sockets.emit "server:connectionCounter", @getConnectionCount()
+            socket.on "disconnect", @onDisconnect
+            socket.on "clients:refresh", @onClientsRefresh
 
     # Helper to get how many users are currenly connected to the app.
     getConnectionCount: =>
-        return Object.keys(@io.sockets.manager.open).length
+        count = Object.keys(@io.sockets.manager.open).length
+        if settings.General.debug
+            logger.info "Sockets.getConnectionCount", count
+        return count
 
 
     # TRIGGER: ENTITIES AND AUDIT DATA
@@ -67,9 +70,15 @@ class Sockets
     # LISTEN: CLIENT COMMANDS
     # ----------------------------------------------------------------------
 
+    # When user disconnects, emit an event with the new connection count to all clients.
+    onDisconnect: =>
+        @io.sockets.emit "server:connectionCounter", @getConnectionCount()
+
     # When an admin user triggers the "clients:refresh" command, resend it
     # to all connected clients so they'll get the page refreshed.
     onClientsRefresh: (data) =>
+        if settings.General.debug
+            logger.info "Sockets.onClientsRefresh", data
         @io.sockets.emit "clients:refresh", data
 
 

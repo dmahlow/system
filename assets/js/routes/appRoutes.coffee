@@ -127,8 +127,27 @@ class SystemApp.AppRoutes extends Backbone.Router
             SystemApp.toggleLoading false
             overlay.show param1, param2
 
-    # Refresh the current view if it's specified on the event, or the whole
-    # page if view is left unspecified.
-    refresh: =>
-        SystemApp.consoleLog "ROUTE", "Refresh current page"
-        window.document.location.href = window.location.href
+    # Refresh the page in X milliseconds. If milliseconds is more than 0, show an alert
+    # which allows the user to cancel the refresh.
+    refresh: (delay) =>
+        refreshCallback = -> window.document.location.href = window.location.href
+
+        if not delay? or delay < 1
+            SystemApp.consoleLog "ROUTE", "Refresh current page now."
+            refreshCallback()
+        else
+            SystemApp.consoleLog "ROUTE", "Refresh current page in #{delay} milliseconds."
+
+            # Set refresh message and info.
+            time = moment().add("ms", delay).format "HH:mm:ss"
+            title = SystemApp.Messages.attention
+            message = SystemApp.Messages.scheduledRefreshAlert.replace "#", time
+
+            # Set timeout and handler to cancel using ESC.
+            refreshTimer = setTimeout refreshCallback, delay
+            clickAction = (e) ->
+                if e.keyCode is 27
+                    clearTimeout refreshTimer
+
+            # Trigger the tooltip alert.
+            SystemApp.alertEvents.trigger "tooltip", {title: title, message: message, delay: delay, clickAction: clickAction}

@@ -7,6 +7,7 @@ SystemApp.Messages =
     # TERMS
     # ----------------------------------------------------------------------
     accessDenied: "Access denied!"
+    attention: "Attention!"
     auditDataRefresh: "Audit data refresh"
     availableSources: "Available sources..."
     cancel: "Cancel"
@@ -32,6 +33,8 @@ SystemApp.Messages =
     rowRuleCount: "# rule(s)"
     saveDetails: "Save details"
     saveVariable: "Save variable"
+    scheduledRefreshAlert: "The app is scheduled to refresh the whole page in a few seconds (#)!<br />
+                            If you do not wish the page to refresh, please click on this panel."
     searchWatermark: "Search entities..."
     server: "SERVER"
     startLocalMapText: "Use the Local Test Map to try the System App features."
@@ -42,8 +45,8 @@ SystemApp.Messages =
     tooltipItemId: "Enter the unique ID for this model. No spaces or special characters allowed."
     tooltipEventRuleComparator: "Select one of the alert comparator values: equals, not equals,
                                  greater than w/wo, less than w/wo."
-    tooltipEventRuleSource: "Enter the alert SOURCE value. Can be a static or an audit data value (beginning with $)."
-    tooltipEventRuleTarget: "Enter the alert TARGET value. Can be a static or an audit data value (beginning with $)."
+    tooltipEventRuleSource: "Enter the alert SOURCE value. Can be a static or an audit data value (beginning with #)."
+    tooltipEventRuleTarget: "Enter the alert TARGET value. Can be a static or an audit data value (beginning with #)."
     tooltipEventActionShapeId: "If you want the alert to happen on a specific shape, please enter the Shape ID here.
                                 Otherwise it will happen on shapes that have the specified Audit Data property bound."
     tooltipEventActionType: "Select one of the action types."
