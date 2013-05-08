@@ -9,7 +9,10 @@ SYSTEM APP CHANGE LOG
 + New zoom implementation, zooming in and out is now way faster than before.
 + Shapes can now have icon's expanding to their full size.
 * Better UI implementation for debugging notice and general alerts.
-* Fixed incorrect checks for permissions on the client side. The "loggedUser"
+* Fixed: when removing data from any overlay (Audit Data, or Variables for example)
+  if the removed model was bound to the view, it wouldn't clear the form fields and
+  thus making it possible to save the model even if it was removed.
+* Fixed: incorrect checks for permissions on the client side. The "loggedUser"
   object wasn't being set, and this all client permission checks were invalid.
 
 # -----------------------------------------------------------------------------

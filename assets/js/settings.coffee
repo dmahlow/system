@@ -50,15 +50,6 @@ SystemApp.Settings =
         searchDelay: 300
 
 
-    # MENU
-    # ----------------------------------------------------------------------
-    Menu:
-        # Timeout to hide submenus when mouse leaves them.
-        hideTimeout: 400
-        # Prefix of the ID of submenu items.
-        subPrefix: "menu-filter-"
-
-
     # ENTITY DEFINITIONS
     # ----------------------------------------------------------------------
     EntityDefinition:
@@ -357,25 +348,6 @@ SystemApp.Settings =
         rowListPrefix: "list-variable-"
 
 
-    # ALERT
-    # ----------------------------------------------------------------------
-    Alert:
-        # How long should the alerts stay shown.
-        hideDelay: 2500
-        # How long it takes to fade in / out alerts.
-        opacityInterval: 300
-        # Minimum time between similar alerts to be shown.
-        # For example if you save a map twice in less than 8 seconds, then just show the alert once.
-        similarTimeout: 8000
-
-
-    # FOOTER
-    # ----------------------------------------------------------------------
-    Footer:
-        # How long it takes to fade in / out footer information.
-        opacityInterval: 400
-
-
     # USER SETTINGS
     # ----------------------------------------------------------------------
     User:
@@ -391,6 +363,34 @@ SystemApp.Settings =
         modifierToBack: "rightclick"
         # Prefix of each row representing a user on a list or grid.
         rowListPrefix: "list-user-"
+
+
+    # MENU
+    # ----------------------------------------------------------------------
+    Menu:
+        # Timeout to hide submenus when mouse leaves them.
+        hideTimeout: 400
+        # Prefix of the ID of submenu items.
+        subPrefix: "menu-filter-"
+
+
+    # ALERT
+    # ----------------------------------------------------------------------
+    Alert:
+        # How long should the alerts stay shown.
+        hideDelay: 3000
+        # How long it takes to fade in / out alerts.
+        opacityInterval: 300
+        # Minimum time between similar alerts to be shown.
+        # For example if you save a map twice in less than 8 seconds, then just show the alert once.
+        similarTimeout: 9000
+
+
+    # FOOTER
+    # ----------------------------------------------------------------------
+    Footer:
+        # How long it takes to fade in / out footer information.
+        opacityInterval: 400
 
 
     # SOCKET SETTINGS

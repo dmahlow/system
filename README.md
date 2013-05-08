@@ -1,35 +1,32 @@
 # System App by Zalando - Readme
 
-**Official homepage:** http://systemapp.io
-
-**Live demo:** http://systemapp.io/demo
+**Official homepage:** **http://systemapp.io**
 
 The System App is a sleek, smart and open-source IT mapping and monitoring tool by Zalando.
 Please note that it is still in BETA so some features are not yet fully implemented,
 although it's quite usable in its current state.
 
 Full documentation can be found under the `/docs` directory of the app.
-The final 1.0.0 version is expected to be ready by the end of Q2 2013.
+The final 1.0.0 version is expected to be ready by Summer 2013.
 
 #### What's still not ready for prime time?
 
-- ~~User authentication. We're implementing basic HTTP authentication first,~~ LDAP following next.
+##### Sooner than later
+- Users and roles. Basic HTTP authentication is done and ready, LDAP to follow.
 - Admin area to manage server, settings and users directly on the browser.
-- Performance improvements on complex maps. SVG is slow, so we'll tweak our implementation to
-  minimze DOM queries and whenever possible use hardware accelerated features on rendering.
 - Editing and moving multiple shapes simultaneously on a map by selecting them holding Ctrl.
 - Better and smarter auto completion when editing shape labels.
 - Auto completion when editing Audit Event rules (just like on shape labels).
-- Undo and redo of actions especially when editing maps.
+- Performance improvements on complex maps. SVG is slow, so we'll tweak our implementation to
+  minimze DOM queries and whenever possible use hardware accelerated features on rendering.
+
+##### Not so soon
 - Better and more stable sync of data using Socket.IO instead of AJAX calls.
+- Self-healing features - app will self diagnose in case too many errors are triggered.
+- External API with HTTP webhooks. The current API is for internal use only.
+- Undo and redo of actions especially when editing maps.
 - Support for multiple users editing a map at the same time, or at least map locking when there's
   someone editing it already.
-- External API with HTTP webhooks.
-- Self-healing features - app will self diagnose in case too many errors are triggered.
-- ~~The settings.coffee file will be created automatically but only after the app has
-  started for the first time. We'll change this once we have the UI to manage these settings,
-  so when app is started for the first time a page with the settings manager will open
-  allowing the user to create its own customized settings.~~
 
 ## Installation
 
@@ -156,9 +153,9 @@ case you want to customize the System App's code.
 
 ### Models and collections
 
-Models won't inherit directly from Backbone.Model. Instead we're using our own [SystemApp.BaseModel](base.html),
+Models won't inherit directly from Backbone.Model. Instead we're using our own `SystemApp.BaseModel`,
 which extends Backbone's model with special methods like `save`, `generateId`, etc. Same thing
-for collections, which should inherit from [SystemApp.BaseCollection](base.html).
+for collections, which should inherit from `SystemApp.BaseCollection`.
 
 All models are located under the folder `/assets/js/models`, and each model has its own specific collection
 implemented at the end of the same file.
@@ -171,7 +168,7 @@ The views are composed of:
 * CSS styles using [Stylus](http://learnboost.github.com/stylus/), folder `/assets/css`.
 * View controllers implemented with CoffeeScript, folder `/assets/js/view`.
 
-Just like models and collections, the app has its own [SystemApp.BaseView](baseView.html)
+Just like models and collections, the app has its own `SystemApp.BaseView`
 which extends Backbone's view with extra helpers and utilities.
 
 ### Database
@@ -188,12 +185,10 @@ The System App uses MongoDB to store its data, having the following collections:
 
 The "log" collection is there for increased security and damage control. All updates, inserts
 and deletions are logged there, and these records stay saved for 2 hours by default - you can
-change this setting on the [Server Settings](server/settings.html) file.
+change this setting on the server's `settings.json` or `settings.coffee` file.
 
 ## Need help?
 
-Check the readme again! And then if you REALLY still need help please get in touch with Igor: igor.ramadas@zalando.de
+Issues should be posted on the Issues section on our GitHub project page: https://github.com/zalando/system/issues
 
 *Have fun!*
-
-To update the app docs, run the `updatedocs.sh` file.

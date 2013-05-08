@@ -35,6 +35,7 @@ SystemApp.Messages =
     saveVariable: "Save variable"
     scheduledRefreshAlert: "The app is scheduled to refresh the whole page in a few seconds (#)!<br />
                             If you do not wish the page to refresh, please click on this panel."
+    scripted: "Scripted"
     searchWatermark: "Search entities..."
     server: "SERVER"
     startLocalMapText: "Use the Local Test Map to try the System App features."

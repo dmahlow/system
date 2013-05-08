@@ -9,7 +9,7 @@ SystemApp.DataUtil =
 
     # Helper for text normalization. If `removeSymbols` is true, all symbols
     # including spaces will be stripped out of the result
-    normalize: (value, removeSymbols) =>
+    normalize: (value, removeSymbols) ->
         if not value?
             return ""
 
@@ -116,8 +116,8 @@ SystemApp.DataUtil =
 
     # Return a friendly URL key based on the value passed. It will remove all spaces
     # and encode the URL key.
-    getUrlKey: (value) =>
-        value = value.replace RegExp(" ", "g"), ""
+    getUrlKey: (value) ->
+        value = SystemApp.DataUtil.normalize value, true
         return encodeURIComponent value
 
 
@@ -142,7 +142,7 @@ SystemApp.DataUtil =
 
     # This will scrap all prefixes and texts from the specified value and
     # return only the relevant [AuditData](auditData.html) property path.
-    getOnlyTheAuditDataProperty: (value) =>
+    getOnlyTheAuditDataProperty: (value) ->
         return false if not value? or value is ""
 
         namespace = SystemApp.Settings.General.dataBindingKey + SystemApp.Settings.AuditData.bindingNamespace

@@ -36,8 +36,6 @@ class Sockets
     # Helper to get how many users are currenly connected to the app.
     getConnectionCount: =>
         count = Object.keys(@io.sockets.manager.open).length
-        if settings.General.debug
-            logger.info "Sockets.getConnectionCount", count
         return count
 
 
@@ -72,7 +70,10 @@ class Sockets
 
     # When user disconnects, emit an event with the new connection count to all clients.
     onDisconnect: =>
-        @io.sockets.emit "server:connectionCounter", @getConnectionCount()
+        count = @getConnectionCount()
+        @io.sockets.emit "server:connectionCounter", count
+        if settings.General.debug
+            logger.info "Sockets.onDisconnect", "New count: #{count}."
 
     # When an admin user triggers the "clients:refresh" command, resend it
     # to all connected clients so they'll get the page refreshed.
