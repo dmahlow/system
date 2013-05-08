@@ -80,14 +80,15 @@ class SystemApp.BaseView extends Backbone.View
         alert.addClass "saved"
         alert.html SystemApp.Messages.saved
 
-        # Get container and its last span to check if "saved" is already being shown.
+        # Get correct container and its last span to check if "saved" is already being shown.
         parent = field.parent()
+        parent = parent.parent() if parent.hasClass("toggle")
         lastChild = parent.children("span:last-child")
 
         # Append the "saved" at the very end of the field container,
         # but only if a "saved" is not present yet.
         if not lastChild.hasClass "saved"
-            field.parent().append alert
+            parent.append alert
 
             # Fade out and then remove from the DOM.
             alert.fadeOut SystemApp.Settings.General.fadeRemoveDelay * 2, () -> alert.remove()
