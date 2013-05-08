@@ -67,13 +67,30 @@ class SystemApp.BaseView extends Backbone.View
         extraMs = SystemApp.Settings.General.elementBlinkInterval / 2
         redClass = "error"
 
-
         @addClass field, redClass
         _.delay @removeClass, SystemApp.Settings.General.elementBlinkInterval, field, redClass
         _.delay @addClass, SystemApp.Settings.General.elementBlinkInterval + extraMs, field, redClass
         _.delay @removeClass, SystemApp.Settings.General.elementBlinkInterval * 2, field, redClass
         _.delay @addClass, SystemApp.Settings.General.elementBlinkInterval * 2 + extraMs, field, redClass
         _.delay @removeClass, SystemApp.Settings.General.elementBlinkInterval * 3, field, redClass
+
+    # Show a "saved" message next to the specified field, and fade it out after a few seconds.
+    fieldSaved: (field) =>
+        alert = $(document.createElement "span")
+        alert.addClass "saved"
+        alert.html SystemApp.Messages.saved
+
+        # Get container and its last span to check if "saved" is already being shown.
+        parent = field.parent()
+        lastChild = parent.children("span:last-child")
+
+        # Append the "saved" at the very end of the field container,
+        # but only if a "saved" is not present yet.
+        if not lastChild.hasClass "saved"
+            field.parent().append alert
+
+            # Fade out and then remove from the DOM.
+            alert.fadeOut SystemApp.Settings.General.fadeRemoveDelay * 2, () -> alert.remove()
 
     # Remove a DOM element representing a model from the view. This will add the class "removed"
     # and then fade the element out.

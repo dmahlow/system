@@ -428,8 +428,13 @@ class SystemApp.MapShapeLabelsView extends SystemApp.BaseView
     testAuditEvent: (auditEvent) =>
         return if not auditEvent?
 
-        labelValues = [@svgCenter?.attr("text"), @svgLeft?.attr("text"), @svgTop?.attr("text"),
-                       @svgRight?.attr("text"), @svgBottom?.attr("text"), @svgTitle?.attr("text")]
+        labelValues =
+            center: @svgCenter?.attr("text")
+            left: @svgLeft?.attr("text")
+            top: @svgTop?.attr("text")
+            right: @svgRight?.attr("text")
+            bottom: @svgBottom?.attr("text")
+            title: @svgTitle?.attr("text")
 
         matchedRules = auditEvent.run labelValues
 

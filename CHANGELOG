@@ -8,7 +8,11 @@ SYSTEM APP CHANGE LOG
 + Maps now have an owner (defined by the "createdByUserId" property).
 + New zoom implementation, zooming in and out is now way faster than before.
 + Shapes can now have icon's expanding to their full size.
-* Better UI implementation for debugging notice and general alerts.
++ Revamped UI implementation for debugging notice and general alerts, especially
+  a quickly shown "Saved" message next to saved input fields.
+* Refactored the event rule values to use label names instead of index. So when
+  targeting the left label for example, it's now "@left" instead of "@1".
+* Fixed: missing .active class when Variables Manager is open.
 * Fixed: when removing data from any overlay (Audit Data, or Variables for example)
   if the removed model was bound to the view, it wouldn't clear the form fields and
   thus making it possible to save the model even if it was removed.

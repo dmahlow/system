@@ -104,6 +104,7 @@ module.exports = (app) ->
 
         database.setEntityDefinition getDocumentFromBody(req), {patch: true}, (err, result) ->
             if result? and not err?
+                manager.initEntityTimers()
                 res.send minifyJson result
             else
                 sendErrorResponse res, "Entity PATCH", err
@@ -179,6 +180,7 @@ module.exports = (app) ->
 
         database.setAuditData getDocumentFromBody(req), null, (err, result) ->
             if result? and not err?
+                manager.initAuditDataTimers()
                 res.send minifyJson result
             else
                 sendErrorResponse res, "Audit Data POST", err
@@ -192,6 +194,7 @@ module.exports = (app) ->
 
         database.setAuditData getDocumentFromBody(req), {patch: true}, (err, result) ->
             if result? and not err?
+                manager.initAuditDataTimers()
                 res.send minifyJson result
             else
                 sendErrorResponse res, "Audit Data PATCH", err
@@ -205,8 +208,8 @@ module.exports = (app) ->
 
         database.deleteAuditData getIdFromRequest(req), (err, result) ->
             if not err?
-                res.send ""
                 manager.initAuditDataTimers()
+                res.send ""
             else
                 sendErrorResponse res, "Audit Data DELETE", err
 

@@ -184,6 +184,7 @@ class SystemApp.OverlayView extends SystemApp.BaseView
         id.addClass "id"
         id.val item.friendlyId()
         id.change @inputOnChange
+        id.click item, @clickEditIcon
 
         # The edit icon on the right of the row.
         editIcon = $(document.createElement "div")
@@ -284,7 +285,9 @@ class SystemApp.OverlayView extends SystemApp.BaseView
         else
             @model.set propertyName, value
 
+        # Save the model and show a "saved" next to the edited field.
         @model.save()
+        @fieldSaved src
 
 
     # KEYBOARD EVENTS

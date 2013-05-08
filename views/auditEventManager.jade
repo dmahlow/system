@@ -72,8 +72,19 @@
                         .add(title="Click to create a new RULE with the specified values and comparator.")
 
                 div.info.
-                    The source value is mandatory. If you're comparing and Audit Data property with a static value,
+                    The source value is mandatory. If you're comparing an Audit Data property with a static value,
                     always add the Audit Data value on the source, not on the target.
+                    <br /><br />
+                div.strong Examples for source and target value:
+                div.sample
+                    label shape's left label is less than 50:
+                    span @left < 50
+                div.sample
+                    label shape's top label is more than bottom value:
+                    span @top > @bottom
+                div.sample
+                    label shape's center label differs from an Audit Data value:
+                    span @center != #audit.AuditDataId.recordId
 
             // Event Actions tab.
             #auditevents-tab-actions.tab(style="display:none")

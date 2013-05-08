@@ -54,37 +54,43 @@ class SystemApp.EventRule extends SystemApp.BaseModel
     test: (contextValues) =>
         sourceValue = @source()
         targetValue = @target()
+        comparator = @comparator()
 
         if not sourceValue?
             return false
         if not targetValue?
             return false
 
+        # Get first char of source and target.
+        sourceFirstKey = sourceValue.substring 0, 1
+        targetFirstKey = targetValue.substring 0, 1
+
         # Check if source value is a [Variable](variable.html),
         # an [AuditData](auditData.html) property or a context value. Context
         # means the alert is being run against [Shape](shape.html) or [Link](link.html)
         # label values.
-        if sourceValue.substring(0, 1) is SystemApp.Settings.General.dataBindingKey
+        if sourceFirstKey is SystemApp.Settings.General.dataBindingKey
             sourceValue = SystemApp.DataUtil.getDataBindingValue sourceValue
-        else if contextValues? and sourceValue.substring(0, 1) is SystemApp.Settings.AuditEvent.contextSpecialKey
-            sourceValue = contextValues[parseInt(sourceValue.substring 1)]
+        else if contextValues? and sourceFirstKey is SystemApp.Settings.AuditEvent.contextSpecialKey
+            sourceValue = contextValues[sourceValue.substring 1]
 
         # Same as above, but for the target value.
-        if targetValue.substring(0, 1) is SystemApp.Settings.General.dataBindingKey
+        if targetFirstKey is SystemApp.Settings.General.dataBindingKey
             targetValue = SystemApp.DataUtil.getDataBindingValue targetValue
-        else if contextValues? and targetValue.substring(0, 1) is SystemApp.Settings.AuditEvent.contextSpecialKey
-            targetValue = contextValues[parseInt(targetValue.substring 1)]
+        else if contextValues? and targetFirstKey is SystemApp.Settings.AuditEvent.contextSpecialKey
+            targetValue = contextValues[targetValue.substring 1]
 
         # Force setting source and target values to float, in case they're valid numbers.
-        if not isNaN sourceValue
+        if not isNaN(sourceValue)
             sourceValue = parseFloat sourceValue
-        if not isNaN targetValue
+        if not isNaN(targetValue)
             targetValue = parseFloat targetValue
 
+        # If any value is null, return false.
         if not sourceValue? or not targetValue?
             return false
 
-        switch @comparator()
+        switch comparator
             when ">"  then return sourceValue >  targetValue
             when ">=" then return sourceValue >= targetValue
             when "<"  then return sourceValue <  targetValue

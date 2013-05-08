@@ -31,7 +31,7 @@ class SystemApp.VariableManagerView extends SystemApp.OverlayView
 
     # Set the DOM elements cache.
     setDom: =>
-        @$menuItem = $ "#menu-variable"
+        @$menuItem = $ "#menu-variables"
         @$modelsList = $ "#variables-list"
         @$txtCreate = $ "#variables-txt-create"
         @$butCreate = $ "#variables-but-create"
@@ -133,6 +133,8 @@ class SystemApp.VariableManagerView extends SystemApp.OverlayView
         # All good? Save the code to the model.
         @model.code code
         @model.save()
+
+        @fieldSaved @$butSave
 
     # If script vaildation fails, show a message to the user.
     showCodeError: (message) =>

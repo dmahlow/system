@@ -31,6 +31,7 @@ SystemApp.Messages =
     removeShape: "Remove shape"
     rowActionCount: "# action(s)"
     rowRuleCount: "# rule(s)"
+    saved: "Saved!"
     saveDetails: "Save details"
     saveVariable: "Save variable"
     scheduledRefreshAlert: "The app is scheduled to refresh the whole page in a few seconds (#)!<br />
