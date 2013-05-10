@@ -4,7 +4,6 @@
     <meta charset="utf-8">
     <title>System App by Zalando</title>
     <link rel="stylesheet" href="stylesheets/styles.css">
-    <link rel="stylesheet" href="stylesheets/pygment_trac.css">
     <link type="image/x-icon" href="images/favico.png" rel="icon">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
     <script src="javascripts/respond.js"></script>
@@ -22,52 +21,62 @@
 <body>
     <div id="wrapper">
         <div id="header">
-            <div id="title">Zalando</div>
+            <div class="contents">
+                <h1>System App</h1>
+                <h6>by</h6>
+            </div>
         </div>
-        <div id="topfacts">
+
+        <div id="topfacts" class="contents">
             <div class="visualize">
                 <h3>Visualize</h3>
-                <p>Create diagrams and maps of your infrastructure. Easy with drag'n drop objects,
-                   powerful with scriptable maps.</p>
+                <p>
+                    Create diagrams and maps of your infrastructure. Easy with drag'n drop objects,
+                    powerful with scriptable maps.
+                </p>
             </div>
             <div class="integrate">
                 <h3>Integrate</h3>
-                <p>Import your existing entities and data via JSON,
-                and System App will keep them in sync with your maps automatically.</p>
+                <p>
+                    Import your existing entities and JSON data,
+                    and the System App will sync them with your maps automatically.
+                    No frills.
+                </p>
             </div>
             <div class="monitor">
                 <h3>Monitor</h3>
-                <p>Bind external JSON audit data to maps and trigger events or
-                   visual alerts depending on the monitored values.</p>
+                <p>
+                    Bind external JSON audit data to map shapes, labels and links,
+                    trigger events and visual alerts depending on customized rules.
+                </p>
             </div>
         </div>
+
         <div id="topdemo">
-            Want to see it in action? Check the <a href="http://systemapp.io/demo">online demo</a>!
+            <div>
+                Want to see it in action? Check out our <a href="http://systemapp.io/demo" title="System App Demo">online demo</a>!
+            </div>
+            <small>Read-only access: user guest, password guest</small>
+            <small>Admin access: user admin, password system</small>
         </div>
-        <div id="contents">
-            <h2>Installation</h2>
-            <div class="panel installation">
-                <p>Felling lazy? Simply download and run the <a href="https://raw.github.com/zalando/system/master/install.sh" title="Download the System App install script.">install.sh</a> file and let the magic happen.</p>
-                <ul class="extramargin">
-                    <li>
-                        Download...<br />
-                        <code>$ curl https://raw.github.com/zalando/system/master/install.sh</code>
-                    </li>
-                    <li>
-                        Make it executable...<br />
-                        <code>$ chmod +x install.sh</code>
-                    </li>
-                    <li>
-                        Run!<br />
-                        <code>$ ./install.sh</code>
-                    </li>
-                </ul>
+
+        <div id="main-contents">
+
+            <div class="bar"><h2 class="contents">Installation</h2></div>
+            <div class="contents installation">
+                <p>Simply download the <label><a href="https://raw.github.com/zalando/system/master/install.sh" title="Download the System App install script.">install.sh</a></label> script, make it executable and run!</p>
+                <code>
+                    $ curl https://raw.github.com/zalando/system/master/install.sh<br />
+                    $ chmod +x install.sh<br />
+                    $ ./install.sh
+                </code>
                 <p>
-                    The script should tell you which dependencies are missing, ask if you want to
-                    install them, download the latest stable source code and install required modules.
+                    The script will tell you which dependencies are missing, ask if you want to
+                    download and install them, get the latest stable source code and install required
+                    Node.js modules.
                 </p>
 
-                <h3>Installing manually</h3>
+                <h3>Manual installation</h3>
 
                 <p>
                     If you want to install it manually, please make sure you have installed:
@@ -79,38 +88,38 @@
                 </ul>
                 <p>
                     Download the latest source code from GitHub:
-                    <br />
-                    <code>$ git clone https://github.com/zalando/system.git ./</code>
                 </p>
+                <code>$ git clone https://github.com/zalando/system.git ./</code>
 
             </div>
 
-            <h2>Configuring the server</h2>
-            <div class="panel configuring">
+            <div class="bar"><h2 class="contents">Configuring the server</h2></div>
+            <div class="contents configuring">
                 <p>
-                    All default server configuration settings are located on the file
-                    <code>server/settings.coffee</code>. If you want to override settings, please edit (or create)
-                    the <code>server/settings.json</code> file with your own values. Detailed instructions are
-                    available on top of the <code>server/settings.coffee</code> file.
+                    All server settings are located on the file
+                    <label>/server/settings.coffee</label>. If you want to override settings,
+                    please edit (or create) the <label>/server/settings.json</label> file with
+                    your own values. Detailed instructions are available on the comments on the
+                    top of the <label>/server/settings.coffee</label> file.
                 </p>
                 <p>
-                    The following <code>System.Settings</code> keys will certainly need your attention:
+                    The following settings will certainly need your attention:
                 </p>
 
                 <h5>Settings.General</h5>
                 <ul>
                     <li>
-                        <code>appTitle</code> Sets the desired title for the app, something like "MyCompany System".
+                        <label>appTitle</label> Sets the desired title for the app, something like "MyCompany System".
                     </li>
                     <li>
-                        <code>debug</code> This should be set to false on production environments for obvious reasons.
+                        <label>debug</label> This should be set to false on production environments.
                     </li>
                 </ul>
 
                 <h5>Settings.Database</h5>
                 <ul>
                     <li>
-                        <code>connString</code> MongoDB connection string. Default is host "localhost", db "systemapp".
+                        <label>connString</label> MongoDB connection string. Default is host "localhost", database "systemapp".
                     </li>
                 </ul>
 
@@ -118,88 +127,95 @@
                 <h5>Settings.Web</h5>
                 <ul>
                     <li>
-                        <code>port</code> The port used by the Node.js server, default is 3003.
+                        <label>port</label> The port used by the Node.js server, default is 3003.
                     </li>
                     <li>
-                        <code>paas</code> Set to true if you're deploying to common PaaS services. More info below.
+                        <label>paas</label> Set to true if you're deploying to common PaaS services. More info below.
                     </li>
                 </ul>
 
-                <h5>Deploying to PaaS</h5>
+                <h3>Deploying to PaaS</h3>
                 <p>
-                    The System App can be easily deployed to AppFog, OpenShift and Heroku. The only requirement is
-                    that you set <code>Settings.Web.paas</code> to true.
-                    In this case it will overwrite a few settings with environment variables, like:
+                    The System App can be easily deployed to AppFog, Heroku and OpenShift. The only requirement is
+                    that you set <label>Settings.Web.paas</label> to <label>true</label> so:
                 </p>
-                <ul>
+                <ul class="paas">
                     <li>
-                        The Node.js web <code>port</code> will be automatically set.
+                        The Node.js <label>IP</label> and <label>port</label> will be automatically set.
+                        <small>AppFog, Heroku, OpenShift</small>
                     </li>
                     <li>
-                        If your PaaS app has a MongoDB bound to it, the <code>connString</code> will be automatically set.
+                        If your PaaS app has a MongoDB bound to it, the <label>connString</label> will be automatically set.
+                        <small>AppFog, Heroku, OpenShift, MongoLab</small>
                     </li>
                     <li>
-                        It will use Logentries for logging if you have enabled it on your AppFog account.
+                        It will use <a href="http://logentries.com" title="Logging with Logentries">Logentries</a> for logging if you have enabled it on your PaaS account.
+                        <small>AppFog, Heroku</small>
+                    </li>
+                    <li>
+                        It will use <a href="http://mailgun.com" title="Sending emails with Mailgun">Mailgun</a> for emails if you have enabled it on your PaaS account.
+                        <small>AppFog, Heroku</small>
                     </li>
                 </ul>
                 <p>
-                    The <code>paas</code> setting is true by default.
+                    Please note that the <label>paas</label> setting is <label>true</label> by default.
                 </p>
             </div>
 
-            <h2>Running the app</h2>
-            <div class="panel starting">
-                <p>To start the System App server, run the server.js file using node:</p>
-                <p><code>$ node server.js</code></p>
+            <div class="bar"><h2 class="contents">Running the app</h2></div>
+            <div class="contents starting">
+                <p>To start the System App, run the server.js file using node:</p>
+                <code>$ node server.js</code>
                 <p>
-                    This will start the app server. If you haven't touched the settings, opening
-                    http://localhost:3003 on your browser should work.
+                    This will start the Node.js server. If you haven't touched the settings, opening
+                    <label>http://localhost:3003</label> on your web browser should work. Otherwise
+                    replace the URL with your defined web port.
                 </p>
 
                 <h3>Production vs. Debugging</h3>
                 <p>
                     By default Node.js will run in "Debug mode". If you're deploying and running on production,
-                    you must set the <code>NODE_ENV</code> to "production" to avoid having all the debugging statements
-                    logged to the console. Putting it simple:
+                    you must set the <label>NODE_ENV</label> to "production" to avoid having all the debugging
+                    statements logged to the console. Putting it simple:
                 </p>
-                <p><code>$ NODE_ENV=production node server.js</code></p>
+                <code>$ NODE_ENV=production node server.js</code>
                 <p>
                     Please note that the System App will enter debug mode automatically when it runs under
-                    the <code>localhost</code> or a <code>.local</code> hostname. In debug mode, most actions
+                    the <label>localhost</label> or a <label>.local</label> hostname. In debug mode, most actions
                     and procedures will be logged with details so performance might be affected.
                 </p>
 
                 <h3>Running the server forever</h3>
                 <p>
                     If you want the server to run like a service (so it restarts itself in case
-                    of crash / error / termination) we recommend using the <em>forever</em> module.
+                    of crash / error / termination) we recommend using the <label>forever</label> module.
                     You can install it (globally) using NPM:
                 </p>
-                <p><code>$ sudo npm install -g forever</code></p>
+                <code>$ sudo npm install -g forever</code>
                 <p>
                     To start the System App using <em>forever</em>, run it under the app root folder:
                 </p>
-                <p><code>$ forever start -c node server.js</code></p>
+                <code>$ forever start -c node server.js</code>
             </div>
 
-            <h2>Need help?</h2>
-            <div class="panel">
+            <div class="bar"><h2 class="contents">Need help?</h2></div>
+            <div class="contents">
                 <p>
                     The app has a built-in Help section with the most common questions and answers.
                     <br />
-                    The source-code documentation is also available under <code>/docs</code>.
+                    The source code documentation is also available under <label>/docs</label>.
                 </p>
                 <p>
                     If you have an issue or found a bug, please post it on our
                     <a href="https://github.com/zalando/system/issues" title="System App Issues on GitHub">GitHub project page</a>.
                 </p>
             </div>
+
         </div>
 
-        <div id="footer" class="panel">
-            <img src="images/zalando.png" />
+        <div id="footer" class="contents">
+            <img src="images/zalando_logo_footer.png" />
             <div>
-                <strong>Zalando</strong>
                 <a href="http://www.zalando.com" title="Zalando Global website">Zalando.com</a>
                 <a href="http://tech.zalando.com" title="Zalando - The Most Fashionable Tech Company">Tech Blog</a>
                 <a href="https://github.com/zalando" title="Zalando open-source projects at GitHub">Projects on GitHub</a>
