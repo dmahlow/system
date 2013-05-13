@@ -5,9 +5,8 @@
     "homepage": "http://systemapp.io",
     "author":"Igor Ramadas",
     "license":"Apache License 2.0",
-    "private":true,
 
-    "main":"server.js",
+    "main":"index.js",
 
     "contributors":[
         {

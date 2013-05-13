@@ -4,6 +4,11 @@ SYSTEM APP CHANGE LOG
 - = removed features
 
 # -----------------------------------------------------------------------------
+  0.6.2
+* Guest users won't see elements that they shouldn't have access on the UI,
+  for example the "Create map" on the top menu is now hidden.
+
+# -----------------------------------------------------------------------------
   0.6.1, 2013.05.08
 + Maps now have an owner (defined by the "createdByUserId" property).
 + New zoom implementation, zooming in and out is now way faster than before.

@@ -417,10 +417,10 @@ howToStartServer(){
     fi
 
     echo "If no problems were found you should be able to start the System App by running the command:"
-    echo "$ node server.js"
+    echo "$ node index.js"
     echo ""
     echo "If you have installed the forever module, please use:"
-    echo "$ forever start -c node server.js"
+    echo "$ forever start -c node index.js"
     echo ""
     echo "Please note that MongoDB might not start automatically depending on your system configuration."
     echo "To check if Mongo is running, run the command:"

@@ -114,7 +114,7 @@ settings to cope with the PaaS environment. For example:
 
 To start the System App:
 
-`$ node server.js`
+`$ node index.js`
 
 This will start Node.js under the port 3003 (or whatever port you have set on the server settings).
 
@@ -124,7 +124,7 @@ By default Node.js will run in "Debug mode". If you're deploying and running on 
 you must set the `NODE_ENV` to "production" to avoid having all the debugging statements
 logged to the console. Putting it simple:
 
-`$ NODE_ENV=production node server.js`
+`$ NODE_ENV=production node index.js`
 
 ### Running the server forever
 
@@ -135,7 +135,7 @@ we recommend using the node module **forever**. You can install it using NPM lik
 
 To start the SYstem App using *forever*, run it under the app root folder:
 
-`$ forever start -c node server.js`
+`$ forever start -c node index.js`
 
 ## Code implementation
 

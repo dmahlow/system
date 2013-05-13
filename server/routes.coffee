@@ -659,7 +659,7 @@ module.exports = (app) ->
             serverOS: os.type() + " " + os.release(),
             serverCpuLoad: os.loadavg()[0].toFixed(2),
             serverRamLoad: (os.freemem() / os.totalmem() * 100).toFixed(2),
-            roles: getUserRoles(req)
+            roles: getUserRoles req
 
         return options
 
