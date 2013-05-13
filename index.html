@@ -158,8 +158,8 @@
 
             <div class="bar"><h2 class="contents">Running the app</h2></div>
             <div class="contents starting">
-                <p>To start the System App, run the server.js file using node:</p>
-                <code>$ node server.js</code>
+                <p>To start the System App, run the index.js file using node:</p>
+                <code>$ node index.js</code>
                 <p>
                     This will start the Node.js server. If you haven't touched the settings, opening
                     <label>http://localhost:3003</label> on your web browser should work. Otherwise
@@ -172,7 +172,7 @@
                     you must set the <label>NODE_ENV</label> to "production" to avoid having all the debugging
                     statements logged to the console. Putting it simple:
                 </p>
-                <code>$ NODE_ENV=production node server.js</code>
+                <code>$ NODE_ENV=production node index.js</code>
                 <p>
                     Please note that the System App will enter debug mode automatically when it runs under
                     the <label>localhost</label> or a <label>.local</label> hostname. In debug mode, most actions
@@ -189,7 +189,7 @@
                 <p>
                     To start the System App using forever, run it under the app root folder:
                 </p>
-                <code>$ forever start -c node server.js</code>
+                <code>$ forever start -c node index.js</code>
             </div>
 
             <div class="bar"><h2 class="contents">Need help?</h2></div>
