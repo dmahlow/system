@@ -102,6 +102,10 @@ The following settings will need your attention:
 - `port` - The port used by the Node.js server, default is 3003.
 - `paas` - Set to true if you're deploying to common PaaS services. More info below.
 
+##### Settings.Security
+- `port` - The port used by the Node.js server, default is 3003.
+- `userPasswordKey` - The secret key/token used to encrypt passwords on the database.
+
 ##### Deploying to PaaS
 The System App can be easily deployed to AppFog, OpenShift and Heroku. The only requirement is
 that you set `Settings.Web.paas` to true (it is true by default). In this case we'll override a few

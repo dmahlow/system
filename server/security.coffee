@@ -47,7 +47,7 @@ class Security
 
             # Check if user was previously cached. If not valid, delete from cache.
             if fromCache?.cacheExpiryDate?
-                if fromCache.cacheExpiryDate.isAfter(moment()) and fromCache.passwordHash is filter.passwordHash
+                if fromCache.cacheExpiryDate.isAfter(moment())
                     return callback null, fromCache
                 delete @cachedUsers[user.id]
 
