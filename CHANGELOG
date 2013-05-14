@@ -5,6 +5,8 @@ SYSTEM APP CHANGE LOG
 
 # -----------------------------------------------------------------------------
   0.6.2
++ It is now possible to select multiple shapes by holding the Ctrl key, pretty
+  much like you would expect on any visual editor.
 * Updated client javascript libraries.
 * Guest users won't see elements that they shouldn't have access on the UI,
   for example the "Create map" on the top menu is now hidden.

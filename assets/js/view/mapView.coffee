@@ -6,7 +6,7 @@ class SystemApp.MapView extends SystemApp.BaseView
 
     paper: null                 # the Raphael paper object
     paperBg: null               # the paper background object or color string
-    currentShape: null          # the current selected shape
+    selectedShapes: null        # collection of selected [Shape Views](shapeView.html) on the map
     hoverShape: null            # the current shape pointed by the mouse
     lastPressedKey: null        # the last keyboard key pressed by the user
 
@@ -26,7 +26,7 @@ class SystemApp.MapView extends SystemApp.BaseView
     isLinksVisible: true        # are links visible or hidden on the map?
 
     controlsView: null          # a [Controls View](controlsView.html) to control and interact with map
-    shapesMoverView: null       # a {Shapes Mover View](shapesMoverView.html) to move multiple shapes at once
+    shapesMoverView: null       # a [Shapes Mover View](shapesMoverView.html) to move multiple shapes at once
     stackGroups: null           # holds 9 SVG "groups" elements, used to control shape's z-index
     shapeViews: null            # holds current map's ([Shape Views](shapeView.html))
     linkViews: null             # holds current map's ([Link Views](linkView.html))
@@ -113,6 +113,7 @@ class SystemApp.MapView extends SystemApp.BaseView
         width = SystemApp.Settings.Map.paperSizeX
         height = SystemApp.Settings.Map.paperSizeY
 
+        @selectedShapes = {}
         @paper = new Raphael "map", width, height
 
 
@@ -130,9 +131,6 @@ class SystemApp.MapView extends SystemApp.BaseView
             @stopListening @model
             @model = null
 
-        # Deselect the current shape.
-        @setCurrentElement null
-
         # Clear the current map background object.
         @paperBg?.remove()
         @gridLines?.remove()
@@ -142,6 +140,7 @@ class SystemApp.MapView extends SystemApp.BaseView
         @shapesMoverView.remove()
 
         # Clear shapes and links.
+        @clearSelectedShapes()
         @clearShapes()
         @clearLinks()
 
@@ -160,6 +159,19 @@ class SystemApp.MapView extends SystemApp.BaseView
     clearLinks: =>
         _.each @linkViews, (view) -> view.dispose()
         @linkViews = {}
+
+    # Unselect all selected shapes (if any).
+    clearSelectedShapes: =>
+        count = 0
+        for modelId, view of @selectedShapes
+            view.removeShadow()
+            count++
+
+        # Reset the selected shapes object.
+        @selectedShapes = {}
+        @setFooterShape()
+
+        SystemApp.consoleLog "MapView.clearSelectedShapes", "Cleared #{count} shapes."
 
     # Bind a [Map](map.html) to the map. this will reset the map state!
     bindMap: (map) =>
@@ -329,22 +341,35 @@ class SystemApp.MapView extends SystemApp.BaseView
 
     # Removes a shape from the map and delete its value from the `shapeViews`.
     removeShape: (model) =>
-        delete @shapeViews[model.id]
+        view = @shapeViews[model.id]
 
+        @setCurrentElement view
         @model.save()
-        @setCurrentElement()
+
+        delete @shapeViews[model.id]
 
     # Unbind all shapes from the map.
     unbindShapes: =>
         _.each @shapeViews, (view) => view.dispose()
         @shapeViews = {}
 
-    # Set the selected shape on the map.
-    setCurrentElement: (view) =>
-        @currentShape?.removeShadow()
-        @currentShape = view
+    # Add the specified [Shape View](shapeView.html) to the list of selected shapes on the map.
+    # When holding "Ctrl", the `multiple` argument will be true and the shape will be added to the
+    # list of selected shapes. Otherwise it will clear the list and add the shape as the only selected shape.
+    setCurrentElement: (view, multiple) =>
+        if @selectedShapes[view.model.id]?
 
-        if view?
+            @selectedShapes[view.model.id].removeShadow()
+            delete @selectedShapes[view.model.id]
+
+            SystemApp.consoleLog "MapView.setCurrentElement", "Deselected #{view.model.id}"
+
+        else
+
+            # If not pressing "Ctrl", clear selected shapes before selecting the passed view.
+            @clearSelectedShapes() if not multiple
+
+            @selectedShapes[view.model.id] = view
 
             view.createShadow()
 
@@ -361,10 +386,7 @@ class SystemApp.MapView extends SystemApp.BaseView
             else
                 @setFooterShape view.model.id
 
-        else
-
-            # No view specified, so set the footer to an empty string.
-            @setFooterShape()
+            SystemApp.consoleLog "MapView.setCurrentElement", "Selected #{view.model.id}"
 
         @controlsView.bindShape view
 
@@ -630,7 +652,7 @@ class SystemApp.MapView extends SystemApp.BaseView
 
     # Blink the selected [Shape](shapeView.html) on the map.
     blinkSelectedShapes: =>
-        @currentShape?.blink()
+        view.blink() for modelId, view of @selectedShapes
 
 
     # KEYBOARD EVENTS
@@ -655,7 +677,7 @@ class SystemApp.MapView extends SystemApp.BaseView
 
             # User pressed "Esc" twice in a row, so deselect the current shape.
         else if keyCode is 27 and @lastPressedKey is 27
-            @setCurrentElement null
+            @clearSelectedShapes()
             @lastPressedKey = null
 
             # User pressed "F11", go to fullscreen mode.
@@ -688,7 +710,7 @@ class SystemApp.MapView extends SystemApp.BaseView
         # If user clicked on a blank area, deselect the current [Shape View](shapeView.html).
         if targetId is SystemApp.Settings.Map.id
             @shapesMoverView.hide()
-            @setCurrentElement null
+            @clearSelectedShapes()
 
         # If pressing Shift, then start selecting multiple elements with the [Shapes Mover View](shapesMoverView.html).
         if @editEnabled and @isEventMultiple e
@@ -767,7 +789,7 @@ class SystemApp.MapView extends SystemApp.BaseView
         @model.save()
 
         @toggleGridLines true
-        @setCurrentElement null
+        @clearSelectedShapes()
 
         _.each @shapeViews, (shapeView) => shapeView.resetDimensions()
         _.each @linkViews, (linkView) => linkView.drag()

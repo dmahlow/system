@@ -249,7 +249,7 @@ class SystemApp.MapShapeView extends SystemApp.BaseView
     # User has started dragging, only proceed if editEnabled is true.
     dragStart: (x, y, e) =>
         @setLinkViews()
-        @parentView.setCurrentElement this
+        @parentView.setCurrentElement this, e.ctrlKey or e.metaKey
 
         if not @parentView.editEnabled
             return
@@ -298,8 +298,10 @@ class SystemApp.MapShapeView extends SystemApp.BaseView
         pos = @getSnap()
 
         @setPosition pos.x, pos.y, true
-        @createShadow shadowColor
         @resetLinks false
+
+        if @parentView.selectedShapes[@model.id]
+            @createShadow shadowColor
 
         # Show the "link creator" and "add label" icons again, and repaint the label text shadows.
         @showAfterDragging()
@@ -334,7 +336,7 @@ class SystemApp.MapShapeView extends SystemApp.BaseView
 
     # User has started resizing the shape, only proceed if editEnabled is true.
     resizeStart: (x, y, e) =>
-        @parentView.setCurrentElement this
+        @parentView.setCurrentElement this, e.ctrlKey or e.metaKey
 
         if not @parentView.editEnabled
             return

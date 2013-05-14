@@ -262,7 +262,6 @@ class SystemApp.MapControlsMapTabView extends SystemApp.BaseView
     exportToSvg: =>
         return if not @model?
 
-        @parentView.parentView.setCurrentElement null
         newWindow = window.open "about:blank", "ExportSVG"
         newWindow.document.title = "Exported SVG: " + @model.name()
         newWindow.document.write @parentView.parentView.$el.html()

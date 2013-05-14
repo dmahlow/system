@@ -259,9 +259,6 @@ class SystemApp.MapControlsShapeTabView extends SystemApp.BaseView
         @currentBoundView.blinkAndRemove()
         @resetDeleteShape e
 
-        # Deselect any previously selected shapes on the map.
-        @parentView.parentView.setCurrentElement()
-
     # Hide the "Confirm" shape removal button if user clicks anywhere on the page
     # while the button is visible, or after user confirms the deletion.
     resetDeleteShape: =>

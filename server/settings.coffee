@@ -116,7 +116,7 @@ class Settings
         # IMPORTANT! If you change the sessionKey, current sessions will be invalidated!
         sessionKey: "Ss!0nPROtw"
         # For how many seconds should the logged users cache keep data?
-        userCacheExpires: 60
+        userCacheExpires: 30
         # Key used for user password encryption.
         # IMPORTANT! If you change the userPasswordKey after creating users, their passwords
         # will be invalidated and they won't be able to login UNLESS you manually update the
