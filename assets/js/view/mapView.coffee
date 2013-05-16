@@ -173,6 +173,7 @@ class SystemApp.MapView extends SystemApp.BaseView
 
         # Reset the selected shapes object.
         @selectedShapes = {}
+        @controlsView.bind()
         @setFooterShape()
 
         SystemApp.consoleLog "MapView.clearSelectedShapes", "Cleared #{count} shapes."
@@ -361,7 +362,7 @@ class SystemApp.MapView extends SystemApp.BaseView
     # elements on the map. When holding "Ctrl", the `multiple` argument will be true and the shape will be
     # added to the selected list. Otherwise it will clear the list and add the element as the only selected.
     addToSelected: (view, multiple) =>
-        @clearSelectedShapes() if not multiple
+        @clearSelectedShapes()
 
         @selectedShapes[view.model.id] = view
 

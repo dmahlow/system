@@ -256,8 +256,7 @@ class SystemApp.MapShapeView extends SystemApp.BaseView
         @setLinkViews()
         @parentView.addToSelected this, e.ctrlKey or e.metaKey
 
-        if not @parentView.editEnabled
-            return
+        return if not @parentView.editEnabled
 
         # If using the "delete" key / mouse combination, then remove the shape.
         if @isEventDelete e
@@ -288,8 +287,14 @@ class SystemApp.MapShapeView extends SystemApp.BaseView
     # then proceed to `linkCreatorEnd()`. The optional `shadowColor` parameter
     # can be passed to set a custom shadow color of the shape after dragging.
     dragEnd: (e) =>
-        if not @parentView.editEnabled
-            return
+        # If shape moved, readd it to the `selectedShapes` on the map view.
+        moved = @ix isnt @x() or @iy isnt @y()
+        if not moved and @parentView.countSelectedShapes() > 1 and @parentView.selectedShapes[@model.id]?
+            @parentView.removeFromSelected this
+        else
+            @highlight()
+
+        return if not @parentView.editEnabled
 
         @svg?.animate {"opacity": @model.opacity()}, SystemApp.Settings.Map.opacityInterval
 
@@ -301,13 +306,6 @@ class SystemApp.MapShapeView extends SystemApp.BaseView
         pos = @getSnap()
         @setPosition pos.x, pos.y, true
         @resetLinks false
-
-        # If shape moved, readd it to the `selectedShapes` on the map view.
-        moved = @ix isnt @x() or @iy isnt @y()
-        if not moved and @parentView.countSelectedShapes() > 1 and @parentView.selectedShapes[@model.id]?
-            @parentView.removeFromSelected this
-        else
-            @highlight()
 
         # Show the "link creator" and "add label" icons again, and repaint the label text shadows.
         @showAfterDragging()

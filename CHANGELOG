@@ -4,12 +4,14 @@ SYSTEM APP CHANGE LOG
 - = removed features
 
 # -----------------------------------------------------------------------------
-  0.6.2
-+ It is now possible to select multiple shapes by holding the Ctrl key, pretty
-  much like you would expect on any visual editor.
-* Updated client javascript libraries.
+  0.6.2, 2013.05.16
+* Refactored the shape selection code. Selecting and editing multiple shapes
+  works but it's still disabled on this version, and will be fully enabled
+  on the next release next week.
 * Guest users won't see elements that they shouldn't have access on the UI,
   for example the "Create map" on the top menu is now hidden.
+* Updated client javascript libraries.
+* Lots of small optimizations and bug fixes across the app.
 
 # -----------------------------------------------------------------------------
   0.6.1, 2013.05.08
