@@ -154,8 +154,13 @@
               </a>
             
               
-              <a class="source" href="routes.html">
-                routes.coffee
+              <a class="source" href="adminRoutes.html">
+                adminRoutes.coffee
+              </a>
+            
+              
+              <a class="source" href="appRoutes.html">
+                appRoutes.coffee
               </a>
             
               
@@ -176,6 +181,21 @@
               
               <a class="source" href="vectors.html">
                 vectors.coffee
+              </a>
+            
+              
+              <a class="source" href="statusTabView.html">
+                statusTabView.coffee
+              </a>
+            
+              
+              <a class="source" href="toolsTabView.html">
+                toolsTabView.coffee
+              </a>
+            
+              
+              <a class="source" href="usersTabView.html">
+                usersTabView.coffee
               </a>
             
               
@@ -398,11 +418,11 @@ for new data.</p>
             url = window.location
             <span class="property">@socket</span> = io.connect <span class="string">"http://<span class="subst">#{url.hostname}</span>:<span class="subst">#{url.port}</span>"</span>
 
-        <span class="property">@socket</span>.<span class="literal">on</span> <span class="string">"server:connectionCounter"</span>, <span class="property">@serverConnectionCounter</span>
-        <span class="property">@socket</span>.<span class="literal">on</span> <span class="string">"server:error"</span>, <span class="property">@serverError</span>
-        <span class="property">@socket</span>.<span class="literal">on</span> <span class="string">"entitydata:refresh"</span>, <span class="property">@entityDataRefresh</span>
-        <span class="property">@socket</span>.<span class="literal">on</span> <span class="string">"auditdata:refresh"</span>, <span class="property">@auditDataRefresh</span>
-        <span class="property">@socket</span>.<span class="literal">on</span> <span class="string">"app:reload"</span>, <span class="property">@appReload</span></pre></div></div>
+        <span class="property">@socket</span>.<span class="literal">on</span> <span class="string">"server:connectionCounter"</span>, <span class="property">@onServerConnectionCounter</span>
+        <span class="property">@socket</span>.<span class="literal">on</span> <span class="string">"server:error"</span>, <span class="property">@onServerError</span>
+        <span class="property">@socket</span>.<span class="literal">on</span> <span class="string">"entitydata:refresh"</span>, <span class="property">@onEntityDataRefresh</span>
+        <span class="property">@socket</span>.<span class="literal">on</span> <span class="string">"auditdata:refresh"</span>, <span class="property">@onAuditDataRefresh</span>
+        <span class="property">@socket</span>.<span class="literal">on</span> <span class="string">"clients:refresh"</span>, <span class="property">@onClientsRefresh</span></pre></div></div>
             
         </li>
         
@@ -430,7 +450,7 @@ will NOT kill the socket connection.</p>
               <div class="pilwrap for-h2">
                 <a class="pilcrow" href="#section-6">&#182;</a>
               </div>
-              <h2>SOCKET METHODS</h2>
+              <h2>SOCKET LISTEN</h2>
 
             </div>
             
@@ -448,8 +468,8 @@ window pointing to the System app is opened or closed.</p>
 
             </div>
             
-            <div class="content"><div class='highlight'><pre>    serverConnectionCounter: (count) =&gt;
-        SystemApp.footerView.setOnlineUsers count</pre></div></div>
+            <div class="content"><div class='highlight'><pre>    onServerConnectionCounter: (count) -&gt;
+        SystemApp.footerView?.setOnlineUsers count</pre></div></div>
             
         </li>
         
@@ -465,7 +485,7 @@ and errors can also be listed on the <a href="menuView.html">Settings menu</a>.<
 
             </div>
             
-            <div class="content"><div class='highlight'><pre>    serverError: (err) -&gt;
+            <div class="content"><div class='highlight'><pre>    onServerError: (err) -&gt;
         err.timestamp = <span class="keyword">new</span> Date()
         SystemApp.Sockets.serverErrors.push err
         SystemApp.serverEvents.trigger <span class="string">"error"</span>, err</pre></div></div>
@@ -483,7 +503,7 @@ and errors can also be listed on the <a href="menuView.html">Settings menu</a>.<
 
             </div>
             
-            <div class="content"><div class='highlight'><pre>    entityDataRefresh: (entityDef) -&gt;
+            <div class="content"><div class='highlight'><pre>    onEntityDataRefresh: (entityDef) -&gt;
         updated = SystemApp.Data.entities.getByFriendlyId entityDef.friendlyId</pre></div></div>
             
         </li>
@@ -519,7 +539,7 @@ and errors can also be listed on the <a href="menuView.html">Settings menu</a>.<
 
             </div>
             
-            <div class="content"><div class='highlight'><pre>    auditDataRefresh: (auditData) -&gt;
+            <div class="content"><div class='highlight'><pre>    onAuditDataRefresh: (auditData) -&gt;
         updated = SystemApp.Data.auditData.getByFriendlyId auditData.friendlyId</pre></div></div>
             
         </li>
@@ -570,8 +590,71 @@ and errors can also be listed on the <a href="menuView.html">Settings menu</a>.<
 
             </div>
             
-            <div class="content"><div class='highlight'><pre>    appReload: =&gt;
-        SystemApp.routes.refresh()</pre></div></div>
+            <div class="content"><div class='highlight'><pre>    onClientsRefresh: (data) -&gt;
+        ms = data.seconds * <span class="number">1000</span>
+        SystemApp.routes?.refresh ms</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-15">
+            <div class="annotation">
+              
+              <div class="pilwrap for-h2">
+                <a class="pilcrow" href="#section-15">&#182;</a>
+              </div>
+              <h2>SOCKET SEND</h2>
+
+            </div>
+            
+        </li>
+        
+        
+        <li id="section-16">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-16">&#182;</a>
+              </div>
+              <p>Trigger the &quot;clients:refresh&quot; command on all connected browsers. This will force
+clients to refresh the window in X seconds.</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>    sendClientsRefresh: (seconds) -&gt;
+        <span class="keyword">if</span> <span class="keyword">not</span> SystemApp.Data.loggedUser.hasRole(<span class="string">"admin"</span>)
+            SystemApp.consoleLog <span class="string">"Sockets.sendClientRefresh"</span>, <span class="string">"You don't have the necessary permissions!"</span>
+            <span class="keyword">return</span></pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-17">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-17">&#182;</a>
+              </div>
+              <p>Default seconds is 10.</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>        seconds = SystemApp.Settings.Sockets.clientRefreshSeconds <span class="keyword">if</span> <span class="keyword">not</span> seconds?</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-18">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-18">&#182;</a>
+              </div>
+              <p>Emit event.</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>        SystemApp.Sockets.socket.emit <span class="string">"clients:refresh"</span>, {seconds: seconds}</pre></div></div>
             
         </li>
         

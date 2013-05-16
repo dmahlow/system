@@ -154,8 +154,13 @@
               </a>
             
               
-              <a class="source" href="routes.html">
-                routes.coffee
+              <a class="source" href="adminRoutes.html">
+                adminRoutes.coffee
+              </a>
+            
+              
+              <a class="source" href="appRoutes.html">
+                appRoutes.coffee
               </a>
             
               
@@ -176,6 +181,21 @@
               
               <a class="source" href="vectors.html">
                 vectors.coffee
+              </a>
+            
+              
+              <a class="source" href="statusTabView.html">
+                statusTabView.coffee
+              </a>
+            
+              
+              <a class="source" href="toolsTabView.html">
+                toolsTabView.coffee
+              </a>
+            
+              
+              <a class="source" href="usersTabView.html">
+                usersTabView.coffee
               </a>
             
               
@@ -389,7 +409,7 @@ including spaces will be stripped out of the result</p>
 
             </div>
             
-            <div class="content"><div class='highlight'><pre>    normalize: (value, removeSymbols) =&gt;
+            <div class="content"><div class='highlight'><pre>    normalize: (value, removeSymbols) -&gt;
         <span class="keyword">if</span> <span class="keyword">not</span> value?
             <span class="keyword">return</span> <span class="string">""</span>
 
@@ -532,8 +552,8 @@ and encode the URL key.</p>
 
             </div>
             
-            <div class="content"><div class='highlight'><pre>    getUrlKey: (value) =&gt;
-        value = value.replace RegExp(<span class="string">" "</span>, <span class="string">"g"</span>), <span class="string">""</span>
+            <div class="content"><div class='highlight'><pre>    getUrlKey: (value) -&gt;
+        value = SystemApp.DataUtil.normalize value, <span class="literal">true</span>
         <span class="keyword">return</span> encodeURIComponent value</pre></div></div>
             
         </li>
@@ -603,7 +623,7 @@ return only the relevant <a href="auditData.html">AuditData</a> property path.</
 
             </div>
             
-            <div class="content"><div class='highlight'><pre>    getOnlyTheAuditDataProperty: (value) =&gt;
+            <div class="content"><div class='highlight'><pre>    getOnlyTheAuditDataProperty: (value) -&gt;
         <span class="keyword">return</span> <span class="literal">false</span> <span class="keyword">if</span> <span class="keyword">not</span> value? <span class="keyword">or</span> value <span class="keyword">is</span> <span class="string">""</span>
 
         namespace = SystemApp.Settings.General.dataBindingKey + SystemApp.Settings.AuditData.bindingNamespace

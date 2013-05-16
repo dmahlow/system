@@ -39,6 +39,11 @@
               </a>
             
               
+              <a class="source" href="mail.html">
+                mail.coffee
+              </a>
+            
+              
               <a class="source" href="manager.html">
                 manager.coffee
               </a>
@@ -201,13 +206,13 @@ even when using Logentries for general logging.</p>
 
         <span class="keyword">if</span> settings.Log.logentriesToken? <span class="keyword">and</span> settings.Log.logentriesToken <span class="keyword">isnt</span> <span class="string">""</span>
             logentries = require(<span class="string">"node-logentries"</span>).logger {token: settings.Log.logentriesToken}
-            logentries.winston winstonObj
+            logentries.winston winston
         <span class="keyword">else</span>
             filename = settings.Paths.logsDir + getLogFilename()
             winston.add winston.transports.File, {timestamp: <span class="literal">true</span>, filename: filename, maxsize: settings.Log.maxFileSize}
 
         winston.handleExceptions(<span class="keyword">new</span> winston.transports.File {filename: settings.Paths.logsDir + <span class="string">"exceptions.log"</span>})
-        winston.info <span class="string">"WINSTON LOGGING STARTED!"</span></pre></div></div>
+        winston.info <span class="string">"LOGGING STARTED!"</span></pre></div></div>
             
         </li>
         

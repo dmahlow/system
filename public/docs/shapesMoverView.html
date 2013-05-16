@@ -154,8 +154,13 @@
               </a>
             
               
-              <a class="source" href="routes.html">
-                routes.coffee
+              <a class="source" href="adminRoutes.html">
+                adminRoutes.coffee
+              </a>
+            
+              
+              <a class="source" href="appRoutes.html">
+                appRoutes.coffee
               </a>
             
               
@@ -176,6 +181,21 @@
               
               <a class="source" href="vectors.html">
                 vectors.coffee
+              </a>
+            
+              
+              <a class="source" href="statusTabView.html">
+                statusTabView.coffee
+              </a>
+            
+              
+              <a class="source" href="toolsTabView.html">
+                toolsTabView.coffee
+              </a>
+            
+              
+              <a class="source" href="usersTabView.html">
+                usersTabView.coffee
               </a>
             
               
@@ -633,7 +653,7 @@ shadows and unbind mouse and keyboard events.</p>
 
             <span class="keyword">if</span> Raphael.isPointInsideBBox box, shapeCenter.x, shapeCenter.y
                 <span class="property">@shapeViews</span>.push view
-                view.createShadow SystemApp.Settings.MapMover.shadowColor</pre></div></div>
+                view.highlight SystemApp.Settings.MapMover.shadowColor</pre></div></div>
             
         </li>
         
@@ -840,7 +860,7 @@ consider the current <a href="mapView.html">Map View</a> view box to calculate t
             <div class="content"><div class='highlight'><pre>        <span class="keyword">for</span> view <span class="keyword">in</span> <span class="property">@shapeViews</span>
             view.dragStart x, y, e
 
-        <span class="property">@parentView</span>.setCurrentElement <span class="literal">null</span></pre></div></div>
+        <span class="property">@parentView</span>.addToSelected <span class="literal">null</span></pre></div></div>
             
         </li>
         

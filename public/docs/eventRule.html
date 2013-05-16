@@ -154,8 +154,13 @@
               </a>
             
               
-              <a class="source" href="routes.html">
-                routes.coffee
+              <a class="source" href="adminRoutes.html">
+                adminRoutes.coffee
+              </a>
+            
+              
+              <a class="source" href="appRoutes.html">
+                appRoutes.coffee
               </a>
             
               
@@ -176,6 +181,21 @@
               
               <a class="source" href="vectors.html">
                 vectors.coffee
+              </a>
+            
+              
+              <a class="source" href="statusTabView.html">
+                statusTabView.coffee
+              </a>
+            
+              
+              <a class="source" href="toolsTabView.html">
+                toolsTabView.coffee
+              </a>
+            
+              
+              <a class="source" href="usersTabView.html">
+                usersTabView.coffee
               </a>
             
               
@@ -511,6 +531,7 @@ source value, target value, and the comparator used.</p>
             <div class="content"><div class='highlight'><pre>    test: (contextValues) =&gt;
         sourceValue = <span class="property">@source</span>()
         targetValue = <span class="property">@target</span>()
+        comparator = <span class="property">@comparator</span>()
 
         <span class="keyword">if</span> <span class="keyword">not</span> sourceValue?
             <span class="keyword">return</span> <span class="literal">false</span>
@@ -526,17 +547,12 @@ source value, target value, and the comparator used.</p>
               <div class="pilwrap ">
                 <a class="pilcrow" href="#section-12">&#182;</a>
               </div>
-              <p>Check if source value is a <a href="variable.html">Variable</a>,
-an <a href="auditData.html">AuditData</a> property or a context value. Context
-means the alert is being run against <a href="shape.html">Shape</a> or <a href="link.html">Link</a>
-label values.</p>
+              <p>Get first char of source and target.</p>
 
             </div>
             
-            <div class="content"><div class='highlight'><pre>        <span class="keyword">if</span> sourceValue.substring(<span class="number">0</span>, <span class="number">1</span>) <span class="keyword">is</span> SystemApp.Settings.General.dataBindingKey
-            sourceValue = SystemApp.DataUtil.getDataBindingValue sourceValue
-        <span class="keyword">else</span> <span class="keyword">if</span> contextValues? <span class="keyword">and</span> sourceValue.substring(<span class="number">0</span>, <span class="number">1</span>) <span class="keyword">is</span> SystemApp.Settings.AuditEvent.contextSpecialKey
-            sourceValue = contextValues[parseInt(sourceValue.substring <span class="number">1</span>)]</pre></div></div>
+            <div class="content"><div class='highlight'><pre>        sourceFirstKey = sourceValue.substring <span class="number">0</span>, <span class="number">1</span>
+        targetFirstKey = targetValue.substring <span class="number">0</span>, <span class="number">1</span></pre></div></div>
             
         </li>
         
@@ -547,14 +563,17 @@ label values.</p>
               <div class="pilwrap ">
                 <a class="pilcrow" href="#section-13">&#182;</a>
               </div>
-              <p>Same as above, but for the target value.</p>
+              <p>Check if source value is a <a href="variable.html">Variable</a>,
+an <a href="auditData.html">AuditData</a> property or a context value. Context
+means the alert is being run against <a href="shape.html">Shape</a> or <a href="link.html">Link</a>
+label values.</p>
 
             </div>
             
-            <div class="content"><div class='highlight'><pre>        <span class="keyword">if</span> targetValue.substring(<span class="number">0</span>, <span class="number">1</span>) <span class="keyword">is</span> SystemApp.Settings.General.dataBindingKey
-            targetValue = SystemApp.DataUtil.getDataBindingValue targetValue
-        <span class="keyword">else</span> <span class="keyword">if</span> contextValues? <span class="keyword">and</span> targetValue.substring(<span class="number">0</span>, <span class="number">1</span>) <span class="keyword">is</span> SystemApp.Settings.AuditEvent.contextSpecialKey
-            targetValue = contextValues[parseInt(targetValue.substring <span class="number">1</span>)]</pre></div></div>
+            <div class="content"><div class='highlight'><pre>        <span class="keyword">if</span> sourceFirstKey <span class="keyword">is</span> SystemApp.Settings.General.dataBindingKey
+            sourceValue = SystemApp.DataUtil.getDataBindingValue sourceValue
+        <span class="keyword">else</span> <span class="keyword">if</span> contextValues? <span class="keyword">and</span> sourceFirstKey <span class="keyword">is</span> SystemApp.Settings.AuditEvent.contextSpecialKey
+            sourceValue = contextValues[sourceValue.substring <span class="number">1</span>]</pre></div></div>
             
         </li>
         
@@ -565,25 +584,14 @@ label values.</p>
               <div class="pilwrap ">
                 <a class="pilcrow" href="#section-14">&#182;</a>
               </div>
-              <p>Force setting source and target values to float, in case they&#39;re valid numbers.</p>
+              <p>Same as above, but for the target value.</p>
 
             </div>
             
-            <div class="content"><div class='highlight'><pre>        <span class="keyword">if</span> <span class="keyword">not</span> isNaN sourceValue
-            sourceValue = parseFloat sourceValue
-        <span class="keyword">if</span> <span class="keyword">not</span> isNaN targetValue
-            targetValue = parseFloat targetValue
-
-        <span class="keyword">if</span> <span class="keyword">not</span> sourceValue? <span class="keyword">or</span> <span class="keyword">not</span> targetValue?
-            <span class="keyword">return</span> <span class="literal">false</span>
-
-        <span class="keyword">switch</span> <span class="property">@comparator</span>()
-            <span class="keyword">when</span> <span class="string">"&gt;"</span>  <span class="keyword">then</span> <span class="keyword">return</span> sourceValue &gt;  targetValue
-            <span class="keyword">when</span> <span class="string">"&gt;="</span> <span class="keyword">then</span> <span class="keyword">return</span> sourceValue &gt;= targetValue
-            <span class="keyword">when</span> <span class="string">"&lt;"</span>  <span class="keyword">then</span> <span class="keyword">return</span> sourceValue &lt;  targetValue
-            <span class="keyword">when</span> <span class="string">"&lt;="</span> <span class="keyword">then</span> <span class="keyword">return</span> sourceValue &lt;= targetValue
-            <span class="keyword">when</span> <span class="string">"=="</span> <span class="keyword">then</span> <span class="keyword">return</span> sourceValue == targetValue
-            <span class="keyword">when</span> <span class="string">"!="</span> <span class="keyword">then</span> <span class="keyword">return</span> sourceValue != targetValue</pre></div></div>
+            <div class="content"><div class='highlight'><pre>        <span class="keyword">if</span> targetFirstKey <span class="keyword">is</span> SystemApp.Settings.General.dataBindingKey
+            targetValue = SystemApp.DataUtil.getDataBindingValue targetValue
+        <span class="keyword">else</span> <span class="keyword">if</span> contextValues? <span class="keyword">and</span> targetFirstKey <span class="keyword">is</span> SystemApp.Settings.AuditEvent.contextSpecialKey
+            targetValue = contextValues[targetValue.substring <span class="number">1</span>]</pre></div></div>
             
         </li>
         
@@ -594,11 +602,14 @@ label values.</p>
               <div class="pilwrap ">
                 <a class="pilcrow" href="#section-15">&#182;</a>
               </div>
-              <p>If the values and/or symbol are incorrect, then always return false.</p>
+              <p>Force setting source and target values to float, in case they&#39;re valid numbers.</p>
 
             </div>
             
-            <div class="content"><div class='highlight'><pre>        <span class="keyword">return</span> <span class="literal">false</span></pre></div></div>
+            <div class="content"><div class='highlight'><pre>        <span class="keyword">if</span> <span class="keyword">not</span> isNaN(sourceValue)
+            sourceValue = parseFloat sourceValue
+        <span class="keyword">if</span> <span class="keyword">not</span> isNaN(targetValue)
+            targetValue = parseFloat targetValue</pre></div></div>
             
         </li>
         
@@ -606,12 +617,23 @@ label values.</p>
         <li id="section-16">
             <div class="annotation">
               
-              <div class="pilwrap for-h2">
+              <div class="pilwrap ">
                 <a class="pilcrow" href="#section-16">&#182;</a>
               </div>
-              <h2>EVENT RULE COLLECTION</h2>
+              <p>If any value is null, return false.</p>
 
             </div>
+            
+            <div class="content"><div class='highlight'><pre>        <span class="keyword">if</span> <span class="keyword">not</span> sourceValue? <span class="keyword">or</span> <span class="keyword">not</span> targetValue?
+            <span class="keyword">return</span> <span class="literal">false</span>
+
+        <span class="keyword">switch</span> comparator
+            <span class="keyword">when</span> <span class="string">"&gt;"</span>  <span class="keyword">then</span> <span class="keyword">return</span> sourceValue &gt;  targetValue
+            <span class="keyword">when</span> <span class="string">"&gt;="</span> <span class="keyword">then</span> <span class="keyword">return</span> sourceValue &gt;= targetValue
+            <span class="keyword">when</span> <span class="string">"&lt;"</span>  <span class="keyword">then</span> <span class="keyword">return</span> sourceValue &lt;  targetValue
+            <span class="keyword">when</span> <span class="string">"&lt;="</span> <span class="keyword">then</span> <span class="keyword">return</span> sourceValue &lt;= targetValue
+            <span class="keyword">when</span> <span class="string">"=="</span> <span class="keyword">then</span> <span class="keyword">return</span> sourceValue == targetValue
+            <span class="keyword">when</span> <span class="string">"!="</span> <span class="keyword">then</span> <span class="keyword">return</span> sourceValue != targetValue</pre></div></div>
             
         </li>
         
@@ -621,6 +643,34 @@ label values.</p>
               
               <div class="pilwrap ">
                 <a class="pilcrow" href="#section-17">&#182;</a>
+              </div>
+              <p>If the values and/or symbol are incorrect, then always return false.</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>        <span class="keyword">return</span> <span class="literal">false</span></pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-18">
+            <div class="annotation">
+              
+              <div class="pilwrap for-h2">
+                <a class="pilcrow" href="#section-18">&#182;</a>
+              </div>
+              <h2>EVENT RULE COLLECTION</h2>
+
+            </div>
+            
+        </li>
+        
+        
+        <li id="section-19">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-19">&#182;</a>
               </div>
               <p>Represents a collection of event rules.</p>
 
@@ -633,11 +683,11 @@ label values.</p>
         </li>
         
         
-        <li id="section-18">
+        <li id="section-20">
             <div class="annotation">
               
               <div class="pilwrap ">
-                <a class="pilcrow" href="#section-18">&#182;</a>
+                <a class="pilcrow" href="#section-20">&#182;</a>
               </div>
               <p>Set the comparator function to order the alert rules collection by source value.</p>
 

@@ -39,6 +39,11 @@
               </a>
             
               
+              <a class="source" href="mail.html">
+                mail.coffee
+              </a>
+            
+              
               <a class="source" href="manager.html">
                 manager.coffee
               </a>
@@ -126,6 +131,7 @@
     imaging = require <span class="string">"./imaging.coffee"</span>
     manager = require <span class="string">"./manager.coffee"</span>
     passport = require <span class="string">"passport"</span>
+    security = require <span class="string">"./security.coffee"</span>
     settings = require <span class="string">"./settings.coffee"</span>
     sockets = require <span class="string">"./sockets.coffee"</span>
     sync = require <span class="string">"./sync.coffee"</span></pre></div></div>
@@ -169,7 +175,7 @@
               <div class="pilwrap for-h2">
                 <a class="pilcrow" href="#section-6">&#182;</a>
               </div>
-              <h2>ADMIN PAGE</h2>
+              <h2>MAIN ROUTE</h2>
 
             </div>
             
@@ -186,9 +192,12 @@
 
             </div>
             
-            <div class="content"><div class='highlight'><pre>    <span class="function"><span class="title">getAdmin</span></span> = (req, res) -&gt;
-        os = require <span class="string">"os"</span>
-        host = req.headers[<span class="string">"host"</span>]</pre></div></div>
+            <div class="content"><div class='highlight'><pre>    <span class="function"><span class="title">getIndex</span></span> = (req, res) -&gt;
+        <span class="keyword">if</span> <span class="keyword">not</span> req.user?
+            res.redirect <span class="string">"/login"</span>
+            <span class="keyword">return</span>
+
+        options =  getResponseOptions req</pre></div></div>
             
         </li>
         
@@ -199,23 +208,11 @@
               <div class="pilwrap ">
                 <a class="pilcrow" href="#section-8">&#182;</a>
               </div>
-              <p>Check the last modified date.</p>
+              <p>Render the index page.</p>
 
             </div>
             
-            <div class="content"><div class='highlight'><pre>        lastModified = fs.statSync(<span class="string">"./package.json"</span>).mtime <span class="keyword">if</span> <span class="keyword">not</span> lastModified?
-
-        options =
-            title: settings.General.appTitle,
-            version: packageJson.version,
-            lastModified: lastModified,
-            serverPort: settings.Web.port,
-            serverOS: os.type() + <span class="string">" "</span> + os.platform(),
-            serverCpuLoad: os.loadavg()[<span class="number">0</span>],
-            serverRamLoad: Math.round(os.freemem() / ostotalmen() * <span class="number">100</span>),
-            roles: {admin: <span class="number">1</span>, mapcreate: <span class="number">1</span>, mapedit: <span class="number">1</span>, entities: <span class="number">1</span>, auditdata: <span class="number">1</span>, auditevents: <span class="number">1</span>, settings: <span class="number">1</span>}
-
-        res.render <span class="string">"admin"</span>, options</pre></div></div>
+            <div class="content"><div class='highlight'><pre>        res.render <span class="string">"index"</span>, options</pre></div></div>
             
         </li>
         
@@ -226,7 +223,7 @@
               <div class="pilwrap for-h2">
                 <a class="pilcrow" href="#section-9">&#182;</a>
               </div>
-              <h2>MAIN PAGE</h2>
+              <h2>ADMIN ROUTES</h2>
 
             </div>
             
@@ -239,14 +236,17 @@
               <div class="pilwrap ">
                 <a class="pilcrow" href="#section-10">&#182;</a>
               </div>
-              <p>The main index page.</p>
+              <p>The main index page. Only users with the &quot;admin&quot; role will be able to
+access this page.</p>
 
             </div>
             
-            <div class="content"><div class='highlight'><pre>    <span class="function"><span class="title">getIndex</span></span> = (req, res) -&gt;
-        os = require <span class="string">"os"</span>
-        moment = require <span class="string">"moment"</span>
-        host = req.headers[<span class="string">"host"</span>]</pre></div></div>
+            <div class="content"><div class='highlight'><pre>    <span class="function"><span class="title">getAdmin</span></span> = (req, res) -&gt;
+        <span class="keyword">if</span> <span class="keyword">not</span> req.user?
+            res.redirect <span class="string">"/login"</span>
+            <span class="keyword">return</span>
+
+        options =  getResponseOptions req</pre></div></div>
             
         </li>
         
@@ -257,11 +257,13 @@
               <div class="pilwrap ">
                 <a class="pilcrow" href="#section-11">&#182;</a>
               </div>
-              <p>Check the last modified date.</p>
+              <p>Make sure user has admin role.</p>
 
             </div>
             
-            <div class="content"><div class='highlight'><pre>        lastModified = fs.statSync(<span class="string">"./package.json"</span>).mtime <span class="keyword">if</span> <span class="keyword">not</span> lastModified?</pre></div></div>
+            <div class="content"><div class='highlight'><pre>        <span class="keyword">if</span> options.roles.admin <span class="keyword">isnt</span> <span class="literal">true</span>
+            res.redirect <span class="string">"/401"</span>
+            <span class="keyword">return</span></pre></div></div>
             
         </li>
         
@@ -272,23 +274,11 @@
               <div class="pilwrap ">
                 <a class="pilcrow" href="#section-12">&#182;</a>
               </div>
-              <p>Set render options.</p>
+              <p>Render the admin page.</p>
 
             </div>
             
-            <div class="content"><div class='highlight'><pre>        options =
-            title: settings.General.appTitle,
-            version: packageJson.version,
-            lastModified: moment(lastModified).format(<span class="string">"YYYY-MM-DD hh:mm"</span>),
-            serverUptime: moment.duration(os.uptime(), <span class="string">"s"</span>).humanize(),
-            serverHostname: os.hostname(),
-            serverPort: settings.Web.port,
-            serverOS: os.type() + <span class="string">" "</span> + os.release(),
-            serverCpuLoad: os.loadavg()[<span class="number">0</span>].toFixed(<span class="number">2</span>),
-            serverRamLoad: (os.freemem() / os.totalmem() * <span class="number">100</span>).toFixed(<span class="number">2</span>),
-            roles: {admin: <span class="number">1</span>, mapcreate: <span class="number">1</span>, mapedit: <span class="number">1</span>, entities: <span class="number">1</span>, auditdata: <span class="number">1</span>, auditevents: <span class="number">1</span>, settings: <span class="number">1</span>}
-
-        res.render <span class="string">"index"</span>, options</pre></div></div>
+            <div class="content"><div class='highlight'><pre>        res.render <span class="string">"admin"</span>, options</pre></div></div>
             
         </li>
         
@@ -296,12 +286,21 @@
         <li id="section-13">
             <div class="annotation">
               
-              <div class="pilwrap for-h2">
+              <div class="pilwrap ">
                 <a class="pilcrow" href="#section-13">&#182;</a>
               </div>
-              <h2>ENTITIES</h2>
+              <p>Run the system upgrader.</p>
 
             </div>
+            
+            <div class="content"><div class='highlight'><pre>    <span class="function"><span class="title">runUpgrade</span></span> = (req, res) -&gt;
+        files = fs.readdirSync <span class="string">"./upgrade/"</span>
+
+        <span class="keyword">for</span> f <span class="keyword">in</span> files
+            <span class="keyword">if</span> f.indexOf(<span class="string">".coffee"</span>) &gt; <span class="number">0</span>
+                require <span class="string">"../upgrade/"</span> + f
+
+        res.send <span class="string">"UPGRADED!!!"</span></pre></div></div>
             
         </li>
         
@@ -309,8 +308,21 @@
         <li id="section-14">
             <div class="annotation">
               
-              <div class="pilwrap ">
+              <div class="pilwrap for-h2">
                 <a class="pilcrow" href="#section-14">&#182;</a>
+              </div>
+              <h2>ENTITY ROUTES</h2>
+
+            </div>
+            
+        </li>
+        
+        
+        <li id="section-15">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-15">&#182;</a>
               </div>
               <p>Get a single or a collection of <a href="entityDefinition.html">Entity Definitions</a>.</p>
 
@@ -326,11 +338,11 @@
         </li>
         
         
-        <li id="section-15">
+        <li id="section-16">
             <div class="annotation">
               
               <div class="pilwrap ">
-                <a class="pilcrow" href="#section-15">&#182;</a>
+                <a class="pilcrow" href="#section-16">&#182;</a>
               </div>
               <p>Add or update an <a href="entityDefinition.html">Entity Definition</a>.
 This will also restart the entity timers on the server <a href="manager.html">manager</a>.</p>
@@ -338,6 +350,11 @@ This will also restart the entity timers on the server <a href="manager.html">ma
             </div>
             
             <div class="content"><div class='highlight'><pre>    <span class="function"><span class="title">postEntityDefinition</span></span> = (req, res) -&gt;
+        roles = getUserRoles req
+        <span class="keyword">if</span> <span class="keyword">not</span> roles.admin <span class="keyword">and</span> <span class="keyword">not</span> roles.entities
+            sendForbiddenResponse res, <span class="string">"Entity POST"</span>
+            <span class="keyword">return</span>
+
         database.setEntityDefinition getDocumentFromBody(req), <span class="literal">null</span>, (err, result) -&gt;
             <span class="keyword">if</span> result? <span class="keyword">and</span> <span class="keyword">not</span> err?
                 manager.initEntityTimers()
@@ -348,19 +365,25 @@ This will also restart the entity timers on the server <a href="manager.html">ma
         </li>
         
         
-        <li id="section-16">
+        <li id="section-17">
             <div class="annotation">
               
               <div class="pilwrap ">
-                <a class="pilcrow" href="#section-16">&#182;</a>
+                <a class="pilcrow" href="#section-17">&#182;</a>
               </div>
               <p>Patch only the specified properties of an <a href="entityDefinition.html">Entity Definition</a>.</p>
 
             </div>
             
-            <div class="content"><div class='highlight'><pre>    <span class="function"><span class="title">patchEntityDefinition</span></span> = (req, reslo) -&gt;
+            <div class="content"><div class='highlight'><pre>    <span class="function"><span class="title">patchEntityDefinition</span></span> = (req, res) -&gt;
+        roles = getUserRoles req
+        <span class="keyword">if</span> <span class="keyword">not</span> roles.admin <span class="keyword">and</span> <span class="keyword">not</span> roles.entities
+            sendForbiddenResponse res, <span class="string">"Entity PATCH"</span>
+            <span class="keyword">return</span>
+
         database.setEntityDefinition getDocumentFromBody(req), {patch: <span class="literal">true</span>}, (err, result) -&gt;
             <span class="keyword">if</span> result? <span class="keyword">and</span> <span class="keyword">not</span> err?
+                manager.initEntityTimers()
                 res.send minifyJson result
             <span class="keyword">else</span>
                 sendErrorResponse res, <span class="string">"Entity PATCH"</span>, err</pre></div></div>
@@ -368,11 +391,11 @@ This will also restart the entity timers on the server <a href="manager.html">ma
         </li>
         
         
-        <li id="section-17">
+        <li id="section-18">
             <div class="annotation">
               
               <div class="pilwrap ">
-                <a class="pilcrow" href="#section-17">&#182;</a>
+                <a class="pilcrow" href="#section-18">&#182;</a>
               </div>
               <p>Delete an <a href="entityDefinition.html">Entity Definition</a>.
 This will also restart the entity timers on the server <a href="manager.html">manager</a>.</p>
@@ -380,6 +403,11 @@ This will also restart the entity timers on the server <a href="manager.html">ma
             </div>
             
             <div class="content"><div class='highlight'><pre>    <span class="function"><span class="title">deleteEntityDefinition</span></span> = (req, res) -&gt;
+        roles = getUserRoles req
+        <span class="keyword">if</span> <span class="keyword">not</span> roles.admin <span class="keyword">and</span> <span class="keyword">not</span> roles.entities
+            sendForbiddenResponse res, <span class="string">"Entity DELETE"</span>
+            <span class="keyword">return</span>
+
         database.deleteEntityDefinition getIdFromRequest(req), (err, result) -&gt;
             <span class="keyword">if</span> <span class="keyword">not</span> err?
                 manager.initEntityTimers()
@@ -390,11 +418,11 @@ This will also restart the entity timers on the server <a href="manager.html">ma
         </li>
         
         
-        <li id="section-18">
+        <li id="section-19">
             <div class="annotation">
               
               <div class="pilwrap ">
-                <a class="pilcrow" href="#section-18">&#182;</a>
+                <a class="pilcrow" href="#section-19">&#182;</a>
               </div>
               <p>Get the data for the specified <a href="entityDefinition.html">Entity Definition</a>.
 This effectively returns the <a href="entityObject.html">Entity Objects Collection</a>
@@ -411,11 +439,11 @@ related to the definition.</p>
         </li>
         
         
-        <li id="section-19">
+        <li id="section-20">
             <div class="annotation">
               
               <div class="pilwrap ">
-                <a class="pilcrow" href="#section-19">&#182;</a>
+                <a class="pilcrow" href="#section-20">&#182;</a>
               </div>
               <p>Results is an array! If it has no models, then the
 specified <code>friendlyId</code> wasn&#39;t found in the database.</p>
@@ -431,11 +459,11 @@ specified <code>friendlyId</code> wasn&#39;t found in the database.</p>
         </li>
         
         
-        <li id="section-20">
+        <li id="section-21">
             <div class="annotation">
               
               <div class="pilwrap ">
-                <a class="pilcrow" href="#section-20">&#182;</a>
+                <a class="pilcrow" href="#section-21">&#182;</a>
               </div>
               <p>Got the entity definition, now download from its SourceUrl.</p>
 
@@ -457,11 +485,11 @@ specified <code>friendlyId</code> wasn&#39;t found in the database.</p>
         </li>
         
         
-        <li id="section-21">
+        <li id="section-22">
             <div class="annotation">
               
               <div class="pilwrap ">
-                <a class="pilcrow" href="#section-21">&#182;</a>
+                <a class="pilcrow" href="#section-22">&#182;</a>
               </div>
               <p>If we can&#39;t find the matching entity definition, return an error.</p>
 
@@ -473,24 +501,24 @@ specified <code>friendlyId</code> wasn&#39;t found in the database.</p>
         </li>
         
         
-        <li id="section-22">
+        <li id="section-23">
             <div class="annotation">
               
               <div class="pilwrap for-h2">
-                <a class="pilcrow" href="#section-22">&#182;</a>
+                <a class="pilcrow" href="#section-23">&#182;</a>
               </div>
-              <h2>AUDIT DATA</h2>
+              <h2>AUDIT DATA ROUTES</h2>
 
             </div>
             
         </li>
         
         
-        <li id="section-23">
+        <li id="section-24">
             <div class="annotation">
               
               <div class="pilwrap ">
-                <a class="pilcrow" href="#section-23">&#182;</a>
+                <a class="pilcrow" href="#section-24">&#182;</a>
               </div>
               <p>Get all <a href="auditData.html">AuditData</a>.</p>
 
@@ -506,42 +534,28 @@ specified <code>friendlyId</code> wasn&#39;t found in the database.</p>
         </li>
         
         
-        <li id="section-24">
-            <div class="annotation">
-              
-              <div class="pilwrap ">
-                <a class="pilcrow" href="#section-24">&#182;</a>
-              </div>
-              <p>Add or update an <a href="auditData.html">AuditData</a>.</p>
-
-            </div>
-            
-            <div class="content"><div class='highlight'><pre>    <span class="function"><span class="title">postAuditData</span></span> = (req, res) -&gt;
-        database.setAuditData getDocumentFromBody(req), <span class="literal">null</span>, (err, result) -&gt;
-            <span class="keyword">if</span> result? <span class="keyword">and</span> <span class="keyword">not</span> err?
-                res.send minifyJson result
-            <span class="keyword">else</span>
-                sendErrorResponse res, <span class="string">"Audit Data POST"</span>, err</pre></div></div>
-            
-        </li>
-        
-        
         <li id="section-25">
             <div class="annotation">
               
               <div class="pilwrap ">
                 <a class="pilcrow" href="#section-25">&#182;</a>
               </div>
-              <p>Patch only the specified properties of an <a href="auditData.html">AuditData</a>.</p>
+              <p>Add or update an <a href="auditData.html">AuditData</a>.</p>
 
             </div>
             
-            <div class="content"><div class='highlight'><pre>    <span class="function"><span class="title">patchAuditData</span></span> = (req, res) -&gt;
-        database.setAuditData getDocumentFromBody(req), {patch: <span class="literal">true</span>}, (err, result) -&gt;
+            <div class="content"><div class='highlight'><pre>    <span class="function"><span class="title">postAuditData</span></span> = (req, res) -&gt;
+        roles = getUserRoles req
+        <span class="keyword">if</span> <span class="keyword">not</span> roles.admin <span class="keyword">and</span> <span class="keyword">not</span> roles.auditdata
+            sendForbiddenResponse res, <span class="string">"Audit Data POST"</span>
+            <span class="keyword">return</span>
+
+        database.setAuditData getDocumentFromBody(req), <span class="literal">null</span>, (err, result) -&gt;
             <span class="keyword">if</span> result? <span class="keyword">and</span> <span class="keyword">not</span> err?
+                manager.initAuditDataTimers()
                 res.send minifyJson result
             <span class="keyword">else</span>
-                sendErrorResponse res, <span class="string">"Audit Data PATCH"</span>, err</pre></div></div>
+                sendErrorResponse res, <span class="string">"Audit Data POST"</span>, err</pre></div></div>
             
         </li>
         
@@ -552,17 +566,22 @@ specified <code>friendlyId</code> wasn&#39;t found in the database.</p>
               <div class="pilwrap ">
                 <a class="pilcrow" href="#section-26">&#182;</a>
               </div>
-              <p>Delete an <a href="auditData.html">AuditData</a>.</p>
+              <p>Patch only the specified properties of an <a href="auditData.html">AuditData</a>.</p>
 
             </div>
             
-            <div class="content"><div class='highlight'><pre>    <span class="function"><span class="title">deleteAuditData</span></span> = (req, res) -&gt;
-        database.deleteAuditData getIdFromRequest(req), (err, result) -&gt;
-            <span class="keyword">if</span> <span class="keyword">not</span> err?
-                res.send <span class="string">""</span>
+            <div class="content"><div class='highlight'><pre>    <span class="function"><span class="title">patchAuditData</span></span> = (req, res) -&gt;
+        roles = getUserRoles req
+        <span class="keyword">if</span> <span class="keyword">not</span> roles.admin <span class="keyword">and</span> <span class="keyword">not</span> roles.auditdata
+            sendForbiddenResponse res, <span class="string">"Audit Data PATCH"</span>
+            <span class="keyword">return</span>
+
+        database.setAuditData getDocumentFromBody(req), {patch: <span class="literal">true</span>}, (err, result) -&gt;
+            <span class="keyword">if</span> result? <span class="keyword">and</span> <span class="keyword">not</span> err?
                 manager.initAuditDataTimers()
+                res.send minifyJson result
             <span class="keyword">else</span>
-                sendErrorResponse res, <span class="string">"Audit Data DELETE"</span>, err</pre></div></div>
+                sendErrorResponse res, <span class="string">"Audit Data PATCH"</span>, err</pre></div></div>
             
         </li>
         
@@ -570,12 +589,25 @@ specified <code>friendlyId</code> wasn&#39;t found in the database.</p>
         <li id="section-27">
             <div class="annotation">
               
-              <div class="pilwrap for-h2">
+              <div class="pilwrap ">
                 <a class="pilcrow" href="#section-27">&#182;</a>
               </div>
-              <h2>AUDIT EVENTS</h2>
+              <p>Delete an <a href="auditData.html">AuditData</a>.</p>
 
             </div>
+            
+            <div class="content"><div class='highlight'><pre>    <span class="function"><span class="title">deleteAuditData</span></span> = (req, res) -&gt;
+        roles = getUserRoles req
+        <span class="keyword">if</span> <span class="keyword">not</span> roles.admin <span class="keyword">and</span> <span class="keyword">not</span> roles.auditdata
+            sendForbiddenResponse res, <span class="string">"Audit Data DELETE"</span>
+            <span class="keyword">return</span>
+
+        database.deleteAuditData getIdFromRequest(req), (err, result) -&gt;
+            <span class="keyword">if</span> <span class="keyword">not</span> err?
+                manager.initAuditDataTimers()
+                res.send <span class="string">""</span>
+            <span class="keyword">else</span>
+                sendErrorResponse res, <span class="string">"Audit Data DELETE"</span>, err</pre></div></div>
             
         </li>
         
@@ -583,8 +615,21 @@ specified <code>friendlyId</code> wasn&#39;t found in the database.</p>
         <li id="section-28">
             <div class="annotation">
               
-              <div class="pilwrap ">
+              <div class="pilwrap for-h2">
                 <a class="pilcrow" href="#section-28">&#182;</a>
+              </div>
+              <h2>AUDIT EVENT ROUTES</h2>
+
+            </div>
+            
+        </li>
+        
+        
+        <li id="section-29">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-29">&#182;</a>
               </div>
               <p>Get a single or a collection of <a href="auditEvent.html">Audit Events</a>.</p>
 
@@ -600,42 +645,27 @@ specified <code>friendlyId</code> wasn&#39;t found in the database.</p>
         </li>
         
         
-        <li id="section-29">
-            <div class="annotation">
-              
-              <div class="pilwrap ">
-                <a class="pilcrow" href="#section-29">&#182;</a>
-              </div>
-              <p>Add or update an <a href="auditEvent.html">AuditEvent</a>.</p>
-
-            </div>
-            
-            <div class="content"><div class='highlight'><pre>    <span class="function"><span class="title">postAuditEvent</span></span> = (req, res) -&gt;
-        database.setAuditEvent getDocumentFromBody(req), <span class="literal">null</span>, (err, result) -&gt;
-            <span class="keyword">if</span> result? <span class="keyword">and</span> <span class="keyword">not</span> err?
-                res.send minifyJson result
-            <span class="keyword">else</span>
-                sendErrorResponse res, <span class="string">"Audit Event POST"</span>, err</pre></div></div>
-            
-        </li>
-        
-        
         <li id="section-30">
             <div class="annotation">
               
               <div class="pilwrap ">
                 <a class="pilcrow" href="#section-30">&#182;</a>
               </div>
-              <p>Patch only the specified properties of an <a href="auditEvent.html">AuditEvent</a>.</p>
+              <p>Add or update an <a href="auditEvent.html">AuditEvent</a>.</p>
 
             </div>
             
-            <div class="content"><div class='highlight'><pre>    <span class="function"><span class="title">patchAuditEvent</span></span> = (req, res) -&gt;
-        database.setAuditEvent getDocumentFromBody(req), {patch: <span class="literal">true</span>}, (err, result) -&gt;
+            <div class="content"><div class='highlight'><pre>    <span class="function"><span class="title">postAuditEvent</span></span> = (req, res) -&gt;
+        roles = getUserRoles req
+        <span class="keyword">if</span> <span class="keyword">not</span> roles.admin <span class="keyword">and</span> <span class="keyword">not</span> roles.auditevents
+            sendForbiddenResponse res, <span class="string">"Audit Event POST"</span>
+            <span class="keyword">return</span>
+
+        database.setAuditEvent getDocumentFromBody(req), <span class="literal">null</span>, (err, result) -&gt;
             <span class="keyword">if</span> result? <span class="keyword">and</span> <span class="keyword">not</span> err?
                 res.send minifyJson result
             <span class="keyword">else</span>
-                sendErrorResponse res, <span class="string">"Audit Event PATCH"</span>, err</pre></div></div>
+                sendErrorResponse res, <span class="string">"Audit Event POST"</span>, err</pre></div></div>
             
         </li>
         
@@ -646,11 +676,41 @@ specified <code>friendlyId</code> wasn&#39;t found in the database.</p>
               <div class="pilwrap ">
                 <a class="pilcrow" href="#section-31">&#182;</a>
               </div>
+              <p>Patch only the specified properties of an <a href="auditEvent.html">AuditEvent</a>.</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>    <span class="function"><span class="title">patchAuditEvent</span></span> = (req, res) -&gt;
+        roles = getUserRoles req
+        <span class="keyword">if</span> <span class="keyword">not</span> roles.admin <span class="keyword">and</span> <span class="keyword">not</span> roles.auditevents
+            sendForbiddenResponse res, <span class="string">"Audit Event PATCH"</span>
+            <span class="keyword">return</span>
+
+        database.setAuditEvent getDocumentFromBody(req), {patch: <span class="literal">true</span>}, (err, result) -&gt;
+            <span class="keyword">if</span> result? <span class="keyword">and</span> <span class="keyword">not</span> err?
+                res.send minifyJson result
+            <span class="keyword">else</span>
+                sendErrorResponse res, <span class="string">"Audit Event PATCH"</span>, err</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-32">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-32">&#182;</a>
+              </div>
               <p>Delete an <a href="auditEvent.html">AuditEvent</a>.</p>
 
             </div>
             
             <div class="content"><div class='highlight'><pre>    <span class="function"><span class="title">deleteAuditEvent</span></span> = (req, res) -&gt;
+        roles = getUserRoles req
+        <span class="keyword">if</span> <span class="keyword">not</span> roles.admin <span class="keyword">and</span> <span class="keyword">not</span> roles.auditevents
+            sendForbiddenResponse res, <span class="string">"Audit Event DELETE"</span>
+            <span class="keyword">return</span>
+
         database.deleteAuditEvent getIdFromRequest(req), (err, result) -&gt;
             <span class="keyword">if</span> <span class="keyword">not</span> err?
                 res.send <span class="string">""</span>
@@ -660,24 +720,24 @@ specified <code>friendlyId</code> wasn&#39;t found in the database.</p>
         </li>
         
         
-        <li id="section-32">
+        <li id="section-33">
             <div class="annotation">
               
               <div class="pilwrap for-h2">
-                <a class="pilcrow" href="#section-32">&#182;</a>
+                <a class="pilcrow" href="#section-33">&#182;</a>
               </div>
-              <h2>VARIABLES</h2>
+              <h2>VARIABLE ROUTES</h2>
 
             </div>
             
         </li>
         
         
-        <li id="section-33">
+        <li id="section-34">
             <div class="annotation">
               
               <div class="pilwrap ">
-                <a class="pilcrow" href="#section-33">&#182;</a>
+                <a class="pilcrow" href="#section-34">&#182;</a>
               </div>
               <p>Get a single or a collection of <a href="variable.html">Variables</a>.</p>
 
@@ -693,42 +753,27 @@ specified <code>friendlyId</code> wasn&#39;t found in the database.</p>
         </li>
         
         
-        <li id="section-34">
-            <div class="annotation">
-              
-              <div class="pilwrap ">
-                <a class="pilcrow" href="#section-34">&#182;</a>
-              </div>
-              <p>Add or update an <a href="variable.html">Variable</a>.</p>
-
-            </div>
-            
-            <div class="content"><div class='highlight'><pre>    <span class="function"><span class="title">postVariable</span></span> = (req, res) -&gt;
-        database.setVariable getDocumentFromBody(req), <span class="literal">null</span>, (err, result) -&gt;
-            <span class="keyword">if</span> result? <span class="keyword">and</span> <span class="keyword">not</span> err?
-                res.send minifyJson result
-            <span class="keyword">else</span>
-                sendErrorResponse res, <span class="string">"Variable POST"</span>, err</pre></div></div>
-            
-        </li>
-        
-        
         <li id="section-35">
             <div class="annotation">
               
               <div class="pilwrap ">
                 <a class="pilcrow" href="#section-35">&#182;</a>
               </div>
-              <p>Patch only the specified properties of a <a href="variable.html">Variable</a>.</p>
+              <p>Add or update an <a href="variable.html">Variable</a>.</p>
 
             </div>
             
-            <div class="content"><div class='highlight'><pre>    <span class="function"><span class="title">patchVariable</span></span> = (req, res) -&gt;
-        database.setVariable getDocumentFromBody(req), {patch: <span class="literal">true</span>}, (err, result) -&gt;
+            <div class="content"><div class='highlight'><pre>    <span class="function"><span class="title">postVariable</span></span> = (req, res) -&gt;
+        roles = getUserRoles req
+        <span class="keyword">if</span> <span class="keyword">not</span> roles.admin <span class="keyword">and</span> <span class="keyword">not</span> roles.variables
+            sendForbiddenResponse res, <span class="string">"Variable POST"</span>
+            <span class="keyword">return</span>
+
+        database.setVariable getDocumentFromBody(req), <span class="literal">null</span>, (err, result) -&gt;
             <span class="keyword">if</span> result? <span class="keyword">and</span> <span class="keyword">not</span> err?
                 res.send minifyJson result
             <span class="keyword">else</span>
-                sendErrorResponse res, <span class="string">"Variable PATCH"</span>, err</pre></div></div>
+                sendErrorResponse res, <span class="string">"Variable POST"</span>, err</pre></div></div>
             
         </li>
         
@@ -739,11 +784,41 @@ specified <code>friendlyId</code> wasn&#39;t found in the database.</p>
               <div class="pilwrap ">
                 <a class="pilcrow" href="#section-36">&#182;</a>
               </div>
+              <p>Patch only the specified properties of a <a href="variable.html">Variable</a>.</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>    <span class="function"><span class="title">patchVariable</span></span> = (req, res) -&gt;
+        roles = getUserRoles req
+        <span class="keyword">if</span> <span class="keyword">not</span> roles.admin <span class="keyword">and</span> <span class="keyword">not</span> roles.variables
+            sendForbiddenResponse res, <span class="string">"Variable PATCH"</span>
+            <span class="keyword">return</span>
+
+        database.setVariable getDocumentFromBody(req), {patch: <span class="literal">true</span>}, (err, result) -&gt;
+            <span class="keyword">if</span> result? <span class="keyword">and</span> <span class="keyword">not</span> err?
+                res.send minifyJson result
+            <span class="keyword">else</span>
+                sendErrorResponse res, <span class="string">"Variable PATCH"</span>, err</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-37">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-37">&#182;</a>
+              </div>
               <p>Delete a <a href="variable.html">Variable</a>.</p>
 
             </div>
             
             <div class="content"><div class='highlight'><pre>    <span class="function"><span class="title">deleteVariable</span></span> = (req, res) -&gt;
+        roles = getUserRoles req
+        <span class="keyword">if</span> <span class="keyword">not</span> roles.admin <span class="keyword">and</span> <span class="keyword">not</span> roles.variables
+            sendForbiddenResponse res, <span class="string">"Variable DELETE"</span>
+            <span class="keyword">return</span>
+
         database.deleteVariable getIdFromRequest(req), (err, result) -&gt;
             <span class="keyword">if</span> <span class="keyword">not</span> err?
                 res.send <span class="string">""</span>
@@ -753,24 +828,24 @@ specified <code>friendlyId</code> wasn&#39;t found in the database.</p>
         </li>
         
         
-        <li id="section-37">
+        <li id="section-38">
             <div class="annotation">
               
               <div class="pilwrap for-h2">
-                <a class="pilcrow" href="#section-37">&#182;</a>
+                <a class="pilcrow" href="#section-38">&#182;</a>
               </div>
-              <h2>MAPS</h2>
+              <h2>MAP ROUTES</h2>
 
             </div>
             
         </li>
         
         
-        <li id="section-38">
+        <li id="section-39">
             <div class="annotation">
               
               <div class="pilwrap ">
-                <a class="pilcrow" href="#section-38">&#182;</a>
+                <a class="pilcrow" href="#section-39">&#182;</a>
               </div>
               <p>Get a single or a collection of <a href="map.html">Maps</a>.</p>
 
@@ -786,42 +861,21 @@ specified <code>friendlyId</code> wasn&#39;t found in the database.</p>
         </li>
         
         
-        <li id="section-39">
-            <div class="annotation">
-              
-              <div class="pilwrap ">
-                <a class="pilcrow" href="#section-39">&#182;</a>
-              </div>
-              <p>Add or update a <a href="map.html">Map</a>.</p>
-
-            </div>
-            
-            <div class="content"><div class='highlight'><pre>    <span class="function"><span class="title">postMap</span></span> = (req, res) -&gt;
-        database.setMap getDocumentFromBody(req), <span class="literal">null</span>, (err, result) -&gt;
-            <span class="keyword">if</span> result? <span class="keyword">and</span> <span class="keyword">not</span> err?
-                res.send minifyJson result
-            <span class="keyword">else</span>
-                sendErrorResponse res, <span class="string">"Map POST"</span>, err</pre></div></div>
-            
-        </li>
-        
-        
         <li id="section-40">
             <div class="annotation">
               
               <div class="pilwrap ">
                 <a class="pilcrow" href="#section-40">&#182;</a>
               </div>
-              <p>Patch only the specified properties of a <a href="map.html">Map</a>.</p>
+              <p>Add or update a <a href="map.html">Map</a>.</p>
 
             </div>
             
-            <div class="content"><div class='highlight'><pre>    <span class="function"><span class="title">patchMap</span></span> = (req, res) -&gt;
-        database.setMap getDocumentFromBody(req), {patch: <span class="literal">true</span>}, (err, result) -&gt;
-            <span class="keyword">if</span> result? <span class="keyword">and</span> <span class="keyword">not</span> err?
-                res.send minifyJson result
-            <span class="keyword">else</span>
-                sendErrorResponse res, <span class="string">"Map PATCH"</span>, err</pre></div></div>
+            <div class="content"><div class='highlight'><pre>    <span class="function"><span class="title">postMap</span></span> = (req, res) -&gt;
+        roles = getUserRoles req
+        <span class="keyword">if</span> <span class="keyword">not</span> roles.admin <span class="keyword">and</span> <span class="keyword">not</span> roles.mapcreate <span class="keyword">and</span> <span class="keyword">not</span> roles.mapedit
+            sendForbiddenResponse res, <span class="string">"Map POST"</span>
+            <span class="keyword">return</span></pre></div></div>
             
         </li>
         
@@ -832,16 +886,11 @@ specified <code>friendlyId</code> wasn&#39;t found in the database.</p>
               <div class="pilwrap ">
                 <a class="pilcrow" href="#section-41">&#182;</a>
               </div>
-              <p>Delete a <a href="map.html">Map</a>.</p>
+              <p>Get map from request body.</p>
 
             </div>
             
-            <div class="content"><div class='highlight'><pre>    <span class="function"><span class="title">deleteMap</span></span> = (req, res) -&gt;
-        database.deleteMap getIdFromRequest(req), (err, result) -&gt;
-            <span class="keyword">if</span> <span class="keyword">not</span> err?
-                res.send <span class="string">""</span>
-            <span class="keyword">else</span>
-                sendErrorResponse res, <span class="string">"Map DELETE"</span>, err</pre></div></div>
+            <div class="content"><div class='highlight'><pre>        map = getDocumentFromBody req</pre></div></div>
             
         </li>
         
@@ -849,12 +898,21 @@ specified <code>friendlyId</code> wasn&#39;t found in the database.</p>
         <li id="section-42">
             <div class="annotation">
               
-              <div class="pilwrap for-h2">
+              <div class="pilwrap ">
                 <a class="pilcrow" href="#section-42">&#182;</a>
               </div>
-              <h2>MAP THUMBS</h2>
+              <p>If map is new, set the <code>createdByUserId</code> to the current logged user&#39;s ID.</p>
 
             </div>
+            
+            <div class="content"><div class='highlight'><pre>        <span class="keyword">if</span> <span class="keyword">not</span> map.id? <span class="keyword">or</span> map.id <span class="keyword">is</span> <span class="string">""</span>
+            map.createdByUserId = req.user.id
+
+        database.setMap map, <span class="literal">null</span>, (err, result) -&gt;
+            <span class="keyword">if</span> result? <span class="keyword">and</span> <span class="keyword">not</span> err?
+                res.send minifyJson result
+            <span class="keyword">else</span>
+                sendErrorResponse res, <span class="string">"Map POST"</span>, err</pre></div></div>
             
         </li>
         
@@ -865,20 +923,21 @@ specified <code>friendlyId</code> wasn&#39;t found in the database.</p>
               <div class="pilwrap ">
                 <a class="pilcrow" href="#section-43">&#182;</a>
               </div>
-              <p>Generates a thumbnail of the specified <a href="map.html">Map</a>, by passing
-its ID and SVG representation.</p>
+              <p>Patch only the specified properties of a <a href="map.html">Map</a>.</p>
 
             </div>
             
-            <div class="content"><div class='highlight'><pre>    <span class="function"><span class="title">postMapThumb</span></span> = (req, res) -&gt;
-        svg = req.body.svg
-        svgPath = settings.Paths.imagesDir + <span class="string">"mapthumbs/"</span> + req.params[<span class="string">"id"</span>] + <span class="string">".svg"</span>
+            <div class="content"><div class='highlight'><pre>    <span class="function"><span class="title">patchMap</span></span> = (req, res) -&gt;
+        roles = getUserRoles req
+        <span class="keyword">if</span> <span class="keyword">not</span> roles.admin <span class="keyword">and</span> <span class="keyword">not</span> roles.mapedit
+            sendForbiddenResponse res, <span class="string">"Map PATCH"</span>
+            <span class="keyword">return</span>
 
-        fs.writeFile svgPath, svg, (err) -&gt;
-            <span class="keyword">if</span> err?
-                logger.error <span class="string">"Thumbnail SVG save error."</span>, err
+        database.setMap getDocumentFromBody(req), {patch: <span class="literal">true</span>}, (err, result) -&gt;
+            <span class="keyword">if</span> result? <span class="keyword">and</span> <span class="keyword">not</span> err?
+                res.send minifyJson result
             <span class="keyword">else</span>
-                imaging.svgToPng svgPath, settings.Images.mapThumbSize</pre></div></div>
+                sendErrorResponse res, <span class="string">"Map PATCH"</span>, err</pre></div></div>
             
         </li>
         
@@ -886,12 +945,24 @@ its ID and SVG representation.</p>
         <li id="section-44">
             <div class="annotation">
               
-              <div class="pilwrap for-h2">
+              <div class="pilwrap ">
                 <a class="pilcrow" href="#section-44">&#182;</a>
               </div>
-              <h2>USERS</h2>
+              <p>Delete a <a href="map.html">Map</a>.</p>
 
             </div>
+            
+            <div class="content"><div class='highlight'><pre>    <span class="function"><span class="title">deleteMap</span></span> = (req, res) -&gt;
+        roles = getUserRoles req
+        <span class="keyword">if</span> <span class="keyword">not</span> roles.admin <span class="keyword">and</span> <span class="keyword">not</span> roles.mapedit
+            sendForbiddenResponse res, <span class="string">"Map DELETE"</span>
+            <span class="keyword">return</span>
+
+        database.deleteMap getIdFromRequest(req), (err, result) -&gt;
+            <span class="keyword">if</span> <span class="keyword">not</span> err?
+                res.send <span class="string">""</span>
+            <span class="keyword">else</span>
+                sendErrorResponse res, <span class="string">"Map DELETE"</span>, err</pre></div></div>
             
         </li>
         
@@ -899,19 +970,12 @@ its ID and SVG representation.</p>
         <li id="section-45">
             <div class="annotation">
               
-              <div class="pilwrap ">
+              <div class="pilwrap for-h2">
                 <a class="pilcrow" href="#section-45">&#182;</a>
               </div>
-              <p>Get a single or a collection of <a href="user.html">Users</a>.</p>
+              <h2>MAP THUMBS</h2>
 
             </div>
-            
-            <div class="content"><div class='highlight'><pre>    <span class="function"><span class="title">getUser</span></span> = (req, res) -&gt;
-        database.getMap getIdFromRequest(req), (err, result) -&gt;
-            <span class="keyword">if</span> result? <span class="keyword">and</span> <span class="keyword">not</span> err?
-                res.send minifyJson result
-            <span class="keyword">else</span>
-                sendErrorResponse res, <span class="string">"Map GET"</span>, err</pre></div></div>
             
         </li>
         
@@ -922,16 +986,28 @@ its ID and SVG representation.</p>
               <div class="pilwrap ">
                 <a class="pilcrow" href="#section-46">&#182;</a>
               </div>
-              <p>Add or update a <a href="user.html">Users</a>.</p>
+              <p>Generates a thumbnail of the specified <a href="map.html">Map</a>, by passing
+its ID and SVG representation.</p>
 
             </div>
             
-            <div class="content"><div class='highlight'><pre>    <span class="function"><span class="title">postUser</span></span> = (req, res) -&gt;
-        database.setMap getDocumentFromBody(req), <span class="literal">null</span>, (err, result) -&gt;
-            <span class="keyword">if</span> result? <span class="keyword">and</span> <span class="keyword">not</span> err?
-                res.send minifyJson result
+            <div class="content"><div class='highlight'><pre>    <span class="function"><span class="title">postMapThumb</span></span> = (req, res) -&gt;
+        <span class="keyword">if</span> <span class="keyword">not</span> req.user?
+            sendForbiddenResponse res, <span class="string">"Map Thumbnail POST"</span>
+            <span class="keyword">return</span>
+
+        svg = req.body.svg
+        svgPath = settings.Paths.imagesDir + <span class="string">"mapthumbs/"</span> + req.params[<span class="string">"id"</span>] + <span class="string">".svg"</span>
+
+        fs.writeFile svgPath, svg, (err) -&gt;
+            <span class="keyword">if</span> err?
+                sendErrorResponse res, <span class="string">"Map Thumbnail POST"</span>, err
             <span class="keyword">else</span>
-                sendErrorResponse res, <span class="string">"Map POST"</span>, err</pre></div></div>
+                imaging.svgToPng svgPath, settings.Images.mapThumbSize, (err2, result) -&gt;
+                    <span class="keyword">if</span> err2?
+                        sendErrorResponse res, <span class="string">"Map Thumbnail POST"</span>, err2
+                    <span class="keyword">else</span>
+                        res.send result</pre></div></div>
             
         </li>
         
@@ -939,19 +1015,12 @@ its ID and SVG representation.</p>
         <li id="section-47">
             <div class="annotation">
               
-              <div class="pilwrap ">
+              <div class="pilwrap for-h2">
                 <a class="pilcrow" href="#section-47">&#182;</a>
               </div>
-              <p>Patch only the specified properties of a <a href="user.html">Users</a>.</p>
+              <h2>USER ROUTES</h2>
 
             </div>
-            
-            <div class="content"><div class='highlight'><pre>    <span class="function"><span class="title">patchUser</span></span> = (req, res) -&gt;
-        database.setMap getDocumentFromBody(req), {patch: <span class="literal">true</span>}, (err, result) -&gt;
-            <span class="keyword">if</span> result? <span class="keyword">and</span> <span class="keyword">not</span> err?
-                res.send minifyJson result
-            <span class="keyword">else</span>
-                sendErrorResponse res, <span class="string">"Map PATCH"</span>, err</pre></div></div>
             
         </li>
         
@@ -962,16 +1031,16 @@ its ID and SVG representation.</p>
               <div class="pilwrap ">
                 <a class="pilcrow" href="#section-48">&#182;</a>
               </div>
-              <p>Delete a <a href="user.html">Users</a>.</p>
+              <p>Get a single or a collection of <a href="user.html">Users</a>.</p>
 
             </div>
             
-            <div class="content"><div class='highlight'><pre>    <span class="function"><span class="title">deleteUser</span></span> = (req, res) -&gt;
-        database.deleteMap getIdFromRequest(req), (err, result) -&gt;
-            <span class="keyword">if</span> <span class="keyword">not</span> err?
-                res.send <span class="string">""</span>
-            <span class="keyword">else</span>
-                sendErrorResponse res, <span class="string">"Map DELETE"</span>, err</pre></div></div>
+            <div class="content"><div class='highlight'><pre>    <span class="function"><span class="title">getUser</span></span> = (req, res) -&gt;
+        <span class="keyword">if</span> <span class="keyword">not</span> req.user?
+            sendForbiddenResponse res, <span class="string">"User GET"</span>
+            <span class="keyword">return</span>
+
+        roles = getUserRoles req</pre></div></div>
             
         </li>
         
@@ -979,12 +1048,18 @@ its ID and SVG representation.</p>
         <li id="section-49">
             <div class="annotation">
               
-              <div class="pilwrap for-h2">
+              <div class="pilwrap ">
                 <a class="pilcrow" href="#section-49">&#182;</a>
               </div>
-              <h2>PROXY DOWNLOAD</h2>
+              <p>Check if should get the logged user&#39;s details.</p>
 
             </div>
+            
+            <div class="content"><div class='highlight'><pre>        id = getIdFromRequest(req)
+        id = req.user.id <span class="keyword">if</span> id <span class="keyword">is</span> <span class="string">"logged"</span>
+
+        database.getUser id, (err, result) -&gt;
+            <span class="keyword">if</span> result? <span class="keyword">and</span> <span class="keyword">not</span> err?</pre></div></div>
             
         </li>
         
@@ -994,6 +1069,244 @@ its ID and SVG representation.</p>
               
               <div class="pilwrap ">
                 <a class="pilcrow" href="#section-50">&#182;</a>
+              </div>
+              <p>Check user permissions.</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>                <span class="keyword">if</span> <span class="keyword">not</span> roles.admin <span class="keyword">and</span> result.id <span class="keyword">isnt</span> req.user.id
+                    sendForbiddenResponse res, <span class="string">"User GET"</span>
+                    <span class="keyword">return</span></pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-51">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-51">&#182;</a>
+              </div>
+              <p>Make sure password fields are removed.</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>                <span class="keyword">delete</span> result[<span class="string">"passwordHash"</span>]
+                <span class="keyword">delete</span> result[<span class="string">"password"</span>]
+
+                res.send minifyJson result
+            <span class="keyword">else</span>
+                sendErrorResponse res, <span class="string">"User GET"</span>, err</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-52">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-52">&#182;</a>
+              </div>
+              <p>Add or update a <a href="user.html">Users</a>.</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>    <span class="function"><span class="title">postUser</span></span> = (req, res) -&gt;
+        roles = getUserRoles req
+        user = getDocumentFromBody req</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-53">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-53">&#182;</a>
+              </div>
+              <p>Check user permissions.</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>        <span class="keyword">if</span> <span class="keyword">not</span> roles.admin <span class="keyword">and</span> user.id <span class="keyword">isnt</span> req.user.id
+            sendForbiddenResponse res, <span class="string">"User POST"</span>
+            <span class="keyword">return</span></pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-54">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-54">&#182;</a>
+              </div>
+              <p>Make sure password hash is set and remove clear text password.</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>        <span class="keyword">if</span> user.password?
+            user[<span class="string">"passwordHash"</span>] = security.getPasswordHash user.username, user.password
+            <span class="keyword">delete</span> user[<span class="string">"password"</span>]
+
+        database.setUser user, <span class="literal">null</span>, (err, result) -&gt;
+            <span class="keyword">if</span> result? <span class="keyword">and</span> <span class="keyword">not</span> err?</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-55">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-55">&#182;</a>
+              </div>
+              <p>Make sure password fields are removed.</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>                <span class="keyword">delete</span> result[<span class="string">"passwordHash"</span>]
+                <span class="keyword">delete</span> result[<span class="string">"password"</span>]
+
+                res.send minifyJson result
+            <span class="keyword">else</span>
+                sendErrorResponse res, <span class="string">"User POST"</span>, err</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-56">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-56">&#182;</a>
+              </div>
+              <p>Patch only the specified properties of a <a href="user.html">Users</a>.</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>    <span class="function"><span class="title">patchUser</span></span> = (req, res) -&gt;
+        roles = getUserRoles req
+        user = getDocumentFromBody req</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-57">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-57">&#182;</a>
+              </div>
+              <p>Check user permissions.</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>        <span class="keyword">if</span> <span class="keyword">not</span> roles.admin <span class="keyword">and</span> user.id <span class="keyword">isnt</span> req.user.id
+            sendForbiddenResponse res, <span class="string">"User PATCH"</span>
+            <span class="keyword">return</span></pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-58">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-58">&#182;</a>
+              </div>
+              <p>Make sure user password hash is set.</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>        user = getDocumentFromBody req
+        <span class="keyword">if</span> user.password?
+            user[<span class="string">"passwordHash"</span>] = security.getPasswordHash user.username, user.password
+            <span class="keyword">delete</span> user[<span class="string">"password"</span>]
+
+        database.setUser user, {patch: <span class="literal">true</span>}, (err, result) -&gt;
+            <span class="keyword">if</span> result? <span class="keyword">and</span> <span class="keyword">not</span> err?</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-59">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-59">&#182;</a>
+              </div>
+              <p>Make sure password fields are removed.</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>                <span class="keyword">delete</span> result[<span class="string">"passwordHash"</span>]
+                <span class="keyword">delete</span> result[<span class="string">"password"</span>]
+
+                res.send minifyJson result
+            <span class="keyword">else</span>
+                sendErrorResponse res, <span class="string">"User PATCH"</span>, err</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-60">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-60">&#182;</a>
+              </div>
+              <p>Delete a <a href="user.html">Users</a>.</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>    <span class="function"><span class="title">deleteUser</span></span> = (req, res) -&gt;
+        roles = getUserRoles req</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-61">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-61">&#182;</a>
+              </div>
+              <p>Check user permissions.</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>        <span class="keyword">if</span> <span class="keyword">not</span> roles.admin
+            sendForbiddenResponse res, <span class="string">"User DELETE"</span>
+            <span class="keyword">return</span>
+
+        database.deleteUser getIdFromRequest(req), (err, result) -&gt;
+            <span class="keyword">if</span> <span class="keyword">not</span> err?
+                res.send <span class="string">""</span>
+            <span class="keyword">else</span>
+                sendErrorResponse res, <span class="string">"User DELETE"</span>, err</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-62">
+            <div class="annotation">
+              
+              <div class="pilwrap for-h2">
+                <a class="pilcrow" href="#section-62">&#182;</a>
+              </div>
+              <h2>PROXY DOWNLOAD</h2>
+
+            </div>
+            
+        </li>
+        
+        
+        <li id="section-63">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-63">&#182;</a>
               </div>
               <p>Download an external file and serve it to the client, thus acting like a &quot;proxy&quot;.
 The local filename is provided after the /downloader/ on the url, and the
@@ -1018,45 +1331,24 @@ download URL is provided with the post parameter &quot;url&quot;.</p>
         </li>
         
         
-        <li id="section-51">
+        <li id="section-64">
             <div class="annotation">
               
               <div class="pilwrap for-h2">
-                <a class="pilcrow" href="#section-51">&#182;</a>
+                <a class="pilcrow" href="#section-64">&#182;</a>
               </div>
-              <h2>SERVER INFO AND UPDATE</h2>
+              <h2>STATUS ROUTES</h2>
 
             </div>
             
         </li>
         
         
-        <li id="section-52">
+        <li id="section-65">
             <div class="annotation">
               
               <div class="pilwrap ">
-                <a class="pilcrow" href="#section-52">&#182;</a>
-              </div>
-              <p>Get the list of server logs for the past 24 hours. Value can be changed on
-the <a href="settings.html">Server Settings</a>.</p>
-
-            </div>
-            
-            <div class="content"><div class='highlight'><pre>    <span class="function"><span class="title">getLogsRecent</span></span> = (req, res) -&gt;
-        logger.getRecent (err, result) -&gt;
-            <span class="keyword">if</span> <span class="keyword">not</span> err?
-                res.send minifyJson result
-            <span class="keyword">else</span>
-                res.json err</pre></div></div>
-            
-        </li>
-        
-        
-        <li id="section-53">
-            <div class="annotation">
-              
-              <div class="pilwrap ">
-                <a class="pilcrow" href="#section-53">&#182;</a>
+                <a class="pilcrow" href="#section-65">&#182;</a>
               </div>
               <p>Get the system status page.</p>
 
@@ -1068,33 +1360,70 @@ the <a href="settings.html">Server Settings</a>.</p>
         </li>
         
         
-        <li id="section-54">
+        <li id="section-66">
             <div class="annotation">
               
               <div class="pilwrap ">
-                <a class="pilcrow" href="#section-54">&#182;</a>
+                <a class="pilcrow" href="#section-66">&#182;</a>
               </div>
-              <p>Run the system upgrader.</p>
+              <p>Error 401 (not authorized) page.</p>
 
             </div>
             
-            <div class="content"><div class='highlight'><pre>    <span class="function"><span class="title">runUpgrade</span></span> = (req, res) -&gt;
-        files = fs.readdirSync <span class="string">"./upgrade/"</span>
-
-        <span class="keyword">for</span> f <span class="keyword">in</span> files
-            <span class="keyword">if</span> f.indexOf(<span class="string">".coffee"</span>) &gt; <span class="number">0</span>
-                require <span class="string">"../upgrade/"</span> + f
-
-        res.send <span class="string">"UPGRADED!!!"</span></pre></div></div>
+            <div class="content"><div class='highlight'><pre>    <span class="function"><span class="title">get401</span></span> = (req, res) -&gt;
+        res.status <span class="number">401</span>
+        res.render <span class="string">"status401"</span>, title: settings.General.appTitle,</pre></div></div>
             
         </li>
         
         
-        <li id="section-55">
+        <li id="section-67">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-67">&#182;</a>
+              </div>
+              <p>Error 404 (not found) page.</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>    <span class="function"><span class="title">get404</span></span> = (req, res) -&gt;
+        res.status <span class="number">404</span>
+        res.render <span class="string">"status404"</span>, title: settings.General.appTitle,</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-68">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-68">&#182;</a>
+              </div>
+              <p>Get the list of server logs for the past 24 hours. Value can be changed on
+the <a href="settings.html">Server Settings</a>.</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>    <span class="function"><span class="title">getLogsRecent</span></span> = (req, res) -&gt;
+        <span class="keyword">if</span> <span class="keyword">not</span> req.user?
+            sendForbiddenResponse res, <span class="string">"Logs Recent GET"</span>
+            <span class="keyword">return</span>
+
+        logger.getRecent (err, result) -&gt;
+            <span class="keyword">if</span> <span class="keyword">not</span> err?
+                res.send minifyJson result
+            <span class="keyword">else</span>
+                res.json err</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-69">
             <div class="annotation">
               
               <div class="pilwrap for-h2">
-                <a class="pilcrow" href="#section-55">&#182;</a>
+                <a class="pilcrow" href="#section-69">&#182;</a>
               </div>
               <h2>HELPER METHODS</h2>
 
@@ -1103,11 +1432,11 @@ the <a href="settings.html">Server Settings</a>.</p>
         </li>
         
         
-        <li id="section-56">
+        <li id="section-70">
             <div class="annotation">
               
               <div class="pilwrap ">
-                <a class="pilcrow" href="#section-56">&#182;</a>
+                <a class="pilcrow" href="#section-70">&#182;</a>
               </div>
               <p>Minify the passed JSON value. Please note that the result will be minified
 ONLY if the <code>Web.minifyJsonResponse</code> setting is set to true.</p>
@@ -1132,11 +1461,11 @@ ONLY if the <code>Web.minifyJsonResponse</code> setting is set to true.</p>
         </li>
         
         
-        <li id="section-57">
+        <li id="section-71">
             <div class="annotation">
               
               <div class="pilwrap ">
-                <a class="pilcrow" href="#section-57">&#182;</a>
+                <a class="pilcrow" href="#section-71">&#182;</a>
               </div>
               <p>Ignore whitespace tokens. According to ES 5.1 section 15.12.1.1,
 whitespace tokens include tabs, carriage returns, line feeds, and
@@ -1152,11 +1481,11 @@ space characters.</p>
         </li>
         
         
-        <li id="section-58">
+        <li id="section-72">
             <div class="annotation">
               
               <div class="pilwrap ">
-                <a class="pilcrow" href="#section-58">&#182;</a>
+                <a class="pilcrow" href="#section-72">&#182;</a>
               </div>
               <p>Ignore line and block comments.</p>
 
@@ -1169,11 +1498,11 @@ space characters.</p>
         </li>
         
         
-        <li id="section-59">
+        <li id="section-73">
             <div class="annotation">
               
               <div class="pilwrap ">
-                <a class="pilcrow" href="#section-59">&#182;</a>
+                <a class="pilcrow" href="#section-73">&#182;</a>
               </div>
               <p>Line comments.</p>
 
@@ -1185,11 +1514,11 @@ space characters.</p>
         </li>
         
         
-        <li id="section-60">
+        <li id="section-74">
             <div class="annotation">
               
               <div class="pilwrap ">
-                <a class="pilcrow" href="#section-60">&#182;</a>
+                <a class="pilcrow" href="#section-74">&#182;</a>
               </div>
               <p>Check for CR-style line endings.</p>
 
@@ -1201,11 +1530,11 @@ space characters.</p>
         </li>
         
         
-        <li id="section-61">
+        <li id="section-75">
             <div class="annotation">
               
               <div class="pilwrap ">
-                <a class="pilcrow" href="#section-61">&#182;</a>
+                <a class="pilcrow" href="#section-75">&#182;</a>
               </div>
               <p>Block comments.</p>
 
@@ -1218,11 +1547,11 @@ space characters.</p>
         </li>
         
         
-        <li id="section-62">
+        <li id="section-76">
             <div class="annotation">
               
               <div class="pilwrap ">
-                <a class="pilcrow" href="#section-62">&#182;</a>
+                <a class="pilcrow" href="#section-76">&#182;</a>
               </div>
               <p>Advance the scanner&#39;s position past the end of the comment.</p>
 
@@ -1237,11 +1566,11 @@ space characters.</p>
         </li>
         
         
-        <li id="section-63">
+        <li id="section-77">
             <div class="annotation">
               
               <div class="pilwrap ">
-                <a class="pilcrow" href="#section-63">&#182;</a>
+                <a class="pilcrow" href="#section-77">&#182;</a>
               </div>
               <p>Parse strings separately to ensure that any whitespace characters and
 JavaScript-style comments within them are preserved.</p>
@@ -1257,11 +1586,11 @@ JavaScript-style comments within them are preserved.</p>
         </li>
         
         
-        <li id="section-64">
+        <li id="section-78">
             <div class="annotation">
               
               <div class="pilwrap ">
-                <a class="pilcrow" href="#section-64">&#182;</a>
+                <a class="pilcrow" href="#section-78">&#182;</a>
               </div>
               <p>Skip past escaped characters.</p>
 
@@ -1277,11 +1606,11 @@ JavaScript-style comments within them are preserved.</p>
         </li>
         
         
-        <li id="section-65">
+        <li id="section-79">
             <div class="annotation">
               
               <div class="pilwrap ">
-                <a class="pilcrow" href="#section-65">&#182;</a>
+                <a class="pilcrow" href="#section-79">&#182;</a>
               </div>
               <p>Preserve all other characters.</p>
 
@@ -1295,11 +1624,11 @@ JavaScript-style comments within them are preserved.</p>
         </li>
         
         
-        <li id="section-66">
+        <li id="section-80">
             <div class="annotation">
               
               <div class="pilwrap ">
-                <a class="pilcrow" href="#section-66">&#182;</a>
+                <a class="pilcrow" href="#section-80">&#182;</a>
               </div>
               <p>Return the ID from the request. Give preference to the ID parameter
 on the body first, and then to the parameter passed on the URL path.</p>
@@ -1315,11 +1644,11 @@ on the body first, and then to the parameter passed on the URL path.</p>
         </li>
         
         
-        <li id="section-67">
+        <li id="section-81">
             <div class="annotation">
               
               <div class="pilwrap ">
-                <a class="pilcrow" href="#section-67">&#182;</a>
+                <a class="pilcrow" href="#section-81">&#182;</a>
               </div>
               <p>Return the document from the request body.
 Make sure the document ID is set by checking its body and
@@ -1335,11 +1664,107 @@ if necessary appending from the request parameters.</p>
         </li>
         
         
-        <li id="section-68">
+        <li id="section-82">
             <div class="annotation">
               
               <div class="pilwrap ">
-                <a class="pilcrow" href="#section-68">&#182;</a>
+                <a class="pilcrow" href="#section-82">&#182;</a>
+              </div>
+              <p>Get default app and server variables to be sent with responses.</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>    <span class="function"><span class="title">getResponseOptions</span></span> = (req) -&gt;
+        os = require <span class="string">"os"</span>
+        moment = require <span class="string">"moment"</span>
+        host = req.headers[<span class="string">"host"</span>]</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-83">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-83">&#182;</a>
+              </div>
+              <p>Check the last modified date.</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>        lastModified = fs.statSync(<span class="string">"./package.json"</span>).mtime <span class="keyword">if</span> <span class="keyword">not</span> lastModified?</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-84">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-84">&#182;</a>
+              </div>
+              <p>Set render options.</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>        options =
+            title: settings.General.appTitle,
+            version: packageJson.version,
+            lastModified: moment(lastModified).format(<span class="string">"YYYY-MM-DD hh:mm"</span>),
+            serverUptime: moment.duration(os.uptime(), <span class="string">"s"</span>).humanize(),
+            serverHostname: os.hostname(),
+            serverPort: settings.Web.port,
+            serverOS: os.type() + <span class="string">" "</span> + os.release(),
+            serverCpuLoad: os.loadavg()[<span class="number">0</span>].toFixed(<span class="number">2</span>),
+            serverRamLoad: (os.freemem() / os.totalmem() * <span class="number">100</span>).toFixed(<span class="number">2</span>),
+            roles: getUserRoles req
+
+        <span class="keyword">return</span> options</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-85">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-85">&#182;</a>
+              </div>
+              <p>Return an object with the user roles, based on the authenticated user&#39;s roles array.
+Please note that the &quot;admin&quot; role will be returned always for the online demo.</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>    <span class="function"><span class="title">getUserRoles</span></span> = (req) =&gt;
+        roles = {}
+        <span class="keyword">return</span> roles <span class="keyword">if</span> <span class="keyword">not</span> req.user?</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-86">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-86">&#182;</a>
+              </div>
+              <p>Set roles object using role_name: true.</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>        <span class="keyword">for</span> r <span class="keyword">in</span> req.user.roles
+            roles[r] = <span class="literal">true</span>
+
+        <span class="keyword">return</span> roles</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-87">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-87">&#182;</a>
               </div>
               <p>When the server can&#39;t return a valid result,
 send an error response with status code 500.</p>
@@ -1347,7 +1772,7 @@ send an error response with status code 500.</p>
             </div>
             
             <div class="content"><div class='highlight'><pre>    <span class="function"><span class="title">sendErrorResponse</span></span> = (res, method, message) -&gt;
-        logger.error <span class="string">"Web response error!"</span>, method, message
+        logger.error <span class="string">"HTTP 500"</span>, method, message
 
         res.statusCode = <span class="number">500</span>
         res.send <span class="string">"Error: <span class="subst">#{method}</span> - <span class="subst">#{message}</span>"</span></pre></div></div>
@@ -1355,69 +1780,160 @@ send an error response with status code 500.</p>
         </li>
         
         
-        <li id="section-69">
+        <li id="section-88">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-88">&#182;</a>
+              </div>
+              <p>When user is not authorized to request a resource, send an 403 error
+with an &quot;access denied&quot; message.</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>    <span class="function"><span class="title">sendForbiddenResponse</span></span> = (res, method) -&gt;
+        logger.error <span class="string">"HTTP 403"</span>, method
+
+        res.statusCode = <span class="number">403</span>
+        res.send <span class="string">"Access denied for <span class="subst">#{method}</span>."</span></pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-89">
             <div class="annotation">
               
               <div class="pilwrap for-h2">
-                <a class="pilcrow" href="#section-69">&#182;</a>
+                <a class="pilcrow" href="#section-89">&#182;</a>
               </div>
-              <h2>SET ROUTES</h2>
+              <h2>SET MAIN ROUTES</h2>
 
             </div>
             
         </li>
         
         
-        <li id="section-70">
+        <li id="section-90">
             <div class="annotation">
               
               <div class="pilwrap ">
-                <a class="pilcrow" href="#section-70">&#182;</a>
+                <a class="pilcrow" href="#section-90">&#182;</a>
               </div>
-              <p>Login using basic HTTP authentication.</p>
+              <p>Set basic HTTP authentication options.</p>
 
             </div>
             
-            <div class="content"><div class='highlight'><pre>    app.get <span class="string">"/login"</span>, passport.authenticate(<span class="string">"basic"</span>, {session: <span class="literal">true</span>}), (req, res) -&gt; res.json req.user</pre></div></div>
+            <div class="content"><div class='highlight'><pre>    passportOptions = {session: <span class="literal">true</span>}</pre></div></div>
             
         </li>
         
         
-        <li id="section-71">
+        <li id="section-91">
             <div class="annotation">
               
               <div class="pilwrap ">
-                <a class="pilcrow" href="#section-71">&#182;</a>
+                <a class="pilcrow" href="#section-91">&#182;</a>
               </div>
-              <p>Admin page.</p>
+              <p>The login page/</p>
 
             </div>
             
-            <div class="content"><div class='highlight'><pre>    app.get <span class="string">"/admin"</span>, getAdmin</pre></div></div>
+            <div class="content"><div class='highlight'><pre>    app.get <span class="string">"/login"</span>, passport.authenticate(<span class="string">"basic"</span>, passportOptions), (req, res) -&gt; res.send req.user.username</pre></div></div>
             
         </li>
         
         
-        <li id="section-72">
+        <li id="section-92">
             <div class="annotation">
               
               <div class="pilwrap ">
-                <a class="pilcrow" href="#section-72">&#182;</a>
+                <a class="pilcrow" href="#section-92">&#182;</a>
               </div>
               <p>Main index.</p>
 
             </div>
             
-            <div class="content"><div class='highlight'><pre>    app.get <span class="string">"/"</span>, getIndex</pre></div></div>
+            <div class="content"><div class='highlight'><pre>    app.get <span class="string">"/"</span>, passport.authenticate(<span class="string">"basic"</span>, passportOptions), getIndex</pre></div></div>
             
         </li>
         
         
-        <li id="section-73">
+        <li id="section-93">
+            <div class="annotation">
+              
+              <div class="pilwrap for-h2">
+                <a class="pilcrow" href="#section-93">&#182;</a>
+              </div>
+              <h2>SET ADMIN ROUTES</h2>
+
+            </div>
+            
+        </li>
+        
+        
+        <li id="section-94">
             <div class="annotation">
               
               <div class="pilwrap ">
-                <a class="pilcrow" href="#section-73">&#182;</a>
+                <a class="pilcrow" href="#section-94">&#182;</a>
+              </div>
+              <p>Admin area.</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>    app.get <span class="string">"/admin"</span>, passport.authenticate(<span class="string">"basic"</span>, passportOptions), getAdmin</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-95">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-95">&#182;</a>
+              </div>
+              <p>Upgrader page.</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>    app.get <span class="string">"/upgrade"</span>, runUpgrade</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-96">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-96">&#182;</a>
+              </div>
+              <p>Server status and log routes.</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>    app.get <span class="string">"/logs/recent"</span>, getLogsRecent</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-97">
+            <div class="annotation">
+              
+              <div class="pilwrap for-h2">
+                <a class="pilcrow" href="#section-97">&#182;</a>
+              </div>
+              <h2>SET DATA AND SPECIAL ROUTES</h2>
+
+            </div>
+            
+        </li>
+        
+        
+        <li id="section-98">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-98">&#182;</a>
               </div>
               <p>Entity definition routes.</p>
 
@@ -1433,11 +1949,11 @@ send an error response with status code 500.</p>
         </li>
         
         
-        <li id="section-74">
+        <li id="section-99">
             <div class="annotation">
               
               <div class="pilwrap ">
-                <a class="pilcrow" href="#section-74">&#182;</a>
+                <a class="pilcrow" href="#section-99">&#182;</a>
               </div>
               <p>Entity data (objects) routes.</p>
 
@@ -1448,11 +1964,11 @@ send an error response with status code 500.</p>
         </li>
         
         
-        <li id="section-75">
+        <li id="section-100">
             <div class="annotation">
               
               <div class="pilwrap ">
-                <a class="pilcrow" href="#section-75">&#182;</a>
+                <a class="pilcrow" href="#section-100">&#182;</a>
               </div>
               <p>Audit Data routes.</p>
 
@@ -1468,11 +1984,11 @@ send an error response with status code 500.</p>
         </li>
         
         
-        <li id="section-76">
+        <li id="section-101">
             <div class="annotation">
               
               <div class="pilwrap ">
-                <a class="pilcrow" href="#section-76">&#182;</a>
+                <a class="pilcrow" href="#section-101">&#182;</a>
               </div>
               <p>Audit Event routes.</p>
 
@@ -1488,11 +2004,11 @@ send an error response with status code 500.</p>
         </li>
         
         
-        <li id="section-77">
+        <li id="section-102">
             <div class="annotation">
               
               <div class="pilwrap ">
-                <a class="pilcrow" href="#section-77">&#182;</a>
+                <a class="pilcrow" href="#section-102">&#182;</a>
               </div>
               <p>Variable routes.</p>
 
@@ -1508,11 +2024,11 @@ send an error response with status code 500.</p>
         </li>
         
         
-        <li id="section-78">
+        <li id="section-103">
             <div class="annotation">
               
               <div class="pilwrap ">
-                <a class="pilcrow" href="#section-78">&#182;</a>
+                <a class="pilcrow" href="#section-103">&#182;</a>
               </div>
               <p>Map routes.</p>
 
@@ -1528,11 +2044,11 @@ send an error response with status code 500.</p>
         </li>
         
         
-        <li id="section-79">
+        <li id="section-104">
             <div class="annotation">
               
               <div class="pilwrap ">
-                <a class="pilcrow" href="#section-79">&#182;</a>
+                <a class="pilcrow" href="#section-104">&#182;</a>
               </div>
               <p>Map thumbnails.</p>
 
@@ -1543,11 +2059,11 @@ send an error response with status code 500.</p>
         </li>
         
         
-        <li id="section-80">
+        <li id="section-105">
             <div class="annotation">
               
               <div class="pilwrap ">
-                <a class="pilcrow" href="#section-80">&#182;</a>
+                <a class="pilcrow" href="#section-105">&#182;</a>
               </div>
               <p>User routes.</p>
 
@@ -1563,11 +2079,11 @@ send an error response with status code 500.</p>
         </li>
         
         
-        <li id="section-81">
+        <li id="section-106">
             <div class="annotation">
               
               <div class="pilwrap ">
-                <a class="pilcrow" href="#section-81">&#182;</a>
+                <a class="pilcrow" href="#section-106">&#182;</a>
               </div>
               <p>External downloader.</p>
 
@@ -1578,19 +2094,32 @@ send an error response with status code 500.</p>
         </li>
         
         
-        <li id="section-82">
+        <li id="section-107">
             <div class="annotation">
               
-              <div class="pilwrap ">
-                <a class="pilcrow" href="#section-82">&#182;</a>
+              <div class="pilwrap for-h2">
+                <a class="pilcrow" href="#section-107">&#182;</a>
               </div>
-              <p>Server status and log routes.</p>
+              <h2>SET STATUS ROUTES</h2>
 
             </div>
             
-            <div class="content"><div class='highlight'><pre>    app.get     <span class="string">"/status"</span>,        getStatus
-    app.get     <span class="string">"/logs/recent"</span>,   getLogsRecent
-    app.get     <span class="string">"/upgrade"</span>,       runUpgrade</pre></div></div>
+        </li>
+        
+        
+        <li id="section-108">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-108">&#182;</a>
+              </div>
+              <p>Error and status routes.</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>    app.get <span class="string">"/status"</span>, getStatus
+    app.get <span class="string">"/401"</span>, get401
+    app.get <span class="string">"/404"</span>, get404</pre></div></div>
             
         </li>
         

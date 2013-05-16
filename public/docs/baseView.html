@@ -154,8 +154,13 @@
               </a>
             
               
-              <a class="source" href="routes.html">
-                routes.coffee
+              <a class="source" href="adminRoutes.html">
+                adminRoutes.coffee
+              </a>
+            
+              
+              <a class="source" href="appRoutes.html">
+                appRoutes.coffee
               </a>
             
               
@@ -176,6 +181,21 @@
               
               <a class="source" href="vectors.html">
                 vectors.coffee
+              </a>
+            
+              
+              <a class="source" href="statusTabView.html">
+                statusTabView.coffee
+              </a>
+            
+              
+              <a class="source" href="toolsTabView.html">
+                toolsTabView.coffee
+              </a>
+            
+              
+              <a class="source" href="usersTabView.html">
+                usersTabView.coffee
               </a>
             
               
@@ -548,7 +568,6 @@ Example:
         extraMs = SystemApp.Settings.General.elementBlinkInterval / <span class="number">2</span>
         redClass = <span class="string">"error"</span>
 
-
         <span class="property">@addClass</span> field, redClass
         _.delay <span class="property">@removeClass</span>, SystemApp.Settings.General.elementBlinkInterval, field, redClass
         _.delay <span class="property">@addClass</span>, SystemApp.Settings.General.elementBlinkInterval + extraMs, field, redClass
@@ -565,6 +584,91 @@ Example:
               <div class="pilwrap ">
                 <a class="pilcrow" href="#section-14">&#182;</a>
               </div>
+              <p>Show a &quot;saved&quot; message next to the specified field, and fade it out after a few seconds.</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>    fieldSaved: (field) =&gt;
+        alert = $(document.createElement <span class="string">"span"</span>)
+        alert.addClass <span class="string">"saved"</span>
+        alert.html SystemApp.Messages.saved</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-15">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-15">&#182;</a>
+              </div>
+              <p>Get correct container and its last span to check if &quot;saved&quot; is already being shown.</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>        parent = field.parent()
+        parent = parent.parent() <span class="keyword">if</span> parent.hasClass(<span class="string">"toggle"</span>)
+        lastChild = parent.children(<span class="string">"span:last-child"</span>)</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-16">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-16">&#182;</a>
+              </div>
+              <p>Append the &quot;saved&quot; at the very end of the field container,
+but only if a &quot;saved&quot; is not present yet.</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>        <span class="keyword">if</span> <span class="keyword">not</span> lastChild.hasClass <span class="string">"saved"</span>
+            parent.append alert</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-17">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-17">&#182;</a>
+              </div>
+              <p>Fade out and then remove from the DOM.</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>            alert.fadeOut SystemApp.Settings.General.fadeRemoveDelay * <span class="number">2</span>, () -&gt; alert.remove()</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-18">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-18">&#182;</a>
+              </div>
+              <p>Remove a DOM element representing a model from the view. This will add the class &quot;removed&quot;
+and then fade the element out.</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>    modelElementRemove: (el) =&gt;
+        el.removeClass(<span class="string">"active"</span>).addClass <span class="string">"removed"</span>
+        el.fadeOut SystemApp.Settings.General.fadeRemoveDelay, () -&gt; el.remove()</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-19">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-19">&#182;</a>
+              </div>
               <p>Add the specified class to an element.</p>
 
             </div>
@@ -575,11 +679,11 @@ Example:
         </li>
         
         
-        <li id="section-15">
+        <li id="section-20">
             <div class="annotation">
               
               <div class="pilwrap ">
-                <a class="pilcrow" href="#section-15">&#182;</a>
+                <a class="pilcrow" href="#section-20">&#182;</a>
               </div>
               <p>Remove the specified class from the element.</p>
 
@@ -591,11 +695,11 @@ Example:
         </li>
         
         
-        <li id="section-16">
+        <li id="section-21">
             <div class="annotation">
               
               <div class="pilwrap ">
-                <a class="pilcrow" href="#section-16">&#182;</a>
+                <a class="pilcrow" href="#section-21">&#182;</a>
               </div>
               <p>Sort the specified list. The default item selector is the tag <code>li</code>, but you can override this.
 To sort descending, set <code>desc</code> to true.</p>
@@ -610,11 +714,11 @@ To sort descending, set <code>desc</code> to true.</p>
         </li>
         
         
-        <li id="section-17">
+        <li id="section-22">
             <div class="annotation">
               
               <div class="pilwrap ">
-                <a class="pilcrow" href="#section-17">&#182;</a>
+                <a class="pilcrow" href="#section-22">&#182;</a>
               </div>
               <p>If <code>desc</code> is true, sort descending.</p>
 
@@ -634,11 +738,11 @@ To sort descending, set <code>desc</code> to true.</p>
         </li>
         
         
-        <li id="section-18">
+        <li id="section-23">
             <div class="annotation">
               
               <div class="pilwrap ">
-                <a class="pilcrow" href="#section-18">&#182;</a>
+                <a class="pilcrow" href="#section-23">&#182;</a>
               </div>
               <p>Reappend each item on its correct position after sorting.</p>
 
@@ -649,11 +753,11 @@ To sort descending, set <code>desc</code> to true.</p>
         </li>
         
         
-        <li id="section-19">
+        <li id="section-24">
             <div class="annotation">
               
               <div class="pilwrap for-h2">
-                <a class="pilcrow" href="#section-19">&#182;</a>
+                <a class="pilcrow" href="#section-24">&#182;</a>
               </div>
               <h2>MODIFIER KEY HELPERS</h2>
 
@@ -662,11 +766,11 @@ To sort descending, set <code>desc</code> to true.</p>
         </li>
         
         
-        <li id="section-20">
+        <li id="section-25">
             <div class="annotation">
               
               <div class="pilwrap ">
-                <a class="pilcrow" href="#section-20">&#182;</a>
+                <a class="pilcrow" href="#section-25">&#182;</a>
               </div>
               <p>Check if user is pressing the key combination for delete actions (when deleting a link for example).
 The default combination is &quot;Ctrl + Left Click&quot;, set on the <a href="settings.html">Settings</a>.</p>
@@ -681,11 +785,11 @@ The default combination is &quot;Ctrl + Left Click&quot;, set on the <a href="se
         </li>
         
         
-        <li id="section-21">
+        <li id="section-26">
             <div class="annotation">
               
               <div class="pilwrap ">
-                <a class="pilcrow" href="#section-21">&#182;</a>
+                <a class="pilcrow" href="#section-26">&#182;</a>
               </div>
               <p>Check if user is pressing key combination for multiple selections (when selecting multiple shapes for example).
 The default combination is &quot;Shift + Left Click&quot;, set on the <a href="settings.html">Settings</a>.</p>
@@ -700,11 +804,11 @@ The default combination is &quot;Shift + Left Click&quot;, set on the <a href="s
         </li>
         
         
-        <li id="section-22">
+        <li id="section-27">
             <div class="annotation">
               
               <div class="pilwrap ">
-                <a class="pilcrow" href="#section-22">&#182;</a>
+                <a class="pilcrow" href="#section-27">&#182;</a>
               </div>
               <p>Check if user is pressing the key combination for &quot;send to back&quot; (when reordering map shapes for example).
 The default combination is &quot;Right Click&quot;, set on the <a href="settings.html">Settings</a>.</p>
@@ -719,11 +823,11 @@ The default combination is &quot;Right Click&quot;, set on the <a href="settings
         </li>
         
         
-        <li id="section-23">
+        <li id="section-28">
             <div class="annotation">
               
               <div class="pilwrap ">
-                <a class="pilcrow" href="#section-23">&#182;</a>
+                <a class="pilcrow" href="#section-28">&#182;</a>
               </div>
               <p>Test a modifier key combination against a keyboard / mouse event.</p>
 

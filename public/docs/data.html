@@ -154,8 +154,13 @@
               </a>
             
               
-              <a class="source" href="routes.html">
-                routes.coffee
+              <a class="source" href="adminRoutes.html">
+                adminRoutes.coffee
+              </a>
+            
+              
+              <a class="source" href="appRoutes.html">
+                appRoutes.coffee
               </a>
             
               
@@ -176,6 +181,21 @@
               
               <a class="source" href="vectors.html">
                 vectors.coffee
+              </a>
+            
+              
+              <a class="source" href="statusTabView.html">
+                statusTabView.coffee
+              </a>
+            
+              
+              <a class="source" href="toolsTabView.html">
+                toolsTabView.coffee
+              </a>
+            
+              
+              <a class="source" href="usersTabView.html">
+                usersTabView.coffee
               </a>
             
               
@@ -412,6 +432,7 @@
     auditEvents: <span class="keyword">new</span> SystemApp.AuditEventCollection()
     entities: <span class="keyword">new</span> SystemApp.EntityDefinitionCollection()
     maps: <span class="keyword">new</span> SystemApp.MapCollection()
+    users: <span class="keyword">new</span> SystemApp.UserCollection()
     variables: <span class="keyword">new</span> SystemApp.VariableCollection()</pre></div></div>
             
         </li>
@@ -452,14 +473,16 @@
                 <a class="pilcrow" href="#section-8">&#182;</a>
               </div>
               <p>Load all JSON files from server and sets a success and error callback.
-While loading, the <code>fetching</code> property of the collection will be set
-to true.</p>
+While loading, the <code>fetching</code> property of collections will be set true.</p>
 
             </div>
             
             <div class="content"><div class='highlight'><pre>    init: -&gt;
-        <span class="property">@allCollections</span> = [<span class="property">@auditData</span>, <span class="property">@auditEvents</span>, <span class="property">@entities</span>, <span class="property">@maps</span>, <span class="property">@variables</span>]
+        <span class="property">@loggedUser</span>.url = SystemApp.Settings.User.loggedUrl
+        <span class="property">@loggedUser</span>.fetch()
         <span class="property">@userSettings</span>.fetch()
+
+        <span class="property">@allCollections</span> = [<span class="property">@auditData</span>, <span class="property">@auditEvents</span>, <span class="property">@entities</span>, <span class="property">@maps</span>, <span class="property">@variables</span>]
 
         <span class="property">@timerRefreshLabels</span> = <span class="literal">null</span>
         <span class="property">@autoUpdateEnabled</span> = <span class="property">@userSettings</span>.mapAutoRefresh()
@@ -483,8 +506,9 @@ to true.</p>
         <span class="property">@auditData</span>.<span class="literal">on</span> <span class="string">"sync"</span>, <span class="property">@startTimers</span>
         <span class="property">@userSettings</span>.<span class="literal">off</span> <span class="string">"change"</span>, <span class="property">@saveUserSettings</span>
         <span class="property">@userSettings</span>.<span class="literal">on</span> <span class="string">"change"</span>, <span class="property">@saveUserSettings</span>
-        SystemApp.mapEvents.<span class="literal">off</span> <span class="string">"zoom"</span>, <span class="property">@userSettings</span>.mapZoom
-        SystemApp.mapEvents.<span class="literal">on</span> <span class="string">"zoom"</span>, <span class="property">@userSettings</span>.mapZoom</pre></div></div>
+
+        SystemApp.mapEvents?.<span class="literal">off</span> <span class="string">"zoom"</span>, <span class="property">@userSettings</span>.mapZoom
+        SystemApp.mapEvents?.<span class="literal">on</span> <span class="string">"zoom"</span>, <span class="property">@userSettings</span>.mapZoom</pre></div></div>
             
         </li>
         
@@ -551,7 +575,7 @@ to true.</p>
             
             <div class="content"><div class='highlight'><pre>    fetchFinished: (err, results) -&gt;
         SystemApp.consoleLog <span class="string">"Data.load"</span>, <span class="string">"Error loading data."</span>, err <span class="keyword">if</span> err?
-        SystemApp.dataEvents.trigger <span class="string">"load"</span></pre></div></div>
+        SystemApp.dataEvents?.trigger <span class="string">"load"</span></pre></div></div>
             
         </li>
         
@@ -608,7 +632,7 @@ to true.</p>
         <span class="property">@maps</span>.save()
         <span class="property">@userSettings</span>.save()
 
-        SystemApp.alertEvents.trigger <span class="string">"footer"</span>, {title: SystemApp.Messages.dataSaved, message: SystemApp.Messages.okDataSavedLocally}</pre></div></div>
+        SystemApp.alertEvents?.trigger <span class="string">"footer"</span>, {title: SystemApp.Messages.dataSaved, message: SystemApp.Messages.okDataSavedLocally}</pre></div></div>
             
         </li>
         

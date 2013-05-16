@@ -154,8 +154,13 @@
               </a>
             
               
-              <a class="source" href="routes.html">
-                routes.coffee
+              <a class="source" href="adminRoutes.html">
+                adminRoutes.coffee
+              </a>
+            
+              
+              <a class="source" href="appRoutes.html">
+                appRoutes.coffee
               </a>
             
               
@@ -176,6 +181,21 @@
               
               <a class="source" href="vectors.html">
                 vectors.coffee
+              </a>
+            
+              
+              <a class="source" href="statusTabView.html">
+                statusTabView.coffee
+              </a>
+            
+              
+              <a class="source" href="toolsTabView.html">
+                toolsTabView.coffee
+              </a>
+            
+              
+              <a class="source" href="usersTabView.html">
+                usersTabView.coffee
               </a>
             
               
@@ -850,7 +870,8 @@ so auto select it in the end.</p>
         id.prop <span class="string">"readonly"</span>, <span class="literal">true</span>
         id.addClass <span class="string">"id"</span>
         id.val item.friendlyId()
-        id.change <span class="property">@inputOnChange</span></pre></div></div>
+        id.change <span class="property">@inputOnChange</span>
+        id.click item, <span class="property">@clickEditIcon</span></pre></div></div>
             
         </li>
         
@@ -936,7 +957,8 @@ so auto select it in the end.</p>
             </div>
             
             <div class="content"><div class='highlight'><pre>    removeFromModelsList: (item) =&gt;
-        $(<span class="string">"#"</span> + <span class="property">@currentSettings</span>.rowListPrefix + item.id).remove()</pre></div></div>
+        row = $(<span class="string">"#"</span> + <span class="property">@currentSettings</span>.rowListPrefix + item.id)
+        <span class="property">@modelElementRemove</span> row</pre></div></div>
             
         </li>
         
@@ -946,6 +968,21 @@ so auto select it in the end.</p>
               
               <div class="pilwrap ">
                 <a class="pilcrow" href="#section-35">&#182;</a>
+              </div>
+              <p>Hide the right panel if the removed model was the one being displayed / edited.</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>        <span class="property">@bindModel</span>() <span class="keyword">if</span> <span class="property">@model</span>.id <span class="keyword">is</span> item.id</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-36">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-36">&#182;</a>
               </div>
               <p>When user clicks on the edit icon on a row, call the <code>selectModel</code> method.</p>
 
@@ -958,11 +995,11 @@ so auto select it in the end.</p>
         </li>
         
         
-        <li id="section-36">
+        <li id="section-37">
             <div class="annotation">
               
               <div class="pilwrap ">
-                <a class="pilcrow" href="#section-36">&#182;</a>
+                <a class="pilcrow" href="#section-37">&#182;</a>
               </div>
               <p>When user clicks the &quot;delete&quot; icon, make it red
 so user can click again to confirm the deletion.</p>
@@ -978,11 +1015,11 @@ so user can click again to confirm the deletion.</p>
         </li>
         
         
-        <li id="section-37">
+        <li id="section-38">
             <div class="annotation">
               
               <div class="pilwrap ">
-                <a class="pilcrow" href="#section-37">&#182;</a>
+                <a class="pilcrow" href="#section-38">&#182;</a>
               </div>
               <p>If the icon is red, then confirm the deletion by removing the row&#39;s associated model
 from the <a href="data.html">data store</a>.</p>
@@ -999,11 +1036,11 @@ from the <a href="data.html">data store</a>.</p>
         </li>
         
         
-        <li id="section-38">
+        <li id="section-39">
             <div class="annotation">
               
               <div class="pilwrap ">
-                <a class="pilcrow" href="#section-38">&#182;</a>
+                <a class="pilcrow" href="#section-39">&#182;</a>
               </div>
               <p>Selects a row on the <code>$modelsList</code> representing a model
 and bind its information to the right form.</p>
@@ -1020,11 +1057,11 @@ and bind its information to the right form.</p>
         </li>
         
         
-        <li id="section-39">
+        <li id="section-40">
             <div class="annotation">
               
               <div class="pilwrap ">
-                <a class="pilcrow" href="#section-39">&#182;</a>
+                <a class="pilcrow" href="#section-40">&#182;</a>
               </div>
               <p>Remove readonly property from the selected row.</p>
 
@@ -1045,11 +1082,11 @@ and bind its information to the right form.</p>
         </li>
         
         
-        <li id="section-40">
+        <li id="section-41">
             <div class="annotation">
               
               <div class="pilwrap ">
-                <a class="pilcrow" href="#section-40">&#182;</a>
+                <a class="pilcrow" href="#section-41">&#182;</a>
               </div>
               <p>Show editing tabs.</p>
 
@@ -1060,11 +1097,11 @@ and bind its information to the right form.</p>
         </li>
         
         
-        <li id="section-41">
+        <li id="section-42">
             <div class="annotation">
               
               <div class="pilwrap ">
-                <a class="pilcrow" href="#section-41">&#182;</a>
+                <a class="pilcrow" href="#section-42">&#182;</a>
               </div>
               <p>Call the underlying <code>onBindModel</code>.</p>
 
@@ -1075,11 +1112,11 @@ and bind its information to the right form.</p>
         </li>
         
         
-        <li id="section-42">
+        <li id="section-43">
             <div class="annotation">
               
               <div class="pilwrap ">
-                <a class="pilcrow" href="#section-42">&#182;</a>
+                <a class="pilcrow" href="#section-43">&#182;</a>
               </div>
               <p>When user changes the value of any input field then set the value straight away.</p>
 
@@ -1093,11 +1130,11 @@ and bind its information to the right form.</p>
         </li>
         
         
-        <li id="section-43">
+        <li id="section-44">
             <div class="annotation">
               
               <div class="pilwrap ">
-                <a class="pilcrow" href="#section-43">&#182;</a>
+                <a class="pilcrow" href="#section-44">&#182;</a>
               </div>
               <p>Get the input value based on its type.</p>
 
@@ -1111,11 +1148,11 @@ and bind its information to the right form.</p>
         </li>
         
         
-        <li id="section-44">
+        <li id="section-45">
             <div class="annotation">
               
               <div class="pilwrap ">
-                <a class="pilcrow" href="#section-44">&#182;</a>
+                <a class="pilcrow" href="#section-45">&#182;</a>
               </div>
               <p>If the <code>data</code> is passed to the event, then save the property to the
 data instead of the main view model.</p>
@@ -1125,22 +1162,7 @@ data instead of the main view model.</p>
             <div class="content"><div class='highlight'><pre>        <span class="keyword">if</span> e.data?
             e.data.set propertyName, value
         <span class="keyword">else</span>
-            <span class="property">@model</span>.set propertyName, value
-
-        <span class="property">@model</span>.save()</pre></div></div>
-            
-        </li>
-        
-        
-        <li id="section-45">
-            <div class="annotation">
-              
-              <div class="pilwrap for-h2">
-                <a class="pilcrow" href="#section-45">&#182;</a>
-              </div>
-              <h2>KEYBOARD EVENTS</h2>
-
-            </div>
+            <span class="property">@model</span>.set propertyName, value</pre></div></div>
             
         </li>
         
@@ -1150,6 +1172,35 @@ data instead of the main view model.</p>
               
               <div class="pilwrap ">
                 <a class="pilcrow" href="#section-46">&#182;</a>
+              </div>
+              <p>Save the model and show a &quot;saved&quot; next to the edited field.</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>        <span class="property">@model</span>.save()
+        <span class="property">@fieldSaved</span> src</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-47">
+            <div class="annotation">
+              
+              <div class="pilwrap for-h2">
+                <a class="pilcrow" href="#section-47">&#182;</a>
+              </div>
+              <h2>KEYBOARD EVENTS</h2>
+
+            </div>
+            
+        </li>
+        
+        
+        <li id="section-48">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-48">&#182;</a>
               </div>
               <p>When user presses a key while the overlay is visible, pressing &quot;Esc&quot; will
 once will cancel any pending actions (hide delete icons or unselect current model).</p>

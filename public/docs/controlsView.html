@@ -154,8 +154,13 @@
               </a>
             
               
-              <a class="source" href="routes.html">
-                routes.coffee
+              <a class="source" href="adminRoutes.html">
+                adminRoutes.coffee
+              </a>
+            
+              
+              <a class="source" href="appRoutes.html">
+                appRoutes.coffee
               </a>
             
               
@@ -176,6 +181,21 @@
               
               <a class="source" href="vectors.html">
                 vectors.coffee
+              </a>
+            
+              
+              <a class="source" href="statusTabView.html">
+                statusTabView.coffee
+              </a>
+            
+              
+              <a class="source" href="toolsTabView.html">
+                toolsTabView.coffee
+              </a>
+            
+              
+              <a class="source" href="usersTabView.html">
+                usersTabView.coffee
               </a>
             
               
@@ -423,7 +443,9 @@
     $imgAutoUpdate: <span class="literal">null</span>       <span class="comment"># the top "Timer auto-update" icon</span>
     $imgFullscreen: <span class="literal">null</span>       <span class="comment"># the top right "Fullscreen" icon</span>
     $tabDivs: <span class="literal">null</span>             <span class="comment"># the tab divs (each div is a tab)</span>
-    $tabHeaders: <span class="literal">null</span>          <span class="comment"># to get each h4 element on the tab headers</span></pre></div></div>
+    $tabHeaders: <span class="literal">null</span>          <span class="comment"># to get each h4 element on the tab headers</span>
+    $tabInspectorHeader: <span class="literal">null</span>  <span class="comment"># the "Inspector" tab header</span>
+    $tabEntitiesHeader: <span class="literal">null</span>   <span class="comment"># the "Objects" tab header</span></pre></div></div>
             
         </li>
         
@@ -457,6 +479,7 @@
         <span class="property">@setChildViews</span>()
         <span class="property">@setEvents</span>()
         <span class="property">@bindInitialState</span>()
+
         <span class="property">@resize</span>()
         <span class="property">@width</span> = <span class="property">@$el</span>.outerWidth()</pre></div></div>
             
@@ -524,7 +547,10 @@
         <span class="property">@$chkAutoUpdate</span> = $ <span class="string">"#map-ctl-autoupdate"</span>
         <span class="property">@$imgLock</span> = $ <span class="string">"#top-img-lock"</span>
         <span class="property">@$imgAutoUpdate</span> = $ <span class="string">"#top-img-autoupdate"</span>
-        <span class="property">@$imgFullscreen</span> = $ <span class="string">"#top-img-fullscreen"</span></pre></div></div>
+        <span class="property">@$imgFullscreen</span> = $ <span class="string">"#top-img-fullscreen"</span>
+
+        <span class="property">@$tabInspectorHeader</span> = $ <span class="string">"#map-ctl-tab-header-inspector"</span>
+        <span class="property">@$tabEntitiesHeader</span> = $ <span class="string">"#map-ctl-tab-header-entities"</span></pre></div></div>
             
         </li>
         
@@ -542,13 +568,9 @@
             <div class="content"><div class='highlight'><pre>    setEvents: =&gt;
         $(window).resize <span class="property">@resize</span>
 
-        <span class="property">@$tabHeaders</span>.children(<span class="string">"h4"</span>).click <span class="property">@tabClick</span>
         <span class="property">@$chkEditable</span>.change <span class="property">@setEnabled</span>
         <span class="property">@$chkAutoUpdate</span>.change <span class="property">@setAutoUpdate</span>
-        <span class="property">@$imgFullscreen</span>.click <span class="property">@toggleFullscreen</span>
-
-        <span class="property">@listenTo</span> SystemApp.mapEvents, <span class="string">"loaded"</span>, <span class="property">@bindMap</span>
-        <span class="property">@listenTo</span> SystemApp.mapEvents, <span class="string">"edit:toggle"</span>, <span class="property">@editSetState</span></pre></div></div>
+        <span class="property">@$imgFullscreen</span>.click <span class="property">@toggleFullscreen</span></pre></div></div>
             
         </li>
         
@@ -558,6 +580,26 @@
               
               <div class="pilwrap ">
                 <a class="pilcrow" href="#section-13">&#182;</a>
+              </div>
+              <p>Bind click to tab headers.</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>        <span class="property">@$tabHeaders</span>.children(<span class="string">"h4"</span>).click <span class="property">@tabClick</span>
+        <span class="property">@$tabInspectorHeader</span>.click <span class="property">@tabInspectorClick</span>
+        <span class="property">@$tabEntitiesHeader</span>.click <span class="property">@tabEntitiesClick</span>
+
+        <span class="property">@listenTo</span> SystemApp.mapEvents, <span class="string">"loaded"</span>, <span class="property">@bindMap</span>
+        <span class="property">@listenTo</span> SystemApp.mapEvents, <span class="string">"edit:toggle"</span>, <span class="property">@editSetState</span></pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-14">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-14">&#182;</a>
               </div>
               <p>Bind the saved <a href="userSettings.html">User Settings</a> and current <a href="data.html">Data</a> to the map map controls.</p>
 
@@ -569,11 +611,11 @@
         </li>
         
         
-        <li id="section-14">
+        <li id="section-15">
             <div class="annotation">
               
               <div class="pilwrap ">
-                <a class="pilcrow" href="#section-14">&#182;</a>
+                <a class="pilcrow" href="#section-15">&#182;</a>
               </div>
               <p>When window has loaded or resized, call this to resize the map controls accordingly.
 TODO! Properly calculate the diff instead of using the hard coded value.</p>
@@ -588,11 +630,11 @@ TODO! Properly calculate the diff instead of using the hard coded value.</p>
         </li>
         
         
-        <li id="section-15">
+        <li id="section-16">
             <div class="annotation">
               
               <div class="pilwrap for-h2">
-                <a class="pilcrow" href="#section-15">&#182;</a>
+                <a class="pilcrow" href="#section-16">&#182;</a>
               </div>
               <h2>BIND INFORMATION</h2>
 
@@ -601,11 +643,11 @@ TODO! Properly calculate the diff instead of using the hard coded value.</p>
         </li>
         
         
-        <li id="section-16">
+        <li id="section-17">
             <div class="annotation">
               
               <div class="pilwrap ">
-                <a class="pilcrow" href="#section-16">&#182;</a>
+                <a class="pilcrow" href="#section-17">&#182;</a>
               </div>
               <p>Bind the loaded <a href="map.html">map</a> to the view.</p>
 
@@ -617,28 +659,28 @@ TODO! Properly calculate the diff instead of using the hard coded value.</p>
         </li>
         
         
-        <li id="section-17">
+        <li id="section-18">
             <div class="annotation">
               
               <div class="pilwrap ">
-                <a class="pilcrow" href="#section-17">&#182;</a>
+                <a class="pilcrow" href="#section-18">&#182;</a>
               </div>
               <p>Bind the selected shape details to the <a href="shapeTabView.html">Shape Details View</a>.</p>
 
             </div>
             
-            <div class="content"><div class='highlight'><pre>    bindShape: (shapeView) =&gt;
-        <span class="property">@shapeTabView</span>.bind shapeView
-        <span class="property">@inspectorTabView</span>.bind shapeView</pre></div></div>
+            <div class="content"><div class='highlight'><pre>    bind: (views) =&gt;
+        <span class="property">@shapeTabView</span>.bind views
+        <span class="property">@inspectorTabView</span>.bind views</pre></div></div>
             
         </li>
         
         
-        <li id="section-18">
+        <li id="section-19">
             <div class="annotation">
               
               <div class="pilwrap for-h2">
-                <a class="pilcrow" href="#section-18">&#182;</a>
+                <a class="pilcrow" href="#section-19">&#182;</a>
               </div>
               <h2>HELPER PROPERTIES</h2>
 
@@ -647,11 +689,11 @@ TODO! Properly calculate the diff instead of using the hard coded value.</p>
         </li>
         
         
-        <li id="section-19">
+        <li id="section-20">
             <div class="annotation">
               
               <div class="pilwrap ">
-                <a class="pilcrow" href="#section-19">&#182;</a>
+                <a class="pilcrow" href="#section-20">&#182;</a>
               </div>
               <p>Is the &quot;Show links&quot; checkbox checked?</p>
 
@@ -663,11 +705,11 @@ TODO! Properly calculate the diff instead of using the hard coded value.</p>
         </li>
         
         
-        <li id="section-20">
+        <li id="section-21">
             <div class="annotation">
               
               <div class="pilwrap for-h2">
-                <a class="pilcrow" href="#section-20">&#182;</a>
+                <a class="pilcrow" href="#section-21">&#182;</a>
               </div>
               <h2>SWITCHES, SHOW AND HIDE</h2>
 
@@ -676,11 +718,11 @@ TODO! Properly calculate the diff instead of using the hard coded value.</p>
         </li>
         
         
-        <li id="section-21">
+        <li id="section-22">
             <div class="annotation">
               
               <div class="pilwrap ">
-                <a class="pilcrow" href="#section-21">&#182;</a>
+                <a class="pilcrow" href="#section-22">&#182;</a>
               </div>
               <p>Set the &quot;Edit&quot; checkbox state when user toggles the edit mode on or off.</p>
 
@@ -697,11 +739,11 @@ TODO! Properly calculate the diff instead of using the hard coded value.</p>
         </li>
         
         
-        <li id="section-22">
+        <li id="section-23">
             <div class="annotation">
               
               <div class="pilwrap ">
-                <a class="pilcrow" href="#section-22">&#182;</a>
+                <a class="pilcrow" href="#section-23">&#182;</a>
               </div>
               <p>Enable or disable editing the current <a href="map.html">Map</a>.</p>
 
@@ -716,11 +758,11 @@ TODO! Properly calculate the diff instead of using the hard coded value.</p>
         </li>
         
         
-        <li id="section-23">
+        <li id="section-24">
             <div class="annotation">
               
               <div class="pilwrap ">
-                <a class="pilcrow" href="#section-23">&#182;</a>
+                <a class="pilcrow" href="#section-24">&#182;</a>
               </div>
               <p>Enable or disable the <a href="auditData.html">AuditData</a> timers to auto-update
 the values of related labels on the map.</p>
@@ -749,11 +791,11 @@ the values of related labels on the map.</p>
         </li>
         
         
-        <li id="section-24">
+        <li id="section-25">
             <div class="annotation">
               
               <div class="pilwrap ">
-                <a class="pilcrow" href="#section-24">&#182;</a>
+                <a class="pilcrow" href="#section-25">&#182;</a>
               </div>
               <p>Toggle the fullscreen mode on or off. While on fullscreen, the app <a href="menuView.html">Menu</a>
 and <a href="controlsView.html">Map Controls</a> will be hidden.</p>
@@ -790,11 +832,11 @@ and <a href="controlsView.html">Map Controls</a> will be hidden.</p>
         </li>
         
         
-        <li id="section-25">
+        <li id="section-26">
             <div class="annotation">
               
               <div class="pilwrap ">
-                <a class="pilcrow" href="#section-25">&#182;</a>
+                <a class="pilcrow" href="#section-26">&#182;</a>
               </div>
               <p>Save the current fullscreen state on the <a href="userSettings.html">User Settings</a> model.</p>
 
@@ -805,11 +847,11 @@ and <a href="controlsView.html">Map Controls</a> will be hidden.</p>
         </li>
         
         
-        <li id="section-26">
+        <li id="section-27">
             <div class="annotation">
               
               <div class="pilwrap ">
-                <a class="pilcrow" href="#section-26">&#182;</a>
+                <a class="pilcrow" href="#section-27">&#182;</a>
               </div>
               <p>Hide the map controls and show the minimzed icon on the top right corner.</p>
 
@@ -822,11 +864,11 @@ and <a href="controlsView.html">Map Controls</a> will be hidden.</p>
         </li>
         
         
-        <li id="section-27">
+        <li id="section-28">
             <div class="annotation">
               
               <div class="pilwrap ">
-                <a class="pilcrow" href="#section-27">&#182;</a>
+                <a class="pilcrow" href="#section-28">&#182;</a>
               </div>
               <p>If an event object is passed then stop its propagation and default behaviour.</p>
 
@@ -838,11 +880,11 @@ and <a href="controlsView.html">Map Controls</a> will be hidden.</p>
         </li>
         
         
-        <li id="section-28">
+        <li id="section-29">
             <div class="annotation">
               
               <div class="pilwrap ">
-                <a class="pilcrow" href="#section-28">&#182;</a>
+                <a class="pilcrow" href="#section-29">&#182;</a>
               </div>
               <p>Show the map controls and hide the minimzed icon.</p>
 
@@ -855,11 +897,11 @@ and <a href="controlsView.html">Map Controls</a> will be hidden.</p>
         </li>
         
         
-        <li id="section-29">
+        <li id="section-30">
             <div class="annotation">
               
               <div class="pilwrap for-h2">
-                <a class="pilcrow" href="#section-29">&#182;</a>
+                <a class="pilcrow" href="#section-30">&#182;</a>
               </div>
               <h2>TABS HANDLING</h2>
 
@@ -868,11 +910,11 @@ and <a href="controlsView.html">Map Controls</a> will be hidden.</p>
         </li>
         
         
-        <li id="section-30">
+        <li id="section-31">
             <div class="annotation">
               
               <div class="pilwrap ">
-                <a class="pilcrow" href="#section-30">&#182;</a>
+                <a class="pilcrow" href="#section-31">&#182;</a>
               </div>
               <p>Hide the map controls and show the minimzed icon on the top right corner.</p>
 
@@ -887,6 +929,38 @@ and <a href="controlsView.html">Map Controls</a> will be hidden.</p>
 
         <span class="property">@$tabDivs</span>.hide()
         tabDiv.show()</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-32">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-32">&#182;</a>
+              </div>
+              <p>When user clicks the &quot;Inspector&quot; tab, call its <code>resize</code> handler.</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>    tabInspectorClick: =&gt;
+        <span class="property">@inspectorTabView</span>.resize()</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-33">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-33">&#182;</a>
+              </div>
+              <p>When user clicks the &quot;Objects&quot; tab, call its <code>resize</code> handler.</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>    tabEntitiesClick: =&gt;
+        <span class="property">@entitiesTabView</span>.resize()</pre></div></div>
             
         </li>
         

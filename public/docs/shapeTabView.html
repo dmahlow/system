@@ -154,8 +154,13 @@
               </a>
             
               
-              <a class="source" href="routes.html">
-                routes.coffee
+              <a class="source" href="adminRoutes.html">
+                adminRoutes.coffee
+              </a>
+            
+              
+              <a class="source" href="appRoutes.html">
+                appRoutes.coffee
               </a>
             
               
@@ -176,6 +181,21 @@
               
               <a class="source" href="vectors.html">
                 vectors.coffee
+              </a>
+            
+              
+              <a class="source" href="statusTabView.html">
+                statusTabView.coffee
+              </a>
+            
+              
+              <a class="source" href="toolsTabView.html">
+                toolsTabView.coffee
+              </a>
+            
+              
+              <a class="source" href="usersTabView.html">
+                usersTabView.coffee
               </a>
             
               
@@ -362,7 +382,7 @@
             
             <div class="content"><div class='highlight'><pre><span class="class"><span class="keyword">class</span> <span class="title">SystemApp</span>.<span class="title">MapControlsShapeTabView</span> <span class="keyword">extends</span> <span class="title">SystemApp</span>.<span class="title">BaseView</span></span>
 
-    currentBoundView: <span class="literal">null</span> <span class="comment"># holds the current shape being shown</span></pre></div></div>
+    currentBoundViews: <span class="literal">null</span> <span class="comment"># holds the current shape being shown</span></pre></div></div>
             
         </li>
         
@@ -389,7 +409,8 @@
               
             </div>
             
-            <div class="content"><div class='highlight'><pre>    $txtBackground: <span class="literal">null</span>            <span class="comment"># the "Background" text field</span>
+            <div class="content"><div class='highlight'><pre>    $topDescription: <span class="literal">null</span>           <span class="comment"># the "H6" element on top of the tab</span>
+    $txtBackground: <span class="literal">null</span>            <span class="comment"># the "Background" text field</span>
     $txtForeground: <span class="literal">null</span>            <span class="comment"># the "Label color" text field</span>
     $txtTitleForeground: <span class="literal">null</span>       <span class="comment"># the "Title color" text field</span>
     $txtStroke: <span class="literal">null</span>                <span class="comment"># the "Border color" text field</span>
@@ -400,8 +421,9 @@
     $selArrowSource: <span class="literal">null</span>           <span class="comment"># the "Source arrow style" select field</span>
     $selArrowTarget: <span class="literal">null</span>           <span class="comment"># the "Target arrow style" select field</span>
     $selOpacity: <span class="literal">null</span>               <span class="comment"># the "Opacity" select field</span>
-    $chkRoundedCorners: <span class="literal">null</span>        <span class="comment"># the "Rounded corners" checkbox/toggle</span>
-    $chkSmoothLink: <span class="literal">null</span>            <span class="comment"># the "Smooth link" checkbox/toggle</span>
+    $chkIconFull: <span class="literal">null</span>              <span class="comment"># the "Full size icon" toggle</span>
+    $chkRoundedCorners: <span class="literal">null</span>        <span class="comment"># the "Rounded corners" toggle</span>
+    $chkSmoothLink: <span class="literal">null</span>            <span class="comment"># the "Smooth link" toggle</span>
     $zIndexDiv: <span class="literal">null</span>                <span class="comment"># the "Stack level/z-index" wrapper</span>
     $butDeleteShape: <span class="literal">null</span>           <span class="comment"># the "Remove shape" button</span>
     $butConfirmDeleteShape: <span class="literal">null</span>    <span class="comment"># the "Confirm" button to remove a shape from the map</span></pre></div></div>
@@ -470,6 +492,8 @@
             <div class="content"><div class='highlight'><pre>    setDom: =&gt;
         <span class="property">@setElement</span> $ <span class="string">"#map-ctl-tab-shape"</span>
 
+        <span class="property">@$topDescription</span> = <span class="property">@$el</span>.find <span class="string">"h6"</span>
+
         <span class="property">@$selIcon</span> = $ <span class="string">"#map-ctl-shape-icon"</span>
         <span class="property">@$txtBackground</span> = $ <span class="string">"#map-ctl-shape-background"</span>
         <span class="property">@$txtForeground</span> = $ <span class="string">"#map-ctl-shape-foreground"</span>
@@ -481,6 +505,7 @@
         <span class="property">@$selArrowSource</span> = $ <span class="string">"#map-ctl-link-arrow-source"</span>
         <span class="property">@$selArrowTarget</span> = $ <span class="string">"#map-ctl-link-arrow-target"</span>
         <span class="property">@$selOpacity</span> = $ <span class="string">"#map-ctl-shape-opacity"</span>
+        <span class="property">@$chkIconFull</span> = $ <span class="string">"#map-ctl-shape-icon-full"</span>
         <span class="property">@$chkRoundedCorners</span> = $ <span class="string">"#map-ctl-shape-roundedcorners"</span>
         <span class="property">@$chkSmoothLink</span> = $ <span class="string">"#map-ctl-link-smooth"</span>
 
@@ -498,13 +523,11 @@
               <div class="pilwrap ">
                 <a class="pilcrow" href="#section-9">&#182;</a>
               </div>
-              <p>Set propertyName data on all editable fields.
-TODO! Move the data propertyname to the JADE files.</p>
+              <p>Set propertyName data on all editable fields.</p>
 
             </div>
             
-            <div class="content"><div class='highlight'><pre>        <span class="property">@$selIcon</span>.data <span class="string">"propertyName"</span>, <span class="string">"icon"</span>
-        <span class="property">@$txtBackground</span>.data <span class="string">"propertyName"</span>, <span class="string">"background"</span>
+            <div class="content"><div class='highlight'><pre>        <span class="property">@$txtBackground</span>.data <span class="string">"propertyName"</span>, <span class="string">"background"</span>
         <span class="property">@$txtForeground</span>.data <span class="string">"propertyName"</span>, <span class="string">"foreground"</span>
         <span class="property">@$txtTitleForeground</span>.data <span class="string">"propertyName"</span>, <span class="string">"titleForeground"</span>
         <span class="property">@$txtStroke</span>.data <span class="string">"propertyName"</span>, <span class="string">"stroke"</span>
@@ -513,6 +536,8 @@ TODO! Move the data propertyname to the JADE files.</p>
         <span class="property">@$selOpacity</span>.data <span class="string">"propertyName"</span>, <span class="string">"opacity"</span>
         <span class="property">@$selArrowSource</span>.data <span class="string">"propertyName"</span>, <span class="string">"arrowSource"</span>
         <span class="property">@$selArrowTarget</span>.data <span class="string">"propertyName"</span>, <span class="string">"arrowTarget"</span>
+        <span class="property">@$selIcon</span>.data <span class="string">"propertyName"</span>, <span class="string">"icon"</span>
+        <span class="property">@$chkIconFull</span>.data <span class="string">"propertyName"</span>, <span class="string">"iconFull"</span>
         <span class="property">@$chkRoundedCorners</span>.data <span class="string">"propertyName"</span>, <span class="string">"roundedCorners"</span>
         <span class="property">@$chkSmoothLink</span>.data <span class="string">"propertyName"</span>, <span class="string">"smooth"</span></pre></div></div>
             
@@ -553,7 +578,7 @@ TODO! Move the data propertyname to the JADE files.</p>
             elm.blur <span class="property">@editablePropertySave</span>
 
         selects = [<span class="property">@$selIcon</span>, <span class="property">@$selStrokeWidth</span>, <span class="property">@$selFontSize</span>, <span class="property">@$selOpacity</span>, <span class="property">@$selArrowSource</span>, <span class="property">@$selArrowTarget</span>,
-                   <span class="property">@$chkRoundedCorners</span>, <span class="property">@$chkSmoothLink</span>]
+                   <span class="property">@$chkIconFull</span>, <span class="property">@$chkRoundedCorners</span>, <span class="property">@$chkSmoothLink</span>]
         <span class="keyword">for</span> elm <span class="keyword">in</span> selects
             elm.change <span class="property">@editablePropertySave</span>
 
@@ -569,6 +594,21 @@ TODO! Move the data propertyname to the JADE files.</p>
               
               <div class="pilwrap ">
                 <a class="pilcrow" href="#section-12">&#182;</a>
+              </div>
+              <p>Disable the &quot;full icon&quot; toggle when no icon is selected.</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>        <span class="property">@$selIcon</span>.change <span class="property">@selIconChanged</span></pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-13">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-13">&#182;</a>
               </div>
               <p>Enable or disable editing the current <a href="shape.html">Shape</a> properties.</p>
 
@@ -587,11 +627,11 @@ TODO! Move the data propertyname to the JADE files.</p>
         </li>
         
         
-        <li id="section-13">
+        <li id="section-14">
             <div class="annotation">
               
               <div class="pilwrap for-h2">
-                <a class="pilcrow" href="#section-13">&#182;</a>
+                <a class="pilcrow" href="#section-14">&#182;</a>
               </div>
               <h2>BINDING AND CLEARING</h2>
 
@@ -600,11 +640,11 @@ TODO! Move the data propertyname to the JADE files.</p>
         </li>
         
         
-        <li id="section-14">
+        <li id="section-15">
             <div class="annotation">
               
               <div class="pilwrap ">
-                <a class="pilcrow" href="#section-14">&#182;</a>
+                <a class="pilcrow" href="#section-15">&#182;</a>
               </div>
               <p>When the view is first loaded, bind the initial and default values.</p>
 
@@ -617,19 +657,21 @@ TODO! Move the data propertyname to the JADE files.</p>
         </li>
         
         
-        <li id="section-15">
+        <li id="section-16">
             <div class="annotation">
               
               <div class="pilwrap ">
-                <a class="pilcrow" href="#section-15">&#182;</a>
+                <a class="pilcrow" href="#section-16">&#182;</a>
               </div>
-              <p>Bind a <a href="shapeView.html">Shape View</a> or <a href="linkView.html">Link View</a> to the control
-and display its editable properties.</p>
+              <p>Bind one or more <a href="shapeView.html">Shape Views</a> or <a href="linkView.html">Link Views</a> to the control
+and display its editable properties. If multiple shapes are bound, show an alert that changes
+will affect all selected shapes.</p>
 
             </div>
             
-            <div class="content"><div class='highlight'><pre>    bind: (view) =&gt;
-        <span class="property">@currentBoundView</span> = view
+            <div class="content"><div class='highlight'><pre>    bind: (views) =&gt;
+        <span class="property">@currentBoundViews</span> = views
+
         <span class="property">@$butDeleteShape</span>.removeClass <span class="string">"hidden"</span>
 
         <span class="property">@bindProperties</span>()
@@ -638,11 +680,11 @@ and display its editable properties.</p>
         </li>
         
         
-        <li id="section-16">
+        <li id="section-17">
             <div class="annotation">
               
               <div class="pilwrap ">
-                <a class="pilcrow" href="#section-16">&#182;</a>
+                <a class="pilcrow" href="#section-17">&#182;</a>
               </div>
               <p>Show or hide forms depending on what&#39;s selected on the map.</p>
 
@@ -650,24 +692,11 @@ and display its editable properties.</p>
             
             <div class="content"><div class='highlight'><pre>    toggleForms: (visible) =&gt;
         <span class="keyword">if</span> visible
-            <span class="property">@$el</span>.find(<span class="string">"h6"</span>).hide()
             <span class="property">@$el</span>.find(<span class="string">"h5,.panel"</span>).show()
         <span class="keyword">else</span>
             <span class="property">@$el</span>.find(<span class="string">"h5,.panel"</span>).hide()
-            <span class="property">@$el</span>.find(<span class="string">"h6"</span>).show()</pre></div></div>
-            
-        </li>
-        
-        
-        <li id="section-17">
-            <div class="annotation">
-              
-              <div class="pilwrap for-h2">
-                <a class="pilcrow" href="#section-17">&#182;</a>
-              </div>
-              <h2>SHAPE EDITING TAB</h2>
-
-            </div>
+            <span class="property">@$topDescription</span>.text SystemApp.Messages.noShapeSelected
+            <span class="property">@$topDescription</span>.show()</pre></div></div>
             
         </li>
         
@@ -675,23 +704,12 @@ and display its editable properties.</p>
         <li id="section-18">
             <div class="annotation">
               
-              <div class="pilwrap ">
+              <div class="pilwrap for-h2">
                 <a class="pilcrow" href="#section-18">&#182;</a>
               </div>
-              <p>Bind all editable properties of the current <a href="shape.html">Shape</a>
-or <a href="link.html">Link</a> to the &quot;Element properties&quot; tab.</p>
+              <h2>SHAPE EDITING TAB</h2>
 
             </div>
-            
-            <div class="content"><div class='highlight'><pre>    bindProperties: =&gt;
-        <span class="keyword">if</span> <span class="property">@currentBoundView</span>?
-            <span class="property">@$txtForeground</span>.val <span class="property">@currentBoundView</span>.model.foreground()
-            <span class="property">@$txtForeground</span>.keyup()
-            <span class="property">@$txtStroke</span>.val <span class="property">@currentBoundView</span>.model.stroke()
-            <span class="property">@$txtStroke</span>.keyup()
-            <span class="property">@$selStrokeWidth</span>.val <span class="property">@currentBoundView</span>.model.strokeWidth()
-            <span class="property">@$selFontSize</span>.val <span class="property">@currentBoundView</span>.model.fontSize()
-            <span class="property">@$selOpacity</span>.val <span class="property">@currentBoundView</span>.model.opacity()</pre></div></div>
             
         </li>
         
@@ -702,20 +720,13 @@ or <a href="link.html">Link</a> to the &quot;Element properties&quot; tab.</p>
               <div class="pilwrap ">
                 <a class="pilcrow" href="#section-19">&#182;</a>
               </div>
-              <p>If the selected item is a shape, then hide all &quot;only-for-links&quot; properties.</p>
+              <p>Bind all editable properties of the current <a href="shape.html">Shape</a>
+or <a href="link.html">Link</a> to the &quot;Element properties&quot; tab.</p>
 
             </div>
             
-            <div class="content"><div class='highlight'><pre>            <span class="keyword">if</span> <span class="property">@currentBoundView</span>.constructor <span class="keyword">is</span> SystemApp.MapShapeView
-                <span class="property">@$selIcon</span>.val <span class="property">@currentBoundView</span>.model.icon()
-                <span class="property">@$txtBackground</span>.val <span class="property">@currentBoundView</span>.model.background()
-                <span class="property">@$txtBackground</span>.keyup()
-                <span class="property">@$txtTitleForeground</span>.val <span class="property">@currentBoundView</span>.model.titleForeground()
-                <span class="property">@$txtTitleForeground</span>.keyup()
-                <span class="property">@$chkRoundedCorners</span>.prop <span class="string">"checked"</span>, <span class="property">@currentBoundView</span>.model.roundedCorners()
-                <span class="property">@$el</span>.find(<span class="string">".only-for-links"</span>).hide()
-                <span class="property">@$el</span>.find(<span class="string">".not-for-links"</span>).show()
-                <span class="property">@$butDeleteShape</span>.html SystemApp.Messages.removeShape</pre></div></div>
+            <div class="content"><div class='highlight'><pre>    bindProperties: =&gt;
+        <span class="keyword">if</span> <span class="property">@currentBoundViews</span>?</pre></div></div>
             
         </li>
         
@@ -726,19 +737,22 @@ or <a href="link.html">Link</a> to the &quot;Element properties&quot; tab.</p>
               <div class="pilwrap ">
                 <a class="pilcrow" href="#section-20">&#182;</a>
               </div>
-              <p>If selected item is a link, then hide all &quot;not-for-links&quot; properties.</p>
+              <p>If only one view is bound, show its properties, otherwise show empty boxes
+so user can edit multiple selected elements.</p>
 
             </div>
             
-            <div class="content"><div class='highlight'><pre>            <span class="keyword">else</span>
-                <span class="property">@$selArrowSource</span>.val <span class="property">@currentBoundView</span>.model.arrowSource()
-                <span class="property">@$selArrowTarget</span>.val <span class="property">@currentBoundView</span>.model.arrowTarget()
-                <span class="property">@$chkSmoothLink</span>.prop <span class="string">"checked"</span>, <span class="property">@currentBoundView</span>.model.smooth()
-                <span class="property">@$el</span>.find(<span class="string">".not-for-links"</span>).hide()
-                <span class="property">@$el</span>.find(<span class="string">".only-for-links"</span>).show()
-                <span class="property">@$butDeleteShape</span>.html SystemApp.Messages.removeLink
+            <div class="content"><div class='highlight'><pre>            <span class="keyword">if</span> <span class="property">@currentBoundViews</span>.model?.id?
 
-            <span class="property">@$zIndexDiv</span>.children(<span class="string">"div"</span>).removeClass(<span class="string">"active"</span>).eq(<span class="property">@currentBoundView</span>.model.zIndex() - <span class="number">1</span>).addClass <span class="string">"active"</span></pre></div></div>
+                <span class="property">@$topDescription</span>.hide()
+
+                <span class="property">@$txtForeground</span>.val <span class="property">@currentBoundViews</span>.model.foreground()
+                <span class="property">@$txtForeground</span>.keyup()
+                <span class="property">@$txtStroke</span>.val <span class="property">@currentBoundViews</span>.model.stroke()
+                <span class="property">@$txtStroke</span>.keyup()
+                <span class="property">@$selStrokeWidth</span>.val <span class="property">@currentBoundViews</span>.model.strokeWidth()
+                <span class="property">@$selFontSize</span>.val <span class="property">@currentBoundViews</span>.model.fontSize()
+                <span class="property">@$selOpacity</span>.val <span class="property">@currentBoundViews</span>.model.opacity()</pre></div></div>
             
         </li>
         
@@ -748,6 +762,65 @@ or <a href="link.html">Link</a> to the &quot;Element properties&quot; tab.</p>
               
               <div class="pilwrap ">
                 <a class="pilcrow" href="#section-21">&#182;</a>
+              </div>
+              <p>If the selected item is a shape, then hide all &quot;only-for-links&quot; properties.</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>                <span class="keyword">if</span> <span class="property">@currentBoundViews</span>.constructor <span class="keyword">is</span> SystemApp.MapShapeView
+                    <span class="property">@$selIcon</span>.val <span class="property">@currentBoundViews</span>.model.icon()
+                    <span class="property">@$txtBackground</span>.val <span class="property">@currentBoundViews</span>.model.background()
+                    <span class="property">@$txtBackground</span>.keyup()
+                    <span class="property">@$txtTitleForeground</span>.val <span class="property">@currentBoundViews</span>.model.titleForeground()
+                    <span class="property">@$txtTitleForeground</span>.keyup()
+                    <span class="property">@$chkIconFull</span>.prop <span class="string">"checked"</span>, <span class="property">@currentBoundViews</span>.model.iconFull()
+                    <span class="property">@$chkRoundedCorners</span>.prop <span class="string">"checked"</span>, <span class="property">@currentBoundViews</span>.model.roundedCorners()
+                    <span class="property">@$el</span>.find(<span class="string">".only-for-links"</span>).hide()
+                    <span class="property">@$el</span>.find(<span class="string">".not-for-links"</span>).show()
+                    <span class="property">@$butDeleteShape</span>.html SystemApp.Messages.removeShape</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-22">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-22">&#182;</a>
+              </div>
+              <p>If selected item is a link, then hide all &quot;not-for-links&quot; properties.</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>                <span class="keyword">else</span>
+                    <span class="property">@$selArrowSource</span>.val <span class="property">@currentBoundViews</span>.model.arrowSource()
+                    <span class="property">@$selArrowTarget</span>.val <span class="property">@currentBoundViews</span>.model.arrowTarget()
+                    <span class="property">@$chkSmoothLink</span>.prop <span class="string">"checked"</span>, <span class="property">@currentBoundViews</span>.model.smooth()
+                    <span class="property">@$el</span>.find(<span class="string">".not-for-links"</span>).hide()
+                    <span class="property">@$el</span>.find(<span class="string">".only-for-links"</span>).show()
+                    <span class="property">@$butDeleteShape</span>.html SystemApp.Messages.removeLink
+
+                <span class="property">@$zIndexDiv</span>.children(<span class="string">"div"</span>).removeClass(<span class="string">"active"</span>).eq(<span class="property">@currentBoundViews</span>.model.zIndex() - <span class="number">1</span>).addClass <span class="string">"active"</span>
+
+            <span class="keyword">else</span>
+
+                <span class="property">@$topDescription</span>.text SystemApp.Messages.multipleShapesSelected
+                <span class="property">@$topDescription</span>.show()
+
+                <span class="property">@$txtForeground</span>.val()
+                <span class="property">@$txtStroke</span>.val()
+                <span class="property">@$selStrokeWidth</span>.val()
+                <span class="property">@$selFontSize</span>.val()
+                <span class="property">@$selOpacity</span>.val()</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-23">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-23">&#182;</a>
               </div>
               <p>Show all editable panels.</p>
 
@@ -760,11 +833,11 @@ or <a href="link.html">Link</a> to the &quot;Element properties&quot; tab.</p>
         </li>
         
         
-        <li id="section-22">
+        <li id="section-24">
             <div class="annotation">
               
               <div class="pilwrap ">
-                <a class="pilcrow" href="#section-22">&#182;</a>
+                <a class="pilcrow" href="#section-24">&#182;</a>
               </div>
               <p>No shape(s) selected, so hide panels and show the h6 element with the &quot;no shapes selected text&quot;.</p>
 
@@ -775,11 +848,11 @@ or <a href="link.html">Link</a> to the &quot;Element properties&quot; tab.</p>
         </li>
         
         
-        <li id="section-23">
+        <li id="section-25">
             <div class="annotation">
               
               <div class="pilwrap ">
-                <a class="pilcrow" href="#section-23">&#182;</a>
+                <a class="pilcrow" href="#section-25">&#182;</a>
               </div>
               <p>When user is pressing keys on any of the editable text fields, check for
 the pressed key and if it&#39;s Enter, save the value to the model.</p>
@@ -800,11 +873,11 @@ the pressed key and if it&#39;s Enter, save the value to the model.</p>
         </li>
         
         
-        <li id="section-24">
+        <li id="section-26">
             <div class="annotation">
               
               <div class="pilwrap ">
-                <a class="pilcrow" href="#section-24">&#182;</a>
+                <a class="pilcrow" href="#section-26">&#182;</a>
               </div>
               <p>When a text field of the editable properties losts focus, changes or gets clicked,
 saves the new value to the current <a href="shape.html">Shape</a> model.</p>
@@ -812,7 +885,7 @@ saves the new value to the current <a href="shape.html">Shape</a> model.</p>
             </div>
             
             <div class="content"><div class='highlight'><pre>    editablePropertySave: (e) =&gt;
-        <span class="keyword">if</span> <span class="keyword">not</span> <span class="property">@currentBoundView</span>?
+        <span class="keyword">if</span> <span class="keyword">not</span> <span class="property">@currentBoundViews</span>?
             <span class="keyword">return</span>
 
         src = $ e.target
@@ -821,39 +894,58 @@ saves the new value to the current <a href="shape.html">Shape</a> model.</p>
         <span class="keyword">if</span> src.attr(<span class="string">"type"</span>) <span class="keyword">is</span> <span class="string">"checkbox"</span>
             value = src.prop <span class="string">"checked"</span>
         <span class="keyword">else</span>
-            value = src.val()</pre></div></div>
+            value = src.val()
+            <span class="keyword">if</span> <span class="keyword">not</span> isNaN(value)</pre></div></div>
             
         </li>
         
         
-        <li id="section-25">
+        <li id="section-27">
             <div class="annotation">
               
               <div class="pilwrap ">
-                <a class="pilcrow" href="#section-25">&#182;</a>
+                <a class="pilcrow" href="#section-27">&#182;</a>
               </div>
               <p>Make sure numeric values are saved as numbers, not string.</p>
 
             </div>
             
-            <div class="content"><div class='highlight'><pre>        <span class="keyword">if</span> <span class="keyword">not</span> isNaN value
-            value = parseFloat value
+            <div class="content"><div class='highlight'><pre>                value = parseFloat value
 
         <span class="keyword">if</span> value? <span class="keyword">and</span> value <span class="keyword">isnt</span> <span class="string">""</span>
-            <span class="property">@currentBoundView</span>.model.set propertyName, value
-            <span class="property">@currentBoundView</span>.model.save()
+            <span class="property">@currentBoundViews</span>.model.set propertyName, value
+            <span class="property">@currentBoundViews</span>.model.save()
             <span class="property">@parentView</span>.model.save()
         <span class="keyword">else</span>
-            src.val <span class="property">@currentBoundView</span>.model.get propertyName</pre></div></div>
+            src.val <span class="property">@currentBoundViews</span>.model.get propertyName</pre></div></div>
             
         </li>
         
         
-        <li id="section-26">
+        <li id="section-28">
             <div class="annotation">
               
               <div class="pilwrap ">
-                <a class="pilcrow" href="#section-26">&#182;</a>
+                <a class="pilcrow" href="#section-28">&#182;</a>
+              </div>
+              <p>When user selects no icon, disable the &quot;full icon&quot; toggle.</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>    selIconChanged: =&gt;
+        <span class="keyword">if</span> <span class="property">@$selIcon</span>.val().toString() <span class="keyword">is</span> <span class="string">"0"</span>
+            <span class="property">@$chkIconFull</span>.attr(<span class="string">"disabled"</span>, <span class="string">"disabled"</span>).addClass <span class="string">"disabled"</span>
+        <span class="keyword">else</span>
+            <span class="property">@$chkIconFull</span>.removeAttr(<span class="string">"disabled"</span>).removeClass <span class="string">"disabled"</span></pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-29">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-29">&#182;</a>
               </div>
               <p>Saves the selected stack lavel (z-index) to the current
 <a href="shape.html">Shape</a>.</p>
@@ -868,18 +960,18 @@ saves the new value to the current <a href="shape.html">Shape</a> model.</p>
         <span class="property">@$zIndexDiv</span>.children(<span class="string">"div"</span>).removeClass <span class="string">"active"</span>
         src.addClass <span class="string">"active"</span>
 
-        <span class="property">@currentBoundView</span>.model.set <span class="string">"zIndex"</span>, parseInt src.html()
-        <span class="property">@currentBoundView</span>.model.save()
+        <span class="property">@currentBoundViews</span>.model.set <span class="string">"zIndex"</span>, parseInt src.html()
+        <span class="property">@currentBoundViews</span>.model.save()
         <span class="property">@parentView</span>.model.save()</pre></div></div>
             
         </li>
         
         
-        <li id="section-27">
+        <li id="section-30">
             <div class="annotation">
               
               <div class="pilwrap ">
-                <a class="pilcrow" href="#section-27">&#182;</a>
+                <a class="pilcrow" href="#section-30">&#182;</a>
               </div>
               <p>Clicks the &quot;Remove shape&quot; button, show the &quot;Confirm&quot; button
 right next to it so user can confirm the shape removal.</p>
@@ -893,43 +985,28 @@ right next to it so user can confirm the shape removal.</p>
         </li>
         
         
-        <li id="section-28">
+        <li id="section-31">
             <div class="annotation">
               
               <div class="pilwrap ">
-                <a class="pilcrow" href="#section-28">&#182;</a>
+                <a class="pilcrow" href="#section-31">&#182;</a>
               </div>
               <p>User clicks the &quot;Confirm&quot; button, so proceed with shape removal.</p>
 
             </div>
             
             <div class="content"><div class='highlight'><pre>    confirmDeleteShapeClick: (e) =&gt;
-        <span class="property">@currentBoundView</span>.blinkAndRemove()
+        <span class="property">@currentBoundViews</span>.blinkAndRemove()
         <span class="property">@resetDeleteShape</span> e</pre></div></div>
             
         </li>
         
         
-        <li id="section-29">
+        <li id="section-32">
             <div class="annotation">
               
               <div class="pilwrap ">
-                <a class="pilcrow" href="#section-29">&#182;</a>
-              </div>
-              <p>Deselect any previously selected shapes on the map.</p>
-
-            </div>
-            
-            <div class="content"><div class='highlight'><pre>        <span class="property">@parentView</span>.parentView.setCurrentElement()</pre></div></div>
-            
-        </li>
-        
-        
-        <li id="section-30">
-            <div class="annotation">
-              
-              <div class="pilwrap ">
-                <a class="pilcrow" href="#section-30">&#182;</a>
+                <a class="pilcrow" href="#section-32">&#182;</a>
               </div>
               <p>Hide the &quot;Confirm&quot; shape removal button if user clicks anywhere on the page
 while the button is visible, or after user confirms the deletion.</p>

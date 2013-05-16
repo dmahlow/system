@@ -154,8 +154,13 @@
               </a>
             
               
-              <a class="source" href="routes.html">
-                routes.coffee
+              <a class="source" href="adminRoutes.html">
+                adminRoutes.coffee
+              </a>
+            
+              
+              <a class="source" href="appRoutes.html">
+                appRoutes.coffee
               </a>
             
               
@@ -176,6 +181,21 @@
               
               <a class="source" href="vectors.html">
                 vectors.coffee
+              </a>
+            
+              
+              <a class="source" href="statusTabView.html">
+                statusTabView.coffee
+              </a>
+            
+              
+              <a class="source" href="toolsTabView.html">
+                toolsTabView.coffee
+              </a>
+            
+              
+              <a class="source" href="usersTabView.html">
+                usersTabView.coffee
               </a>
             
               
@@ -387,7 +407,8 @@
               
             </div>
             
-            <div class="content"><div class='highlight'><pre>    $attributesDiv: <span class="literal">null</span>            <span class="comment"># the list-div with shape properties (Shape details tab)</span>
+            <div class="content"><div class='highlight'><pre>    $topDescription: <span class="literal">null</span>           <span class="comment"># the "H6" element on top of the tab</span>
+    $attributesDiv: <span class="literal">null</span>            <span class="comment"># the list-div with shape properties (Shape details tab)</span>
     $linksDiv: <span class="literal">null</span>                 <span class="comment"># the list-div with the shape connections (Shape related tab)</span>
     $parentAndChildDiv: <span class="literal">null</span>        <span class="comment"># the list-div with the shape parent and child elements (Shape related tab)</span>
     $eventsDiv: <span class="literal">null</span>                <span class="comment"># the div containing the list of registered / active alerts for the selected shape</span></pre></div></div>
@@ -462,6 +483,8 @@
             <div class="content"><div class='highlight'><pre>    setDom: =&gt;
         <span class="property">@setElement</span> $ <span class="string">"#map-ctl-tab-inspector"</span>
 
+        <span class="property">@$topDescription</span> = <span class="property">@$el</span>.find <span class="string">"h6"</span>
+
         <span class="property">@$attributesDiv</span> = $ <span class="string">"#map-ctl-inspector-attributes"</span>
         <span class="property">@$parentAndChildDiv</span> = $ <span class="string">"#map-ctl-shape-parent-child"</span>
         <span class="property">@$linksDiv</span> = $ <span class="string">"#map-ctl-shape-links"</span>
@@ -516,11 +539,11 @@
             </div>
             
             <div class="content"><div class='highlight'><pre>    clearEvents: =&gt;
-        <span class="keyword">if</span> <span class="property">@currentBoundView</span>?.linkViews?
-            _.each <span class="property">@currentBoundView</span>.linkViews, (linkView) =&gt; linkView.model.<span class="literal">off</span> <span class="string">"change"</span>, <span class="property">@bindAllLinks</span>
+        <span class="keyword">if</span> <span class="property">@currentBoundViews</span>?.linkViews?
+            _.each <span class="property">@currentBoundViews</span>.linkViews, (linkView) =&gt; linkView.model.<span class="literal">off</span> <span class="string">"change"</span>, <span class="property">@bindAllLinks</span>
 
-        <span class="keyword">if</span> <span class="property">@currentBoundView</span>?.shapeViews?
-            _.each <span class="property">@currentBoundView</span>.shapeViews, (shapeView) =&gt; shapeView.model.<span class="literal">off</span> <span class="string">"change"</span>, <span class="property">@bindAllChildItems</span></pre></div></div>
+        <span class="keyword">if</span> <span class="property">@currentBoundViews</span>?.shapeViews?
+            _.each <span class="property">@currentBoundViews</span>.shapeViews, (shapeView) =&gt; shapeView.model.<span class="literal">off</span> <span class="string">"change"</span>, <span class="property">@bindAllChildItems</span></pre></div></div>
             
         </li>
         
@@ -590,15 +613,18 @@ and display its properties / related elements / links / etc.</p>
             </div>
             
             <div class="content"><div class='highlight'><pre>    bind: (view) =&gt;
-        <span class="property">@currentBoundView</span> = view
+        <span class="property">@currentBoundViews</span> = view
 
-        <span class="keyword">if</span> <span class="property">@currentBoundView</span>? <span class="keyword">and</span> <span class="property">@currentBoundView</span>.model?
+        <span class="keyword">if</span> <span class="property">@currentBoundViews</span>?
 
-            <span class="keyword">if</span> <span class="property">@currentBoundView</span>.linkViews?
-                _.each <span class="property">@currentBoundView</span>.linkViews, (linkView) =&gt; linkView.model.<span class="literal">on</span> <span class="string">"change"</span>, <span class="property">@bindAllLinks</span>
+            <span class="keyword">if</span> <span class="property">@currentBoundViews</span>.model?.id?
+                <span class="property">@$topDescription</span>.hide()
 
-            <span class="keyword">if</span> <span class="property">@currentBoundView</span>.shapeViews?
-                _.each <span class="property">@currentBoundView</span>.shapeViews, (childView) =&gt; childView.model.<span class="literal">on</span> <span class="string">"change"</span>, <span class="property">@bindAllChildItems</span></pre></div></div>
+                <span class="keyword">if</span> <span class="property">@currentBoundViews</span>.linkViews?
+                    _.each <span class="property">@currentBoundViews</span>.linkViews, (linkView) =&gt; linkView.model.<span class="literal">on</span> <span class="string">"change"</span>, <span class="property">@bindAllLinks</span>
+                <span class="keyword">if</span> <span class="property">@currentBoundViews</span>.shapeViews?
+                    _.each <span class="property">@currentBoundViews</span>.shapeViews, (childView) =&gt; childView.model.<span class="literal">on</span> <span class="string">"change"</span>, <span class="property">@bindAllChildItems</span>
+            <span class="keyword">else</span></pre></div></div>
             
         </li>
         
@@ -615,7 +641,10 @@ and display its properties / related elements / links / etc.</p>
             
             <div class="content"><div class='highlight'><pre>            <span class="property">@toggleForms</span> <span class="literal">true</span>
 
-        <span class="keyword">else</span></pre></div></div>
+        <span class="keyword">else</span>
+
+            <span class="property">@$topDescription</span>.text SystemApp.Messages.multipleShapesSelected
+            <span class="property">@$topDescription</span>.show()</pre></div></div>
             
         </li>
         
@@ -667,11 +696,11 @@ and display its properties / related elements / links / etc.</p>
             
             <div class="content"><div class='highlight'><pre>    toggleForms: (visible) =&gt;
         <span class="keyword">if</span> visible
-            <span class="property">@$el</span>.find(<span class="string">"h6"</span>).hide()
             <span class="property">@$el</span>.find(<span class="string">"h5,.panel"</span>).show()
         <span class="keyword">else</span>
             <span class="property">@$el</span>.find(<span class="string">"h5,.panel"</span>).hide()
-            <span class="property">@$el</span>.find(<span class="string">"h6"</span>).show()</pre></div></div>
+            <span class="property">@$topDescription</span>.text SystemApp.Messages.noShapeSelected
+            <span class="property">@$topDescription</span>.show()</pre></div></div>
             
         </li>
         
@@ -702,13 +731,13 @@ and display its properties / related elements / links / etc.</p>
             <div class="content"><div class='highlight'><pre>    bindAllAttributes: =&gt;
         <span class="property">@$attributesDiv</span>.empty()
 
-        <span class="keyword">if</span> <span class="property">@currentBoundView</span>?
+        <span class="keyword">if</span> <span class="property">@currentBoundViews</span>?.model?.id?
 
-            <span class="property">@bindAttribute</span> <span class="property">@currentBoundView</span>.model.id, <span class="string">"ID"</span>
-            entityObj = <span class="property">@currentBoundView</span>.model.entityObject
+            <span class="property">@bindAttribute</span> <span class="property">@currentBoundViews</span>.model.id, <span class="string">"ID"</span>
+            entityObj = <span class="property">@currentBoundViews</span>.model.entityObject
 
             <span class="keyword">if</span> entityObj?
-                <span class="property">@bindAttribute</span> <span class="property">@currentBoundView</span>.model.entityDefinitionId(), <span class="string">"Type"</span>
+                <span class="property">@bindAttribute</span> <span class="property">@currentBoundViews</span>.model.entityDefinitionId(), <span class="string">"Type"</span>
                 _.each entityObj.attributes, <span class="property">@bindAttribute</span>
             <span class="keyword">else</span>
                 span = $(document.createElement <span class="string">"span"</span>)
@@ -853,14 +882,14 @@ it is running.</p>
             </div>
             
             <div class="content"><div class='highlight'><pre>    bindParentDetails: =&gt;
-        <span class="keyword">if</span> <span class="keyword">not</span> <span class="property">@currentBoundView</span>?
+        <span class="keyword">if</span> <span class="keyword">not</span> <span class="property">@currentBoundViews</span>?.model?.id?
             <span class="keyword">return</span>
 
-        isShape = <span class="property">@currentBoundView</span>.constructor <span class="keyword">is</span> SystemApp.MapShapeView
+        isShape = <span class="property">@currentBoundViews</span>.constructor <span class="keyword">is</span> SystemApp.MapShapeView
 
         <span class="keyword">if</span> <span class="keyword">not</span> isShape
-            target = <span class="property">@parentView</span>.parentView.shapeViews[<span class="property">@currentBoundView</span>.model.targetId()]
-            parent = <span class="property">@parentView</span>.parentView.shapeViews[<span class="property">@currentBoundView</span>.model.sourceId()]
+            target = <span class="property">@parentView</span>.parentView.shapeViews[<span class="property">@currentBoundViews</span>.model.targetId()]
+            parent = <span class="property">@parentView</span>.parentView.shapeViews[<span class="property">@currentBoundViews</span>.model.sourceId()]
             parentText = parent.model.id + <span class="string">" - "</span> + target.model.id
 
         <span class="keyword">if</span> <span class="keyword">not</span> parent?
@@ -931,8 +960,8 @@ to search for it at the <a href="entityListView.html">Entity List View</a>.</p>
             <div class="content"><div class='highlight'><pre>    bindAllLinks: =&gt;
         <span class="property">@$linksDiv</span>.empty()
 
-        <span class="keyword">if</span> <span class="property">@currentBoundView</span>? <span class="keyword">and</span> <span class="property">@currentBoundView</span>?.linkViews? <span class="keyword">and</span> _.size(<span class="property">@currentBoundView</span>.linkViews) &gt; <span class="number">0</span>
-            _.each <span class="property">@currentBoundView</span>.linkViews, <span class="property">@bindLink</span></pre></div></div>
+        <span class="keyword">if</span> <span class="property">@currentBoundViews</span>? <span class="keyword">and</span> <span class="property">@currentBoundViews</span>?.linkViews? <span class="keyword">and</span> _.size(<span class="property">@currentBoundViews</span>.linkViews) &gt; <span class="number">0</span>
+            _.each <span class="property">@currentBoundViews</span>.linkViews, <span class="property">@bindLink</span></pre></div></div>
             
         </li>
         
@@ -948,11 +977,14 @@ to search for it at the <a href="entityListView.html">Entity List View</a>.</p>
             </div>
             
             <div class="content"><div class='highlight'><pre>    bindLink: (linkView) =&gt;
+        <span class="keyword">if</span> <span class="keyword">not</span> linkView?.model?.id?
+            <span class="keyword">return</span>
+
         div = $ document.createElement <span class="string">"div"</span>
         name = $ document.createElement <span class="string">"label"</span>
         value = $ document.createElement <span class="string">"span"</span>
 
-        <span class="keyword">if</span> linkView.model.sourceId() <span class="keyword">is</span> <span class="property">@currentBoundView</span>.model.id
+        <span class="keyword">if</span> linkView.model.sourceId() <span class="keyword">is</span> <span class="property">@currentBoundViews</span>.model.id
             target = linkView.model.targetId()
         <span class="keyword">else</span>
             target = linkView.model.sourceId()
@@ -1110,12 +1142,12 @@ to search for it at the <a href="entityListView.html">Entity List View</a>.</p>
         checkboxes = <span class="property">@$eventsDiv</span>.find <span class="string">"input"</span>
         checkboxes.prop <span class="string">"checked"</span>, <span class="literal">false</span>
 
-        <span class="keyword">if</span> <span class="keyword">not</span> <span class="property">@currentBoundView</span>?.model?.auditEventIds?
+        <span class="keyword">if</span> <span class="keyword">not</span> <span class="property">@currentBoundViews</span>?.model?.auditEventIds?
             <span class="property">@$eventsDiv</span>.hide()
             <span class="keyword">return</span>
 
         <span class="property">@$eventsDiv</span>.show()
-        ids = <span class="property">@currentBoundView</span>.model.auditEventIds()</pre></div></div>
+        ids = <span class="property">@currentBoundViews</span>.model.auditEventIds()</pre></div></div>
             
         </li>
         
@@ -1150,7 +1182,7 @@ Active alerts will have a small icon next to them, set via a CSS class.</p>
             </div>
             
             <div class="content"><div class='highlight'><pre>    bindActiveAuditEvents: =&gt;
-        <span class="keyword">if</span> <span class="keyword">not</span> <span class="property">@currentBoundView</span>?
+        <span class="keyword">if</span> <span class="keyword">not</span> <span class="property">@currentBoundViews</span>?
             <span class="keyword">return</span></pre></div></div>
             
         </li>
@@ -1181,8 +1213,8 @@ Active alerts will have a small icon next to them, set via a CSS class.</p>
 
             </div>
             
-            <div class="content"><div class='highlight'><pre>        <span class="keyword">if</span> <span class="property">@currentBoundView</span>.labelsView.activeAuditEvents?
-            _.each <span class="property">@currentBoundView</span>.labelsView.activeAuditEvents, (auditEvent) =&gt;
+            <div class="content"><div class='highlight'><pre>        <span class="keyword">if</span> <span class="property">@currentBoundViews</span>?.labelsView?.activeAuditEvents?
+            _.each <span class="property">@currentBoundViews</span>.labelsView.activeAuditEvents, (auditEvent) =&gt;
                 $(<span class="string">"#"</span> + SystemApp.Settings.AuditEvent.shapeCheckboxName + auditEvent.id).parent().addClass <span class="string">"active"</span></pre></div></div>
             
         </li>
@@ -1199,17 +1231,17 @@ Active alerts will have a small icon next to them, set via a CSS class.</p>
             </div>
             
             <div class="content"><div class='highlight'><pre>    eventCheckChange: (e) =&gt;
-        <span class="keyword">if</span> <span class="keyword">not</span> <span class="property">@currentBoundView</span>?
+        <span class="keyword">if</span> <span class="keyword">not</span> <span class="property">@currentBoundViews</span>?
             <span class="keyword">return</span>
 
         src = $ e.currentTarget
         checked = src.prop <span class="string">"checked"</span>
 
         <span class="keyword">if</span> checked
-            arr = _.union <span class="property">@currentBoundView</span>.model.auditEventIds(), e.data
+            arr = _.union <span class="property">@currentBoundViews</span>.model.auditEventIds(), e.data
         <span class="keyword">else</span>
-            arr = _.without <span class="property">@currentBoundView</span>.model.auditEventIds(), e.data
-            <span class="keyword">delete</span> <span class="property">@currentBoundView</span>.labelsView.activeAuditEvents[e.data]</pre></div></div>
+            arr = _.without <span class="property">@currentBoundViews</span>.model.auditEventIds(), e.data
+            <span class="keyword">delete</span> <span class="property">@currentBoundViews</span>.labelsView.activeAuditEvents[e.data]</pre></div></div>
             
         </li>
         
@@ -1225,7 +1257,7 @@ Active alerts will have a small icon next to them, set via a CSS class.</p>
             </div>
             
             <div class="content"><div class='highlight'><pre>        arr = _.without arr, <span class="literal">null</span>
-        <span class="property">@currentBoundView</span>.model.auditEventIds arr</pre></div></div>
+        <span class="property">@currentBoundViews</span>.model.auditEventIds arr</pre></div></div>
             
         </li>
         
@@ -1243,7 +1275,7 @@ and force reset the selected shape/link view to its original appearance.</p>
             
             <div class="content"><div class='highlight'><pre>        <span class="keyword">if</span> arr.length &lt; <span class="number">1</span>
             <span class="property">@$eventsDiv</span>.children(<span class="string">"div"</span>).removeClass <span class="string">"active"</span>
-            <span class="property">@currentBoundView</span>.render()</pre></div></div>
+            <span class="property">@currentBoundViews</span>.render()</pre></div></div>
             
         </li>
         
@@ -1258,7 +1290,7 @@ and force reset the selected shape/link view to its original appearance.</p>
 
             </div>
             
-            <div class="content"><div class='highlight'><pre>        <span class="property">@currentBoundView</span>.model.save()
+            <div class="content"><div class='highlight'><pre>        <span class="property">@currentBoundViews</span>.model.save()
         <span class="property">@parentView</span>.model.save()</pre></div></div>
             
         </li>

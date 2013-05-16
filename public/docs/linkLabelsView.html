@@ -154,8 +154,13 @@
               </a>
             
               
-              <a class="source" href="routes.html">
-                routes.coffee
+              <a class="source" href="adminRoutes.html">
+                adminRoutes.coffee
+              </a>
+            
+              
+              <a class="source" href="appRoutes.html">
+                appRoutes.coffee
               </a>
             
               
@@ -176,6 +181,21 @@
               
               <a class="source" href="vectors.html">
                 vectors.coffee
+              </a>
+            
+              
+              <a class="source" href="statusTabView.html">
+                statusTabView.coffee
+              </a>
+            
+              
+              <a class="source" href="toolsTabView.html">
+                toolsTabView.coffee
+              </a>
+            
+              
+              <a class="source" href="usersTabView.html">
+                usersTabView.coffee
               </a>
             
               
@@ -1106,7 +1126,7 @@ proceed with removing the label, or show the textbox for edition (call <code>sho
 
             </div>
             
-            <div class="content"><div class='highlight'><pre>        <span class="property">@parentView</span>.parentView.setCurrentElement <span class="property">@parentView</span>
+            <div class="content"><div class='highlight'><pre>        <span class="property">@parentView</span>.parentView.addToSelected <span class="property">@parentView</span>
 
         <span class="keyword">if</span> <span class="property">@parentView</span>.parentView.editEnabled
             <span class="keyword">if</span> <span class="property">@isEventDelete</span> e

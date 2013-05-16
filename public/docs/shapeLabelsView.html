@@ -154,8 +154,13 @@
               </a>
             
               
-              <a class="source" href="routes.html">
-                routes.coffee
+              <a class="source" href="adminRoutes.html">
+                adminRoutes.coffee
+              </a>
+            
+              
+              <a class="source" href="appRoutes.html">
+                appRoutes.coffee
               </a>
             
               
@@ -176,6 +181,21 @@
               
               <a class="source" href="vectors.html">
                 vectors.coffee
+              </a>
+            
+              
+              <a class="source" href="statusTabView.html">
+                statusTabView.coffee
+              </a>
+            
+              
+              <a class="source" href="toolsTabView.html">
+                toolsTabView.coffee
+              </a>
+            
+              
+              <a class="source" href="usersTabView.html">
+                usersTabView.coffee
               </a>
             
               
@@ -507,8 +527,7 @@ to 5 editable labels (left, top, right, bottom, center).</p>
             
             <div class="content"><div class='highlight'><pre>    setEvents: =&gt;
         <span class="property">@listenTo</span> SystemApp.mapEvents, <span class="string">"edit:toggle"</span>, <span class="property">@toggleEdit</span>
-        <span class="property">@listenTo</span> SystemApp.mapEvents, <span class="string">"zoom:in"</span>, <span class="property">@onZoom</span>
-        <span class="property">@listenTo</span> SystemApp.mapEvents, <span class="string">"zoom:out"</span>, <span class="property">@onZoom</span>
+        <span class="property">@listenTo</span> SystemApp.mapEvents, <span class="string">"zoom:set"</span>, <span class="property">@onZoom</span>
 
         <span class="property">@listenTo</span> <span class="property">@model</span>, <span class="string">"change:titleForeground"</span>, <span class="property">@setTitleForeground</span>
         <span class="property">@listenTo</span> <span class="property">@model</span>, <span class="string">"change:foreground"</span>, <span class="property">@setAllForeground</span>
@@ -679,7 +698,6 @@ the model&#39;s <code>textTitle</code>.</p>
         <span class="property">@toggleEdit</span> <span class="property">@mapView</span>.editEnabled
 
         <span class="property">@setPosition</span>()
-        <span class="property">@onZoom</span>()
 
         <span class="keyword">return</span> <span class="keyword">this</span></pre></div></div>
             
@@ -1278,8 +1296,13 @@ and if so, run these alerts.</p>
             <div class="content"><div class='highlight'><pre>    testAuditEvent: (auditEvent) =&gt;
         <span class="keyword">return</span> <span class="keyword">if</span> <span class="keyword">not</span> auditEvent?
 
-        labelValues = [<span class="property">@svgCenter</span>?.attr(<span class="string">"text"</span>), <span class="property">@svgLeft</span>?.attr(<span class="string">"text"</span>), <span class="property">@svgTop</span>?.attr(<span class="string">"text"</span>),
-                       <span class="property">@svgRight</span>?.attr(<span class="string">"text"</span>), <span class="property">@svgBottom</span>?.attr(<span class="string">"text"</span>), <span class="property">@svgTitle</span>?.attr(<span class="string">"text"</span>)]
+        labelValues =
+            center: <span class="property">@svgCenter</span>?.attr(<span class="string">"text"</span>)
+            left: <span class="property">@svgLeft</span>?.attr(<span class="string">"text"</span>)
+            top: <span class="property">@svgTop</span>?.attr(<span class="string">"text"</span>)
+            right: <span class="property">@svgRight</span>?.attr(<span class="string">"text"</span>)
+            bottom: <span class="property">@svgBottom</span>?.attr(<span class="string">"text"</span>)
+            title: <span class="property">@svgTitle</span>?.attr(<span class="string">"text"</span>)
 
         matchedRules = auditEvent.run labelValues</pre></div></div>
             
@@ -1451,7 +1474,7 @@ proceed with removing the label, or show the textbox for edition (call <code>sho
 
             </div>
             
-            <div class="content"><div class='highlight'><pre>        <span class="property">@mapView</span>.setCurrentElement <span class="property">@parentView</span>
+            <div class="content"><div class='highlight'><pre>        <span class="property">@mapView</span>.addToSelected <span class="property">@parentView</span>
 
         <span class="keyword">if</span> <span class="property">@mapView</span>.editEnabled
             <span class="keyword">if</span> <span class="property">@isEventDelete</span> e
@@ -1563,15 +1586,12 @@ the user can edit or bind values from an <a href="auditData.html">AuditData</a> 
               <div class="pilwrap ">
                 <a class="pilcrow" href="#section-58">&#182;</a>
               </div>
-              <p>When user zooms in or out, check the current zoom level and resize
-the labels accordingly. Fonts size will increase when zooming out,
-but won&#39;t decrease when zooming in (zoom more than 1).</p>
+              <p>When user zooms in or out, resize the labels accordingly.</p>
 
             </div>
             
-            <div class="content"><div class='highlight'><pre>    onZoom: (e) =&gt;
-        <span class="keyword">return</span> <span class="keyword">if</span> <span class="property">@mapView</span>.currentZoom &lt; <span class="number">1</span>
-        <span class="property">@setAllFontSizes</span> e</pre></div></div>
+            <div class="content"><div class='highlight'><pre>    onZoom: =&gt;
+        <span class="property">@setAllFontSizes</span>()</pre></div></div>
             
         </li>
         
@@ -1619,7 +1639,7 @@ the map in or out.</p>
 
             </div>
             
-            <div class="content"><div class='highlight'><pre>    setTitleForeground: (e) =&gt;
+            <div class="content"><div class='highlight'><pre>    setTitleForeground: =&gt;
         <span class="property">@setForeground</span> <span class="property">@svgTitle</span>, <span class="property">@model</span>.titleForeground()</pre></div></div>
             
         </li>
@@ -1635,7 +1655,7 @@ the map in or out.</p>
 
             </div>
             
-            <div class="content"><div class='highlight'><pre>    setAllForeground: (e) =&gt;
+            <div class="content"><div class='highlight'><pre>    setAllForeground: =&gt;
         <span class="property">@setForeground</span> svg, <span class="property">@model</span>.foreground() <span class="keyword">for</span> svg <span class="keyword">in</span> [<span class="property">@svgCenter</span>, <span class="property">@svgLeft</span>, <span class="property">@svgTop</span>, <span class="property">@svgRight</span>, <span class="property">@svgBottom</span>]</pre></div></div>
             
         </li>
@@ -1651,7 +1671,7 @@ the map in or out.</p>
 
             </div>
             
-            <div class="content"><div class='highlight'><pre>    setAllFontSizes: (e) =&gt;
+            <div class="content"><div class='highlight'><pre>    setAllFontSizes: =&gt;
         zoom = <span class="number">1</span>
         zoom = <span class="property">@mapView</span>.currentZoom <span class="keyword">if</span> <span class="property">@mapView</span>.currentZoom &gt; <span class="number">1</span>
 

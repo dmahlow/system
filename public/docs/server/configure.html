@@ -39,6 +39,11 @@
               </a>
             
               
+              <a class="source" href="mail.html">
+                mail.coffee
+              </a>
+            
+              
               <a class="source" href="manager.html">
                 manager.coffee
               </a>
@@ -216,8 +221,12 @@ handlers and init all the necessary modules.</p>
             
             <div class="content"><div class='highlight'><pre>    app.configure -&gt;
         process.setMaxListeners <span class="number">30</span>
-        process.<span class="literal">on</span> <span class="string">"uncaughtException"</span>, (err) -&gt; sockets.sendServerError <span class="string">"Proc unhandled exception!"</span>, err
-        app.<span class="literal">on</span> <span class="string">"uncaughtException"</span>, (err) -&gt; sockets.sendServerError <span class="string">"App unhandled exception!"</span>, err</pre></div></div>
+        process.<span class="literal">on</span> <span class="string">"uncaughtException"</span>, (err) -&gt;
+            sockets.sendServerError <span class="string">"Proc unhandled exception!"</span>, err
+            console.error <span class="string">"Proc unhandled exception!"</span>, err
+        app.<span class="literal">on</span> <span class="string">"uncaughtException"</span>, (err) -&gt;
+            sockets.sendServerError <span class="string">"App unhandled exception!"</span>, err
+            console.error <span class="string">"App unhandled exception!"</span>, err</pre></div></div>
             
         </li>
         

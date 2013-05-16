@@ -154,8 +154,13 @@
               </a>
             
               
-              <a class="source" href="routes.html">
-                routes.coffee
+              <a class="source" href="adminRoutes.html">
+                adminRoutes.coffee
+              </a>
+            
+              
+              <a class="source" href="appRoutes.html">
+                appRoutes.coffee
               </a>
             
               
@@ -176,6 +181,21 @@
               
               <a class="source" href="vectors.html">
                 vectors.coffee
+              </a>
+            
+              
+              <a class="source" href="statusTabView.html">
+                statusTabView.coffee
+              </a>
+            
+              
+              <a class="source" href="toolsTabView.html">
+                toolsTabView.coffee
+              </a>
+            
+              
+              <a class="source" href="usersTabView.html">
+                usersTabView.coffee
               </a>
             
               
@@ -364,6 +384,7 @@ and <a href="link.html">Links</a>, and specific sizes and colours.</p>
             <div class="content"><div class='highlight'><pre><span class="class"><span class="keyword">class</span> <span class="title">SystemApp</span>.<span class="title">Map</span> <span class="keyword">extends</span> <span class="title">SystemApp</span>.<span class="title">BaseModel</span></span>
     typeName: <span class="string">"Map"</span>
     defaults:
+        createdByUserId: <span class="literal">null</span>
         background: SystemApp.Settings.Map.background
         paperSizeX: SystemApp.Settings.Map.paperSizeX
         paperSizeY: SystemApp.Settings.Map.paperSizeY
@@ -398,6 +419,24 @@ and <a href="link.html">Links</a>, and specific sizes and colours.</p>
               <div class="pilwrap ">
                 <a class="pilcrow" href="#section-4">&#182;</a>
               </div>
+              <p>Helper to get / set the ID of user who created the map.</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>    createdByUserId: (value) =&gt;
+        <span class="keyword">if</span> value?
+            <span class="property">@set</span> <span class="string">"createdByUserId"</span>, value
+        <span class="property">@get</span> <span class="string">"createdByUserId"</span></pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-5">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-5">&#182;</a>
+              </div>
               <p>Helper to get / set the map name.</p>
 
             </div>
@@ -410,11 +449,11 @@ and <a href="link.html">Links</a>, and specific sizes and colours.</p>
         </li>
         
         
-        <li id="section-5">
+        <li id="section-6">
             <div class="annotation">
               
               <div class="pilwrap ">
-                <a class="pilcrow" href="#section-5">&#182;</a>
+                <a class="pilcrow" href="#section-6">&#182;</a>
               </div>
               <p>Helper to get / set the map creation date.</p>
 
@@ -428,11 +467,11 @@ and <a href="link.html">Links</a>, and specific sizes and colours.</p>
         </li>
         
         
-        <li id="section-6">
+        <li id="section-7">
             <div class="annotation">
               
               <div class="pilwrap ">
-                <a class="pilcrow" href="#section-6">&#182;</a>
+                <a class="pilcrow" href="#section-7">&#182;</a>
               </div>
               <p>Helper to get / set the map background: a color or image url.</p>
 
@@ -446,11 +485,11 @@ and <a href="link.html">Links</a>, and specific sizes and colours.</p>
         </li>
         
         
-        <li id="section-7">
+        <li id="section-8">
             <div class="annotation">
               
               <div class="pilwrap ">
-                <a class="pilcrow" href="#section-7">&#182;</a>
+                <a class="pilcrow" href="#section-8">&#182;</a>
               </div>
               <p>Helper to get / set the map paper X size, in pixels.</p>
 
@@ -464,11 +503,11 @@ and <a href="link.html">Links</a>, and specific sizes and colours.</p>
         </li>
         
         
-        <li id="section-8">
+        <li id="section-9">
             <div class="annotation">
               
               <div class="pilwrap ">
-                <a class="pilcrow" href="#section-8">&#182;</a>
+                <a class="pilcrow" href="#section-9">&#182;</a>
               </div>
               <p>Helper to get / set the map paper Y size, in pixels.</p>
 
@@ -482,11 +521,11 @@ and <a href="link.html">Links</a>, and specific sizes and colours.</p>
         </li>
         
         
-        <li id="section-9">
+        <li id="section-10">
             <div class="annotation">
               
               <div class="pilwrap ">
-                <a class="pilcrow" href="#section-9">&#182;</a>
+                <a class="pilcrow" href="#section-10">&#182;</a>
               </div>
               <p>Helper to get / set the map grid X size, in pixels. This represents the distance between vertical lines.</p>
 
@@ -500,11 +539,11 @@ and <a href="link.html">Links</a>, and specific sizes and colours.</p>
         </li>
         
         
-        <li id="section-10">
+        <li id="section-11">
             <div class="annotation">
               
               <div class="pilwrap ">
-                <a class="pilcrow" href="#section-10">&#182;</a>
+                <a class="pilcrow" href="#section-11">&#182;</a>
               </div>
               <p>Helper to get / set the map grid Y size, in pixels. This represents the distance between horizontal lines.</p>
 
@@ -518,11 +557,11 @@ and <a href="link.html">Links</a>, and specific sizes and colours.</p>
         </li>
         
         
-        <li id="section-11">
+        <li id="section-12">
             <div class="annotation">
               
               <div class="pilwrap ">
-                <a class="pilcrow" href="#section-11">&#182;</a>
+                <a class="pilcrow" href="#section-12">&#182;</a>
               </div>
               <p>Helper to get / set the map init script.</p>
 
@@ -536,11 +575,11 @@ and <a href="link.html">Links</a>, and specific sizes and colours.</p>
         </li>
         
         
-        <li id="section-12">
+        <li id="section-13">
             <div class="annotation">
               
               <div class="pilwrap ">
-                <a class="pilcrow" href="#section-12">&#182;</a>
+                <a class="pilcrow" href="#section-13">&#182;</a>
               </div>
               <p>Helper to get / set the map silent mode.</p>
 
@@ -554,11 +593,11 @@ and <a href="link.html">Links</a>, and specific sizes and colours.</p>
         </li>
         
         
-        <li id="section-13">
+        <li id="section-14">
             <div class="annotation">
               
               <div class="pilwrap ">
-                <a class="pilcrow" href="#section-13">&#182;</a>
+                <a class="pilcrow" href="#section-14">&#182;</a>
               </div>
               <p>Helper to get / set the shapes and their positions on the map. This must set as a <a href="shape.html">ShapeCollection</a>.</p>
 
@@ -573,11 +612,11 @@ and <a href="link.html">Links</a>, and specific sizes and colours.</p>
         </li>
         
         
-        <li id="section-14">
+        <li id="section-15">
             <div class="annotation">
               
               <div class="pilwrap ">
-                <a class="pilcrow" href="#section-14">&#182;</a>
+                <a class="pilcrow" href="#section-15">&#182;</a>
               </div>
               <p>Helper to get / set the links between shapes on the map. This must set as a <a href="link.html">LinkCollection</a>.</p>
 
@@ -592,11 +631,11 @@ and <a href="link.html">Links</a>, and specific sizes and colours.</p>
         </li>
         
         
-        <li id="section-15">
+        <li id="section-16">
             <div class="annotation">
               
               <div class="pilwrap ">
-                <a class="pilcrow" href="#section-15">&#182;</a>
+                <a class="pilcrow" href="#section-16">&#182;</a>
               </div>
               <p>Helper to get / set the last date when the map&#39;s thumbnail was generated.</p>
 
@@ -610,11 +649,11 @@ and <a href="link.html">Links</a>, and specific sizes and colours.</p>
         </li>
         
         
-        <li id="section-16">
+        <li id="section-17">
             <div class="annotation">
               
               <div class="pilwrap ">
-                <a class="pilcrow" href="#section-16">&#182;</a>
+                <a class="pilcrow" href="#section-17">&#182;</a>
               </div>
               <p>Helper to get / set the username who created the map.</p>
 
@@ -628,11 +667,11 @@ and <a href="link.html">Links</a>, and specific sizes and colours.</p>
         </li>
         
         
-        <li id="section-17">
+        <li id="section-18">
             <div class="annotation">
               
               <div class="pilwrap ">
-                <a class="pilcrow" href="#section-17">&#182;</a>
+                <a class="pilcrow" href="#section-18">&#182;</a>
               </div>
               <p>Helper to get the map&#39;s URL key based on its name: replace all spaces and special characters.</p>
 
@@ -644,11 +683,11 @@ and <a href="link.html">Links</a>, and specific sizes and colours.</p>
         </li>
         
         
-        <li id="section-18">
+        <li id="section-19">
             <div class="annotation">
               
               <div class="pilwrap for-h2">
-                <a class="pilcrow" href="#section-18">&#182;</a>
+                <a class="pilcrow" href="#section-19">&#182;</a>
               </div>
               <h2>VALIDATE</h2>
 
@@ -657,11 +696,11 @@ and <a href="link.html">Links</a>, and specific sizes and colours.</p>
         </li>
         
         
-        <li id="section-19">
+        <li id="section-20">
             <div class="annotation">
               
               <div class="pilwrap ">
-                <a class="pilcrow" href="#section-19">&#182;</a>
+                <a class="pilcrow" href="#section-20">&#182;</a>
               </div>
               <p>All validation rules should be put inside this method.</p>
 
@@ -672,11 +711,11 @@ and <a href="link.html">Links</a>, and specific sizes and colours.</p>
         </li>
         
         
-        <li id="section-20">
+        <li id="section-21">
             <div class="annotation">
               
               <div class="pilwrap ">
-                <a class="pilcrow" href="#section-20">&#182;</a>
+                <a class="pilcrow" href="#section-21">&#182;</a>
               </div>
               <p>Name must be set.</p>
 
@@ -688,11 +727,11 @@ and <a href="link.html">Links</a>, and specific sizes and colours.</p>
         </li>
         
         
-        <li id="section-21">
+        <li id="section-22">
             <div class="annotation">
               
               <div class="pilwrap ">
-                <a class="pilcrow" href="#section-21">&#182;</a>
+                <a class="pilcrow" href="#section-22">&#182;</a>
               </div>
               <p>Grid size X can&#39;t be too low.</p>
 
@@ -704,11 +743,11 @@ and <a href="link.html">Links</a>, and specific sizes and colours.</p>
         </li>
         
         
-        <li id="section-22">
+        <li id="section-23">
             <div class="annotation">
               
               <div class="pilwrap ">
-                <a class="pilcrow" href="#section-22">&#182;</a>
+                <a class="pilcrow" href="#section-23">&#182;</a>
               </div>
               <p>Grid size Y can&#39;t be too low.</p>
 
@@ -720,11 +759,11 @@ and <a href="link.html">Links</a>, and specific sizes and colours.</p>
         </li>
         
         
-        <li id="section-23">
+        <li id="section-24">
             <div class="annotation">
               
               <div class="pilwrap ">
-                <a class="pilcrow" href="#section-23">&#182;</a>
+                <a class="pilcrow" href="#section-24">&#182;</a>
               </div>
               <p>Paper size X can&#39;t be too low.</p>
 
@@ -736,11 +775,11 @@ and <a href="link.html">Links</a>, and specific sizes and colours.</p>
         </li>
         
         
-        <li id="section-24">
+        <li id="section-25">
             <div class="annotation">
               
               <div class="pilwrap ">
-                <a class="pilcrow" href="#section-24">&#182;</a>
+                <a class="pilcrow" href="#section-25">&#182;</a>
               </div>
               <p>Paper size Y can&#39;t be too low.</p>
 
@@ -752,11 +791,11 @@ and <a href="link.html">Links</a>, and specific sizes and colours.</p>
         </li>
         
         
-        <li id="section-25">
+        <li id="section-26">
             <div class="annotation">
               
               <div class="pilwrap for-h2">
-                <a class="pilcrow" href="#section-25">&#182;</a>
+                <a class="pilcrow" href="#section-26">&#182;</a>
               </div>
               <h2>SHAPE AND LINK METHODS</h2>
 
@@ -765,11 +804,11 @@ and <a href="link.html">Links</a>, and specific sizes and colours.</p>
         </li>
         
         
-        <li id="section-26">
+        <li id="section-27">
             <div class="annotation">
               
               <div class="pilwrap ">
-                <a class="pilcrow" href="#section-26">&#182;</a>
+                <a class="pilcrow" href="#section-27">&#182;</a>
               </div>
               <p>Removes a <a href="shape.html">Shape</a> from the <code>shapes</code> collection.</p>
 
@@ -784,11 +823,11 @@ and <a href="link.html">Links</a>, and specific sizes and colours.</p>
         </li>
         
         
-        <li id="section-27">
+        <li id="section-28">
             <div class="annotation">
               
               <div class="pilwrap ">
-                <a class="pilcrow" href="#section-27">&#182;</a>
+                <a class="pilcrow" href="#section-28">&#182;</a>
               </div>
               <p>Removes a all links related to the specified <a href="shape.html">Shape</a> from the <code>links</code> collection.</p>
 
@@ -802,11 +841,11 @@ and <a href="link.html">Links</a>, and specific sizes and colours.</p>
         </li>
         
         
-        <li id="section-28">
+        <li id="section-29">
             <div class="annotation">
               
               <div class="pilwrap ">
-                <a class="pilcrow" href="#section-28">&#182;</a>
+                <a class="pilcrow" href="#section-29">&#182;</a>
               </div>
               <p>Remove a <a href="link.html">Link</a> from the <code>links</code> collection.</p>
 
@@ -819,11 +858,11 @@ and <a href="link.html">Links</a>, and specific sizes and colours.</p>
         </li>
         
         
-        <li id="section-29">
+        <li id="section-30">
             <div class="annotation">
               
               <div class="pilwrap ">
-                <a class="pilcrow" href="#section-29">&#182;</a>
+                <a class="pilcrow" href="#section-30">&#182;</a>
               </div>
               <p>Clear all links which have invalid <code>sourceId</code> or <code>targetId</code>.</p>
 
@@ -843,11 +882,11 @@ and <a href="link.html">Links</a>, and specific sizes and colours.</p>
         </li>
         
         
-        <li id="section-30">
+        <li id="section-31">
             <div class="annotation">
               
               <div class="pilwrap for-h2">
-                <a class="pilcrow" href="#section-30">&#182;</a>
+                <a class="pilcrow" href="#section-31">&#182;</a>
               </div>
               <h2>MAP COLLECTION</h2>
 
@@ -856,11 +895,11 @@ and <a href="link.html">Links</a>, and specific sizes and colours.</p>
         </li>
         
         
-        <li id="section-31">
+        <li id="section-32">
             <div class="annotation">
               
               <div class="pilwrap ">
-                <a class="pilcrow" href="#section-31">&#182;</a>
+                <a class="pilcrow" href="#section-32">&#182;</a>
               </div>
               <p>Represents a collection of maps.</p>
 
@@ -874,11 +913,11 @@ and <a href="link.html">Links</a>, and specific sizes and colours.</p>
         </li>
         
         
-        <li id="section-32">
+        <li id="section-33">
             <div class="annotation">
               
               <div class="pilwrap ">
-                <a class="pilcrow" href="#section-32">&#182;</a>
+                <a class="pilcrow" href="#section-33">&#182;</a>
               </div>
               <p>Set the comparator function to order the maps collection by name.</p>
 

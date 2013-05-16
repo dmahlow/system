@@ -154,8 +154,13 @@
               </a>
             
               
-              <a class="source" href="routes.html">
-                routes.coffee
+              <a class="source" href="adminRoutes.html">
+                adminRoutes.coffee
+              </a>
+            
+              
+              <a class="source" href="appRoutes.html">
+                appRoutes.coffee
               </a>
             
               
@@ -176,6 +181,21 @@
               
               <a class="source" href="vectors.html">
                 vectors.coffee
+              </a>
+            
+              
+              <a class="source" href="statusTabView.html">
+                statusTabView.coffee
+              </a>
+            
+              
+              <a class="source" href="toolsTabView.html">
+                toolsTabView.coffee
+              </a>
+            
+              
+              <a class="source" href="usersTabView.html">
+                usersTabView.coffee
               </a>
             
               
@@ -987,7 +1007,6 @@ presses the &quot;Esc&quot; key.</p>
             <div class="content"><div class='highlight'><pre>    exportToSvg: =&gt;
         <span class="keyword">return</span> <span class="keyword">if</span> <span class="keyword">not</span> <span class="property">@model</span>?
 
-        <span class="property">@parentView</span>.parentView.setCurrentElement <span class="literal">null</span>
         newWindow = window.open <span class="string">"about:blank"</span>, <span class="string">"ExportSVG"</span>
         newWindow.document.title = <span class="string">"Exported SVG: "</span> + <span class="property">@model</span>.name()
         newWindow.document.write <span class="property">@parentView</span>.parentView.$el.html()

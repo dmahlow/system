@@ -154,8 +154,13 @@
               </a>
             
               
-              <a class="source" href="routes.html">
-                routes.coffee
+              <a class="source" href="adminRoutes.html">
+                adminRoutes.coffee
+              </a>
+            
+              
+              <a class="source" href="appRoutes.html">
+                appRoutes.coffee
               </a>
             
               
@@ -176,6 +181,21 @@
               
               <a class="source" href="vectors.html">
                 vectors.coffee
+              </a>
+            
+              
+              <a class="source" href="statusTabView.html">
+                statusTabView.coffee
+              </a>
+            
+              
+              <a class="source" href="toolsTabView.html">
+                toolsTabView.coffee
+              </a>
+            
+              
+              <a class="source" href="usersTabView.html">
+                usersTabView.coffee
               </a>
             
               
@@ -388,6 +408,7 @@
             </div>
             
             <div class="content"><div class='highlight'><pre>    accessDenied: <span class="string">"Access denied!"</span>
+    attention: <span class="string">"Attention!"</span>
     auditDataRefresh: <span class="string">"Audit data refresh"</span>
     availableSources: <span class="string">"Available sources..."</span>
     cancel: <span class="string">"Cancel"</span>
@@ -398,21 +419,27 @@
     current: <span class="string">"Current value"</span>
     custom: <span class="string">"Custom"</span>
     dataSaved: <span class="string">"Data saved!"</span>
+    elementsSelected: <span class="string">"elements selected"</span>
     error: <span class="string">"Error"</span>
     lastUpdate: <span class="string">"Last update"</span>
     mapInfoStats: <span class="string">"#S shapes, #L links"</span>
+    multipleShapesSelected: <span class="string">"Multiple shapes selected!"</span>
     newLink: <span class="string">"NEW LINK"</span>
     noIcon: <span class="string">"No icon"</span>
     noLabel: <span class="string">"No label"</span>
     noLabelsSet: <span class="string">"No labels set..."</span>
-    noShapeSelected: <span class="string">"No shape(s) selected"</span>
+    noShapeSelected: <span class="string">"No shape(s) or link(s) selected"</span>
     pleaseSelectAnAlert: <span class="string">"Please select an alert..."</span>
     removeLink: <span class="string">"Remove link"</span>
     removeShape: <span class="string">"Remove shape"</span>
     rowActionCount: <span class="string">"# action(s)"</span>
     rowRuleCount: <span class="string">"# rule(s)"</span>
+    saved: <span class="string">"Saved!"</span>
     saveDetails: <span class="string">"Save details"</span>
     saveVariable: <span class="string">"Save variable"</span>
+    scheduledRefreshAlert: <span class="string">"The app is scheduled to refresh the whole page in a few seconds (#)!&lt;br /&gt;
+                            If you do not wish the page to refresh, please click on this panel."</span>
+    scripted: <span class="string">"Scripted"</span>
     searchWatermark: <span class="string">"Search entities..."</span>
     server: <span class="string">"SERVER"</span>
     startLocalMapText: <span class="string">"Use the Local Test Map to try the System App features."</span></pre></div></div>
@@ -445,8 +472,8 @@
             <div class="content"><div class='highlight'><pre>    tooltipItemId: <span class="string">"Enter the unique ID for this model. No spaces or special characters allowed."</span>
     tooltipEventRuleComparator: <span class="string">"Select one of the alert comparator values: equals, not equals,
                                  greater than w/wo, less than w/wo."</span>
-    tooltipEventRuleSource: <span class="string">"Enter the alert SOURCE value. Can be a static or an audit data value (beginning with $)."</span>
-    tooltipEventRuleTarget: <span class="string">"Enter the alert TARGET value. Can be a static or an audit data value (beginning with $)."</span>
+    tooltipEventRuleSource: <span class="string">"Enter the alert SOURCE value. Can be a static or an audit data value (beginning with #)."</span>
+    tooltipEventRuleTarget: <span class="string">"Enter the alert TARGET value. Can be a static or an audit data value (beginning with #)."</span>
     tooltipEventActionShapeId: <span class="string">"If you want the alert to happen on a specific shape, please enter the Shape ID here.
                                 Otherwise it will happen on shapes that have the specified Audit Data property bound."</span>
     tooltipEventActionType: <span class="string">"Select one of the action types."</span>

@@ -154,8 +154,13 @@
               </a>
             
               
-              <a class="source" href="routes.html">
-                routes.coffee
+              <a class="source" href="adminRoutes.html">
+                adminRoutes.coffee
+              </a>
+            
+              
+              <a class="source" href="appRoutes.html">
+                appRoutes.coffee
               </a>
             
               
@@ -176,6 +181,21 @@
               
               <a class="source" href="vectors.html">
                 vectors.coffee
+              </a>
+            
+              
+              <a class="source" href="statusTabView.html">
+                statusTabView.coffee
+              </a>
+            
+              
+              <a class="source" href="toolsTabView.html">
+                toolsTabView.coffee
+              </a>
+            
+              
+              <a class="source" href="usersTabView.html">
+                usersTabView.coffee
               </a>
             
               
@@ -420,7 +440,7 @@
             </div>
             
             <div class="content"><div class='highlight'><pre>    dispose: =&gt;
-        <span class="property">@removeShadow</span>()
+        <span class="property">@unhilight</span>()
 
         <span class="property">@labelsView</span>?.dispose()
         <span class="property">@svg</span>?.remove()
@@ -585,7 +605,7 @@ mouse button and on the current modifier keys for the user.</p>
             <div class="content"><div class='highlight'><pre>        <span class="keyword">if</span> <span class="property">@isEventDelete</span> e
             <span class="property">@blinkAndRemove</span>()
         <span class="keyword">else</span>
-            <span class="property">@parentView</span>.setCurrentElement <span class="keyword">this</span></pre></div></div>
+            <span class="property">@parentView</span>.addToSelected <span class="keyword">this</span></pre></div></div>
             
         </li>
         
@@ -790,13 +810,13 @@ but won&#39;t decrease when zooming in (zoom more than 1).</p>
 new border for a period of time - default 1400ms, set on the
 <a href="settings.html">Settings</a> - and if after that period the
 shape is still selected, then set its border back to the &quot;selected&quot; style
-by calling the <code>createShadow</code> method.</p>
+by calling the <code>highlight</code> method.</p>
 
             </div>
             
             <div class="content"><div class='highlight'><pre>    strokeUpdatedBackToSelected: =&gt;
         <span class="keyword">if</span> <span class="property">@parentView</span>.currentShape?.model.id <span class="keyword">is</span> <span class="property">@model</span>.id
-            <span class="property">@createShadow</span>()</pre></div></div>
+            <span class="property">@highlight</span>()</pre></div></div>
             
         </li>
         
@@ -847,7 +867,7 @@ If times is 1 and the <code>callback</code> is specified, call it when it has fi
 
             </div>
             
-            <div class="content"><div class='highlight'><pre>    createShadow: (color, strength) =&gt;
+            <div class="content"><div class='highlight'><pre>    highlight: (color, strength) =&gt;
         color = SystemApp.Settings.Map.shadowColor <span class="keyword">if</span> <span class="keyword">not</span> color?
         strength = SystemApp.Settings.Map.shadowStrength <span class="keyword">if</span> <span class="keyword">not</span> strength?
 
@@ -866,7 +886,7 @@ If times is 1 and the <code>callback</code> is specified, call it when it has fi
 
             </div>
             
-            <div class="content"><div class='highlight'><pre>    removeShadow: =&gt;
+            <div class="content"><div class='highlight'><pre>    unhilight: =&gt;
         <span class="property">@svg</span>?.svgLine.attr {<span class="string">"stroke"</span>: <span class="property">@model</span>.stroke(), <span class="string">"stroke-width"</span>: <span class="property">@model</span>.strokeWidth()}</pre></div></div>
             
         </li>

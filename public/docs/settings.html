@@ -154,8 +154,13 @@
               </a>
             
               
-              <a class="source" href="routes.html">
-                routes.coffee
+              <a class="source" href="adminRoutes.html">
+                adminRoutes.coffee
+              </a>
+            
+              
+              <a class="source" href="appRoutes.html">
+                appRoutes.coffee
               </a>
             
               
@@ -176,6 +181,21 @@
               
               <a class="source" href="vectors.html">
                 vectors.coffee
+              </a>
+            
+              
+              <a class="source" href="statusTabView.html">
+                statusTabView.coffee
+              </a>
+            
+              
+              <a class="source" href="toolsTabView.html">
+                toolsTabView.coffee
+              </a>
+            
+              
+              <a class="source" href="usersTabView.html">
+                usersTabView.coffee
               </a>
             
               
@@ -521,11 +541,11 @@ If not set, it will be <code>false</code> on production environments and <code>t
               <div class="pilwrap ">
                 <a class="pilcrow" href="#section-13">&#182;</a>
               </div>
-              <p>Refresh the browser if the page has been idle for more than X minutes.</p>
+              <p>Time in ms to fade out removed elements on the view.</p>
 
             </div>
             
-            <div class="content"><div class='highlight'><pre>        idleRefreshMinutes: <span class="number">60</span></pre></div></div>
+            <div class="content"><div class='highlight'><pre>        fadeRemoveDelay: <span class="number">800</span></pre></div></div>
             
         </li>
         
@@ -536,11 +556,11 @@ If not set, it will be <code>false</code> on production environments and <code>t
               <div class="pilwrap ">
                 <a class="pilcrow" href="#section-14">&#182;</a>
               </div>
-              <p>The idle timer interval (tick every X milliseconds).</p>
+              <p>Refresh the browser if the page has been idle for more than X minutes.</p>
 
             </div>
             
-            <div class="content"><div class='highlight'><pre>        idleTimerInterval: <span class="number">60000</span></pre></div></div>
+            <div class="content"><div class='highlight'><pre>        idleRefreshMinutes: <span class="number">60</span></pre></div></div>
             
         </li>
         
@@ -551,11 +571,11 @@ If not set, it will be <code>false</code> on production environments and <code>t
               <div class="pilwrap ">
                 <a class="pilcrow" href="#section-15">&#182;</a>
               </div>
-              <p>How many milliseconds to compare when checking local storage expiry date.</p>
+              <p>The idle timer interval (tick every X milliseconds).</p>
 
             </div>
             
-            <div class="content"><div class='highlight'><pre>        localDataLifespan: <span class="number">120000</span></pre></div></div>
+            <div class="content"><div class='highlight'><pre>        idleTimerInterval: <span class="number">60000</span></pre></div></div>
             
         </li>
         
@@ -566,11 +586,11 @@ If not set, it will be <code>false</code> on production environments and <code>t
               <div class="pilwrap ">
                 <a class="pilcrow" href="#section-16">&#182;</a>
               </div>
-              <p>How many parallels tasks can run by default? For example when refreshing shape labels.</p>
+              <p>How many milliseconds to compare when checking local storage expiry date.</p>
 
             </div>
             
-            <div class="content"><div class='highlight'><pre>        maxParallelTasks: <span class="number">10</span></pre></div></div>
+            <div class="content"><div class='highlight'><pre>        localDataLifespan: <span class="number">120000</span></pre></div></div>
             
         </li>
         
@@ -581,11 +601,11 @@ If not set, it will be <code>false</code> on production environments and <code>t
               <div class="pilwrap ">
                 <a class="pilcrow" href="#section-17">&#182;</a>
               </div>
-              <p>Pool time to watch for the fetching property of data collections.</p>
+              <p>How many parallels tasks can run by default? For example when refreshing shape labels.</p>
 
             </div>
             
-            <div class="content"><div class='highlight'><pre>        refetchDelay: <span class="number">600</span></pre></div></div>
+            <div class="content"><div class='highlight'><pre>        maxParallelTasks: <span class="number">10</span></pre></div></div>
             
         </li>
         
@@ -596,11 +616,11 @@ If not set, it will be <code>false</code> on production environments and <code>t
               <div class="pilwrap ">
                 <a class="pilcrow" href="#section-18">&#182;</a>
               </div>
-              <p>The url to the proxy downloader (used to download external files).</p>
+              <p>Pool time to watch for the fetching property of data collections.</p>
 
             </div>
             
-            <div class="content"><div class='highlight'><pre>        remoteDownloaderUrl: <span class="string">"downloader/"</span></pre></div></div>
+            <div class="content"><div class='highlight'><pre>        refetchDelay: <span class="number">600</span></pre></div></div>
             
         </li>
         
@@ -610,6 +630,21 @@ If not set, it will be <code>false</code> on production environments and <code>t
               
               <div class="pilwrap ">
                 <a class="pilcrow" href="#section-19">&#182;</a>
+              </div>
+              <p>The url to the proxy downloader (used to download external files).</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>        remoteDownloaderUrl: <span class="string">"downloader/"</span></pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-20">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-20">&#182;</a>
               </div>
               <p>Minimum time in ms between saves to the remote MongoDB database.
 Please note that all data will ALWAYS be saved locally.</p>
@@ -621,11 +656,11 @@ Please note that all data will ALWAYS be saved locally.</p>
         </li>
         
         
-        <li id="section-20">
+        <li id="section-21">
             <div class="annotation">
               
               <div class="pilwrap ">
-                <a class="pilcrow" href="#section-20">&#182;</a>
+                <a class="pilcrow" href="#section-21">&#182;</a>
               </div>
               <p>If true, only updated info will be saved to the server, otherwise
 the whole model will be sent.</p>
@@ -637,11 +672,11 @@ the whole model will be sent.</p>
         </li>
         
         
-        <li id="section-21">
+        <li id="section-22">
             <div class="annotation">
               
               <div class="pilwrap ">
-                <a class="pilcrow" href="#section-21">&#182;</a>
+                <a class="pilcrow" href="#section-22">&#182;</a>
               </div>
               <p>Delay when using a text field to search, on the EntityListView for example.</p>
 
@@ -652,29 +687,15 @@ the whole model will be sent.</p>
         </li>
         
         
-        <li id="section-22">
-            <div class="annotation">
-              
-              <div class="pilwrap for-h2">
-                <a class="pilcrow" href="#section-22">&#182;</a>
-              </div>
-              <h2>MENU</h2>
-
-            </div>
-            
-        </li>
-        
-        
         <li id="section-23">
             <div class="annotation">
               
-              <div class="pilwrap ">
+              <div class="pilwrap for-h2">
                 <a class="pilcrow" href="#section-23">&#182;</a>
               </div>
-              
+              <h2>ENTITY DEFINITIONS</h2>
+
             </div>
-            
-            <div class="content"><div class='highlight'><pre>    Menu:</pre></div></div>
             
         </li>
         
@@ -685,11 +706,10 @@ the whole model will be sent.</p>
               <div class="pilwrap ">
                 <a class="pilcrow" href="#section-24">&#182;</a>
               </div>
-              <p>Timeout to hide submenus when mouse leaves them.</p>
-
+              
             </div>
             
-            <div class="content"><div class='highlight'><pre>        hideTimeout: <span class="number">400</span></pre></div></div>
+            <div class="content"><div class='highlight'><pre>    EntityDefinition:</pre></div></div>
             
         </li>
         
@@ -700,48 +720,6 @@ the whole model will be sent.</p>
               <div class="pilwrap ">
                 <a class="pilcrow" href="#section-25">&#182;</a>
               </div>
-              <p>Prefix of the ID of submenu items.</p>
-
-            </div>
-            
-            <div class="content"><div class='highlight'><pre>        subPrefix: <span class="string">"menu-filter-"</span></pre></div></div>
-            
-        </li>
-        
-        
-        <li id="section-26">
-            <div class="annotation">
-              
-              <div class="pilwrap for-h2">
-                <a class="pilcrow" href="#section-26">&#182;</a>
-              </div>
-              <h2>ENTITY DEFINITIONS</h2>
-
-            </div>
-            
-        </li>
-        
-        
-        <li id="section-27">
-            <div class="annotation">
-              
-              <div class="pilwrap ">
-                <a class="pilcrow" href="#section-27">&#182;</a>
-              </div>
-              
-            </div>
-            
-            <div class="content"><div class='highlight'><pre>    EntityDefinition:</pre></div></div>
-            
-        </li>
-        
-        
-        <li id="section-28">
-            <div class="annotation">
-              
-              <div class="pilwrap ">
-                <a class="pilcrow" href="#section-28">&#182;</a>
-              </div>
               <p>The default URL where to get entities from.</p>
 
             </div>
@@ -751,11 +729,11 @@ the whole model will be sent.</p>
         </li>
         
         
-        <li id="section-29">
+        <li id="section-26">
             <div class="annotation">
               
               <div class="pilwrap ">
-                <a class="pilcrow" href="#section-29">&#182;</a>
+                <a class="pilcrow" href="#section-26">&#182;</a>
               </div>
               <p>Maximum allowed refresh interval for entities, in seconds.</p>
 
@@ -766,11 +744,11 @@ the whole model will be sent.</p>
         </li>
         
         
-        <li id="section-30">
+        <li id="section-27">
             <div class="annotation">
               
               <div class="pilwrap ">
-                <a class="pilcrow" href="#section-30">&#182;</a>
+                <a class="pilcrow" href="#section-27">&#182;</a>
               </div>
               <p>Minimum allowed refresh interval for entities, in seconds.</p>
 
@@ -781,11 +759,11 @@ the whole model will be sent.</p>
         </li>
         
         
-        <li id="section-31">
+        <li id="section-28">
             <div class="annotation">
               
               <div class="pilwrap ">
-                <a class="pilcrow" href="#section-31">&#182;</a>
+                <a class="pilcrow" href="#section-28">&#182;</a>
               </div>
               <p>The default attribute which defines the ID of entity objects.</p>
 
@@ -796,11 +774,11 @@ the whole model will be sent.</p>
         </li>
         
         
-        <li id="section-32">
+        <li id="section-29">
             <div class="annotation">
               
               <div class="pilwrap ">
-                <a class="pilcrow" href="#section-32">&#182;</a>
+                <a class="pilcrow" href="#section-29">&#182;</a>
               </div>
               <p>The default attribute which defines the title or name of entity objects.</p>
 
@@ -811,11 +789,11 @@ the whole model will be sent.</p>
         </li>
         
         
-        <li id="section-33">
+        <li id="section-30">
             <div class="annotation">
               
               <div class="pilwrap ">
-                <a class="pilcrow" href="#section-33">&#182;</a>
+                <a class="pilcrow" href="#section-30">&#182;</a>
               </div>
               <p>The default interval to refresh entity objects, in seconds.</p>
 
@@ -826,11 +804,11 @@ the whole model will be sent.</p>
         </li>
         
         
-        <li id="section-34">
+        <li id="section-31">
             <div class="annotation">
               
               <div class="pilwrap ">
-                <a class="pilcrow" href="#section-34">&#182;</a>
+                <a class="pilcrow" href="#section-31">&#182;</a>
               </div>
               <p>Prefix of DOM IDs set on each row representing an item on the EntityDefinitionView.</p>
 
@@ -841,11 +819,11 @@ the whole model will be sent.</p>
         </li>
         
         
-        <li id="section-35">
+        <li id="section-32">
             <div class="annotation">
               
               <div class="pilwrap ">
-                <a class="pilcrow" href="#section-35">&#182;</a>
+                <a class="pilcrow" href="#section-32">&#182;</a>
               </div>
               <p>The URL served as proxy between the server and the entity source URL.</p>
 
@@ -856,11 +834,11 @@ the whole model will be sent.</p>
         </li>
         
         
-        <li id="section-36">
+        <li id="section-33">
             <div class="annotation">
               
               <div class="pilwrap for-h2">
-                <a class="pilcrow" href="#section-36">&#182;</a>
+                <a class="pilcrow" href="#section-33">&#182;</a>
               </div>
               <h2>ENTITY OBJECTS</h2>
 
@@ -869,11 +847,11 @@ the whole model will be sent.</p>
         </li>
         
         
-        <li id="section-37">
+        <li id="section-34">
             <div class="annotation">
               
               <div class="pilwrap ">
-                <a class="pilcrow" href="#section-37">&#182;</a>
+                <a class="pilcrow" href="#section-34">&#182;</a>
               </div>
               
             </div>
@@ -883,11 +861,11 @@ the whole model will be sent.</p>
         </li>
         
         
-        <li id="section-38">
+        <li id="section-35">
             <div class="annotation">
               
               <div class="pilwrap ">
-                <a class="pilcrow" href="#section-38">&#182;</a>
+                <a class="pilcrow" href="#section-35">&#182;</a>
               </div>
               <p>The default URL where to get entities from.</p>
 
@@ -898,11 +876,11 @@ the whole model will be sent.</p>
         </li>
         
         
-        <li id="section-39">
+        <li id="section-36">
             <div class="annotation">
               
               <div class="pilwrap ">
-                <a class="pilcrow" href="#section-39">&#182;</a>
+                <a class="pilcrow" href="#section-36">&#182;</a>
               </div>
               <p>The namespace used for data binding.</p>
 
@@ -913,11 +891,11 @@ the whole model will be sent.</p>
         </li>
         
         
-        <li id="section-40">
+        <li id="section-37">
             <div class="annotation">
               
               <div class="pilwrap ">
-                <a class="pilcrow" href="#section-40">&#182;</a>
+                <a class="pilcrow" href="#section-37">&#182;</a>
               </div>
               <p>The default attribute which defines the ID of entity objects.</p>
 
@@ -928,11 +906,11 @@ the whole model will be sent.</p>
         </li>
         
         
-        <li id="section-41">
+        <li id="section-38">
             <div class="annotation">
               
               <div class="pilwrap ">
-                <a class="pilcrow" href="#section-41">&#182;</a>
+                <a class="pilcrow" href="#section-38">&#182;</a>
               </div>
               <p>The default interval to refresh entity objects, in seconds.</p>
 
@@ -943,11 +921,11 @@ the whole model will be sent.</p>
         </li>
         
         
-        <li id="section-42">
+        <li id="section-39">
             <div class="annotation">
               
               <div class="pilwrap ">
-                <a class="pilcrow" href="#section-42">&#182;</a>
+                <a class="pilcrow" href="#section-39">&#182;</a>
               </div>
               <p>The default attribute which defines the title or name of entity objects.</p>
 
@@ -958,11 +936,11 @@ the whole model will be sent.</p>
         </li>
         
         
-        <li id="section-43">
+        <li id="section-40">
             <div class="annotation">
               
               <div class="pilwrap for-h2">
-                <a class="pilcrow" href="#section-43">&#182;</a>
+                <a class="pilcrow" href="#section-40">&#182;</a>
               </div>
               <h2>MAP</h2>
 
@@ -971,11 +949,11 @@ the whole model will be sent.</p>
         </li>
         
         
-        <li id="section-44">
+        <li id="section-41">
             <div class="annotation">
               
               <div class="pilwrap ">
-                <a class="pilcrow" href="#section-44">&#182;</a>
+                <a class="pilcrow" href="#section-41">&#182;</a>
               </div>
               
             </div>
@@ -985,11 +963,11 @@ the whole model will be sent.</p>
         </li>
         
         
-        <li id="section-45">
+        <li id="section-42">
             <div class="annotation">
               
               <div class="pilwrap ">
-                <a class="pilcrow" href="#section-45">&#182;</a>
+                <a class="pilcrow" href="#section-42">&#182;</a>
               </div>
               <p>The id of the map background element.</p>
 
@@ -1000,11 +978,11 @@ the whole model will be sent.</p>
         </li>
         
         
-        <li id="section-46">
+        <li id="section-43">
             <div class="annotation">
               
               <div class="pilwrap ">
-                <a class="pilcrow" href="#section-46">&#182;</a>
+                <a class="pilcrow" href="#section-43">&#182;</a>
               </div>
               <p>The url to the map(s) JSON.</p>
 
@@ -1015,11 +993,11 @@ the whole model will be sent.</p>
         </li>
         
         
-        <li id="section-47">
+        <li id="section-44">
             <div class="annotation">
               
               <div class="pilwrap ">
-                <a class="pilcrow" href="#section-47">&#182;</a>
+                <a class="pilcrow" href="#section-44">&#182;</a>
               </div>
               <p>The default background color or image.</p>
 
@@ -1030,41 +1008,41 @@ the whole model will be sent.</p>
         </li>
         
         
-        <li id="section-48">
+        <li id="section-45">
             <div class="annotation">
               
               <div class="pilwrap ">
-                <a class="pilcrow" href="#section-48">&#182;</a>
+                <a class="pilcrow" href="#section-45">&#182;</a>
               </div>
               <p>Shape or link blink internval in ms.</p>
 
             </div>
             
-            <div class="content"><div class='highlight'><pre>        blinkInterval: <span class="number">80</span></pre></div></div>
+            <div class="content"><div class='highlight'><pre>        blinkInterval: <span class="number">50</span></pre></div></div>
             
         </li>
         
         
-        <li id="section-49">
+        <li id="section-46">
             <div class="annotation">
               
               <div class="pilwrap ">
-                <a class="pilcrow" href="#section-49">&#182;</a>
+                <a class="pilcrow" href="#section-46">&#182;</a>
               </div>
               <p>Shape or link blink internval in ms.</p>
 
             </div>
             
-            <div class="content"><div class='highlight'><pre>        blinkSlowInterval: <span class="number">320</span></pre></div></div>
+            <div class="content"><div class='highlight'><pre>        blinkSlowInterval: <span class="number">250</span></pre></div></div>
             
         </li>
         
         
-        <li id="section-50">
+        <li id="section-47">
             <div class="annotation">
               
               <div class="pilwrap ">
-                <a class="pilcrow" href="#section-50">&#182;</a>
+                <a class="pilcrow" href="#section-47">&#182;</a>
               </div>
               <p>How long to display the updated border on the map,
 before it resets to the &quot;selected shape&quot; border style.</p>
@@ -1076,11 +1054,11 @@ before it resets to the &quot;selected shape&quot; border style.</p>
         </li>
         
         
-        <li id="section-51">
+        <li id="section-48">
             <div class="annotation">
               
               <div class="pilwrap ">
-                <a class="pilcrow" href="#section-51">&#182;</a>
+                <a class="pilcrow" href="#section-48">&#182;</a>
               </div>
               <p>Radius of rounded shape corners. Used only for rounded shapes.</p>
 
@@ -1091,11 +1069,11 @@ before it resets to the &quot;selected shape&quot; border style.</p>
         </li>
         
         
-        <li id="section-52">
+        <li id="section-49">
             <div class="annotation">
               
               <div class="pilwrap ">
-                <a class="pilcrow" href="#section-52">&#182;</a>
+                <a class="pilcrow" href="#section-49">&#182;</a>
               </div>
               <p>Name of the default colour palette when no palette is selected.</p>
 
@@ -1106,11 +1084,11 @@ before it resets to the &quot;selected shape&quot; border style.</p>
         </li>
         
         
-        <li id="section-53">
+        <li id="section-50">
             <div class="annotation">
               
               <div class="pilwrap ">
-                <a class="pilcrow" href="#section-53">&#182;</a>
+                <a class="pilcrow" href="#section-50">&#182;</a>
               </div>
               <p>Properties available to be shown on map options. Separated by |, and equivalent properties
 separated by commas.</p>
@@ -1122,11 +1100,11 @@ separated by commas.</p>
         </li>
         
         
-        <li id="section-54">
+        <li id="section-51">
             <div class="annotation">
               
               <div class="pilwrap ">
-                <a class="pilcrow" href="#section-54">&#182;</a>
+                <a class="pilcrow" href="#section-51">&#182;</a>
               </div>
               <p>The URL to the background SVG editor.</p>
 
@@ -1137,11 +1115,11 @@ separated by commas.</p>
         </li>
         
         
-        <li id="section-55">
+        <li id="section-52">
             <div class="annotation">
               
               <div class="pilwrap ">
-                <a class="pilcrow" href="#section-55">&#182;</a>
+                <a class="pilcrow" href="#section-52">&#182;</a>
               </div>
               <p>On the &quot;Entity List&quot; DOM, add this prefix to each entity list item.</p>
 
@@ -1152,11 +1130,11 @@ separated by commas.</p>
         </li>
         
         
-        <li id="section-56">
+        <li id="section-53">
             <div class="annotation">
               
               <div class="pilwrap ">
-                <a class="pilcrow" href="#section-56">&#182;</a>
+                <a class="pilcrow" href="#section-53">&#182;</a>
               </div>
               <p>All grid path elements will have this prefix + line number as ID.</p>
 
@@ -1167,11 +1145,11 @@ separated by commas.</p>
         </li>
         
         
-        <li id="section-57">
+        <li id="section-54">
             <div class="annotation">
               
               <div class="pilwrap ">
-                <a class="pilcrow" href="#section-57">&#182;</a>
+                <a class="pilcrow" href="#section-54">&#182;</a>
               </div>
               <p>The default shape width in pixels.</p>
 
@@ -1182,11 +1160,11 @@ separated by commas.</p>
         </li>
         
         
-        <li id="section-58">
+        <li id="section-55">
             <div class="annotation">
               
               <div class="pilwrap ">
-                <a class="pilcrow" href="#section-58">&#182;</a>
+                <a class="pilcrow" href="#section-55">&#182;</a>
               </div>
               <p>The default shape height in pixels.</p>
 
@@ -1197,11 +1175,11 @@ separated by commas.</p>
         </li>
         
         
-        <li id="section-59">
+        <li id="section-56">
             <div class="annotation">
               
               <div class="pilwrap ">
-                <a class="pilcrow" href="#section-59">&#182;</a>
+                <a class="pilcrow" href="#section-56">&#182;</a>
               </div>
               <p>The default grid stroke color.</p>
 
@@ -1212,11 +1190,11 @@ separated by commas.</p>
         </li>
         
         
-        <li id="section-60">
+        <li id="section-57">
             <div class="annotation">
               
               <div class="pilwrap ">
-                <a class="pilcrow" href="#section-60">&#182;</a>
+                <a class="pilcrow" href="#section-57">&#182;</a>
               </div>
               <p>The opacity of action icons when mouse is NOT over them.</p>
 
@@ -1227,11 +1205,11 @@ separated by commas.</p>
         </li>
         
         
-        <li id="section-61">
+        <li id="section-58">
             <div class="annotation">
               
               <div class="pilwrap ">
-                <a class="pilcrow" href="#section-61">&#182;</a>
+                <a class="pilcrow" href="#section-58">&#182;</a>
               </div>
               <p>Size of the shape action icons (add label, link).</p>
 
@@ -1242,11 +1220,11 @@ separated by commas.</p>
         </li>
         
         
-        <li id="section-62">
+        <li id="section-59">
             <div class="annotation">
               
               <div class="pilwrap ">
-                <a class="pilcrow" href="#section-62">&#182;</a>
+                <a class="pilcrow" href="#section-59">&#182;</a>
               </div>
               <p>The URL to the shape &quot;add label&quot; icon.</p>
 
@@ -1257,11 +1235,11 @@ separated by commas.</p>
         </li>
         
         
-        <li id="section-63">
+        <li id="section-60">
             <div class="annotation">
               
               <div class="pilwrap ">
-                <a class="pilcrow" href="#section-63">&#182;</a>
+                <a class="pilcrow" href="#section-60">&#182;</a>
               </div>
               <p>The URL to the shape &quot;linker&quot; icon.</p>
 
@@ -1272,11 +1250,11 @@ separated by commas.</p>
         </li>
         
         
-        <li id="section-64">
+        <li id="section-61">
             <div class="annotation">
               
               <div class="pilwrap ">
-                <a class="pilcrow" href="#section-64">&#182;</a>
+                <a class="pilcrow" href="#section-61">&#182;</a>
               </div>
               <p>The URL to the shape &quot;resizer&quot; icon.</p>
 
@@ -1287,11 +1265,11 @@ separated by commas.</p>
         </li>
         
         
-        <li id="section-65">
+        <li id="section-62">
             <div class="annotation">
               
               <div class="pilwrap ">
-                <a class="pilcrow" href="#section-65">&#182;</a>
+                <a class="pilcrow" href="#section-62">&#182;</a>
               </div>
               <p>The shape label Y offset relative to the parent shape.</p>
 
@@ -1302,11 +1280,11 @@ separated by commas.</p>
         </li>
         
         
-        <li id="section-66">
+        <li id="section-63">
             <div class="annotation">
               
               <div class="pilwrap ">
-                <a class="pilcrow" href="#section-66">&#182;</a>
+                <a class="pilcrow" href="#section-63">&#182;</a>
               </div>
               <p>The default font size for shape labels.</p>
 
@@ -1317,11 +1295,11 @@ separated by commas.</p>
         </li>
         
         
-        <li id="section-67">
+        <li id="section-64">
             <div class="annotation">
               
               <div class="pilwrap ">
-                <a class="pilcrow" href="#section-67">&#182;</a>
+                <a class="pilcrow" href="#section-64">&#182;</a>
               </div>
               <p>The refresh interval to update shapes, links and label values.</p>
 
@@ -1332,11 +1310,11 @@ separated by commas.</p>
         </li>
         
         
-        <li id="section-68">
+        <li id="section-65">
             <div class="annotation">
               
               <div class="pilwrap ">
-                <a class="pilcrow" href="#section-68">&#182;</a>
+                <a class="pilcrow" href="#section-65">&#182;</a>
               </div>
               <p>Maximum zoom amount allowed.</p>
 
@@ -1347,11 +1325,11 @@ separated by commas.</p>
         </li>
         
         
-        <li id="section-69">
+        <li id="section-66">
             <div class="annotation">
               
               <div class="pilwrap ">
-                <a class="pilcrow" href="#section-69">&#182;</a>
+                <a class="pilcrow" href="#section-66">&#182;</a>
               </div>
               <p>Minimum grid size in pixels (distance between grid lines).</p>
 
@@ -1362,11 +1340,11 @@ separated by commas.</p>
         </li>
         
         
-        <li id="section-70">
+        <li id="section-67">
             <div class="annotation">
               
               <div class="pilwrap ">
-                <a class="pilcrow" href="#section-70">&#182;</a>
+                <a class="pilcrow" href="#section-67">&#182;</a>
               </div>
               <p>Minimum size of shapes when resizing, whereas 3 means shapes can&#39;t be smaller than 2 grid blocks.</p>
 
@@ -1377,11 +1355,11 @@ separated by commas.</p>
         </li>
         
         
-        <li id="section-71">
+        <li id="section-68">
             <div class="annotation">
               
               <div class="pilwrap ">
-                <a class="pilcrow" href="#section-71">&#182;</a>
+                <a class="pilcrow" href="#section-68">&#182;</a>
               </div>
               <p>The minimum map paper size (width and height) in pixels.</p>
 
@@ -1392,11 +1370,11 @@ separated by commas.</p>
         </li>
         
         
-        <li id="section-72">
+        <li id="section-69">
             <div class="annotation">
               
               <div class="pilwrap ">
-                <a class="pilcrow" href="#section-72">&#182;</a>
+                <a class="pilcrow" href="#section-69">&#182;</a>
               </div>
               <p>Minimum zoom amount allowed.</p>
 
@@ -1407,11 +1385,11 @@ separated by commas.</p>
         </li>
         
         
-        <li id="section-73">
+        <li id="section-70">
             <div class="annotation">
               
               <div class="pilwrap ">
-                <a class="pilcrow" href="#section-73">&#182;</a>
+                <a class="pilcrow" href="#section-70">&#182;</a>
               </div>
               <p>For how long a mao is considered &quot;new&quot; (for example on the top menu),
 value is defined in seconds. Default is 5 minutes.</p>
@@ -1423,11 +1401,11 @@ value is defined in seconds. Default is 5 minutes.</p>
         </li>
         
         
-        <li id="section-74">
+        <li id="section-71">
             <div class="annotation">
               
               <div class="pilwrap ">
-                <a class="pilcrow" href="#section-74">&#182;</a>
+                <a class="pilcrow" href="#section-71">&#182;</a>
               </div>
               <p>The opacity of map shapes when dragging.</p>
 
@@ -1438,11 +1416,11 @@ value is defined in seconds. Default is 5 minutes.</p>
         </li>
         
         
-        <li id="section-75">
+        <li id="section-72">
             <div class="annotation">
               
               <div class="pilwrap ">
-                <a class="pilcrow" href="#section-75">&#182;</a>
+                <a class="pilcrow" href="#section-72">&#182;</a>
               </div>
               <p>The opacity interval when animating map shapes, in milliseconds.</p>
 
@@ -1453,11 +1431,11 @@ value is defined in seconds. Default is 5 minutes.</p>
         </li>
         
         
-        <li id="section-76">
+        <li id="section-73">
             <div class="annotation">
               
               <div class="pilwrap ">
-                <a class="pilcrow" href="#section-76">&#182;</a>
+                <a class="pilcrow" href="#section-73">&#182;</a>
               </div>
               <p>The static opacity for map objects.</p>
 
@@ -1468,11 +1446,11 @@ value is defined in seconds. Default is 5 minutes.</p>
         </li>
         
         
-        <li id="section-77">
+        <li id="section-74">
             <div class="annotation">
               
               <div class="pilwrap ">
-                <a class="pilcrow" href="#section-77">&#182;</a>
+                <a class="pilcrow" href="#section-74">&#182;</a>
               </div>
               <p>The default map paper X size.</p>
 
@@ -1483,11 +1461,11 @@ value is defined in seconds. Default is 5 minutes.</p>
         </li>
         
         
-        <li id="section-78">
+        <li id="section-75">
             <div class="annotation">
               
               <div class="pilwrap ">
-                <a class="pilcrow" href="#section-78">&#182;</a>
+                <a class="pilcrow" href="#section-75">&#182;</a>
               </div>
               <p>The default map paper Y size.</p>
 
@@ -1498,11 +1476,11 @@ value is defined in seconds. Default is 5 minutes.</p>
         </li>
         
         
-        <li id="section-79">
+        <li id="section-76">
             <div class="annotation">
               
               <div class="pilwrap ">
-                <a class="pilcrow" href="#section-79">&#182;</a>
+                <a class="pilcrow" href="#section-76">&#182;</a>
               </div>
               <p>The reference (or target) shape shadow color when creating links.</p>
 
@@ -1513,11 +1491,11 @@ value is defined in seconds. Default is 5 minutes.</p>
         </li>
         
         
-        <li id="section-80">
+        <li id="section-77">
             <div class="annotation">
               
               <div class="pilwrap ">
-                <a class="pilcrow" href="#section-80">&#182;</a>
+                <a class="pilcrow" href="#section-77">&#182;</a>
               </div>
               <p>The default shape shadow color.</p>
 
@@ -1528,11 +1506,11 @@ value is defined in seconds. Default is 5 minutes.</p>
         </li>
         
         
-        <li id="section-81">
+        <li id="section-78">
             <div class="annotation">
               
               <div class="pilwrap ">
-                <a class="pilcrow" href="#section-81">&#182;</a>
+                <a class="pilcrow" href="#section-78">&#182;</a>
               </div>
               <p>Delay to show the shadow (to make sure it will have the correct size after snaping the shape to the grid).</p>
 
@@ -1543,11 +1521,11 @@ value is defined in seconds. Default is 5 minutes.</p>
         </li>
         
         
-        <li id="section-82">
+        <li id="section-79">
             <div class="annotation">
               
               <div class="pilwrap ">
-                <a class="pilcrow" href="#section-82">&#182;</a>
+                <a class="pilcrow" href="#section-79">&#182;</a>
               </div>
               <p>The default shape shadow opacity.</p>
 
@@ -1558,11 +1536,11 @@ value is defined in seconds. Default is 5 minutes.</p>
         </li>
         
         
-        <li id="section-83">
+        <li id="section-80">
             <div class="annotation">
               
               <div class="pilwrap ">
-                <a class="pilcrow" href="#section-83">&#182;</a>
+                <a class="pilcrow" href="#section-80">&#182;</a>
               </div>
               <p>The default shape shadow strength.</p>
 
@@ -1573,11 +1551,11 @@ value is defined in seconds. Default is 5 minutes.</p>
         </li>
         
         
-        <li id="section-84">
+        <li id="section-81">
             <div class="annotation">
               
               <div class="pilwrap ">
-                <a class="pilcrow" href="#section-84">&#182;</a>
+                <a class="pilcrow" href="#section-81">&#182;</a>
               </div>
               <p>The default padding to apply to labels inside shapes (does not include the border).</p>
 
@@ -1588,11 +1566,11 @@ value is defined in seconds. Default is 5 minutes.</p>
         </li>
         
         
-        <li id="section-85">
+        <li id="section-82">
             <div class="annotation">
               
               <div class="pilwrap ">
-                <a class="pilcrow" href="#section-85">&#182;</a>
+                <a class="pilcrow" href="#section-82">&#182;</a>
               </div>
               <p>The base URL where map thumbnails are located.</p>
 
@@ -1603,11 +1581,11 @@ value is defined in seconds. Default is 5 minutes.</p>
         </li>
         
         
-        <li id="section-86">
+        <li id="section-83">
             <div class="annotation">
               
               <div class="pilwrap ">
-                <a class="pilcrow" href="#section-86">&#182;</a>
+                <a class="pilcrow" href="#section-83">&#182;</a>
               </div>
               <p>The maximum age of the map&#39;s thumbnail before it&#39;s allowed to generate a new thumbnail again, in ms.</p>
 
@@ -1618,11 +1596,11 @@ value is defined in seconds. Default is 5 minutes.</p>
         </li>
         
         
-        <li id="section-87">
+        <li id="section-84">
             <div class="annotation">
               
               <div class="pilwrap ">
-                <a class="pilcrow" href="#section-87">&#182;</a>
+                <a class="pilcrow" href="#section-84">&#182;</a>
               </div>
               <p>The default shape title color is white.</p>
 
@@ -1633,11 +1611,11 @@ value is defined in seconds. Default is 5 minutes.</p>
         </li>
         
         
-        <li id="section-88">
+        <li id="section-85">
             <div class="annotation">
               
               <div class="pilwrap ">
-                <a class="pilcrow" href="#section-88">&#182;</a>
+                <a class="pilcrow" href="#section-85">&#182;</a>
               </div>
               <p>The default shape title shadow color is black.</p>
 
@@ -1648,11 +1626,11 @@ value is defined in seconds. Default is 5 minutes.</p>
         </li>
         
         
-        <li id="section-89">
+        <li id="section-86">
             <div class="annotation">
               
               <div class="pilwrap ">
-                <a class="pilcrow" href="#section-89">&#182;</a>
+                <a class="pilcrow" href="#section-86">&#182;</a>
               </div>
               <p>The shape title Y offset, upwards (so in this case 10 pixels on top of the shape).</p>
 
@@ -1663,11 +1641,11 @@ value is defined in seconds. Default is 5 minutes.</p>
         </li>
         
         
-        <li id="section-90">
+        <li id="section-87">
             <div class="annotation">
               
               <div class="pilwrap ">
-                <a class="pilcrow" href="#section-90">&#182;</a>
+                <a class="pilcrow" href="#section-87">&#182;</a>
               </div>
               <p>How many milliseconds to wait before auto hiding the z-index identifiers on shapes.</p>
 
@@ -1678,11 +1656,11 @@ value is defined in seconds. Default is 5 minutes.</p>
         </li>
         
         
-        <li id="section-91">
+        <li id="section-88">
             <div class="annotation">
               
               <div class="pilwrap ">
-                <a class="pilcrow" href="#section-91">&#182;</a>
+                <a class="pilcrow" href="#section-88">&#182;</a>
               </div>
               <p>Zoom step while zooming (0.10 means will zoom in or out 10%).</p>
 
@@ -1693,11 +1671,26 @@ value is defined in seconds. Default is 5 minutes.</p>
         </li>
         
         
-        <li id="section-92">
+        <li id="section-89">
             <div class="annotation">
               
               <div class="pilwrap ">
-                <a class="pilcrow" href="#section-92">&#182;</a>
+                <a class="pilcrow" href="#section-89">&#182;</a>
+              </div>
+              <p>How long to wait before updating labels whem zooming, in milliseconds.</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>        zoomUpdateDelay: <span class="number">400</span></pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-90">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-90">&#182;</a>
               </div>
               <p>Properties to ignore on the shape details tab.</p>
 
@@ -1709,11 +1702,11 @@ value is defined in seconds. Default is 5 minutes.</p>
         </li>
         
         
-        <li id="section-93">
+        <li id="section-91">
             <div class="annotation">
               
               <div class="pilwrap for-h2">
-                <a class="pilcrow" href="#section-93">&#182;</a>
+                <a class="pilcrow" href="#section-91">&#182;</a>
               </div>
               <h2>MAP MOVER</h2>
 
@@ -1722,11 +1715,11 @@ value is defined in seconds. Default is 5 minutes.</p>
         </li>
         
         
-        <li id="section-94">
+        <li id="section-92">
             <div class="annotation">
               
               <div class="pilwrap ">
-                <a class="pilcrow" href="#section-94">&#182;</a>
+                <a class="pilcrow" href="#section-92">&#182;</a>
               </div>
               
             </div>
@@ -1736,11 +1729,11 @@ value is defined in seconds. Default is 5 minutes.</p>
         </li>
         
         
-        <li id="section-95">
+        <li id="section-93">
             <div class="annotation">
               
               <div class="pilwrap ">
-                <a class="pilcrow" href="#section-95">&#182;</a>
+                <a class="pilcrow" href="#section-93">&#182;</a>
               </div>
               <p>The map shapes mover background.</p>
 
@@ -1751,11 +1744,11 @@ value is defined in seconds. Default is 5 minutes.</p>
         </li>
         
         
-        <li id="section-96">
+        <li id="section-94">
             <div class="annotation">
               
               <div class="pilwrap ">
-                <a class="pilcrow" href="#section-96">&#182;</a>
+                <a class="pilcrow" href="#section-94">&#182;</a>
               </div>
               <p>The map shapes mover opacity.</p>
 
@@ -1766,11 +1759,11 @@ value is defined in seconds. Default is 5 minutes.</p>
         </li>
         
         
-        <li id="section-97">
+        <li id="section-95">
             <div class="annotation">
               
               <div class="pilwrap ">
-                <a class="pilcrow" href="#section-97">&#182;</a>
+                <a class="pilcrow" href="#section-95">&#182;</a>
               </div>
               <p>The shape shadow color when moving multiple shapes.</p>
 
@@ -1781,11 +1774,11 @@ value is defined in seconds. Default is 5 minutes.</p>
         </li>
         
         
-        <li id="section-98">
+        <li id="section-96">
             <div class="annotation">
               
               <div class="pilwrap for-h2">
-                <a class="pilcrow" href="#section-98">&#182;</a>
+                <a class="pilcrow" href="#section-96">&#182;</a>
               </div>
               <h2>SHAPES</h2>
 
@@ -1794,11 +1787,11 @@ value is defined in seconds. Default is 5 minutes.</p>
         </li>
         
         
-        <li id="section-99">
+        <li id="section-97">
             <div class="annotation">
               
               <div class="pilwrap ">
-                <a class="pilcrow" href="#section-99">&#182;</a>
+                <a class="pilcrow" href="#section-97">&#182;</a>
               </div>
               
             </div>
@@ -1808,11 +1801,11 @@ value is defined in seconds. Default is 5 minutes.</p>
         </li>
         
         
-        <li id="section-100">
+        <li id="section-98">
             <div class="annotation">
               
               <div class="pilwrap ">
-                <a class="pilcrow" href="#section-100">&#182;</a>
+                <a class="pilcrow" href="#section-98">&#182;</a>
               </div>
               <p>The default shape background color.</p>
 
@@ -1823,11 +1816,11 @@ value is defined in seconds. Default is 5 minutes.</p>
         </li>
         
         
-        <li id="section-101">
+        <li id="section-99">
             <div class="annotation">
               
               <div class="pilwrap ">
-                <a class="pilcrow" href="#section-101">&#182;</a>
+                <a class="pilcrow" href="#section-99">&#182;</a>
               </div>
               <p>The namespace used for data binding.</p>
 
@@ -1838,11 +1831,11 @@ value is defined in seconds. Default is 5 minutes.</p>
         </li>
         
         
-        <li id="section-102">
+        <li id="section-100">
             <div class="annotation">
               
               <div class="pilwrap ">
-                <a class="pilcrow" href="#section-102">&#182;</a>
+                <a class="pilcrow" href="#section-100">&#182;</a>
               </div>
               <p>ID of custom shapes.</p>
 
@@ -1853,11 +1846,11 @@ value is defined in seconds. Default is 5 minutes.</p>
         </li>
         
         
-        <li id="section-103">
+        <li id="section-101">
             <div class="annotation">
               
               <div class="pilwrap ">
-                <a class="pilcrow" href="#section-103">&#182;</a>
+                <a class="pilcrow" href="#section-101">&#182;</a>
               </div>
               <p>Text of custom shapes.</p>
 
@@ -1868,11 +1861,11 @@ value is defined in seconds. Default is 5 minutes.</p>
         </li>
         
         
-        <li id="section-104">
+        <li id="section-102">
             <div class="annotation">
               
               <div class="pilwrap ">
-                <a class="pilcrow" href="#section-104">&#182;</a>
+                <a class="pilcrow" href="#section-102">&#182;</a>
               </div>
               <p>The default shape format (rect or circle).</p>
 
@@ -1883,11 +1876,11 @@ value is defined in seconds. Default is 5 minutes.</p>
         </li>
         
         
-        <li id="section-105">
+        <li id="section-103">
             <div class="annotation">
               
               <div class="pilwrap ">
-                <a class="pilcrow" href="#section-105">&#182;</a>
+                <a class="pilcrow" href="#section-103">&#182;</a>
               </div>
               <p>The default label font size.</p>
 
@@ -1898,11 +1891,11 @@ value is defined in seconds. Default is 5 minutes.</p>
         </li>
         
         
-        <li id="section-106">
+        <li id="section-104">
             <div class="annotation">
               
               <div class="pilwrap ">
-                <a class="pilcrow" href="#section-106">&#182;</a>
+                <a class="pilcrow" href="#section-104">&#182;</a>
               </div>
               <p>The foreground color user for the shape&#39;s texts.</p>
 
@@ -1913,11 +1906,11 @@ value is defined in seconds. Default is 5 minutes.</p>
         </li>
         
         
-        <li id="section-107">
+        <li id="section-105">
             <div class="annotation">
               
               <div class="pilwrap ">
-                <a class="pilcrow" href="#section-107">&#182;</a>
+                <a class="pilcrow" href="#section-105">&#182;</a>
               </div>
               <p>Use rounded corners?</p>
 
@@ -1928,11 +1921,11 @@ value is defined in seconds. Default is 5 minutes.</p>
         </li>
         
         
-        <li id="section-108">
+        <li id="section-106">
             <div class="annotation">
               
               <div class="pilwrap ">
-                <a class="pilcrow" href="#section-108">&#182;</a>
+                <a class="pilcrow" href="#section-106">&#182;</a>
               </div>
               <p>The default shape X size relative to the grid.</p>
 
@@ -1943,11 +1936,11 @@ value is defined in seconds. Default is 5 minutes.</p>
         </li>
         
         
-        <li id="section-109">
+        <li id="section-107">
             <div class="annotation">
               
               <div class="pilwrap ">
-                <a class="pilcrow" href="#section-109">&#182;</a>
+                <a class="pilcrow" href="#section-107">&#182;</a>
               </div>
               <p>The default shape Y size relative to the grid.</p>
 
@@ -1958,11 +1951,11 @@ value is defined in seconds. Default is 5 minutes.</p>
         </li>
         
         
-        <li id="section-110">
+        <li id="section-108">
             <div class="annotation">
               
               <div class="pilwrap ">
-                <a class="pilcrow" href="#section-110">&#182;</a>
+                <a class="pilcrow" href="#section-108">&#182;</a>
               </div>
               <p>The default shape opacity.</p>
 
@@ -1973,11 +1966,11 @@ value is defined in seconds. Default is 5 minutes.</p>
         </li>
         
         
-        <li id="section-111">
+        <li id="section-109">
             <div class="annotation">
               
               <div class="pilwrap ">
-                <a class="pilcrow" href="#section-111">&#182;</a>
+                <a class="pilcrow" href="#section-109">&#182;</a>
               </div>
               <p>The default shape stroke / border color.</p>
 
@@ -1988,11 +1981,11 @@ value is defined in seconds. Default is 5 minutes.</p>
         </li>
         
         
-        <li id="section-112">
+        <li id="section-110">
             <div class="annotation">
               
               <div class="pilwrap ">
-                <a class="pilcrow" href="#section-112">&#182;</a>
+                <a class="pilcrow" href="#section-110">&#182;</a>
               </div>
               <p>The default shape stroke width.</p>
 
@@ -2003,11 +1996,11 @@ value is defined in seconds. Default is 5 minutes.</p>
         </li>
         
         
-        <li id="section-113">
+        <li id="section-111">
             <div class="annotation">
               
               <div class="pilwrap ">
-                <a class="pilcrow" href="#section-113">&#182;</a>
+                <a class="pilcrow" href="#section-111">&#182;</a>
               </div>
               <p>The default shape title color.</p>
 
@@ -2018,11 +2011,11 @@ value is defined in seconds. Default is 5 minutes.</p>
         </li>
         
         
-        <li id="section-114">
+        <li id="section-112">
             <div class="annotation">
               
               <div class="pilwrap ">
-                <a class="pilcrow" href="#section-114">&#182;</a>
+                <a class="pilcrow" href="#section-112">&#182;</a>
               </div>
               <p>The default z-index of shapes.</p>
 
@@ -2033,11 +2026,11 @@ value is defined in seconds. Default is 5 minutes.</p>
         </li>
         
         
-        <li id="section-115">
+        <li id="section-113">
             <div class="annotation">
               
               <div class="pilwrap for-h2">
-                <a class="pilcrow" href="#section-115">&#182;</a>
+                <a class="pilcrow" href="#section-113">&#182;</a>
               </div>
               <h2>LINK</h2>
 
@@ -2046,11 +2039,11 @@ value is defined in seconds. Default is 5 minutes.</p>
         </li>
         
         
-        <li id="section-116">
+        <li id="section-114">
             <div class="annotation">
               
               <div class="pilwrap ">
-                <a class="pilcrow" href="#section-116">&#182;</a>
+                <a class="pilcrow" href="#section-114">&#182;</a>
               </div>
               
             </div>
@@ -2060,11 +2053,11 @@ value is defined in seconds. Default is 5 minutes.</p>
         </li>
         
         
-        <li id="section-117">
+        <li id="section-115">
             <div class="annotation">
               
               <div class="pilwrap ">
-                <a class="pilcrow" href="#section-117">&#182;</a>
+                <a class="pilcrow" href="#section-115">&#182;</a>
               </div>
               <p>Default arrow size.</p>
 
@@ -2075,11 +2068,11 @@ value is defined in seconds. Default is 5 minutes.</p>
         </li>
         
         
-        <li id="section-118">
+        <li id="section-116">
             <div class="annotation">
               
               <div class="pilwrap ">
-                <a class="pilcrow" href="#section-118">&#182;</a>
+                <a class="pilcrow" href="#section-116">&#182;</a>
               </div>
               <p>Default source arrow. 0 = no arrow, 1 = filled arrow, 2 = open arrow</p>
 
@@ -2090,11 +2083,11 @@ value is defined in seconds. Default is 5 minutes.</p>
         </li>
         
         
-        <li id="section-119">
+        <li id="section-117">
             <div class="annotation">
               
               <div class="pilwrap ">
-                <a class="pilcrow" href="#section-119">&#182;</a>
+                <a class="pilcrow" href="#section-117">&#182;</a>
               </div>
               <p>Default target arrow. 0 = no arrow, 1 = filled arrow, 2 = open arrow</p>
 
@@ -2105,11 +2098,11 @@ value is defined in seconds. Default is 5 minutes.</p>
         </li>
         
         
-        <li id="section-120">
+        <li id="section-118">
             <div class="annotation">
               
               <div class="pilwrap ">
-                <a class="pilcrow" href="#section-120">&#182;</a>
+                <a class="pilcrow" href="#section-118">&#182;</a>
               </div>
               <p>The opacity of the circle that appear on shapes to create links.</p>
 
@@ -2120,11 +2113,11 @@ value is defined in seconds. Default is 5 minutes.</p>
         </li>
         
         
-        <li id="section-121">
+        <li id="section-119">
             <div class="annotation">
               
               <div class="pilwrap ">
-                <a class="pilcrow" href="#section-121">&#182;</a>
+                <a class="pilcrow" href="#section-119">&#182;</a>
               </div>
               <p>The new link stroke color.</p>
 
@@ -2135,11 +2128,11 @@ value is defined in seconds. Default is 5 minutes.</p>
         </li>
         
         
-        <li id="section-122">
+        <li id="section-120">
             <div class="annotation">
               
               <div class="pilwrap ">
-                <a class="pilcrow" href="#section-122">&#182;</a>
+                <a class="pilcrow" href="#section-120">&#182;</a>
               </div>
               <p>The new link width / strength.</p>
 
@@ -2150,11 +2143,11 @@ value is defined in seconds. Default is 5 minutes.</p>
         </li>
         
         
-        <li id="section-123">
+        <li id="section-121">
             <div class="annotation">
               
               <div class="pilwrap ">
-                <a class="pilcrow" href="#section-123">&#182;</a>
+                <a class="pilcrow" href="#section-121">&#182;</a>
               </div>
               <p>The label font size.</p>
 
@@ -2165,11 +2158,11 @@ value is defined in seconds. Default is 5 minutes.</p>
         </li>
         
         
-        <li id="section-124">
+        <li id="section-122">
             <div class="annotation">
               
               <div class="pilwrap ">
-                <a class="pilcrow" href="#section-124">&#182;</a>
+                <a class="pilcrow" href="#section-122">&#182;</a>
               </div>
               <p>The color of the link labels.</p>
 
@@ -2180,11 +2173,11 @@ value is defined in seconds. Default is 5 minutes.</p>
         </li>
         
         
-        <li id="section-125">
+        <li id="section-123">
             <div class="annotation">
               
               <div class="pilwrap ">
-                <a class="pilcrow" href="#section-125">&#182;</a>
+                <a class="pilcrow" href="#section-123">&#182;</a>
               </div>
               <p>The default link label opacity.</p>
 
@@ -2195,11 +2188,11 @@ value is defined in seconds. Default is 5 minutes.</p>
         </li>
         
         
-        <li id="section-126">
+        <li id="section-124">
             <div class="annotation">
               
               <div class="pilwrap ">
-                <a class="pilcrow" href="#section-126">&#182;</a>
+                <a class="pilcrow" href="#section-124">&#182;</a>
               </div>
               <p>The default link opacity.</p>
 
@@ -2210,11 +2203,11 @@ value is defined in seconds. Default is 5 minutes.</p>
         </li>
         
         
-        <li id="section-127">
+        <li id="section-125">
             <div class="annotation">
               
               <div class="pilwrap ">
-                <a class="pilcrow" href="#section-127">&#182;</a>
+                <a class="pilcrow" href="#section-125">&#182;</a>
               </div>
               <p>Are links smooth by default? smooth = true, straight = false.</p>
 
@@ -2225,11 +2218,11 @@ value is defined in seconds. Default is 5 minutes.</p>
         </li>
         
         
-        <li id="section-128">
+        <li id="section-126">
             <div class="annotation">
               
               <div class="pilwrap ">
-                <a class="pilcrow" href="#section-128">&#182;</a>
+                <a class="pilcrow" href="#section-126">&#182;</a>
               </div>
               <p>The link stroke color.</p>
 
@@ -2240,11 +2233,11 @@ value is defined in seconds. Default is 5 minutes.</p>
         </li>
         
         
-        <li id="section-129">
+        <li id="section-127">
             <div class="annotation">
               
               <div class="pilwrap ">
-                <a class="pilcrow" href="#section-129">&#182;</a>
+                <a class="pilcrow" href="#section-127">&#182;</a>
               </div>
               <p>The link width / strength.</p>
 
@@ -2255,11 +2248,11 @@ value is defined in seconds. Default is 5 minutes.</p>
         </li>
         
         
-        <li id="section-130">
+        <li id="section-128">
             <div class="annotation">
               
               <div class="pilwrap ">
-                <a class="pilcrow" href="#section-130">&#182;</a>
+                <a class="pilcrow" href="#section-128">&#182;</a>
               </div>
               <p>The default z-index of links.</p>
 
@@ -2270,11 +2263,11 @@ value is defined in seconds. Default is 5 minutes.</p>
         </li>
         
         
-        <li id="section-131">
+        <li id="section-129">
             <div class="annotation">
               
               <div class="pilwrap for-h2">
-                <a class="pilcrow" href="#section-131">&#182;</a>
+                <a class="pilcrow" href="#section-129">&#182;</a>
               </div>
               <h2>LABEL EDITING</h2>
 
@@ -2283,11 +2276,11 @@ value is defined in seconds. Default is 5 minutes.</p>
         </li>
         
         
-        <li id="section-132">
+        <li id="section-130">
             <div class="annotation">
               
               <div class="pilwrap ">
-                <a class="pilcrow" href="#section-132">&#182;</a>
+                <a class="pilcrow" href="#section-130">&#182;</a>
               </div>
               
             </div>
@@ -2297,11 +2290,11 @@ value is defined in seconds. Default is 5 minutes.</p>
         </li>
         
         
-        <li id="section-133">
+        <li id="section-131">
             <div class="annotation">
               
               <div class="pilwrap ">
-                <a class="pilcrow" href="#section-133">&#182;</a>
+                <a class="pilcrow" href="#section-131">&#182;</a>
               </div>
               <p>CSS class name of the label edit view wrapper.</p>
 
@@ -2312,11 +2305,11 @@ value is defined in seconds. Default is 5 minutes.</p>
         </li>
         
         
-        <li id="section-134">
+        <li id="section-132">
             <div class="annotation">
               
               <div class="pilwrap ">
-                <a class="pilcrow" href="#section-134">&#182;</a>
+                <a class="pilcrow" href="#section-132">&#182;</a>
               </div>
               <p>If eval fails, show the error message on the textbox for X milliseconds.</p>
 
@@ -2327,11 +2320,11 @@ value is defined in seconds. Default is 5 minutes.</p>
         </li>
         
         
-        <li id="section-135">
+        <li id="section-133">
             <div class="annotation">
               
               <div class="pilwrap ">
-                <a class="pilcrow" href="#section-135">&#182;</a>
+                <a class="pilcrow" href="#section-133">&#182;</a>
               </div>
               <p>Minimum size of the edit textbox (textbox size property).</p>
 
@@ -2342,11 +2335,11 @@ value is defined in seconds. Default is 5 minutes.</p>
         </li>
         
         
-        <li id="section-136">
+        <li id="section-134">
             <div class="annotation">
               
               <div class="pilwrap ">
-                <a class="pilcrow" href="#section-136">&#182;</a>
+                <a class="pilcrow" href="#section-134">&#182;</a>
               </div>
               <p>The opacity interval when showing or hiding a labelEditView.</p>
 
@@ -2357,11 +2350,11 @@ value is defined in seconds. Default is 5 minutes.</p>
         </li>
         
         
-        <li id="section-137">
+        <li id="section-135">
             <div class="annotation">
               
               <div class="pilwrap for-h2">
-                <a class="pilcrow" href="#section-137">&#182;</a>
+                <a class="pilcrow" href="#section-135">&#182;</a>
               </div>
               <h2>AUDIT DATA</h2>
 
@@ -2370,11 +2363,11 @@ value is defined in seconds. Default is 5 minutes.</p>
         </li>
         
         
-        <li id="section-138">
+        <li id="section-136">
             <div class="annotation">
               
               <div class="pilwrap ">
-                <a class="pilcrow" href="#section-138">&#182;</a>
+                <a class="pilcrow" href="#section-136">&#182;</a>
               </div>
               
             </div>
@@ -2384,11 +2377,11 @@ value is defined in seconds. Default is 5 minutes.</p>
         </li>
         
         
-        <li id="section-139">
+        <li id="section-137">
             <div class="annotation">
               
               <div class="pilwrap ">
-                <a class="pilcrow" href="#section-139">&#182;</a>
+                <a class="pilcrow" href="#section-137">&#182;</a>
               </div>
               <p>The url to the audit data(s) JSON.</p>
 
@@ -2399,11 +2392,11 @@ value is defined in seconds. Default is 5 minutes.</p>
         </li>
         
         
-        <li id="section-140">
+        <li id="section-138">
             <div class="annotation">
               
               <div class="pilwrap ">
-                <a class="pilcrow" href="#section-140">&#182;</a>
+                <a class="pilcrow" href="#section-138">&#182;</a>
               </div>
               <p>The namespace used for data binding.</p>
 
@@ -2414,11 +2407,11 @@ value is defined in seconds. Default is 5 minutes.</p>
         </li>
         
         
-        <li id="section-141">
+        <li id="section-139">
             <div class="annotation">
               
               <div class="pilwrap ">
-                <a class="pilcrow" href="#section-141">&#182;</a>
+                <a class="pilcrow" href="#section-139">&#182;</a>
               </div>
               <p>Alert the user if the data could not be refreshed for 6 times in a row.</p>
 
@@ -2429,11 +2422,11 @@ value is defined in seconds. Default is 5 minutes.</p>
         </li>
         
         
-        <li id="section-142">
+        <li id="section-140">
             <div class="annotation">
               
               <div class="pilwrap ">
-                <a class="pilcrow" href="#section-142">&#182;</a>
+                <a class="pilcrow" href="#section-140">&#182;</a>
               </div>
               <p>Default interval to save the current data, in ms.</p>
 
@@ -2444,11 +2437,11 @@ value is defined in seconds. Default is 5 minutes.</p>
         </li>
         
         
-        <li id="section-143">
+        <li id="section-141">
             <div class="annotation">
               
               <div class="pilwrap ">
-                <a class="pilcrow" href="#section-143">&#182;</a>
+                <a class="pilcrow" href="#section-141">&#182;</a>
               </div>
               <p>Round numbers to a maximum number of decimal cases.</p>
 
@@ -2459,11 +2452,11 @@ value is defined in seconds. Default is 5 minutes.</p>
         </li>
         
         
-        <li id="section-144">
+        <li id="section-142">
             <div class="annotation">
               
               <div class="pilwrap ">
-                <a class="pilcrow" href="#section-144">&#182;</a>
+                <a class="pilcrow" href="#section-142">&#182;</a>
               </div>
               <p>What text to show when an audit data value is still being loaded.</p>
 
@@ -2474,11 +2467,11 @@ value is defined in seconds. Default is 5 minutes.</p>
         </li>
         
         
-        <li id="section-145">
+        <li id="section-143">
             <div class="annotation">
               
               <div class="pilwrap ">
-                <a class="pilcrow" href="#section-145">&#182;</a>
+                <a class="pilcrow" href="#section-143">&#182;</a>
               </div>
               <p>Maximum allowed value for the refreshInterval, in seconds.</p>
 
@@ -2489,11 +2482,11 @@ value is defined in seconds. Default is 5 minutes.</p>
         </li>
         
         
-        <li id="section-146">
+        <li id="section-144">
             <div class="annotation">
               
               <div class="pilwrap ">
-                <a class="pilcrow" href="#section-146">&#182;</a>
+                <a class="pilcrow" href="#section-144">&#182;</a>
               </div>
               <p>Minimum allowed value for the refreshInterval, in seconds.</p>
 
@@ -2504,11 +2497,11 @@ value is defined in seconds. Default is 5 minutes.</p>
         </li>
         
         
-        <li id="section-147">
+        <li id="section-145">
             <div class="annotation">
               
               <div class="pilwrap ">
-                <a class="pilcrow" href="#section-147">&#182;</a>
+                <a class="pilcrow" href="#section-145">&#182;</a>
               </div>
               <p>Default interval to refresh the data from its sourceUrl, in ms.</p>
 
@@ -2519,11 +2512,11 @@ value is defined in seconds. Default is 5 minutes.</p>
         </li>
         
         
-        <li id="section-148">
+        <li id="section-146">
             <div class="annotation">
               
               <div class="pilwrap ">
-                <a class="pilcrow" href="#section-148">&#182;</a>
+                <a class="pilcrow" href="#section-146">&#182;</a>
               </div>
               <p>Prefix of DOM IDs set on each row representing an item on the AuditDataManagerView.</p>
 
@@ -2534,11 +2527,11 @@ value is defined in seconds. Default is 5 minutes.</p>
         </li>
         
         
-        <li id="section-149">
+        <li id="section-147">
             <div class="annotation">
               
               <div class="pilwrap ">
-                <a class="pilcrow" href="#section-149">&#182;</a>
+                <a class="pilcrow" href="#section-147">&#182;</a>
               </div>
               <p>Delay to start the audit data refresh timers when the app is loaded.</p>
 
@@ -2549,11 +2542,11 @@ value is defined in seconds. Default is 5 minutes.</p>
         </li>
         
         
-        <li id="section-150">
+        <li id="section-148">
             <div class="annotation">
               
               <div class="pilwrap ">
-                <a class="pilcrow" href="#section-150">&#182;</a>
+                <a class="pilcrow" href="#section-148">&#182;</a>
               </div>
               <p>Data will be considered outdated after X times the value of its refreshInterval.</p>
 
@@ -2564,11 +2557,11 @@ value is defined in seconds. Default is 5 minutes.</p>
         </li>
         
         
-        <li id="section-151">
+        <li id="section-149">
             <div class="annotation">
               
               <div class="pilwrap for-h2">
-                <a class="pilcrow" href="#section-151">&#182;</a>
+                <a class="pilcrow" href="#section-149">&#182;</a>
               </div>
               <h2>AUDIT ALERT</h2>
 
@@ -2577,11 +2570,11 @@ value is defined in seconds. Default is 5 minutes.</p>
         </li>
         
         
-        <li id="section-152">
+        <li id="section-150">
             <div class="annotation">
               
               <div class="pilwrap ">
-                <a class="pilcrow" href="#section-152">&#182;</a>
+                <a class="pilcrow" href="#section-150">&#182;</a>
               </div>
               
             </div>
@@ -2591,11 +2584,11 @@ value is defined in seconds. Default is 5 minutes.</p>
         </li>
         
         
-        <li id="section-153">
+        <li id="section-151">
             <div class="annotation">
               
               <div class="pilwrap ">
-                <a class="pilcrow" href="#section-153">&#182;</a>
+                <a class="pilcrow" href="#section-151">&#182;</a>
               </div>
               <p>The url to the audit event(s) JSON.</p>
 
@@ -2606,11 +2599,11 @@ value is defined in seconds. Default is 5 minutes.</p>
         </li>
         
         
-        <li id="section-154">
+        <li id="section-152">
             <div class="annotation">
               
               <div class="pilwrap ">
-                <a class="pilcrow" href="#section-154">&#182;</a>
+                <a class="pilcrow" href="#section-152">&#182;</a>
               </div>
               <p>The namespace used for data binding.</p>
 
@@ -2621,11 +2614,11 @@ value is defined in seconds. Default is 5 minutes.</p>
         </li>
         
         
-        <li id="section-155">
+        <li id="section-153">
             <div class="annotation">
               
               <div class="pilwrap ">
-                <a class="pilcrow" href="#section-155">&#182;</a>
+                <a class="pilcrow" href="#section-153">&#182;</a>
               </div>
               <p>How many times to blink if no value is specified on the alert action.</p>
 
@@ -2636,11 +2629,11 @@ value is defined in seconds. Default is 5 minutes.</p>
         </li>
         
         
-        <li id="section-156">
+        <li id="section-154">
             <div class="annotation">
               
               <div class="pilwrap ">
-                <a class="pilcrow" href="#section-156">&#182;</a>
+                <a class="pilcrow" href="#section-154">&#182;</a>
               </div>
               <p>The context special key used to test shape or link labels agains an <a href="auditEvent.html">AuditEvent</a>.</p>
 
@@ -2651,11 +2644,11 @@ value is defined in seconds. Default is 5 minutes.</p>
         </li>
         
         
-        <li id="section-157">
+        <li id="section-155">
             <div class="annotation">
               
               <div class="pilwrap ">
-                <a class="pilcrow" href="#section-157">&#182;</a>
+                <a class="pilcrow" href="#section-155">&#182;</a>
               </div>
               <p>The color to use if no background/border color is specified on the alert action.</p>
 
@@ -2666,11 +2659,11 @@ value is defined in seconds. Default is 5 minutes.</p>
         </li>
         
         
-        <li id="section-158">
+        <li id="section-156">
             <div class="annotation">
               
               <div class="pilwrap ">
-                <a class="pilcrow" href="#section-158">&#182;</a>
+                <a class="pilcrow" href="#section-156">&#182;</a>
               </div>
               <p>Prefix of DOM IDs set on each row representing an item on the EntityDefinitionView.</p>
 
@@ -2681,11 +2674,11 @@ value is defined in seconds. Default is 5 minutes.</p>
         </li>
         
         
-        <li id="section-159">
+        <li id="section-157">
             <div class="annotation">
               
               <div class="pilwrap ">
-                <a class="pilcrow" href="#section-159">&#182;</a>
+                <a class="pilcrow" href="#section-157">&#182;</a>
               </div>
               <p>The prefix of action rows on the <code>$gridActions</code> grid of the <a href="auditEventManagerView.html">Audit Events View</a>.</p>
 
@@ -2696,11 +2689,11 @@ value is defined in seconds. Default is 5 minutes.</p>
         </li>
         
         
-        <li id="section-160">
+        <li id="section-158">
             <div class="annotation">
               
               <div class="pilwrap ">
-                <a class="pilcrow" href="#section-160">&#182;</a>
+                <a class="pilcrow" href="#section-158">&#182;</a>
               </div>
               <p>The prefix of rule rows on the <code>$gridRules</code> grid of the <a href="auditEventManagerView.html">Audit Events View</a>.</p>
 
@@ -2711,11 +2704,11 @@ value is defined in seconds. Default is 5 minutes.</p>
         </li>
         
         
-        <li id="section-161">
+        <li id="section-159">
             <div class="annotation">
               
               <div class="pilwrap ">
-                <a class="pilcrow" href="#section-161">&#182;</a>
+                <a class="pilcrow" href="#section-159">&#182;</a>
               </div>
               <p>The checkbox group name (DOM) of the alerts manager for a specific shape.</p>
 
@@ -2726,11 +2719,11 @@ value is defined in seconds. Default is 5 minutes.</p>
         </li>
         
         
-        <li id="section-162">
+        <li id="section-160">
             <div class="annotation">
               
               <div class="pilwrap for-h2">
-                <a class="pilcrow" href="#section-162">&#182;</a>
+                <a class="pilcrow" href="#section-160">&#182;</a>
               </div>
               <h2>AUDIT ALERT</h2>
 
@@ -2739,11 +2732,11 @@ value is defined in seconds. Default is 5 minutes.</p>
         </li>
         
         
-        <li id="section-163">
+        <li id="section-161">
             <div class="annotation">
               
               <div class="pilwrap ">
-                <a class="pilcrow" href="#section-163">&#182;</a>
+                <a class="pilcrow" href="#section-161">&#182;</a>
               </div>
               
             </div>
@@ -2753,11 +2746,11 @@ value is defined in seconds. Default is 5 minutes.</p>
         </li>
         
         
-        <li id="section-164">
+        <li id="section-162">
             <div class="annotation">
               
               <div class="pilwrap ">
-                <a class="pilcrow" href="#section-164">&#182;</a>
+                <a class="pilcrow" href="#section-162">&#182;</a>
               </div>
               <p>The url to the variable(s) JSON.</p>
 
@@ -2768,11 +2761,11 @@ value is defined in seconds. Default is 5 minutes.</p>
         </li>
         
         
-        <li id="section-165">
+        <li id="section-163">
             <div class="annotation">
               
               <div class="pilwrap ">
-                <a class="pilcrow" href="#section-165">&#182;</a>
+                <a class="pilcrow" href="#section-163">&#182;</a>
               </div>
               <p>The namespace used for data binding.</p>
 
@@ -2783,11 +2776,11 @@ value is defined in seconds. Default is 5 minutes.</p>
         </li>
         
         
-        <li id="section-166">
+        <li id="section-164">
             <div class="annotation">
               
               <div class="pilwrap ">
-                <a class="pilcrow" href="#section-166">&#182;</a>
+                <a class="pilcrow" href="#section-164">&#182;</a>
               </div>
               <p>Prefix of DOM IDs set on each row representing an item on the VariableManagerView.</p>
 
@@ -2798,126 +2791,11 @@ value is defined in seconds. Default is 5 minutes.</p>
         </li>
         
         
-        <li id="section-167">
+        <li id="section-165">
             <div class="annotation">
               
               <div class="pilwrap for-h2">
-                <a class="pilcrow" href="#section-167">&#182;</a>
-              </div>
-              <h2>ALERT</h2>
-
-            </div>
-            
-        </li>
-        
-        
-        <li id="section-168">
-            <div class="annotation">
-              
-              <div class="pilwrap ">
-                <a class="pilcrow" href="#section-168">&#182;</a>
-              </div>
-              
-            </div>
-            
-            <div class="content"><div class='highlight'><pre>    Alert:</pre></div></div>
-            
-        </li>
-        
-        
-        <li id="section-169">
-            <div class="annotation">
-              
-              <div class="pilwrap ">
-                <a class="pilcrow" href="#section-169">&#182;</a>
-              </div>
-              <p>How long should the alerts stay shown.</p>
-
-            </div>
-            
-            <div class="content"><div class='highlight'><pre>        hideDelay: <span class="number">2500</span></pre></div></div>
-            
-        </li>
-        
-        
-        <li id="section-170">
-            <div class="annotation">
-              
-              <div class="pilwrap ">
-                <a class="pilcrow" href="#section-170">&#182;</a>
-              </div>
-              <p>How long it takes to fade in / out alerts.</p>
-
-            </div>
-            
-            <div class="content"><div class='highlight'><pre>        opacityInterval: <span class="number">300</span></pre></div></div>
-            
-        </li>
-        
-        
-        <li id="section-171">
-            <div class="annotation">
-              
-              <div class="pilwrap ">
-                <a class="pilcrow" href="#section-171">&#182;</a>
-              </div>
-              <p>Minimum time between similar alerts to be shown.
-For example if you save a map twice in less than 8 seconds, then just show the alert once.</p>
-
-            </div>
-            
-            <div class="content"><div class='highlight'><pre>        similarTimeout: <span class="number">8000</span></pre></div></div>
-            
-        </li>
-        
-        
-        <li id="section-172">
-            <div class="annotation">
-              
-              <div class="pilwrap for-h2">
-                <a class="pilcrow" href="#section-172">&#182;</a>
-              </div>
-              <h2>FOOTER</h2>
-
-            </div>
-            
-        </li>
-        
-        
-        <li id="section-173">
-            <div class="annotation">
-              
-              <div class="pilwrap ">
-                <a class="pilcrow" href="#section-173">&#182;</a>
-              </div>
-              
-            </div>
-            
-            <div class="content"><div class='highlight'><pre>    Footer:</pre></div></div>
-            
-        </li>
-        
-        
-        <li id="section-174">
-            <div class="annotation">
-              
-              <div class="pilwrap ">
-                <a class="pilcrow" href="#section-174">&#182;</a>
-              </div>
-              <p>How long it takes to fade in / out footer information.</p>
-
-            </div>
-            
-            <div class="content"><div class='highlight'><pre>        opacityInterval: <span class="number">400</span></pre></div></div>
-            
-        </li>
-        
-        
-        <li id="section-175">
-            <div class="annotation">
-              
-              <div class="pilwrap for-h2">
-                <a class="pilcrow" href="#section-175">&#182;</a>
+                <a class="pilcrow" href="#section-165">&#182;</a>
               </div>
               <h2>USER SETTINGS</h2>
 
@@ -2926,11 +2804,11 @@ For example if you save a map twice in less than 8 seconds, then just show the a
         </li>
         
         
-        <li id="section-176">
+        <li id="section-166">
             <div class="annotation">
               
               <div class="pilwrap ">
-                <a class="pilcrow" href="#section-176">&#182;</a>
+                <a class="pilcrow" href="#section-166">&#182;</a>
               </div>
               
             </div>
@@ -2940,11 +2818,11 @@ For example if you save a map twice in less than 8 seconds, then just show the a
         </li>
         
         
-        <li id="section-177">
+        <li id="section-167">
             <div class="annotation">
               
               <div class="pilwrap ">
-                <a class="pilcrow" href="#section-177">&#182;</a>
+                <a class="pilcrow" href="#section-167">&#182;</a>
               </div>
               <p>The url to the user&#39;s JSON.</p>
 
@@ -2955,11 +2833,26 @@ For example if you save a map twice in less than 8 seconds, then just show the a
         </li>
         
         
-        <li id="section-178">
+        <li id="section-168">
             <div class="annotation">
               
               <div class="pilwrap ">
-                <a class="pilcrow" href="#section-178">&#182;</a>
+                <a class="pilcrow" href="#section-168">&#182;</a>
+              </div>
+              <p>The url to the logged user&#39;s JSON.</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>        loggedUrl: <span class="string">"json/user/logged"</span></pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-169">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-169">&#182;</a>
               </div>
               <p>Default key combination to delete shapes and links.</p>
 
@@ -2970,11 +2863,11 @@ For example if you save a map twice in less than 8 seconds, then just show the a
         </li>
         
         
-        <li id="section-179">
+        <li id="section-170">
             <div class="annotation">
               
               <div class="pilwrap ">
-                <a class="pilcrow" href="#section-179">&#182;</a>
+                <a class="pilcrow" href="#section-170">&#182;</a>
               </div>
               <p>Default key combination to select multiple shapes or items.</p>
 
@@ -2985,17 +2878,246 @@ For example if you save a map twice in less than 8 seconds, then just show the a
         </li>
         
         
-        <li id="section-180">
+        <li id="section-171">
             <div class="annotation">
               
               <div class="pilwrap ">
-                <a class="pilcrow" href="#section-180">&#182;</a>
+                <a class="pilcrow" href="#section-171">&#182;</a>
               </div>
               <p>Default key combination to send shapes and links to the back of the map.</p>
 
             </div>
             
             <div class="content"><div class='highlight'><pre>        modifierToBack: <span class="string">"rightclick"</span></pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-172">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-172">&#182;</a>
+              </div>
+              <p>Prefix of each row representing a user on a list or grid.</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>        rowListPrefix: <span class="string">"list-user-"</span></pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-173">
+            <div class="annotation">
+              
+              <div class="pilwrap for-h2">
+                <a class="pilcrow" href="#section-173">&#182;</a>
+              </div>
+              <h2>MENU</h2>
+
+            </div>
+            
+        </li>
+        
+        
+        <li id="section-174">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-174">&#182;</a>
+              </div>
+              
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>    Menu:</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-175">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-175">&#182;</a>
+              </div>
+              <p>Timeout to hide submenus when mouse leaves them.</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>        hideTimeout: <span class="number">400</span></pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-176">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-176">&#182;</a>
+              </div>
+              <p>Prefix of the ID of submenu items.</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>        subPrefix: <span class="string">"menu-filter-"</span></pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-177">
+            <div class="annotation">
+              
+              <div class="pilwrap for-h2">
+                <a class="pilcrow" href="#section-177">&#182;</a>
+              </div>
+              <h2>ALERT</h2>
+
+            </div>
+            
+        </li>
+        
+        
+        <li id="section-178">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-178">&#182;</a>
+              </div>
+              
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>    Alert:</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-179">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-179">&#182;</a>
+              </div>
+              <p>How long should the alerts stay shown.</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>        hideDelay: <span class="number">3000</span></pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-180">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-180">&#182;</a>
+              </div>
+              <p>How long it takes to fade in / out alerts.</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>        opacityInterval: <span class="number">300</span></pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-181">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-181">&#182;</a>
+              </div>
+              <p>Minimum time between similar alerts to be shown.
+For example if you save a map twice in less than 8 seconds, then just show the alert once.</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>        similarTimeout: <span class="number">9000</span></pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-182">
+            <div class="annotation">
+              
+              <div class="pilwrap for-h2">
+                <a class="pilcrow" href="#section-182">&#182;</a>
+              </div>
+              <h2>FOOTER</h2>
+
+            </div>
+            
+        </li>
+        
+        
+        <li id="section-183">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-183">&#182;</a>
+              </div>
+              
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>    Footer:</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-184">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-184">&#182;</a>
+              </div>
+              <p>How long it takes to fade in / out footer information.</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>        opacityInterval: <span class="number">400</span></pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-185">
+            <div class="annotation">
+              
+              <div class="pilwrap for-h2">
+                <a class="pilcrow" href="#section-185">&#182;</a>
+              </div>
+              <h2>SOCKET SETTINGS</h2>
+
+            </div>
+            
+        </li>
+        
+        
+        <li id="section-186">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-186">&#182;</a>
+              </div>
+              
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>    Sockets:</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-187">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-187">&#182;</a>
+              </div>
+              <p>Default &quot;clients:refresh&quot; command is 60 seconds.</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>        clientRefreshSeconds: <span class="number">60</span></pre></div></div>
             
         </li>
         

@@ -39,6 +39,11 @@
               </a>
             
               
+              <a class="source" href="mail.html">
+                mail.coffee
+              </a>
+            
+              
               <a class="source" href="manager.html">
                 manager.coffee
               </a>
@@ -193,8 +198,8 @@ disconnects from the app.</p>
             <div class="content"><div class='highlight'><pre>        <span class="property">@io</span>.sockets.<span class="literal">on</span> <span class="string">"connection"</span>, (socket) =&gt;
             <span class="property">@io</span>.sockets.emit <span class="string">"server:connectionCounter"</span>, <span class="property">@getConnectionCount</span>()
 
-            socket.<span class="literal">on</span> <span class="string">"disconnect"</span>, =&gt;
-                <span class="property">@io</span>.sockets.emit <span class="string">"server:connectionCounter"</span>, <span class="property">@getConnectionCount</span>()</pre></div></div>
+            socket.<span class="literal">on</span> <span class="string">"disconnect"</span>, <span class="property">@onDisconnect</span>
+            socket.<span class="literal">on</span> <span class="string">"clients:refresh"</span>, <span class="property">@onClientsRefresh</span></pre></div></div>
             
         </li>
         
@@ -210,7 +215,8 @@ disconnects from the app.</p>
             </div>
             
             <div class="content"><div class='highlight'><pre>    getConnectionCount: =&gt;
-        <span class="keyword">return</span> Object.keys(<span class="property">@io</span>.sockets.manager.open).length</pre></div></div>
+        count = Object.keys(<span class="property">@io</span>.sockets.manager.open).length
+        <span class="keyword">return</span> count</pre></div></div>
             
         </li>
         
@@ -221,7 +227,7 @@ disconnects from the app.</p>
               <div class="pilwrap for-h2">
                 <a class="pilcrow" href="#section-9">&#182;</a>
               </div>
-              <h2>ENTITIES AND AUDIT DATA</h2>
+              <h2>TRIGGER: ENTITIES AND AUDIT DATA</h2>
 
             </div>
             
@@ -266,7 +272,7 @@ disconnects from the app.</p>
               <div class="pilwrap for-h2">
                 <a class="pilcrow" href="#section-12">&#182;</a>
               </div>
-              <h2>SERVER LOGS AND ERRORS</h2>
+              <h2>TRIGGER: SERVER LOGS AND ERRORS</h2>
 
             </div>
             
@@ -284,11 +290,13 @@ disconnects from the app.</p>
             </div>
             
             <div class="content"><div class='highlight'><pre>    sendServerError: (title, errorMessage) =&gt;
-        errorMessage = <span class="string">"Unknown error"</span> <span class="keyword">if</span> <span class="keyword">not</span> errorMessage?
-        <span class="property">@io</span>.sockets.emit <span class="string">"server:error"</span>, {title: title, message: errorMessage.toString().replace(<span class="string">":"</span>, <span class="string">" "</span>)}
+        <span class="keyword">if</span> <span class="keyword">not</span> <span class="property">@io</span>?
+            <span class="keyword">if</span> settings.General.debug
+                console.error <span class="string">"Sockets.sendServerError"</span>, <span class="string">"Sockets object was not initiated yet!"</span>
+            <span class="keyword">return</span>
 
-        <span class="keyword">if</span> settings.General.debug
-            logger.warn <span class="string">"Sockets.sendServerError"</span>, errorMessage</pre></div></div>
+        errorMessage = <span class="string">"Unknown error"</span> <span class="keyword">if</span> <span class="keyword">not</span> errorMessage?
+        <span class="property">@io</span>.sockets.emit <span class="string">"server:error"</span>, {title: title, message: errorMessage.toString().replace(<span class="string">":"</span>, <span class="string">" "</span>)}</pre></div></div>
             
         </li>
         
@@ -299,7 +307,7 @@ disconnects from the app.</p>
               <div class="pilwrap for-h2">
                 <a class="pilcrow" href="#section-14">&#182;</a>
               </div>
-              <h2>Singleton implementation</h2>
+              <h2>LISTEN: CLIENT COMMANDS</h2>
 
             </div>
             
@@ -311,6 +319,57 @@ disconnects from the app.</p>
               
               <div class="pilwrap ">
                 <a class="pilcrow" href="#section-15">&#182;</a>
+              </div>
+              <p>When user disconnects, emit an event with the new connection count to all clients.</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>    onDisconnect: =&gt;
+        count = <span class="property">@getConnectionCount</span>()
+        <span class="property">@io</span>.sockets.emit <span class="string">"server:connectionCounter"</span>, count
+        <span class="keyword">if</span> settings.General.debug
+            logger.info <span class="string">"Sockets.onDisconnect"</span>, <span class="string">"New count: <span class="subst">#{count}</span>."</span></pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-16">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-16">&#182;</a>
+              </div>
+              <p>When an admin user triggers the &quot;clients:refresh&quot; command, resend it
+to all connected clients so they&#39;ll get the page refreshed.</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>    onClientsRefresh: (data) =&gt;
+        <span class="keyword">if</span> settings.General.debug
+            logger.info <span class="string">"Sockets.onClientsRefresh"</span>, data
+        <span class="property">@io</span>.sockets.emit <span class="string">"clients:refresh"</span>, data</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-17">
+            <div class="annotation">
+              
+              <div class="pilwrap for-h2">
+                <a class="pilcrow" href="#section-17">&#182;</a>
+              </div>
+              <h2>Singleton implementation</h2>
+
+            </div>
+            
+        </li>
+        
+        
+        <li id="section-18">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-18">&#182;</a>
               </div>
               
             </div>

@@ -154,8 +154,13 @@
               </a>
             
               
-              <a class="source" href="routes.html">
-                routes.coffee
+              <a class="source" href="adminRoutes.html">
+                adminRoutes.coffee
+              </a>
+            
+              
+              <a class="source" href="appRoutes.html">
+                appRoutes.coffee
               </a>
             
               
@@ -176,6 +181,21 @@
               
               <a class="source" href="vectors.html">
                 vectors.coffee
+              </a>
+            
+              
+              <a class="source" href="statusTabView.html">
+                statusTabView.coffee
+              </a>
+            
+              
+              <a class="source" href="toolsTabView.html">
+                toolsTabView.coffee
+              </a>
+            
+              
+              <a class="source" href="usersTabView.html">
+                usersTabView.coffee
               </a>
             
               
@@ -426,9 +446,7 @@ Right now this can happen on <a href="shapeView.html">Shape Views</a> and <a hre
             
             <div class="content"><div class='highlight'><pre>    dispose: =&gt;
         <span class="property">@hide</span>()
-
         <span class="property">@currentVariable</span> = <span class="literal">null</span>
-
         <span class="property">@baseDispose</span>()</pre></div></div>
             
         </li>
@@ -853,6 +871,9 @@ and set the label value to the variable prefix &quot;#&quot; plus the added vari
         $(document).unbind <span class="string">"keyup"</span>, <span class="property">@documentKeyUp</span>
         $(document).keyup <span class="property">@documentKeyUp</span>
 
+        <span class="property">@$el</span>.unbind <span class="string">"click"</span>, <span class="property">@setFocus</span>
+        <span class="property">@$el</span>.click <span class="property">@setFocus</span>
+
         <span class="property">@stopListening</span>()
         <span class="property">@listenTo</span> SystemApp.mapEvents, <span class="string">"zoom"</span>, <span class="property">@hide</span>
 
@@ -866,7 +887,7 @@ and set the label value to the variable prefix &quot;#&quot; plus the added vari
         <span class="property">@showSimple</span>()
         <span class="property">@currentValue</span> SystemApp.Messages.current + <span class="string">": "</span> + value
 
-        <span class="property">@$el</span>.fadeIn SystemApp.Settings.LabelEdit.opacityInterval
+        <span class="property">@$el</span>.show()
 
         <span class="property">@$txtSimple</span>.focus()</pre></div></div>
             
@@ -956,9 +977,11 @@ The <code>initial</code> value is optional.</p>
             <div class="content"><div class='highlight'><pre>    hide: =&gt;
         $(document).unbind <span class="string">"mousedown"</span>, <span class="property">@editingMouseDown</span>
         $(document).unbind <span class="string">"keyup"</span>, <span class="property">@documentKeyUp</span>
+        <span class="property">@$el</span>.unbind <span class="string">"click"</span>, <span class="property">@setFocus</span>
+
         <span class="property">@stopListening</span>()
 
-        <span class="property">@$el</span>.fadeOut SystemApp.Settings.LabelEdit.opacityInterval
+        <span class="property">@$el</span>.hide()
 
         <span class="property">@lastPressedKey</span> = <span class="literal">null</span>
         <span class="property">@currentVariable</span> = <span class="literal">null</span></pre></div></div>
@@ -995,7 +1018,8 @@ overlaps the borders of the page.</p>
         y = maxY <span class="keyword">if</span> y &gt; maxY
 
         <span class="property">@$el</span>.css <span class="string">"left"</span>, x
-        <span class="property">@$el</span>.css <span class="string">"top"</span>, y</pre></div></div>
+        <span class="property">@$el</span>.css <span class="string">"top"</span>, y
+        <span class="property">@setFocus</span>()</pre></div></div>
             
         </li>
         
@@ -1005,6 +1029,23 @@ overlaps the borders of the page.</p>
               
               <div class="pilwrap ">
                 <a class="pilcrow" href="#section-32">&#182;</a>
+              </div>
+              <p>Shift focus to the view by increasing its z-index.</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>    setFocus: (e) =&gt;
+        <span class="property">@$el</span>.css <span class="string">"z-index"</span>, <span class="property">@mapView</span>.zIndexMax
+        <span class="property">@mapView</span>.zIndexMax = <span class="property">@mapView</span>.zIndexMax + <span class="number">1</span></pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-33">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-33">&#182;</a>
               </div>
               <p>Check if user is writing a static value, or binding to an [AuditData](auditData.html} using a special key.</p>
 
@@ -1023,11 +1064,11 @@ overlaps the borders of the page.</p>
         </li>
         
         
-        <li id="section-33">
+        <li id="section-34">
             <div class="annotation">
               
               <div class="pilwrap for-h2">
-                <a class="pilcrow" href="#section-33">&#182;</a>
+                <a class="pilcrow" href="#section-34">&#182;</a>
               </div>
               <h2>AUTOCOMPLETE</h2>
 
@@ -1036,11 +1077,11 @@ overlaps the borders of the page.</p>
         </li>
         
         
-        <li id="section-34">
+        <li id="section-35">
             <div class="annotation">
               
               <div class="pilwrap ">
-                <a class="pilcrow" href="#section-34">&#182;</a>
+                <a class="pilcrow" href="#section-35">&#182;</a>
               </div>
               <p>Check the current <code>$txtSimple</code> value and if it&#39;s a valid <a href="auditData.html">Audit Data item</a>
 then bind its contents to the <code>$autoCompleteDiv</code>.</p>
@@ -1061,11 +1102,11 @@ then bind its contents to the <code>$autoCompleteDiv</code>.</p>
         </li>
         
         
-        <li id="section-35">
+        <li id="section-36">
             <div class="annotation">
               
               <div class="pilwrap ">
-                <a class="pilcrow" href="#section-35">&#182;</a>
+                <a class="pilcrow" href="#section-36">&#182;</a>
               </div>
               <p>Populate the <code>$autoCompleteDiv</code> with a list of possible <a href="auditData.html">AuditData</a> entities.</p>
 
@@ -1080,11 +1121,11 @@ then bind its contents to the <code>$autoCompleteDiv</code>.</p>
         </li>
         
         
-        <li id="section-36">
+        <li id="section-37">
             <div class="annotation">
               
               <div class="pilwrap ">
-                <a class="pilcrow" href="#section-36">&#182;</a>
+                <a class="pilcrow" href="#section-37">&#182;</a>
               </div>
               <p>If the entered value is empty or the custom variable special key <code>#</code>,
 add the list of registered <a href="variable.html">Variables</a> to the resulting array.</p>
@@ -1118,11 +1159,11 @@ add the list of registered <a href="variable.html">Variables</a> to the resultin
         </li>
         
         
-        <li id="section-37">
+        <li id="section-38">
             <div class="annotation">
               
               <div class="pilwrap ">
-                <a class="pilcrow" href="#section-37">&#182;</a>
+                <a class="pilcrow" href="#section-38">&#182;</a>
               </div>
               <p>If the entered value is empty or the audit data special key <code>$</code>,
 add the list of registered <a href="auditData.html">AuditData</a> to the resulting array.</p>
@@ -1149,11 +1190,11 @@ add the list of registered <a href="auditData.html">AuditData</a> to the resulti
         </li>
         
         
-        <li id="section-38">
+        <li id="section-39">
             <div class="annotation">
               
               <div class="pilwrap ">
-                <a class="pilcrow" href="#section-38">&#182;</a>
+                <a class="pilcrow" href="#section-39">&#182;</a>
               </div>
               <p>Populate the <code>$autoCompleteDiv</code> with a list of properties for the specified <a href="auditData.html">AuditData</a>.
 If no <code>auditDataName</code> is passed, then bind all found properties from all <a href="auditData.html">AuditData</a> items.</p>
@@ -1170,11 +1211,11 @@ If no <code>auditDataName</code> is passed, then bind all found properties from 
         </li>
         
         
-        <li id="section-39">
+        <li id="section-40">
             <div class="annotation">
               
               <div class="pilwrap ">
-                <a class="pilcrow" href="#section-39">&#182;</a>
+                <a class="pilcrow" href="#section-40">&#182;</a>
               </div>
               <p>Bind the search results and reset the position to make
 sure it&#39;s not going outside the current view.</p>
@@ -1191,11 +1232,11 @@ sure it&#39;s not going outside the current view.</p>
         </li>
         
         
-        <li id="section-40">
+        <li id="section-41">
             <div class="annotation">
               
               <div class="pilwrap ">
-                <a class="pilcrow" href="#section-40">&#182;</a>
+                <a class="pilcrow" href="#section-41">&#182;</a>
               </div>
               <p>Dump the <a href="auditData.html">AuditData</a> to an easy to read and clickable HTML.
 This is used by the property auto complete.</p>
@@ -1210,11 +1251,11 @@ This is used by the property auto complete.</p>
         </li>
         
         
-        <li id="section-41">
+        <li id="section-42">
             <div class="annotation">
               
               <div class="pilwrap ">
-                <a class="pilcrow" href="#section-41">&#182;</a>
+                <a class="pilcrow" href="#section-42">&#182;</a>
               </div>
               <p>Recursively parse and bind all properties to the autocomplete area.</p>
 
@@ -1227,11 +1268,11 @@ This is used by the property auto complete.</p>
         </li>
         
         
-        <li id="section-42">
+        <li id="section-43">
             <div class="annotation">
               
               <div class="pilwrap ">
-                <a class="pilcrow" href="#section-42">&#182;</a>
+                <a class="pilcrow" href="#section-43">&#182;</a>
               </div>
               <p>Dump a single object property to the autocomplete box. This function is
 recursive and started by the <code>auditDataDumper</code> method above.</p>
@@ -1245,11 +1286,11 @@ recursive and started by the <code>auditDataDumper</code> method above.</p>
         </li>
         
         
-        <li id="section-43">
+        <li id="section-44">
             <div class="annotation">
               
               <div class="pilwrap ">
-                <a class="pilcrow" href="#section-43">&#182;</a>
+                <a class="pilcrow" href="#section-44">&#182;</a>
               </div>
               <p>Add current object&#39;s keys to an array.</p>
 
@@ -1261,11 +1302,11 @@ recursive and started by the <code>auditDataDumper</code> method above.</p>
         </li>
         
         
-        <li id="section-44">
+        <li id="section-45">
             <div class="annotation">
               
               <div class="pilwrap ">
-                <a class="pilcrow" href="#section-44">&#182;</a>
+                <a class="pilcrow" href="#section-45">&#182;</a>
               </div>
               <p>Only sort if the object is NOT an array.</p>
 
@@ -1294,11 +1335,11 @@ recursive and started by the <code>auditDataDumper</code> method above.</p>
         </li>
         
         
-        <li id="section-45">
+        <li id="section-46">
             <div class="annotation">
               
               <div class="pilwrap ">
-                <a class="pilcrow" href="#section-45">&#182;</a>
+                <a class="pilcrow" href="#section-46">&#182;</a>
               </div>
               <p>Create a cleaner version of search terms and title to be used
 while comparing values (code below).</p>
@@ -1311,11 +1352,11 @@ while comparing values (code below).</p>
         </li>
         
         
-        <li id="section-46">
+        <li id="section-47">
             <div class="annotation">
               
               <div class="pilwrap ">
-                <a class="pilcrow" href="#section-46">&#182;</a>
+                <a class="pilcrow" href="#section-47">&#182;</a>
               </div>
               <p>Only bind property if it matches the current text entered
 on the <code>txtSimple</code> input field.</p>
@@ -1333,11 +1374,11 @@ on the <code>txtSimple</code> input field.</p>
         </li>
         
         
-        <li id="section-47">
+        <li id="section-48">
             <div class="annotation">
               
               <div class="pilwrap ">
-                <a class="pilcrow" href="#section-47">&#182;</a>
+                <a class="pilcrow" href="#section-48">&#182;</a>
               </div>
               <p>If property value is an object, proceed with recursion.</p>
 
@@ -1349,11 +1390,11 @@ on the <code>txtSimple</code> input field.</p>
         </li>
         
         
-        <li id="section-48">
+        <li id="section-49">
             <div class="annotation">
               
               <div class="pilwrap ">
-                <a class="pilcrow" href="#section-48">&#182;</a>
+                <a class="pilcrow" href="#section-49">&#182;</a>
               </div>
               <p>When user clicks an object (entity or property name) on the <code>$autoCompleteDiv</code>, copy its value
 and paste to the <code>$txtSimple</code>.</p>
@@ -1368,11 +1409,11 @@ and paste to the <code>$txtSimple</code>.</p>
         </li>
         
         
-        <li id="section-49">
+        <li id="section-50">
             <div class="annotation">
               
               <div class="pilwrap ">
-                <a class="pilcrow" href="#section-49">&#182;</a>
+                <a class="pilcrow" href="#section-50">&#182;</a>
               </div>
               <p>If user clicks twice on a property, it will save the new value and hide this view.</p>
 
@@ -1391,11 +1432,11 @@ and paste to the <code>$txtSimple</code>.</p>
         </li>
         
         
-        <li id="section-50">
+        <li id="section-51">
             <div class="annotation">
               
               <div class="pilwrap ">
-                <a class="pilcrow" href="#section-50">&#182;</a>
+                <a class="pilcrow" href="#section-51">&#182;</a>
               </div>
               <p>When user clicks the &quot;edit&quot; icon next to a <a href="variable.html">Variable</a>, open
 the custom variable textfields for editing.</p>
@@ -1410,11 +1451,11 @@ the custom variable textfields for editing.</p>
         </li>
         
         
-        <li id="section-51">
+        <li id="section-52">
             <div class="annotation">
               
               <div class="pilwrap for-h2">
-                <a class="pilcrow" href="#section-51">&#182;</a>
+                <a class="pilcrow" href="#section-52">&#182;</a>
               </div>
               <h2>MOUSE AND KEYBOARD EVENTS</h2>
 
@@ -1423,11 +1464,11 @@ the custom variable textfields for editing.</p>
         </li>
         
         
-        <li id="section-52">
+        <li id="section-53">
             <div class="annotation">
               
               <div class="pilwrap ">
-                <a class="pilcrow" href="#section-52">&#182;</a>
+                <a class="pilcrow" href="#section-53">&#182;</a>
               </div>
               <p>When user is editing a label and clicks somewhere on the map, check for the
 source element. If it&#39;s not part of this view then hide it.</p>
@@ -1445,11 +1486,11 @@ source element. If it&#39;s not part of this view then hide it.</p>
         </li>
         
         
-        <li id="section-53">
+        <li id="section-54">
             <div class="annotation">
               
               <div class="pilwrap ">
-                <a class="pilcrow" href="#section-53">&#182;</a>
+                <a class="pilcrow" href="#section-54">&#182;</a>
               </div>
               <p>If user hasn&#39;t clicked inside the editing box, then hide the view.</p>
 
@@ -1463,11 +1504,11 @@ source element. If it&#39;s not part of this view then hide it.</p>
         </li>
         
         
-        <li id="section-54">
+        <li id="section-55">
             <div class="annotation">
               
               <div class="pilwrap ">
-                <a class="pilcrow" href="#section-54">&#182;</a>
+                <a class="pilcrow" href="#section-55">&#182;</a>
               </div>
               <p>When editing the label, the mouse wheel should stop propagation to
 avoid the map zoom being changed - but only when mouse is over the
@@ -1481,11 +1522,11 @@ avoid the map zoom being changed - but only when mouse is over the
         </li>
         
         
-        <li id="section-55">
+        <li id="section-56">
             <div class="annotation">
               
               <div class="pilwrap ">
-                <a class="pilcrow" href="#section-55">&#182;</a>
+                <a class="pilcrow" href="#section-56">&#182;</a>
               </div>
               <p>When user presses a key while editing the label value. Pressing &quot;Enter&quot; will trigger <code>save</code>,
 pressing &quot;Esc&quot; will hide the view.</p>
@@ -1498,11 +1539,11 @@ pressing &quot;Esc&quot; will hide the view.</p>
         </li>
         
         
-        <li id="section-56">
+        <li id="section-57">
             <div class="annotation">
               
               <div class="pilwrap ">
-                <a class="pilcrow" href="#section-56">&#182;</a>
+                <a class="pilcrow" href="#section-57">&#182;</a>
               </div>
               <p>When pressing keys on <code>$txtSimple</code>, check if the value is blank and the key being pressed
 is the special key defined on the <a href="settings.html">Settings</a>. If so, starts the
@@ -1517,11 +1558,11 @@ autocomplete feature. Pressing &quot;Enter&quot; will save.</p>
         </li>
         
         
-        <li id="section-57">
+        <li id="section-58">
             <div class="annotation">
               
               <div class="pilwrap for-h2">
-                <a class="pilcrow" href="#section-57">&#182;</a>
+                <a class="pilcrow" href="#section-58">&#182;</a>
               </div>
               <h2>EVAL</h2>
 
@@ -1530,11 +1571,11 @@ autocomplete feature. Pressing &quot;Enter&quot; will save.</p>
         </li>
         
         
-        <li id="section-58">
+        <li id="section-59">
             <div class="annotation">
               
               <div class="pilwrap ">
-                <a class="pilcrow" href="#section-58">&#182;</a>
+                <a class="pilcrow" href="#section-59">&#182;</a>
               </div>
               <p>Validate the <code>$txtCustomVarCode</code> field, and if it fails, then add the <code>.error</code>
 class to alert the user.</p>
@@ -1553,11 +1594,11 @@ class to alert the user.</p>
         </li>
         
         
-        <li id="section-59">
+        <li id="section-60">
             <div class="annotation">
               
               <div class="pilwrap ">
-                <a class="pilcrow" href="#section-59">&#182;</a>
+                <a class="pilcrow" href="#section-60">&#182;</a>
               </div>
               <p>Check if user has entered a variable name, and if the code has a return statement.</p>
 
@@ -1575,11 +1616,11 @@ class to alert the user.</p>
         </li>
         
         
-        <li id="section-60">
+        <li id="section-61">
             <div class="annotation">
               
               <div class="pilwrap ">
-                <a class="pilcrow" href="#section-60">&#182;</a>
+                <a class="pilcrow" href="#section-61">&#182;</a>
               </div>
               <p>Check if variable name is duplicate or not.</p>
 
@@ -1595,11 +1636,11 @@ class to alert the user.</p>
         </li>
         
         
-        <li id="section-61">
+        <li id="section-62">
             <div class="annotation">
               
               <div class="pilwrap ">
-                <a class="pilcrow" href="#section-61">&#182;</a>
+                <a class="pilcrow" href="#section-62">&#182;</a>
               </div>
               <p>If has a validation message, display it and stop here.</p>
 
@@ -1616,11 +1657,11 @@ class to alert the user.</p>
         </li>
         
         
-        <li id="section-62">
+        <li id="section-63">
             <div class="annotation">
               
               <div class="pilwrap ">
-                <a class="pilcrow" href="#section-62">&#182;</a>
+                <a class="pilcrow" href="#section-63">&#182;</a>
               </div>
               <p>If the eval parsing fails, quickly display the error message on the <code>$txtCustomVarCode</code>,
 and then put the original text back after a few seconds by calling <code>evalClearError</code>.</p>
@@ -1644,11 +1685,11 @@ and then put the original text back after a few seconds by calling <code>evalCle
         </li>
         
         
-        <li id="section-63">
+        <li id="section-64">
             <div class="annotation">
               
               <div class="pilwrap ">
-                <a class="pilcrow" href="#section-63">&#182;</a>
+                <a class="pilcrow" href="#section-64">&#182;</a>
               </div>
               <p>Clear the validation error message and set the <code>$txtCustomVarCode</code> back to its original text.</p>
 
@@ -1665,11 +1706,11 @@ and then put the original text back after a few seconds by calling <code>evalCle
         </li>
         
         
-        <li id="section-64">
+        <li id="section-65">
             <div class="annotation">
               
               <div class="pilwrap ">
-                <a class="pilcrow" href="#section-64">&#182;</a>
+                <a class="pilcrow" href="#section-65">&#182;</a>
               </div>
               <p>When pressing keys on <code>$txtCustomVarName</code>, check the key pressed to hide (Esc)
 or move focus to <code>$txtCustomVarCode</code> on (Enter).</p>
@@ -1683,11 +1724,11 @@ or move focus to <code>$txtCustomVarCode</code> on (Enter).</p>
         </li>
         
         
-        <li id="section-65">
+        <li id="section-66">
             <div class="annotation">
               
               <div class="pilwrap ">
-                <a class="pilcrow" href="#section-65">&#182;</a>
+                <a class="pilcrow" href="#section-66">&#182;</a>
               </div>
               <p>If user pressed &quot;Esc&quot; and the <code>$txtCustomVarName</code> has less than 2 characters
 then hide the eval field and show the simple one.</p>
@@ -1703,11 +1744,11 @@ then hide the eval field and show the simple one.</p>
         </li>
         
         
-        <li id="section-66">
+        <li id="section-67">
             <div class="annotation">
               
               <div class="pilwrap ">
-                <a class="pilcrow" href="#section-66">&#182;</a>
+                <a class="pilcrow" href="#section-67">&#182;</a>
               </div>
               <p>If user pressed &quot;Enter&quot; and a value was entered, change focus to <code>$txtCustomVarCode</code>.</p>
 
@@ -1721,11 +1762,11 @@ then hide the eval field and show the simple one.</p>
         </li>
         
         
-        <li id="section-67">
+        <li id="section-68">
             <div class="annotation">
               
               <div class="pilwrap ">
-                <a class="pilcrow" href="#section-67">&#182;</a>
+                <a class="pilcrow" href="#section-68">&#182;</a>
               </div>
               <p>When pressing keys on <code>$txtCustomVarCode</code>, check the key pressed to hide (Esc)
 or save (Enter) the label value.</p>
@@ -1738,11 +1779,11 @@ or save (Enter) the label value.</p>
         </li>
         
         
-        <li id="section-68">
+        <li id="section-69">
             <div class="annotation">
               
               <div class="pilwrap ">
-                <a class="pilcrow" href="#section-68">&#182;</a>
+                <a class="pilcrow" href="#section-69">&#182;</a>
               </div>
               <p>If user pressed &quot;Esc&quot; and the <code>$txtCustomVarCode</code> has less than 2 characters
 then hide the eval field and show the simple one.</p>
@@ -1760,11 +1801,11 @@ then hide the eval field and show the simple one.</p>
         </li>
         
         
-        <li id="section-69">
+        <li id="section-70">
             <div class="annotation">
               
               <div class="pilwrap ">
-                <a class="pilcrow" href="#section-69">&#182;</a>
+                <a class="pilcrow" href="#section-70">&#182;</a>
               </div>
               <p>When user clicks the &quot;Save variable&quot; button, validate the entered values and proceed
 only if the <a href="variable.html">Variable</a> name is not a duplicate, and

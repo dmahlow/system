@@ -154,8 +154,13 @@
               </a>
             
               
-              <a class="source" href="routes.html">
-                routes.coffee
+              <a class="source" href="adminRoutes.html">
+                adminRoutes.coffee
+              </a>
+            
+              
+              <a class="source" href="appRoutes.html">
+                appRoutes.coffee
               </a>
             
               
@@ -176,6 +181,21 @@
               
               <a class="source" href="vectors.html">
                 vectors.coffee
+              </a>
+            
+              
+              <a class="source" href="statusTabView.html">
+                statusTabView.coffee
+              </a>
+            
+              
+              <a class="source" href="toolsTabView.html">
+                toolsTabView.coffee
+              </a>
+            
+              
+              <a class="source" href="usersTabView.html">
+                usersTabView.coffee
               </a>
             
               
@@ -746,14 +766,7 @@ Otherwise use the <code>title</code> and <code>message</code> properties of the 
         <span class="keyword">if</span> alertObj.isError
             <span class="property">@$wrapperFooter</span>.addClass <span class="string">"error"</span>
         <span class="keyword">else</span>
-            <span class="property">@$wrapperFooter</span>.addClass <span class="string">"ok"</span>
-
-        delay = SystemApp.Settings.Alert.hideDelay
-        delay = delay * <span class="number">2</span> <span class="keyword">if</span> alertObj.isError
-
-        <span class="property">@$wrapperFooter</span>.fadeIn SystemApp.Settings.Alert.opacityInterval
-        <span class="property">@isFooterVisible</span> = <span class="literal">true</span>
-        _.delay <span class="property">@hideFooter</span>, delay + SystemApp.Settings.Alert.opacityInterval</pre></div></div>
+            <span class="property">@$wrapperFooter</span>.addClass <span class="string">"ok"</span></pre></div></div>
             
         </li>
         
@@ -763,6 +776,26 @@ Otherwise use the <code>title</code> and <code>message</code> properties of the 
               
               <div class="pilwrap ">
                 <a class="pilcrow" href="#section-21">&#182;</a>
+              </div>
+              <p>If no <code>delay</code> is passed, use the default one.</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>        delay = alertObj.delay
+        delay = SystemApp.Settings.Alert.hideDelay <span class="keyword">if</span> <span class="keyword">not</span> delay?
+
+        <span class="property">@$wrapperFooter</span>.fadeIn SystemApp.Settings.Alert.opacityInterval
+        <span class="property">@isFooterVisible</span> = <span class="literal">true</span>
+        _.delay <span class="property">@hideFooter</span>, delay + SystemApp.Settings.Alert.opacityInterval</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-22">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-22">&#182;</a>
               </div>
               <p>Log alerts to the console only if app is in debug mode.</p>
 
@@ -777,11 +810,11 @@ Otherwise use the <code>title</code> and <code>message</code> properties of the 
         </li>
         
         
-        <li id="section-22">
+        <li id="section-23">
             <div class="annotation">
               
               <div class="pilwrap ">
-                <a class="pilcrow" href="#section-22">&#182;</a>
+                <a class="pilcrow" href="#section-23">&#182;</a>
               </div>
               <p>Hide the footer alert and call <code>nextFooter</code> again to check for new alerts.</p>
 
@@ -794,11 +827,11 @@ Otherwise use the <code>title</code> and <code>message</code> properties of the 
         </li>
         
         
-        <li id="section-23">
+        <li id="section-24">
             <div class="annotation">
               
               <div class="pilwrap for-h2">
-                <a class="pilcrow" href="#section-23">&#182;</a>
+                <a class="pilcrow" href="#section-24">&#182;</a>
               </div>
               <h2>TOOLTIP ALERTS</h2>
 
@@ -807,11 +840,11 @@ Otherwise use the <code>title</code> and <code>message</code> properties of the 
         </li>
         
         
-        <li id="section-24">
+        <li id="section-25">
             <div class="annotation">
               
               <div class="pilwrap ">
-                <a class="pilcrow" href="#section-24">&#182;</a>
+                <a class="pilcrow" href="#section-25">&#182;</a>
               </div>
               <p>Show a tooltip alert.</p>
 
@@ -823,11 +856,11 @@ Otherwise use the <code>title</code> and <code>message</code> properties of the 
         </li>
         
         
-        <li id="section-25">
+        <li id="section-26">
             <div class="annotation">
               
               <div class="pilwrap ">
-                <a class="pilcrow" href="#section-25">&#182;</a>
+                <a class="pilcrow" href="#section-26">&#182;</a>
               </div>
               <p>Log alerts to the console only if app is in debug mode.</p>
 
@@ -845,11 +878,11 @@ Otherwise use the <code>title</code> and <code>message</code> properties of the 
         </li>
         
         
-        <li id="section-26">
+        <li id="section-27">
             <div class="annotation">
               
               <div class="pilwrap ">
-                <a class="pilcrow" href="#section-26">&#182;</a>
+                <a class="pilcrow" href="#section-27">&#182;</a>
               </div>
               <p>Get the next tooltip alert from the queue and display it.</p>
 
@@ -864,11 +897,11 @@ Otherwise use the <code>title</code> and <code>message</code> properties of the 
         </li>
         
         
-        <li id="section-27">
+        <li id="section-28">
             <div class="annotation">
               
               <div class="pilwrap ">
-                <a class="pilcrow" href="#section-27">&#182;</a>
+                <a class="pilcrow" href="#section-28">&#182;</a>
               </div>
               <p>Strip the timezone out of the time string, to keep it &quot;compact&quot;.</p>
 
@@ -888,11 +921,11 @@ Otherwise use the <code>title</code> and <code>message</code> properties of the 
         </li>
         
         
-        <li id="section-28">
+        <li id="section-29">
             <div class="annotation">
               
               <div class="pilwrap ">
-                <a class="pilcrow" href="#section-28">&#182;</a>
+                <a class="pilcrow" href="#section-29">&#182;</a>
               </div>
               <p>Append the <code>error</code> or <code>ok</code> class, depending if isError is true or false.</p>
 
@@ -906,21 +939,50 @@ Otherwise use the <code>title</code> and <code>message</code> properties of the 
         </li>
         
         
-        <li id="section-29">
+        <li id="section-30">
             <div class="annotation">
               
               <div class="pilwrap ">
-                <a class="pilcrow" href="#section-29">&#182;</a>
+                <a class="pilcrow" href="#section-30">&#182;</a>
+              </div>
+              <p>If <code>hideOnClick</code> is not false, bind hide to click event.</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>        <span class="keyword">if</span> alertObj <span class="keyword">isnt</span> <span class="literal">false</span>
+            <span class="property">@$wrapperTooltip</span>.click <span class="property">@hideTooltip</span>()</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-31">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-31">&#182;</a>
               </div>
               <p>Bind the click action to the tooltip container, if there&#39;s one specified.</p>
 
             </div>
             
             <div class="content"><div class='highlight'><pre>        <span class="keyword">if</span> alertObj.clickAction?
-            <span class="property">@$wrapperTooltip</span>.click alertObj.clickAction
+            <span class="property">@$wrapperTooltip</span>.click alertObj.clickAction</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-32">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-32">&#182;</a>
+              </div>
+              <p>If no <code>delay</code> is passed, use the default one.</p>
 
-        delay = SystemApp.Settings.Alert.hideDelay
-        delay = delay <span class="keyword">if</span> alertObj.isError
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>        delay = alertObj.delay
+        delay = SystemApp.Settings.Alert.hideDelay <span class="keyword">if</span> <span class="keyword">not</span> delay?
 
         <span class="property">@$wrapperTooltip</span>.fadeIn SystemApp.Settings.Alert.opacityInterval
         <span class="property">@isTooltipVisible</span> = <span class="literal">true</span>
@@ -929,13 +991,13 @@ Otherwise use the <code>title</code> and <code>message</code> properties of the 
         </li>
         
         
-        <li id="section-30">
+        <li id="section-33">
             <div class="annotation">
               
               <div class="pilwrap ">
-                <a class="pilcrow" href="#section-30">&#182;</a>
+                <a class="pilcrow" href="#section-33">&#182;</a>
               </div>
-              <p>Hide a tooltip alert. NOT IMPLEMENTED YET!</p>
+              <p>Hide a tooltip alert.</p>
 
             </div>
             
@@ -946,11 +1008,11 @@ Otherwise use the <code>title</code> and <code>message</code> properties of the 
         </li>
         
         
-        <li id="section-31">
+        <li id="section-34">
             <div class="annotation">
               
               <div class="pilwrap for-h2">
-                <a class="pilcrow" href="#section-31">&#182;</a>
+                <a class="pilcrow" href="#section-34">&#182;</a>
               </div>
               <h2>SERVER ALERTS</h2>
 
@@ -959,11 +1021,11 @@ Otherwise use the <code>title</code> and <code>message</code> properties of the 
         </li>
         
         
-        <li id="section-32">
+        <li id="section-35">
             <div class="annotation">
               
               <div class="pilwrap ">
-                <a class="pilcrow" href="#section-32">&#182;</a>
+                <a class="pilcrow" href="#section-35">&#182;</a>
               </div>
               <p>Show an alert whenever an error happens on the node.js server.
 This is triggered using Socket.IO.</p>
@@ -977,11 +1039,11 @@ This is triggered using Socket.IO.</p>
         </li>
         
         
-        <li id="section-33">
+        <li id="section-36">
             <div class="annotation">
               
               <div class="pilwrap for-h2">
-                <a class="pilcrow" href="#section-33">&#182;</a>
+                <a class="pilcrow" href="#section-36">&#182;</a>
               </div>
               <h2>KEYBOARD EVENTS</h2>
 
@@ -990,11 +1052,11 @@ This is triggered using Socket.IO.</p>
         </li>
         
         
-        <li id="section-34">
+        <li id="section-37">
             <div class="annotation">
               
               <div class="pilwrap ">
-                <a class="pilcrow" href="#section-34">&#182;</a>
+                <a class="pilcrow" href="#section-37">&#182;</a>
               </div>
               <p>When user presses the ESC key, hide the tooltip alert (if there&#39;s one visible).</p>
 
