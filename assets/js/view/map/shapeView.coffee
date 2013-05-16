@@ -264,9 +264,9 @@ class SystemApp.MapShapeView extends SystemApp.BaseView
             @blinkAndRemove()
             return
 
-        # Hide the "link creator" and "add label" icons and the label text shadows
-        # when dragging the shape, for performance reasons.
+        # Remove highlight, hide the "link creator" and "add label" icons when dragging the shape.
         @hideWhileDragging()
+        @unhighlight()
 
         # Saves the current position to the `ox` and `oy` variables and set `dragging` to true.
         @setTempPosition()
@@ -304,9 +304,9 @@ class SystemApp.MapShapeView extends SystemApp.BaseView
 
         # If shape moved, readd it to the `selectedShapes` on the map view.
         moved = @ix isnt @x() or @iy isnt @y()
-        @parentView.addToSelected this, e.ctrlKey or e.metaKey or moved
-
-        if @parentView.selectedShapes[@model.id]
+        if not moved and @parentView.countSelectedShapes() > 1 and @parentView.selectedShapes[@model.id]?
+            @parentView.removeFromSelected this
+        else
             @highlight()
 
         # Show the "link creator" and "add label" icons again, and repaint the label text shadows.

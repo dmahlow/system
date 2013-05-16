@@ -116,6 +116,10 @@ class SystemApp.MapView extends SystemApp.BaseView
         @selectedShapes = {}
         @paper = new Raphael "map", width, height
 
+    # Count how many shapes are selected.
+    countSelectedShapes: =>
+        return Object.keys(@selectedShapes).length
+
 
     # RENDER THE CURRENT MAP
     # ----------------------------------------------------------------------
@@ -365,20 +369,25 @@ class SystemApp.MapView extends SystemApp.BaseView
 
         entityObject = view.model.entityObject
         textTitle = view.model.defaultText()
+        selectedCount = @countSelectedShapes()
 
+        # If multiple shapes are selected, add multiple text to the footer.
         # If the view's model has an `entityObject` property, means it has an
         # [Entity Object](entityObject.html) bound to it so show its title on the footer.
         # Otherwise show the shape's title text.
-        if entityObject?
-            @setFooterShape entityObject.title()
-        else if textTitle? and textTitle isnt ""
-            @setFooterShape textTitle
+        if selectedCount > 1
+            @controlsView.bind @selectedShapes
+            @setFooterShape(selectedCount + " " + SystemApp.Messages.elementsSelected)
         else
-            @setFooterShape view.model.id
+            @controlsView.bind view
+            if entityObject?
+                @setFooterShape entityObject.title()
+            else if textTitle? and textTitle isnt ""
+                @setFooterShape textTitle
+            else
+                @setFooterShape view.model.id
 
         SystemApp.consoleLog "MapView.addToSelected", view.model.id
-
-        @controlsView.bindShape view
 
     # Remove the specified [Shape View](shapeView.html) or [Link View](linkView.html) from
     # the list of selected elements.
@@ -387,7 +396,6 @@ class SystemApp.MapView extends SystemApp.BaseView
         delete @selectedShapes[view.model.id]
 
         SystemApp.consoleLog "MapView.removeFromSelected", view.model.id
-
 
     # Set the current shape at which mouse is pointing. This is mainly used when creating links between shapes.
     setHoverShape: (shapeView) =>

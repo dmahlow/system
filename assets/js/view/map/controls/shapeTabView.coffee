@@ -4,11 +4,12 @@
 
 class SystemApp.MapControlsShapeTabView extends SystemApp.BaseView
 
-    currentBoundView: null # holds the current shape being shown
+    currentBoundViews: null # holds the current shape being shown
 
     # DOM ELEMENTS
     # ----------------------------------------------------------------------
 
+    $topDescription: null           # the "H6" element on top of the tab
     $txtBackground: null            # the "Background" text field
     $txtForeground: null            # the "Label color" text field
     $txtTitleForeground: null       # the "Title color" text field
@@ -45,6 +46,8 @@ class SystemApp.MapControlsShapeTabView extends SystemApp.BaseView
     # Set the DOM elements cache.
     setDom: =>
         @setElement $ "#map-ctl-tab-shape"
+
+        @$topDescription = @$el.find "h6"
 
         @$selIcon = $ "#map-ctl-shape-icon"
         @$txtBackground = $ "#map-ctl-shape-background"
@@ -125,10 +128,12 @@ class SystemApp.MapControlsShapeTabView extends SystemApp.BaseView
         @$selIcon.append $(document.createElement "option").val("0").text(SystemApp.Messages.noIcon)
         _.each SystemApp.Vectors, (item, key) => @$selIcon.append $(document.createElement "option").val(key).text(key)
 
-    # Bind a [Shape View](shapeView.html) or [Link View](linkView.html) to the control
-    # and display its editable properties.
-    bind: (view) =>
-        @currentBoundView = view
+    # Bind one or more [Shape Views](shapeView.html) or [Link Views](linkView.html) to the control
+    # and display its editable properties. If multiple shapes are bound, show an alert that changes
+    # will affect all selected shapes.
+    bind: (views) =>
+        @currentBoundViews = views
+
         @$butDeleteShape.removeClass "hidden"
 
         @bindProperties()
@@ -137,11 +142,11 @@ class SystemApp.MapControlsShapeTabView extends SystemApp.BaseView
     # Show or hide forms depending on what's selected on the map.
     toggleForms: (visible) =>
         if visible
-            @$el.find("h6").hide()
             @$el.find("h5,.panel").show()
         else
             @$el.find("h5,.panel").hide()
-            @$el.find("h6").show()
+            @$topDescription.text SystemApp.Messages.noShapeSelected
+            @$topDescription.show()
 
 
     # SHAPE EDITING TAB
@@ -150,37 +155,55 @@ class SystemApp.MapControlsShapeTabView extends SystemApp.BaseView
     # Bind all editable properties of the current [Shape](shape.html)
     # or [Link](link.html) to the "Element properties" tab.
     bindProperties: =>
-        if @currentBoundView?
-            @$txtForeground.val @currentBoundView.model.foreground()
-            @$txtForeground.keyup()
-            @$txtStroke.val @currentBoundView.model.stroke()
-            @$txtStroke.keyup()
-            @$selStrokeWidth.val @currentBoundView.model.strokeWidth()
-            @$selFontSize.val @currentBoundView.model.fontSize()
-            @$selOpacity.val @currentBoundView.model.opacity()
+        if @currentBoundViews?
 
-            # If the selected item is a shape, then hide all "only-for-links" properties.
-            if @currentBoundView.constructor is SystemApp.MapShapeView
-                @$selIcon.val @currentBoundView.model.icon()
-                @$txtBackground.val @currentBoundView.model.background()
-                @$txtBackground.keyup()
-                @$txtTitleForeground.val @currentBoundView.model.titleForeground()
-                @$txtTitleForeground.keyup()
-                @$chkIconFull.prop "checked", @currentBoundView.model.iconFull()
-                @$chkRoundedCorners.prop "checked", @currentBoundView.model.roundedCorners()
-                @$el.find(".only-for-links").hide()
-                @$el.find(".not-for-links").show()
-                @$butDeleteShape.html SystemApp.Messages.removeShape
-            # If selected item is a link, then hide all "not-for-links" properties.
+            # If only one view is bound, show its properties, otherwise show empty boxes
+            # so user can edit multiple selected elements.
+            if @currentBoundViews.model?.id?
+
+                @$topDescription.hide()
+
+                @$txtForeground.val @currentBoundViews.model.foreground()
+                @$txtForeground.keyup()
+                @$txtStroke.val @currentBoundViews.model.stroke()
+                @$txtStroke.keyup()
+                @$selStrokeWidth.val @currentBoundViews.model.strokeWidth()
+                @$selFontSize.val @currentBoundViews.model.fontSize()
+                @$selOpacity.val @currentBoundViews.model.opacity()
+
+                # If the selected item is a shape, then hide all "only-for-links" properties.
+                if @currentBoundViews.constructor is SystemApp.MapShapeView
+                    @$selIcon.val @currentBoundViews.model.icon()
+                    @$txtBackground.val @currentBoundViews.model.background()
+                    @$txtBackground.keyup()
+                    @$txtTitleForeground.val @currentBoundViews.model.titleForeground()
+                    @$txtTitleForeground.keyup()
+                    @$chkIconFull.prop "checked", @currentBoundViews.model.iconFull()
+                    @$chkRoundedCorners.prop "checked", @currentBoundViews.model.roundedCorners()
+                    @$el.find(".only-for-links").hide()
+                    @$el.find(".not-for-links").show()
+                    @$butDeleteShape.html SystemApp.Messages.removeShape
+                # If selected item is a link, then hide all "not-for-links" properties.
+                else
+                    @$selArrowSource.val @currentBoundViews.model.arrowSource()
+                    @$selArrowTarget.val @currentBoundViews.model.arrowTarget()
+                    @$chkSmoothLink.prop "checked", @currentBoundViews.model.smooth()
+                    @$el.find(".not-for-links").hide()
+                    @$el.find(".only-for-links").show()
+                    @$butDeleteShape.html SystemApp.Messages.removeLink
+
+                @$zIndexDiv.children("div").removeClass("active").eq(@currentBoundViews.model.zIndex() - 1).addClass "active"
+
             else
-                @$selArrowSource.val @currentBoundView.model.arrowSource()
-                @$selArrowTarget.val @currentBoundView.model.arrowTarget()
-                @$chkSmoothLink.prop "checked", @currentBoundView.model.smooth()
-                @$el.find(".not-for-links").hide()
-                @$el.find(".only-for-links").show()
-                @$butDeleteShape.html SystemApp.Messages.removeLink
 
-            @$zIndexDiv.children("div").removeClass("active").eq(@currentBoundView.model.zIndex() - 1).addClass "active"
+                @$topDescription.text SystemApp.Messages.multipleShapesSelected
+                @$topDescription.show()
+
+                @$txtForeground.val()
+                @$txtStroke.val()
+                @$selStrokeWidth.val()
+                @$selFontSize.val()
+                @$selOpacity.val()
 
             # Show all editable panels.
             @toggleForms true
@@ -206,7 +229,7 @@ class SystemApp.MapControlsShapeTabView extends SystemApp.BaseView
     # When a text field of the editable properties losts focus, changes or gets clicked,
     # saves the new value to the current [Shape](shape.html) model.
     editablePropertySave: (e) =>
-        if not @currentBoundView?
+        if not @currentBoundViews?
             return
 
         src = $ e.target
@@ -221,11 +244,11 @@ class SystemApp.MapControlsShapeTabView extends SystemApp.BaseView
                 value = parseFloat value
 
         if value? and value isnt ""
-            @currentBoundView.model.set propertyName, value
-            @currentBoundView.model.save()
+            @currentBoundViews.model.set propertyName, value
+            @currentBoundViews.model.save()
             @parentView.model.save()
         else
-            src.val @currentBoundView.model.get propertyName
+            src.val @currentBoundViews.model.get propertyName
 
     # When user selects no icon, disable the "full icon" toggle.
     selIconChanged: =>
@@ -244,8 +267,8 @@ class SystemApp.MapControlsShapeTabView extends SystemApp.BaseView
         @$zIndexDiv.children("div").removeClass "active"
         src.addClass "active"
 
-        @currentBoundView.model.set "zIndex", parseInt src.html()
-        @currentBoundView.model.save()
+        @currentBoundViews.model.set "zIndex", parseInt src.html()
+        @currentBoundViews.model.save()
         @parentView.model.save()
 
     # Clicks the "Remove shape" button, show the "Confirm" button
@@ -256,7 +279,7 @@ class SystemApp.MapControlsShapeTabView extends SystemApp.BaseView
 
     # User clicks the "Confirm" button, so proceed with shape removal.
     confirmDeleteShapeClick: (e) =>
-        @currentBoundView.blinkAndRemove()
+        @currentBoundViews.blinkAndRemove()
         @resetDeleteShape e
 
     # Hide the "Confirm" shape removal button if user clicks anywhere on the page

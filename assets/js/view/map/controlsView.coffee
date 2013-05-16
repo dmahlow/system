@@ -108,9 +108,9 @@ class SystemApp.MapControlsView extends SystemApp.BaseView
         @model = map
 
     # Bind the selected shape details to the [Shape Details View](shapeTabView.html).
-    bindShape: (shapeView) =>
-        @shapeTabView.bind shapeView
-        @inspectorTabView.bind shapeView
+    bind: (views) =>
+        @shapeTabView.bind views
+        @inspectorTabView.bind views
 
 
     # HELPER PROPERTIES

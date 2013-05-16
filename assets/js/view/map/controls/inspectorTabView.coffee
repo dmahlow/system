@@ -7,6 +7,7 @@ class SystemApp.MapControlsInspectorTabView extends SystemApp.BaseView
     # DOM ELEMENTS
     # ----------------------------------------------------------------------
 
+    $topDescription: null           # the "H6" element on top of the tab
     $attributesDiv: null            # the list-div with shape properties (Shape details tab)
     $linksDiv: null                 # the list-div with the shape connections (Shape related tab)
     $parentAndChildDiv: null        # the list-div with the shape parent and child elements (Shape related tab)
@@ -37,6 +38,8 @@ class SystemApp.MapControlsInspectorTabView extends SystemApp.BaseView
     setDom: =>
         @setElement $ "#map-ctl-tab-inspector"
 
+        @$topDescription = @$el.find "h6"
+
         @$attributesDiv = $ "#map-ctl-inspector-attributes"
         @$parentAndChildDiv = $ "#map-ctl-shape-parent-child"
         @$linksDiv = $ "#map-ctl-shape-links"
@@ -55,11 +58,11 @@ class SystemApp.MapControlsInspectorTabView extends SystemApp.BaseView
 
     # Unbind event listeners from the current [Shape View](shapeView.html).
     clearEvents: =>
-        if @currentBoundView?.linkViews?
-            _.each @currentBoundView.linkViews, (linkView) => linkView.model.off "change", @bindAllLinks
+        if @currentBoundViews?.linkViews?
+            _.each @currentBoundViews.linkViews, (linkView) => linkView.model.off "change", @bindAllLinks
 
-        if @currentBoundView?.shapeViews?
-            _.each @currentBoundView.shapeViews, (shapeView) => shapeView.model.off "change", @bindAllChildItems
+        if @currentBoundViews?.shapeViews?
+            _.each @currentBoundViews.shapeViews, (shapeView) => shapeView.model.off "change", @bindAllChildItems
 
     # Enable or disable editing the current shape / link attached events.
     setEnabled: (value) =>
@@ -84,20 +87,27 @@ class SystemApp.MapControlsInspectorTabView extends SystemApp.BaseView
     # Bind a [Shape View](shapeView.html) or [Link View](linkView.html) to the control
     # and display its properties / related elements / links / etc.
     bind: (view) =>
-        @currentBoundView = view
+        @currentBoundViews = view
 
-        if @currentBoundView? and @currentBoundView.model?
+        if @currentBoundViews?
 
-            if @currentBoundView.linkViews?
-                _.each @currentBoundView.linkViews, (linkView) => linkView.model.on "change", @bindAllLinks
+            if @currentBoundViews.model?.id?
+                @$topDescription.hide()
 
-            if @currentBoundView.shapeViews?
-                _.each @currentBoundView.shapeViews, (childView) => childView.model.on "change", @bindAllChildItems
+                if @currentBoundViews.linkViews?
+                    _.each @currentBoundViews.linkViews, (linkView) => linkView.model.on "change", @bindAllLinks
+                if @currentBoundViews.shapeViews?
+                    _.each @currentBoundViews.shapeViews, (childView) => childView.model.on "change", @bindAllChildItems
+            else
+
 
             # Show all editable panels.
             @toggleForms true
 
         else
+
+            @$topDescription.text SystemApp.Messages.multipleShapesSelected
+            @$topDescription.show()
 
             # No shape(s) selected, so hide panels and show the h6 element with the "no shapes selected text".
             @toggleForms false
@@ -113,11 +123,11 @@ class SystemApp.MapControlsInspectorTabView extends SystemApp.BaseView
     # Show or hide forms depending on what's selected on the map.
     toggleForms: (visible) =>
         if visible
-            @$el.find("h6").hide()
             @$el.find("h5,.panel").show()
         else
             @$el.find("h5,.panel").hide()
-            @$el.find("h6").show()
+            @$topDescription.text SystemApp.Messages.noShapeSelected
+            @$topDescription.show()
 
 
     # INSPECT PROPERTIES
@@ -127,13 +137,13 @@ class SystemApp.MapControlsInspectorTabView extends SystemApp.BaseView
     bindAllAttributes: =>
         @$attributesDiv.empty()
 
-        if @currentBoundView?
+        if @currentBoundViews?.model?.id?
 
-            @bindAttribute @currentBoundView.model.id, "ID"
-            entityObj = @currentBoundView.model.entityObject
+            @bindAttribute @currentBoundViews.model.id, "ID"
+            entityObj = @currentBoundViews.model.entityObject
 
             if entityObj?
-                @bindAttribute @currentBoundView.model.entityDefinitionId(), "Type"
+                @bindAttribute @currentBoundViews.model.entityDefinitionId(), "Type"
                 _.each entityObj.attributes, @bindAttribute
             else
                 span = $(document.createElement "span")
@@ -196,14 +206,14 @@ class SystemApp.MapControlsInspectorTabView extends SystemApp.BaseView
     # is a [Host](host.html), it will bind details about the [Machine](machine.html) in where
     # it is running.
     bindParentDetails: =>
-        if not @currentBoundView?
+        if not @currentBoundViews?.model?.id?
             return
 
-        isShape = @currentBoundView.constructor is SystemApp.MapShapeView
+        isShape = @currentBoundViews.constructor is SystemApp.MapShapeView
 
         if not isShape
-            target = @parentView.parentView.shapeViews[@currentBoundView.model.targetId()]
-            parent = @parentView.parentView.shapeViews[@currentBoundView.model.sourceId()]
+            target = @parentView.parentView.shapeViews[@currentBoundViews.model.targetId()]
+            parent = @parentView.parentView.shapeViews[@currentBoundViews.model.sourceId()]
             parentText = parent.model.id + " - " + target.model.id
 
         if not parent?
@@ -241,16 +251,19 @@ class SystemApp.MapControlsInspectorTabView extends SystemApp.BaseView
     bindAllLinks: =>
         @$linksDiv.empty()
 
-        if @currentBoundView? and @currentBoundView?.linkViews? and _.size(@currentBoundView.linkViews) > 0
-            _.each @currentBoundView.linkViews, @bindLink
+        if @currentBoundViews? and @currentBoundViews?.linkViews? and _.size(@currentBoundViews.linkViews) > 0
+            _.each @currentBoundViews.linkViews, @bindLink
 
     # Add a single link to the links div, passing the [Link View](linkView.html) and its name.
     bindLink: (linkView) =>
+        if not linkView?.model?.id?
+            return
+
         div = $ document.createElement "div"
         name = $ document.createElement "label"
         value = $ document.createElement "span"
 
-        if linkView.model.sourceId() is @currentBoundView.model.id
+        if linkView.model.sourceId() is @currentBoundViews.model.id
             target = linkView.model.targetId()
         else
             target = linkView.model.sourceId()
@@ -327,12 +340,12 @@ class SystemApp.MapControlsInspectorTabView extends SystemApp.BaseView
         checkboxes = @$eventsDiv.find "input"
         checkboxes.prop "checked", false
 
-        if not @currentBoundView?.model?.auditEventIds?
+        if not @currentBoundViews?.model?.auditEventIds?
             @$eventsDiv.hide()
             return
 
         @$eventsDiv.show()
-        ids = @currentBoundView.model.auditEventIds()
+        ids = @currentBoundViews.model.auditEventIds()
 
         # If there are [AuditEvent](auditEvent.html) IDs attached to the selected shape/link, then
         # mark the correspondent checkboxes.
@@ -343,41 +356,41 @@ class SystemApp.MapControlsInspectorTabView extends SystemApp.BaseView
     # Bind all currently active [Audit Events](auditEvent.html) for the selected shape.
     # Active alerts will have a small icon next to them, set via a CSS class.
     bindActiveAuditEvents: =>
-        if not @currentBoundView?
+        if not @currentBoundViews?
             return
 
         # Remove the `active` class from all alert divs.
         @$eventsDiv.children("div").removeClass "active"
 
         # Add the `active` class to all corresponding active alert divs.
-        if @currentBoundView.labelsView.activeAuditEvents?
-            _.each @currentBoundView.labelsView.activeAuditEvents, (auditEvent) =>
+        if @currentBoundViews?.labelsView?.activeAuditEvents?
+            _.each @currentBoundViews.labelsView.activeAuditEvents, (auditEvent) =>
                 $("#" + SystemApp.Settings.AuditEvent.shapeCheckboxName + auditEvent.id).parent().addClass "active"
 
     # When user (un)check an alert checkbox, update the [Shape](shape.html) `auditEventIds` property.
     eventCheckChange: (e) =>
-        if not @currentBoundView?
+        if not @currentBoundViews?
             return
 
         src = $ e.currentTarget
         checked = src.prop "checked"
 
         if checked
-            arr = _.union @currentBoundView.model.auditEventIds(), e.data
+            arr = _.union @currentBoundViews.model.auditEventIds(), e.data
         else
-            arr = _.without @currentBoundView.model.auditEventIds(), e.data
-            delete @currentBoundView.labelsView.activeAuditEvents[e.data]
+            arr = _.without @currentBoundViews.model.auditEventIds(), e.data
+            delete @currentBoundViews.labelsView.activeAuditEvents[e.data]
 
         # Force remove any null values from the array, and set the shape/link model `auditEventIds` attribute.
         arr = _.without arr, null
-        @currentBoundView.model.auditEventIds arr
+        @currentBoundViews.model.auditEventIds arr
 
         # If no alerts are selected, remove all `active` classes from the `$eventsDiv`
         # and force reset the selected shape/link view to its original appearance.
         if arr.length < 1
             @$eventsDiv.children("div").removeClass "active"
-            @currentBoundView.render()
+            @currentBoundViews.render()
 
         # Save the current shape/link model.
-        @currentBoundView.model.save()
+        @currentBoundViews.model.save()
         @parentView.model.save()
