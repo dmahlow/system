@@ -513,7 +513,7 @@ class SystemApp.MapShapeLabelsView extends SystemApp.BaseView
         @currentEditingPosition = data
 
         # Set the current selected element on the [Map View](mapView.html).
-        @mapView.setCurrentElement @parentView
+        @mapView.addToSelected @parentView
 
         if @mapView.editEnabled
             if @isEventDelete e

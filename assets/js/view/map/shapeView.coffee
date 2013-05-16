@@ -16,6 +16,8 @@ class SystemApp.MapShapeView extends SystemApp.BaseView
     oy: 0                   # temporary Y coordinates
     ow: 0                   # temporary shape width when resizing
     oh: 0                   # temporary shape height when resizing
+    ix: 0                   # initial X coordinates before dragging
+    iy: 0                   # initial Y coordinates before dragging
     resizing: false         # is the shape being resized?
     dragging: false         # is the shape dragging?
 
@@ -46,7 +48,7 @@ class SystemApp.MapShapeView extends SystemApp.BaseView
 
     # Base dispose for all shapes.
     dispose: =>
-        @removeShadow()
+        @unhighlight()
 
         @labelsView?.dispose()
         @linkCreatorView?.dispose()
@@ -218,10 +220,10 @@ class SystemApp.MapShapeView extends SystemApp.BaseView
     # new border for a period of time - default 1400ms, set on the
     # [Settings](settings.html) - and if after that period the
     # shape is still selected, then set its border back to the "selected" style
-    # by calling the `createShadow` method.
+    # by calling the `highlight` method.
     strokeUpdatedBackToSelected: =>
         if @parentView.currentShape?.model.id is @model.id
-            @createShadow()
+            @highlight()
 
 
     # MOUSE EVENTS
@@ -248,8 +250,11 @@ class SystemApp.MapShapeView extends SystemApp.BaseView
 
     # User has started dragging, only proceed if editEnabled is true.
     dragStart: (x, y, e) =>
+        @ix = @x()
+        @iy = @y()
+
         @setLinkViews()
-        @parentView.setCurrentElement this, e.ctrlKey or e.metaKey
+        @parentView.addToSelected this, e.ctrlKey or e.metaKey
 
         if not @parentView.editEnabled
             return
@@ -267,8 +272,6 @@ class SystemApp.MapShapeView extends SystemApp.BaseView
         @setTempPosition()
         @dragging = true
 
-        @removeShadow()
-
         @svg.animate {"opacity": SystemApp.Settings.Map.opacityDrag}, SystemApp.Settings.Map.opacityInterval
 
     # When user is dragging a shape, check if it's a new link creation and
@@ -284,24 +287,27 @@ class SystemApp.MapShapeView extends SystemApp.BaseView
     # and snaps the shape to the grid. If user was creating a new link
     # then proceed to `linkCreatorEnd()`. The optional `shadowColor` parameter
     # can be passed to set a custom shadow color of the shape after dragging.
-    dragEnd: (e, shadowColor) =>
+    dragEnd: (e) =>
         if not @parentView.editEnabled
             return
 
         @svg?.animate {"opacity": @model.opacity()}, SystemApp.Settings.Map.opacityInterval
 
-        if not @dragging
-            return
+        # Stop here if `dragging` hasn't be triggered before.
+        return if not @dragging
 
+        # Unset `dragging`, save new position and reset links.
         @dragging = false
-
         pos = @getSnap()
-
         @setPosition pos.x, pos.y, true
         @resetLinks false
 
+        # If shape moved, readd it to the `selectedShapes` on the map view.
+        moved = @ix isnt @x() or @iy isnt @y()
+        @parentView.addToSelected this, e.ctrlKey or e.metaKey or moved
+
         if @parentView.selectedShapes[@model.id]
-            @createShadow shadowColor
+            @highlight()
 
         # Show the "link creator" and "add label" icons again, and repaint the label text shadows.
         @showAfterDragging()
@@ -336,7 +342,7 @@ class SystemApp.MapShapeView extends SystemApp.BaseView
 
     # User has started resizing the shape, only proceed if editEnabled is true.
     resizeStart: (x, y, e) =>
-        @parentView.setCurrentElement this, e.ctrlKey or e.metaKey
+        @parentView.addToSelected this, e.ctrlKey or e.metaKey
 
         if not @parentView.editEnabled
             return
@@ -349,7 +355,7 @@ class SystemApp.MapShapeView extends SystemApp.BaseView
         # Saves the current dimensions to the `ow` and `oh` variables and remove shadow.
         @ow = @width()
         @oh = @height()
-        @removeShadow()
+        @unhighlight()
 
     # When user is dragging a shape, check if it's a new link creation and
     # if not, reset link positions.
@@ -405,7 +411,7 @@ class SystemApp.MapShapeView extends SystemApp.BaseView
         @setDimensions w + snapX, h + snapY, true
         @resetLinks false
 
-        _.delay @createShadow, SystemApp.Settings.Map.shadowDelay
+        _.delay @highlight, SystemApp.Settings.Map.shadowDelay
 
 
     # LINKS AND CONNECTIONS
@@ -426,7 +432,7 @@ class SystemApp.MapShapeView extends SystemApp.BaseView
 
     # Move the end of the temporary link while moving the mouse.
     # If the mouse goes over another shape, it will call
-    # `createShadow()` to temporary highlight it.
+    # `highlight()` to temporary highlight it.
     linkCreatorMove: (dx, dy) =>
         if not @parentView.editEnabled
             return
@@ -441,9 +447,9 @@ class SystemApp.MapShapeView extends SystemApp.BaseView
             return
 
         if @linkCreatorView.target isnt pointedShape
-            @linkCreatorView.target?.removeShadow()
+            @linkCreatorView.target?.unhighlight()
             @linkCreatorView.target = pointedShape
-            @linkCreatorView.target?.createShadow SystemApp.Settings.Map.refShadowColor
+            @linkCreatorView.target?.highlight SystemApp.Settings.Map.refShadowColor
 
     # Destroy the temporary link and if a current reference element
     # is highlighted, create and save the new link.
@@ -460,7 +466,7 @@ class SystemApp.MapShapeView extends SystemApp.BaseView
         existingLink = @hasLink @linkCreatorView.target
         @linkCreatorSave() if @linkCreatorView?.target isnt null and existingLink is false
 
-        @linkCreatorView?.target?.removeShadow()
+        @linkCreatorView?.target?.unhighlight()
         @linkCreatorView?.dispose()
         @linkCreatorView = null
 
@@ -825,14 +831,14 @@ class SystemApp.MapShapeView extends SystemApp.BaseView
         @svgLinker?.attr {"opacity": SystemApp.Settings.Map.icoActionsOpacity}
 
     # Create a shadow behind the shape, with optional color and strength.
-    createShadow: (color, strength) =>
+    highlight: (color, strength) =>
         color = SystemApp.Settings.Map.shadowColor if not color?
         strength = SystemApp.Settings.Map.shadowStrength if not strength?
 
         @svg.attr {"stroke": color, "stroke-width": strength}
 
     # Remove the shadow from the shape (if there's one present).
-    removeShadow: =>
+    unhighlight: =>
         @svg?.attr {"stroke": @model.stroke(), "stroke-width": @model.strokeWidthComputed()}
 
     # Blink the entire shape with optional amount of times (default is 2). This is a recursive function.

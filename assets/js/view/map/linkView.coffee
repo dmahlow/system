@@ -29,7 +29,7 @@ class SystemApp.MapLinkView extends SystemApp.BaseView
 
     # Dispose the link view.
     dispose: =>
-        @removeShadow()
+        @unhilight()
 
         @labelsView?.dispose()
         @svg?.remove()
@@ -103,7 +103,7 @@ class SystemApp.MapLinkView extends SystemApp.BaseView
         if @isEventDelete e
             @blinkAndRemove()
         else
-            @parentView.setCurrentElement this
+            @parentView.addToSelected this
 
     # Send the link to the back of the current [Map View](r.html).
     toBack: =>
@@ -170,10 +170,10 @@ class SystemApp.MapLinkView extends SystemApp.BaseView
     # new border for a period of time - default 1400ms, set on the
     # [Settings](settings.html) - and if after that period the
     # shape is still selected, then set its border back to the "selected" style
-    # by calling the `createShadow` method.
+    # by calling the `highlight` method.
     strokeUpdatedBackToSelected: =>
         if @parentView.currentShape?.model.id is @model.id
-            @createShadow()
+            @highlight()
 
 
     # SHADOW AND HIGHLIGHT
@@ -191,12 +191,12 @@ class SystemApp.MapLinkView extends SystemApp.BaseView
         _.delay(callback, SystemApp.Settings.Map.blinkInterval * 2 + extraMs * 4) if times is 1 and callback?
 
     # Create a shadow behind the link, with optional color and strength.
-    createShadow: (color, strength) =>
+    highlight: (color, strength) =>
         color = SystemApp.Settings.Map.shadowColor if not color?
         strength = SystemApp.Settings.Map.shadowStrength if not strength?
 
         @svg.svgLine.attr {"stroke": color, "stroke-width": strength}
 
     # Remove the shadow from the link (if there's one present).
-    removeShadow: =>
+    unhilight: =>
         @svg?.svgLine.attr {"stroke": @model.stroke(), "stroke-width": @model.strokeWidth()}

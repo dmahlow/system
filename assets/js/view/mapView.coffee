@@ -164,7 +164,7 @@ class SystemApp.MapView extends SystemApp.BaseView
     clearSelectedShapes: =>
         count = 0
         for modelId, view of @selectedShapes
-            view.removeShadow()
+            view.unhighlight()
             count++
 
         # Reset the selected shapes object.
@@ -337,13 +337,13 @@ class SystemApp.MapView extends SystemApp.BaseView
 
         if save
             view.blink()
-            @setCurrentElement view
+            @addToSelected view
 
     # Removes a shape from the map and delete its value from the `shapeViews`.
     removeShape: (model) =>
         view = @shapeViews[model.id]
 
-        @setCurrentElement view
+        @addToSelected view
         @model.save()
 
         delete @shapeViews[model.id]
@@ -353,42 +353,41 @@ class SystemApp.MapView extends SystemApp.BaseView
         _.each @shapeViews, (view) => view.dispose()
         @shapeViews = {}
 
-    # Add the specified [Shape View](shapeView.html) to the list of selected shapes on the map.
-    # When holding "Ctrl", the `multiple` argument will be true and the shape will be added to the
-    # list of selected shapes. Otherwise it will clear the list and add the shape as the only selected shape.
-    setCurrentElement: (view, multiple) =>
-        if @selectedShapes[view.model.id]?
+    # Add the specified [Shape View](shapeView.html) or [Link View](linkView.html) to the list of selected
+    # elements on the map. When holding "Ctrl", the `multiple` argument will be true and the shape will be
+    # added to the selected list. Otherwise it will clear the list and add the element as the only selected.
+    addToSelected: (view, multiple) =>
+        @clearSelectedShapes() if not multiple
 
-            @selectedShapes[view.model.id].removeShadow()
-            delete @selectedShapes[view.model.id]
+        @selectedShapes[view.model.id] = view
 
-            SystemApp.consoleLog "MapView.setCurrentElement", "Deselected #{view.model.id}"
+        view.highlight()
 
+        entityObject = view.model.entityObject
+        textTitle = view.model.defaultText()
+
+        # If the view's model has an `entityObject` property, means it has an
+        # [Entity Object](entityObject.html) bound to it so show its title on the footer.
+        # Otherwise show the shape's title text.
+        if entityObject?
+            @setFooterShape entityObject.title()
+        else if textTitle? and textTitle isnt ""
+            @setFooterShape textTitle
         else
+            @setFooterShape view.model.id
 
-            # If not pressing "Ctrl", clear selected shapes before selecting the passed view.
-            @clearSelectedShapes() if not multiple
-
-            @selectedShapes[view.model.id] = view
-
-            view.createShadow()
-
-            entityObject = view.model.entityObject
-            textTitle = view.model.defaultText()
-
-            # If the view's model has an `entityObject` property, means it has an
-            # [Entity Object](entityObject.html) bound to it so show its title on the footer.
-            # Otherwise show the shape's title text.
-            if entityObject?
-                @setFooterShape entityObject.title()
-            else if textTitle? and textTitle isnt ""
-                @setFooterShape textTitle
-            else
-                @setFooterShape view.model.id
-
-            SystemApp.consoleLog "MapView.setCurrentElement", "Selected #{view.model.id}"
+        SystemApp.consoleLog "MapView.addToSelected", view.model.id
 
         @controlsView.bindShape view
+
+    # Remove the specified [Shape View](shapeView.html) or [Link View](linkView.html) from
+    # the list of selected elements.
+    removeFromSelected: (view) =>
+        @selectedShapes[view.model.id]?.unhighlight()
+        delete @selectedShapes[view.model.id]
+
+        SystemApp.consoleLog "MapView.removeFromSelected", view.model.id
+
 
     # Set the current shape at which mouse is pointing. This is mainly used when creating links between shapes.
     setHoverShape: (shapeView) =>

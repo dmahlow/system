@@ -307,7 +307,7 @@ class SystemApp.MapLinkLabelsView extends SystemApp.BaseView
         @currentEditingPosition = data
 
         # Set the current selected element on the [Map View](mapView.html).
-        @parentView.parentView.setCurrentElement @parentView
+        @parentView.parentView.addToSelected @parentView
 
         if @parentView.parentView.editEnabled
             if @isEventDelete e

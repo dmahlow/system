@@ -232,6 +232,7 @@ SystemApp.setUiOptions = ->
     qDebug = query.substring qDebug, qDebug + 1
     qFullscreen = query.indexOf("fullscreen=") + 11
     qFullscreen = query.substring qFullscreen, qFullscreen + 1
+    qDemo = (query.indexOf("demo=1") > 0)
 
     if qDebug is "1"
         SystemApp.toggleDebug true
@@ -246,6 +247,12 @@ SystemApp.setUiOptions = ->
         SystemApp.mapView.controlsView.toggleFullscreen false
     else if SystemApp.Data.userSettings.mapFullscreen()
         SystemApp.mapView.controlsView.toggleFullscreen true
+
+    # If `demo=1`, hide the icon to toggle fullscreen mode and the "online user count".
+    # Used on the mini demo site.
+    if qDemo
+        $("#top-img-fullscreen").hide()
+        $("#footer-online-users").hide()
     
     if SystemApp.Data.userSettings.mapZoom() isnt 1
         SystemApp.mapView.zoomSet SystemApp.Data.userSettings.mapZoom()

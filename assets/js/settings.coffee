@@ -96,9 +96,9 @@ SystemApp.Settings =
         # The default background color or image.
         background: "#000000"
         # Shape or link blink internval in ms.
-        blinkInterval: 80
+        blinkInterval: 50
         # Shape or link blink internval in ms.
-        blinkSlowInterval: 320
+        blinkSlowInterval: 250
         # How long to display the updated border on the map,
         # before it resets to the "selected shape" border style.
         borderUpdatedDelay: 1400

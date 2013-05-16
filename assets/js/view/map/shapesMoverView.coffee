@@ -117,7 +117,7 @@ class SystemApp.MapShapesMoverView extends SystemApp.BaseView
 
             if Raphael.isPointInsideBBox box, shapeCenter.x, shapeCenter.y
                 @shapeViews.push view
-                view.createShadow SystemApp.Settings.MapMover.shadowColor
+                view.highlight SystemApp.Settings.MapMover.shadowColor
 
         # If shapes were selected then set the drag handlers, otherwise hide the rectangle.
         if @shapeViews.length > 0
@@ -198,7 +198,7 @@ class SystemApp.MapShapesMoverView extends SystemApp.BaseView
         for view in @shapeViews
             view.dragStart x, y, e
 
-        @parentView.setCurrentElement null
+        @parentView.addToSelected null
 
     # When user is dragging the rectangle, change its positiong and the position
     # of all selected [Shape Views](shapeView.html).
