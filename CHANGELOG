@@ -4,7 +4,10 @@ SYSTEM APP CHANGE LOG
 - = removed features
 
 # -----------------------------------------------------------------------------
-  0.6.3
+  0.6.3, 2013.05.21
+* Fixed bugs when removing shapes from a map.
+* Fixed bug when trying to load an invalid map or deleted map, the "loading"
+  icon would freeze and never go away.
 * Forms fields marked with a "silent" class won't show the "Saved!" text when
   field value is saved. For example on the left list on the Entities Manager.
 
