@@ -187,7 +187,9 @@ class SystemApp.MapView extends SystemApp.BaseView
         @clear()
 
         # No map to bind? So stop here.
-        return if not map?
+        if not map?
+            SystemApp.toggleLoading false
+            return
 
         @model = map
 
@@ -348,7 +350,7 @@ class SystemApp.MapView extends SystemApp.BaseView
     removeShape: (model) =>
         view = @shapeViews[model.id]
 
-        @addToSelected view
+        @removeFromSelected view
         @model.save()
 
         delete @shapeViews[model.id]

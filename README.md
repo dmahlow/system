@@ -1,4 +1,4 @@
-# System App by Zalando - Readme
+# System App by Zalando
 
 **Official homepage:** **http://systemapp.io**
 

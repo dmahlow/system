@@ -287,6 +287,8 @@ class SystemApp.MapShapeView extends SystemApp.BaseView
     # then proceed to `linkCreatorEnd()`. The optional `shadowColor` parameter
     # can be passed to set a custom shadow color of the shape after dragging.
     dragEnd: (e) =>
+        return if not @svg?
+
         # If shape moved, readd it to the `selectedShapes` on the map view.
         moved = @ix isnt @x() or @iy isnt @y()
         if not moved and @parentView.countSelectedShapes() > 1 and @parentView.selectedShapes[@model.id]?
@@ -296,7 +298,7 @@ class SystemApp.MapShapeView extends SystemApp.BaseView
 
         return if not @parentView.editEnabled
 
-        @svg?.animate {"opacity": @model.opacity()}, SystemApp.Settings.Map.opacityInterval
+        @svg.animate {"opacity": @model.opacity()}, SystemApp.Settings.Map.opacityInterval
 
         # Stop here if `dragging` hasn't be triggered before.
         return if not @dragging
@@ -564,8 +566,8 @@ class SystemApp.MapShapeView extends SystemApp.BaseView
     # Remove the shape from the map and dispose its contents.
     removeFromMap: =>
         @setLinkViews()
-        @dispose()
         @model.destroy()
+        @dispose()
 
     # Blink and remove the shape (so the user gets the attention of what's being removed).
     blinkAndRemove: =>

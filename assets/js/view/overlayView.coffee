@@ -171,7 +171,7 @@ class SystemApp.OverlayView extends SystemApp.BaseView
         wrapper = $(document.createElement "div")
         wrapper.attr "id", @currentSettings.rowListPrefix + item.id
         wrapper.data "DataItem", item
-        wrapper.addClass "row"
+        wrapper.addClass "row silent"
 
         row = $(document.createElement "div")
 

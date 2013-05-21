@@ -76,14 +76,19 @@ class SystemApp.BaseView extends Backbone.View
 
     # Show a "saved" message next to the specified field, and fade it out after a few seconds.
     fieldSaved: (field) =>
+        parent = field.parent()
+        parent = parent.parent() if parent.hasClass("toggle")
+
+        # Do not proceed if container has the class "silent".
+        return if parent.hasClass "silent"
+
+        # Last element of the container.
+        lastChild = parent.children("span:last-child")
+
+        # Create alert.
         alert = $(document.createElement "span")
         alert.addClass "saved"
         alert.html SystemApp.Messages.saved
-
-        # Get correct container and its last span to check if "saved" is already being shown.
-        parent = field.parent()
-        parent = parent.parent() if parent.hasClass("toggle")
-        lastChild = parent.children("span:last-child")
 
         # Append the "saved" at the very end of the field container,
         # but only if a "saved" is not present yet.
