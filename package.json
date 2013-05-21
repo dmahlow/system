@@ -5,9 +5,7 @@
     "homepage": "http://systemapp.io",
     "author":"Igor Ramadas <igor.ramadas@zalando.de>",
     "license":"Apache License 2.0",
-
-    "main":"index.js",
-
+    "main":"index",
     "contributors":[
         {
             "name":"Igor Ramadas",
