@@ -14,15 +14,14 @@ class SystemApp.EntityObject extends SystemApp.BaseModel
 
     # Helper to get / set the entity definition ID.
     entityDefinitionId: =>
+        return null if not @collection?
         return @collection.parentModel.friendlyId()
 
     # Helper to get / set the entity definition ID.
     title: =>
+        return "" if not @collection?.parentModel?
+
         entityDef = @collection.parentModel
-
-        if not entityDef?
-            return ""
-
         att = entityDef.objectTitleAttribute()
 
         # If the `objectTitleAttribute` has no commas, get the value directly.
@@ -61,3 +60,6 @@ class SystemApp.EntityObjectCollection extends SystemApp.BaseCollection
             return SystemApp.Settings.EntityObject.url + "/" + @parentModel.friendlyId()
         else
             return SystemApp.Settings.EntityObject.url
+
+    # Set the comparator function to order the entity objects by title.
+    comparator: (shape) -> return shape.title()

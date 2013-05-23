@@ -398,6 +398,9 @@ class SystemApp.MapView extends SystemApp.BaseView
         @selectedShapes[view.model.id]?.unhighlight()
         delete @selectedShapes[view.model.id]
 
+        # Unbind shape if `selectedShapes` length is less than 1.
+        @controlsView.bind() if @countSelectedShapes() < 1
+
         SystemApp.consoleLog "MapView.removeFromSelected", view.model.id
 
     # Set the current shape at which mouse is pointing. This is mainly used when creating links between shapes.
