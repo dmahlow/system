@@ -107,14 +107,9 @@
 
         // Row wrapper.
         .row
-            margin-bottom 6px
-
-        // Proper rows on the left column, usually listing models.
-        // The row itself is a wrapper with a child div containing
-        // a textbox/edit/delete, and an arrow.
-        .row > div
             background-color mediumBgColor
             border-bottom 1px solid brightBgColor
+            margin-bottom 6px
             width 225px
 
             // Text input fields should look like normal read-only text.
@@ -146,7 +141,7 @@
             width 0px
 
         // Active rows are highlighted.
-        .row.active > div
+        .row.active
             background-color darkHoverColor
             border-color rgba(60, 150, 70, 1)
 
