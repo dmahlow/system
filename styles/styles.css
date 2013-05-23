@@ -34,8 +34,30 @@ body
     color: rgb(50, 60, 70);
     font: 20px/1.6 "OpenSansRegular", "Helvetica Neue", Helvetica, Arial;
     margin: 0;
+    overflow: auto;
     padding: 0;
     -webkit-font-smoothing: antialiased;
+}
+
+body.fulldemo
+{
+    overflow: hidden;
+}
+
+body.fulldemo iframe
+{
+    border-width: 0 !important;
+    position: fixed !important;
+}
+
+body.fulldemo #tofulldemo
+{
+    background-image: url(../images/minimize.png);
+    bottom: 5px !important;
+    left: auto;
+    position: fixed !important;
+    right: 140px !important;
+    top: auto;
 }
 
 p, ul, ol, code
@@ -121,13 +143,31 @@ code
 
 #header iframe
 {
-    border: 1px solid #AAAAAA;
+    border: 1px solid rgb(190, 190, 190);
     left: 90px;
     height: 310px;
     padding: 5px;
     position: absolute;
     top: 50px;
     width: 580px;
+}
+
+#tofulldemo
+{
+    background: url(../images/maximize.png) no-repeat 98% 50%;
+    color: rgb(190, 190, 190);
+    cursor: pointer;
+    display: block;
+    font-size: 11px;
+    left: 556px;
+    padding-right: 22px;
+    position: absolute;
+    top: 374px;
+}
+
+#tofulldemo:hover
+{
+    color: rgb(252, 252, 252);
 }
 
 h1
