@@ -290,7 +290,7 @@ class SystemApp.MapControlsEntitiesTabView extends SystemApp.BaseView
             shapeOptions.sizeX = entityDefinition.shapeSizeX()
             shapeOptions.sizeY = entityDefinition.shapeSizeY()
             shapeOptions.stroke = entityDefinition.shapeStroke()
-            shapeOptions.strokeWidth = entityDefinition.shapeStrokeWidth()
+            shapeOptions.strokeWidth = parseInt entityDefinition.shapeStrokeWidth()
             shapeOptions.titleForeground = entityDefinition.shapeTitleForeground()
             shapeOptions.zIndex = entityDefinition.shapeZIndex()
 
