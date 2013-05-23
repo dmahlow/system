@@ -152,7 +152,7 @@ class SystemApp.AuditEventManagerView extends SystemApp.OverlayView
         row.addClass "row"
 
         source = $(document.createElement "input")
-        source.data "PropertyName", "source"
+        source.data "propertyname", "source"
         source.attr "type", "text"
         source.attr "title", SystemApp.Messages.tooltipEventRuleSource
         source.addClass "source"
@@ -160,7 +160,7 @@ class SystemApp.AuditEventManagerView extends SystemApp.OverlayView
         source.change rule, @inputOnChange
 
         comparator = $(document.createElement "select")
-        comparator.data "PropertyName", "comparator"
+        comparator.data "propertyname", "comparator"
         comparator.attr "title", SystemApp.Messages.tooltipEventRuleComparator
         comparator.addClass "comparator"
         comparator.append($(document.createElement "option").html("="))
@@ -173,9 +173,9 @@ class SystemApp.AuditEventManagerView extends SystemApp.OverlayView
         comparator.change rule, @inputOnChange
 
         target = $(document.createElement "input")
-        target.data "PropertyName", "target"
+        target.data "propertyname", "target"
         target.attr "type", "text"
-        source.attr "title", SystemApp.Messages.tooltipEventRuleTarget
+        target.attr "title", SystemApp.Messages.tooltipEventRuleTarget
         target.addClass "target"
         target.val rule.target()
         target.change rule, @inputOnChange
@@ -257,7 +257,7 @@ class SystemApp.AuditEventManagerView extends SystemApp.OverlayView
         row.addClass "row"
 
         actionType = $(document.createElement "select")
-        actionType.data "PropertyName", "actionType"
+        actionType.data "propertyname", "actionType"
         actionType.attr "title", SystemApp.Messages.tooltipEventActionType
         actionType.addClass "type"
         actionType.append($(document.createElement "option").val("blink").html("blink"))
@@ -268,7 +268,7 @@ class SystemApp.AuditEventManagerView extends SystemApp.OverlayView
         actionType.change action, @inputOnChange
 
         actionValue = $(document.createElement "input")
-        actionValue.data "PropertyName", "actionValue"
+        actionValue.data "propertyname", "actionValue"
         actionValue.attr "title", SystemApp.Messages.tooltipEventActionValue
         actionValue.attr "type", "text"
         actionValue.addClass "value"

@@ -4,6 +4,11 @@ SYSTEM APP CHANGE LOG
 - = removed features
 
 # -----------------------------------------------------------------------------
+  0.6.4
++ New homepage with a live demo now available! Check http://systemapp.io.
+* Fixed bugs when editing Audit Events (updated values were not being saved).
+
+# -----------------------------------------------------------------------------
   0.6.3, 2013.05.21
 * Fixed bugs when removing shapes from a map.
 * Fixed bug when trying to load an invalid map or deleted map, the "loading"

@@ -173,8 +173,6 @@ class SystemApp.OverlayView extends SystemApp.BaseView
         wrapper.data "DataItem", item
         wrapper.addClass "row silent"
 
-        row = $(document.createElement "div")
-
         # The textbox defines the `friendlyId` property of the model.
         id = $(document.createElement "input")
         id.data "propertyname", "friendlyId"
@@ -199,10 +197,9 @@ class SystemApp.OverlayView extends SystemApp.BaseView
         delIcon.click item, @clickDeleteIcon
 
         # Append to the document.
-        row.append id
-        row.append editIcon
-        row.append delIcon
-        wrapper.append row
+        wrapper.append id
+        wrapper.append editIcon
+        wrapper.append delIcon
         @$modelsList.append wrapper
 
         # Just created by the user? So auto bind it.
