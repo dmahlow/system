@@ -29,7 +29,7 @@ class SystemApp.MapLinkView extends SystemApp.BaseView
 
     # Dispose the link view.
     dispose: =>
-        @unhilight()
+        @unhighlight()
 
         @labelsView?.dispose()
         @svg?.remove()
@@ -198,5 +198,5 @@ class SystemApp.MapLinkView extends SystemApp.BaseView
         @svg.svgLine.attr {"stroke": color, "stroke-width": strength}
 
     # Remove the shadow from the link (if there's one present).
-    unhilight: =>
+    unhighlight: =>
         @svg?.svgLine.attr {"stroke": @model.stroke(), "stroke-width": @model.strokeWidth()}
