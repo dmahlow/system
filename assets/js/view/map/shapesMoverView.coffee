@@ -99,7 +99,7 @@ class SystemApp.MapShapesMoverView extends SystemApp.BaseView
 
         if @shapeViews?.length > 0
             @parentView.model.save()
-            view.removeShadow() for view in @shapeViews
+            view.unhighlight() for view in @shapeViews
 
         @shapeViews = null
 

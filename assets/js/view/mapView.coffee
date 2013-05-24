@@ -364,8 +364,9 @@ class SystemApp.MapView extends SystemApp.BaseView
     # elements on the map. When holding "Ctrl", the `multiple` argument will be true and the shape will be
     # added to the selected list. Otherwise it will clear the list and add the element as the only selected.
     addToSelected: (view, multiple) =>
-        @clearSelectedShapes()
+        return if not view?.model?
 
+        @clearSelectedShapes()
         @selectedShapes[view.model.id] = view
 
         view.highlight()
