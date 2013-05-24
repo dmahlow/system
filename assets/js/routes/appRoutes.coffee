@@ -56,6 +56,7 @@ class SystemApp.AppRoutes extends Backbone.Router
         else
             msg = SystemApp.Messages.errMapDoesNotExist
             SystemApp.alertEvents.trigger "footer", {isError: true, title: SystemApp.Messages.error, message: msg}
+            SystemApp.toggleLoading false
             @navigate "", {trigger: false}
 
     # Show the [Audit Data Manager View](auditDataManagerView.html).
