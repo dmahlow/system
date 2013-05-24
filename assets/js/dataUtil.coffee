@@ -222,6 +222,8 @@ SystemApp.DataUtil =
 
         if item?
 
+            # TODO! Return model AND EntityObject attributes combined, and not only one or another.
+
             # Make sure we're dealing with model attributes and not a view.
             ref = ref.model if ref.model?
             ref = ref.entityObject if ref.entityObject?
