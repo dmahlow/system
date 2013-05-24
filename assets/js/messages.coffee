@@ -90,6 +90,7 @@ SystemApp.Messages =
     errMapDoesNotExist: "The specified map does not exist!"
     errMapNameExists: "There's already a map called #."
     errNoPermissionTo: "You don't have the necessary permissions to #."
+    errParseModel: "Error while parsing data from server."
 
 
     # VALIDATION MESSAGES

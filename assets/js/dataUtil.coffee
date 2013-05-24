@@ -158,7 +158,7 @@ SystemApp.DataUtil =
     # Parse the sepcified text and return a string with the current values
     # of referenced [AuditData](auditData.html) properties.
     getAuditDataValue: (value) ->
-        return if not value?
+        return if not value? or value is ""
 
         namespace = SystemApp.Settings.General.dataBindingKey + SystemApp.Settings.AuditData.bindingNamespace
         substr = value.substring(namespace.length + 1)
@@ -197,9 +197,8 @@ SystemApp.DataUtil =
 
     # Parse the sepcified text and return a string with the processed value
     # of the referenced [Variable](variable.html).
-    getVariableValue: (value) ->
-        if not value?
-            return
+    getVariableValue: (value, ref) ->
+        return if not value? or value is ""
 
         namespace = SystemApp.Settings.General.dataBindingKey + SystemApp.Settings.Variable.bindingNamespace
         s = value.substring(namespace.length + 1)
@@ -218,10 +217,17 @@ SystemApp.DataUtil =
         else
             friendlyId = s.substring 0
 
+        # Get variable.
         item = SystemApp.Data.variables.getByFriendlyId friendlyId
 
         if item?
-            return SystemApp.DataUtil.runEval item.code(), args
+
+            # Make sure we're dealing with model attributes and not a view.
+            ref = ref.model if ref.model?
+            ref = ref.entityObject if ref.entityObject?
+            ref = ref.attributes if ref.attributes?
+
+            return SystemApp.DataUtil.runEval item.code(), args, ref
         else
             return s
 
@@ -241,36 +247,31 @@ SystemApp.DataUtil =
         return true
 
     # Parse the specified text and return a string with the processed value
-    # of the referenced [Entity Object](entityObject.html) attribute.
+    # of the referenced `ref` [Entity Object](entityObject.html) attribute.
     # A shape [view](shapeView.html), a [shape model](shape.html) or
     # an [entity object](entityObject.html) must be passed.
-    getEntityAttributeValue: (value, obj) ->
-        if not value?
-            return
+    getEntityAttributeValue: (value, ref) ->
+        return if not value? or value is ""
 
         namespace = SystemApp.Settings.General.dataBindingKey + SystemApp.Settings.EntityObject.bindingNamespace
         s = value.substring(namespace.length + 1)
         comma = s.indexOf ","
 
-        # Make sure we're dealing with the shape model, and not a shape view.
-        obj = obj.model if obj.model?
-
-        # Make sure we're dealing with the entity object,
-        obj = obj.entityObject if obj.entityObject?
-
-        # Make sure we're on the attributes, not the EntityObject.
-        obj = obj.attributes if obj.attributes?
+        # Make sure we're dealing with model attributes and not a view.
+        ref = ref.model if ref.model?
+        ref = ref.entityObject if ref.entityObject?
+        ref = ref.attributes if ref.attributes?
 
         # Multiple attributes might have been set separated by commas. In this case, display
         # the first attribute which has a value. Create an `arr` array with each value.
         if comma > 0
             arr = s.split ","
             for a in arr
-                if obj[a]? and obj[a] isnt ""
-                    return obj[a]
+                if ref[a]? and ref[a] isnt ""
+                    return ref[a]
 
         # Return the desired property if no commas were found.
-        return obj[s]
+        return ref[s]
 
 
     # EVAL HELPERS
@@ -292,16 +293,22 @@ SystemApp.DataUtil =
     # Run the specified Javascript eval. If the code is invalid, it will return null.
     # Before running the code, it will be parsed to match any [AuditData](auditData.html)
     # or [Variable](variable.html) and translated with the correspondent values.
-    runEval: (code, args) =>
+    # If the `thisObj` is passed, bind it to the function scope.
+    runEval: (code, args, thisObj) =>
         code = SystemApp.DataUtil.translateEval code
 
         try
-            f = new Function(code)
+            callback = new Function(code)
 
             if args?
-                return f(args)
-            else
+                args = args.split(",")
+
+            if thisObj?
+                f = callback.bind thisObj, args
                 return f()
+            else
+                return callback args
+
         catch e
             return null
 
@@ -346,7 +353,7 @@ SystemApp.DataUtil =
                 if SystemApp.DataUtil.hasAuditData s
                     newValue += " " + SystemApp.DataUtil.getAuditDataValue s
                 else if SystemApp.DataUtil.hasHasVariable s
-                    newValue += " " + SystemApp.DataUtil.getVariableValue s
+                    newValue += " " + SystemApp.DataUtil.getVariableValue s, ref
                 else if SystemApp.DataUtil.hasEntityAttribute s
                     newValue += " " + SystemApp.DataUtil.getEntityAttributeValue s, ref
                 else

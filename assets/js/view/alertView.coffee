@@ -116,7 +116,8 @@ class SystemApp.AlertView extends SystemApp.BaseView
 
     # Listen to model errors (while saving or fetching from server).
     modelError: (model, xhr) =>
-        console.warn "Model error!!!", model, xhr
+        message = SystemApp.Messages.errParseModel + " " + xhr.responseText
+        @showFooter {isError: true, title: model.typeName, message: message}
 
 
     # FOOTER ALERTS
