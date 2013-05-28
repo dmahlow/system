@@ -6,6 +6,8 @@ SYSTEM APP CHANGE LOG
 # -----------------------------------------------------------------------------
   0.6.4
 + New homepage with a live demo now available! Check http://systemapp.io.
++ Added form validation on the most important editing fields.
+* Added notes about the Script Editor being experimental.
 * Fixed bugs when editing Audit Events (updated values were not being saved).
 * Fixed bugs on entity objects title implementation.
 

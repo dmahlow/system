@@ -8,7 +8,7 @@
 
         // Tabs shown on top of the overlay.
         #variables-tabheaders.tab-headers
-            label(data-tab="#variables-tab-props",title="View and edit the selected variable's properties.").active Properties
+            label(data-tab="#variables-tab-props", title="View and edit the selected variable's properties.").active Properties
 
         // Variable list on the left.
         .left-col
@@ -17,7 +17,7 @@
 
             if roles.admin || roles.variables
                 .create
-                    input#variables-txt-create(type="text",placeholder="New variable ID...",title="Enter the name of the new variable to be created.")
+                    input#variables-txt-create(type="text", placeholder="New variable ID...", title="Enter the name of the new variable to be created.")
                     button#variables-but-create(title="Click to create a new variable with the specified ID.") Create
 
                 .notes.small.
@@ -33,10 +33,10 @@
                 .panel
                     div
                         label(for="variables-txt-description") Description:
-                        input#variables-txt-description.required.long(type="text",data-propertyname="description",title="Enter a quick description of this variable.")
+                        input#variables-txt-description.required.long(type="text", data-propertyname="description", title="Enter a quick description of this variable.")
                     div
                         label.code(for="variables-txt-code") Code:
-                        textarea#variables-txt-code.required.long(data-propertyname="code",placeholder="Enter the variable's javascript code here, with at least 1 return statement...",title="Enter the javascript code returned by this variable.")
+                        textarea#variables-txt-code.required.long(data-propertyname="code", placeholder="Enter the variable's javascript code here, with at least 1 return statement...", title="Enter the javascript code returned by this variable.")
                     div
                         button#variables-but-save.save(title="Click to validate and save the script above.") Validate and save
                         span#variables-code-error.error

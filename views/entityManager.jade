@@ -41,7 +41,7 @@
                         input#entitymanager-txt-sourceurl.long(type="url", data-propertyname="sourceUrl", placeholder="http(s)://domain.com/path/to/entity/json", title="Enter the URL to the JSON where the entity objects can be downloaded from.")
                     div
                         label(for="entitymanager-txt-refresh") Refresh:
-                        input#entitymanager-txt-refresh.required.short(type="number", data-propertyname="refreshInterval", title="Refresh objects from the source URL above every X seconds.")
+                        input#entitymanager-txt-refresh.required.short(type="number", data-propertyname="refreshInterval", title="Refresh objects from the source URL above every X seconds.", min="10")
                         span.spaced seconds
                 strong Entity Object properties
                 div.panel
@@ -116,5 +116,5 @@
                     div.topmargin
                         label Rounded corners
                         label.toggle(for="entitymanager-chk-shape-roundedcorners", title="If ON, the shape will have rounded corners. If OFF, squared corners.")
-                            input#entitymanager-chk-shape-roundedcorners(type="checkbox", data-propertyname="shapeRoundedCorners",name="entitymanager-chk-shape-roundedcorners")
+                            input#entitymanager-chk-shape-roundedcorners(type="checkbox", data-propertyname="shapeRoundedCorners", name="entitymanager-chk-shape-roundedcorners")
                             span

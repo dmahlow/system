@@ -8,10 +8,10 @@
 
         // Tabs shown on top of the overlay: Startup, Local Storage, Server Logs and Keyboard.
         div.tab-headers
-            label(data-tab=".options",title="App general options.").active App options
-            label(data-tab=".localstorage",title="View and manage data on the browser's local storage.") Local storage
-            label(data-tab=".serverlogs",title="List and view detailed server errors and logs.") Server logs
-            label(data-tab=".about",title="About #{title}") About
+            label(data-tab=".options", title="App general options.").active App options
+            label(data-tab=".localstorage", title="View and manage data on the browser's local storage.") Local storage
+            label(data-tab=".serverlogs", title="List and view detailed server errors and logs.") Server logs
+            label(data-tab=".about", title="About #{title}") About
 
         // Main app options.
         div.tab.options
@@ -19,12 +19,12 @@
                 h4 Troubleshooting
                 div
                     span.control-label Slow device mode
-                    label.toggle(for="settings-chk-slowdevice",title="If ON, some UI elements and automated features will be scaled down so the app has a better performance on your device.")
+                    label.toggle(for="settings-chk-slowdevice", title="If ON, some UI elements and automated features will be scaled down so the app has a better performance on your device.")
                         input#settings-chk-slowdevice(type="checkbox", name="settings-chk-slowdevice")
                         span
                 div
                     span.control-label Enable debug mode
-                    label.toggle(for="settings-chk-debug",title="If ON, the app will log most actions and events to the console. Use ONLY if necessary!")
+                    label.toggle(for="settings-chk-debug", title="If ON, the app will log most actions and events to the console. Use ONLY if necessary!")
                         input#settings-chk-debug(type="checkbox", name="settings-chk-debug")
                         span
                     div.small.error.
@@ -35,12 +35,12 @@
                 h4 Map options
                 div
                     span.control-label Start maximized
-                    label.toggle(for="settings-chk-fullscreen",title="If ON, the app will start maximized - header, menu, map controls and footer will be hidden.")
+                    label.toggle(for="settings-chk-fullscreen", title="If ON, the app will start maximized - header, menu, map controls and footer will be hidden.")
                         input#settings-chk-fullscreen(type="checkbox", name="settings-chk-fullscreen")
                         span
                 div
                     span.control-label Auto refresh data
-                    label.toggle(for="settings-chk-autorefresh",title="If ON, timers to refresh Audit Data and Map labels will start automatically when you load the app.")
+                    label.toggle(for="settings-chk-autorefresh", title="If ON, timers to refresh Audit Data and Map labels will start automatically when you load the app.")
                         input#settings-chk-autorefresh(type="checkbox", name="settings-chk-autorefresh")
                         span
                 h4.topmargin Keyboard and shortcuts

@@ -8,9 +8,9 @@
 
         // Tabs shown on top of the overlay.
         #auditevents-tabheaders.tab-headers
-            label(data-tab="#auditevents-tab-props",title="View and edit the selected event's general properties.").active Properties
-            label(data-tab="#auditevents-tab-rules",title="View and edit the selected event's rules.") Rules
-            label(data-tab="#auditevents-tab-actions",title="View and edit the selected event's actions.") Actions
+            label(data-tab="#auditevents-tab-props", title="View and edit the selected event's general properties.").active Properties
+            label(data-tab="#auditevents-tab-rules", title="View and edit the selected event's rules.") Rules
+            label(data-tab="#auditevents-tab-actions", title="View and edit the selected event's actions.") Actions
 
         // The left panel has the Audit Events grid (list with all registered audit alerts).
         .left-col
@@ -19,7 +19,7 @@
 
             if roles.admin || roles.auditevents
                 div.create
-                    input#auditevents-txt-create(type="text",placeholder="New audit event ID...",title="Enter the name of the new audit event to be created.")
+                    input#auditevents-txt-create(type="text", placeholder="New audit event ID...", title="Enter the name of the new audit event to be created.")
                     button#auditevents-but-create(title="Click to create a new audit event with the specified name.") Create
 
                 div.notes.small.
@@ -36,12 +36,12 @@
                 .panel
                     div
                         label(for="auditevents-txt-description") Description:
-                        input#auditevents-txt-description.required.long(type="text",data-propertyname="description",title="Enter a description for this Audit Event.")
+                        input#auditevents-txt-description.required.long(type="text", data-propertyname="description", title="Enter a description for this Audit Event.")
                 .panel
                     div
                         label(for="auditevents-chk-active") Active:
-                        label.toggle(for="auditevents-chk-active",data-propertyname="active",title="If OFF, this event won't be triggered even if it has matching rules.")
-                            input#auditevents-chk-active(type="checkbox",name="auditevents-chk-active")
+                        label.toggle(for="auditevents-chk-active", data-propertyname="active", title="If OFF, this event won't be triggered even if it has matching rules.")
+                            input#auditevents-chk-active(type="checkbox", name="auditevents-chk-active")
                             span
 
             // Event Rules tab.
@@ -60,7 +60,7 @@
                     // Pressing enter on any of the fields below will trigger the "Add rule" button
                     // and create a new alert rule.
                     div.row.addrow
-                        input.source(type="text",placeholder="New rule source value...")
+                        input.source(type="text", placeholder="New rule source value...")
                         select.comparator
                             option =
                             option !=
@@ -68,7 +68,7 @@
                             option >=
                             option <
                             option <=
-                        input.target(type="text",placeholder="New rule target value...")
+                        input.target(type="text", placeholder="New rule target value...")
                         .add(title="Click to create a new RULE with the specified values and comparator.")
 
                 div.info.
@@ -106,7 +106,7 @@
                             option(value="colorBg") background color
                             option(value="colorBorder") border color
                             option(value="footerMessage") footer message
-                        input.value(type="text",placeholder="New action color or message...")
+                        input.value(type="text", placeholder="New action color or message...")
                         .add(title="Click to create a new ACTION with the specified type and value.")
 
                 div.info.
