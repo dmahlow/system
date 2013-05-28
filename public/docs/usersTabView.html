@@ -1,0 +1,868 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+  <title>usersTabView.coffee</title>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <meta name="viewport" content="width=device-width, target-densitydpi=160dpi, initial-scale=1.0; maximum-scale=1.0; user-scalable=0;">
+  <link rel="stylesheet" media="all" href="docco.css" />
+</head>
+<body>
+  <div id="container">
+    <div id="background"></div>
+    
+      <ul id="jump_to">
+        <li>
+          <a class="large" href="javascript:void(0);">Jump To &hellip;</a>
+          <a class="small" href="javascript:void(0);">+</a>
+          <div id="jump_wrapper">
+          <div id="jump_page">
+            
+              
+              <a class="source" href="admin.html">
+                admin.coffee
+              </a>
+            
+              
+              <a class="source" href="api.auditData.html">
+                api.auditData.coffee
+              </a>
+            
+              
+              <a class="source" href="api.auditEvent.html">
+                api.auditEvent.coffee
+              </a>
+            
+              
+              <a class="source" href="api.html">
+                api.coffee
+              </a>
+            
+              
+              <a class="source" href="api.entity.html">
+                api.entity.coffee
+              </a>
+            
+              
+              <a class="source" href="api.map.html">
+                api.map.coffee
+              </a>
+            
+              
+              <a class="source" href="api.server.html">
+                api.server.coffee
+              </a>
+            
+              
+              <a class="source" href="api.variable.html">
+                api.variable.coffee
+              </a>
+            
+              
+              <a class="source" href="api.view.html">
+                api.view.coffee
+              </a>
+            
+              
+              <a class="source" href="app.html">
+                app.coffee
+              </a>
+            
+              
+              <a class="source" href="app.instance.html">
+                app.instance.coffee
+              </a>
+            
+              
+              <a class="source" href="data.html">
+                data.coffee
+              </a>
+            
+              
+              <a class="source" href="dataUtil.html">
+                dataUtil.coffee
+              </a>
+            
+              
+              <a class="source" href="messages.html">
+                messages.coffee
+              </a>
+            
+              
+              <a class="source" href="auditData.html">
+                auditData.coffee
+              </a>
+            
+              
+              <a class="source" href="auditEvent.html">
+                auditEvent.coffee
+              </a>
+            
+              
+              <a class="source" href="base.html">
+                base.coffee
+              </a>
+            
+              
+              <a class="source" href="entityDefinition.html">
+                entityDefinition.coffee
+              </a>
+            
+              
+              <a class="source" href="entityObject.html">
+                entityObject.coffee
+              </a>
+            
+              
+              <a class="source" href="eventAction.html">
+                eventAction.coffee
+              </a>
+            
+              
+              <a class="source" href="eventRule.html">
+                eventRule.coffee
+              </a>
+            
+              
+              <a class="source" href="link.html">
+                link.coffee
+              </a>
+            
+              
+              <a class="source" href="map.html">
+                map.coffee
+              </a>
+            
+              
+              <a class="source" href="shape.html">
+                shape.coffee
+              </a>
+            
+              
+              <a class="source" href="user.html">
+                user.coffee
+              </a>
+            
+              
+              <a class="source" href="userSettings.html">
+                userSettings.coffee
+              </a>
+            
+              
+              <a class="source" href="variable.html">
+                variable.coffee
+              </a>
+            
+              
+              <a class="source" href="adminRoutes.html">
+                adminRoutes.coffee
+              </a>
+            
+              
+              <a class="source" href="appRoutes.html">
+                appRoutes.coffee
+              </a>
+            
+              
+              <a class="source" href="settings.html">
+                settings.coffee
+              </a>
+            
+              
+              <a class="source" href="sockets.html">
+                sockets.coffee
+              </a>
+            
+              
+              <a class="source" href="tutorial.html">
+                tutorial.coffee
+              </a>
+            
+              
+              <a class="source" href="vectors.html">
+                vectors.coffee
+              </a>
+            
+              
+              <a class="source" href="statusTabView.html">
+                statusTabView.coffee
+              </a>
+            
+              
+              <a class="source" href="toolsTabView.html">
+                toolsTabView.coffee
+              </a>
+            
+              
+              <a class="source" href="usersTabView.html">
+                usersTabView.coffee
+              </a>
+            
+              
+              <a class="source" href="adminView.html">
+                adminView.coffee
+              </a>
+            
+              
+              <a class="source" href="alertView.html">
+                alertView.coffee
+              </a>
+            
+              
+              <a class="source" href="auditDataManagerView.html">
+                auditDataManagerView.coffee
+              </a>
+            
+              
+              <a class="source" href="auditEventManagerView.html">
+                auditEventManagerView.coffee
+              </a>
+            
+              
+              <a class="source" href="baseView.html">
+                baseView.coffee
+              </a>
+            
+              
+              <a class="source" href="createMapView.html">
+                createMapView.coffee
+              </a>
+            
+              
+              <a class="source" href="entityManagerView.html">
+                entityManagerView.coffee
+              </a>
+            
+              
+              <a class="source" href="footerView.html">
+                footerView.coffee
+              </a>
+            
+              
+              <a class="source" href="helpView.html">
+                helpView.coffee
+              </a>
+            
+              
+              <a class="source" href="entitiesTabView.html">
+                entitiesTabView.coffee
+              </a>
+            
+              
+              <a class="source" href="inspectorTabView.html">
+                inspectorTabView.coffee
+              </a>
+            
+              
+              <a class="source" href="mapTabView.html">
+                mapTabView.coffee
+              </a>
+            
+              
+              <a class="source" href="shapeTabView.html">
+                shapeTabView.coffee
+              </a>
+            
+              
+              <a class="source" href="controlsView.html">
+                controlsView.coffee
+              </a>
+            
+              
+              <a class="source" href="labelEditView.html">
+                labelEditView.coffee
+              </a>
+            
+              
+              <a class="source" href="linkCreatorView.html">
+                linkCreatorView.coffee
+              </a>
+            
+              
+              <a class="source" href="linkLabelsView.html">
+                linkLabelsView.coffee
+              </a>
+            
+              
+              <a class="source" href="linkView.html">
+                linkView.coffee
+              </a>
+            
+              
+              <a class="source" href="shapeLabelsView.html">
+                shapeLabelsView.coffee
+              </a>
+            
+              
+              <a class="source" href="shapeView.html">
+                shapeView.coffee
+              </a>
+            
+              
+              <a class="source" href="shapesMoverView.html">
+                shapesMoverView.coffee
+              </a>
+            
+              
+              <a class="source" href="mapView.html">
+                mapView.coffee
+              </a>
+            
+              
+              <a class="source" href="menuView.html">
+                menuView.coffee
+              </a>
+            
+              
+              <a class="source" href="overlayView.html">
+                overlayView.coffee
+              </a>
+            
+              
+              <a class="source" href="scriptEditorView.html">
+                scriptEditorView.coffee
+              </a>
+            
+              
+              <a class="source" href="selfTestView.html">
+                selfTestView.coffee
+              </a>
+            
+              
+              <a class="source" href="settingsView.html">
+                settingsView.coffee
+              </a>
+            
+              
+              <a class="source" href="startView.html">
+                startView.coffee
+              </a>
+            
+              
+              <a class="source" href="variableManagerView.html">
+                variableManagerView.coffee
+              </a>
+            
+          </div>
+        </li>
+      </ul>
+    
+    <ul class="sections">
+        
+          <li id="title">
+              <div class="annotation">
+                  <h1>usersTabView.coffee</h1>
+              </div>
+          </li>
+        
+        
+        
+        <li id="section-1">
+            <div class="annotation">
+              
+              <div class="pilwrap for-h2">
+                <a class="pilcrow" href="#section-1">&#182;</a>
+              </div>
+              <h2>ADMIN USERS TAB VIEW</h2>
+
+            </div>
+            
+        </li>
+        
+        
+        <li id="section-2">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-2">&#182;</a>
+              </div>
+              <p>Represents the &quot;Users and Roles&quot; tab on the admin area.</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre><span class="class"><span class="keyword">class</span> <span class="title">SystemApp</span>.<span class="title">AdminUsersTabView</span> <span class="keyword">extends</span> <span class="title">SystemApp</span>.<span class="title">BaseView</span></span>
+
+    $txtDisplayName: <span class="literal">null</span>       <span class="comment"># the "display name" text field</span>
+    $txtUsername: <span class="literal">null</span>          <span class="comment"># the "username" text field</span>
+    $txtPassword: <span class="literal">null</span>          <span class="comment"># the "password" tet field</span>
+    $txtPasswordConfirm: <span class="literal">null</span>   <span class="comment"># the "confirm password" text field</span>
+    $chkRoles: <span class="literal">null</span>             <span class="comment"># the "roles" checkboxes</span>
+    $butSave: <span class="literal">null</span>              <span class="comment"># the "Save user" button</span>
+    $userGrid: <span class="literal">null</span>             <span class="comment"># the users grid</span>
+
+    selectedUser: <span class="literal">null</span>          <span class="comment"># the user beind edited at the moment</span></pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-3">
+            <div class="annotation">
+              
+              <div class="pilwrap for-h2">
+                <a class="pilcrow" href="#section-3">&#182;</a>
+              </div>
+              <h2>INIT AND DISPOSE</h2>
+
+            </div>
+            
+        </li>
+        
+        
+        <li id="section-4">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-4">&#182;</a>
+              </div>
+              <p>Init the user tab view by settings the DOM and events.</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>    initialize: =&gt;
+        <span class="property">@setDom</span>()
+        <span class="property">@setEvents</span>()
+
+        SystemApp.Data.users.onFetchCallback = <span class="property">@bindUsers</span>
+        SystemApp.Data.users.fetch()</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-5">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-5">&#182;</a>
+              </div>
+              <p>Dispose the menu view.</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>    dispose: =&gt;
+        <span class="property">@baseDispose</span>()</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-6">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-6">&#182;</a>
+              </div>
+              <p>Set all DOM elements.</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>    setDom: =&gt;
+        <span class="property">@setElement</span> $ <span class="string">"#tab-users"</span>
+
+        <span class="property">@$txtDisplayName</span> = $ <span class="string">"#user-txt-display-name"</span>
+        <span class="property">@$txtUsername</span> = $ <span class="string">"#user-txt-username"</span>
+        <span class="property">@$txtPassword</span> = $ <span class="string">"#user-txt-password"</span>
+        <span class="property">@$txtPasswordConfirm</span> = $ <span class="string">"#user-txt-password-confirm"</span>
+        <span class="property">@$chkRoles</span> = <span class="property">@$el</span>.find <span class="string">".edit .roles input"</span>
+        <span class="property">@$butSave</span> = $ <span class="string">"#user-but-save"</span>
+
+        <span class="property">@$userGrid</span> = $ <span class="string">"#user-grid"</span></pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-7">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-7">&#182;</a>
+              </div>
+              <p>Bind events to DOM.</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>    setEvents: =&gt;
+        <span class="property">@listenTo</span> SystemApp.Data.users, <span class="string">"add"</span>, <span class="property">@addUserToGrid</span>
+        <span class="property">@listenTo</span> SystemApp.Data.users, <span class="string">"remove"</span>, <span class="property">@removeUserFromGrid</span>
+
+        <span class="property">@$butSave</span>.click <span class="property">@saveUser</span>
+
+        $(document).keyup <span class="property">@keyUp</span></pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-8">
+            <div class="annotation">
+              
+              <div class="pilwrap for-h2">
+                <a class="pilcrow" href="#section-8">&#182;</a>
+              </div>
+              <h2>EDITING USERS</h2>
+
+            </div>
+            
+        </li>
+        
+        
+        <li id="section-9">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-9">&#182;</a>
+              </div>
+              <p>Bind the current selected <a href="user.html">user</a> to the editing form.</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>    bindUserForm: =&gt;
+        <span class="keyword">if</span> <span class="keyword">not</span> <span class="property">@selectedUser</span>?
+            <span class="property">@$txtDisplayName</span>.val <span class="string">""</span>
+            <span class="property">@$txtUsername</span>.val <span class="string">""</span>
+            <span class="property">@$txtPassword</span>.val <span class="string">""</span>
+            <span class="property">@$txtPasswordConfirm</span>.val <span class="string">""</span>
+            <span class="keyword">return</span>
+
+        <span class="property">@$txtDisplayName</span>.val <span class="property">@selectedUser</span>.displayName()
+        <span class="property">@$txtUsername</span>.val <span class="property">@selectedUser</span>.username()
+
+        <span class="keyword">for</span> c <span class="keyword">in</span> <span class="property">@$chkRoles</span>
+            chk = $ c
+            <span class="keyword">if</span> <span class="property">@selectedUser</span>.hasRole chk.val()
+                chk.prop <span class="string">"checked"</span>, <span class="literal">true</span>
+            <span class="keyword">else</span>
+                chk.prop <span class="string">"checked"</span>, <span class="literal">false</span></pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-10">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-10">&#182;</a>
+              </div>
+              <p>When user clicks the &quot;Save user&quot; button, validate the form and save.</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>    saveUser: (e) =&gt;
+        displayName = $.trim <span class="property">@$txtDisplayName</span>.val()
+        username = $.trim <span class="property">@$txtUsername</span>.val()
+        password = $.trim <span class="property">@$txtPassword</span>.val()
+        roles = []</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-11">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-11">&#182;</a>
+              </div>
+              <p>Validate the form fields.</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>        <span class="keyword">if</span> username <span class="keyword">is</span> <span class="string">""</span>
+            <span class="property">@warnField</span> <span class="property">@$txtUsername</span>
+            <span class="keyword">return</span>
+        <span class="keyword">else</span> <span class="keyword">if</span> password <span class="keyword">is</span> <span class="string">""</span>
+            <span class="property">@warnField</span> <span class="property">@$txtPassword</span>
+            <span class="keyword">return</span>
+        <span class="keyword">else</span> <span class="keyword">if</span> password <span class="keyword">isnt</span> <span class="property">@$txtPasswordConfirm</span>.val()
+            <span class="property">@warnField</span> <span class="property">@$txtPasswordConfirm</span>
+            <span class="keyword">return</span></pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-12">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-12">&#182;</a>
+              </div>
+              <p>Make sure display name is set.</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>        <span class="keyword">if</span> displayName <span class="keyword">is</span> <span class="string">""</span>
+            displayName = username</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-13">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-13">&#182;</a>
+              </div>
+              <p>Get selected roles.</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>        <span class="keyword">for</span> chk <span class="keyword">in</span> <span class="property">@$chkRoles</span>
+            <span class="keyword">if</span> $(chk).prop <span class="string">"checked"</span>
+                roles.push $(chk).val()</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-14">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-14">&#182;</a>
+              </div>
+              <p>Create model with specified attributes.</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>        props = {displayName: displayName, username: username, password: password, roles: roles}
+        user = SystemApp.Data.users.create props, {wait: <span class="literal">true</span>}</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-15">
+            <div class="annotation">
+              
+              <div class="pilwrap for-h2">
+                <a class="pilcrow" href="#section-15">&#182;</a>
+              </div>
+              <h2>USERS GRID</h2>
+
+            </div>
+            
+        </li>
+        
+        
+        <li id="section-16">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-16">&#182;</a>
+              </div>
+              <p>When a new user is added to the users collection.</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>    addUserToGrid: (user) =&gt;
+        props = {displayName: user.displayName(), username: user.username(), roles: user.roles().join(<span class="string">", "</span>)}
+        row = _.template $(<span class="string">"#template-user-grid-row"</span>).html(), props
+        row = $ row</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-17">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-17">&#182;</a>
+              </div>
+              <p>Set row ID.</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>        row.attr <span class="string">"id"</span>, SystemApp.Settings.User.rowListPrefix + user.id</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-18">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-18">&#182;</a>
+              </div>
+              <p>Bind edit and delete events.</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>        row.find(<span class="string">".actions .edit"</span>).click user, <span class="property">@editClick</span>
+        row.find(<span class="string">".actions .delete"</span>).click user, <span class="property">@deleteClick</span></pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-19">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-19">&#182;</a>
+              </div>
+              <p>Append row to the <code>$userGrid</code>.</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>        <span class="property">@$userGrid</span>.append row</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-20">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-20">&#182;</a>
+              </div>
+              <p>When a user is removed from the users collection.</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>    removeUserFromGrid: (user) =&gt;
+        row = $(<span class="string">"#"</span> + SystemApp.Settings.User.rowListPrefix + user.id)
+        <span class="property">@modelElementRemove</span> row</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-21">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-21">&#182;</a>
+              </div>
+              <p>Bind registered users to the users grid.</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>    bindUsers: =&gt;
+        <span class="property">@$userGrid</span>.empty()
+        <span class="property">@addUserToGrid</span>(user) <span class="keyword">for</span> user <span class="keyword">in</span> SystemApp.Data.users.models</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-22">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-22">&#182;</a>
+              </div>
+              <p>When user clicks the &quot;edit&quot; icon, highlight the row and bind user details
+to the top form so it can be edited.</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>    editClick: (e) =&gt;
+        <span class="keyword">if</span> <span class="property">@selectedUser</span>?
+            $(<span class="string">"#"</span> + SystemApp.Settings.User.rowListPrefix + <span class="property">@selectedUser</span>.id).removeClass <span class="string">"active"</span></pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-23">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-23">&#182;</a>
+              </div>
+              <p>Highlight the clicked row.</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>        row = $(e.target).parent().parent()
+        row.addClass <span class="string">"active"</span></pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-24">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-24">&#182;</a>
+              </div>
+              <p>Set <code>selectedUser</code> and bind to the edit form.</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>        <span class="property">@selectedUser</span> = e.data
+        <span class="property">@bindUserForm</span>()</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-25">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-25">&#182;</a>
+              </div>
+              <p>When user clicks the &quot;delete&quot; icon, make it red and if clicking again,
+remove the user from the database and the row from the <code>$userGrid</code>.</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>    deleteClick: (e) =&gt;
+        e.preventDefault()
+        e.stopPropagation()
+
+        src = $ e.currentTarget</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-26">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-26">&#182;</a>
+              </div>
+              <p>If the icon is red, then confirm the deletion by removing the row&#39;s associated model
+from the <a href="data.html">data store</a>.</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>        <span class="keyword">if</span> src.hasClass <span class="string">"delete-red"</span>
+            e.data.destroy()
+        <span class="keyword">else</span>
+            src.addClass <span class="string">"delete-red"</span></pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-27">
+            <div class="annotation">
+              
+              <div class="pilwrap for-h2">
+                <a class="pilcrow" href="#section-27">&#182;</a>
+              </div>
+              <h2>HELPER METHODS</h2>
+
+            </div>
+            
+        </li>
+        
+        
+        <li id="section-28">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-28">&#182;</a>
+              </div>
+              <p>When user presses a key, check if it&#39;s Esc to cancel pending actions like
+editing user details or deleting a user.</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>    keyUp: (e) =&gt;
+        keyCode = e.keyCode
+
+        <span class="keyword">if</span> keyCode <span class="keyword">is</span> <span class="number">27</span>
+            <span class="property">@$el</span>.find(<span class="string">"div.delete"</span>).removeClass <span class="string">"delete-red"</span>
+            <span class="property">@$el</span>.find(<span class="string">"div.row"</span>).removeClass <span class="string">"active"</span>
+            <span class="property">@selectedUser</span> = <span class="literal">null</span>
+            <span class="property">@bindUserForm</span>()
+
+        <span class="property">@lastPressedKey</span> = keyCode</pre></div></div>
+            
+        </li>
+        
+    </ul>
+  </div>
+</body>
+</html>

@@ -236,7 +236,7 @@ SystemApp.Settings =
         # The default shape title color.
         titleForeground: "#FFFFFF"
         # The default z-index of shapes.
-        zIndex: 5
+        zIndex: 2
 
 
     # LINK
