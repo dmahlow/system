@@ -84,6 +84,12 @@ class SystemApp.MapShapeLabelsView extends SystemApp.BaseView
         @listenTo @model, "change:titleForeground", @setTitleForeground
         @listenTo @model, "change:foreground", @setAllForeground
         @listenTo @model, "change:fontSize", @setAllFontSizes
+        @listenTo @model, "change:textTitle", => @render null, "Title"
+        @listenTo @model, "change:textCenter", => @render null, "Center"
+        @listenTo @model, "change:textLeft", => @render null, "Left"
+        @listenTo @model, "change:textTop", => @render null, "Top"
+        @listenTo @model, "change:textRight", => @render null, "Right"
+        @listenTo @model, "change:textBottom", => @render null, "Bottom"
 
 
     # HELPER PROPERTIES
@@ -550,7 +556,6 @@ class SystemApp.MapShapeLabelsView extends SystemApp.BaseView
         @model.save()
         @mapView.model.save()
 
-        @render @parentView, @currentEditingPosition
         @bindAllLabelsData()
 
         @currentEditingPosition = null
