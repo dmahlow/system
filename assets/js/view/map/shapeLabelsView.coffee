@@ -122,114 +122,123 @@ class SystemApp.MapShapeLabelsView extends SystemApp.BaseView
     # ----------------------------------------------------------------------
 
     # Render all label SVG elements on the map.
-    render: (parent, position) =>
+    render: (parent, location) =>
         if parent?
             @parentView = parent
             @mapView = parent.parentView
 
-        if not position?
+        if not location?
             renderAll = true
         else
             renderAll = false
 
         # Title might have its value overriden by the selected "Shape's title" on the map controls.
-        if renderAll or position is "Title"
+        if renderAll or location is "Title"
             title = @renderLabel @getTitleValue(), @svgTitle, @svgIconTitle, "Title"
             @svgTitle = title[0]
             @svgIconTitle = title[1]
 
-        if renderAll or position is "Center"
+        if renderAll or location is "Center"
             center = @renderLabel @model.textCenter(), @svgCenter, @svgIconCenter, "Center"
             @svgCenter = center[0]
             @svgIconCenter = center[1]
 
-        if renderAll or position is "Left"
+        if renderAll or location is "Left"
             left = @renderLabel @model.textLeft(), @svgLeft, @svgIconLeft, "Left"
             @svgLeft = left[0]
             @svgIconLeft = left[1]
 
-        if renderAll or position is "Top"
+        if renderAll or location is "Top"
             top = @renderLabel @model.textTop(), @svgTop, @svgIconTop, "Top"
             @svgTop = top[0]
             @svgIconTop = top[1]
 
-        if renderAll or position is "Right"
+        if renderAll or location is "Right"
             right = @renderLabel @model.textRight(), @svgRight, @svgIconRight, "Right"
             @svgRight = right[0]
             @svgIconRight = right[1]
 
-        if renderAll or position is "Bottom"
+        if renderAll or location is "Bottom"
             bottom = @renderLabel @model.textBottom(), @svgBottom, @svgIconBottom, "Bottom"
             @svgBottom = bottom[0]
             @svgIconBottom = bottom[1]
 
         @toggleEdit @mapView.editEnabled
-
-        @setPosition()
+        @setPosition null, null, location
 
         return this
 
     # Render a single label, passing a value, the target label SVG, and the overlay SVG
-    # in case the value is empty. The position tells the location of the label related
+    # in case the value is empty. The location tells the location of the label related
     # to its parent [Shape View](shapeView.html).
-    renderLabel: (value, svg, iconSvg, position) =>
+    renderLabel: (value, svg, iconSvg, location) =>
         x = 0
         y = 0
         text = value
         iconSize = SystemApp.Settings.Map.icoActionsSize
 
+        # If there's a label present already, copy its current location and text
+        # before recreating it on a new label.
         if svg?
-
-            # If there's a label present already, copy its current position and text
-            # before recreating it on a new label.
             x = svg.attr "x"
             y = svg.attr "y"
             text = svg.attr "text"
-
-            svg.unclick()
-            svg.removeData()
-            svg.remove()
-            svg = null
-
-        if iconSvg?
-
-            # If there's an icon present already, copy its current position
-            # before recreating it on a new icon.
+        # If there's an icon present already, copy its current position
+        # before recreating it on a new icon.
+        else if iconSvg?
             x = iconSvg.attr "x"
             y = iconSvg.attr "y"
 
-            iconSvg.unclick()
-            iconSvg.unmouseover()
-            iconSvg.unmouseout()
-            iconSvg.removeData()
-            iconSvg.remove()
-            iconSvg = null
-
+        # If value is a text or object, update it.
         if value? and value isnt ""
 
-            if position is "Title"
+            # Remove icon SVG, if there's one.
+            if iconSvg?
+                iconSvg.unclick()
+                iconSvg.unmouseover()
+                iconSvg.unmouseout()
+                iconSvg.removeData()
+                iconSvg.remove()
+                iconSvg = null
+
+            if location is "Title"
                 foreground = @model.titleForeground()
             else
                 foreground = @model.foreground()
 
-            if position is "Left"
+            if location is "Left"
                 textAnchor = "start"
-            else if position is "Right"
+            else if location is "Right"
                 textAnchor = "end"
             else
                 textAnchor = "middle"
 
-            svg = @mapView.paper.text 0, 0, text
+            # Create label SVG if not existing yet.
+            if not svg?
+                svg = @mapView.paper.text 0, 0, text
+
+            # Update label SVG attributes.
             svg.attr {"x": x, "y": y, "fill": foreground, "font-size": @model.fontSize()}
             svg.attr {"cursor": "pointer", "text-anchor": textAnchor}
             svg.click @click
 
-            $(svg.node).data "labelPosition", position
+            $(svg.node).data "labelPosition", location
             @parentView.bindSvgDefaults svg
 
         else
 
-            iconSvg = @mapView.paper.image SystemApp.Settings.Map.icoAddLabelUrl, 0, 0, iconSize, iconSize
+            # Remove label SVG, if there's one.
+            if svg?
+                svg.unclick()
+                svg.removeData()
+                svg.remove()
+                svg = null
+
+            # Create icon SVG if not existing yet.
+            if not iconSvg?
+                iconSvg = @mapView.paper.image SystemApp.Settings.Map.icoAddLabelUrl, 0, 0, iconSize, iconSize
+
+            # Update icon SVG attributes.
             iconSvg.attr {"x": x, "y": y, cursor: "pointer", opacity: SystemApp.Settings.Map.icoActionsOpacity}
             iconSvg.click @click
             iconSvg.mouseover @iconMouseOver
@@ -272,9 +281,8 @@ class SystemApp.MapShapeLabelsView extends SystemApp.BaseView
     # Set the label positions on the map, based on the specified left `posX`
     # and top `posY` parameters. Please note that if the labels are not visible
     # then this method will stop immediately.
-    setPosition: (posX, posY) =>
-        if not @visible
-            return
+    setPosition: (posX, posY, location) =>
+        return if not @visible
 
         posX = @parentView.x() if not posX?
         posY = @parentView.y() if not posY?
@@ -285,44 +293,52 @@ class SystemApp.MapShapeLabelsView extends SystemApp.BaseView
         iconHalfSize = iconSize / 2
         border = @model.strokeWidth() + SystemApp.Settings.Map.labelPadding
 
-        # Set default positioning objects.
-        title = {"x": posX + parentWidth / 2, "y": posY - iconHalfSize}
-        center = {"x": posX + parentWidth / 2, "y": posY + parentHeight / 2}
-        left = {"x": posX + border + 2, "y": posY + parentHeight / 2}
-        top = {"x": posX + parentWidth / 2, "y": posY + iconHalfSize + border}
-        right = {"x": posX + parentWidth - border - 2, "y": posY + parentHeight / 2}
-        bottom = {"x": posX + parentWidth / 2, "y": posY + parentHeight - iconHalfSize - border}
+        # Set title position.
+        if not location? or location is "Title"
+            title = {"x": posX + parentWidth / 2, "y": posY - iconHalfSize}
+            @svgTitle?.attr title
+            title.x -= iconHalfSize
+            title.y -= iconHalfSize
+            @svgIconTitle?.attr title
 
-        # Set label positions.
-        @svgTitle?.attr title
-        @svgCenter?.attr center
-        @svgLeft?.attr left
-        @svgTop?.attr top
-        @svgRight?.attr right
-        @svgBottom?.attr bottom
+        # Set center position.
+        if not location? or location is "Center"
+            center = {"x": posX + parentWidth / 2, "y": posY + parentHeight / 2}
+            @svgCenter?.attr center
+            center.x -= iconHalfSize
+            center.y -= iconHalfSize
+            @svgIconCenter?.attr center
 
-        # Recalculate the horizontal and vertical alignments for icons, as the X is related
-        # their left offset and not their center point, and Y is their top offset and
-        # not their middle.
-        title.x -= iconHalfSize
-        title.y -= iconHalfSize
-        center.x -= iconHalfSize
-        center.y -= iconHalfSize
-        left.y -= iconHalfSize
-        top.x -= iconHalfSize
-        top.y -= iconHalfSize
-        right.x -= iconSize
-        right.y -= iconHalfSize
-        bottom.x -= iconHalfSize
-        bottom.y -= iconHalfSize
+        # Set left position.
+        if not location? or location is "Left"
+            left = {"x": posX + border + 2, "y": posY + parentHeight / 2}
+            @svgLeft?.attr left
+            left.y -= iconHalfSize
+            @svgIconLeft?.attr left
 
-        # Set icon positions.
-        @svgIconTitle?.attr title
-        @svgIconCenter?.attr center
-        @svgIconLeft?.attr left
-        @svgIconTop?.attr top
-        @svgIconRight?.attr right
-        @svgIconBottom?.attr bottom
+        # Set top position.
+        if not location? or location is "Top"
+            top = {"x": posX + parentWidth / 2, "y": posY + iconHalfSize + border}
+            @svgTop?.attr top
+            top.x -= iconHalfSize
+            top.y -= iconHalfSize
+            @svgIconTop?.attr top
+
+        # Set right position.
+        if not location? or location is "Right"
+            right = {"x": posX + parentWidth - border - 2, "y": posY + parentHeight / 2}
+            @svgRight?.attr right
+            right.x -= iconSize
+            right.y -= iconHalfSize
+            @svgIconRight?.attr right
+
+        # Set bottom position.
+        if not location? or location is "Bottom"
+            bottom = {"x": posX + parentWidth / 2, "y": posY + parentHeight - iconHalfSize - border}
+            @svgBottom?.attr bottom
+            bottom.x -= iconHalfSize
+            bottom.y -= iconHalfSize
+            @svgIconBottom?.attr bottom
 
     # Bring the labels to the front of the map. Usually called after changing
     # the selected shape on the current [Map View](mapView.html).

@@ -109,7 +109,7 @@ class SystemApp.Shape extends SystemApp.BaseModel
     strokeWidth: (value) =>
         if value?
             @set "strokeWidth", value
-        @get "strokeWidth"
+        parseInt @get "strokeWidth"
 
     # Helper to get / set the shape title.
     title: (value) =>
