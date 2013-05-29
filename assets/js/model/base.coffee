@@ -109,8 +109,8 @@ class SystemApp.BaseModel extends Backbone.Model
             # If the current attribute is already "set" to the defined model / collection,
             # then update its value. Otherwise create a new model / collection.
             if current?.typeName?
-                if current.update?
-                    current.update responseValue
+                if responseValue?.models?
+                    current.set responseValue.models
                 else
                     current.set responseValue
                 response[key] = current
@@ -150,19 +150,30 @@ class SystemApp.BaseModel extends Backbone.Model
         options.errorCallback = options.error
         options.error = @fetchError
 
-        Backbone.Model.prototype.fetch.call this, options
+        if @attributes.isLocal
+            @fetchLocal options
+        else
+            Backbone.Model.prototype.fetch.call this, options
 
     # Fetch data from local storage, using jquery.localData plugin.
-    fetchLocal: =>
-        return if @fetching
+    fetchLocal: (options) =>
         @fetching = true
 
+        options = {} if not options?
+        options.isLocal = true
+
+        # Get local data.
         localObj = $.localData.get @localId()
-
-        if localObj?
-            @set @parse localObj
-
         @fetching = false
+
+        # If local object exists and is parsed successfully, trigger `fetchSuccess`. # If failed, trigger `fetchError`.
+        if localObj?
+            setResult = @set @parse localObj
+            if setResult?
+                @fetchSuccess this, localObj, options
+            else
+                @fetchError this, null, options
+            @trigger "sync", this, localObj, options
 
     # When `fetch` is successful, set `fetching` to false.
     fetchSuccess: (model, resp, options) =>
@@ -195,16 +206,20 @@ class SystemApp.BaseModel extends Backbone.Model
         options = val if not options?
         options = key if not options?
 
-        if @timerSave?
-            clearTimeout @timerSave
-            @timerSave = null
+        if @attributes.isLocal
+            @saveLocal key, val, options
+        else
+            if @timerSave?
+                clearTimeout @timerSave
+                @timerSave = null
 
-        callback = () => @saveRemote options
-        @timerSave = setTimeout callback, SystemApp.Settings.General.saveInterval
+            callback = () => @saveRemote options
+            @timerSave = setTimeout callback, SystemApp.Settings.General.saveInterval
 
     # Save model data to the local storage using jquery.localData plugin.
-    saveLocal: =>
+    saveLocal: (key, val, options) =>
         $.localData.set @localId(), @toJSON()
+        options?.success? this, @attributes, options
 
     # Save model data to the remote server (Node / MongoDB).
     # If no options are passed, created one, and set the
@@ -310,7 +325,8 @@ class SystemApp.BaseCollection extends Backbone.Collection
     localId: =>
         result = @typeName
         result += @id if @id?
-        result
+        return result
+
 
 
     # FETCH DATA
@@ -329,19 +345,31 @@ class SystemApp.BaseCollection extends Backbone.Collection
         options.success = @fetchSuccess
         options.error = @fetchError
 
-        Backbone.Collection.prototype.fetch.call this, options
+        if options.isLocal
+            @fetchLocal options
+        else
+            Backbone.Collection.prototype.fetch.call this, options
 
     # Fetch data from local storage, using jquery.localData plugin.
-    fetchLocal: =>
-        return if @fetching
+    fetchLocal: (options) =>
         @fetching = true
 
+        options = {} if not options?
+        options.isLocal = true
+
+        # Get local data.
         localObj = $.localData.get @localId()
-
-        if localObj?
-            @reset localObj
-
         @fetching = false
+
+        # If local object exists and is parsed successfully, trigger `fetchSuccess`. # If failed, trigger `fetchError`.
+        if localObj?
+            if options.reset
+                @reset @parse(localObj, options), options
+            else
+                @set @parse(localObj, options), options
+
+            if options.error
+                @trigger "error", this, localObj, options
 
     # When `fetch` is successful, set `fetching` to false.
     fetchSuccess: =>

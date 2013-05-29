@@ -179,9 +179,9 @@ class SystemApp.MapView extends SystemApp.BaseView
         SystemApp.consoleLog "MapView.clearSelectedShapes", "Cleared #{count} shapes."
 
     # Bind a [Map](map.html) to the map. this will reset the map state!
-    bindMap: (map) =>
-        console.profile "MapView.bindMap" if SystemApp.Settings.General.profile
-        SystemApp.consoleLog "MapView.bindMap", "#{map.name()}, #{map.shapes().length} shapes, #{map.links().length} links"
+    bind: (map) =>
+        console.profile "MapView.bind" if SystemApp.Settings.General.profile
+        SystemApp.consoleLog "MapView.bind", "#{map.name()}, #{map.shapes().length} shapes, #{map.links().length} links"
 
         @model?.save()
         @clear()
@@ -201,8 +201,8 @@ class SystemApp.MapView extends SystemApp.BaseView
         @paper.setSize map.paperSizeX(), map.paperSizeY()
 
         # Bind map data.
-        @bindMapBg()
-        @bindMapGroups()
+        @bindBg()
+        @bindGroups()
         @bindShapes()
         @setViewBox()
 
@@ -224,12 +224,12 @@ class SystemApp.MapView extends SystemApp.BaseView
         SystemApp.toggleLoading false
 
         # Finally bind map events.
-        @bindMapEvents()
+        @bindEvents()
 
-        console.profileEnd "MapView.bindMap" if SystemApp.Settings.General.profile
+        console.profileEnd "MapView.bind" if SystemApp.Settings.General.profile
 
     # Bind event listeners to the current [Map](map.html).
-    bindMapEvents: =>
+    bindEvents: =>
         @listenTo @model, "sync", @mapSaved
         @listenTo @model, "destroy", @mapRemoved
 
@@ -248,7 +248,7 @@ class SystemApp.MapView extends SystemApp.BaseView
         @listenTo @model.links(), "remove", @removeLink
 
     # Set the paper background, which can be a URL to an image or a solid color.
-    bindMapBg: =>
+    bindBg: =>
         @paperBg = @model.background()
 
         if @paperBg isnt undefined and @paperBg.indexOf(".") > 0
@@ -259,7 +259,7 @@ class SystemApp.MapView extends SystemApp.BaseView
         @paperBg.node.id = SystemApp.Settings.Map.id
 
     # Create the map groups using raphael.group.js plugin.
-    bindMapGroups: =>
+    bindGroups: =>
         i = 1
         while i < 10
             @stackGroups[i] = @paper.group()

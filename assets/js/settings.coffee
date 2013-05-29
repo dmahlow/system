@@ -11,7 +11,7 @@ SystemApp.Settings =
     General:
         # Force set the debug mode. If true, most actions will be logged to the console.
         # If not set, it will be `false` on production environments and `true` on all other environments.
-        debug: null
+        debug: true
         # Set the profile mode. If true, performance profiles will be triggered automatically.
         profile: false
         # The title of the app.
@@ -104,13 +104,12 @@ SystemApp.Settings =
         borderUpdatedDelay: 1400
         # Radius of rounded shape corners. Used only for rounded shapes.
         cornerRadius: 8
-        # Name of the default colour palette when no palette is selected.
-        defaultPalette: "Outliner"
         # Properties available to be shown on map options. Separated by |, and equivalent properties
         # separated by commas.
-        displayProps: "name,hostname|internal_ip|external_ip,service_ip|memory,assigned_memory"
-        # The URL to the background SVG editor.
-        editBgUrl: "svg-edit/svg-editor.html"
+        displayProps: "name,hostname|ip_internal,internal_ip|ip,external_ip,service_ip"
+        # Set to true to enable a special "My Local Map" (saved on browser local storage instead
+        # of the database) for every user. This is useful particularly on the demo website.
+        enableLocalMap: true
         # On the "Entity List" DOM, add this prefix to each entity list item.
         entityListPrefix: "map-entity-list-"
         # All grid path elements will have this prefix + line number as ID.
@@ -137,6 +136,8 @@ SystemApp.Settings =
         labelFontSize: 12
         # The refresh interval to update shapes, links and label values.
         labelRefreshInterval: 5000
+        # ID of the local map, if enabled.
+        localMapId: "Local"
         # Maximum zoom amount allowed.
         maxZoom: 1.80
         # Minimum grid size in pixels (distance between grid lines).
@@ -149,7 +150,7 @@ SystemApp.Settings =
         minZoom: 0.50
         # For how long a mao is considered "new" (for example on the top menu),
         # value is defined in seconds. Default is 5 minutes.
-        isNewInterval: 300
+        isNewInterval: 60
         # The opacity of map shapes when dragging.
         opacityDrag: 0.32
         # The opacity interval when animating map shapes, in milliseconds.

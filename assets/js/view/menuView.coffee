@@ -18,6 +18,7 @@ class SystemApp.MenuView extends SystemApp.BaseView
     $menuSettings: null         # the "Settings" menu item
     $menuHelp: null             # the "Help" menu item
     $subMenuItems: null         # the div containing all sub menu items (which represents maps)
+    $localMapLink: null         # represents the link to the "My Local Map"
     $currentSub: null           # current selected map (sub-menu div)
 
 
@@ -29,6 +30,8 @@ class SystemApp.MenuView extends SystemApp.BaseView
     initialize: =>
         @setDom()
         @setEvents()
+
+        @createSubLocalMap() if SystemApp.Settings.Map.enableLocalMap
 
     # Dispose the menu view.
     dispose: =>
@@ -75,10 +78,10 @@ class SystemApp.MenuView extends SystemApp.BaseView
         @$menuMaps.click () => @toggleSubMenu false
 
         # Show and hide submenu on mouse over and out.
-        @$menuMaps.mouseover @showSubItems
-        @$menuMaps.mouseout false, @showSubItems
-        @$subMenuItems.mouseover true, @showSubItems
-        @$subMenuItems.mouseout false, @showSubItems
+        @$menuMaps.mouseover @showSubMaps
+        @$menuMaps.mouseout false, @showSubMaps
+        @$subMenuItems.mouseover true, @showSubMaps
+        @$subMenuItems.mouseout false, @showSubMaps
 
         # Listen to map and app events.
         @listenTo SystemApp.Data.maps, "sync", @sortSubMenu
@@ -94,8 +97,15 @@ class SystemApp.MenuView extends SystemApp.BaseView
 
     # When a [map](map.html) is loaded on the main [map view](mapView.html),
     # set the "Maps" menu to active.
-    onMapLoad: (map) =>
+    onMapLoad: =>
         @setActiveMenu @$menuMaps
+
+    # Add the "My Local Map" to the maps list. This will be triggered only if the `enableLocalMap` setting is true.
+    createSubLocalMap: =>
+        map = new SystemApp.Map()
+        map.initLocalMap()
+
+        @$localMapLink = @createSubMap map
 
     # Add a single div to the `$subMenuItems`, which represents
     # a [Map](map.html). If firstBind is true, it means the menu hasn't been populated before,
@@ -120,14 +130,19 @@ class SystemApp.MenuView extends SystemApp.BaseView
         link.html mapName
         link.click @menuClick
 
+        # Append map link to the div.
         @$subMenuItems.append link
 
-        # If map was created less than 5 minutes ago, then make it italic so
-        # users can easily identify it on the list. The 5 minutes value is defined
-        # on the [Settings](settings.html).
-        if dateCreated? and (now - dateCreated) / 1000 < SystemApp.Settings.Map.isNewInterval
+        # Make local maps italic.
+        if map.isLocal()
             link.addClass "italic"
+
+        # If map was created less than 1 minute ago, auto select it.
+        if dateCreated? and (now - dateCreated) / 1000 < SystemApp.Settings.Map.isNewInterval
             @setActiveMap map
+
+        # Return the created link.
+        return link
 
     # Remove an exisiting div representing a [Map](map.html). Fired whenever
     # an item is removed from the main [Map Collection](data.html).
@@ -143,7 +158,7 @@ class SystemApp.MenuView extends SystemApp.BaseView
     # be the source element, true to keep it shown, or false to force hide.
     # If e.data is the source element, then show the submenu items
     # which have that specific data type (datacenter, or machine, or host, or view...).
-    showSubItems: (e) =>
+    showSubMaps: (e) =>
         if @$menuMaps.hasClass "active"
             @toggleSubMenu false
             return
@@ -174,6 +189,10 @@ class SystemApp.MenuView extends SystemApp.BaseView
     # Sort the items on the map submenu.
     sortSubMenu: =>
         @sortList @$subMenuItems, "a"
+
+        if @$localMapLink?
+            @$subMenuItems.prepend @$localMapLink 
+
 
 
     # MAP INTERACTIONS

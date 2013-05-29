@@ -77,6 +77,12 @@ class SystemApp.Map extends SystemApp.BaseModel
             @set "initScript", value
         @get "initScript"
 
+    # Helper to get / set map isLocal flag.
+    isLocal: (value) =>
+        if value?
+            @set "isLocal", value
+        @get "isLocal"
+
     # Helper to get / set the map silent mode.
     silent: (value) =>
         if value?
@@ -103,15 +109,29 @@ class SystemApp.Map extends SystemApp.BaseModel
             @set "thumbnailDate", value
         @get "thumbnailDate"
 
-    # Helper to get / set the username who created the map.
-    createdByUser: (value) =>
-        if value?
-            @set "createdByUser", value
-        @get "createdByUser"
-
     # Helper to get the map's URL key based on its name: replace all spaces and special characters.
     urlKey: =>
+        if @isLocal()
+            return SystemApp.Settings.Map.localMapId
         return SystemApp.DataUtil.getUrlKey @name()
+
+
+    # LOCAL MAPS
+    # ----------------------------------------------------------------------
+
+    # Helper to get data from local storage and set map as local.
+    initLocalMap: =>
+        @id = SystemApp.Settings.Map.localMapId
+        @set "id", SystemApp.Settings.Map.localMapId
+        @set "isLocal", true
+        @fetch()
+
+        currentName = @name()
+
+        if not currentName? or currentName is ""
+            @name SystemApp.Messages.localMapName
+
+        return @name()
 
 
     # VALIDATE
@@ -147,7 +167,7 @@ class SystemApp.Map extends SystemApp.BaseModel
     # Removes a [Shape](shape.html) from the `shapes` collection.
     removeShape: (shape) =>
         @shapes().remove @shapes().get shape.id
-        @removeShapeLinks
+        @removeShapeLinks shape
 
         @save()
 

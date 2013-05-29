@@ -138,7 +138,11 @@ class SystemApp.MapControlsView extends SystemApp.BaseView
         if value isnt false and (value is undefined or value.data is null)
             value = not (@$chkEditable.prop "checked")
 
-        SystemApp.mapEvents.trigger "edit:toggle", value
+        if System.Data.loggedUser.hasRole "mapedit"
+            SystemApp.mapEvents.trigger "edit:toggle", value
+        else
+            errorMsg = SystemApp.Messages.errNoPermissionTo.replace "#", SystemApp.Messages.editThisMap
+            SystemApp.alertEvents.trigger "tooltip", {isError: true, title: SystemApp.Messages.accessDenied, message: errorMsg}
 
     # Enable or disable the [AuditData](auditData.html) timers to auto-update
     # the values of related labels on the map.

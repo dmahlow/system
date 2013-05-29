@@ -122,12 +122,14 @@ class SystemApp.BaseView extends Backbone.View
         # If `desc` is true, sort descending.
         if desc
             sorter = (a, b) ->
-                keyA = $(a).text()
-                keyB = $(b).text()
+                a = $ a
+                b = $ b
+                keyA = a.text()
+                keyB = a.text()
                 return -1 if keyA > keyB
                 return 1 if keyA < keyB
                 return 0
-            items.sort(sorter)
+            items.sort sorter
         else
             items.sort()
 

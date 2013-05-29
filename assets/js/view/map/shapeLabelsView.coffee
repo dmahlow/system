@@ -244,7 +244,7 @@ class SystemApp.MapShapeLabelsView extends SystemApp.BaseView
             iconSvg.mouseover @iconMouseOver
             iconSvg.mouseout @iconMouseOut
 
-            $(iconSvg.node).data "labelPosition", position
+            $(iconSvg.node).data "labelPosition", location
             @parentView.bindSvgDefaults iconSvg
 
         return [svg, iconSvg]

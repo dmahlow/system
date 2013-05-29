@@ -42,15 +42,21 @@ class SystemApp.AppRoutes extends Backbone.Router
 
         # If no valid ID is specified, then clear the current map.
         if not id? or id is 0
-            SystemApp.mapView.bindMap null
+            SystemApp.mapView.bind null
             return
 
+        urlKey = SystemApp.DataUtil.getUrlKey id
+
         # Find map based on its friendly URL key. If no map is found, trying using the value as its ID.
-        map = _.find SystemApp.Data.maps.models, (item) -> item.urlKey() is SystemApp.DataUtil.getUrlKey id
-        map = SystemApp.Data.maps.get(id) if not map?
+        if SystemApp.Settings.Map.enableLocalMap and id is SystemApp.Settings.Map.localMapId
+            map = new SystemApp.Map()
+            map.initLocalMap()
+        else
+            map = _.find SystemApp.Data.maps.models, (item) -> item.urlKey() is urlKey
+            map = SystemApp.Data.maps.get(id) if not map?
 
         if map?
-            SystemApp.mapView.bindMap map
+            SystemApp.mapView.bind map
             SystemApp.menuEvents.trigger "active:map", map
             @showOverlay false
         else
