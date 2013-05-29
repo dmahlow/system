@@ -172,7 +172,7 @@ SystemApp.Settings =
         # The default shape shadow strength.
         shadowStrength: 5
         # The default padding to apply to labels inside shapes (does not include the border).
-        labelPadding: 4
+        labelPadding: 3
         # The base URL where map thumbnails are located.
         thumbnailBaseUrl: "images/mapthumbs/"
         # The maximum age of the map's thumbnail before it's allowed to generate a new thumbnail again, in ms.

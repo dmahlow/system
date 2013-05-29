@@ -136,6 +136,8 @@ class SystemApp.AuditDataManagerView extends SystemApp.OverlayView
     # Save the `model` (if there's one) when the overlay is closed,
     # and remove the `keyUp` from the document.
     onHide: =>
+        @$preview.html ""
+
         $(document).unbind "keyup", @hasModelListKeyUp
         SystemApp.Data.auditData.off "add", @addToModelsList
         SystemApp.Data.auditData.off "remove", @removeFromModelsList
