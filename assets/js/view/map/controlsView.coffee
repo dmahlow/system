@@ -77,7 +77,7 @@ class SystemApp.MapControlsView extends SystemApp.BaseView
     setEvents: =>
         $(window).resize @resize
 
-        @$chkEditable.change @setEnabled
+        @$chkEditable.change @setEditEnabled
         @$chkAutoUpdate.change @setAutoUpdate
         @$imgFullscreen.click @toggleFullscreen
 
@@ -134,15 +134,23 @@ class SystemApp.MapControlsView extends SystemApp.BaseView
             @$imgLock.attr "src", "images/ico-unlocked.png"
 
     # Enable or disable editing the current [Map](map.html).
-    setEnabled: (value) =>
+    setEditEnabled: (value) =>
         if value isnt false and (value is undefined or value.data is null)
             value = not (@$chkEditable.prop "checked")
 
-        if System.Data.loggedUser.hasRole "mapedit"
-            SystemApp.mapEvents.trigger "edit:toggle", value
-        else
-            errorMsg = SystemApp.Messages.errNoPermissionTo.replace "#", SystemApp.Messages.editThisMap
-            SystemApp.alertEvents.trigger "tooltip", {isError: true, title: SystemApp.Messages.accessDenied, message: errorMsg}
+        # Get user permissions.
+        hasPermission = SystemApp.Data.loggedUser.hasRole "mapedit"
+        isOwner = (@model.createdByUserId() is SystemApp.Data.loggedUser.id)
+
+        # Make sure user has permissions to edit this map.
+        if value is true and not hasPermission and not isOwner
+                value = false
+                errorMsg = SystemApp.Messages.errNoPermissionTo.replace "#", SystemApp.Messages.editThisMap
+                SystemApp.alertEvents.trigger "tooltip", {isError: true, title: SystemApp.Messages.accessDenied, message: errorMsg}
+                @$chkEditable.prop "checked", false
+
+        SystemApp.mapEvents.trigger "edit:toggle", value
+        SystemApp.consoleLog "MapControlsView.setEditEnabled", value
 
     # Enable or disable the [AuditData](auditData.html) timers to auto-update
     # the values of related labels on the map.

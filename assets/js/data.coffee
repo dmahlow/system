@@ -90,8 +90,7 @@ SystemApp.Data =
             data = entityDef.data()
             if data.length < 1 and url? and url isnt ""
                 entityDef.refreshData()
-                SystemApp.consoleLog("Data.fetchFinished",
-                                      "Entity Definition #{entityDef.friendlyId()} has no data. Force refreshing!", url)
+                SystemApp.consoleLog "Data.fetchFinished", "Entity Definition #{entityDef.friendlyId()} has no data. Force refreshing!", url
 
 
     # DATA PERSISTENCE

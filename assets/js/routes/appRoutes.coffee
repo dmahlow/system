@@ -17,6 +17,7 @@ class SystemApp.AppRoutes extends Backbone.Router
         "settings": "openSettings"          # open the [Settings](settingsView.html) overlay
         "start": "openStart"                # open the [Start](startView.html) overlay
         "variables": "openVariables"        # open the [Variables Manager](variableManagerView.html) overlay
+        ":invalid": "openInvalid"           # default catch-all routes, display an "invalid path" to the user
 
 
     # ROUTER METHODS
@@ -109,6 +110,17 @@ class SystemApp.AppRoutes extends Backbone.Router
     openVariables: =>
         SystemApp.consoleLog "ROUTE", "openVariables"
         @showOverlay SystemApp.variableManagerView
+
+    # Open default page and show an alert with "invalid path" to the user.
+    openInvalid: =>
+        SystemApp.consoleLog "ROUTE", "openInvalid"
+
+        errorTitle = SystemApp.Messages.invalidRoute
+        errorMsg = SystemApp.Messages.errInvalidRoute
+        SystemApp.alertEvents.trigger "tooltip", {isError: true, title: errorTitle, message: errorMsg}
+
+        @openDefault()
+        @navigate "", {trigger: false}
 
 
     # HELPER METHODS

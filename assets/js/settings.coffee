@@ -11,7 +11,7 @@ SystemApp.Settings =
     General:
         # Force set the debug mode. If true, most actions will be logged to the console.
         # If not set, it will be `false` on production environments and `true` on all other environments.
-        debug: true
+        debug: null
         # Set the profile mode. If true, performance profiles will be triggered automatically.
         profile: false
         # The title of the app.

@@ -52,7 +52,7 @@ SystemApp.Sockets =
 
         # Only proceed if entity was found on the [data store](data.html).
         if not updated?
-            SystemApp.consoleLog "SOCKETS entitydata:refresh", "Could not find entity #{entityDef.friendlyId}.", entityDef
+            SystemApp.consoleLog "Sockets entitydata:refresh", "Could not find entity #{entityDef.friendlyId}.", entityDef
             return
 
         updated.data entityDef.data
@@ -64,7 +64,7 @@ SystemApp.Sockets =
 
         # Only proceed if entity was found on the [data store](data.html).
         if not updated?
-            SystemApp.consoleLog "SOCKETS auditdata:refresh", "Could not find audit data #{auditData.friendlyId}.", auditData
+            SystemApp.consoleLog "Sockets auditdata:refresh", "Could not find audit data #{auditData.friendlyId}.", auditData
             return
 
         updated.data auditData.data
