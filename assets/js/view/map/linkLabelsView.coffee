@@ -75,28 +75,28 @@ class SystemApp.MapLinkLabelsView extends SystemApp.BaseView
     # ----------------------------------------------------------------------
 
     # Render all label SVG elements on the map.
-    render: (parent, position) =>
+    render: (parent, location) =>
         if parent?
             @parentView = parent
 
-        if not position? or position is "Start"
+        if not location? or location is "Start"
             left = @renderLabel @model.textStart(), @svgStart, @svgIconStart, "Start"
             @svgStart = left[0]
             @svgIconStart = left[1]
 
-        if not position? or position is "Middle"
+        if not location? or location is "Middle"
             center = @renderLabel @model.textMiddle(), @svgMiddle, @svgIconMiddle, "Middle"
             @svgMiddle = center[0]
             @svgIconMiddle = center[1]
 
-        if not position? or position is "End"
+        if not location? or location is "End"
             top = @renderLabel @model.textEnd(), @svgEnd, @svgIconEnd, "End"
             @svgEnd = top[0]
             @svgIconEnd = top[1]
 
         @toggleEdit @parentView.parentView.editEnabled
 
-        @setPosition()
+        @setPosition location
         @onZoom()
 
         return this
@@ -104,61 +104,65 @@ class SystemApp.MapLinkLabelsView extends SystemApp.BaseView
     # Render a single label, passing a value, the target label SVG, and the overlay SVG
     # in case the value is empty. The position tells the location of the label related
     # to its parent [Link View](linkView.html).
-    renderLabel: (value, svg, iconSvg, position) =>
+    renderLabel: (value, svg, iconSvg, location) =>
         x = 0
         y = 0
         text = value
         iconSize = SystemApp.Settings.Map.icoActionsSize
 
-        # If label has an [AuditData](auditData.html) value bound or if it's an evaluation,
-        # then show "..." before binding the values
-        text = SystemApp.Settings.AuditData.loadingText if SystemApp.DataUtil.hasDataBindingValue value
-
+        # If there's a label present already, copy its current position and text
+        # before recreating it on a new label.
         if svg?
-
-            # If there's a label present already, copy its current position and text
-            # before recreating it on a new label.
             x = svg.attr "x"
             y = svg.attr "y"
             text = svg.attr "text"
-
-            svg.unclick()
-            svg.removeData()
-            svg.remove()
-            svg = null
-
-        if iconSvg?
-
-            # If there's an icon present already, copy its current position
-            # before recreating it on a new icon.
+        # If there's an icon present already, copy its current position
+        # before recreating it on a new icon.
+        else if iconSvg?
             x = iconSvg.attr "x"
             y = iconSvg.attr "y"
 
-            iconSvg.unclick()
-            iconSvg.unmouseover()
-            iconSvg.unmouseout()
-            iconSvg.removeData()
-            iconSvg.remove()
-            iconSvg = null
-
+        # If value is a text or object, update it.
         if value? and value isnt ""
 
-            svg = @parentView.parentView.paper.text 0, 0, text
+            # Remove icon SVG, if there's one.
+            if iconSvg?
+                iconSvg.unclick()
+                iconSvg.unmouseover()
+                iconSvg.unmouseout()
+                iconSvg.removeData()
+                iconSvg.remove()
+                iconSvg = null
+
+            # Create label SVG if not existing yet.
+            if not svg?
+                svg = @parentView.parentView.paper.text 0, 0, text
+
             svg.attr {"x": x, "y": y, "fill": @parentView.model.foreground(), "font-size": @parentView.model.fontSize()}
             svg.attr {"cursor": "pointer", "text-anchor": "middle"}
             svg.click @click
 
-            $(svg.node).data "labelPosition", position
+            $(svg.node).data "labelPosition", location
 
         else
 
-            iconSvg = @parentView.parentView.paper.image SystemApp.Settings.Map.icoAddLabelUrl, 0, 0, iconSize, iconSize
+            # Remove label SVG, if there's one.
+            if svg?
+                svg.unclick()
+                svg.removeData()
+                svg.remove()
+                svg = null
+
+            # Create icon SVG if not existing yet.
+            if not iconSvg?
+                iconSvg = @parentView.parentView.paper.image SystemApp.Settings.Map.icoAddLabelUrl, 0, 0, iconSize, iconSize
+
             iconSvg.attr {"x": x, "y": y, cursor: "pointer", opacity: SystemApp.Settings.Map.icoActionsOpacity}
             iconSvg.click @click
             iconSvg.mouseover @iconMouseOver
             iconSvg.mouseout @iconMouseOut
 
-            $(iconSvg.node).data "labelPosition", position
+            $(iconSvg.node).data "labelPosition", location
 
         return [svg, iconSvg]
 
@@ -188,9 +192,11 @@ class SystemApp.MapLinkLabelsView extends SystemApp.BaseView
         svgs = @svgsIcons()
         s?.animate(opacity, SystemApp.Settings.Map.blinkInterval) for s in svgs
 
-    # Set the label positions on the map. Please note that if the parent link
-    # is not visible then this method will stop immediately.
-    setPosition: =>
+    # Set the link label positions on the map.
+    setPosition: (posX, posY, location) =>
+        posX = @parentView.x() if not posX?
+        posY = @parentView.y() if not posY?
+
         iconSize = SystemApp.Settings.Map.icoActionsSize
         iconHalfSize = iconSize / 2
 
@@ -209,27 +215,26 @@ class SystemApp.MapLinkLabelsView extends SystemApp.BaseView
 
         middlePos = path.getPointAtLength(lineLength / 2)
 
-        # Set label positions.
-        @svgStart?.attr startPos
-        @svgMiddle?.attr middlePos
-        @svgEnd?.attr endPos
+        # Set start label position.
+        if not location? or location is "Start"
+            @svgStart?.attr startPos
+            startPos.x -= iconHalfSize
+            startPos.y -= iconHalfSize
+            @svgIconStart?.attr startPos
 
-        # Recalculate the horizontal and vertical alignments for icons, as the X is related
-        # their left offset and not their center point, and Y is their top offset and
-        # not their middle.
-        startPos.x -= iconHalfSize
-        startPos.y -= iconHalfSize
-        middlePos.x -= iconHalfSize
-        middlePos.y -= iconHalfSize
-        endPos.x -= iconHalfSize
-        endPos.y -= iconHalfSize
+        # Set middle label position.
+        if not location? or location is "Middle"
+            @svgMiddle?.attr middlePos
+            middlePos.x -= iconHalfSize
+            middlePos.y -= iconHalfSize
+            @svgIconMiddle?.attr middlePos
 
-        # Set icon positions.
-        @svgIconStart?.attr startPos
-        @svgIconMiddle?.attr middlePos
-        @svgIconEnd?.attr endPos
-
-
+        # Set end label position.
+        if not location? or location is "End"
+            @svgEnd?.attr endPos
+            endPos.x -= iconHalfSize
+            endPos.y -= iconHalfSize
+            @svgIconEnd?.attr endPos
 
     # Bring the labels to the front of the map. Usually called after changing
     # the selected link on the current [Map View](mapView.html).

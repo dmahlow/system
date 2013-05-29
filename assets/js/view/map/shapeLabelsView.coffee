@@ -164,7 +164,7 @@ class SystemApp.MapShapeLabelsView extends SystemApp.BaseView
             @svgIconBottom = bottom[1]
 
         @toggleEdit @mapView.editEnabled
-        @setPosition null, null, location
+        @setPosition location
 
         return this
 
@@ -281,11 +281,11 @@ class SystemApp.MapShapeLabelsView extends SystemApp.BaseView
     # Set the label positions on the map, based on the specified left `posX`
     # and top `posY` parameters. Please note that if the labels are not visible
     # then this method will stop immediately.
-    setPosition: (posX, posY, location) =>
+    setPosition: (location) =>
         return if not @visible
 
-        posX = @parentView.x() if not posX?
-        posY = @parentView.y() if not posY?
+        posX = @parentView.x()
+        posY = @parentView.y()
 
         parentWidth = @parentView.width()
         parentHeight = @parentView.height()
