@@ -200,6 +200,11 @@ code
     float: right;
 }
 
+#miniheader .active
+{
+    color: rgb(160, 200, 140) !important;
+}
+
 h1
 {
     color: rgb(255, 255, 255);

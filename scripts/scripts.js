@@ -7,6 +7,7 @@ $(document).ready(function()
         $demoFrame = $("#demoframe"),
         $header = $("#header"),
         $miniHeader = $("#miniheader"),
+        $miniHeaderLinks = $miniHeader.find("a"),
         originalX = $demoFrame.css("left"),
         originalY = $demoFrame.css("top"),
         originalW = $demoFrame.css("width"),
@@ -20,21 +21,51 @@ $(document).ready(function()
     }
 
     // Mini header variables.
-    var headerHeight = $header.outerHeight();
-    var miniHeaderVisible = false;
+    var headerHeight = $header.outerHeight(),
+        miniHeaderVisible = false,
+        linkTopPos = $("a[name='top']").offset().top,
+        linkInstallingPos = $("a[name='installing']").offset().top,
+        linkConfiguringPos = $("a[name='configuring']").offset().top,
+        linkRunningPos = $("a[name='running']").offset().top,
+        linkHelpPos = $("a[name='help']").offset().top,
+        currentHeaderHref = $($miniHeaderLinks[0]);
 
     // Scroll handler to show the mini header.
     $window.scroll(function(e) {
-        var stop = window.pageYOffset || document.documentElement.scrollTop;
+        var sTop = window.pageYOffset || document.documentElement.scrollTop;
 
-        if (stop > headerHeight && !miniHeaderVisible) {
+        if (sTop > headerHeight && !miniHeaderVisible) {
             $miniHeader.fadeIn();
             miniHeaderVisible = true;
-        } else if (stop <= headerHeight && miniHeaderVisible) {
+        } else if (sTop <= headerHeight && miniHeaderVisible) {
             $miniHeader.fadeOut();
             miniHeaderVisible = false;
         }
 
+        sTop = sTop + 380;
+
+        if (miniHeaderVisible) {
+            var newTopLink;
+
+            if (sTop >= linkHelpPos) {
+                newTopLink = $($miniHeaderLinks[4]);
+            } else if (sTop >= linkRunningPos) {
+                newTopLink = $($miniHeaderLinks[3]);
+            } else if (sTop >= linkConfiguringPos) {
+                newTopLink = $($miniHeaderLinks[2]);
+            } else if (sTop >= linkInstallingPos) {
+                newTopLink = $($miniHeaderLinks[1]);
+            } else if (sTop >= linkTopPos) {
+                newTopLink = $($miniHeaderLinks[0]);
+            }
+
+            if (!newTopLink.hasClass("active")) {
+                currentHeaderHref.removeClass("active");
+                newTopLink.addClass("active");
+
+                currentHeaderHref = newTopLink;
+            }
+        }
     });
 
     // Attach full demo click handler.
