@@ -1,0 +1,20 @@
+[
+{
+"id" :	"1",
+"title" :	"Strato",
+"location" :	"Berlin, DE"
+
+},
+{
+"id" :	"2",
+"title" :	"AWS Europe West",
+"location" :	"Dublin, IE"
+
+},
+{
+"id" :	"3",
+"title" :	"Rackspace DFW",
+"location" :	"Dallas, US"
+
+}
+]

@@ -521,6 +521,10 @@ module.exports = (app) ->
     # ----------------------------------------------------------------------
 
     # Get the system status page.
+    getDocs = (req, res) ->
+        res.redirect "/docs/README.html"
+
+    # Get the system status page.
     getStatus = (req, res) ->
         res.json { status: "ok" }
 
@@ -779,10 +783,11 @@ module.exports = (app) ->
     app.post    "/downloader/:filename", downloader
 
 
-    # SET STATUS ROUTES
+    # SET DOCS AND STATUS ROUTES
     # ----------------------------------------------------------------------
 
     # Error and status routes.
+    app.get "/docs", getDocs
     app.get "/status", getStatus
     app.get "/401", get401
     app.get "/404", get404

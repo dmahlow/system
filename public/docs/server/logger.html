@@ -4,162 +4,141 @@
 <head>
   <title>logger.coffee</title>
   <meta http-equiv="content-type" content="text/html; charset=UTF-8">
-  <meta name="viewport" content="width=device-width, target-densitydpi=160dpi, initial-scale=1.0; maximum-scale=1.0; user-scalable=0;">
+  <link rel="stylesheet" media="all" href="public/stylesheets/normalize.css" />
   <link rel="stylesheet" media="all" href="docco.css" />
 </head>
 <body>
-  <div id="container">
-    <div id="background"></div>
-    
-      <ul id="jump_to">
-        <li>
-          <a class="large" href="javascript:void(0);">Jump To &hellip;</a>
-          <a class="small" href="javascript:void(0);">+</a>
-          <div id="jump_wrapper">
-          <div id="jump_page">
-            
+  <div class="container">
+    <div class="page">
+
+      <div class="header">
+        
+          <h1>logger.coffee</h1>
+        
+
+        
+          <div class="toc">
+            <h3>Table of Contents</h3>
+            <ol>
               
-              <a class="source" href="configure.html">
-                configure.coffee
-              </a>
-            
+                
+                <li>
+                  <a class="source" href="configure.html">
+                    configure.coffee
+                  </a>
+                </li>
               
-              <a class="source" href="database.html">
-                database.coffee
-              </a>
-            
+                
+                <li>
+                  <a class="source" href="database.html">
+                    database.coffee
+                  </a>
+                </li>
               
-              <a class="source" href="imaging.html">
-                imaging.coffee
-              </a>
-            
+                
+                <li>
+                  <a class="source" href="imaging.html">
+                    imaging.coffee
+                  </a>
+                </li>
               
-              <a class="source" href="logger.html">
-                logger.coffee
-              </a>
-            
+                
+                <li>
+                  <a class="source" href="logger.html">
+                    logger.coffee
+                  </a>
+                </li>
               
-              <a class="source" href="mail.html">
-                mail.coffee
-              </a>
-            
+                
+                <li>
+                  <a class="source" href="mail.html">
+                    mail.coffee
+                  </a>
+                </li>
               
-              <a class="source" href="manager.html">
-                manager.coffee
-              </a>
-            
+                
+                <li>
+                  <a class="source" href="manager.html">
+                    manager.coffee
+                  </a>
+                </li>
               
-              <a class="source" href="routes.html">
-                routes.coffee
-              </a>
-            
+                
+                <li>
+                  <a class="source" href="routes.html">
+                    routes.coffee
+                  </a>
+                </li>
               
-              <a class="source" href="security.html">
-                security.coffee
-              </a>
-            
+                
+                <li>
+                  <a class="source" href="security.html">
+                    security.coffee
+                  </a>
+                </li>
               
-              <a class="source" href="settings.html">
-                settings.coffee
-              </a>
-            
+                
+                <li>
+                  <a class="source" href="settings.html">
+                    settings.coffee
+                  </a>
+                </li>
               
-              <a class="source" href="sockets.html">
-                sockets.coffee
-              </a>
-            
+                
+                <li>
+                  <a class="source" href="sockets.html">
+                    sockets.coffee
+                  </a>
+                </li>
               
-              <a class="source" href="sync.html">
-                sync.coffee
-              </a>
-            
+                
+                <li>
+                  <a class="source" href="sync.html">
+                    sync.coffee
+                  </a>
+                </li>
+              
+            </ol>
           </div>
-        </li>
-      </ul>
-    
-    <ul class="sections">
         
-          <li id="title">
-              <div class="annotation">
-                  <h1>logger.coffee</h1>
-              </div>
-          </li>
-        
-        
-        
-        <li id="section-1">
-            <div class="annotation">
-              
-              <div class="pilwrap for-h2">
-                <a class="pilcrow" href="#section-1">&#182;</a>
-              </div>
-              <h2>SERVER LOGGER</h2>
+      </div>
 
-            </div>
-            
-        </li>
+      
         
-        
-        <li id="section-2">
-            <div class="annotation">
-              
-              <div class="pilwrap ">
-                <a class="pilcrow" href="#section-2">&#182;</a>
-              </div>
-              <p>Handles server logging to the console and to files, using the Winston module.</p>
+        <h2>SERVER LOGGER</h2>
 
-            </div>
-            
-            <div class="content"><div class='highlight'><pre><span class="class"><span class="keyword">class</span> <span class="title">Logger</span></span></pre></div></div>
-            
-        </li>
         
+      
         
-        <li id="section-3">
-            <div class="annotation">
-              
-              <div class="pilwrap ">
-                <a class="pilcrow" href="#section-3">&#182;</a>
-              </div>
-              <p>Define the referenced objects.</p>
+        <p>Handles server logging to the console and to files, using the Winston module.</p>
 
-            </div>
-            
-            <div class="content"><div class='highlight'><pre>    settings = require <span class="string">"./settings.coffee"</span></pre></div></div>
-            
-        </li>
         
+          <div class='highlight'><pre><span class="class"><span class="keyword">class</span> <span class="title">Logger</span></span></pre></div>
         
-        <li id="section-4">
-            <div class="annotation">
-              
-              <div class="pilwrap ">
-                <a class="pilcrow" href="#section-4">&#182;</a>
-              </div>
-              <p>Define the winston and logentries references. Logentries will be instantiated only if necessary.</p>
+      
+        
+        <p>Define the referenced objects.</p>
 
-            </div>
-            
-            <div class="content"><div class='highlight'><pre>    logentries = <span class="literal">null</span>
-    winston = require <span class="string">"winston"</span></pre></div></div>
-            
-        </li>
         
+          <div class='highlight'><pre>    settings = require <span class="string">"./settings.coffee"</span></pre></div>
         
-        <li id="section-5">
-            <div class="annotation">
-              
-              <div class="pilwrap ">
-                <a class="pilcrow" href="#section-5">&#182;</a>
-              </div>
-              <p>Helper function to get the current log filename based on the current date.
+      
+        
+        <p>Define the winston and logentries references. Logentries will be instantiated only if necessary.</p>
+
+        
+          <div class='highlight'><pre>    logentries = <span class="literal">null</span>
+    winston = require <span class="string">"winston"</span></pre></div>
+        
+      
+        
+        <p>Helper function to get the current log filename based on the current date.
 Please note that it DOES NOT mean having 1 log file for each day.
 Log files will rotate only when the app restarts OR when the <code>maxsize</code>
 is reached - value set on <a href="settings.html">Settings</a>, default 1MB.</p>
 
-            </div>
-            
-            <div class="content"><div class='highlight'><pre>    getLogFilename = () -&gt;
+        
+          <div class='highlight'><pre>    getLogFilename = () -&gt;
         now = <span class="keyword">new</span> Date()
 
         month = now.getMonth() + <span class="number">1</span>
@@ -167,40 +146,24 @@ is reached - value set on <a href="settings.html">Settings</a>, default 1MB.</p>
         day = now.getDate()
         day = <span class="string">"0"</span> + day.toString() <span class="keyword">if</span> day &lt; <span class="number">10</span>
 
-        <span class="keyword">return</span> now.getFullYear() + <span class="string">"-"</span> + month + <span class="string">"-"</span> + day + <span class="string">".log"</span></pre></div></div>
-            
-        </li>
+        <span class="keyword">return</span> now.getFullYear() + <span class="string">"-"</span> + month + <span class="string">"-"</span> + day + <span class="string">".log"</span></pre></div>
         
+      
         
-        <li id="section-6">
-            <div class="annotation">
-              
-              <div class="pilwrap for-h2">
-                <a class="pilcrow" href="#section-6">&#182;</a>
-              </div>
-              <h2>INIT</h2>
+        <h2>INIT</h2>
 
-            </div>
-            
-        </li>
         
+      
         
-        <li id="section-7">
-            <div class="annotation">
-              
-              <div class="pilwrap ">
-                <a class="pilcrow" href="#section-7">&#182;</a>
-              </div>
-              <p>Init the Logger. If <code>settings.Log.logentriesToken</code> is valid, logs will be dispatched
+        <p>Init the Logger. If <code>settings.Log.logentriesToken</code> is valid, logs will be dispatched
 to the Logentries service (<a href="http://logentries.com">http://logentries.com</a>). Otherwise a file transport will be
 created and logs saved to /logs/current-date.log. The path and log filename are defined
 on the <a href="settings.html">Settings</a>.
 Please note that unhandled exceptions will ALWAYS be logged to the /logs/ directory,
 even when using Logentries for general logging.</p>
 
-            </div>
-            
-            <div class="content"><div class='highlight'><pre>    init: =&gt;
+        
+          <div class='highlight'><pre>    init: =&gt;
         winston.exitOnError = <span class="literal">false</span>
         winston.remove winston.transports.Console
 
@@ -212,222 +175,126 @@ even when using Logentries for general logging.</p>
             winston.add winston.transports.File, {timestamp: <span class="literal">true</span>, filename: filename, maxsize: settings.Log.maxFileSize}
 
         winston.handleExceptions(<span class="keyword">new</span> winston.transports.File {filename: settings.Paths.logsDir + <span class="string">"exceptions.log"</span>})
-        winston.info <span class="string">"LOGGING STARTED!"</span></pre></div></div>
-            
-        </li>
+        winston.info <span class="string">"LOGGING STARTED!"</span></pre></div>
         
+      
         
-        <li id="section-8">
-            <div class="annotation">
-              
-              <div class="pilwrap for-h2">
-                <a class="pilcrow" href="#section-8">&#182;</a>
-              </div>
-              <h2>LOGGING</h2>
+        <h2>LOGGING</h2>
 
-            </div>
-            
-        </li>
         
+      
         
-        <li id="section-9">
-            <div class="annotation">
-              
-              <div class="pilwrap ">
-                <a class="pilcrow" href="#section-9">&#182;</a>
-              </div>
-              <p>Log any object to the default transports as <code>info</code>.</p>
+        <p>Log any object to the default transports as <code>info</code>.</p>
 
-            </div>
-            
-            <div class="content"><div class='highlight'><pre>    info: =&gt;
+        
+          <div class='highlight'><pre>    info: =&gt;
         winston.info.apply <span class="keyword">this</span>, arguments
         <span class="keyword">if</span> settings.General.debug
             args = Array.prototype.slice.call arguments
             args.unshift (<span class="keyword">new</span> Date()).toTimeString().substring <span class="number">0</span>, <span class="number">8</span>
-            console.log.apply <span class="keyword">this</span>, args</pre></div></div>
-            
-        </li>
+            console.log.apply <span class="keyword">this</span>, args</pre></div>
         
+      
         
-        <li id="section-10">
-            <div class="annotation">
-              
-              <div class="pilwrap ">
-                <a class="pilcrow" href="#section-10">&#182;</a>
-              </div>
-              <p>Log any object to the default transports as <code>warn</code>.</p>
+        <p>Log any object to the default transports as <code>warn</code>.</p>
 
-            </div>
-            
-            <div class="content"><div class='highlight'><pre>    warn: =&gt;
+        
+          <div class='highlight'><pre>    warn: =&gt;
         winston.warn.apply <span class="keyword">this</span>, arguments
         <span class="keyword">if</span> settings.General.debug
             args = Array.prototype.slice.call arguments
             args.unshift (<span class="keyword">new</span> Date()).toTimeString().substring <span class="number">0</span>, <span class="number">8</span>
-            console.warn.apply <span class="keyword">this</span>, args</pre></div></div>
-            
-        </li>
+            console.warn.apply <span class="keyword">this</span>, args</pre></div>
         
+      
         
-        <li id="section-11">
-            <div class="annotation">
-              
-              <div class="pilwrap ">
-                <a class="pilcrow" href="#section-11">&#182;</a>
-              </div>
-              <p>Log any object to the default transports as <code>error</code>.</p>
+        <p>Log any object to the default transports as <code>error</code>.</p>
 
-            </div>
-            
-            <div class="content"><div class='highlight'><pre>    error: =&gt;
+        
+          <div class='highlight'><pre>    error: =&gt;
         winston.error.apply <span class="keyword">this</span>, arguments
         <span class="keyword">if</span> settings.General.debug
             args = Array.prototype.slice.call arguments
             args.unshift (<span class="keyword">new</span> Date()).toTimeString().substring <span class="number">0</span>, <span class="number">8</span>
-            console.error.apply <span class="keyword">this</span>, args</pre></div></div>
-            
-        </li>
+            console.error.apply <span class="keyword">this</span>, args</pre></div>
         
+      
         
-        <li id="section-12">
-            <div class="annotation">
-              
-              <div class="pilwrap for-h2">
-                <a class="pilcrow" href="#section-12">&#182;</a>
-              </div>
-              <h2>QUERYING</h2>
+        <h2>QUERYING</h2>
 
-            </div>
-            
-        </li>
         
+      
         
-        <li id="section-13">
-            <div class="annotation">
-              
-              <div class="pilwrap ">
-                <a class="pilcrow" href="#section-13">&#182;</a>
-              </div>
-              <p>Return a list of all logs for the past 24 hours, value defined on
+        <p>Return a list of all logs for the past 24 hours, value defined on
 the <a href="settings.html">Server Settings</a>. A callback must be passed
 to handle the results.</p>
 
-            </div>
-            
-            <div class="content"><div class='highlight'><pre>    getRecent: (callback) =&gt;
+        
+          <div class='highlight'><pre>    getRecent: (callback) =&gt;
         dateFrom = <span class="keyword">new</span> Date()
         dateUntil = <span class="keyword">new</span> Date()
         minutes = dateFrom.getMinutes() - settings.Log.recentMinutes
         dateFrom.setMinutes(minutes)
         options = {from: dateFrom, <span class="keyword">until</span>: dateUntil}
-        winston.query options, (err, results) -&gt; callback err, results</pre></div></div>
-            
-        </li>
+        winston.query options, (err, results) -&gt; callback err, results</pre></div>
         
+      
         
-        <li id="section-14">
-            <div class="annotation">
-              
-              <div class="pilwrap for-h2">
-                <a class="pilcrow" href="#section-14">&#182;</a>
-              </div>
-              <h2>CLEANING</h2>
+        <h2>CLEANING</h2>
 
-            </div>
-            
-        </li>
         
+      
         
-        <li id="section-15">
-            <div class="annotation">
-              
-              <div class="pilwrap ">
-                <a class="pilcrow" href="#section-15">&#182;</a>
-              </div>
-              <p>Delete old log files. The param <code>maxDays</code> is optional, default is 30
+        <p>Delete old log files. The param <code>maxDays</code> is optional, default is 30
 and set on the <a href="settings.html">server settings</a>.</p>
 
-            </div>
-            
-            <div class="content"><div class='highlight'><pre>    cleanOld: (maxDays) =&gt;
+        
+          <div class='highlight'><pre>    cleanOld: (maxDays) =&gt;
         maxDays = settings.Log.cleanOldDays <span class="keyword">if</span> <span class="keyword">not</span> days? <span class="keyword">or</span> days &lt; <span class="number">0</span>
 
         files = fs.readdirSync settings.Paths.logsDir
 
         <span class="keyword">for</span> f <span class="keyword">in</span> files
-            basename = path.basename f</pre></div></div>
-            
-        </li>
+            basename = path.basename f</pre></div>
         
+      
         
-        <li id="section-16">
-            <div class="annotation">
-              
-              <div class="pilwrap ">
-                <a class="pilcrow" href="#section-16">&#182;</a>
-              </div>
-              <p>Make sure we don&#39;t delete the <code>_dirinfo</code> file.</p>
+        <p>Make sure we don&#39;t delete the <code>_dirinfo</code> file.</p>
 
-            </div>
-            
-            <div class="content"><div class='highlight'><pre>            <span class="keyword">if</span> basename <span class="keyword">isnt</span> <span class="string">"_dirinfo"</span>
+        
+          <div class='highlight'><pre>            <span class="keyword">if</span> basename <span class="keyword">isnt</span> <span class="string">"_dirinfo"</span>
                 dateParts = basename.split <span class="string">"-"</span>
                 fdate = <span class="keyword">new</span> Date dateParts[<span class="number">0</span>], dateParts[<span class="number">1</span>], dateParts[<span class="number">2</span>]
                 now = <span class="keyword">new</span> Date()
-                divider = <span class="number">1000</span> * <span class="number">60</span> * <span class="number">60</span> * <span class="number">24</span></pre></div></div>
-            
-        </li>
+                divider = <span class="number">1000</span> * <span class="number">60</span> * <span class="number">60</span> * <span class="number">24</span></pre></div>
         
+      
         
-        <li id="section-17">
-            <div class="annotation">
-              
-              <div class="pilwrap ">
-                <a class="pilcrow" href="#section-17">&#182;</a>
-              </div>
-              <p>Only delete older files!</p>
+        <p>Only delete older files!</p>
 
-            </div>
-            
-            <div class="content"><div class='highlight'><pre>                fs.unlinkSync f <span class="keyword">if</span> (fdate - now) / divider &gt; maxDays
+        
+          <div class='highlight'><pre>                fs.unlinkSync f <span class="keyword">if</span> (fdate - now) / divider &gt; maxDays
 
-        <span class="property">@info</span> <span class="string">"Logs older than <span class="subst">#{maxDays}</span> were cleared!"</span></pre></div></div>
-            
-        </li>
+        <span class="property">@info</span> <span class="string">"Logs older than <span class="subst">#{maxDays}</span> were cleared!"</span></pre></div>
         
+      
         
-        <li id="section-18">
-            <div class="annotation">
-              
-              <div class="pilwrap for-h2">
-                <a class="pilcrow" href="#section-18">&#182;</a>
-              </div>
-              <h2>Singleton implementation</h2>
+        <h2>Singleton implementation</h2>
 
-            </div>
-            
-        </li>
+        
+      
         
         
-        <li id="section-19">
-            <div class="annotation">
-              
-              <div class="pilwrap ">
-                <a class="pilcrow" href="#section-19">&#182;</a>
-              </div>
-              
-            </div>
-            
-            <div class="content"><div class='highlight'><pre>Logger.<span class="function"><span class="title">getInstance</span></span> = -&gt;
+        
+          <div class='highlight'><pre>Logger.<span class="function"><span class="title">getInstance</span></span> = -&gt;
     <span class="property">@instance</span> = <span class="keyword">new</span> Logger() <span class="keyword">if</span> <span class="keyword">not</span> <span class="property">@instance</span>?
     <span class="keyword">return</span> <span class="property">@instance</span>
 
-module.exports = exports = Logger.getInstance()</pre></div></div>
-            
-        </li>
+module.exports = exports = Logger.getInstance()</pre></div>
         
-    </ul>
+      
+      <div class="fleur">h</div>
+    </div>
   </div>
 </body>
 </html>

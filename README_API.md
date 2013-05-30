@@ -3,6 +3,10 @@
 The System API can be used by scripts and external resources to script maps and
 interact with the System App.
 
+PLEASE NOTE! The API is still experimental and will probably change till we reach
+version 1.0.0. Any significant updates will be especifically written here
+and on specific code commits.
+
 
 ## The API basics
 

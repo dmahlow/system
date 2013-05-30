@@ -4,802 +4,493 @@
 <head>
   <title>manager.coffee</title>
   <meta http-equiv="content-type" content="text/html; charset=UTF-8">
-  <meta name="viewport" content="width=device-width, target-densitydpi=160dpi, initial-scale=1.0; maximum-scale=1.0; user-scalable=0;">
+  <link rel="stylesheet" media="all" href="public/stylesheets/normalize.css" />
   <link rel="stylesheet" media="all" href="docco.css" />
 </head>
 <body>
-  <div id="container">
-    <div id="background"></div>
-    
-      <ul id="jump_to">
-        <li>
-          <a class="large" href="javascript:void(0);">Jump To &hellip;</a>
-          <a class="small" href="javascript:void(0);">+</a>
-          <div id="jump_wrapper">
-          <div id="jump_page">
-            
-              
-              <a class="source" href="configure.html">
-                configure.coffee
-              </a>
-            
-              
-              <a class="source" href="database.html">
-                database.coffee
-              </a>
-            
-              
-              <a class="source" href="imaging.html">
-                imaging.coffee
-              </a>
-            
-              
-              <a class="source" href="logger.html">
-                logger.coffee
-              </a>
-            
-              
-              <a class="source" href="mail.html">
-                mail.coffee
-              </a>
-            
-              
-              <a class="source" href="manager.html">
-                manager.coffee
-              </a>
-            
-              
-              <a class="source" href="routes.html">
-                routes.coffee
-              </a>
-            
-              
-              <a class="source" href="security.html">
-                security.coffee
-              </a>
-            
-              
-              <a class="source" href="settings.html">
-                settings.coffee
-              </a>
-            
-              
-              <a class="source" href="sockets.html">
-                sockets.coffee
-              </a>
-            
-              
-              <a class="source" href="sync.html">
-                sync.coffee
-              </a>
-            
-          </div>
-        </li>
-      </ul>
-    
-    <ul class="sections">
-        
-          <li id="title">
-              <div class="annotation">
-                  <h1>manager.coffee</h1>
-              </div>
-          </li>
-        
-        
-        
-        <li id="section-1">
-            <div class="annotation">
-              
-              <div class="pilwrap for-h2">
-                <a class="pilcrow" href="#section-1">&#182;</a>
-              </div>
-              <h2>SERVER MANAGER</h2>
+  <div class="container">
+    <div class="page">
 
-            </div>
-            
-        </li>
+      <div class="header">
         
+          <h1>manager.coffee</h1>
         
-        <li id="section-2">
-            <div class="annotation">
+
+        
+          <div class="toc">
+            <h3>Table of Contents</h3>
+            <ol>
               
-              <div class="pilwrap ">
-                <a class="pilcrow" href="#section-2">&#182;</a>
-              </div>
-              <p>Handles all automated server procedures like log cleaning, Audit Data
+                
+                <li>
+                  <a class="source" href="configure.html">
+                    configure.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="database.html">
+                    database.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="imaging.html">
+                    imaging.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="logger.html">
+                    logger.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="mail.html">
+                    mail.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="manager.html">
+                    manager.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="routes.html">
+                    routes.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="security.html">
+                    security.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="settings.html">
+                    settings.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="sockets.html">
+                    sockets.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="sync.html">
+                    sync.coffee
+                  </a>
+                </li>
+              
+            </ol>
+          </div>
+        
+      </div>
+
+      
+        
+        <h2>SERVER MANAGER</h2>
+
+        
+      
+        
+        <p>Handles all automated server procedures like log cleaning, Audit Data
 refresh, CMDB updates etc. The manager is started automatically with the app.</p>
 
-            </div>
-            
-            <div class="content"><div class='highlight'><pre><span class="class"><span class="keyword">class</span> <span class="title">Manager</span></span></pre></div></div>
-            
-        </li>
         
+          <div class='highlight'><pre><span class="class"><span class="keyword">class</span> <span class="title">Manager</span></span></pre></div>
         
-        <li id="section-3">
-            <div class="annotation">
-              
-              <div class="pilwrap ">
-                <a class="pilcrow" href="#section-3">&#182;</a>
-              </div>
-              <p>Define the referenced objects.</p>
+      
+        
+        <p>Define the referenced objects.</p>
 
-            </div>
-            
-            <div class="content"><div class='highlight'><pre>    database = require <span class="string">"./database.coffee"</span>
+        
+          <div class='highlight'><pre>    database = require <span class="string">"./database.coffee"</span>
     logger = require <span class="string">"./logger.coffee"</span>
     settings = require <span class="string">"./settings.coffee"</span>
     sockets = require <span class="string">"./sockets.coffee"</span>
-    sync = require <span class="string">"./sync.coffee"</span></pre></div></div>
-            
-        </li>
+    sync = require <span class="string">"./sync.coffee"</span></pre></div>
         
+      
         
-        <li id="section-4">
-            <div class="annotation">
-              
-              <div class="pilwrap ">
-                <a class="pilcrow" href="#section-4">&#182;</a>
-              </div>
-              <p>Require file system.</p>
+        <p>Require file system.</p>
 
-            </div>
-            
-            <div class="content"><div class='highlight'><pre>    fs = require <span class="string">"fs"</span></pre></div></div>
-            
-        </li>
         
+          <div class='highlight'><pre>    fs = require <span class="string">"fs"</span></pre></div>
         
-        <li id="section-5">
-            <div class="annotation">
-              
-              <div class="pilwrap for-h2">
-                <a class="pilcrow" href="#section-5">&#182;</a>
-              </div>
-              <h2>TIMERS AND PROPERTIES</h2>
+      
+        
+        <h2>TIMERS AND PROPERTIES</h2>
 
-            </div>
-            
-        </li>
+        
+      
         
         
-        <li id="section-6">
-            <div class="annotation">
-              
-              <div class="pilwrap ">
-                <a class="pilcrow" href="#section-6">&#182;</a>
-              </div>
-              
-            </div>
-            
-            <div class="content"><div class='highlight'><pre>    connectionErrorCount: <span class="number">0</span>         <span class="comment"># How many consecutive connection errors the app manager's got.</span>
+        
+          <div class='highlight'><pre>    connectionErrorCount: <span class="number">0</span>         <span class="comment"># How many consecutive connection errors the app manager's got.</span>
     timerDatabaseClean: <span class="literal">null</span>        <span class="comment"># Holds the [Database](database.html) cleaner timer.</span>
     timersEntityRefresh: <span class="literal">null</span>       <span class="comment"># Holds all [Entity](entities.html) refresh timers.</span>
-    timersAuditDataRefresh: <span class="literal">null</span>    <span class="comment"># Holds all [AuditData](auditData.html) refresh timers.</span></pre></div></div>
-            
-        </li>
+    timersAuditDataRefresh: <span class="literal">null</span>    <span class="comment"># Holds all [AuditData](auditData.html) refresh timers.</span></pre></div>
         
+      
         
-        <li id="section-7">
-            <div class="annotation">
-              
-              <div class="pilwrap ">
-                <a class="pilcrow" href="#section-7">&#182;</a>
-              </div>
-              <p>Holds the &quot;restart all&quot; timer. This is used in case the app identifies
+        <p>Holds the &quot;restart all&quot; timer. This is used in case the app identifies
 multiple connection errors in a short period of time, meaning that
 internet connection is broken or unreliable. In this case, all other
 timers will be stopped and the restart timer will schedule a new restart
 after a few seconds - value is defined at the <a href="settings.html">Settings</a>.</p>
 
-            </div>
-            
-            <div class="content"><div class='highlight'><pre>    timerRestartAll: <span class="literal">null</span></pre></div></div>
-            
-        </li>
         
+          <div class='highlight'><pre>    timerRestartAll: <span class="literal">null</span></pre></div>
         
-        <li id="section-8">
-            <div class="annotation">
-              
-              <div class="pilwrap for-h2">
-                <a class="pilcrow" href="#section-8">&#182;</a>
-              </div>
-              <h2>INIT</h2>
+      
+        
+        <h2>INIT</h2>
 
-            </div>
-            
-        </li>
         
+      
         
-        <li id="section-9">
-            <div class="annotation">
-              
-              <div class="pilwrap ">
-                <a class="pilcrow" href="#section-9">&#182;</a>
-              </div>
-              <p>Init the app manager by starting all the necessary timers.</p>
+        <p>Init the app manager by starting all the necessary timers.</p>
 
-            </div>
-            
-            <div class="content"><div class='highlight'><pre>    init: =&gt;
+        
+          <div class='highlight'><pre>    init: =&gt;
         <span class="property">@initDatabaseTimer</span>()
         <span class="property">@initEntityTimers</span>()
-        <span class="property">@initAuditDataTimers</span>()</pre></div></div>
-            
-        </li>
+        <span class="property">@initAuditDataTimers</span>()</pre></div>
         
+      
         
-        <li id="section-10">
-            <div class="annotation">
-              
-              <div class="pilwrap for-h2">
-                <a class="pilcrow" href="#section-10">&#182;</a>
-              </div>
-              <h2>ERROR MANAGEMENT</h2>
+        <h2>ERROR MANAGEMENT</h2>
 
-            </div>
-            
-        </li>
         
+      
         
-        <li id="section-11">
-            <div class="annotation">
-              
-              <div class="pilwrap ">
-                <a class="pilcrow" href="#section-11">&#182;</a>
-              </div>
-              <p>Increase the connection error counter. and pass an optional error message do the manager.</p>
+        <p>Increase the connection error counter. and pass an optional error message do the manager.</p>
 
-            </div>
-            
-            <div class="content"><div class='highlight'><pre>    connectionError: =&gt;
-        <span class="property">@connectionErrorCount</span>++</pre></div></div>
-            
-        </li>
         
+          <div class='highlight'><pre>    connectionError: =&gt;
+        <span class="property">@connectionErrorCount</span>++</pre></div>
         
-        <li id="section-12">
-            <div class="annotation">
-              
-              <div class="pilwrap for-h2">
-                <a class="pilcrow" href="#section-12">&#182;</a>
-              </div>
-              <h2>DATABASE MAINTENANCE</h2>
+      
+        
+        <h2>DATABASE MAINTENANCE</h2>
 
-            </div>
-            
-        </li>
         
+      
         
-        <li id="section-13">
-            <div class="annotation">
-              
-              <div class="pilwrap ">
-                <a class="pilcrow" href="#section-13">&#182;</a>
-              </div>
-              <p>Init the <a href="database.html">Database</a> cleaner timer.
+        <p>Init the <a href="database.html">Database</a> cleaner timer.
 Run the <code>cleanLogs</code> procedure every X seconds. The log &quot;expiry hours&quot; is defined on the
 <a href="settings.html">Server Settings</a>. By default, logs will be stored for a minimum
 of 2 hours and maximum of 3 hours.</p>
 
-            </div>
-            
-            <div class="content"><div class='highlight'><pre>    initDatabaseTimer: =&gt;
+        
+          <div class='highlight'><pre>    initDatabaseTimer: =&gt;
         <span class="property">@stopDatabaseTimer</span>()
-        <span class="property">@timerDatabaseClean</span> = setInterval database.cleanLogs, settings.Database.logExpires * <span class="number">1800000</span></pre></div></div>
-            
-        </li>
+        <span class="property">@timerDatabaseClean</span> = setInterval database.cleanLogs, settings.Database.logExpires * <span class="number">1800000</span></pre></div>
         
+      
         
-        <li id="section-14">
-            <div class="annotation">
-              
-              <div class="pilwrap ">
-                <a class="pilcrow" href="#section-14">&#182;</a>
-              </div>
-              <p>Stop the running database cleaner timer.</p>
+        <p>Stop the running database cleaner timer.</p>
 
-            </div>
-            
-            <div class="content"><div class='highlight'><pre>    stopDatabaseTimer: =&gt;
+        
+          <div class='highlight'><pre>    stopDatabaseTimer: =&gt;
         <span class="keyword">if</span> <span class="property">@timerDatabaseClean</span>?
             clearInterval <span class="property">@timerDatabaseClean</span>
-        <span class="property">@timerDatabaseClean</span> = <span class="literal">null</span></pre></div></div>
-            
-        </li>
+        <span class="property">@timerDatabaseClean</span> = <span class="literal">null</span></pre></div>
         
+      
         
-        <li id="section-15">
-            <div class="annotation">
-              
-              <div class="pilwrap for-h2">
-                <a class="pilcrow" href="#section-15">&#182;</a>
-              </div>
-              <h2>ENTITY MANAGER</h2>
+        <h2>ENTITY MANAGER</h2>
 
-            </div>
-            
-        </li>
         
+      
         
-        <li id="section-16">
-            <div class="annotation">
-              
-              <div class="pilwrap ">
-                <a class="pilcrow" href="#section-16">&#182;</a>
-              </div>
-              <p>Init the <a href="entityDefinition.html">Entity</a> refresh timers, by creating one interval
+        <p>Init the <a href="entityDefinition.html">Entity</a> refresh timers, by creating one interval
 timer for each entity definition and transmitting the refreshed data to users via sockets.</p>
 
-            </div>
-            
-            <div class="content"><div class='highlight'><pre>    initEntityTimers: =&gt;
+        
+          <div class='highlight'><pre>    initEntityTimers: =&gt;
         <span class="keyword">if</span> settings.General.debug
             logger.info <span class="string">"Manager.initEntityTimers"</span>
 
         <span class="property">@stopEntityTimers</span>()
-        database.getEntityDefinition <span class="literal">null</span>, <span class="property">@startEntityTimers</span></pre></div></div>
-            
-        </li>
+        database.getEntityDefinition <span class="literal">null</span>, <span class="property">@startEntityTimers</span></pre></div>
         
+      
         
-        <li id="section-17">
-            <div class="annotation">
-              
-              <div class="pilwrap ">
-                <a class="pilcrow" href="#section-17">&#182;</a>
-              </div>
-              <p>Stop all running <a href="entityDefinition.html">Entity</a> refresh timers and
+        <p>Stop all running <a href="entityDefinition.html">Entity</a> refresh timers and
 clear the <code>timersEntityRefresh</code> array.</p>
 
-            </div>
-            
-            <div class="content"><div class='highlight'><pre>    stopEntityTimers: =&gt;
+        
+          <div class='highlight'><pre>    stopEntityTimers: =&gt;
         <span class="keyword">if</span> <span class="property">@timersEntityRefresh</span>?
             clearInterval timer <span class="keyword">for</span> timer <span class="keyword">in</span> <span class="property">@timersEntityRefresh</span>
-        <span class="property">@timersEntityRefresh</span> = []</pre></div></div>
-            
-        </li>
+        <span class="property">@timersEntityRefresh</span> = []</pre></div>
         
+      
         
-        <li id="section-18">
-            <div class="annotation">
-              
-              <div class="pilwrap ">
-                <a class="pilcrow" href="#section-18">&#182;</a>
-              </div>
-              <p>Start the <a href="entityDefinition.html">Entity</a> timers based on the returned items
+        <p>Start the <a href="entityDefinition.html">Entity</a> timers based on the returned items
 and error (if any) in result of the <code>getAuditData</code> database call.</p>
 
-            </div>
-            
-            <div class="content"><div class='highlight'><pre>    startEntityTimers: (err, result) =&gt;
+        
+          <div class='highlight'><pre>    startEntityTimers: (err, result) =&gt;
         <span class="keyword">if</span> err?
             sockets.sendServerError <span class="string">"Manager: could not load Entity Definition items."</span>, err
         <span class="keyword">else</span>
             <span class="property">@setEntityTimer</span> entityDef <span class="keyword">for</span> entityDef <span class="keyword">in</span> result
             <span class="keyword">if</span> settings.General.debug
-                logger.info <span class="string">"Manager.startEntityTimers"</span>, <span class="string">"Started timers for <span class="subst">#{result.length}</span> entities."</span></pre></div></div>
-            
-        </li>
+                logger.info <span class="string">"Manager.startEntityTimers"</span>, <span class="string">"Started timers for <span class="subst">#{result.length}</span> entities."</span></pre></div>
         
+      
         
-        <li id="section-19">
-            <div class="annotation">
-              
-              <div class="pilwrap ">
-                <a class="pilcrow" href="#section-19">&#182;</a>
-              </div>
-              <p>Add an <a href="entityDefinition.html">Entity</a> refresh timer to the <code>timersEntityRefresh</code> array.</p>
+        <p>Add an <a href="entityDefinition.html">Entity</a> refresh timer to the <code>timersEntityRefresh</code> array.</p>
 
-            </div>
-            
-            <div class="content"><div class='highlight'><pre>    setEntityTimer: (entityDef) =&gt;
+        
+          <div class='highlight'><pre>    setEntityTimer: (entityDef) =&gt;
         <span class="function"><span class="title">callback</span></span> = =&gt; <span class="property">@refreshEntity</span> entityDef
-        interval = entityDef.refreshInterval</pre></div></div>
-            
-        </li>
+        interval = entityDef.refreshInterval</pre></div>
         
+      
         
-        <li id="section-20">
-            <div class="annotation">
-              
-              <div class="pilwrap ">
-                <a class="pilcrow" href="#section-20">&#182;</a>
-              </div>
-              <p>Make sure interval is at least 2 seconds.</p>
+        <p>Make sure interval is at least 2 seconds.</p>
 
-            </div>
-            
-            <div class="content"><div class='highlight'><pre>        <span class="keyword">if</span> <span class="keyword">not</span> interval? <span class="keyword">or</span> interval &lt; settings.Web.minimumRefreshInterval
+        
+          <div class='highlight'><pre>        <span class="keyword">if</span> <span class="keyword">not</span> interval? <span class="keyword">or</span> interval &lt; settings.Web.minimumRefreshInterval
             interval = settings.Web.minimumRefreshInterval
-            logger.warn <span class="string">"Entity Definition data refresh interval is too low: ID <span class="subst">#{entityDef.friendlyId}</span>, interval <span class="subst">#{entityDef.refreshInterval}</span> seconds."</span></pre></div></div>
-            
-        </li>
+            logger.warn <span class="string">"Entity Definition data refresh interval is too low: ID <span class="subst">#{entityDef.friendlyId}</span>, interval <span class="subst">#{entityDef.refreshInterval}</span> seconds."</span></pre></div>
         
+      
         
-        <li id="section-21">
-            <div class="annotation">
-              
-              <div class="pilwrap ">
-                <a class="pilcrow" href="#section-21">&#182;</a>
-              </div>
-              <p>Set the timer. Interval is in seconds, so we must multiply by 1000.</p>
+        <p>Set the timer. Interval is in seconds, so we must multiply by 1000.</p>
 
-            </div>
-            
-            <div class="content"><div class='highlight'><pre>        timer = setInterval callback, interval * <span class="number">1000</span></pre></div></div>
-            
-        </li>
         
+          <div class='highlight'><pre>        timer = setInterval callback, interval * <span class="number">1000</span></pre></div>
         
-        <li id="section-22">
-            <div class="annotation">
-              
-              <div class="pilwrap ">
-                <a class="pilcrow" href="#section-22">&#182;</a>
-              </div>
-              <p>Call the refresh immediatelly so clients will get updated data straight away.</p>
+      
+        
+        <p>Call the refresh immediatelly so clients will get updated data straight away.</p>
 
-            </div>
-            
-            <div class="content"><div class='highlight'><pre>        callback()
+        
+          <div class='highlight'><pre>        callback()
 
         <span class="property">@timersEntityRefresh</span>.push timer
 
         <span class="keyword">if</span> settings.General.debug
-            logger.info <span class="string">"Manager.setEntityTimer"</span>, entityDef.friendlyId, interval + <span class="string">"ms"</span></pre></div></div>
-            
-        </li>
+            logger.info <span class="string">"Manager.setEntityTimer"</span>, entityDef.friendlyId, interval + <span class="string">"ms"</span></pre></div>
         
+      
         
-        <li id="section-23">
-            <div class="annotation">
-              
-              <div class="pilwrap ">
-                <a class="pilcrow" href="#section-23">&#182;</a>
-              </div>
-              <p>Refresh the specified <a href="entityDefinition.html">Entity</a> data. This will run ONLY
+        <p>Refresh the specified <a href="entityDefinition.html">Entity</a> data. This will run ONLY
 if there are connected clients, to avoid bandwidth and processing waste.</p>
 
-            </div>
-            
-            <div class="content"><div class='highlight'><pre>    refreshEntity: (entityDef) =&gt;
+        
+          <div class='highlight'><pre>    refreshEntity: (entityDef) =&gt;
         <span class="keyword">if</span> sockets.getConnectionCount() &lt; <span class="number">1</span>
-            <span class="keyword">return</span></pre></div></div>
-            
-        </li>
+            <span class="keyword">return</span></pre></div>
         
+      
         
-        <li id="section-24">
-            <div class="annotation">
-              
-              <div class="pilwrap ">
-                <a class="pilcrow" href="#section-24">&#182;</a>
-              </div>
-              <p>Only proceed if the entity sourceUrl is set.</p>
+        <p>Only proceed if the entity sourceUrl is set.</p>
 
-            </div>
-            
-            <div class="content"><div class='highlight'><pre>        <span class="keyword">if</span> entityDef.sourceUrl? <span class="keyword">and</span> entityDef.sourceUrl <span class="keyword">isnt</span> <span class="string">""</span>
+        
+          <div class='highlight'><pre>        <span class="keyword">if</span> entityDef.sourceUrl? <span class="keyword">and</span> entityDef.sourceUrl <span class="keyword">isnt</span> <span class="string">""</span>
             sync.download entityDef.sourceUrl, settings.Paths.downloadsDir + <span class="string">"entityobjects."</span> + entityDef.friendlyId + <span class="string">".json"</span>, (err, localFile) =&gt;
                 <span class="property">@transmitDataToClients</span> err, localFile, entityDef, sockets.sendEntityRefresh, database.setEntityDefinition
         <span class="keyword">else</span> <span class="keyword">if</span> settings.General.debug
-            logger.warn <span class="string">"Manager.refreshEntity"</span>, entityDef.friendlyId, <span class="string">"No sourceUrl set. Abort."</span></pre></div></div>
-            
-        </li>
+            logger.warn <span class="string">"Manager.refreshEntity"</span>, entityDef.friendlyId, <span class="string">"No sourceUrl set. Abort."</span></pre></div>
         
+      
         
-        <li id="section-25">
-            <div class="annotation">
-              
-              <div class="pilwrap for-h2">
-                <a class="pilcrow" href="#section-25">&#182;</a>
-              </div>
-              <h2>AUDIT DATA MANAGER</h2>
+        <h2>AUDIT DATA MANAGER</h2>
 
-            </div>
-            
-        </li>
         
+      
         
-        <li id="section-26">
-            <div class="annotation">
-              
-              <div class="pilwrap ">
-                <a class="pilcrow" href="#section-26">&#182;</a>
-              </div>
-              <p>Init the <a href="auditadta.html">AuditData</a> refresh timers, by creating one interval
+        <p>Init the <a href="auditadta.html">AuditData</a> refresh timers, by creating one interval
 timer for each audit data and transmitting the refreshed data to users via sockets.</p>
 
-            </div>
-            
-            <div class="content"><div class='highlight'><pre>    initAuditDataTimers: =&gt;
+        
+          <div class='highlight'><pre>    initAuditDataTimers: =&gt;
         <span class="keyword">if</span> settings.General.debug
             logger.info <span class="string">"Manager.initAuditDataTimers"</span>
 
         <span class="property">@stopAuditDataTimers</span>()
-        database.getAuditData <span class="literal">null</span>, <span class="property">@startAuditDataTimers</span></pre></div></div>
-            
-        </li>
+        database.getAuditData <span class="literal">null</span>, <span class="property">@startAuditDataTimers</span></pre></div>
         
+      
         
-        <li id="section-27">
-            <div class="annotation">
-              
-              <div class="pilwrap ">
-                <a class="pilcrow" href="#section-27">&#182;</a>
-              </div>
-              <p>Stop all running <a href="auditData.html">AuditData</a> refresh timers and
+        <p>Stop all running <a href="auditData.html">AuditData</a> refresh timers and
 clear the <code>timersAuditDataRefresh</code> array.</p>
 
-            </div>
-            
-            <div class="content"><div class='highlight'><pre>    stopAuditDataTimers: =&gt;
+        
+          <div class='highlight'><pre>    stopAuditDataTimers: =&gt;
         <span class="keyword">if</span> <span class="property">@timersAuditDataRefresh</span>?
             clearInterval timer <span class="keyword">for</span> timer <span class="keyword">in</span> <span class="property">@timersAuditDataRefresh</span>
-        <span class="property">@timersAuditDataRefresh</span> = []</pre></div></div>
-            
-        </li>
+        <span class="property">@timersAuditDataRefresh</span> = []</pre></div>
         
+      
         
-        <li id="section-28">
-            <div class="annotation">
-              
-              <div class="pilwrap ">
-                <a class="pilcrow" href="#section-28">&#182;</a>
-              </div>
-              <p>Start the <a href="auditData.html">AuditData</a> timers based on the returned items
+        <p>Start the <a href="auditData.html">AuditData</a> timers based on the returned items
 and error (if any) in result of the <code>getAuditData</code> database call.</p>
 
-            </div>
-            
-            <div class="content"><div class='highlight'><pre>    startAuditDataTimers: (err, result) =&gt;
+        
+          <div class='highlight'><pre>    startAuditDataTimers: (err, result) =&gt;
         <span class="keyword">if</span> err?
             sockets.sendServerError <span class="string">"Manager: could not load Audit Data items."</span>, err
         <span class="keyword">else</span>
             <span class="property">@setAuditDataTimer</span> auditData <span class="keyword">for</span> auditData <span class="keyword">in</span> result
             <span class="keyword">if</span> settings.General.debug
-                logger.info <span class="string">"Manager.startAuditDataTimers"</span>, <span class="string">"Started timers for <span class="subst">#{result.length}</span> audit data."</span></pre></div></div>
-            
-        </li>
+                logger.info <span class="string">"Manager.startAuditDataTimers"</span>, <span class="string">"Started timers for <span class="subst">#{result.length}</span> audit data."</span></pre></div>
         
+      
         
-        <li id="section-29">
-            <div class="annotation">
-              
-              <div class="pilwrap ">
-                <a class="pilcrow" href="#section-29">&#182;</a>
-              </div>
-              <p>Add an <a href="auditadata.html">AuditData</a> refresh timer to the <code>timersAuditDataRefresh</code> array.</p>
+        <p>Add an <a href="auditadata.html">AuditData</a> refresh timer to the <code>timersAuditDataRefresh</code> array.</p>
 
-            </div>
-            
-            <div class="content"><div class='highlight'><pre>    setAuditDataTimer: (auditData) =&gt;
+        
+          <div class='highlight'><pre>    setAuditDataTimer: (auditData) =&gt;
         <span class="function"><span class="title">callback</span></span> = =&gt; <span class="property">@refreshAuditData</span> auditData
-        interval = auditData.refreshInterval</pre></div></div>
-            
-        </li>
+        interval = auditData.refreshInterval</pre></div>
         
+      
         
-        <li id="section-30">
-            <div class="annotation">
-              
-              <div class="pilwrap ">
-                <a class="pilcrow" href="#section-30">&#182;</a>
-              </div>
-              <p>Make sure interval is at least 2 seconds.</p>
+        <p>Make sure interval is at least 2 seconds.</p>
 
-            </div>
-            
-            <div class="content"><div class='highlight'><pre>        <span class="keyword">if</span> <span class="keyword">not</span> interval? <span class="keyword">or</span> interval &lt; settings.Web.minimumRefreshInterval
+        
+          <div class='highlight'><pre>        <span class="keyword">if</span> <span class="keyword">not</span> interval? <span class="keyword">or</span> interval &lt; settings.Web.minimumRefreshInterval
             interval = settings.Web.minimumRefreshInterval
-            logger.warn <span class="string">"Audit Data refresh interval is too low: ID <span class="subst">#{auditData.friendlyId}</span>, interval <span class="subst">#{auditData.refreshInterval}</span> seconds."</span></pre></div></div>
-            
-        </li>
+            logger.warn <span class="string">"Audit Data refresh interval is too low: ID <span class="subst">#{auditData.friendlyId}</span>, interval <span class="subst">#{auditData.refreshInterval}</span> seconds."</span></pre></div>
         
+      
         
-        <li id="section-31">
-            <div class="annotation">
-              
-              <div class="pilwrap ">
-                <a class="pilcrow" href="#section-31">&#182;</a>
-              </div>
-              <p>Set the timer. Interval is in seconds, so we must multiply by 1000.</p>
+        <p>Set the timer. Interval is in seconds, so we must multiply by 1000.</p>
 
-            </div>
-            
-            <div class="content"><div class='highlight'><pre>        timer = setInterval callback, interval * <span class="number">1000</span></pre></div></div>
-            
-        </li>
         
+          <div class='highlight'><pre>        timer = setInterval callback, interval * <span class="number">1000</span></pre></div>
         
-        <li id="section-32">
-            <div class="annotation">
-              
-              <div class="pilwrap ">
-                <a class="pilcrow" href="#section-32">&#182;</a>
-              </div>
-              <p>Call the refresh immediatelly so clients will get updated data straight away.</p>
+      
+        
+        <p>Call the refresh immediatelly so clients will get updated data straight away.</p>
 
-            </div>
-            
-            <div class="content"><div class='highlight'><pre>        callback()
+        
+          <div class='highlight'><pre>        callback()
 
         <span class="property">@timersAuditDataRefresh</span>.push timer
 
         <span class="keyword">if</span> settings.General.debug
-            logger.info <span class="string">"Manager.setAuditDataTimer"</span>, auditData.friendlyId, interval + <span class="string">"ms"</span></pre></div></div>
-            
-        </li>
+            logger.info <span class="string">"Manager.setAuditDataTimer"</span>, auditData.friendlyId, interval + <span class="string">"ms"</span></pre></div>
         
+      
         
-        <li id="section-33">
-            <div class="annotation">
-              
-              <div class="pilwrap ">
-                <a class="pilcrow" href="#section-33">&#182;</a>
-              </div>
-              <p>Refresh the specified <a href="auditData.html">AuditData</a> records. This will run ONLY
+        <p>Refresh the specified <a href="auditData.html">AuditData</a> records. This will run ONLY
 if there are connected clients, to avoid bandwidth and processing waste.</p>
 
-            </div>
-            
-            <div class="content"><div class='highlight'><pre>    refreshAuditData: (auditData) =&gt;
+        
+          <div class='highlight'><pre>    refreshAuditData: (auditData) =&gt;
         <span class="keyword">if</span> sockets.getConnectionCount() &lt; <span class="number">1</span>
-            <span class="keyword">return</span></pre></div></div>
-            
-        </li>
+            <span class="keyword">return</span></pre></div>
         
+      
         
-        <li id="section-34">
-            <div class="annotation">
-              
-              <div class="pilwrap ">
-                <a class="pilcrow" href="#section-34">&#182;</a>
-              </div>
-              <p>Only proceed if the audit data sourceUrl is properly set.</p>
+        <p>Only proceed if the audit data sourceUrl is properly set.</p>
 
-            </div>
-            
-            <div class="content"><div class='highlight'><pre>        <span class="keyword">if</span> auditData.sourceUrl? <span class="keyword">and</span> auditData.sourceUrl <span class="keyword">isnt</span> <span class="string">""</span>
+        
+          <div class='highlight'><pre>        <span class="keyword">if</span> auditData.sourceUrl? <span class="keyword">and</span> auditData.sourceUrl <span class="keyword">isnt</span> <span class="string">""</span>
             sync.download auditData.sourceUrl, settings.Paths.downloadsDir + <span class="string">"auditdata."</span> + auditData.friendlyId + <span class="string">".json"</span>, (err, localFile) =&gt;
                 <span class="property">@transmitDataToClients</span> err, localFile, auditData, sockets.sendAuditDataRefresh, database.setAuditData
         <span class="keyword">else</span> <span class="keyword">if</span> settings.General.debug
-            logger.warn <span class="string">"Manager.refreshAuditData"</span>, auditData.friendlyId, <span class="string">"No sourceUrl set. Abort."</span></pre></div></div>
-            
-        </li>
+            logger.warn <span class="string">"Manager.refreshAuditData"</span>, auditData.friendlyId, <span class="string">"No sourceUrl set. Abort."</span></pre></div>
         
+      
         
-        <li id="section-35">
-            <div class="annotation">
-              
-              <div class="pilwrap for-h2">
-                <a class="pilcrow" href="#section-35">&#182;</a>
-              </div>
-              <h2>HELPER METHODS</h2>
+        <h2>HELPER METHODS</h2>
 
-            </div>
-            
-        </li>
         
+      
         
-        <li id="section-36">
-            <div class="annotation">
-              
-              <div class="pilwrap ">
-                <a class="pilcrow" href="#section-36">&#182;</a>
-              </div>
-              <p>Transmit refreshed <code>data</code> to the connected clients/browsers via Socket.IO.
+        <p>Transmit refreshed <code>data</code> to the connected clients/browsers via Socket.IO.
 This can be for example the <code>data</code> attribute of an <a href="auditData..html">AuditData</a> or
 the collection of <a href="entityObject.html">Entity Objects</a> from an <a href="entityDefinition.html">Entity Definition</a>.
 The <code>socketsCallback</code> and <code>dbCallback</code> are called against the passed object if no errors are found.</p>
 
-            </div>
-            
-            <div class="content"><div class='highlight'><pre>    transmitDataToClients: (err, localFile, obj, socketsCallback, dbCallback) =&gt;
+        
+          <div class='highlight'><pre>    transmitDataToClients: (err, localFile, obj, socketsCallback, dbCallback) =&gt;
         <span class="keyword">if</span> <span class="keyword">not</span> err?
             fs.readFile localFile, (err1, result) =&gt;
                 <span class="keyword">if</span> err1?
                     sockets.sendServerError <span class="string">"Manager: could not read <span class="subst">#{localFile}</span>."</span>, err1
                 <span class="keyword">else</span>
                     <span class="keyword">if</span> settings.General.debug
-                        logger.info <span class="string">"Manager.transmitDataToClients"</span>, localFile</pre></div></div>
-            
-        </li>
+                        logger.info <span class="string">"Manager.transmitDataToClients"</span>, localFile</pre></div>
         
+      
         
-        <li id="section-37">
-            <div class="annotation">
-              
-              <div class="pilwrap ">
-                <a class="pilcrow" href="#section-37">&#182;</a>
-              </div>
-              <p>Try parsing the data as JSON.</p>
+        <p>Try parsing the data as JSON.</p>
 
-            </div>
-            
-            <div class="content"><div class='highlight'><pre>                    <span class="keyword">try</span>
+        
+          <div class='highlight'><pre>                    <span class="keyword">try</span>
                         obj.data = JSON.parse result
                     <span class="keyword">catch</span> err2
                         logger.error err2
                         <span class="keyword">return</span>
 
-                    socketsCallback obj</pre></div></div>
-            
-        </li>
+                    socketsCallback obj</pre></div>
         
+      
         
-        <li id="section-38">
-            <div class="annotation">
-              
-              <div class="pilwrap ">
-                <a class="pilcrow" href="#section-38">&#182;</a>
-              </div>
-              <p>Verify and increase the refresh count.</p>
+        <p>Verify and increase the refresh count.</p>
 
-            </div>
-            
-            <div class="content"><div class='highlight'><pre>                    counter = obj.refreshCount
+        
+          <div class='highlight'><pre>                    counter = obj.refreshCount
                     <span class="keyword">if</span> <span class="keyword">not</span> counter? <span class="keyword">or</span> counter &lt; <span class="number">1</span>
                         counter = <span class="number">1</span>
                     <span class="keyword">else</span>
                         counter++
-                    obj.refreshCount = counter</pre></div></div>
-            
-        </li>
+                    obj.refreshCount = counter</pre></div>
         
+      
         
-        <li id="section-39">
-            <div class="annotation">
-              
-              <div class="pilwrap ">
-                <a class="pilcrow" href="#section-39">&#182;</a>
-              </div>
-              <p>Save the updated data to the database.</p>
+        <p>Save the updated data to the database.</p>
 
-            </div>
-            
-            <div class="content"><div class='highlight'><pre>                    obj.data = database.cleanObjectForInsertion obj.data
+        
+          <div class='highlight'><pre>                    obj.data = database.cleanObjectForInsertion obj.data
                     dbCallback obj, {patch: <span class="literal">true</span>}
         <span class="keyword">else</span>
-            logger.error <span class="string">"Manager.transmitDataToClients"</span>, localFile, err</pre></div></div>
-            
-        </li>
+            logger.error <span class="string">"Manager.transmitDataToClients"</span>, localFile, err</pre></div>
         
+      
         
-        <li id="section-40">
-            <div class="annotation">
-              
-              <div class="pilwrap for-h2">
-                <a class="pilcrow" href="#section-40">&#182;</a>
-              </div>
-              <h2>Singleton implementation</h2>
+        <h2>Singleton implementation</h2>
 
-            </div>
-            
-        </li>
+        
+      
         
         
-        <li id="section-41">
-            <div class="annotation">
-              
-              <div class="pilwrap ">
-                <a class="pilcrow" href="#section-41">&#182;</a>
-              </div>
-              
-            </div>
-            
-            <div class="content"><div class='highlight'><pre>Manager.<span class="function"><span class="title">getInstance</span></span> = -&gt;
+        
+          <div class='highlight'><pre>Manager.<span class="function"><span class="title">getInstance</span></span> = -&gt;
     <span class="property">@instance</span> = <span class="keyword">new</span> Manager() <span class="keyword">if</span> <span class="keyword">not</span> <span class="property">@instance</span>?
     <span class="keyword">return</span> <span class="property">@instance</span>
 
-module.exports = exports = Manager.getInstance()</pre></div></div>
-            
-        </li>
+module.exports = exports = Manager.getInstance()</pre></div>
         
-    </ul>
+      
+      <div class="fleur">h</div>
+    </div>
   </div>
 </body>
 </html>

@@ -4,384 +4,495 @@
 <head>
   <title>map.coffee</title>
   <meta http-equiv="content-type" content="text/html; charset=UTF-8">
-  <meta name="viewport" content="width=device-width, target-densitydpi=160dpi, initial-scale=1.0; maximum-scale=1.0; user-scalable=0;">
+  <link rel="stylesheet" media="all" href="public/stylesheets/normalize.css" />
   <link rel="stylesheet" media="all" href="docco.css" />
 </head>
 <body>
-  <div id="container">
-    <div id="background"></div>
-    
-      <ul id="jump_to">
-        <li>
-          <a class="large" href="javascript:void(0);">Jump To &hellip;</a>
-          <a class="small" href="javascript:void(0);">+</a>
-          <div id="jump_wrapper">
-          <div id="jump_page">
-            
-              
-              <a class="source" href="admin.html">
-                admin.coffee
-              </a>
-            
-              
-              <a class="source" href="api.auditData.html">
-                api.auditData.coffee
-              </a>
-            
-              
-              <a class="source" href="api.auditEvent.html">
-                api.auditEvent.coffee
-              </a>
-            
-              
-              <a class="source" href="api.html">
-                api.coffee
-              </a>
-            
-              
-              <a class="source" href="api.entity.html">
-                api.entity.coffee
-              </a>
-            
-              
-              <a class="source" href="api.map.html">
-                api.map.coffee
-              </a>
-            
-              
-              <a class="source" href="api.server.html">
-                api.server.coffee
-              </a>
-            
-              
-              <a class="source" href="api.variable.html">
-                api.variable.coffee
-              </a>
-            
-              
-              <a class="source" href="api.view.html">
-                api.view.coffee
-              </a>
-            
-              
-              <a class="source" href="app.html">
-                app.coffee
-              </a>
-            
-              
-              <a class="source" href="app.instance.html">
-                app.instance.coffee
-              </a>
-            
-              
-              <a class="source" href="data.html">
-                data.coffee
-              </a>
-            
-              
-              <a class="source" href="dataUtil.html">
-                dataUtil.coffee
-              </a>
-            
-              
-              <a class="source" href="messages.html">
-                messages.coffee
-              </a>
-            
-              
-              <a class="source" href="auditData.html">
-                auditData.coffee
-              </a>
-            
-              
-              <a class="source" href="auditEvent.html">
-                auditEvent.coffee
-              </a>
-            
-              
-              <a class="source" href="base.html">
-                base.coffee
-              </a>
-            
-              
-              <a class="source" href="entityDefinition.html">
-                entityDefinition.coffee
-              </a>
-            
-              
-              <a class="source" href="entityObject.html">
-                entityObject.coffee
-              </a>
-            
-              
-              <a class="source" href="eventAction.html">
-                eventAction.coffee
-              </a>
-            
-              
-              <a class="source" href="eventRule.html">
-                eventRule.coffee
-              </a>
-            
-              
-              <a class="source" href="link.html">
-                link.coffee
-              </a>
-            
-              
-              <a class="source" href="map.html">
-                map.coffee
-              </a>
-            
-              
-              <a class="source" href="shape.html">
-                shape.coffee
-              </a>
-            
-              
-              <a class="source" href="user.html">
-                user.coffee
-              </a>
-            
-              
-              <a class="source" href="userSettings.html">
-                userSettings.coffee
-              </a>
-            
-              
-              <a class="source" href="variable.html">
-                variable.coffee
-              </a>
-            
-              
-              <a class="source" href="adminRoutes.html">
-                adminRoutes.coffee
-              </a>
-            
-              
-              <a class="source" href="appRoutes.html">
-                appRoutes.coffee
-              </a>
-            
-              
-              <a class="source" href="settings.html">
-                settings.coffee
-              </a>
-            
-              
-              <a class="source" href="sockets.html">
-                sockets.coffee
-              </a>
-            
-              
-              <a class="source" href="tutorial.html">
-                tutorial.coffee
-              </a>
-            
-              
-              <a class="source" href="vectors.html">
-                vectors.coffee
-              </a>
-            
-              
-              <a class="source" href="statusTabView.html">
-                statusTabView.coffee
-              </a>
-            
-              
-              <a class="source" href="toolsTabView.html">
-                toolsTabView.coffee
-              </a>
-            
-              
-              <a class="source" href="usersTabView.html">
-                usersTabView.coffee
-              </a>
-            
-              
-              <a class="source" href="adminView.html">
-                adminView.coffee
-              </a>
-            
-              
-              <a class="source" href="alertView.html">
-                alertView.coffee
-              </a>
-            
-              
-              <a class="source" href="auditDataManagerView.html">
-                auditDataManagerView.coffee
-              </a>
-            
-              
-              <a class="source" href="auditEventManagerView.html">
-                auditEventManagerView.coffee
-              </a>
-            
-              
-              <a class="source" href="baseView.html">
-                baseView.coffee
-              </a>
-            
-              
-              <a class="source" href="createMapView.html">
-                createMapView.coffee
-              </a>
-            
-              
-              <a class="source" href="entityManagerView.html">
-                entityManagerView.coffee
-              </a>
-            
-              
-              <a class="source" href="footerView.html">
-                footerView.coffee
-              </a>
-            
-              
-              <a class="source" href="helpView.html">
-                helpView.coffee
-              </a>
-            
-              
-              <a class="source" href="entitiesTabView.html">
-                entitiesTabView.coffee
-              </a>
-            
-              
-              <a class="source" href="inspectorTabView.html">
-                inspectorTabView.coffee
-              </a>
-            
-              
-              <a class="source" href="mapTabView.html">
-                mapTabView.coffee
-              </a>
-            
-              
-              <a class="source" href="shapeTabView.html">
-                shapeTabView.coffee
-              </a>
-            
-              
-              <a class="source" href="controlsView.html">
-                controlsView.coffee
-              </a>
-            
-              
-              <a class="source" href="labelEditView.html">
-                labelEditView.coffee
-              </a>
-            
-              
-              <a class="source" href="linkCreatorView.html">
-                linkCreatorView.coffee
-              </a>
-            
-              
-              <a class="source" href="linkLabelsView.html">
-                linkLabelsView.coffee
-              </a>
-            
-              
-              <a class="source" href="linkView.html">
-                linkView.coffee
-              </a>
-            
-              
-              <a class="source" href="shapeLabelsView.html">
-                shapeLabelsView.coffee
-              </a>
-            
-              
-              <a class="source" href="shapeView.html">
-                shapeView.coffee
-              </a>
-            
-              
-              <a class="source" href="shapesMoverView.html">
-                shapesMoverView.coffee
-              </a>
-            
-              
-              <a class="source" href="mapView.html">
-                mapView.coffee
-              </a>
-            
-              
-              <a class="source" href="menuView.html">
-                menuView.coffee
-              </a>
-            
-              
-              <a class="source" href="overlayView.html">
-                overlayView.coffee
-              </a>
-            
-              
-              <a class="source" href="scriptEditorView.html">
-                scriptEditorView.coffee
-              </a>
-            
-              
-              <a class="source" href="selfTestView.html">
-                selfTestView.coffee
-              </a>
-            
-              
-              <a class="source" href="settingsView.html">
-                settingsView.coffee
-              </a>
-            
-              
-              <a class="source" href="startView.html">
-                startView.coffee
-              </a>
-            
-              
-              <a class="source" href="variableManagerView.html">
-                variableManagerView.coffee
-              </a>
-            
-          </div>
-        </li>
-      </ul>
-    
-    <ul class="sections">
-        
-          <li id="title">
-              <div class="annotation">
-                  <h1>map.coffee</h1>
-              </div>
-          </li>
-        
-        
-        
-        <li id="section-1">
-            <div class="annotation">
-              
-              <div class="pilwrap for-h2">
-                <a class="pilcrow" href="#section-1">&#182;</a>
-              </div>
-              <h2>MAPFILTER MODEL</h2>
+  <div class="container">
+    <div class="page">
 
-            </div>
-            
-        </li>
+      <div class="header">
         
+          <h1>map.coffee</h1>
         
-        <li id="section-2">
-            <div class="annotation">
+
+        
+          <div class="toc">
+            <h3>Table of Contents</h3>
+            <ol>
               
-              <div class="pilwrap ">
-                <a class="pilcrow" href="#section-2">&#182;</a>
-              </div>
-              <p>Represents a map containing a collection of <a href="shape.html">Shapes</a>
+                
+                <li>
+                  <a class="source" href="admin.html">
+                    admin.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="api.auditData.html">
+                    api.auditData.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="api.auditEvent.html">
+                    api.auditEvent.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="api.html">
+                    api.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="api.entity.html">
+                    api.entity.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="api.map.html">
+                    api.map.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="api.server.html">
+                    api.server.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="api.variable.html">
+                    api.variable.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="api.view.html">
+                    api.view.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="app.html">
+                    app.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="app.instance.html">
+                    app.instance.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="data.html">
+                    data.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="dataUtil.html">
+                    dataUtil.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="messages.html">
+                    messages.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="auditData.html">
+                    auditData.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="auditEvent.html">
+                    auditEvent.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="base.html">
+                    base.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="entityDefinition.html">
+                    entityDefinition.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="entityObject.html">
+                    entityObject.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="eventAction.html">
+                    eventAction.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="eventRule.html">
+                    eventRule.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="link.html">
+                    link.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="map.html">
+                    map.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="shape.html">
+                    shape.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="user.html">
+                    user.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="userSettings.html">
+                    userSettings.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="variable.html">
+                    variable.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="adminRoutes.html">
+                    adminRoutes.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="appRoutes.html">
+                    appRoutes.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="settings.html">
+                    settings.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="sockets.html">
+                    sockets.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="tutorial.html">
+                    tutorial.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="vectors.html">
+                    vectors.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="statusTabView.html">
+                    statusTabView.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="toolsTabView.html">
+                    toolsTabView.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="usersTabView.html">
+                    usersTabView.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="adminView.html">
+                    adminView.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="alertView.html">
+                    alertView.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="auditDataManagerView.html">
+                    auditDataManagerView.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="auditEventManagerView.html">
+                    auditEventManagerView.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="baseView.html">
+                    baseView.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="createMapView.html">
+                    createMapView.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="entityManagerView.html">
+                    entityManagerView.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="footerView.html">
+                    footerView.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="helpView.html">
+                    helpView.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="entitiesTabView.html">
+                    entitiesTabView.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="inspectorTabView.html">
+                    inspectorTabView.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="mapTabView.html">
+                    mapTabView.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="shapeTabView.html">
+                    shapeTabView.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="controlsView.html">
+                    controlsView.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="labelEditView.html">
+                    labelEditView.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="linkCreatorView.html">
+                    linkCreatorView.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="linkLabelsView.html">
+                    linkLabelsView.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="linkView.html">
+                    linkView.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="shapeLabelsView.html">
+                    shapeLabelsView.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="shapeView.html">
+                    shapeView.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="shapesMoverView.html">
+                    shapesMoverView.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="mapView.html">
+                    mapView.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="menuView.html">
+                    menuView.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="overlayView.html">
+                    overlayView.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="scriptEditorView.html">
+                    scriptEditorView.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="selfTestView.html">
+                    selfTestView.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="settingsView.html">
+                    settingsView.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="startView.html">
+                    startView.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="variableManagerView.html">
+                    variableManagerView.coffee
+                  </a>
+                </li>
+              
+            </ol>
+          </div>
+        
+      </div>
+
+      
+        
+        <h2>MAPFILTER MODEL</h2>
+
+        
+      
+        
+        <p>Represents a map containing a collection of <a href="shape.html">Shapes</a>
 and <a href="link.html">Links</a>, and specific sizes and colours.</p>
 
-            </div>
-            
-            <div class="content"><div class='highlight'><pre><span class="class"><span class="keyword">class</span> <span class="title">SystemApp</span>.<span class="title">Map</span> <span class="keyword">extends</span> <span class="title">SystemApp</span>.<span class="title">BaseModel</span></span>
+        
+          <div class='highlight'><pre><span class="class"><span class="keyword">class</span> <span class="title">SystemApp</span>.<span class="title">Map</span> <span class="keyword">extends</span> <span class="title">SystemApp</span>.<span class="title">BaseModel</span></span>
     typeName: <span class="string">"Map"</span>
     defaults:
         createdByUserId: <span class="literal">null</span>
@@ -392,483 +503,295 @@ and <a href="link.html">Links</a>, and specific sizes and colours.</p>
         gridSizeY: SystemApp.Settings.Map.gridSizeY
         thumbnailDate: <span class="keyword">new</span> Date(<span class="number">2000</span>, <span class="number">1</span>, <span class="number">1</span>)
         silent: <span class="literal">false</span>
+        readOnly: <span class="literal">false</span>
 
     relations:
         links: SystemApp.LinkCollection
-        shapes: SystemApp.ShapeCollection</pre></div></div>
-            
-        </li>
+        shapes: SystemApp.ShapeCollection</pre></div>
         
+      
         
-        <li id="section-3">
-            <div class="annotation">
-              
-              <div class="pilwrap for-h2">
-                <a class="pilcrow" href="#section-3">&#182;</a>
-              </div>
-              <h2>PROPERTIES</h2>
+        <h2>PROPERTIES</h2>
 
-            </div>
-            
-        </li>
         
+      
         
-        <li id="section-4">
-            <div class="annotation">
-              
-              <div class="pilwrap ">
-                <a class="pilcrow" href="#section-4">&#182;</a>
-              </div>
-              <p>Helper to get / set the ID of user who created the map.</p>
+        <p>Helper to get / set the ID of user who created the map.</p>
 
-            </div>
-            
-            <div class="content"><div class='highlight'><pre>    createdByUserId: (value) =&gt;
+        
+          <div class='highlight'><pre>    createdByUserId: (value) =&gt;
         <span class="keyword">if</span> value?
             <span class="property">@set</span> <span class="string">"createdByUserId"</span>, value
-        <span class="property">@get</span> <span class="string">"createdByUserId"</span></pre></div></div>
-            
-        </li>
+        <span class="property">@get</span> <span class="string">"createdByUserId"</span></pre></div>
         
+      
         
-        <li id="section-5">
-            <div class="annotation">
-              
-              <div class="pilwrap ">
-                <a class="pilcrow" href="#section-5">&#182;</a>
-              </div>
-              <p>Helper to get / set the map name.</p>
+        <p>Helper to get / set the map name.</p>
 
-            </div>
-            
-            <div class="content"><div class='highlight'><pre>    name: (value) =&gt;
+        
+          <div class='highlight'><pre>    name: (value) =&gt;
         <span class="keyword">if</span> value?
             <span class="property">@set</span> <span class="string">"name"</span>, value
-        <span class="property">@get</span> <span class="string">"name"</span></pre></div></div>
-            
-        </li>
+        <span class="property">@get</span> <span class="string">"name"</span></pre></div>
         
+      
         
-        <li id="section-6">
-            <div class="annotation">
-              
-              <div class="pilwrap ">
-                <a class="pilcrow" href="#section-6">&#182;</a>
-              </div>
-              <p>Helper to get / set the map creation date.</p>
+        <p>Helper to get / set the map creation date.</p>
 
-            </div>
-            
-            <div class="content"><div class='highlight'><pre>    dateCreated: (value) =&gt;
+        
+          <div class='highlight'><pre>    dateCreated: (value) =&gt;
         <span class="keyword">if</span> value?
             <span class="property">@set</span> <span class="string">"dateCreated"</span>, value
-        <span class="property">@get</span> <span class="string">"dateCreated"</span></pre></div></div>
-            
-        </li>
+        <span class="property">@get</span> <span class="string">"dateCreated"</span></pre></div>
         
+      
         
-        <li id="section-7">
-            <div class="annotation">
-              
-              <div class="pilwrap ">
-                <a class="pilcrow" href="#section-7">&#182;</a>
-              </div>
-              <p>Helper to get / set the map background: a color or image url.</p>
+        <p>Helper to get / set the map background: a color or image url.</p>
 
-            </div>
-            
-            <div class="content"><div class='highlight'><pre>    background: (value) =&gt;
+        
+          <div class='highlight'><pre>    background: (value) =&gt;
         <span class="keyword">if</span> value?
             <span class="property">@set</span> <span class="string">"background"</span>, value
-        <span class="property">@get</span> <span class="string">"background"</span></pre></div></div>
-            
-        </li>
+        <span class="property">@get</span> <span class="string">"background"</span></pre></div>
         
+      
         
-        <li id="section-8">
-            <div class="annotation">
-              
-              <div class="pilwrap ">
-                <a class="pilcrow" href="#section-8">&#182;</a>
-              </div>
-              <p>Helper to get / set the map paper X size, in pixels.</p>
+        <p>Helper to get / set the map paper X size, in pixels.</p>
 
-            </div>
-            
-            <div class="content"><div class='highlight'><pre>    paperSizeX: (value) =&gt;
+        
+          <div class='highlight'><pre>    paperSizeX: (value) =&gt;
         <span class="keyword">if</span> value?
             <span class="property">@set</span> <span class="string">"paperSizeX"</span>, value
-        <span class="property">@get</span> <span class="string">"paperSizeX"</span></pre></div></div>
-            
-        </li>
+        <span class="property">@get</span> <span class="string">"paperSizeX"</span></pre></div>
         
+      
         
-        <li id="section-9">
-            <div class="annotation">
-              
-              <div class="pilwrap ">
-                <a class="pilcrow" href="#section-9">&#182;</a>
-              </div>
-              <p>Helper to get / set the map paper Y size, in pixels.</p>
+        <p>Helper to get / set the map paper Y size, in pixels.</p>
 
-            </div>
-            
-            <div class="content"><div class='highlight'><pre>    paperSizeY: (value) =&gt;
+        
+          <div class='highlight'><pre>    paperSizeY: (value) =&gt;
         <span class="keyword">if</span> value?
             <span class="property">@set</span> <span class="string">"paperSizeY"</span>, value
-        <span class="property">@get</span> <span class="string">"paperSizeY"</span></pre></div></div>
-            
-        </li>
+        <span class="property">@get</span> <span class="string">"paperSizeY"</span></pre></div>
         
+      
         
-        <li id="section-10">
-            <div class="annotation">
-              
-              <div class="pilwrap ">
-                <a class="pilcrow" href="#section-10">&#182;</a>
-              </div>
-              <p>Helper to get / set the map grid X size, in pixels. This represents the distance between vertical lines.</p>
+        <p>Helper to get / set the map grid X size, in pixels. This represents the distance between vertical lines.</p>
 
-            </div>
-            
-            <div class="content"><div class='highlight'><pre>    gridSizeX: (value) =&gt;
+        
+          <div class='highlight'><pre>    gridSizeX: (value) =&gt;
         <span class="keyword">if</span> value?
             <span class="property">@set</span> <span class="string">"gridSizeX"</span>, value
-        <span class="property">@get</span> <span class="string">"gridSizeX"</span></pre></div></div>
-            
-        </li>
+        <span class="property">@get</span> <span class="string">"gridSizeX"</span></pre></div>
         
+      
         
-        <li id="section-11">
-            <div class="annotation">
-              
-              <div class="pilwrap ">
-                <a class="pilcrow" href="#section-11">&#182;</a>
-              </div>
-              <p>Helper to get / set the map grid Y size, in pixels. This represents the distance between horizontal lines.</p>
+        <p>Helper to get / set the map grid Y size, in pixels. This represents the distance between horizontal lines.</p>
 
-            </div>
-            
-            <div class="content"><div class='highlight'><pre>    gridSizeY: (value) =&gt;
+        
+          <div class='highlight'><pre>    gridSizeY: (value) =&gt;
         <span class="keyword">if</span> value?
             <span class="property">@set</span> <span class="string">"gridSizeY"</span>, value
-        <span class="property">@get</span> <span class="string">"gridSizeY"</span></pre></div></div>
-            
-        </li>
+        <span class="property">@get</span> <span class="string">"gridSizeY"</span></pre></div>
         
+      
         
-        <li id="section-12">
-            <div class="annotation">
-              
-              <div class="pilwrap ">
-                <a class="pilcrow" href="#section-12">&#182;</a>
-              </div>
-              <p>Helper to get / set the map init script.</p>
+        <p>Helper to get / set the map init script.</p>
 
-            </div>
-            
-            <div class="content"><div class='highlight'><pre>    initScript: (value) =&gt;
+        
+          <div class='highlight'><pre>    initScript: (value) =&gt;
         <span class="keyword">if</span> value?
             <span class="property">@set</span> <span class="string">"initScript"</span>, value
-        <span class="property">@get</span> <span class="string">"initScript"</span></pre></div></div>
-            
-        </li>
+        <span class="property">@get</span> <span class="string">"initScript"</span></pre></div>
         
+      
         
-        <li id="section-13">
-            <div class="annotation">
-              
-              <div class="pilwrap ">
-                <a class="pilcrow" href="#section-13">&#182;</a>
-              </div>
-              <p>Helper to get / set the map silent mode.</p>
+        <p>Helper to get / set map isLocal flag.</p>
 
-            </div>
-            
-            <div class="content"><div class='highlight'><pre>    silent: (value) =&gt;
+        
+          <div class='highlight'><pre>    isLocal: (value) =&gt;
+        <span class="keyword">if</span> value?
+            <span class="property">@set</span> <span class="string">"isLocal"</span>, value
+        <span class="property">@get</span> <span class="string">"isLocal"</span></pre></div>
+        
+      
+        
+        <p>Helper to get / set map read only flag.</p>
+
+        
+          <div class='highlight'><pre>    readOnly: (value) =&gt;
+        <span class="keyword">if</span> value?
+            <span class="property">@set</span> <span class="string">"readOnly"</span>, value
+        <span class="property">@get</span> <span class="string">"readOnly"</span></pre></div>
+        
+      
+        
+        <p>Helper to get / set the map silent mode.</p>
+
+        
+          <div class='highlight'><pre>    silent: (value) =&gt;
         <span class="keyword">if</span> value?
             <span class="property">@set</span> <span class="string">"silent"</span>, value
-        <span class="property">@get</span> <span class="string">"silent"</span></pre></div></div>
-            
-        </li>
+        <span class="property">@get</span> <span class="string">"silent"</span></pre></div>
         
+      
         
-        <li id="section-14">
-            <div class="annotation">
-              
-              <div class="pilwrap ">
-                <a class="pilcrow" href="#section-14">&#182;</a>
-              </div>
-              <p>Helper to get / set the shapes and their positions on the map. This must set as a <a href="shape.html">ShapeCollection</a>.</p>
+        <p>Helper to get / set the shapes and their positions on the map. This must set as a <a href="shape.html">ShapeCollection</a>.</p>
 
-            </div>
-            
-            <div class="content"><div class='highlight'><pre>    shapes: (value) =&gt;
+        
+          <div class='highlight'><pre>    shapes: (value) =&gt;
         <span class="keyword">if</span> value?
             value = <span class="keyword">new</span> SystemApp.ShapeCollection value <span class="keyword">if</span> <span class="keyword">not</span> value.typeName?
             <span class="property">@set</span> <span class="string">"shapes"</span>, value
-        <span class="property">@get</span> <span class="string">"shapes"</span></pre></div></div>
-            
-        </li>
+        <span class="property">@get</span> <span class="string">"shapes"</span></pre></div>
         
+      
         
-        <li id="section-15">
-            <div class="annotation">
-              
-              <div class="pilwrap ">
-                <a class="pilcrow" href="#section-15">&#182;</a>
-              </div>
-              <p>Helper to get / set the links between shapes on the map. This must set as a <a href="link.html">LinkCollection</a>.</p>
+        <p>Helper to get / set the links between shapes on the map. This must set as a <a href="link.html">LinkCollection</a>.</p>
 
-            </div>
-            
-            <div class="content"><div class='highlight'><pre>    links: (value) =&gt;
+        
+          <div class='highlight'><pre>    links: (value) =&gt;
         <span class="keyword">if</span> value?
             value = <span class="keyword">new</span> SystemApp.LinkCollection value <span class="keyword">if</span> <span class="keyword">not</span> value.typeName?
             <span class="property">@set</span> <span class="string">"links"</span>, value
-        <span class="property">@get</span> <span class="string">"links"</span></pre></div></div>
-            
-        </li>
+        <span class="property">@get</span> <span class="string">"links"</span></pre></div>
         
+      
         
-        <li id="section-16">
-            <div class="annotation">
-              
-              <div class="pilwrap ">
-                <a class="pilcrow" href="#section-16">&#182;</a>
-              </div>
-              <p>Helper to get / set the last date when the map&#39;s thumbnail was generated.</p>
+        <p>Helper to get / set the last date when the map&#39;s thumbnail was generated.</p>
 
-            </div>
-            
-            <div class="content"><div class='highlight'><pre>    thumbnailDate: (value) =&gt;
+        
+          <div class='highlight'><pre>    thumbnailDate: (value) =&gt;
         <span class="keyword">if</span> value?
             <span class="property">@set</span> <span class="string">"thumbnailDate"</span>, value
-        <span class="property">@get</span> <span class="string">"thumbnailDate"</span></pre></div></div>
-            
-        </li>
+        <span class="property">@get</span> <span class="string">"thumbnailDate"</span></pre></div>
         
+      
         
-        <li id="section-17">
-            <div class="annotation">
-              
-              <div class="pilwrap ">
-                <a class="pilcrow" href="#section-17">&#182;</a>
-              </div>
-              <p>Helper to get / set the username who created the map.</p>
+        <p>Helper to get the map&#39;s URL key based on its name: replace all spaces and special characters.</p>
 
-            </div>
-            
-            <div class="content"><div class='highlight'><pre>    createdByUser: (value) =&gt;
-        <span class="keyword">if</span> value?
-            <span class="property">@set</span> <span class="string">"createdByUser"</span>, value
-        <span class="property">@get</span> <span class="string">"createdByUser"</span></pre></div></div>
-            
-        </li>
         
+          <div class='highlight'><pre>    urlKey: =&gt;
+        <span class="keyword">if</span> <span class="property">@isLocal</span>()
+            <span class="keyword">return</span> SystemApp.Settings.Map.localMapId
+        <span class="keyword">return</span> SystemApp.DataUtil.getUrlKey <span class="property">@name</span>()</pre></div>
         
-        <li id="section-18">
-            <div class="annotation">
-              
-              <div class="pilwrap ">
-                <a class="pilcrow" href="#section-18">&#182;</a>
-              </div>
-              <p>Helper to get the map&#39;s URL key based on its name: replace all spaces and special characters.</p>
+      
+        
+        <h2>LOCAL MAPS</h2>
 
-            </div>
-            
-            <div class="content"><div class='highlight'><pre>    urlKey: =&gt;
-        <span class="keyword">return</span> SystemApp.DataUtil.getUrlKey <span class="property">@name</span>()</pre></div></div>
-            
-        </li>
         
+      
         
-        <li id="section-19">
-            <div class="annotation">
-              
-              <div class="pilwrap for-h2">
-                <a class="pilcrow" href="#section-19">&#182;</a>
-              </div>
-              <h2>VALIDATE</h2>
+        <p>Helper to get data from local storage and set map as local.</p>
 
-            </div>
-            
-        </li>
         
-        
-        <li id="section-20">
-            <div class="annotation">
-              
-              <div class="pilwrap ">
-                <a class="pilcrow" href="#section-20">&#182;</a>
-              </div>
-              <p>All validation rules should be put inside this method.</p>
+          <div class='highlight'><pre>    initLocalMap: =&gt;
+        <span class="property">@id</span> = SystemApp.Settings.Map.localMapId
+        <span class="property">@set</span> <span class="string">"id"</span>, SystemApp.Settings.Map.localMapId
+        <span class="property">@set</span> <span class="string">"isLocal"</span>, <span class="literal">true</span>
+        <span class="property">@fetch</span>()
 
-            </div>
-            
-            <div class="content"><div class='highlight'><pre>    validate: (attrs) =&gt;</pre></div></div>
-            
-        </li>
-        
-        
-        <li id="section-21">
-            <div class="annotation">
-              
-              <div class="pilwrap ">
-                <a class="pilcrow" href="#section-21">&#182;</a>
-              </div>
-              <p>Name must be set.</p>
+        currentName = <span class="property">@name</span>()
 
-            </div>
-            
-            <div class="content"><div class='highlight'><pre>        <span class="keyword">if</span> <span class="keyword">not</span> attrs.name? <span class="keyword">or</span> attrs.name <span class="keyword">is</span> <span class="string">""</span>
-            <span class="keyword">return</span> SystemApp.Messages.valNameIsRequired</pre></div></div>
-            
-        </li>
-        
-        
-        <li id="section-22">
-            <div class="annotation">
-              
-              <div class="pilwrap ">
-                <a class="pilcrow" href="#section-22">&#182;</a>
-              </div>
-              <p>Grid size X can&#39;t be too low.</p>
+        <span class="keyword">if</span> <span class="keyword">not</span> currentName? <span class="keyword">or</span> currentName <span class="keyword">is</span> <span class="string">""</span>
+            <span class="property">@name</span> SystemApp.Messages.localMapName
 
-            </div>
-            
-            <div class="content"><div class='highlight'><pre>        <span class="keyword">if</span> <span class="keyword">not</span> attrs.gridSizeX? <span class="keyword">or</span> attrs.gridSizeX &lt; SystemApp.Settings.Map.minGridSize
-            <span class="keyword">return</span> SystemApp.Messages.valGridSizeTooSmall</pre></div></div>
-            
-        </li>
+        <span class="keyword">return</span> <span class="property">@name</span>()</pre></div>
         
+      
         
-        <li id="section-23">
-            <div class="annotation">
-              
-              <div class="pilwrap ">
-                <a class="pilcrow" href="#section-23">&#182;</a>
-              </div>
-              <p>Grid size Y can&#39;t be too low.</p>
+        <h2>VALIDATE</h2>
 
-            </div>
-            
-            <div class="content"><div class='highlight'><pre>        <span class="keyword">if</span> <span class="keyword">not</span> attrs.gridSizeY? <span class="keyword">or</span> attrs.gridSizeY &lt; SystemApp.Settings.Map.minGridSize
-            <span class="keyword">return</span> SystemApp.Messages.valGridSizeTooSmall</pre></div></div>
-            
-        </li>
         
+      
         
-        <li id="section-24">
-            <div class="annotation">
-              
-              <div class="pilwrap ">
-                <a class="pilcrow" href="#section-24">&#182;</a>
-              </div>
-              <p>Paper size X can&#39;t be too low.</p>
+        <p>All validation rules should be put inside this method.</p>
 
-            </div>
-            
-            <div class="content"><div class='highlight'><pre>        <span class="keyword">if</span> <span class="keyword">not</span> attrs.paperSizeX? <span class="keyword">or</span> attrs.paperSizeX &lt; SystemApp.Settings.Map.minPaperSize
-            <span class="keyword">return</span> SystemApp.Messages.valPaperSizeTooSmall</pre></div></div>
-            
-        </li>
         
+          <div class='highlight'><pre>    validate: (attrs) =&gt;</pre></div>
         
-        <li id="section-25">
-            <div class="annotation">
-              
-              <div class="pilwrap ">
-                <a class="pilcrow" href="#section-25">&#182;</a>
-              </div>
-              <p>Paper size Y can&#39;t be too low.</p>
+      
+        
+        <p>Name must be set.</p>
 
-            </div>
-            
-            <div class="content"><div class='highlight'><pre>        <span class="keyword">if</span> <span class="keyword">not</span> attrs.paperSizeY? <span class="keyword">or</span> attrs.paperSizeY &lt; SystemApp.Settings.Map.minPaperSize
-            <span class="keyword">return</span> SystemApp.Messages.valPaperSizeTooSmall</pre></div></div>
-            
-        </li>
         
+          <div class='highlight'><pre>        <span class="keyword">if</span> <span class="keyword">not</span> attrs.name? <span class="keyword">or</span> attrs.name <span class="keyword">is</span> <span class="string">""</span>
+            <span class="keyword">return</span> SystemApp.Messages.valNameIsRequired</pre></div>
         
-        <li id="section-26">
-            <div class="annotation">
-              
-              <div class="pilwrap for-h2">
-                <a class="pilcrow" href="#section-26">&#182;</a>
-              </div>
-              <h2>SHAPE AND LINK METHODS</h2>
+      
+        
+        <p>Grid size X can&#39;t be too low.</p>
 
-            </div>
-            
-        </li>
         
+          <div class='highlight'><pre>        <span class="keyword">if</span> <span class="keyword">not</span> attrs.gridSizeX? <span class="keyword">or</span> attrs.gridSizeX &lt; SystemApp.Settings.Map.minGridSize
+            <span class="keyword">return</span> SystemApp.Messages.valGridSizeTooSmall</pre></div>
         
-        <li id="section-27">
-            <div class="annotation">
-              
-              <div class="pilwrap ">
-                <a class="pilcrow" href="#section-27">&#182;</a>
-              </div>
-              <p>Removes a <a href="shape.html">Shape</a> from the <code>shapes</code> collection.</p>
+      
+        
+        <p>Grid size Y can&#39;t be too low.</p>
 
-            </div>
-            
-            <div class="content"><div class='highlight'><pre>    removeShape: (shape) =&gt;
+        
+          <div class='highlight'><pre>        <span class="keyword">if</span> <span class="keyword">not</span> attrs.gridSizeY? <span class="keyword">or</span> attrs.gridSizeY &lt; SystemApp.Settings.Map.minGridSize
+            <span class="keyword">return</span> SystemApp.Messages.valGridSizeTooSmall</pre></div>
+        
+      
+        
+        <p>Paper size X can&#39;t be too low.</p>
+
+        
+          <div class='highlight'><pre>        <span class="keyword">if</span> <span class="keyword">not</span> attrs.paperSizeX? <span class="keyword">or</span> attrs.paperSizeX &lt; SystemApp.Settings.Map.minPaperSize
+            <span class="keyword">return</span> SystemApp.Messages.valPaperSizeTooSmall</pre></div>
+        
+      
+        
+        <p>Paper size Y can&#39;t be too low.</p>
+
+        
+          <div class='highlight'><pre>        <span class="keyword">if</span> <span class="keyword">not</span> attrs.paperSizeY? <span class="keyword">or</span> attrs.paperSizeY &lt; SystemApp.Settings.Map.minPaperSize
+            <span class="keyword">return</span> SystemApp.Messages.valPaperSizeTooSmall</pre></div>
+        
+      
+        
+        <h2>SHAPE AND LINK METHODS</h2>
+
+        
+      
+        
+        <p>Removes a <a href="shape.html">Shape</a> from the <code>shapes</code> collection.</p>
+
+        
+          <div class='highlight'><pre>    removeShape: (shape) =&gt;
         <span class="property">@shapes</span>().remove <span class="property">@shapes</span>().get shape.id
-        <span class="property">@removeShapeLinks</span>
+        <span class="property">@removeShapeLinks</span> shape
 
-        <span class="property">@save</span>()</pre></div></div>
-            
-        </li>
+        <span class="property">@save</span>()</pre></div>
         
+      
         
-        <li id="section-28">
-            <div class="annotation">
-              
-              <div class="pilwrap ">
-                <a class="pilcrow" href="#section-28">&#182;</a>
-              </div>
-              <p>Removes a all links related to the specified <a href="shape.html">Shape</a> from the <code>links</code> collection.</p>
+        <p>Removes a all links related to the specified <a href="shape.html">Shape</a> from the <code>links</code> collection.</p>
 
-            </div>
-            
-            <div class="content"><div class='highlight'><pre>    removeShapeLinks: (shape) =&gt;
+        
+          <div class='highlight'><pre>    removeShapeLinks: (shape) =&gt;
         _.each <span class="property">@links</span>, (link) =&gt;
             <span class="keyword">if</span> link.sourceId() <span class="keyword">is</span> shape.id <span class="keyword">or</span> link.targetId() <span class="keyword">is</span> shape.id
-                <span class="property">@removeLink</span> link</pre></div></div>
-            
-        </li>
+                <span class="property">@removeLink</span> link</pre></div>
         
+      
         
-        <li id="section-29">
-            <div class="annotation">
-              
-              <div class="pilwrap ">
-                <a class="pilcrow" href="#section-29">&#182;</a>
-              </div>
-              <p>Remove a <a href="link.html">Link</a> from the <code>links</code> collection.</p>
+        <p>Remove a <a href="link.html">Link</a> from the <code>links</code> collection.</p>
 
-            </div>
-            
-            <div class="content"><div class='highlight'><pre>    removeLink: (link) =&gt;
+        
+          <div class='highlight'><pre>    removeLink: (link) =&gt;
         <span class="property">@links</span>().remove <span class="property">@links</span>().get link.id
-        <span class="property">@save</span>()</pre></div></div>
-            
-        </li>
+        <span class="property">@save</span>()</pre></div>
         
+      
         
-        <li id="section-30">
-            <div class="annotation">
-              
-              <div class="pilwrap ">
-                <a class="pilcrow" href="#section-30">&#182;</a>
-              </div>
-              <p>Clear all links which have invalid <code>sourceId</code> or <code>targetId</code>.</p>
+        <p>Clear all links which have invalid <code>sourceId</code> or <code>targetId</code>.</p>
 
-            </div>
-            
-            <div class="content"><div class='highlight'><pre>    clearInvalidLinks: =&gt;
+        
+          <div class='highlight'><pre>    clearInvalidLinks: =&gt;
         removeLinks = []
         _.each <span class="property">@links</span>().models, (link) =&gt;
             <span class="keyword">if</span> <span class="property">@shapes</span>().where({id: link.sourceId()}).length &lt; <span class="number">1</span> <span class="keyword">or</span> <span class="property">@shapes</span>().where({id: link.targetId()}).length &lt; <span class="number">1</span>
@@ -877,57 +800,33 @@ and <a href="link.html">Links</a>, and specific sizes and colours.</p>
         <span class="keyword">for</span> linkId <span class="keyword">in</span> removeLinks
             <span class="property">@links</span>().remove(<span class="property">@links</span>().get linkId, {silent: <span class="literal">true</span>})
 
-        <span class="property">@save</span>()</pre></div></div>
-            
-        </li>
+        <span class="property">@save</span>()</pre></div>
         
+      
         
-        <li id="section-31">
-            <div class="annotation">
-              
-              <div class="pilwrap for-h2">
-                <a class="pilcrow" href="#section-31">&#182;</a>
-              </div>
-              <h2>MAP COLLECTION</h2>
+        <h2>MAP COLLECTION</h2>
 
-            </div>
-            
-        </li>
         
+      
         
-        <li id="section-32">
-            <div class="annotation">
-              
-              <div class="pilwrap ">
-                <a class="pilcrow" href="#section-32">&#182;</a>
-              </div>
-              <p>Represents a collection of maps.</p>
+        <p>Represents a collection of maps.</p>
 
-            </div>
-            
-            <div class="content"><div class='highlight'><pre><span class="class"><span class="keyword">class</span> <span class="title">SystemApp</span>.<span class="title">MapCollection</span> <span class="keyword">extends</span> <span class="title">SystemApp</span>.<span class="title">BaseCollection</span></span>
+        
+          <div class='highlight'><pre><span class="class"><span class="keyword">class</span> <span class="title">SystemApp</span>.<span class="title">MapCollection</span> <span class="keyword">extends</span> <span class="title">SystemApp</span>.<span class="title">BaseCollection</span></span>
     typeName: <span class="string">"MapCollection"</span>
     model: SystemApp.Map
-    url: SystemApp.Settings.Map.url</pre></div></div>
-            
-        </li>
+    url: SystemApp.Settings.Map.url</pre></div>
         
+      
         
-        <li id="section-33">
-            <div class="annotation">
-              
-              <div class="pilwrap ">
-                <a class="pilcrow" href="#section-33">&#182;</a>
-              </div>
-              <p>Set the comparator function to order the maps collection by name.</p>
+        <p>Set the comparator function to order the maps collection by name.</p>
 
-            </div>
-            
-            <div class="content"><div class='highlight'><pre>    comparator: (map) -&gt; <span class="keyword">return</span> map.name()</pre></div></div>
-            
-        </li>
         
-    </ul>
+          <div class='highlight'><pre>    comparator: (map) -&gt; <span class="keyword">return</span> map.name()</pre></div>
+        
+      
+      <div class="fleur">h</div>
+    </div>
   </div>
 </body>
 </html>
