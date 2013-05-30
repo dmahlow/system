@@ -277,8 +277,12 @@ h6
 #topdemo div
 {
     display: block;
-    font-size: 16px;
     margin-top: 10px;
+}
+
+#topdemo a
+{
+    font-weight: bold;
 }
 
 #topdemo small
