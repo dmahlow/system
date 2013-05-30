@@ -15,8 +15,161 @@
         
           
           <h1>System App by Zalando</h1>
-<p>Homepage: <a href="http://systemapp.io">http://systemapp.io</a>
-Project page: <a href="https://github.com/zalando/system">https://github.com/zalando/system</a></p>
+<p><strong>Official homepage:</strong> <strong><a href="http://systemapp.io">http://systemapp.io</a></strong></p>
+<p>The System App is a sleek, smart and open-source IT mapping and monitoring tool by Zalando.
+Please note that it is still in BETA so some features are not yet fully implemented,
+although it&#39;s quite usable in its current state.</p>
+<p>Full documentation can be found under the <code>/docs</code> directory of the app.
+The final 1.0.0 version is expected to be ready by Summer 2013.</p>
+<h4>What&#39;s still not ready for prime time?</h4>
+<h5>Sooner than later</h5>
+<ul>
+<li>Users and roles. Basic HTTP authentication is done and ready, LDAP to follow.</li>
+<li>Enforce roles validation also on the server side.</li>
+<li>Admin area to manage server, settings and users directly on the browser.</li>
+<li>Better and smarter auto completion when editing shape labels.</li>
+<li>Auto completion when editing Audit Event rules (just like on shape labels).</li>
+<li>Performance improvements on complex maps. SVG is slow, so we&#39;ll tweak our implementation to
+minimze DOM queries and whenever possible use hardware accelerated features on rendering.</li>
+</ul>
+<h5>Not so soon</h5>
+<ul>
+<li>Better and more stable sync of data using Socket.IO instead of AJAX calls.</li>
+<li>Self-healing features - app will self diagnose in case too many errors are triggered.</li>
+<li>External API with HTTP webhooks. The current API is for internal use only.</li>
+<li>Undo and redo of actions especially when editing maps.</li>
+<li>Support for multiple users editing a map at the same time, or at least map locking when there&#39;s
+someone editing it already.</li>
+</ul>
+<h2>Installation</h2>
+<p>Felling lazy? Simply run the <code>./install.sh</code> script and it will try to do all the hard work for you.
+It should work on Linux and OS X.</p>
+<ol>
+<li>Download the <code>./install.sh</code> and save it on the directory where you want to install the System App.
+<code>$ curl https://raw.github.com/zalando/system/master/install.sh</code>
+or
+<code>$ wget https://raw.github.com/zalando/system/master/install.sh</code></li>
+<li>Make it executable.
+<code>$ chmod +x install.sh</code></li>
+<li>Run it and hope for the best :-)
+<code>$ ./install.sh</code></li>
+</ol>
+<p>The script should tell you what&#39;s missing and ask if you want to install the missing dependencies.</p>
+<h3>Installing manually</h3>
+<p>If the install script doesn&#39;t work or if you prefer to do stuff manually, please make sure
+you have installed on your system:</p>
+<ul>
+<li>Node.js (<a href="http://nodejs.org">http://nodejs.org</a>)</li>
+<li>MongoDB (<a href="http://mongodb.org">http://mongodb.org</a>)</li>
+<li>ImageMagick (<a href="http://www.imagemagick.org">http://www.imagemagick.org</a>)</li>
+</ul>
+<p>To install Node.js on Linux:
+<a href="http://github.com/joyent/node/wiki/Installing-Node.js-via-package-manager">http://github.com/joyent/node/wiki/Installing-Node.js-via-package-manager</a></p>
+<p>MongoDB can be downloaded from:
+<a href="http://www.mongodb.org/downloads">http://www.mongodb.org/downloads</a></p>
+<p>ImageMagick is necessary to generate map thumbnails. The app will actually run without it,
+but then you won&#39;t have a &quot;preview&quot; of each map on the start screen.
+To download ImageMagick:
+<a href="http://www.imagemagick.org/script/binary-releases.php">http://www.imagemagick.org/script/binary-releases.php</a></p>
+<h3>Required Node.js modules</h3>
+<p>Check the <code>package.json</code> file for details on dependencies.</p>
+<p>The easiest way to get these is by running NPM update:</p>
+<p><code>$ npm update</code></p>
+<p>Please note that all modules will be installed locally under the <code>node_modules</code> directory.</p>
+<h3>Avoiding MongoDB installation</h3>
+<p>If you don&#39;t want to install and configure MongoDB locally, we suggest creating a free online
+database at <a href="http://mongolab.com">http://mongolab.com</a> or <a href="http://mongohq.com">http://mongohq.com</a>. The connection string will be something like:</p>
+<p><code>mongodb://your_user:your_password@ds033187.mongolab.com:33187/your_database?auto_reconnect</code></p>
+<h2>Configuring the server</h2>
+<p>All basic server configuration settings are located on the file <code>server/settings.coffee</code>.
+If you want to override settings, please create or edit the <code>settings.json</code> file with
+the properties and values to be overriden.</p>
+<p>Detailed instructions are available on on the top of the <code>server/settings.coffee</code> file.</p>
+<p>The following settings will need your attention:</p>
+<h5>Settings.General</h5>
+<ul>
+<li><code>appTitle</code> - The app title, default is &quot;System App&quot;. You can use something like &quot;MyCompany System&quot;.</li>
+<li><code>debug</code> - Enable debbuging logs. This should be set to false before you deploy the app to production!</li>
+</ul>
+<h5>Settings.Database</h5>
+<ul>
+<li><code>connString</code> - The MongoDB connection string. Default is host &quot;localhost&quot;, database &quot;systemapp&quot;.</li>
+</ul>
+<h5>Settings.Web</h5>
+<ul>
+<li><code>port</code> - The port used by the Node.js server, default is 3003.</li>
+<li><code>paas</code> - Set to true if you&#39;re deploying to common PaaS services. More info below.</li>
+</ul>
+<h5>Settings.Security</h5>
+<ul>
+<li><code>port</code> - The port used by the Node.js server, default is 3003.</li>
+<li><code>userPasswordKey</code> - The secret key/token used to encrypt passwords on the database.</li>
+</ul>
+<h5>Deploying to PaaS</h5>
+<p>The System App can be easily deployed to AppFog, OpenShift and Heroku. The only requirement is
+that you set <code>Settings.Web.paas</code> to true (it is true by default). In this case we&#39;ll override a few
+settings to cope with the PaaS environment. For example:
+- the web <code>port</code> will be automatically set so it doesn&#39;t matter what value you have entered.
+- if your app on AppFog has a MongoDB bound to it, the <code>connString</code> will be automatically set.
+- it will use <a href="http://logentries.com">Logentries</a> for logging if you have enabled it on your AppFog account.</p>
+<h2>Starting the server</h2>
+<p>To start the System App:</p>
+<p><code>$ node index.js</code></p>
+<p>This will start Node.js under the port 3003 (or whatever port you have set on the server settings).</p>
+<h3>Production vs. Debugging</h3>
+<p>By default Node.js will run in &quot;Debug mode&quot;. If you&#39;re deploying and running on production,
+you must set the <code>NODE_ENV</code> to &quot;production&quot; to avoid having all the debugging statements
+logged to the console. Putting it simple:</p>
+<p><code>$ NODE_ENV=production node index.js</code></p>
+<h3>Running the server forever</h3>
+<p>If you want the server to run like a service (so it restarts itself in case of crash / error / termination)
+we recommend using the node module <strong>forever</strong>. You can install it using NPM like this:</p>
+<p><code>$ sudo npm install -g forever</code></p>
+<p>To start the SYstem App using <em>forever</em>, run it under the app root folder:</p>
+<p><code>$ forever start -c node index.js</code></p>
+<h2>Code implementation</h2>
+<p>To make things easier to understand:</p>
+<ul>
+<li>All customizable client settings are available on the <em>SystemApp.Settings</em> object, at the <code>/assets/js/settings.coffee</code> file.</li>
+<li>Terms, validation and error messages are set under the <em>SystemApp.Messages</em> object, file <code>/assets/js/messagess.coffee</code>.</li>
+<li>URL routes are set under a <em>SystemApp.Routes</em> object, file <code>/assets/js/routes.coffee</code>.</li>
+</ul>
+<p>The System App uses the latest version of <a href="http://http://backbonejs.org/">Backbone</a> to implement models, collections and views.
+The maps are implemented using SVG and handled by <a href="http://raphaeljs.com/">Raphaël</a>.</p>
+<p>Having experience with the aforementioned libraries is not strictly necessary, but highly desirable in
+case you want to customize the System App&#39;s code.</p>
+<h3>Models and collections</h3>
+<p>Models won&#39;t inherit directly from Backbone.Model. Instead we&#39;re using our own <code>SystemApp.BaseModel</code>,
+which extends Backbone&#39;s model with special methods like <code>save</code>, <code>generateId</code>, etc. Same thing
+for collections, which should inherit from <code>SystemApp.BaseCollection</code>.</p>
+<p>All models are located under the folder <code>/assets/js/models</code>, and each model has its own specific collection
+implemented at the end of the same file.</p>
+<h3>Views</h3>
+<p>The views are composed of:</p>
+<ul>
+<li>HTML template using <a href="http://jade-lang.com/">Jade</a>, folder <code>/views</code>.</li>
+<li>CSS styles using <a href="http://learnboost.github.com/stylus/">Stylus</a>, folder <code>/assets/css</code>.</li>
+<li>View controllers implemented with CoffeeScript, folder <code>/assets/js/view</code>.</li>
+</ul>
+<p>Just like models and collections, the app has its own <code>SystemApp.BaseView</code>
+which extends Backbone&#39;s view with extra helpers and utilities.</p>
+<h3>Database</h3>
+<p>The System App uses MongoDB to store its data, having the following collections:</p>
+<ul>
+<li><em>map</em> - stores all maps (Map model) including their referenced shapes (Shape model) and links (Link model).</li>
+<li><em>entity</em> - store entity schemas (EntityDefinition model) and data (EntityObject model).</li>
+<li><em>auditdata</em> - store all audit data definitions and data (AuditData model).</li>
+<li><em>auditevent</em> - store all audit events and alerts (AuditEvent model).</li>
+<li><em>variable</em> - stores custom JS variables (Variable model) created by users.</li>
+<li><em>user</em> - stores uses (User model) and their associated roles.</li>
+<li><em>log</em> - logs all updates, inserts and deletes on the collections above.</li>
+</ul>
+<p>The &quot;log&quot; collection is there for increased security and damage control. All updates, inserts
+and deletions are logged there, and these records stay saved for 2 hours by default - you can
+change this setting on the server&#39;s <code>settings.json</code> or <code>settings.coffee</code> file.</p>
+<h2>Need help?</h2>
+<p>Issues should be posted on the Issues section on our GitHub project page: <a href="https://github.com/zalando/system/issues">https://github.com/zalando/system/issues</a></p>
+<p><em>Have fun!</em></p>
 
           
         
@@ -37,13 +190,6 @@ Project page: <a href="https://github.com/zalando/system">https://github.com/zal
                 <li>
                   <a class="source" href="README_API.html">
                     README_API.md
-                  </a>
-                </li>
-              
-                
-                <li>
-                  <a class="source" href="README.html">
-                    README.md
                   </a>
                 </li>
               
