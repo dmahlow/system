@@ -180,17 +180,24 @@
                 <p>
                     Please note that the <label>paas</label> setting is <label>true</label> by default.
                 </p>
+
+                <h3>Client settings</h3>
+                <p>
+                    All client specific settings - everything that happens inside the browser like colours, timers, sizes
+                    etc - are set on the <label>/assets/js/settings.coffee</label> file. In most circumstances the default
+                    settings will work fine.
+                </p>
             </div>
 
             <a name="running"></a>
             <div class="bar"><h2 class="contents">Running the app</h2></div>
             <div class="contents starting">
-                <p>To start the System App, run the index.js file using node:</p>
+                <p>To start the System App server, run the index.js file using node:</p>
                 <code>$ node index.js</code>
                 <p>
                     This will start the Node.js server. If you haven't touched the settings, opening
                     <label>http://localhost:3003</label> on your web browser should work. Otherwise
-                    replace the URL with your defined web port.
+                    replace the URL with your specific hostname and port.
                 </p>
 
                 <h3>Production vs. Debugging</h3>
@@ -201,9 +208,9 @@
                 </p>
                 <code>$ NODE_ENV=production node index.js</code>
                 <p>
-                    Please note that the System App will enter debug mode automatically when it runs under
+                    Please note that the System App might enter debug mode automatically when running under
                     the <label>localhost</label> or a <label>.local</label> hostname. In debug mode, most actions
-                    and procedures will be logged with details so performance might be affected.
+                    and procedures will be logged to the console and disk so performance might be affected.
                 </p>
 
                 <h3>Running the server forever</h3>
