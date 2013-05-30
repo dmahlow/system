@@ -550,6 +550,11 @@ opens the app for the first time.</p>
             _.delay <span class="property">@bindMaps</span>, SystemApp.Settings.General.refetchDelay
             <span class="keyword">return</span>
 
+        <span class="keyword">if</span> SystemApp.Settings.Map.enableLocalMap
+            map = <span class="keyword">new</span> SystemApp.Map()
+            map.initLocalMap()
+            <span class="property">@addMapToList</span> map
+
         <span class="property">@addMapToList</span> item <span class="keyword">for</span> item <span class="keyword">in</span> SystemApp.Data.maps.models</pre></div>
         
       

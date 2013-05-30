@@ -495,6 +495,7 @@ to 3 editable labels (start, middle, end).</p>
         
           <div class='highlight'><pre><span class="class"><span class="keyword">class</span> <span class="title">SystemApp</span>.<span class="title">MapLinkLabelsView</span> <span class="keyword">extends</span> <span class="title">SystemApp</span>.<span class="title">BaseView</span></span>
 
+    visible: <span class="literal">true</span>                       <span class="comment"># cached variable to check if labels are visible or hidden</span>
     currentEditingPosition: <span class="literal">null</span>        <span class="comment"># holds the position which is being currently edited (Start, Center. End)</span>
     labelEditView: <span class="literal">null</span>                 <span class="comment"># holds a [Label Edit View](labelEditView.html), used to change label values</span>
     svgStart: <span class="literal">null</span>                      <span class="comment"># the label on the start of the link path</span>
@@ -733,7 +734,8 @@ before recreating it on a new icon.</p>
         <p>Show the link labels and icons.</p>
 
         
-          <div class='highlight'><pre>    show: =&gt;</pre></div>
+          <div class='highlight'><pre>    show: =&gt;
+        <span class="property">@visible</span> = <span class="literal">true</span></pre></div>
         
       
         
@@ -759,6 +761,7 @@ before recreating it on a new icon.</p>
 
         
           <div class='highlight'><pre>    hide: =&gt;
+        <span class="property">@visible</span> = <span class="literal">false</span>
         <span class="property">@currentEditingPosition</span> = <span class="literal">null</span>
 
         opacity = {<span class="string">"opacity"</span>: <span class="number">0</span>}
@@ -780,9 +783,8 @@ before recreating it on a new icon.</p>
         <p>Set the link label positions on the map.</p>
 
         
-          <div class='highlight'><pre>    setPosition: (posX, posY, location) =&gt;
-        posX = <span class="property">@parentView</span>.x() <span class="keyword">if</span> <span class="keyword">not</span> posX?
-        posY = <span class="property">@parentView</span>.y() <span class="keyword">if</span> <span class="keyword">not</span> posY?
+          <div class='highlight'><pre>    setPosition: (location) =&gt;
+        <span class="keyword">return</span> <span class="keyword">if</span> <span class="keyword">not</span> <span class="property">@visible</span>
 
         iconSize = SystemApp.Settings.Map.icoActionsSize
         iconHalfSize = iconSize / <span class="number">2</span>

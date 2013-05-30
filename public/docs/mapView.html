@@ -1784,11 +1784,13 @@ This will NOT trigger the backbone route event - it only updates the URL.</p>
         
       
         
-        <p>Post the SVG representation of the map to the server to
-generate the SVG and PNG thumbnails.</p>
+        <p>Post the SVG representation of the map to the server to generate the SVG and PNG thumbnails.
+This WON&#39;T happen for local maps.</p>
 
         
           <div class='highlight'><pre>    generateThumbnail: =&gt;
+        <span class="keyword">return</span> <span class="keyword">if</span> <span class="property">@model</span>.isLocal()
+
         now = <span class="keyword">new</span> Date()
         thumbnailDate = <span class="property">@model</span>.thumbnailDate()
 

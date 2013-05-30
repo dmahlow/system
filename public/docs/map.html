@@ -503,7 +503,7 @@ and <a href="link.html">Links</a>, and specific sizes and colours.</p>
         gridSizeY: SystemApp.Settings.Map.gridSizeY
         thumbnailDate: <span class="keyword">new</span> Date(<span class="number">2000</span>, <span class="number">1</span>, <span class="number">1</span>)
         silent: <span class="literal">false</span>
-        readOnly: <span class="literal">false</span>
+        isReadOnly: <span class="literal">false</span>
 
     relations:
         links: SystemApp.LinkCollection
@@ -619,10 +619,10 @@ and <a href="link.html">Links</a>, and specific sizes and colours.</p>
         <p>Helper to get / set map read only flag.</p>
 
         
-          <div class='highlight'><pre>    readOnly: (value) =&gt;
+          <div class='highlight'><pre>    isReadOnly: (value) =&gt;
         <span class="keyword">if</span> value?
-            <span class="property">@set</span> <span class="string">"readOnly"</span>, value
-        <span class="property">@get</span> <span class="string">"readOnly"</span></pre></div>
+            <span class="property">@set</span> <span class="string">"isReadOnly"</span>, value
+        <span class="property">@get</span> <span class="string">"isReadOnly"</span></pre></div>
         
       
         
