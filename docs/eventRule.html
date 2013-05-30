@@ -1,0 +1,670 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+  <title>eventRule.coffee</title>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <link rel="stylesheet" media="all" href="public/stylesheets/normalize.css" />
+  <link rel="stylesheet" media="all" href="docco.css" />
+</head>
+<body>
+  <div class="container">
+    <div class="page">
+
+      <div class="header">
+        
+          <h1>eventRule.coffee</h1>
+        
+
+        
+          <div class="toc">
+            <h3>Table of Contents</h3>
+            <ol>
+              
+                
+                <li>
+                  <a class="source" href="admin.html">
+                    admin.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="api.auditData.html">
+                    api.auditData.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="api.auditEvent.html">
+                    api.auditEvent.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="api.html">
+                    api.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="api.entity.html">
+                    api.entity.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="api.map.html">
+                    api.map.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="api.server.html">
+                    api.server.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="api.variable.html">
+                    api.variable.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="api.view.html">
+                    api.view.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="app.html">
+                    app.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="app.instance.html">
+                    app.instance.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="data.html">
+                    data.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="dataUtil.html">
+                    dataUtil.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="messages.html">
+                    messages.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="auditData.html">
+                    auditData.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="auditEvent.html">
+                    auditEvent.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="base.html">
+                    base.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="entityDefinition.html">
+                    entityDefinition.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="entityObject.html">
+                    entityObject.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="eventAction.html">
+                    eventAction.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="eventRule.html">
+                    eventRule.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="link.html">
+                    link.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="map.html">
+                    map.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="shape.html">
+                    shape.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="user.html">
+                    user.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="userSettings.html">
+                    userSettings.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="variable.html">
+                    variable.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="adminRoutes.html">
+                    adminRoutes.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="appRoutes.html">
+                    appRoutes.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="settings.html">
+                    settings.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="sockets.html">
+                    sockets.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="tutorial.html">
+                    tutorial.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="vectors.html">
+                    vectors.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="statusTabView.html">
+                    statusTabView.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="toolsTabView.html">
+                    toolsTabView.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="usersTabView.html">
+                    usersTabView.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="adminView.html">
+                    adminView.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="alertView.html">
+                    alertView.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="auditDataManagerView.html">
+                    auditDataManagerView.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="auditEventManagerView.html">
+                    auditEventManagerView.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="baseView.html">
+                    baseView.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="createMapView.html">
+                    createMapView.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="entityManagerView.html">
+                    entityManagerView.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="footerView.html">
+                    footerView.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="helpView.html">
+                    helpView.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="entitiesTabView.html">
+                    entitiesTabView.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="inspectorTabView.html">
+                    inspectorTabView.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="mapTabView.html">
+                    mapTabView.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="shapeTabView.html">
+                    shapeTabView.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="controlsView.html">
+                    controlsView.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="labelEditView.html">
+                    labelEditView.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="linkCreatorView.html">
+                    linkCreatorView.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="linkLabelsView.html">
+                    linkLabelsView.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="linkView.html">
+                    linkView.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="shapeLabelsView.html">
+                    shapeLabelsView.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="shapeView.html">
+                    shapeView.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="shapesMoverView.html">
+                    shapesMoverView.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="mapView.html">
+                    mapView.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="menuView.html">
+                    menuView.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="overlayView.html">
+                    overlayView.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="scriptEditorView.html">
+                    scriptEditorView.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="selfTestView.html">
+                    selfTestView.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="settingsView.html">
+                    settingsView.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="startView.html">
+                    startView.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="variableManagerView.html">
+                    variableManagerView.coffee
+                  </a>
+                </li>
+              
+            </ol>
+          </div>
+        
+      </div>
+
+      
+        
+        <h2>ALERT RULE MODEL</h2>
+
+        
+      
+        
+        <p>Represents a single alert rule. It is used to compare two values
+(source and target), which can be a property of an <a href="auditData.html">AuditData</a>
+or a static value. Alert rules are meant to be used inside
+<a href="auditEvent.html">AuditEvent</a> objects only.</p>
+
+        
+          <div class='highlight'><pre><span class="class"><span class="keyword">class</span> <span class="title">SystemApp</span>.<span class="title">EventRule</span> <span class="keyword">extends</span> <span class="title">SystemApp</span>.<span class="title">BaseModel</span></span>
+    typeName: <span class="string">"EventRule"</span>
+    defaults:
+        source: <span class="literal">null</span>        <span class="comment"># the source value or audit data path to compare</span>
+        target: <span class="literal">null</span>        <span class="comment"># the target value or audit data path to be compared</span>
+        comparator: <span class="literal">null</span>    <span class="comment"># the comparator symbol, can be one of these: &lt; . &lt;= . &gt; . &gt;= . == . !=</span></pre></div>
+        
+      
+        
+        <h2>SYNC</h2>
+
+        
+      
+        
+        <p>Override the &quot;save&quot; method as we don&#39;t need to sync individual alert rules with the server.</p>
+
+        
+          <div class='highlight'><pre>    save: (key, value, options) =&gt; <span class="property">@noSyncSave</span> key, value, options</pre></div>
+        
+      
+        
+        <p>Override the &quot;destroy&quot; method as we don&#39;t need to sync individual alert rules with the server.</p>
+
+        
+          <div class='highlight'><pre>    destroy: (options) =&gt; <span class="property">@noSyncDestroy</span> options</pre></div>
+        
+      
+        
+        <h2>PROPERTIES</h2>
+
+        
+      
+        
+        <p>Helper to get / set the source value.</p>
+
+        
+          <div class='highlight'><pre>    source: (value) =&gt;
+        <span class="keyword">if</span> value?
+            <span class="property">@set</span> <span class="string">"source"</span>, value
+        <span class="property">@get</span> <span class="string">"source"</span></pre></div>
+        
+      
+        
+        <p>Helper to get / set the target value.</p>
+
+        
+          <div class='highlight'><pre>    target: (value) =&gt;
+        <span class="keyword">if</span> value?
+            <span class="property">@set</span> <span class="string">"target"</span>, value
+        <span class="property">@get</span> <span class="string">"target"</span></pre></div>
+        
+      
+        
+        <p>Helper to get / set the comparator symbol.</p>
+
+        
+          <div class='highlight'><pre>    comparator: (value) =&gt;
+        <span class="keyword">if</span> value?
+            <span class="property">@set</span> <span class="string">"comparator"</span>, value
+        <span class="property">@get</span> <span class="string">"comparator"</span></pre></div>
+        
+      
+        
+        <h2>METHODS</h2>
+
+        
+      
+        
+        <p>Test the rule. The <code>contextValues</code> array is optional, and will be used only when the source or target
+have context values (prefix @, going from @1 to @5). Return true or false based on the
+source value, target value, and the comparator used.</p>
+
+        
+          <div class='highlight'><pre>    test: (contextValues) =&gt;
+        sourceValue = <span class="property">@source</span>()
+        targetValue = <span class="property">@target</span>()
+        comparator = <span class="property">@comparator</span>()
+
+        <span class="keyword">if</span> <span class="keyword">not</span> sourceValue?
+            <span class="keyword">return</span> <span class="literal">false</span>
+        <span class="keyword">if</span> <span class="keyword">not</span> targetValue?
+            <span class="keyword">return</span> <span class="literal">false</span></pre></div>
+        
+      
+        
+        <p>Get first char of source and target.</p>
+
+        
+          <div class='highlight'><pre>        sourceFirstKey = sourceValue.substring <span class="number">0</span>, <span class="number">1</span>
+        targetFirstKey = targetValue.substring <span class="number">0</span>, <span class="number">1</span></pre></div>
+        
+      
+        
+        <p>Check if source value is a <a href="variable.html">Variable</a>,
+an <a href="auditData.html">AuditData</a> property or a context value. Context
+means the alert is being run against <a href="shape.html">Shape</a> or <a href="link.html">Link</a>
+label values.</p>
+
+        
+          <div class='highlight'><pre>        <span class="keyword">if</span> sourceFirstKey <span class="keyword">is</span> SystemApp.Settings.General.dataBindingKey
+            sourceValue = SystemApp.DataUtil.getDataBindingValue sourceValue
+        <span class="keyword">else</span> <span class="keyword">if</span> contextValues? <span class="keyword">and</span> sourceFirstKey <span class="keyword">is</span> SystemApp.Settings.AuditEvent.contextSpecialKey
+            sourceValue = contextValues[sourceValue.substring <span class="number">1</span>]</pre></div>
+        
+      
+        
+        <p>Same as above, but for the target value.</p>
+
+        
+          <div class='highlight'><pre>        <span class="keyword">if</span> targetFirstKey <span class="keyword">is</span> SystemApp.Settings.General.dataBindingKey
+            targetValue = SystemApp.DataUtil.getDataBindingValue targetValue
+        <span class="keyword">else</span> <span class="keyword">if</span> contextValues? <span class="keyword">and</span> targetFirstKey <span class="keyword">is</span> SystemApp.Settings.AuditEvent.contextSpecialKey
+            targetValue = contextValues[targetValue.substring <span class="number">1</span>]</pre></div>
+        
+      
+        
+        <p>Force setting source and target values to float, in case they&#39;re valid numbers.</p>
+
+        
+          <div class='highlight'><pre>        <span class="keyword">if</span> <span class="keyword">not</span> isNaN(sourceValue)
+            sourceValue = parseFloat sourceValue
+        <span class="keyword">if</span> <span class="keyword">not</span> isNaN(targetValue)
+            targetValue = parseFloat targetValue</pre></div>
+        
+      
+        
+        <p>If any value is null, return false.</p>
+
+        
+          <div class='highlight'><pre>        <span class="keyword">if</span> <span class="keyword">not</span> sourceValue? <span class="keyword">or</span> <span class="keyword">not</span> targetValue?
+            <span class="keyword">return</span> <span class="literal">false</span>
+
+        <span class="keyword">switch</span> comparator
+            <span class="keyword">when</span> <span class="string">"&gt;"</span>  <span class="keyword">then</span> <span class="keyword">return</span> sourceValue &gt;  targetValue
+            <span class="keyword">when</span> <span class="string">"&gt;="</span> <span class="keyword">then</span> <span class="keyword">return</span> sourceValue &gt;= targetValue
+            <span class="keyword">when</span> <span class="string">"&lt;"</span>  <span class="keyword">then</span> <span class="keyword">return</span> sourceValue &lt;  targetValue
+            <span class="keyword">when</span> <span class="string">"&lt;="</span> <span class="keyword">then</span> <span class="keyword">return</span> sourceValue &lt;= targetValue
+            <span class="keyword">when</span> <span class="string">"=="</span> <span class="keyword">then</span> <span class="keyword">return</span> sourceValue == targetValue
+            <span class="keyword">when</span> <span class="string">"!="</span> <span class="keyword">then</span> <span class="keyword">return</span> sourceValue != targetValue</pre></div>
+        
+      
+        
+        <p>If the values and/or symbol are incorrect, then always return false.</p>
+
+        
+          <div class='highlight'><pre>        <span class="keyword">return</span> <span class="literal">false</span></pre></div>
+        
+      
+        
+        <h2>EVENT RULE COLLECTION</h2>
+
+        
+      
+        
+        <p>Represents a collection of event rules.</p>
+
+        
+          <div class='highlight'><pre><span class="class"><span class="keyword">class</span> <span class="title">SystemApp</span>.<span class="title">EventRuleCollection</span> <span class="keyword">extends</span> <span class="title">SystemApp</span>.<span class="title">BaseCollection</span></span>
+    typeName: <span class="string">"EventRuleCollection"</span>
+    model: SystemApp.EventRule</pre></div>
+        
+      
+        
+        <p>Set the comparator function to order the alert rules collection by source value.</p>
+
+        
+          <div class='highlight'><pre>    comparator: (rule) -&gt; <span class="keyword">return</span> rule.source()</pre></div>
+        
+      
+      <div class="fleur">h</div>
+    </div>
+  </div>
+</body>
+</html>

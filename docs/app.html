@@ -1,0 +1,1043 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+  <title>app.coffee</title>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <link rel="stylesheet" media="all" href="public/stylesheets/normalize.css" />
+  <link rel="stylesheet" media="all" href="docco.css" />
+</head>
+<body>
+  <div class="container">
+    <div class="page">
+
+      <div class="header">
+        
+          <h1>app.coffee</h1>
+        
+
+        
+          <div class="toc">
+            <h3>Table of Contents</h3>
+            <ol>
+              
+                
+                <li>
+                  <a class="source" href="admin.html">
+                    admin.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="api.auditData.html">
+                    api.auditData.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="api.auditEvent.html">
+                    api.auditEvent.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="api.html">
+                    api.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="api.entity.html">
+                    api.entity.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="api.map.html">
+                    api.map.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="api.server.html">
+                    api.server.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="api.variable.html">
+                    api.variable.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="api.view.html">
+                    api.view.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="app.html">
+                    app.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="app.instance.html">
+                    app.instance.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="data.html">
+                    data.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="dataUtil.html">
+                    dataUtil.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="messages.html">
+                    messages.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="auditData.html">
+                    auditData.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="auditEvent.html">
+                    auditEvent.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="base.html">
+                    base.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="entityDefinition.html">
+                    entityDefinition.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="entityObject.html">
+                    entityObject.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="eventAction.html">
+                    eventAction.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="eventRule.html">
+                    eventRule.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="link.html">
+                    link.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="map.html">
+                    map.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="shape.html">
+                    shape.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="user.html">
+                    user.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="userSettings.html">
+                    userSettings.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="variable.html">
+                    variable.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="adminRoutes.html">
+                    adminRoutes.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="appRoutes.html">
+                    appRoutes.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="settings.html">
+                    settings.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="sockets.html">
+                    sockets.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="tutorial.html">
+                    tutorial.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="vectors.html">
+                    vectors.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="statusTabView.html">
+                    statusTabView.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="toolsTabView.html">
+                    toolsTabView.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="usersTabView.html">
+                    usersTabView.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="adminView.html">
+                    adminView.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="alertView.html">
+                    alertView.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="auditDataManagerView.html">
+                    auditDataManagerView.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="auditEventManagerView.html">
+                    auditEventManagerView.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="baseView.html">
+                    baseView.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="createMapView.html">
+                    createMapView.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="entityManagerView.html">
+                    entityManagerView.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="footerView.html">
+                    footerView.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="helpView.html">
+                    helpView.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="entitiesTabView.html">
+                    entitiesTabView.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="inspectorTabView.html">
+                    inspectorTabView.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="mapTabView.html">
+                    mapTabView.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="shapeTabView.html">
+                    shapeTabView.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="controlsView.html">
+                    controlsView.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="labelEditView.html">
+                    labelEditView.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="linkCreatorView.html">
+                    linkCreatorView.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="linkLabelsView.html">
+                    linkLabelsView.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="linkView.html">
+                    linkView.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="shapeLabelsView.html">
+                    shapeLabelsView.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="shapeView.html">
+                    shapeView.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="shapesMoverView.html">
+                    shapesMoverView.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="mapView.html">
+                    mapView.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="menuView.html">
+                    menuView.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="overlayView.html">
+                    overlayView.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="scriptEditorView.html">
+                    scriptEditorView.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="selfTestView.html">
+                    selfTestView.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="settingsView.html">
+                    settingsView.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="startView.html">
+                    startView.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="variableManagerView.html">
+                    variableManagerView.coffee
+                  </a>
+                </li>
+              
+            </ol>
+          </div>
+        
+      </div>
+
+      
+        
+        <h2>System APP</h2>
+
+        
+      
+        
+        <p>This is the base app controller.</p>
+<p>= require app.instance.coffee</p>
+<h2>LIBS</h2>
+
+        
+      
+        
+        <p>= require lib/jquery.js
+= require lib/jquery.localdata.js
+= require lib/jquery.cookie.js
+= require lib/jquery.joyride.js
+= require lib/jquery.tinycolourpicker.js
+= require lib/jsonpath.js
+= require lib/lodash.js
+= require lib/backbone.js
+= require lib/async.js
+= require lib/raphael.js
+= require lib/raphael.link.js
+= require lib/raphael.group.js
+= require lib/moment.js</p>
+<h2>APP MODULES</h2>
+
+        
+      
+        
+        <p>= require settings.coffee
+= require messages.coffee
+= require vectors.coffee
+= require dataUtil.coffee
+= require routes/appRoutes.coffee</p>
+<h2>APP MODELS</h2>
+
+        
+      
+        
+        <p>= require model/base.coffee
+= require model/entityObject.coffee
+= require model/entityDefinition.coffee
+= require model/shape.coffee
+= require model/link.coffee
+= require model/map.coffee
+= require model/auditData.coffee
+= require model/eventRule.coffee
+= require model/eventAction.coffee
+= require model/auditEvent.coffee
+= require model/variable.coffee
+= require model/user.coffee
+= require model/userSettings.coffee</p>
+<h2>APP DATA, SOCKETS, TUTORIAL</h2>
+
+        
+      
+        
+        <p>= require data.coffee
+= require sockets.coffee
+= require tutorial.coffee</p>
+<h2>MAIN LAYOUT VIEWS</h2>
+
+        
+      
+        
+        <p>= require view/baseView.coffee
+= require view/overlayView.coffee
+= require view/menuView.coffee
+= require view/footerView.coffee
+= require view/alertView.coffee</p>
+<h2>OVERLAY AND MANAGERS VIEWS</h2>
+
+        
+      
+        
+        <p>= require view/overlayView.coffee
+= require view/startView.coffee
+= require view/createMapView.coffee
+= require view/entityManagerView.coffee
+= require view/variableManagerView.coffee
+= require view/auditDataManagerView.coffee
+= require view/auditEventManagerView.coffee
+= require view/settingsView.coffee
+= require view/helpView.coffee
+= require view/scriptEditorView.coffee</p>
+<h2>MAP, MAP CONTROLS AND SHAPES VIEWS</h2>
+
+        
+      
+        
+        <p>= require view/map/labelEditView.coffee
+= require view/map/shapesMoverView.coffee
+= require view/map/shapeLabelsView.coffee
+= require view/map/shapeView.coffee
+= require view/map/linkLabelsView.coffee
+= require view/map/linkView.coffee
+= require view/map/linkCreatorView.coffee
+= require view/map/controls/mapTabView.coffee
+= require view/map/controls/entitiesTabView.coffee
+= require view/map/controls/shapeTabView.coffee
+= require view/map/controls/inspectorTabView.coffee
+= require view/map/controlsView.coffee
+= require view/mapView.coffee</p>
+<h2>PUBLIC API</h2>
+
+        
+      
+        
+        <p>= require api/api.coffee
+= require api/api.entity.coffee
+= require api/api.map.coffee
+= require api/api.auditData.coffee
+= require api/api.auditEvent.coffee
+= require api/api.variable.coffee
+= require api/api.view.coffee
+= require api/api.server.coffee</p>
+<h2>APP VARIABLES</h2>
+
+        
+      
+        
+        <p>The <code>startDate</code> tells when the app was started (page loaded).</p>
+
+        
+          <div class='highlight'><pre>SystemApp.startDate = <span class="keyword">new</span> Date()</pre></div>
+        
+      
+        
+        <h2>ROUTES</h2>
+
+        
+      
+        
+        <p>All routes should be defined inside the <a href="routes.html">Routes</a> file.</p>
+
+        
+          <div class='highlight'><pre>SystemApp.routes = <span class="literal">null</span></pre></div>
+        
+      
+        
+        <h2>EVENT DISPATCHERS</h2>
+
+        
+      
+        
+        <p>Holds Backbone objects to dispatch events on a global scope.
+Trigger events: <code>SystemApp.DISPATCHER.trigger &quot;eventname&quot;, data</code>.
+List to events: <code>SystemApp.DISPATCHER.on &quot;eventname&quot;, method</code>.
+Unbind events <code>SystemApp.DISPATCHER.off &quot;eventname&quot;, method</code>.</p>
+
+        
+          <div class='highlight'><pre>SystemApp.alertEvents = <span class="literal">null</span>
+SystemApp.dataEvents = <span class="literal">null</span>
+SystemApp.mapEvents = <span class="literal">null</span>
+SystemApp.menuEvents = <span class="literal">null</span>
+SystemApp.serverEvents = <span class="literal">null</span></pre></div>
+        
+      
+        
+        <h2>IDLE TIMER</h2>
+
+        
+      
+        
+        <p>This is used to detect fow how long the app has been idle, so it can execute
+idle based actions (for example, refresh the browser every 12 hours).</p>
+
+        
+          <div class='highlight'><pre>SystemApp.idleTime = <span class="number">0</span>
+SystemApp.timerIdleUpdate = <span class="literal">null</span></pre></div>
+        
+      
+        
+        <h2>VIEWS</h2>
+
+        
+      
+        
+        <p>Define all the app views.</p>
+
+        
+          <div class='highlight'><pre>SystemApp.alertView = <span class="literal">null</span>
+SystemApp.auditDataManagerView = <span class="literal">null</span>
+SystemApp.auditEventManagerView = <span class="literal">null</span>
+SystemApp.createMapView = <span class="literal">null</span>
+SystemApp.entityManagerView = <span class="literal">null</span>
+SystemApp.footerView = <span class="literal">null</span>
+SystemApp.helpView = <span class="literal">null</span>
+SystemApp.mapView = <span class="literal">null</span>
+SystemApp.menuView = <span class="literal">null</span>
+SystemApp.settingsView = <span class="literal">null</span>
+SystemApp.scriptEditorView = <span class="literal">null</span>
+SystemApp.startView = <span class="literal">null</span>
+SystemApp.variableManagerView = <span class="literal">null</span></pre></div>
+        
+      
+        
+        <h2>DOM CACHE</h2>
+
+        
+      
+        
+        <p>The &quot;loading&quot; image (DOM) which gets visible whenever the app
+has any major view state change, and the &quot;debug&quot; notice element.</p>
+
+        
+          <div class='highlight'><pre>SystemApp.$loading = <span class="literal">null</span>
+SystemApp.$debug = <span class="literal">null</span></pre></div>
+        
+      
+        
+        <h2>INIT AND DISPOSE</h2>
+
+        
+      
+        
+        <p>Inits the app. First prepare the views, them set the DOM cache,
+load data to the Data object, init the menu and finally init the footer.</p>
+
+        
+          <div class='highlight'><pre>SystemApp.<span class="function"><span class="title">init</span></span> = -&gt;
+    window.onerror = SystemApp.onError</pre></div>
+        
+      
+        
+        <p>Create the Backbone &quot;Routes&quot; object.</p>
+
+        
+          <div class='highlight'><pre>    SystemApp.routes = <span class="keyword">new</span> SystemApp.AppRoutes()</pre></div>
+        
+      
+        
+        <p>Init events and data.</p>
+
+        
+          <div class='highlight'><pre>    SystemApp.setEvents()
+    SystemApp.Data.init()</pre></div>
+        
+      
+        
+        <p>Set views, options via querystrings and idle timer.</p>
+
+        
+          <div class='highlight'><pre>    SystemApp.setDom()
+    SystemApp.setViews()
+    SystemApp.setIdleTimer()</pre></div>
+        
+      
+        
+        <p>Load data collections.</p>
+
+        
+          <div class='highlight'><pre>    SystemApp.Data.fetch()</pre></div>
+        
+      
+        
+        <p>Start the Socket.IO communcations.</p>
+
+        
+          <div class='highlight'><pre>    SystemApp.Sockets.start()</pre></div>
+        
+      
+        
+        <p>Set UI options based on user settings and querystrings.</p>
+
+        
+          <div class='highlight'><pre>    SystemApp.setUiOptions()</pre></div>
+        
+      
+        
+        <p>Init the API, bind it to the &quot;api&quot; variable on the window.</p>
+
+        
+          <div class='highlight'><pre>    SystemApp.Api.init()</pre></div>
+        
+      
+        
+        <p>Set the DOM cache.</p>
+
+        
+          <div class='highlight'><pre>SystemApp.<span class="function"><span class="title">setDom</span></span> = -&gt;
+    SystemApp.$loading = $ <span class="string">"#loading"</span>
+    SystemApp.$debug = $ <span class="string">"#footer-debug"</span></pre></div>
+        
+      
+        
+        <p>Init the menu, footer and settings.</p>
+
+        
+          <div class='highlight'><pre>SystemApp.<span class="function"><span class="title">setViews</span></span> = -&gt;
+    SystemApp.alertView = <span class="keyword">new</span> SystemApp.AlertView()
+    SystemApp.auditDataManagerView = <span class="keyword">new</span> SystemApp.AuditDataManagerView()
+    SystemApp.auditEventManagerView = <span class="keyword">new</span> SystemApp.AuditEventManagerView()
+    SystemApp.createMapView = <span class="keyword">new</span> SystemApp.CreateMapView()
+    SystemApp.entityManagerView = <span class="keyword">new</span> SystemApp.EntityManagerView()
+    SystemApp.footerView = <span class="keyword">new</span> SystemApp.FooterView()
+    SystemApp.helpView = <span class="keyword">new</span> SystemApp.HelpView()
+    SystemApp.mapView = <span class="keyword">new</span> SystemApp.MapView()
+    SystemApp.menuView = <span class="keyword">new</span> SystemApp.MenuView()
+    SystemApp.settingsView = <span class="keyword">new</span> SystemApp.SettingsView()
+    SystemApp.scriptEditorView = <span class="keyword">new</span> SystemApp.ScriptEditorView()
+    SystemApp.startView = <span class="keyword">new</span> SystemApp.StartView()
+    SystemApp.variableManagerView = <span class="keyword">new</span> SystemApp.VariableManagerView()</pre></div>
+        
+      
+        
+        <p>Create event dispatchers. Bind and listen to app events.</p>
+
+        
+          <div class='highlight'><pre>SystemApp.<span class="function"><span class="title">setEvents</span></span> = -&gt;
+    $(document).keydown SystemApp.suppressBackspace
+    $(document).keypress SystemApp.suppressBackspace
+
+    SystemApp.alertEvents = _.clone(Backbone.Events)
+    SystemApp.dataEvents = _.clone(Backbone.Events)
+    SystemApp.mapEvents = _.clone(Backbone.Events)
+    SystemApp.menuEvents = _.clone(Backbone.Events)
+    SystemApp.serverEvents = _.clone(Backbone.Events)
+
+    SystemApp.dataEvents.<span class="literal">on</span> <span class="string">"load"</span>, SystemApp.start</pre></div>
+        
+      
+        
+        <p>Toggle app options based on user settings and passed querystrings.</p>
+
+        
+          <div class='highlight'><pre>SystemApp.<span class="function"><span class="title">setUiOptions</span></span> = -&gt;
+    query = location.href.substring location.href.indexOf <span class="string">"?"</span>
+    qDebug = query.indexOf(<span class="string">"debug="</span>) + <span class="number">6</span>
+    qDebug = query.substring qDebug, qDebug + <span class="number">1</span>
+    qFullscreen = query.indexOf(<span class="string">"fullscreen="</span>) + <span class="number">11</span>
+    qFullscreen = query.substring qFullscreen, qFullscreen + <span class="number">1</span>
+    qMini = (query.indexOf(<span class="string">"mini=1"</span>) &gt; <span class="number">0</span>)
+
+    <span class="keyword">if</span> qDebug <span class="keyword">is</span> <span class="string">"1"</span>
+        SystemApp.toggleDebug <span class="literal">true</span>
+    <span class="keyword">else</span> <span class="keyword">if</span> qDebug <span class="keyword">is</span> <span class="string">"0"</span>
+        SystemApp.toggleDebug <span class="literal">false</span></pre></div>
+        
+      
+        
+        <p>Set fullscreen if <code>fullscreen</code> querystring is set, or if
+the <code>mapFullscreen</code> option is defined on the <a href="userSettings.html">user settings</a>.</p>
+
+        
+          <div class='highlight'><pre>    <span class="keyword">if</span> qFullscreen <span class="keyword">is</span> <span class="string">"1"</span>
+        SystemApp.mapView.controlsView.toggleFullscreen <span class="literal">true</span>
+    <span class="keyword">else</span> <span class="keyword">if</span> qFullscreen <span class="keyword">is</span> <span class="string">"0"</span>
+        SystemApp.mapView.controlsView.toggleFullscreen <span class="literal">false</span>
+    <span class="keyword">else</span> <span class="keyword">if</span> SystemApp.Data.userSettings.mapFullscreen()
+        SystemApp.mapView.controlsView.toggleFullscreen <span class="literal">true</span></pre></div>
+        
+      
+        
+        <p>If <code>mini=1</code>, hide the icon to toggle fullscreen mode and the &quot;online user count&quot;.
+Used on the mini demo site.</p>
+
+        
+          <div class='highlight'><pre>    <span class="keyword">if</span> qMini
+        $(<span class="string">"#top-img-fullscreen"</span>).hide()
+        $(<span class="string">"#footer-online-users"</span>).hide()
+    
+    <span class="keyword">if</span> SystemApp.Data.userSettings.mapZoom() <span class="keyword">isnt</span> <span class="number">1</span>
+        SystemApp.mapView.zoomSet SystemApp.Data.userSettings.mapZoom()</pre></div>
+        
+      
+        
+        <p>Start the app after all major data has been loaded.
+First add a timeout to hide the <code>loading</code> overlay, then start backbone&#39;s history.
+If the hashtag is empty, show the <a href="startView.html">Start View</a> automatically.</p>
+
+        
+          <div class='highlight'><pre>SystemApp.<span class="function"><span class="title">start</span></span> = -&gt;
+    now = <span class="keyword">new</span> Date()
+    console.log <span class="string">"<span class="subst">#{SystemApp.Settings.General.appTitle}</span> START: <span class="subst">#{now}</span>"</span></pre></div>
+        
+      
+        
+        <p>Disabled editing by default.</p>
+
+        
+          <div class='highlight'><pre>    SystemApp.mapEvents.trigger <span class="string">"edit:toggle"</span>, <span class="literal">false</span></pre></div>
+        
+      
+        
+        <p>Start listening to model updates.</p>
+
+        
+          <div class='highlight'><pre>    SystemApp.alertView.listenToModels <span class="literal">true</span>
+    
+    Backbone.history.start()</pre></div>
+        
+      
+        
+        <p>Dispose the app (called when user leaves the page).</p>
+
+        
+          <div class='highlight'><pre>SystemApp.<span class="function"><span class="title">dispose</span></span> = -&gt;
+    SystemApp.Sockets.stop()
+    SystemApp.alertView?.dispose()
+    SystemApp.auditEventManagerView?.dispose()
+    SystemApp.auditDataManagerView?.dispose()
+    SystemApp.createMapView?.dispose()
+    SystemApp.entityManagerView?.dispose()
+    SystemApp.footerView?.dispose()
+    SystemApp.helpView?.dispose()
+    SystemApp.mapView?.dispose()
+    SystemApp.menuView?.dispose()
+    SystemApp.settingsView?.dispose()
+    SystemApp.startView?.dispose()
+    SystemApp.variableManagerView?.dispose()</pre></div>
+        
+      
+        
+        <h2>IDLE TIMER AND ACTIONS</h2>
+
+        
+      
+        
+        <p>Start the idle timer handlers and bind the <code>resetIdleTime</code> to
+the mouse move event on the document.</p>
+
+        
+          <div class='highlight'><pre>SystemApp.<span class="function"><span class="title">setIdleTimer</span></span> = -&gt;
+    SystemApp.timerIdleUpdate = setInterval SystemApp.idleTimerTick, SystemApp.idleTimerInterval
+    $(document).mousemove SystemApp.resetIdleTime</pre></div>
+        
+      
+        
+        <p>Tick the idle timer. This will increase the idleTime value by
+X milliseconds - value defined at the <a href="settings.html">Settings</a>.</p>
+
+        
+          <div class='highlight'><pre>SystemApp.<span class="function"><span class="title">idleTimerTick</span></span> = -&gt;
+    SystemApp.idleTime += SystemApp.idleTimerInterval</pre></div>
+        
+      
+        
+        <p>Check if page needs to be refreshed based on the <code>idleRefreshMinutes</code>
+value on the <a href="settings.html">Settings</a>.</p>
+
+        
+          <div class='highlight'><pre>    idleMinutes = SystemApp.idleTime / <span class="number">60000</span>
+    <span class="keyword">if</span> idleMinutes &gt;= SystemApp.Settings.idleRefreshMinutes
+        SystemApp.routes.refresh()</pre></div>
+        
+      
+        
+        <p>Reset the idle time counter by setting the variable <code>idleTime</code> to 0.</p>
+
+        
+          <div class='highlight'><pre>SystemApp.<span class="function"><span class="title">resetIdleTime</span></span> = -&gt;
+    SystemApp.idleTime = <span class="number">0</span></pre></div>
+        
+      
+        
+        <h2>LOADING ICON METHODS</h2>
+
+        
+      
+        
+        <p>Toggle the loading icon on or off (parameter enabled).
+A fade in/out effect is applied.</p>
+
+        
+          <div class='highlight'><pre>SystemApp.<span class="function"><span class="title">toggleLoading</span></span> = (enabled) -&gt;
+    enabled = <span class="literal">false</span> <span class="keyword">if</span> <span class="keyword">not</span> enabled?
+
+    <span class="keyword">if</span> enabled
+        SystemApp.$loading.fadeIn SystemApp.Settings.General.fadeDelay
+    <span class="keyword">else</span>
+        SystemApp.$loading.fadeOut SystemApp.Settings.General.fadeDelay</pre></div>
+        
+      
+        
+        <h2>HELPERS</h2>
+
+        
+      
+        
+        <p>Enable or disable the <code>debug</code> mode.</p>
+
+        
+          <div class='highlight'><pre>SystemApp.<span class="function"><span class="title">toggleDebug</span></span> = (enabled) -&gt;
+    SystemApp.Settings.General.debug = enabled
+
+    <span class="keyword">if</span> enabled
+        SystemApp.$debug.show()
+    <span class="keyword">else</span>
+        SystemApp.$debug.hide()</pre></div>
+        
+      
+        
+        <p>Prevent accidental use of backspace which could trigger a <code>history.back()</code> on the page.</p>
+
+        
+          <div class='highlight'><pre>SystemApp.<span class="function"><span class="title">suppressBackspace</span></span> = (e) -&gt;
+    <span class="keyword">if</span> e.keyCode <span class="keyword">is</span> <span class="number">8</span> <span class="keyword">and</span> <span class="keyword">not</span> <span class="regexp">/input|textarea/i</span>.test(e.target.nodeName)
+        e.preventDefault()
+        e.stopPropagation()
+        <span class="keyword">return</span> <span class="literal">false</span></pre></div>
+        
+      
+        
+        <h2>DEBUGGING AND ERROR LOGGING</h2>
+
+        
+      
+        
+        <p>Helper method to log to the console, but only if <code>debug</code> is set to true.</p>
+
+        
+          <div class='highlight'><pre>SystemApp.<span class="function"><span class="title">consoleLog</span></span> = (method, message, obj) -&gt;
+    <span class="keyword">if</span> SystemApp.Settings.General.debug
+        <span class="keyword">if</span> obj <span class="keyword">isnt</span> <span class="literal">undefined</span>
+            console.log method, message, obj
+        <span class="keyword">else</span>
+            console.log method, message</pre></div>
+        
+      
+        
+        <p>When an error occurs, log to the browser console and show the error message
+on the footer - <a href="alertView.html">Alert View</a>.</p>
+
+        
+          <div class='highlight'><pre>SystemApp.<span class="function"><span class="title">onError</span></span> = (msg, url, line) -&gt;
+    <span class="keyword">try</span>
+        console.error msg, url, line
+        SystemApp.alertEvents.trigger <span class="string">"footer"</span>, {title: <span class="string">"ERROR!"</span>, message: <span class="string">"<span class="subst">#{msg}</span> (line <span class="subst">#{line}</span>)"</span>, isError: <span class="literal">true</span>}
+    <span class="keyword">catch</span> ex
+        console.error <span class="string">"FATAL ERROR!"</span>, ex
+    <span class="keyword">return</span> <span class="literal">false</span></pre></div>
+        
+      
+        
+        <h2>STARTING</h2>
+
+        
+      
+        
+        
+        
+          <div class='highlight'><pre>$(document).ready -&gt;</pre></div>
+        
+      
+        
+        <p>Init the app.</p>
+
+        
+          <div class='highlight'><pre>    SystemApp.init()</pre></div>
+        
+      
+      <div class="fleur">h</div>
+    </div>
+  </div>
+</body>
+</html>

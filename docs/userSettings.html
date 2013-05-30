@@ -1,0 +1,674 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+  <title>userSettings.coffee</title>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <link rel="stylesheet" media="all" href="public/stylesheets/normalize.css" />
+  <link rel="stylesheet" media="all" href="docco.css" />
+</head>
+<body>
+  <div class="container">
+    <div class="page">
+
+      <div class="header">
+        
+          <h1>userSettings.coffee</h1>
+        
+
+        
+          <div class="toc">
+            <h3>Table of Contents</h3>
+            <ol>
+              
+                
+                <li>
+                  <a class="source" href="admin.html">
+                    admin.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="api.auditData.html">
+                    api.auditData.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="api.auditEvent.html">
+                    api.auditEvent.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="api.html">
+                    api.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="api.entity.html">
+                    api.entity.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="api.map.html">
+                    api.map.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="api.server.html">
+                    api.server.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="api.variable.html">
+                    api.variable.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="api.view.html">
+                    api.view.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="app.html">
+                    app.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="app.instance.html">
+                    app.instance.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="data.html">
+                    data.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="dataUtil.html">
+                    dataUtil.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="messages.html">
+                    messages.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="auditData.html">
+                    auditData.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="auditEvent.html">
+                    auditEvent.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="base.html">
+                    base.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="entityDefinition.html">
+                    entityDefinition.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="entityObject.html">
+                    entityObject.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="eventAction.html">
+                    eventAction.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="eventRule.html">
+                    eventRule.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="link.html">
+                    link.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="map.html">
+                    map.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="shape.html">
+                    shape.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="user.html">
+                    user.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="userSettings.html">
+                    userSettings.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="variable.html">
+                    variable.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="adminRoutes.html">
+                    adminRoutes.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="appRoutes.html">
+                    appRoutes.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="settings.html">
+                    settings.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="sockets.html">
+                    sockets.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="tutorial.html">
+                    tutorial.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="vectors.html">
+                    vectors.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="statusTabView.html">
+                    statusTabView.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="toolsTabView.html">
+                    toolsTabView.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="usersTabView.html">
+                    usersTabView.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="adminView.html">
+                    adminView.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="alertView.html">
+                    alertView.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="auditDataManagerView.html">
+                    auditDataManagerView.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="auditEventManagerView.html">
+                    auditEventManagerView.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="baseView.html">
+                    baseView.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="createMapView.html">
+                    createMapView.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="entityManagerView.html">
+                    entityManagerView.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="footerView.html">
+                    footerView.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="helpView.html">
+                    helpView.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="entitiesTabView.html">
+                    entitiesTabView.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="inspectorTabView.html">
+                    inspectorTabView.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="mapTabView.html">
+                    mapTabView.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="shapeTabView.html">
+                    shapeTabView.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="controlsView.html">
+                    controlsView.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="labelEditView.html">
+                    labelEditView.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="linkCreatorView.html">
+                    linkCreatorView.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="linkLabelsView.html">
+                    linkLabelsView.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="linkView.html">
+                    linkView.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="shapeLabelsView.html">
+                    shapeLabelsView.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="shapeView.html">
+                    shapeView.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="shapesMoverView.html">
+                    shapesMoverView.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="mapView.html">
+                    mapView.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="menuView.html">
+                    menuView.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="overlayView.html">
+                    overlayView.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="scriptEditorView.html">
+                    scriptEditorView.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="selfTestView.html">
+                    selfTestView.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="settingsView.html">
+                    settingsView.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="startView.html">
+                    startView.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="variableManagerView.html">
+                    variableManagerView.coffee
+                  </a>
+                </li>
+              
+            </ol>
+          </div>
+        
+      </div>
+
+      
+        
+        <h2>USER SETTINGS</h2>
+
+        
+      
+        
+        <p>Contains customizable user settings, which are saved on the browser&#39;s
+Local Storage. This model is currently NOT sync&#39;d with MongoDB!</p>
+
+        
+          <div class='highlight'><pre><span class="class"><span class="keyword">class</span> <span class="title">SystemApp</span>.<span class="title">UserSettings</span> <span class="keyword">extends</span> <span class="title">SystemApp</span>.<span class="title">BaseModel</span></span>
+    typeName: <span class="string">"UserSettings"</span>
+    defaults:
+        mapAutoRefresh: <span class="literal">true</span>
+        mapShowBackground: <span class="literal">true</span>
+        mapFullSizeIcons: <span class="literal">false</span>
+        mapShowLinks: <span class="literal">true</span>
+        mapFullscreen: <span class="literal">false</span>
+        mapOverrideShapeTitle: <span class="literal">false</span>
+        mapZoom: <span class="number">1</span>
+        mapLabelRefreshInterval: SystemApp.Settings.Map.labelRefreshInterval
+        modifierDelete: SystemApp.Settings.User.modifierDelete
+        modifierMultiple: SystemApp.Settings.User.modifierMultiple
+        modifierToBack: SystemApp.Settings.User.modifierToBack
+        slowDevice: <span class="literal">false</span></pre></div>
+        
+      
+        
+        <h2>MAP OPTIONS</h2>
+
+        
+      
+        
+        <p>Helper to get / set the &quot;Audit data auto update&quot; map option.</p>
+
+        
+          <div class='highlight'><pre>    mapAutoRefresh: (value) =&gt;
+        <span class="keyword">if</span> value?
+            <span class="property">@set</span> <span class="string">"mapAutoRefresh"</span>, value
+        <span class="property">@get</span> <span class="string">"mapAutoRefresh"</span></pre></div>
+        
+      
+        
+        <p>Helper to get / set the &quot;Show background&quot; map option.</p>
+
+        
+          <div class='highlight'><pre>    mapShowBackground: (value) =&gt;
+        <span class="keyword">if</span> value?
+            <span class="property">@set</span> <span class="string">"mapShowBackground"</span>, value
+        <span class="property">@get</span> <span class="string">"mapShowBackground"</span></pre></div>
+        
+      
+        
+        <p>Helper to get / set the &quot;Full size icons&quot; map option.</p>
+
+        
+          <div class='highlight'><pre>    mapFullSizeIcons: (value) =&gt;
+        <span class="keyword">if</span> value?
+            <span class="property">@set</span> <span class="string">"mapFullSizeIcons"</span>, value
+        <span class="property">@get</span> <span class="string">"mapFullSizeIcons"</span></pre></div>
+        
+      
+        
+        <p>Helper to get / set the &quot;Show links&quot; map option.</p>
+
+        
+          <div class='highlight'><pre>    mapShowLinks: (value) =&gt;
+        <span class="keyword">if</span> value?
+            <span class="property">@set</span> <span class="string">"mapShowLinks"</span>, value
+        <span class="property">@get</span> <span class="string">"mapShowLinks"</span></pre></div>
+        
+      
+        
+        <p>Helper to get / set the &quot;Fullscreen view&quot; map option.</p>
+
+        
+          <div class='highlight'><pre>    mapFullscreen: (value) =&gt;
+        <span class="keyword">if</span> value?
+            <span class="property">@set</span> <span class="string">"mapFullscreen"</span>, value
+        <span class="property">@get</span> <span class="string">"mapFullscreen"</span></pre></div>
+        
+      
+        
+        <p>Helper to get / set the &quot;Shape&#39;s title&quot; map option.</p>
+
+        
+          <div class='highlight'><pre>    mapOverrideShapeTitle: (value) =&gt;
+        <span class="keyword">if</span> value?
+            <span class="property">@set</span> <span class="string">"mapOverrideShapeTitle"</span>, value
+        <span class="property">@get</span> <span class="string">"mapOverrideShapeTitle"</span></pre></div>
+        
+      
+        
+        <p>Helper to get / set the map zoom.</p>
+
+        
+          <div class='highlight'><pre>    mapZoom: (value) =&gt;
+        <span class="keyword">if</span> value?
+            <span class="property">@set</span> <span class="string">"mapZoom"</span>, value
+        <span class="property">@get</span> <span class="string">"mapZoom"</span></pre></div>
+        
+      
+        
+        <p>Helper to get / set the &quot;Map labels refresh interval&quot;.</p>
+
+        
+          <div class='highlight'><pre>    mapLabelRefreshInterval: (value) =&gt;
+        <span class="keyword">if</span> value?
+            <span class="property">@set</span> <span class="string">"mapLabelRefreshInterval"</span>, value
+        <span class="property">@get</span> <span class="string">"mapLabelRefreshInterval"</span></pre></div>
+        
+      
+        
+        <h2>MODIFIER KEYS</h2>
+
+        
+      
+        
+        <p>TODO! After refactoring the settings UI, enable user defined modifiers again.</p>
+<p>Helper to get / set the &quot;Delete&quot; modifier combination keys. Default is &quot;Ctrl + Left Click&quot;.</p>
+
+        
+          <div class='highlight'><pre>    modifierDelete: (value) =&gt;
+        <span class="keyword">if</span> value?
+            <span class="property">@set</span> <span class="string">"modifierDelete"</span>, value
+        <span class="keyword">return</span> SystemApp.Settings.User.modifierDelete
+        <span class="property">@get</span> <span class="string">"modifierDelete"</span></pre></div>
+        
+      
+        
+        <p>Helper to get / set the &quot;Multiple&quot; modifier combination keys. Default is &quot;Shift&quot;.</p>
+
+        
+          <div class='highlight'><pre>    modifierMultiple: (value) =&gt;
+        <span class="keyword">if</span> value?
+            <span class="property">@set</span> <span class="string">"modifierMultiple"</span>, value
+        <span class="keyword">return</span> SystemApp.Settings.User.modifierMultiple
+        <span class="property">@get</span> <span class="string">"modifierMultiple"</span></pre></div>
+        
+      
+        
+        <p>OBSOLETE!!! Helper to get / set the &quot;To Back&quot; modifier combination keys.</p>
+
+        
+          <div class='highlight'><pre>    modifierToBack: (value) =&gt;
+        <span class="keyword">if</span> value?
+            <span class="property">@set</span> <span class="string">"modifierToBack"</span>, value
+        <span class="keyword">return</span> SystemApp.Settings.User.modifierToBack
+        <span class="property">@get</span> <span class="string">"modifierToBack"</span></pre></div>
+        
+      
+        
+        <h2>OTHER OPTIONS</h2>
+
+        
+      
+        
+        <p>Helper to get / set the slowDevice setting - will be true on slow devices.</p>
+
+        
+          <div class='highlight'><pre>    slowDevice: (value) =&gt;
+        <span class="keyword">if</span> value?
+            <span class="property">@set</span> <span class="string">"slowDevice"</span>, value
+        <span class="property">@get</span> <span class="string">"slowDevice"</span></pre></div>
+        
+      
+        
+        <h2>OVERRIDE SYNC</h2>
+
+        
+      
+        
+        <p>Override the <code>fetch</code> method. We don&#39;t need to sync user settings with the server.</p>
+
+        
+          <div class='highlight'><pre>    fetch: (options) =&gt; <span class="property">@fetchLocal</span>()</pre></div>
+        
+      
+        
+        <p>Override the <code>save</code> method. We don&#39;t need to sync user settings with the server.</p>
+
+        
+          <div class='highlight'><pre>    save: (options) =&gt; <span class="property">@saveLocal</span>()</pre></div>
+        
+      
+      <div class="fleur">h</div>
+    </div>
+  </div>
+</body>
+</html>

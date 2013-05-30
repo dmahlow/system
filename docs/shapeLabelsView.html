@@ -1,0 +1,1369 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+  <title>shapeLabelsView.coffee</title>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <link rel="stylesheet" media="all" href="public/stylesheets/normalize.css" />
+  <link rel="stylesheet" media="all" href="docco.css" />
+</head>
+<body>
+  <div class="container">
+    <div class="page">
+
+      <div class="header">
+        
+          <h1>shapeLabelsView.coffee</h1>
+        
+
+        
+          <div class="toc">
+            <h3>Table of Contents</h3>
+            <ol>
+              
+                
+                <li>
+                  <a class="source" href="admin.html">
+                    admin.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="api.auditData.html">
+                    api.auditData.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="api.auditEvent.html">
+                    api.auditEvent.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="api.html">
+                    api.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="api.entity.html">
+                    api.entity.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="api.map.html">
+                    api.map.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="api.server.html">
+                    api.server.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="api.variable.html">
+                    api.variable.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="api.view.html">
+                    api.view.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="app.html">
+                    app.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="app.instance.html">
+                    app.instance.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="data.html">
+                    data.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="dataUtil.html">
+                    dataUtil.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="messages.html">
+                    messages.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="auditData.html">
+                    auditData.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="auditEvent.html">
+                    auditEvent.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="base.html">
+                    base.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="entityDefinition.html">
+                    entityDefinition.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="entityObject.html">
+                    entityObject.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="eventAction.html">
+                    eventAction.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="eventRule.html">
+                    eventRule.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="link.html">
+                    link.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="map.html">
+                    map.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="shape.html">
+                    shape.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="user.html">
+                    user.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="userSettings.html">
+                    userSettings.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="variable.html">
+                    variable.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="adminRoutes.html">
+                    adminRoutes.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="appRoutes.html">
+                    appRoutes.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="settings.html">
+                    settings.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="sockets.html">
+                    sockets.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="tutorial.html">
+                    tutorial.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="vectors.html">
+                    vectors.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="statusTabView.html">
+                    statusTabView.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="toolsTabView.html">
+                    toolsTabView.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="usersTabView.html">
+                    usersTabView.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="adminView.html">
+                    adminView.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="alertView.html">
+                    alertView.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="auditDataManagerView.html">
+                    auditDataManagerView.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="auditEventManagerView.html">
+                    auditEventManagerView.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="baseView.html">
+                    baseView.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="createMapView.html">
+                    createMapView.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="entityManagerView.html">
+                    entityManagerView.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="footerView.html">
+                    footerView.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="helpView.html">
+                    helpView.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="entitiesTabView.html">
+                    entitiesTabView.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="inspectorTabView.html">
+                    inspectorTabView.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="mapTabView.html">
+                    mapTabView.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="shapeTabView.html">
+                    shapeTabView.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="controlsView.html">
+                    controlsView.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="labelEditView.html">
+                    labelEditView.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="linkCreatorView.html">
+                    linkCreatorView.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="linkLabelsView.html">
+                    linkLabelsView.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="linkView.html">
+                    linkView.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="shapeLabelsView.html">
+                    shapeLabelsView.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="shapeView.html">
+                    shapeView.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="shapesMoverView.html">
+                    shapesMoverView.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="mapView.html">
+                    mapView.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="menuView.html">
+                    menuView.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="overlayView.html">
+                    overlayView.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="scriptEditorView.html">
+                    scriptEditorView.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="selfTestView.html">
+                    selfTestView.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="settingsView.html">
+                    settingsView.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="startView.html">
+                    startView.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="variableManagerView.html">
+                    variableManagerView.coffee
+                  </a>
+                </li>
+              
+            </ol>
+          </div>
+        
+      </div>
+
+      
+        
+        <h2>SHAPE LABELS VIEW</h2>
+
+        
+      
+        
+        <p>Represents all editable / dynamic labels available on a <a href="shapeView.html">Shape View</a>.
+Each shape can have only one MapShapeLabelsView, but each MapShapeLabelsView can have up
+to 5 editable labels (left, top, right, bottom, center).</p>
+
+        
+          <div class='highlight'><pre><span class="class"><span class="keyword">class</span> <span class="title">SystemApp</span>.<span class="title">MapShapeLabelsView</span> <span class="keyword">extends</span> <span class="title">SystemApp</span>.<span class="title">BaseView</span></span>
+
+    visible: <span class="literal">true</span>                       <span class="comment"># cached variable to check if labels are visible or hidden</span>
+    currentEditingPosition: <span class="literal">null</span>        <span class="comment"># holds the position which is being currently edited by the user</span></pre></div>
+        
+      
+        
+        <p>(Title, Center, Left. Top, Right, Bottom)</p>
+
+        
+          <div class='highlight'><pre>    labelEditView: <span class="literal">null</span>                 <span class="comment"># holds a [Label Edit View](labelEditView.html), used to change label values</span>
+    svgTitle: <span class="literal">null</span>                      <span class="comment"># the title svg editable label element</span>
+    svgCenter: <span class="literal">null</span>                     <span class="comment"># the central svg editable label element</span>
+    svgLeft: <span class="literal">null</span>                       <span class="comment"># the left svg editable label element</span>
+    svgTop: <span class="literal">null</span>                        <span class="comment"># the top editable label element</span>
+    svgRight: <span class="literal">null</span>                      <span class="comment"># the right svg editable label element</span>
+    svgBottom: <span class="literal">null</span>                     <span class="comment"># the bottom svg editable label element</span>
+    svgIconTitle: <span class="literal">null</span>                  <span class="comment"># the title svg label icon element</span>
+    svgIconCenter: <span class="literal">null</span>                 <span class="comment"># the central svg label icon element</span>
+    svgIconLeft: <span class="literal">null</span>                   <span class="comment"># the left svg label icon element</span>
+    svgIconTop: <span class="literal">null</span>                    <span class="comment"># the top label icon element</span>
+    svgIconRight: <span class="literal">null</span>                  <span class="comment"># the right svg label icon element</span>
+    svgIconBottom: <span class="literal">null</span>                 <span class="comment"># the bottom svg label icon element</span>
+    currentTextTitle: <span class="literal">null</span>              <span class="comment"># holds the current text of the title, used for performance opts</span>
+    currentTextCenter: <span class="literal">null</span>              <span class="comment"># holds the current text of the center label, used for performance opts</span>
+    currentTextLeft: <span class="literal">null</span>               <span class="comment"># holds the current text of the left label, used for performance opts</span>
+    currentTextTop: <span class="literal">null</span>                <span class="comment"># holds the current text of the top label, used for performance opts</span>
+    currentTextRight: <span class="literal">null</span>              <span class="comment"># holds the current text of the right label, used for performance opts</span>
+    currentTextBottom: <span class="literal">null</span>             <span class="comment"># holds the current text of the bottom label, used for performance opts</span>
+    activeAuditEvents: <span class="literal">null</span>             <span class="comment"># object containing all (if any!) [Audit Events](auditEvent.html)</span></pre></div>
+        
+      
+        
+        <p>which triggered actions on the <a href="shapeView.html">Shape View</a></p>
+<h2>INIT AND DISPOSE</h2>
+
+        
+      
+        
+        <p>Init the label edit view and set its parent view.</p>
+
+        
+          <div class='highlight'><pre>    initialize: =&gt;
+        <span class="property">@baseInit</span>()
+        <span class="property">@setEvents</span>()
+        <span class="property">@activeAuditEvents</span> = {}</pre></div>
+        
+      
+        
+        <p>Base dispose for all shapes.</p>
+
+        
+          <div class='highlight'><pre>    dispose: =&gt;
+        <span class="property">@svgTitle</span>?.remove()
+        <span class="property">@svgCenter</span>?.remove()
+        <span class="property">@svgLeft</span>?.remove()
+        <span class="property">@svgTop</span>?.remove()
+        <span class="property">@svgRight</span>?.remove()
+        <span class="property">@svgBottom</span>?.remove()
+        <span class="property">@svgIconTitle</span>?.remove()
+        <span class="property">@svgIconCenter</span>?.remove()
+        <span class="property">@svgIconLeft</span>?.remove()
+        <span class="property">@svgIconTop</span>?.remove()
+        <span class="property">@svgIconRight</span>?.remove()
+        <span class="property">@svgIconBottom</span>?.remove()
+        <span class="property">@labelEditView</span>?.dispose()</pre></div>
+        
+      
+        
+        <p>Set all SVG elements to null.</p>
+
+        
+          <div class='highlight'><pre>        <span class="property">@svgTitle</span> = <span class="literal">null</span>
+        <span class="property">@svgCenter</span> = <span class="literal">null</span>
+        <span class="property">@svgLeft</span> = <span class="literal">null</span>
+        <span class="property">@svgTop</span> = <span class="literal">null</span>
+        <span class="property">@svgRight</span> = <span class="literal">null</span>
+        <span class="property">@svgBottom</span> = <span class="literal">null</span>
+        <span class="property">@svgIconTitle</span> = <span class="literal">null</span>
+        <span class="property">@svgIconCenter</span> = <span class="literal">null</span>
+        <span class="property">@svgIconLeft</span> = <span class="literal">null</span>
+        <span class="property">@svgIconTop</span> = <span class="literal">null</span>
+        <span class="property">@svgIconRight</span> = <span class="literal">null</span>
+        <span class="property">@svgIconBottom</span> = <span class="literal">null</span>
+        <span class="property">@labelEditView</span> = <span class="literal">null</span>
+        <span class="property">@activeAuditEvents</span> = <span class="literal">null</span>
+        <span class="property">@mapView</span> = <span class="literal">null</span>
+
+        <span class="property">@baseDispose</span>()</pre></div>
+        
+      
+        
+        <p>Bind event listeners to the view.</p>
+
+        
+          <div class='highlight'><pre>    setEvents: =&gt;
+        <span class="property">@listenTo</span> SystemApp.mapEvents, <span class="string">"edit:toggle"</span>, <span class="property">@toggleEdit</span>
+        <span class="property">@listenTo</span> SystemApp.mapEvents, <span class="string">"zoom:set"</span>, <span class="property">@onZoom</span>
+
+        <span class="property">@listenTo</span> <span class="property">@model</span>, <span class="string">"change:titleForeground"</span>, <span class="property">@setTitleForeground</span>
+        <span class="property">@listenTo</span> <span class="property">@model</span>, <span class="string">"change:foreground"</span>, <span class="property">@setAllForeground</span>
+        <span class="property">@listenTo</span> <span class="property">@model</span>, <span class="string">"change:fontSize"</span>, <span class="property">@setAllFontSizes</span>
+        <span class="property">@listenTo</span> <span class="property">@model</span>, <span class="string">"change:textTitle"</span>, =&gt; <span class="property">@render</span> <span class="literal">null</span>, <span class="string">"Title"</span>
+        <span class="property">@listenTo</span> <span class="property">@model</span>, <span class="string">"change:textCenter"</span>, =&gt; <span class="property">@render</span> <span class="literal">null</span>, <span class="string">"Center"</span>
+        <span class="property">@listenTo</span> <span class="property">@model</span>, <span class="string">"change:textLeft"</span>, =&gt; <span class="property">@render</span> <span class="literal">null</span>, <span class="string">"Left"</span>
+        <span class="property">@listenTo</span> <span class="property">@model</span>, <span class="string">"change:textTop"</span>, =&gt; <span class="property">@render</span> <span class="literal">null</span>, <span class="string">"Top"</span>
+        <span class="property">@listenTo</span> <span class="property">@model</span>, <span class="string">"change:textRight"</span>, =&gt; <span class="property">@render</span> <span class="literal">null</span>, <span class="string">"Right"</span>
+        <span class="property">@listenTo</span> <span class="property">@model</span>, <span class="string">"change:textBottom"</span>, =&gt; <span class="property">@render</span> <span class="literal">null</span>, <span class="string">"Bottom"</span></pre></div>
+        
+      
+        
+        <h2>HELPER PROPERTIES</h2>
+
+        
+      
+        
+        <p>Return an array with all the SVG elements (labels and icons).</p>
+
+        
+          <div class='highlight'><pre>    svgs: =&gt;
+        <span class="keyword">return</span> [<span class="property">@svgTitle</span>, <span class="property">@svgCenter</span>, <span class="property">@svgLeft</span>, <span class="property">@svgTop</span>, <span class="property">@svgRight</span>, <span class="property">@svgBottom</span>,
+                <span class="property">@svgIconTitle</span>, <span class="property">@svgIconCenter</span>, <span class="property">@svgIconLeft</span>, <span class="property">@svgIconTop</span>, <span class="property">@svgIconRight</span>, <span class="property">@svgIconBottom</span>]</pre></div>
+        
+      
+        
+        <p>Return an array with label SVG elements.</p>
+
+        
+          <div class='highlight'><pre>    svgsLabels: =&gt;
+        <span class="keyword">return</span> [<span class="property">@svgTitle</span>, <span class="property">@svgCenter</span>, <span class="property">@svgLeft</span>, <span class="property">@svgTop</span>, <span class="property">@svgRight</span>, <span class="property">@svgBottom</span>]</pre></div>
+        
+      
+        
+        <p>Return an array with icon SVG elements.</p>
+
+        
+          <div class='highlight'><pre>    svgsIcons: =&gt;
+        <span class="keyword">return</span> [<span class="property">@svgIconTitle</span>, <span class="property">@svgIconCenter</span>, <span class="property">@svgIconLeft</span>, <span class="property">@svgIconTop</span>, <span class="property">@svgIconRight</span>, <span class="property">@svgIconBottom</span>]</pre></div>
+        
+      
+        
+        <p>Get the shape title value. This will check if the <a href="mapView.html">map view</a> has any
+value set for <code>overrideShapeTitle</code>. If it doesn&#39;t, use the default value set on
+the model&#39;s <code>textTitle</code>.</p>
+
+        
+          <div class='highlight'><pre>    getTitleValue: =&gt;
+        <span class="keyword">if</span> <span class="property">@mapView</span>.overrideShapeTitle? <span class="keyword">and</span> <span class="property">@mapView</span>.overrideShapeTitle <span class="keyword">isnt</span> <span class="string">""</span>
+            <span class="keyword">return</span> <span class="property">@mapView</span>.overrideShapeTitle
+        <span class="keyword">else</span>
+            <span class="keyword">return</span> <span class="property">@model</span>.textTitle()</pre></div>
+        
+      
+        
+        <h2>RENDER AND POSITIONING</h2>
+
+        
+      
+        
+        <p>Render all label SVG elements on the map.</p>
+
+        
+          <div class='highlight'><pre>    render: (parent, location) =&gt;
+        <span class="keyword">if</span> parent?
+            <span class="property">@parentView</span> = parent
+            <span class="property">@mapView</span> = parent.parentView
+
+        <span class="keyword">if</span> <span class="keyword">not</span> location?
+            renderAll = <span class="literal">true</span>
+        <span class="keyword">else</span>
+            renderAll = <span class="literal">false</span></pre></div>
+        
+      
+        
+        <p>Title might have its value overriden by the selected &quot;Shape&#39;s title&quot; on the map controls.</p>
+
+        
+          <div class='highlight'><pre>        <span class="keyword">if</span> renderAll <span class="keyword">or</span> location <span class="keyword">is</span> <span class="string">"Title"</span>
+            title = <span class="property">@renderLabel</span> <span class="property">@getTitleValue</span>(), <span class="property">@svgTitle</span>, <span class="property">@svgIconTitle</span>, <span class="string">"Title"</span>
+            <span class="property">@svgTitle</span> = title[<span class="number">0</span>]
+            <span class="property">@svgIconTitle</span> = title[<span class="number">1</span>]
+
+        <span class="keyword">if</span> renderAll <span class="keyword">or</span> location <span class="keyword">is</span> <span class="string">"Center"</span>
+            center = <span class="property">@renderLabel</span> <span class="property">@model</span>.textCenter(), <span class="property">@svgCenter</span>, <span class="property">@svgIconCenter</span>, <span class="string">"Center"</span>
+            <span class="property">@svgCenter</span> = center[<span class="number">0</span>]
+            <span class="property">@svgIconCenter</span> = center[<span class="number">1</span>]
+
+        <span class="keyword">if</span> renderAll <span class="keyword">or</span> location <span class="keyword">is</span> <span class="string">"Left"</span>
+            left = <span class="property">@renderLabel</span> <span class="property">@model</span>.textLeft(), <span class="property">@svgLeft</span>, <span class="property">@svgIconLeft</span>, <span class="string">"Left"</span>
+            <span class="property">@svgLeft</span> = left[<span class="number">0</span>]
+            <span class="property">@svgIconLeft</span> = left[<span class="number">1</span>]
+
+        <span class="keyword">if</span> renderAll <span class="keyword">or</span> location <span class="keyword">is</span> <span class="string">"Top"</span>
+            top = <span class="property">@renderLabel</span> <span class="property">@model</span>.textTop(), <span class="property">@svgTop</span>, <span class="property">@svgIconTop</span>, <span class="string">"Top"</span>
+            <span class="property">@svgTop</span> = top[<span class="number">0</span>]
+            <span class="property">@svgIconTop</span> = top[<span class="number">1</span>]
+
+        <span class="keyword">if</span> renderAll <span class="keyword">or</span> location <span class="keyword">is</span> <span class="string">"Right"</span>
+            right = <span class="property">@renderLabel</span> <span class="property">@model</span>.textRight(), <span class="property">@svgRight</span>, <span class="property">@svgIconRight</span>, <span class="string">"Right"</span>
+            <span class="property">@svgRight</span> = right[<span class="number">0</span>]
+            <span class="property">@svgIconRight</span> = right[<span class="number">1</span>]
+
+        <span class="keyword">if</span> renderAll <span class="keyword">or</span> location <span class="keyword">is</span> <span class="string">"Bottom"</span>
+            bottom = <span class="property">@renderLabel</span> <span class="property">@model</span>.textBottom(), <span class="property">@svgBottom</span>, <span class="property">@svgIconBottom</span>, <span class="string">"Bottom"</span>
+            <span class="property">@svgBottom</span> = bottom[<span class="number">0</span>]
+            <span class="property">@svgIconBottom</span> = bottom[<span class="number">1</span>]
+
+        <span class="property">@toggleEdit</span> <span class="property">@mapView</span>.editEnabled
+        <span class="property">@setPosition</span> location
+
+        <span class="keyword">return</span> <span class="keyword">this</span></pre></div>
+        
+      
+        
+        <p>Render a single label, passing a value, the target label SVG, and the overlay SVG
+in case the value is empty. The location tells the location of the label related
+to its parent <a href="shapeView.html">Shape View</a>.</p>
+
+        
+          <div class='highlight'><pre>    renderLabel: (value, svg, iconSvg, location) =&gt;
+        x = <span class="number">0</span>
+        y = <span class="number">0</span>
+        text = value
+        iconSize = SystemApp.Settings.Map.icoActionsSize</pre></div>
+        
+      
+        
+        <p>If there&#39;s a label present already, copy its current location and text
+before recreating it on a new label.</p>
+
+        
+          <div class='highlight'><pre>        <span class="keyword">if</span> svg?
+            x = svg.attr <span class="string">"x"</span>
+            y = svg.attr <span class="string">"y"</span>
+            text = svg.attr <span class="string">"text"</span></pre></div>
+        
+      
+        
+        <p>If there&#39;s an icon present already, copy its current position
+before recreating it on a new icon.</p>
+
+        
+          <div class='highlight'><pre>        <span class="keyword">else</span> <span class="keyword">if</span> iconSvg?
+            x = iconSvg.attr <span class="string">"x"</span>
+            y = iconSvg.attr <span class="string">"y"</span></pre></div>
+        
+      
+        
+        <p>If value is a text or object, update it.</p>
+
+        
+          <div class='highlight'><pre>        <span class="keyword">if</span> value? <span class="keyword">and</span> value <span class="keyword">isnt</span> <span class="string">""</span></pre></div>
+        
+      
+        
+        <p>Remove icon SVG, if there&#39;s one.</p>
+
+        
+          <div class='highlight'><pre>            <span class="keyword">if</span> iconSvg?
+                iconSvg.unclick()
+                iconSvg.unmouseover()
+                iconSvg.unmouseout()
+                iconSvg.removeData()
+                iconSvg.remove()
+                iconSvg = <span class="literal">null</span>
+
+            <span class="keyword">if</span> location <span class="keyword">is</span> <span class="string">"Title"</span>
+                foreground = <span class="property">@model</span>.titleForeground()
+            <span class="keyword">else</span>
+                foreground = <span class="property">@model</span>.foreground()
+
+            <span class="keyword">if</span> location <span class="keyword">is</span> <span class="string">"Left"</span>
+                textAnchor = <span class="string">"start"</span>
+            <span class="keyword">else</span> <span class="keyword">if</span> location <span class="keyword">is</span> <span class="string">"Right"</span>
+                textAnchor = <span class="string">"end"</span>
+            <span class="keyword">else</span>
+                textAnchor = <span class="string">"middle"</span></pre></div>
+        
+      
+        
+        <p>Create label SVG if not existing yet.</p>
+
+        
+          <div class='highlight'><pre>            <span class="keyword">if</span> <span class="keyword">not</span> svg?
+                svg = <span class="property">@mapView</span>.paper.text <span class="number">0</span>, <span class="number">0</span>, text</pre></div>
+        
+      
+        
+        <p>Update label SVG attributes.</p>
+
+        
+          <div class='highlight'><pre>            svg.attr {<span class="string">"x"</span>: x, <span class="string">"y"</span>: y, <span class="string">"fill"</span>: foreground, <span class="string">"font-size"</span>: <span class="property">@model</span>.fontSize()}
+            svg.attr {<span class="string">"cursor"</span>: <span class="string">"pointer"</span>, <span class="string">"text-anchor"</span>: textAnchor}
+            svg.click <span class="property">@click</span>
+
+            $(svg.node).data <span class="string">"labelPosition"</span>, location
+            <span class="property">@parentView</span>.bindSvgDefaults svg
+
+        <span class="keyword">else</span></pre></div>
+        
+      
+        
+        <p>Remove label SVG, if there&#39;s one.</p>
+
+        
+          <div class='highlight'><pre>            <span class="keyword">if</span> svg?
+                svg.unclick()
+                svg.removeData()
+                svg.remove()
+                svg = <span class="literal">null</span></pre></div>
+        
+      
+        
+        <p>Create icon SVG if not existing yet.</p>
+
+        
+          <div class='highlight'><pre>            <span class="keyword">if</span> <span class="keyword">not</span> iconSvg?
+                iconSvg = <span class="property">@mapView</span>.paper.image SystemApp.Settings.Map.icoAddLabelUrl, <span class="number">0</span>, <span class="number">0</span>, iconSize, iconSize</pre></div>
+        
+      
+        
+        <p>Update icon SVG attributes.</p>
+
+        
+          <div class='highlight'><pre>            iconSvg.attr {<span class="string">"x"</span>: x, <span class="string">"y"</span>: y, cursor: <span class="string">"pointer"</span>, opacity: SystemApp.Settings.Map.icoActionsOpacity}
+            iconSvg.click <span class="property">@click</span>
+            iconSvg.mouseover <span class="property">@iconMouseOver</span>
+            iconSvg.mouseout <span class="property">@iconMouseOut</span>
+
+            $(iconSvg.node).data <span class="string">"labelPosition"</span>, location
+            <span class="property">@parentView</span>.bindSvgDefaults iconSvg
+
+        <span class="keyword">return</span> [svg, iconSvg]</pre></div>
+        
+      
+        
+        <p>Show the shape labels and icons.</p>
+
+        
+          <div class='highlight'><pre>    show: =&gt;
+        <span class="property">@visible</span> = <span class="literal">true</span></pre></div>
+        
+      
+        
+        <p>Set opacity 1 on all labels.</p>
+
+        
+          <div class='highlight'><pre>        opacity = {<span class="string">"opacity"</span>: <span class="number">1</span>}
+        svgs = <span class="property">@svgsLabels</span>()
+        s?.animate(opacity, SystemApp.Settings.Map.blinkInterval) <span class="keyword">for</span> s <span class="keyword">in</span> svgs</pre></div>
+        
+      
+        
+        <p>Set the opacity defined on the <a href="settings.html">Settings</a>, on all add label icons.</p>
+
+        
+          <div class='highlight'><pre>        opacity = {<span class="string">"opacity"</span>: SystemApp.Settings.Map.icoActionsOpacity}
+        svgs = <span class="property">@svgsIcons</span>()
+        s?.animate(opacity, SystemApp.Settings.Map.blinkInterval) <span class="keyword">for</span> s <span class="keyword">in</span> svgs</pre></div>
+        
+      
+        
+        <p>Hide the shape labels and icons.</p>
+
+        
+          <div class='highlight'><pre>    hide: =&gt;
+        <span class="property">@visible</span> = <span class="literal">false</span>
+        <span class="property">@currentEditingPosition</span> = <span class="literal">null</span>
+
+        opacity = {<span class="string">"opacity"</span>: <span class="number">0</span>}
+        svgs = <span class="property">@svgs</span>()
+        s?.animate(opacity, SystemApp.Settings.Map.blinkInterval) <span class="keyword">for</span> s <span class="keyword">in</span> svgs</pre></div>
+        
+      
+        
+        <p>Hide only the icons (where no label text has been defined).</p>
+
+        
+          <div class='highlight'><pre>    hideIcons: =&gt;
+        opacity = {<span class="string">"opacity"</span>: <span class="number">0</span>}
+        svgs = <span class="property">@svgsIcons</span>()
+        s?.animate(opacity, SystemApp.Settings.Map.blinkInterval) <span class="keyword">for</span> s <span class="keyword">in</span> svgs</pre></div>
+        
+      
+        
+        <p>Set the label positions on the map, based on the specified left <code>posX</code>
+and top <code>posY</code> parameters. Please note that if the labels are not visible
+then this method will stop immediately.</p>
+
+        
+          <div class='highlight'><pre>    setPosition: (location) =&gt;
+        <span class="keyword">return</span> <span class="keyword">if</span> <span class="keyword">not</span> <span class="property">@visible</span>
+
+        posX = <span class="property">@parentView</span>.x()
+        posY = <span class="property">@parentView</span>.y()
+
+        parentWidth = <span class="property">@parentView</span>.width()
+        parentHeight = <span class="property">@parentView</span>.height()
+        iconSize = SystemApp.Settings.Map.icoActionsSize
+        iconHalfSize = iconSize / <span class="number">2</span>
+        border = <span class="property">@model</span>.strokeWidth() + SystemApp.Settings.Map.labelPadding</pre></div>
+        
+      
+        
+        <p>Set title position.</p>
+
+        
+          <div class='highlight'><pre>        <span class="keyword">if</span> <span class="keyword">not</span> location? <span class="keyword">or</span> location <span class="keyword">is</span> <span class="string">"Title"</span>
+            title = {<span class="string">"x"</span>: posX + parentWidth / <span class="number">2</span>, <span class="string">"y"</span>: posY - iconHalfSize}
+            <span class="property">@svgTitle</span>?.attr title
+            title.x -= iconHalfSize
+            title.y -= iconHalfSize
+            <span class="property">@svgIconTitle</span>?.attr title</pre></div>
+        
+      
+        
+        <p>Set center position.</p>
+
+        
+          <div class='highlight'><pre>        <span class="keyword">if</span> <span class="keyword">not</span> location? <span class="keyword">or</span> location <span class="keyword">is</span> <span class="string">"Center"</span>
+            center = {<span class="string">"x"</span>: posX + parentWidth / <span class="number">2</span>, <span class="string">"y"</span>: posY + parentHeight / <span class="number">2</span>}
+            <span class="property">@svgCenter</span>?.attr center
+            center.x -= iconHalfSize
+            center.y -= iconHalfSize
+            <span class="property">@svgIconCenter</span>?.attr center</pre></div>
+        
+      
+        
+        <p>Set left position.</p>
+
+        
+          <div class='highlight'><pre>        <span class="keyword">if</span> <span class="keyword">not</span> location? <span class="keyword">or</span> location <span class="keyword">is</span> <span class="string">"Left"</span>
+            left = {<span class="string">"x"</span>: posX + border + <span class="number">2</span>, <span class="string">"y"</span>: posY + parentHeight / <span class="number">2</span>}
+            <span class="property">@svgLeft</span>?.attr left
+            left.y -= iconHalfSize
+            <span class="property">@svgIconLeft</span>?.attr left</pre></div>
+        
+      
+        
+        <p>Set top position.</p>
+
+        
+          <div class='highlight'><pre>        <span class="keyword">if</span> <span class="keyword">not</span> location? <span class="keyword">or</span> location <span class="keyword">is</span> <span class="string">"Top"</span>
+            top = {<span class="string">"x"</span>: posX + parentWidth / <span class="number">2</span>, <span class="string">"y"</span>: posY + iconHalfSize + border}
+            <span class="property">@svgTop</span>?.attr top
+            top.x -= iconHalfSize
+            top.y -= iconHalfSize
+            <span class="property">@svgIconTop</span>?.attr top</pre></div>
+        
+      
+        
+        <p>Set right position.</p>
+
+        
+          <div class='highlight'><pre>        <span class="keyword">if</span> <span class="keyword">not</span> location? <span class="keyword">or</span> location <span class="keyword">is</span> <span class="string">"Right"</span>
+            right = {<span class="string">"x"</span>: posX + parentWidth - border - <span class="number">2</span>, <span class="string">"y"</span>: posY + parentHeight / <span class="number">2</span>}
+            <span class="property">@svgRight</span>?.attr right
+            right.x -= iconSize
+            right.y -= iconHalfSize
+            <span class="property">@svgIconRight</span>?.attr right</pre></div>
+        
+      
+        
+        <p>Set bottom position.</p>
+
+        
+          <div class='highlight'><pre>        <span class="keyword">if</span> <span class="keyword">not</span> location? <span class="keyword">or</span> location <span class="keyword">is</span> <span class="string">"Bottom"</span>
+            bottom = {<span class="string">"x"</span>: posX + parentWidth / <span class="number">2</span>, <span class="string">"y"</span>: posY + parentHeight - iconHalfSize - border}
+            <span class="property">@svgBottom</span>?.attr bottom
+            bottom.x -= iconHalfSize
+            bottom.y -= iconHalfSize
+            <span class="property">@svgIconBottom</span>?.attr bottom</pre></div>
+        
+      
+        
+        <p>Bring the labels to the front of the map. Usually called after changing
+the selected shape on the current <a href="mapView.html">Map View</a>.</p>
+
+        
+          <div class='highlight'><pre>    toFront: =&gt;
+        svgs = <span class="property">@svgs</span>()
+        s?.toFront() <span class="keyword">for</span> s <span class="keyword">in</span> svgs</pre></div>
+        
+      
+        
+        <p>Bring the labels to the back of the current <a href="mapView.html">Map View</a>.</p>
+
+        
+          <div class='highlight'><pre>    toBack: =&gt;
+        svgs = <span class="property">@svgs</span>()
+        s?.toBack() <span class="keyword">for</span> s <span class="keyword">in</span> svgs</pre></div>
+        
+      
+        
+        <p>When user hovers the mouse over an &quot;add label&quot; icon, set its opacity to 1,
+unless the <code>isCreatingLink</code> property of the <a href="mapView.html">Map View</a> is true.</p>
+
+        
+          <div class='highlight'><pre>    iconMouseOver: -&gt;
+        <span class="keyword">return</span> <span class="keyword">if</span> SystemApp.mapView.isCreatingLink
+        <span class="property">@attr</span> {<span class="string">"opacity"</span>: <span class="number">1</span>}</pre></div>
+        
+      
+        
+        <p>When mouse leaves an &quot;add label&quot; icon, set its opacity to the value set on the <a href="settings.html">Settings</a>,
+unless the <code>isCreatingLink</code> property of the <a href="mapView.html">Map View</a> is true.</p>
+
+        
+          <div class='highlight'><pre>    iconMouseOut: -&gt;
+        <span class="keyword">return</span> <span class="keyword">if</span> SystemApp.mapView.isCreatingLink
+        <span class="property">@attr</span> {<span class="string">"opacity"</span>: SystemApp.Settings.Map.icoActionsOpacity}</pre></div>
+        
+      
+        
+        <p>When user put map on &quot;Edit Mode&quot;, show the label icons. If in locked mode, hide them.</p>
+
+        
+          <div class='highlight'><pre>    toggleEdit: (enabled) =&gt;
+        svgs = <span class="property">@svgsIcons</span>()
+
+        <span class="keyword">if</span> enabled
+            svg?.show() <span class="keyword">for</span> svg <span class="keyword">in</span> svgs
+        <span class="keyword">else</span>
+            svg?.hide() <span class="keyword">for</span> svg <span class="keyword">in</span> svgs</pre></div>
+        
+      
+        
+        <h2>LABEL DATA BINDING</h2>
+
+        
+      
+        
+        <p>Set the value of the specified label.</p>
+
+        
+          <div class='highlight'><pre>    setLabelValue: (svg, value) =&gt;
+        <span class="keyword">return</span> <span class="keyword">if</span> <span class="keyword">not</span> svg?</pre></div>
+        
+      
+        
+        <p>Do not bind undefined values!</p>
+
+        
+          <div class='highlight'><pre>        value = <span class="string">""</span> <span class="keyword">if</span> value <span class="keyword">is</span> <span class="string">"undefined"</span>
+
+        <span class="keyword">if</span> svg <span class="keyword">is</span> <span class="property">@svgTitle</span>
+            changed = (value <span class="keyword">isnt</span> <span class="property">@currentTextTitle</span>)
+            <span class="property">@currentTextTitle</span> = value
+        <span class="keyword">if</span> svg <span class="keyword">is</span> <span class="property">@svgCenter</span>
+            changed = (value <span class="keyword">isnt</span> <span class="property">@currentTextCenter</span>)
+            <span class="property">@currentTextCenter</span> = value
+        <span class="keyword">if</span> svg <span class="keyword">is</span> <span class="property">@svgLeft</span>
+            changed = (value <span class="keyword">isnt</span> <span class="property">@currentTextLeft</span>)
+            <span class="property">@currentTextLeft</span> = value
+        <span class="keyword">if</span> svg <span class="keyword">is</span> <span class="property">@svgTop</span>
+            changed = (value <span class="keyword">isnt</span> <span class="property">@currentTextTop</span>)
+            <span class="property">@currentTextTop</span> = value
+        <span class="keyword">if</span> svg <span class="keyword">is</span> <span class="property">@svgRight</span>
+            changed = (value <span class="keyword">isnt</span> <span class="property">@currentTextRight</span>)
+            <span class="property">@currentTextRight</span> = value
+        <span class="keyword">if</span> svg <span class="keyword">is</span> <span class="property">@svgBottom</span>
+            changed = (value <span class="keyword">isnt</span> <span class="property">@currentTextBottom</span>)
+            <span class="property">@currentTextBottom</span> = value</pre></div>
+        
+      
+        
+        <p>Only update value if text has changed!</p>
+
+        
+          <div class='highlight'><pre>        svg.attr {<span class="string">"text"</span>: value} <span class="keyword">if</span> changed</pre></div>
+        
+      
+        
+        <p>Refresh the shape&#39;s title. This is mainly called when user selects a &quot;Shape&#39;s title&quot; option
+on the map controls, so it will override the title displayed on top of the shapes.</p>
+
+        
+          <div class='highlight'><pre>    refreshTitle: =&gt;
+        <span class="property">@bindLabelData</span> <span class="property">@svgTitle</span>, <span class="property">@getTitleValue</span>()</pre></div>
+        
+      
+        
+        <p>Binds values from <a href="auditData.html">Audit Data items</a> and <a href="variable.html">Variables</a> to
+the related shape labels, and then check for any matching <a href="auditEvent.html">Audit Events</a>.</p>
+
+        
+          <div class='highlight'><pre>    bindAllLabelsData: =&gt;
+        <span class="property">@bindLabelData</span> <span class="property">@svgTitle</span>, <span class="property">@getTitleValue</span>()
+        <span class="property">@bindLabelData</span> <span class="property">@svgCenter</span>, <span class="property">@model</span>.textCenter()
+        <span class="property">@bindLabelData</span> <span class="property">@svgLeft</span>, <span class="property">@model</span>.textLeft()
+        <span class="property">@bindLabelData</span> <span class="property">@svgTop</span>, <span class="property">@model</span>.textTop()
+        <span class="property">@bindLabelData</span> <span class="property">@svgRight</span>, <span class="property">@model</span>.textRight()
+        <span class="property">@bindLabelData</span> <span class="property">@svgBottom</span>, <span class="property">@model</span>.textBottom()
+
+        <span class="property">@checkAuditEvents</span>()</pre></div>
+        
+      
+        
+        <p>Get the binding value which can come from an <a href="auditData.html">AuditData</a> or
+a <a href="variable.html">Variable</a> and set it to the specified label.</p>
+
+        
+          <div class='highlight'><pre>    bindLabelData: (svg, value) =&gt;
+        <span class="keyword">return</span> <span class="keyword">if</span> <span class="keyword">not</span> svg?
+
+        <span class="keyword">if</span> <span class="keyword">not</span> value? <span class="keyword">or</span> value <span class="keyword">is</span> <span class="string">""</span>
+            newValue = <span class="string">""</span>
+        <span class="keyword">else</span>
+            newValue = SystemApp.DataUtil.getDataBindingValue value, <span class="property">@parentView</span>
+
+        <span class="property">@setLabelValue</span> svg, newValue</pre></div>
+        
+      
+        
+        <h2>AUDIT ALERTS</h2>
+
+        
+      
+        
+        <p>Check if the <a href="shape.html">Shape</a> has any <a href="auditEvent.html">Audit Events</a> attached,
+and if so, run these alerts.</p>
+
+        
+          <div class='highlight'><pre>    checkAuditEvents: =&gt;
+        eventIds = <span class="property">@model</span>.auditEventIds()
+
+        <span class="keyword">if</span> eventIds? <span class="keyword">and</span> eventIds.length &gt; <span class="number">0</span>
+            <span class="property">@testAuditEvent</span> SystemApp.Data.auditEvents.get(id) <span class="keyword">for</span> id <span class="keyword">in</span> eventIds</pre></div>
+        
+      
+        
+        <p>Test a single <a href="auditEvent.html">AuditEvent</a> against the shape&#39;s labels.</p>
+
+        
+          <div class='highlight'><pre>    testAuditEvent: (auditEvent) =&gt;
+        <span class="keyword">return</span> <span class="keyword">if</span> <span class="keyword">not</span> auditEvent?
+
+        labelValues =
+            center: <span class="property">@svgCenter</span>?.attr(<span class="string">"text"</span>)
+            left: <span class="property">@svgLeft</span>?.attr(<span class="string">"text"</span>)
+            top: <span class="property">@svgTop</span>?.attr(<span class="string">"text"</span>)
+            right: <span class="property">@svgRight</span>?.attr(<span class="string">"text"</span>)
+            bottom: <span class="property">@svgBottom</span>?.attr(<span class="string">"text"</span>)
+            title: <span class="property">@svgTitle</span>?.attr(<span class="string">"text"</span>)
+
+        matchedRules = auditEvent.run labelValues</pre></div>
+        
+      
+        
+        <p>If rules were matched, run all <a href="eventAction.html">Alert Actions</a> and
+bind the nevessary <code>clear</code> events.</p>
+
+        
+          <div class='highlight'><pre>        <span class="keyword">if</span> matchedRules.length &gt; <span class="number">0</span>
+            <span class="property">@activeAuditEvents</span>[auditEvent.id] = auditEvent
+            <span class="property">@runEventAction</span> auditEvent, eventAction <span class="keyword">for</span> eventAction <span class="keyword">in</span> auditEvent.actions().models
+        <span class="keyword">else</span>
+            <span class="property">@clearAuditEvent</span> auditEvent</pre></div>
+        
+      
+        
+        <p>When an <a href="auditEvent.html">Audit ALert</a> has triggered an <a href="eventAction.html">Action</a>,
+call this to change the <a href="shapeView.html">Shape View</a> appearance.</p>
+
+        
+          <div class='highlight'><pre>    runEventAction: (event, action) =&gt;
+        SystemApp.consoleLog <span class="string">"MapShapeLabelsView.runEventAction"</span>, <span class="string">"Audit Event "</span> + event.friendlyId(), action.toString()
+
+        <span class="keyword">switch</span> action.actionType()
+            <span class="keyword">when</span> <span class="string">"blink"</span>
+                value = action.actionValue()
+                value = SystemApp.Settings.AuditEvent.blinkTimes <span class="keyword">if</span> <span class="keyword">not</span> value? <span class="keyword">or</span> value <span class="keyword">is</span> <span class="string">""</span>
+                <span class="property">@parentView</span>.slowBlink value
+            <span class="keyword">when</span> <span class="string">"colorBg"</span>
+                value = action.actionValue()
+                value = SystemApp.Settings.AuditEvent.defaultColor <span class="keyword">if</span> <span class="keyword">not</span> value? <span class="keyword">or</span> value <span class="keyword">is</span> <span class="string">""</span>
+                <span class="property">@parentView</span>.setBackground <span class="keyword">this</span>, value
+            <span class="keyword">when</span> <span class="string">"colorBorder"</span>
+                value = action.actionValue()
+                value = SystemApp.Settings.AuditEvent.defaultColor <span class="keyword">if</span> <span class="keyword">not</span> value? <span class="keyword">or</span> value <span class="keyword">is</span> <span class="string">""</span>
+                <span class="property">@parentView</span>.setStroke <span class="keyword">this</span>, value</pre></div>
+        
+      
+        
+        <p>When an <a href="auditEvent.html">AuditEvent</a> is not active anymore, clear it from the current
+view and reset the shape&#39;s original appearance, but ONLY if no other alerts with similar
+<a href="eventAction.html">Actions</a> are enabled.</p>
+
+        
+          <div class='highlight'><pre>    clearAuditEvent: (auditEvent) =&gt;
+        <span class="keyword">if</span> <span class="keyword">not</span> <span class="property">@activeAuditEvents</span>[auditEvent.id]?
+            <span class="keyword">return</span>
+
+        colorBgCount = <span class="number">0</span>
+        colorBorderCount = <span class="number">0</span></pre></div>
+        
+      
+        
+        <p>Count how many actions of each type we have on the active <a href="auditEvent.html">Audit Events</a>.</p>
+
+        
+          <div class='highlight'><pre>        _.each <span class="property">@activeAuditEvents</span>, (itemAlert) =&gt;
+            <span class="keyword">if</span> itemAlert.id <span class="keyword">isnt</span> auditEvent.id
+                _.each itemAlert.actions(), (itemAction) =&gt;
+                    <span class="keyword">if</span> itemAction.actionType() <span class="keyword">is</span> <span class="string">"colorBg"</span>
+                        colorBgCount++
+                    <span class="keyword">else</span> <span class="keyword">if</span> itemAction.actionType() <span class="keyword">is</span> <span class="string">"colorBorder"</span>
+                        colorBorderCount++</pre></div>
+        
+      
+        
+        <p>Only reset parameters when no other actions are changing the <a href="shapeView.html">Shape View</a>
+appearance. For example if this alert has a <code>colorBg</code> action, but another active alert
+also has, then do not clear the background.</p>
+
+        
+          <div class='highlight'><pre>        _.each auditEvent.actions().models, (action) =&gt;
+            <span class="keyword">switch</span> action.actionType()
+                <span class="keyword">when</span> <span class="string">"colorBg"</span>
+                    <span class="property">@parentView</span>.setBackground() <span class="keyword">if</span> colorBgCount &lt; <span class="number">1</span>
+                <span class="keyword">when</span> <span class="string">"colorBorder"</span>
+                    <span class="property">@parentView</span>.setStroke() <span class="keyword">if</span> colorBorderCount &lt; <span class="number">1</span>
+
+        <span class="keyword">delete</span> <span class="property">@activeAuditEvents</span>[auditEvent.id]</pre></div>
+        
+      
+        
+        <h2>LABEL EDIT</h2>
+
+        
+      
+        
+        <p>When user clicks a label, check if the &quot;Delete&quot; key modifier is being pressed and
+proceed with removing the label, or show the textbox for edition (call <code>showEditLabel</code>).</p>
+
+        
+          <div class='highlight'><pre>    click: (e) =&gt;
+        src = $ e.target
+        data = src.data <span class="string">"labelPosition"</span>
+
+        <span class="keyword">if</span> <span class="keyword">not</span> data? <span class="keyword">or</span> data <span class="keyword">is</span> <span class="string">""</span>
+            src = src.parent()
+            data = src.data <span class="string">"labelPosition"</span>
+
+        <span class="property">@currentEditingPosition</span> = data</pre></div>
+        
+      
+        
+        <p>Set the current selected element on the <a href="mapView.html">Map View</a>.</p>
+
+        
+          <div class='highlight'><pre>        <span class="property">@mapView</span>.addToSelected <span class="property">@parentView</span>
+
+        <span class="keyword">if</span> <span class="property">@mapView</span>.editEnabled
+            <span class="keyword">if</span> <span class="property">@isEventDelete</span> e
+                <span class="property">@parentView</span>.blinkAndRemove()
+            <span class="keyword">else</span>
+                <span class="property">@showEditLabel</span> e
+
+        e.preventDefault()
+        e.stopPropagation()</pre></div>
+        
+      
+        
+        <p>Start editing one of the shape labels. This will create a temporary textbox on the map where
+the user can edit or bind values from an <a href="auditData.html">AuditData</a> to the label text.</p>
+
+        
+          <div class='highlight'><pre>    showEditLabel: (e) =&gt;
+        <span class="keyword">if</span> <span class="keyword">not</span> <span class="property">@labelEditView</span>?
+            <span class="property">@labelEditView</span> = <span class="keyword">new</span> SystemApp.MapLabelEditView()
+            <span class="property">@labelEditView</span>.render <span class="keyword">this</span>
+            <span class="property">@labelEditView</span>.<span class="literal">on</span> <span class="string">"save"</span>, <span class="property">@saveEditLabel</span>
+
+        src = e.target
+        src = src.parentElement <span class="keyword">if</span> <span class="keyword">not</span> src.getBBox?
+        pos = src.getBBox()</pre></div>
+        
+      
+        
+        <p>Make sure text is never undefined or null!</p>
+
+        
+          <div class='highlight'><pre>        text = <span class="property">@model</span>.get <span class="string">"text<span class="subst">#{@currentEditingPosition}</span>"</span>
+        text = <span class="string">""</span> <span class="keyword">if</span> <span class="keyword">not</span> text?</pre></div>
+        
+      
+        
+        <p>We need to remove half the width and height to properly get the center values (and not the offset).</p>
+
+        
+          <div class='highlight'><pre>        <span class="property">@labelEditView</span>.show text, pos.x + pos.width / <span class="number">2</span>, pos.y + pos.height</pre></div>
+        
+      
+        
+        <p>Save the edited value of the <a href="labelEditView.html">Label Edit View</a> to the
+<code>text</code> property of the model.</p>
+
+        
+          <div class='highlight'><pre>    saveEditLabel: (view, value) =&gt;
+        <span class="property">@model</span>.set <span class="string">"text<span class="subst">#{@currentEditingPosition}</span>"</span>, value
+        <span class="property">@model</span>.save()
+        <span class="property">@mapView</span>.model.save()
+
+        <span class="property">@bindAllLabelsData</span>()
+
+        <span class="property">@currentEditingPosition</span> = <span class="literal">null</span></pre></div>
+        
+      
+        
+        <h2>TEXT SIZE AND ZOOM</h2>
+
+        
+      
+        
+        <p>When user zooms in or out, resize the labels accordingly.</p>
+
+        
+          <div class='highlight'><pre>    onZoom: =&gt;
+        <span class="property">@setAllFontSizes</span>()</pre></div>
+        
+      
+        
+        <p>The the foreground color for the specified label.</p>
+
+        
+          <div class='highlight'><pre>    setForeground: (svg, color) =&gt;
+        svg?.attr {<span class="string">"fill"</span>: color}</pre></div>
+        
+      
+        
+        <p>The the font size for the specified label. Usually called when user is zooming
+the map in or out.</p>
+
+        
+          <div class='highlight'><pre>    setFontSize: (svg, fontSize) =&gt;
+        svg?.attr {<span class="string">"font-size"</span>: fontSize}</pre></div>
+        
+      
+        
+        <p>The the foreground color for the title label.</p>
+
+        
+          <div class='highlight'><pre>    setTitleForeground: =&gt;
+        <span class="property">@setForeground</span> <span class="property">@svgTitle</span>, <span class="property">@model</span>.titleForeground()</pre></div>
+        
+      
+        
+        <p>Set the foreground color all labels except the title.</p>
+
+        
+          <div class='highlight'><pre>    setAllForeground: =&gt;
+        <span class="property">@setForeground</span> svg, <span class="property">@model</span>.foreground() <span class="keyword">for</span> svg <span class="keyword">in</span> [<span class="property">@svgCenter</span>, <span class="property">@svgLeft</span>, <span class="property">@svgTop</span>, <span class="property">@svgRight</span>, <span class="property">@svgBottom</span>]</pre></div>
+        
+      
+        
+        <p>Set the font size for ALL labels.</p>
+
+        
+          <div class='highlight'><pre>    setAllFontSizes: =&gt;
+        zoom = <span class="number">1</span>
+        zoom = <span class="property">@mapView</span>.currentZoom <span class="keyword">if</span> <span class="property">@mapView</span>.currentZoom &gt; <span class="number">1</span>
+
+        fontSize = <span class="property">@model</span>.fontSize() * zoom
+        fontSize = Math.round fontSize
+
+        <span class="property">@setFontSize</span>(svg, fontSize) <span class="keyword">for</span> svg <span class="keyword">in</span> [<span class="property">@svgTitle</span>, <span class="property">@svgCenter</span>, <span class="property">@svgLeft</span>, <span class="property">@svgTop</span>, <span class="property">@svgRight</span>, <span class="property">@svgBottom</span>]</pre></div>
+        
+      
+      <div class="fleur">h</div>
+    </div>
+  </div>
+</body>
+</html>

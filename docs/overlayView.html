@@ -1,0 +1,965 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+  <title>overlayView.coffee</title>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <link rel="stylesheet" media="all" href="public/stylesheets/normalize.css" />
+  <link rel="stylesheet" media="all" href="docco.css" />
+</head>
+<body>
+  <div class="container">
+    <div class="page">
+
+      <div class="header">
+        
+          <h1>overlayView.coffee</h1>
+        
+
+        
+          <div class="toc">
+            <h3>Table of Contents</h3>
+            <ol>
+              
+                
+                <li>
+                  <a class="source" href="admin.html">
+                    admin.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="api.auditData.html">
+                    api.auditData.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="api.auditEvent.html">
+                    api.auditEvent.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="api.html">
+                    api.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="api.entity.html">
+                    api.entity.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="api.map.html">
+                    api.map.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="api.server.html">
+                    api.server.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="api.variable.html">
+                    api.variable.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="api.view.html">
+                    api.view.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="app.html">
+                    app.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="app.instance.html">
+                    app.instance.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="data.html">
+                    data.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="dataUtil.html">
+                    dataUtil.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="messages.html">
+                    messages.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="auditData.html">
+                    auditData.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="auditEvent.html">
+                    auditEvent.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="base.html">
+                    base.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="entityDefinition.html">
+                    entityDefinition.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="entityObject.html">
+                    entityObject.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="eventAction.html">
+                    eventAction.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="eventRule.html">
+                    eventRule.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="link.html">
+                    link.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="map.html">
+                    map.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="shape.html">
+                    shape.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="user.html">
+                    user.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="userSettings.html">
+                    userSettings.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="variable.html">
+                    variable.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="adminRoutes.html">
+                    adminRoutes.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="appRoutes.html">
+                    appRoutes.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="settings.html">
+                    settings.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="sockets.html">
+                    sockets.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="tutorial.html">
+                    tutorial.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="vectors.html">
+                    vectors.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="statusTabView.html">
+                    statusTabView.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="toolsTabView.html">
+                    toolsTabView.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="usersTabView.html">
+                    usersTabView.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="adminView.html">
+                    adminView.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="alertView.html">
+                    alertView.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="auditDataManagerView.html">
+                    auditDataManagerView.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="auditEventManagerView.html">
+                    auditEventManagerView.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="baseView.html">
+                    baseView.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="createMapView.html">
+                    createMapView.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="entityManagerView.html">
+                    entityManagerView.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="footerView.html">
+                    footerView.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="helpView.html">
+                    helpView.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="entitiesTabView.html">
+                    entitiesTabView.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="inspectorTabView.html">
+                    inspectorTabView.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="mapTabView.html">
+                    mapTabView.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="shapeTabView.html">
+                    shapeTabView.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="controlsView.html">
+                    controlsView.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="labelEditView.html">
+                    labelEditView.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="linkCreatorView.html">
+                    linkCreatorView.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="linkLabelsView.html">
+                    linkLabelsView.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="linkView.html">
+                    linkView.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="shapeLabelsView.html">
+                    shapeLabelsView.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="shapeView.html">
+                    shapeView.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="shapesMoverView.html">
+                    shapesMoverView.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="mapView.html">
+                    mapView.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="menuView.html">
+                    menuView.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="overlayView.html">
+                    overlayView.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="scriptEditorView.html">
+                    scriptEditorView.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="selfTestView.html">
+                    selfTestView.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="settingsView.html">
+                    settingsView.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="startView.html">
+                    startView.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="variableManagerView.html">
+                    variableManagerView.coffee
+                  </a>
+                </li>
+              
+            </ol>
+          </div>
+        
+      </div>
+
+      
+        
+        <h2>OVERLAY VIEW</h2>
+
+        
+      
+        
+        <p>Abstract overlay view containing helper methods for closing and tabs.
+Used by all the overlays (Settings, Help, Audit Data Manager, etc...).</p>
+
+        
+          <div class='highlight'><pre><span class="class"><span class="keyword">class</span> <span class="title">SystemApp</span>.<span class="title">OverlayView</span> <span class="keyword">extends</span> <span class="title">SystemApp</span>.<span class="title">BaseView</span></span>
+
+    closeOnFirstEsc: <span class="literal">false</span>  <span class="comment"># when false, overlay will close on "double Esc", otherwise a single press will do it</span>
+    currentSettings: <span class="literal">null</span>   <span class="comment"># define the settings container</span>
+    lastPressedKey: <span class="literal">null</span>    <span class="comment"># holds the last pressed key (while the overlay is shown)</span>
+    fullWidth: <span class="literal">true</span>         <span class="comment"># overlay takes the full width (true) or only the map area (false)</span>
+
+    $box: <span class="literal">null</span>              <span class="comment"># the overlay wrapper / box, which is in fact the first child div</span>
+    $close: <span class="literal">null</span>            <span class="comment"># the close icon</span>
+    $title: <span class="literal">null</span>            <span class="comment"># the title is the H2 element</span>
+    $leftCol: <span class="literal">null</span>          <span class="comment"># the left column</span>
+    $rightCol: <span class="literal">null</span>         <span class="comment"># the right column</span>
+    $menuItem: <span class="literal">null</span>         <span class="comment"># menu item corresponding to this overlay</span>
+    $modelsList: <span class="literal">null</span>       <span class="comment"># used by some overlays to show a list of models</span>
+    $tabHeaders: <span class="literal">null</span>       <span class="comment"># the tab header divs (used only for tabbed overlays)</span>
+    $tabContents: <span class="literal">null</span>      <span class="comment"># the tav content divs (used only for tabbed overlays)</span></pre></div>
+        
+      
+        
+        <h2>INIT AND DISPOSE</h2>
+
+        
+      
+        
+        <p>Init the overlay view.</p>
+
+        
+          <div class='highlight'><pre>    overlayInit: (overlaySelector) =&gt;
+        <span class="property">@setElement</span> $ overlaySelector
+
+        <span class="property">@setOverlayDom</span>()
+        <span class="property">@setOverlayEvents</span>()</pre></div>
+        
+      
+        
+        <p>Set the DOM elements cache.</p>
+
+        
+          <div class='highlight'><pre>    setOverlayDom: =&gt;
+        <span class="property">@$box</span> = <span class="property">@$el</span>.children <span class="string">".full-overlay-contents"</span>
+        <span class="property">@$close</span> = <span class="property">@$box</span>.children <span class="string">".close"</span>
+        <span class="property">@$title</span> = <span class="property">@$box</span>.children <span class="string">"h2"</span></pre></div>
+        
+      
+        
+        <p>Set tabs (some overlays might have no tabs).</p>
+
+        
+          <div class='highlight'><pre>        <span class="property">@$tabHeaders</span> = <span class="property">@$el</span>.find(<span class="string">".tab-headers"</span>).children(<span class="string">"label"</span>)
+        <span class="property">@$tabContents</span> = <span class="property">@$el</span>.find(<span class="string">"div.tab"</span>)</pre></div>
+        
+      
+        
+        <p>Set left and right columns (some overlays might have no left / right columns).</p>
+
+        
+          <div class='highlight'><pre>        <span class="property">@$leftCol</span> = <span class="property">@$el</span>.find <span class="string">".left-col"</span>
+        <span class="property">@$rightCol</span> = <span class="property">@$el</span>.find <span class="string">".right-col"</span></pre></div>
+        
+      
+        
+        <p>Bind events to the DOM.</p>
+
+        
+          <div class='highlight'><pre>    setOverlayEvents: =&gt;
+        <span class="property">@$close</span>.click <span class="property">@hide</span>
+        <span class="property">@$tabHeaders</span>.click <span class="property">@tabClick</span></pre></div>
+        
+      
+        
+        <h2>TABS</h2>
+
+        
+      
+        
+        <p>Hide the tabs wrapper.</p>
+
+        
+          <div class='highlight'><pre>    hideTabs: =&gt;
+        <span class="property">@$tabHeaders</span>.hide()</pre></div>
+        
+      
+        
+        <p>Show the tab wrapper. This is called whenever the user starts editing
+a model, or if the overlay has no models to be edited (and thus
+tabs are always shown).</p>
+
+        
+          <div class='highlight'><pre>    showTabs: =&gt;
+        <span class="property">@$tabHeaders</span>.show()</pre></div>
+        
+      
+        
+        <p>When user clicks on a tab header, add the <code>active</code> class and show the
+corresponding help div.</p>
+
+        
+          <div class='highlight'><pre>    tabClick: (e) =&gt;
+        src = $ e.currentTarget
+
+        <span class="property">@$tabHeaders</span>.removeClass <span class="string">"active"</span>
+        <span class="property">@$tabContents</span>.hide()
+        <span class="property">@$tabContents</span>.filter(src.data(<span class="string">"tab"</span>)).show()
+
+        src.addClass <span class="string">"active"</span></pre></div>
+        
+      
+        
+        <h2>SHOW AND HIDE</h2>
+
+        
+      
+        
+        <p>Show the overlay using a &quot;fade in&quot; effect. The fade time is defined
+at the <a href="settings.html">Settings</a>. Prior to showing, the overlay box will
+be resized to fit the map area.
+Arguments will be passed over to the &#39;onShow&#39; callback.</p>
+
+        
+          <div class='highlight'><pre>    show: (e) =&gt;
+        $(document).keyup <span class="property">@overlayKeyUp</span>
+        $(window).resize <span class="property">@resize</span>
+
+        <span class="property">@resize</span>()</pre></div>
+        
+      
+        
+        <p>Hide right column if list with models is present on the left
+and no item has been selected.</p>
+
+        
+          <div class='highlight'><pre>        <span class="property">@$rightCol</span>.hide() <span class="keyword">if</span> <span class="property">@$modelsList</span>?
+
+        <span class="property">@lastPressedKey</span> = <span class="literal">null</span>
+        <span class="property">@$el</span>.show()</pre></div>
+        
+      
+        
+        <p>Set the footer text to the title of the overlay.
+TODO! Stop calling footer view directly, use events instead.</p>
+
+        
+          <div class='highlight'><pre>        SystemApp.footerView.setText <span class="property">@$el</span>.find(<span class="string">"h2:first"</span>).html()</pre></div>
+        
+      
+        
+        <p>Change the view based on what properties are set.</p>
+
+        
+          <div class='highlight'><pre>        <span class="property">@$menuItem</span>.addClass(<span class="string">"active"</span>) <span class="keyword">if</span> <span class="property">@$menuItem</span>?
+        <span class="property">@hideTabs</span>() <span class="keyword">if</span> <span class="property">@$modelsList</span>?
+        <span class="property">@onShow</span>.apply <span class="keyword">this</span>, arguments <span class="keyword">if</span> <span class="property">@onShow</span>?</pre></div>
+        
+      
+        
+        <p>Hide the overlay using a &quot;fade out&quot; effect. The fade time is defined
+at the <a href="settings.html">Settings</a>.
+Arguments will be passed over to the &#39;onHide&#39; callback.</p>
+
+        
+          <div class='highlight'><pre>    hide: (e) =&gt;
+        $(document).unbind <span class="string">"keyup"</span>, <span class="property">@overlayKeyUp</span>
+        $(window).unbind <span class="string">"resize"</span>, <span class="property">@resize</span>
+
+        <span class="property">@lastPressedKey</span> = <span class="literal">null</span>
+        <span class="property">@$el</span>.hide()</pre></div>
+        
+      
+        
+        <p>Change the view based on what properties are set.</p>
+
+        
+          <div class='highlight'><pre>        <span class="property">@$menuItem</span>.removeClass(<span class="string">"active"</span>) <span class="keyword">if</span> <span class="property">@$menuItem</span>?
+        <span class="property">@onHide</span>.apply <span class="keyword">this</span>, arguments <span class="keyword">if</span> <span class="property">@onHide</span>?</pre></div>
+        
+      
+        
+        <p>If the hide is called via mouse or keyboard action, reset the URL to the
+current loaded map&#39;s URL.</p>
+
+        
+          <div class='highlight'><pre>        SystemApp.mapEvents.trigger <span class="string">"url:reset"</span> <span class="keyword">if</span> e?.currentTarget?</pre></div>
+        
+      
+        
+        <h2>RESIZE AND KEYBOARD EVENTS</h2>
+
+        
+      
+        
+        <p>Resize the overlay to match the window width and height.</p>
+
+        
+          <div class='highlight'><pre>    resize: =&gt;
+        horizontalDiff = <span class="number">30</span>
+        horizontalDiff = horizontalDiff + SystemApp.mapView.controlsView.width <span class="keyword">if</span> <span class="keyword">not</span> <span class="property">@fullWidth</span>
+        verticalDiff = <span class="number">29</span> + SystemApp.footerView.height + SystemApp.menuView.height</pre></div>
+        
+      
+        
+        <p>Calculate total dimensions.</p>
+
+        
+          <div class='highlight'><pre>        totalWidth = $(window).innerWidth() - horizontalDiff
+        totalHeight = $(window).innerHeight() - verticalDiff
+        colHeight = totalHeight - <span class="number">56</span></pre></div>
+        
+      
+        
+        <p>Resize the box and columns.</p>
+
+        
+          <div class='highlight'><pre>        <span class="property">@$box</span>.width totalWidth
+        <span class="property">@$box</span>.height totalHeight
+        <span class="property">@$leftCol</span>.height colHeight
+        <span class="property">@$rightCol</span>.height colHeight</pre></div>
+        
+      
+        
+        <p>Resize the models list.</p>
+
+        
+          <div class='highlight'><pre>        <span class="keyword">if</span> <span class="property">@$modelsList</span>?
+            <span class="property">@$modelsList</span>.css <span class="string">"max-height"</span>, colHeight - <span class="number">116</span></pre></div>
+        
+      
+        
+        <p>When user presses a key while the help overlay is visible, check if it&#39;s Esc to close it.</p>
+
+        
+          <div class='highlight'><pre>    overlayKeyUp: (e) =&gt;
+        keyCode = e.keyCode
+
+        <span class="keyword">if</span> keyCode <span class="keyword">is</span> <span class="number">27</span>
+            <span class="keyword">if</span> <span class="property">@closeOnFirstEsc</span> <span class="keyword">or</span> <span class="property">@lastPressedKey</span> <span class="keyword">is</span> <span class="number">27</span>
+                <span class="property">@hide</span> e
+                <span class="keyword">return</span>
+
+        <span class="property">@lastPressedKey</span> = keyCode</pre></div>
+        
+      
+        
+        <h2>MODELS LIST AND EDITOR</h2>
+
+        
+      
+        
+        <p>Helper method to add models to the models list on the left.
+Used on the entity / audit data / audit events overlays.
+If <code>options</code> is passed, means it&#39;s a newly created model
+so auto select it in the end.</p>
+
+        
+          <div class='highlight'><pre>    addToModelsList: (item, collection, options) =&gt;
+        wrapper = $(document.createElement <span class="string">"div"</span>)
+        wrapper.attr <span class="string">"id"</span>, <span class="property">@currentSettings</span>.rowListPrefix + item.id
+        wrapper.data <span class="string">"DataItem"</span>, item
+        wrapper.addClass <span class="string">"row silent"</span></pre></div>
+        
+      
+        
+        <p>The textbox defines the <code>friendlyId</code> property of the model.</p>
+
+        
+          <div class='highlight'><pre>        id = $(document.createElement <span class="string">"input"</span>)
+        id.data <span class="string">"propertyname"</span>, <span class="string">"friendlyId"</span>
+        id.attr <span class="string">"type"</span>, <span class="string">"text"</span>
+        id.attr <span class="string">"title"</span>, SystemApp.Messages.tooltipItemId
+        id.prop <span class="string">"readonly"</span>, <span class="literal">true</span>
+        id.addClass <span class="string">"id"</span>
+        id.val item.friendlyId()
+        id.change <span class="property">@inputOnChange</span>
+        id.click item, <span class="property">@clickEditIcon</span></pre></div>
+        
+      
+        
+        <p>The edit icon on the right of the row.</p>
+
+        
+          <div class='highlight'><pre>        editIcon = $(document.createElement <span class="string">"div"</span>)
+        editIcon.attr <span class="string">"title"</span>, SystemApp.Messages.tooltipEditItem
+        editIcon.addClass <span class="string">"edit"</span>
+        editIcon.click item, <span class="property">@clickEditIcon</span></pre></div>
+        
+      
+        
+        <p>The delete icon on the right of the row.</p>
+
+        
+          <div class='highlight'><pre>        delIcon = $(document.createElement <span class="string">"div"</span>)
+        delIcon.attr <span class="string">"title"</span>, SystemApp.Messages.tooltipDeleteItem
+        delIcon.addClass <span class="string">"delete"</span>
+        delIcon.click item, <span class="property">@clickDeleteIcon</span></pre></div>
+        
+      
+        
+        <p>Append to the document.</p>
+
+        
+          <div class='highlight'><pre>        wrapper.append id
+        wrapper.append editIcon
+        wrapper.append delIcon
+        <span class="property">@$modelsList</span>.append wrapper</pre></div>
+        
+      
+        
+        <p>Just created by the user? So auto bind it.</p>
+
+        
+          <div class='highlight'><pre>        <span class="property">@bindModel</span> item <span class="keyword">if</span> options?</pre></div>
+        
+      
+        
+        <p>Remove the specified model from the <code>$modelsList</code>.</p>
+
+        
+          <div class='highlight'><pre>    removeFromModelsList: (item) =&gt;
+        row = $(<span class="string">"#"</span> + <span class="property">@currentSettings</span>.rowListPrefix + item.id)
+        <span class="property">@modelElementRemove</span> row</pre></div>
+        
+      
+        
+        <p>Hide the right panel if the removed model was the one being displayed / edited.</p>
+
+        
+          <div class='highlight'><pre>        <span class="property">@bindModel</span>() <span class="keyword">if</span> <span class="property">@model</span>.id <span class="keyword">is</span> item.id</pre></div>
+        
+      
+        
+        <p>When user clicks on the edit icon on a row, call the <code>selectModel</code> method.</p>
+
+        
+          <div class='highlight'><pre>    clickEditIcon: (e) =&gt;
+        e.stopPropagation()
+        <span class="property">@bindModel</span> e.data</pre></div>
+        
+      
+        
+        <p>When user clicks the &quot;delete&quot; icon, make it red
+so user can click again to confirm the deletion.</p>
+
+        
+          <div class='highlight'><pre>    clickDeleteIcon: (e) =&gt;
+        e.preventDefault()
+        e.stopPropagation()
+
+        src = $ e.currentTarget</pre></div>
+        
+      
+        
+        <p>If the icon is red, then confirm the deletion by removing the row&#39;s associated model
+from the <a href="data.html">data store</a>.</p>
+
+        
+          <div class='highlight'><pre>        <span class="keyword">if</span> src.hasClass <span class="string">"delete-red"</span>
+            e.data.destroy()
+        <span class="keyword">else</span>
+            src.addClass <span class="string">"delete-red"</span>
+
+        <span class="property">@lastPressedKey</span> = <span class="literal">null</span></pre></div>
+        
+      
+        
+        <p>Selects a row on the <code>$modelsList</code> representing a model
+and bind its information to the right form.</p>
+
+        
+          <div class='highlight'><pre>    bindModel: (item) =&gt;
+        <span class="keyword">if</span> item?
+            row = $ <span class="string">"#"</span> + <span class="property">@currentSettings</span>.rowListPrefix + item.id
+            clear = row.hasClass <span class="string">"active"</span>
+        <span class="keyword">else</span>
+            clear = <span class="literal">true</span></pre></div>
+        
+      
+        
+        <p>Remove readonly property from the selected row.</p>
+
+        
+          <div class='highlight'><pre>        <span class="property">@$modelsList</span>.find(<span class="string">"div.active"</span>).removeClass <span class="string">"active"</span>
+        <span class="property">@$modelsList</span>.find(<span class="string">"input.id"</span>).prop <span class="string">"readonly"</span>, <span class="literal">true</span>
+
+        <span class="keyword">if</span> clear
+            <span class="property">@model</span> = <span class="literal">null</span>
+            <span class="property">@$rightCol</span>.hide()
+        <span class="keyword">else</span>
+            <span class="property">@model</span> = item
+            <span class="property">@$rightCol</span>.show()
+            row.addClass <span class="string">"active"</span>
+            row.find(<span class="string">"input.id"</span>).prop <span class="string">"readonly"</span>, <span class="literal">false</span></pre></div>
+        
+      
+        
+        <p>Show editing tabs.</p>
+
+        
+          <div class='highlight'><pre>        <span class="property">@showTabs</span>()</pre></div>
+        
+      
+        
+        <p>Call the underlying <code>onBindModel</code>.</p>
+
+        
+          <div class='highlight'><pre>        <span class="property">@onBindModel</span>()</pre></div>
+        
+      
+        
+        <p>When user changes the value of any input field then set the value straight away.</p>
+
+        
+          <div class='highlight'><pre>    inputOnChange: (e) =&gt;
+        src = $ e.currentTarget
+        inputType = src.attr <span class="string">"type"</span>
+        propertyName = src.data <span class="string">"propertyname"</span></pre></div>
+        
+      
+        
+        <p>Get the input value based on its type.</p>
+
+        
+          <div class='highlight'><pre>        <span class="keyword">if</span> inputType <span class="keyword">is</span> <span class="string">"checkbox"</span>
+            value = src.prop <span class="string">"checked"</span>
+        <span class="keyword">else</span>
+            value = src.val()</pre></div>
+        
+      
+        
+        <p>If the <code>data</code> is passed to the event, then save the property to the
+data instead of the main view model.</p>
+
+        
+          <div class='highlight'><pre>        <span class="keyword">if</span> e.data?
+            e.data.set propertyName, value
+        <span class="keyword">else</span>
+            <span class="property">@model</span>.set propertyName, value</pre></div>
+        
+      
+        
+        <p>Save the model and show a &quot;saved&quot; next to the edited field.</p>
+
+        
+          <div class='highlight'><pre>        <span class="property">@model</span>.save()
+        <span class="property">@fieldSaved</span> src</pre></div>
+        
+      
+        
+        <h2>KEYBOARD EVENTS</h2>
+
+        
+      
+        
+        <p>When user presses a key while the overlay is visible, pressing &quot;Esc&quot; will
+once will cancel any pending actions (hide delete icons or unselect current model).</p>
+
+        
+          <div class='highlight'><pre>    hasModelListKeyUp: (e) =&gt;
+        keyCode = e.keyCode
+        deleteRedIcons = $ <span class="string">".delete-red"</span>
+
+        <span class="keyword">if</span> keyCode <span class="keyword">is</span> <span class="number">27</span>
+            <span class="keyword">if</span> deleteRedIcons.length &gt; <span class="number">0</span>
+                deleteRedIcons.removeClass <span class="string">"delete-red"</span>
+            <span class="keyword">else</span>
+                <span class="property">@bindModel</span> <span class="literal">null</span></pre></div>
+        
+      
+      <div class="fleur">h</div>
+    </div>
+  </div>
+</body>
+</html>

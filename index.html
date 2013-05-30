@@ -19,12 +19,25 @@
 </head>
 <body>
     <div id="wrapper">
+        <a name="top"></a>
+
         <div id="header">
             <iframe id="demoframe" src="http://systemapp.io/demo/mini.html" frameborder="0" scrolling="no"></iframe>
-            <a id="tofulldemo" href="http://systemapp.io/demo" title="Click to open the fullscreen demo"); return false;">expand to full demo</a>
+            <a id="tofulldemo" href="http://systemapp.io/demo" title="Click to open the fullscreen demo">expand Sample System Map</a>
             <div class="contents">
                 <h1>System App</h1>
                 <h6>by</h6>
+            </div>
+        </div>
+
+        <div id="miniheader" style="display:none;">
+            <div class="contents">
+                <a href="#">top</a>
+                <a href="#installing">installing</a>
+                <a href="#configuring">configuring</a>
+                <a href="#running">running</a>
+                <a href="#help">help?</a>
+                <span>System App by Zalando</span>
             </div>
         </div>
 
@@ -54,16 +67,25 @@
         </div>
 
         <div id="topdemo">
-            <div>
+            <h5>
                 Want to see it in action? Check out our <a href="http://systemapp.io/demo" title="System App Demo">online demo</a>!
+            </h5>
+            <div>
+                Read-only access: user guest, password guest
+                <br />
+                Admin access: user admin, password system
             </div>
-            <small>Read-only access: user guest, password guest</small>
-            <small>Admin access: user admin, password system</small>
+            <small>
+                Please note that maps created on the demo system will be deleted every 2 hours!
+                <br />
+                If you wish to keep a map, please use the "My Local Map" which is saved on your browser's local storage.
+            </small>
         </div>
 
+        <a name="installing"></a>
         <div id="main-contents">
 
-            <div class="bar"><h2 class="contents">Installation</h2></div>
+            <div class="bar"><h2 class="contents">Installing</h2></div>
             <div class="contents installation">
                 <p>Simply download the <label><a href="https://raw.github.com/zalando/system/master/install.sh" title="Download the System App install script.">install.sh</a></label> script, make it executable and run!</p>
                 <code>
@@ -94,7 +116,8 @@
 
             </div>
 
-            <div class="bar"><h2 class="contents">Configuring the server</h2></div>
+            <a name="configuring"></a>
+            <div class="bar"><h2 class="contents">Configuring</h2></div>
             <div class="contents configuring">
                 <p>
                     All server settings are located on the file
@@ -159,6 +182,7 @@
                 </p>
             </div>
 
+            <a name="running"></a>
             <div class="bar"><h2 class="contents">Running the app</h2></div>
             <div class="contents starting">
                 <p>To start the System App, run the index.js file using node:</p>
@@ -195,6 +219,7 @@
                 <code>$ forever start -c node index.js</code>
             </div>
 
+            <a name="help"></a>
             <div class="bar"><h2 class="contents">Need help?</h2></div>
             <div class="contents">
                 <p>

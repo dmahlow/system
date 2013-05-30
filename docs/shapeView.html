@@ -1,0 +1,1691 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+  <title>shapeView.coffee</title>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <link rel="stylesheet" media="all" href="public/stylesheets/normalize.css" />
+  <link rel="stylesheet" media="all" href="docco.css" />
+</head>
+<body>
+  <div class="container">
+    <div class="page">
+
+      <div class="header">
+        
+          <h1>shapeView.coffee</h1>
+        
+
+        
+          <div class="toc">
+            <h3>Table of Contents</h3>
+            <ol>
+              
+                
+                <li>
+                  <a class="source" href="admin.html">
+                    admin.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="api.auditData.html">
+                    api.auditData.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="api.auditEvent.html">
+                    api.auditEvent.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="api.html">
+                    api.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="api.entity.html">
+                    api.entity.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="api.map.html">
+                    api.map.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="api.server.html">
+                    api.server.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="api.variable.html">
+                    api.variable.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="api.view.html">
+                    api.view.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="app.html">
+                    app.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="app.instance.html">
+                    app.instance.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="data.html">
+                    data.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="dataUtil.html">
+                    dataUtil.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="messages.html">
+                    messages.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="auditData.html">
+                    auditData.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="auditEvent.html">
+                    auditEvent.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="base.html">
+                    base.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="entityDefinition.html">
+                    entityDefinition.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="entityObject.html">
+                    entityObject.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="eventAction.html">
+                    eventAction.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="eventRule.html">
+                    eventRule.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="link.html">
+                    link.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="map.html">
+                    map.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="shape.html">
+                    shape.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="user.html">
+                    user.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="userSettings.html">
+                    userSettings.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="variable.html">
+                    variable.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="adminRoutes.html">
+                    adminRoutes.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="appRoutes.html">
+                    appRoutes.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="settings.html">
+                    settings.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="sockets.html">
+                    sockets.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="tutorial.html">
+                    tutorial.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="vectors.html">
+                    vectors.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="statusTabView.html">
+                    statusTabView.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="toolsTabView.html">
+                    toolsTabView.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="usersTabView.html">
+                    usersTabView.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="adminView.html">
+                    adminView.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="alertView.html">
+                    alertView.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="auditDataManagerView.html">
+                    auditDataManagerView.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="auditEventManagerView.html">
+                    auditEventManagerView.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="baseView.html">
+                    baseView.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="createMapView.html">
+                    createMapView.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="entityManagerView.html">
+                    entityManagerView.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="footerView.html">
+                    footerView.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="helpView.html">
+                    helpView.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="entitiesTabView.html">
+                    entitiesTabView.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="inspectorTabView.html">
+                    inspectorTabView.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="mapTabView.html">
+                    mapTabView.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="shapeTabView.html">
+                    shapeTabView.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="controlsView.html">
+                    controlsView.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="labelEditView.html">
+                    labelEditView.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="linkCreatorView.html">
+                    linkCreatorView.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="linkLabelsView.html">
+                    linkLabelsView.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="linkView.html">
+                    linkView.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="shapeLabelsView.html">
+                    shapeLabelsView.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="shapeView.html">
+                    shapeView.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="shapesMoverView.html">
+                    shapesMoverView.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="mapView.html">
+                    mapView.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="menuView.html">
+                    menuView.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="overlayView.html">
+                    overlayView.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="scriptEditorView.html">
+                    scriptEditorView.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="selfTestView.html">
+                    selfTestView.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="settingsView.html">
+                    settingsView.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="startView.html">
+                    startView.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="variableManagerView.html">
+                    variableManagerView.coffee
+                  </a>
+                </li>
+              
+            </ol>
+          </div>
+        
+      </div>
+
+      
+        
+        <h2>SHAPE VIEW</h2>
+
+        
+      
+        
+        <p>Represents a shape on the map.</p>
+
+        
+          <div class='highlight'><pre><span class="class"><span class="keyword">class</span> <span class="title">SystemApp</span>.<span class="title">MapShapeView</span> <span class="keyword">extends</span> <span class="title">SystemApp</span>.<span class="title">BaseView</span></span>
+
+    linkViews: <span class="literal">null</span>         <span class="comment"># holds the temporary link views when moving / editing shapes around</span>
+    labelsView: <span class="literal">null</span>        <span class="comment"># holds the 5 editable / dynamic labels of the shape</span>
+    linkCreatorView: <span class="literal">null</span>   <span class="comment"># holds the link creator view, in case user is linking this shape to another</span>
+    svg: <span class="literal">null</span>               <span class="comment"># the main svg element for this shape</span>
+    svgIcon: <span class="literal">null</span>           <span class="comment"># the custom svg icon / background of the shape</span>
+    svgLinker: <span class="literal">null</span>         <span class="comment"># the svg "link" icon that appears on the center of the shape</span>
+    svgResizer: <span class="literal">null</span>        <span class="comment"># the svg "resize" icon that appears on the bottom right corner of the shape</span>
+    svgZIndex: <span class="literal">null</span>         <span class="comment"># a svg text displaying the current z-index value of the shape</span>
+    ox: <span class="number">0</span>                   <span class="comment"># temporary X coordinates</span>
+    oy: <span class="number">0</span>                   <span class="comment"># temporary Y coordinates</span>
+    ow: <span class="number">0</span>                   <span class="comment"># temporary shape width when resizing</span>
+    oh: <span class="number">0</span>                   <span class="comment"># temporary shape height when resizing</span>
+    ix: <span class="number">0</span>                   <span class="comment"># initial X coordinates before dragging</span>
+    iy: <span class="number">0</span>                   <span class="comment"># initial Y coordinates before dragging</span>
+    resizing: <span class="literal">false</span>         <span class="comment"># is the shape being resized?</span>
+    dragging: <span class="literal">false</span>         <span class="comment"># is the shape dragging?</span></pre></div>
+        
+      
+        
+        <h2>INIT AND DISPOSE</h2>
+
+        
+      
+        
+        <p>Base init for all shapes. Binds a background color change event to itself.</p>
+
+        
+          <div class='highlight'><pre>    initialize: =&gt;
+        <span class="property">@linkViews</span> = <span class="keyword">new</span> Object()
+
+        <span class="property">@listenTo</span> SystemApp.mapEvents, <span class="string">"edit:toggle"</span>, <span class="property">@toggleEdit</span>
+        <span class="property">@listenTo</span> SystemApp.mapEvents, <span class="string">"zoom:set"</span>, <span class="property">@onZoom</span>
+        <span class="property">@listenTo</span> SystemApp.mapEvents, <span class="string">"zindex:toggle"</span>, <span class="property">@toggleZIndexDisplay</span>
+
+        <span class="property">@listenTo</span> <span class="property">@model</span>, <span class="string">"change:background"</span>, <span class="property">@setBackground</span>
+        <span class="property">@listenTo</span> <span class="property">@model</span>, <span class="string">"change:titleForeground"</span>, <span class="property">@setTitleForeground</span>
+        <span class="property">@listenTo</span> <span class="property">@model</span>, <span class="string">"change:stroke"</span>, <span class="property">@setStroke</span>
+        <span class="property">@listenTo</span> <span class="property">@model</span>, <span class="string">"change:strokeWidth"</span>, <span class="property">@setStrokeWidth</span>
+        <span class="property">@listenTo</span> <span class="property">@model</span>, <span class="string">"change:fontSize"</span>, <span class="property">@setFontSize</span>
+        <span class="property">@listenTo</span> <span class="property">@model</span>, <span class="string">"change:opacity"</span>, <span class="property">@setOpacity</span>
+        <span class="property">@listenTo</span> <span class="property">@model</span>, <span class="string">"change:zIndex"</span>, <span class="property">@setZIndex</span>
+        <span class="property">@listenTo</span> <span class="property">@model</span>, <span class="string">"change:icon"</span>, <span class="property">@setIcon</span>
+        <span class="property">@listenTo</span> <span class="property">@model</span>, <span class="string">"change:iconFull"</span>, <span class="property">@setIconFull</span>
+        <span class="property">@listenTo</span> <span class="property">@model</span>, <span class="string">"change:roundedCorners"</span>, <span class="property">@setRoundedCorners</span>
+
+        <span class="property">@baseInit</span>()</pre></div>
+        
+      
+        
+        <p>Base dispose for all shapes.</p>
+
+        
+          <div class='highlight'><pre>    dispose: =&gt;
+        <span class="property">@unhighlight</span>()
+
+        <span class="property">@labelsView</span>?.dispose()
+        <span class="property">@linkCreatorView</span>?.dispose()
+        <span class="property">@svg</span>?.remove()
+        <span class="property">@svgLinker</span>?.remove()
+        <span class="property">@svgResizer</span>?.remove()
+        <span class="property">@svgZIndex</span>?.remove()
+        <span class="property">@svgIcon</span>.remove()
+
+        _.each <span class="property">@linkViews</span>, (view) -&gt; view.removeFromMap()
+
+        <span class="property">@linkCreatorView</span> = <span class="literal">null</span>
+        <span class="property">@svg</span> = <span class="literal">null</span>
+        <span class="property">@svgLinker</span> = <span class="literal">null</span>
+        <span class="property">@svgResizer</span> = <span class="literal">null</span>
+        <span class="property">@svgZIndex</span> = <span class="literal">null</span>
+        <span class="property">@svgIcon</span> = <span class="literal">null</span>
+        <span class="property">@linkViews</span> = <span class="literal">null</span>
+
+        <span class="property">@baseDispose</span>()</pre></div>
+        
+      
+        
+        <h2>HELPER PROPERTIES</h2>
+
+        
+      
+        
+        <p>Return an array with all the SVG elements for this shape, inluding
+labels, icons and shadows.</p>
+
+        
+          <div class='highlight'><pre>    svgs: =&gt;
+        result = [<span class="property">@svg</span>, <span class="property">@svgIcon</span>, <span class="property">@svgLinker</span>, <span class="property">@svgResizer</span>]
+        result.push svg <span class="keyword">for</span> svg <span class="keyword">in</span> <span class="property">@labelsView</span>.svgs() <span class="keyword">if</span> <span class="property">@labelsView</span>?
+
+        <span class="keyword">return</span> result</pre></div>
+        
+      
+        
+        <p>Helper to get the X position on the shape.</p>
+
+        
+          <div class='highlight'><pre>    x: =&gt;
+        <span class="keyword">if</span> <span class="property">@model</span>.format() <span class="keyword">is</span> <span class="string">"circle"</span>
+            <span class="keyword">return</span> <span class="property">@svg</span>.attr <span class="string">"cx"</span>
+        <span class="keyword">else</span>
+            <span class="keyword">return</span> <span class="property">@svg</span>.attr <span class="string">"x"</span></pre></div>
+        
+      
+        
+        <p>Helper to get the Y position on the shape.</p>
+
+        
+          <div class='highlight'><pre>    y: =&gt;
+        <span class="keyword">if</span> <span class="property">@model</span>.format() <span class="keyword">is</span> <span class="string">"circle"</span>
+            <span class="keyword">return</span> <span class="property">@svg</span>.attr <span class="string">"cy"</span>
+        <span class="keyword">else</span>
+            <span class="keyword">return</span> <span class="property">@svg</span>.attr <span class="string">"y"</span></pre></div>
+        
+      
+        
+        <p>Helper to get the X and Y of the center / middle of the shape.</p>
+
+        
+          <div class='highlight'><pre>    centerPoint: =&gt;
+        <span class="keyword">return</span> {x: <span class="property">@x</span>() + <span class="property">@width</span>() / <span class="number">2</span>, y: <span class="property">@y</span>() + <span class="property">@height</span>() / <span class="number">2</span>}</pre></div>
+        
+      
+        
+        <p>Helper to get the Y position on the shape&#39;s title.</p>
+
+        
+          <div class='highlight'><pre>    titleY: =&gt;
+        <span class="keyword">if</span> <span class="property">@model</span>.format() <span class="keyword">is</span> <span class="string">"circle"</span>
+            <span class="keyword">return</span> <span class="property">@svgLabel</span>.attr <span class="string">"cy"</span>
+        <span class="keyword">else</span>
+            <span class="keyword">return</span> <span class="property">@svgLabel</span>.attr <span class="string">"y"</span></pre></div>
+        
+      
+        
+        <p>Helper to get the shape width.</p>
+
+        
+          <div class='highlight'><pre>    width: =&gt;
+        v = <span class="property">@svg</span>?.attrs.width
+        v = <span class="property">@model</span>.sizeX() * <span class="property">@parentView</span>.model.gridSizeX() <span class="keyword">if</span> v <span class="keyword">is</span> <span class="literal">undefined</span> <span class="keyword">or</span> v &lt; <span class="number">1</span>
+        <span class="keyword">return</span> v</pre></div>
+        
+      
+        
+        <p>Helper to get the shape height.</p>
+
+        
+          <div class='highlight'><pre>    height: =&gt;
+        v = <span class="property">@svg</span>?.attrs.height
+        v = <span class="property">@model</span>.sizeY() * <span class="property">@parentView</span>.model.gridSizeY() <span class="keyword">if</span> v <span class="keyword">is</span> <span class="literal">undefined</span> <span class="keyword">or</span> v &lt; <span class="number">1</span>
+        <span class="keyword">return</span> v</pre></div>
+        
+      
+        
+        <h2>VIEW UPDATE EVENTS</h2>
+
+        
+      
+        
+        <p>Get the shape&#39;s entity objet ID and set the referenced <code>entityObjectRef</code>
+on its <a href="shape.html">shape model</a>.</p>
+
+        
+          <div class='highlight'><pre>    bindEntityObject: =&gt;
+        definitionId = <span class="property">@model</span>.entityDefinitionId()
+        objectId = <span class="property">@model</span>.entityObjectId()
+
+        entityDef = SystemApp.Data.entities.getByFriendlyId definitionId</pre></div>
+        
+      
+        
+        <p>Stop here if no entity definition is found.</p>
+
+        
+          <div class='highlight'><pre>        <span class="keyword">return</span> <span class="keyword">if</span> <span class="keyword">not</span> entityDef?</pre></div>
+        
+      
+        
+        <p>Set the <code>entityObject</code> property on the shape model.</p>
+
+        
+          <div class='highlight'><pre>        entityObj = entityDef.data().get objectId
+        <span class="property">@model</span>.entityObject = entityObj
+
+        SystemApp.consoleLog <span class="string">"MapShapeView.bindEntityObject"</span>, <span class="string">"<span class="subst">#{definitionId}</span>-<span class="subst">#{objectId}</span>"</span>, <span class="string">"Shape ID <span class="subst">#{@model.id}</span>"</span></pre></div>
+        
+      
+        
+        <p>Filter the related <code>mapView</code> links and set the <code>tempLinkViews</code> property.</p>
+
+        
+          <div class='highlight'><pre>    setLinkViews: =&gt;
+        <span class="property">@linkViews</span> = <span class="property">@parentView</span>.getLinkViewsForShape <span class="property">@model</span></pre></div>
+        
+      
+        
+        <p>Update the background color of the shape. If <code>forceValue</code> is passed, it will override
+the model&#39;s background value.</p>
+
+        
+          <div class='highlight'><pre>    setBackground: (item, forceValue) =&gt;
+        <span class="keyword">if</span> forceValue?
+            <span class="property">@svg</span>.attr {<span class="string">"fill"</span>: forceValue}
+        <span class="keyword">else</span>
+            <span class="property">@svg</span>.attr {<span class="string">"fill"</span>: <span class="property">@model</span>.background()}</pre></div>
+        
+      
+        
+        <p>Update the border color of the shape. If <code>forceValue</code> is passed, it will override
+the model&#39;s stroke value.</p>
+
+        
+          <div class='highlight'><pre>    setStroke: (item, forceValue) =&gt;
+        <span class="keyword">if</span> forceValue?
+            <span class="property">@svg</span>.attr {<span class="string">"stroke"</span>: forceValue}
+            <span class="property">@svgIcon</span>.attr {<span class="string">"fill"</span>: forceValue}
+        <span class="keyword">else</span>
+            <span class="property">@svg</span>.attr {<span class="string">"stroke"</span>: <span class="property">@model</span>.stroke()}
+            <span class="property">@svgIcon</span>.attr {<span class="string">"fill"</span>: <span class="property">@model</span>.stroke()}
+            _.delay <span class="property">@strokeUpdatedBackToSelected</span>, SystemApp.Settings.Map.borderUpdatedDelay</pre></div>
+        
+      
+        
+        <p>Update the border width of the shape.</p>
+
+        
+          <div class='highlight'><pre>    setStrokeWidth: =&gt;
+        <span class="property">@svg</span>.attr {<span class="string">"stroke-width"</span>: <span class="property">@model</span>.strokeWidthComputed()}
+        <span class="property">@svgLinker</span>.attr <span class="property">@getLinkerPositionAtt</span>(<span class="property">@x</span>(), <span class="property">@y</span>())
+        <span class="property">@labelsView</span>.setPosition()
+        _.delay <span class="property">@strokeUpdatedBackToSelected</span>, SystemApp.Settings.Map.borderUpdatedDelay</pre></div>
+        
+      
+        
+        <p>Update the font size of the shape labels.</p>
+
+        
+          <div class='highlight'><pre>    setFontSize: =&gt;
+        zoom = <span class="number">1</span>
+        zoom = <span class="property">@parentView</span>.currentZoom <span class="keyword">if</span> <span class="property">@parentView</span>.currentZoom &gt; <span class="number">1</span>
+
+        fontSize = <span class="property">@model</span>.fontSize() * zoom
+        fontSize = Math.round fontSize</pre></div>
+        
+      
+        
+        <p>Update the font size of the shape labels.</p>
+
+        
+          <div class='highlight'><pre>    setOpacity: =&gt;
+        <span class="property">@svg</span>.attr {<span class="string">"fill-opacity"</span>: <span class="property">@model</span>.opacity()}</pre></div>
+        
+      
+        
+        <p>Update the zIndex the shape by changing its position under the DOM tree.</p>
+
+        
+          <div class='highlight'><pre>    setZIndex: =&gt;
+        <span class="property">@parentView</span>.regroupElement <span class="keyword">this</span></pre></div>
+        
+      
+        
+        <p>Set the shape&#39;s icon, shown on the top left of the shape.</p>
+
+        
+          <div class='highlight'><pre>    setIcon: =&gt;
+        icon = <span class="property">@model</span>.icon()
+
+        <span class="keyword">if</span> icon? <span class="keyword">and</span> icon <span class="keyword">isnt</span> <span class="string">""</span> <span class="keyword">and</span> icon <span class="keyword">isnt</span> <span class="string">"0"</span>
+            <span class="property">@svgIcon</span>.attr {<span class="string">"path"</span>: SystemApp.Vectors[icon]}
+            <span class="property">@setIconGeometry</span>()
+        <span class="keyword">else</span>
+            <span class="property">@svgIcon</span>.attr {<span class="string">"path"</span>: <span class="string">""</span>}</pre></div>
+        
+      
+        
+        <p>Toggle the full size icon ON or OFF. The shape&#39;s borders will be hidden
+and its icon (if there&#39;s one) will be resized to the full size.</p>
+
+        
+          <div class='highlight'><pre>    setIconFull: =&gt;
+        <span class="keyword">if</span> <span class="property">@model</span>.hasFullIcon()
+            <span class="property">@svg</span>.attr {<span class="string">"fill-opacity"</span>: <span class="number">0</span>}
+        <span class="keyword">else</span>
+            <span class="property">@svg</span>.attr {<span class="string">"fill-opacity"</span>: <span class="property">@model</span>.opacity()}
+
+        <span class="property">@setStrokeWidth</span>()
+        <span class="property">@setIconGeometry</span>()</pre></div>
+        
+      
+        
+        <p>Set the shape&#39;s corner style (squared if false, rounded if true).</p>
+
+        
+          <div class='highlight'><pre>    setRoundedCorners: =&gt;
+        <span class="keyword">if</span> <span class="property">@model</span>.roundedCorners()
+            radius = SystemApp.Settings.Map.cornerRadius
+        <span class="keyword">else</span>
+            radius = <span class="number">0</span>
+
+        <span class="property">@svg</span>.attr {<span class="string">"r"</span>: radius}</pre></div>
+        
+      
+        
+        <p>When the user changes border details (color or width), the shape will display the
+new border for a period of time - default 1400ms, set on the
+<a href="settings.html">Settings</a> - and if after that period the
+shape is still selected, then set its border back to the &quot;selected&quot; style
+by calling the <code>highlight</code> method.</p>
+
+        
+          <div class='highlight'><pre>    strokeUpdatedBackToSelected: =&gt;
+        <span class="keyword">if</span> <span class="property">@parentView</span>.currentShape?.model.id <span class="keyword">is</span> <span class="property">@model</span>.id
+            <span class="property">@highlight</span>()</pre></div>
+        
+      
+        
+        <h2>MOUSE EVENTS</h2>
+
+        
+      
+        
+        <p>When mouse is over the element, set it as the current hovered shape on the map.</p>
+
+        
+          <div class='highlight'><pre>    mouseOver: =&gt;
+        <span class="keyword">if</span> <span class="property">@parentView</span>?
+            <span class="property">@parentView</span>.setHoverShape <span class="keyword">this</span></pre></div>
+        
+      
+        
+        <p>Cancel the current hovered element on the map when mouse leaves the shape.</p>
+
+        
+          <div class='highlight'><pre>    mouseOut: =&gt;
+        <span class="keyword">if</span> <span class="property">@parentView</span>?
+            <span class="property">@parentView</span>.setHoverShape <span class="literal">null</span> <span class="keyword">if</span> <span class="property">@parentView</span>.hoverShape <span class="keyword">is</span> <span class="keyword">this</span></pre></div>
+        
+      
+        
+        <h2>SHAPE DRAG EVENTS</h2>
+
+        
+      
+        
+        <p>Set the temporary X and Y variables.</p>
+
+        
+          <div class='highlight'><pre>    setTempPosition: =&gt;
+        <span class="property">@ox</span> = <span class="property">@x</span>()
+        <span class="property">@oy</span> = <span class="property">@y</span>()</pre></div>
+        
+      
+        
+        <p>User has started dragging, only proceed if editEnabled is true.</p>
+
+        
+          <div class='highlight'><pre>    dragStart: (x, y, e) =&gt;
+        <span class="property">@ix</span> = <span class="property">@x</span>()
+        <span class="property">@iy</span> = <span class="property">@y</span>()
+
+        <span class="property">@setLinkViews</span>()
+        <span class="property">@parentView</span>.addToSelected <span class="keyword">this</span>, e.ctrlKey <span class="keyword">or</span> e.metaKey
+
+        <span class="keyword">return</span> <span class="keyword">if</span> <span class="keyword">not</span> <span class="property">@parentView</span>.editEnabled</pre></div>
+        
+      
+        
+        <p>If using the &quot;delete&quot; key / mouse combination, then remove the shape.</p>
+
+        
+          <div class='highlight'><pre>        <span class="keyword">if</span> <span class="property">@isEventDelete</span> e
+            <span class="property">@blinkAndRemove</span>()
+            <span class="keyword">return</span></pre></div>
+        
+      
+        
+        <p>Remove highlight, hide the &quot;link creator&quot; and &quot;add label&quot; icons when dragging the shape.</p>
+
+        
+          <div class='highlight'><pre>        <span class="property">@hideWhileDragging</span>()
+        <span class="property">@unhighlight</span>()</pre></div>
+        
+      
+        
+        <p>Saves the current position to the <code>ox</code> and <code>oy</code> variables and set <code>dragging</code> to true.</p>
+
+        
+          <div class='highlight'><pre>        <span class="property">@setTempPosition</span>()
+        <span class="property">@dragging</span> = <span class="literal">true</span>
+
+        <span class="property">@svg</span>.animate {<span class="string">"opacity"</span>: SystemApp.Settings.Map.opacityDrag}, SystemApp.Settings.Map.opacityInterval</pre></div>
+        
+      
+        
+        <p>When user is dragging a shape, check if it&#39;s a new link creation and
+if not, reset link positions.</p>
+
+        
+          <div class='highlight'><pre>    dragMove: (dx, dy) =&gt;
+        <span class="keyword">if</span> <span class="keyword">not</span> <span class="property">@parentView</span>.editEnabled <span class="keyword">or</span> <span class="keyword">not</span> <span class="property">@dragging</span>
+            <span class="keyword">return</span>
+
+        <span class="property">@setPosition</span> <span class="property">@ox</span> + dx * <span class="property">@parentView</span>.currentZoom, <span class="property">@oy</span> + dy * <span class="property">@parentView</span>.currentZoom
+        <span class="property">@resetLinks</span> <span class="literal">true</span></pre></div>
+        
+      
+        
+        <p>When user has finished dragging a shape, calculate the current position
+and snaps the shape to the grid. If user was creating a new link
+then proceed to <code>linkCreatorEnd()</code>. The optional <code>shadowColor</code> parameter
+can be passed to set a custom shadow color of the shape after dragging.</p>
+
+        
+          <div class='highlight'><pre>    dragEnd: (e) =&gt;
+        <span class="keyword">return</span> <span class="keyword">if</span> <span class="keyword">not</span> <span class="property">@svg</span>?</pre></div>
+        
+      
+        
+        <p>If shape moved, readd it to the <code>selectedShapes</code> on the map view.</p>
+
+        
+          <div class='highlight'><pre>        moved = <span class="property">@ix</span> <span class="keyword">isnt</span> <span class="property">@x</span>() <span class="keyword">or</span> <span class="property">@iy</span> <span class="keyword">isnt</span> <span class="property">@y</span>()
+        <span class="keyword">if</span> <span class="keyword">not</span> moved <span class="keyword">and</span> <span class="property">@parentView</span>.countSelectedShapes() &gt; <span class="number">1</span> <span class="keyword">and</span> <span class="property">@parentView</span>.selectedShapes[<span class="property">@model</span>.id]?
+            <span class="property">@parentView</span>.removeFromSelected <span class="keyword">this</span>
+        <span class="keyword">else</span>
+            <span class="property">@highlight</span>()
+
+        <span class="keyword">return</span> <span class="keyword">if</span> <span class="keyword">not</span> <span class="property">@parentView</span>.editEnabled
+
+        <span class="property">@svg</span>.animate {<span class="string">"opacity"</span>: <span class="property">@model</span>.opacity()}, SystemApp.Settings.Map.opacityInterval</pre></div>
+        
+      
+        
+        <p>Stop here if <code>dragging</code> hasn&#39;t be triggered before.</p>
+
+        
+          <div class='highlight'><pre>        <span class="keyword">return</span> <span class="keyword">if</span> <span class="keyword">not</span> <span class="property">@dragging</span></pre></div>
+        
+      
+        
+        <p>Unset <code>dragging</code>, save new position and reset links.</p>
+
+        
+          <div class='highlight'><pre>        <span class="property">@dragging</span> = <span class="literal">false</span>
+        pos = <span class="property">@getSnap</span>()
+        <span class="property">@setPosition</span> pos.x, pos.y, <span class="literal">true</span>
+        <span class="property">@resetLinks</span> <span class="literal">false</span></pre></div>
+        
+      
+        
+        <p>Show the &quot;link creator&quot; and &quot;add label&quot; icons again, and repaint the label text shadows.</p>
+
+        
+          <div class='highlight'><pre>        <span class="property">@showAfterDragging</span>()</pre></div>
+        
+      
+        
+        <p>Get the correct &quot;snapped&quot; position based on the grid size, and return
+a position object with an <code>x</code> and <code>y</code> value.</p>
+
+        
+          <div class='highlight'><pre>    getSnap: =&gt;
+        x = <span class="property">@x</span>()
+        y = <span class="property">@y</span>()
+
+        gridX = <span class="property">@parentView</span>.model.gridSizeX()
+        gridY = <span class="property">@parentView</span>.model.gridSizeY()
+
+        snapX = x - (gridX * Math.floor(x / gridX))
+        snapY = y - (gridY * Math.floor(y / gridY))
+
+        <span class="keyword">if</span> snapX &gt; gridX / <span class="number">2</span>
+            snapX = gridX - snapX
+        <span class="keyword">else</span>
+            snapX = snapX * -<span class="number">1</span>
+
+        <span class="keyword">if</span> snapY &gt; gridY / <span class="number">2</span>
+            snapY = gridY - snapY
+        <span class="keyword">else</span>
+            snapY = snapY * -<span class="number">1</span>
+
+        <span class="keyword">return</span> {x: x + snapX, y: y + snapY}</pre></div>
+        
+      
+        
+        <h2>SHAPE RESIZE EVENTS</h2>
+
+        
+      
+        
+        <p>User has started resizing the shape, only proceed if editEnabled is true.</p>
+
+        
+          <div class='highlight'><pre>    resizeStart: (x, y, e) =&gt;
+        <span class="property">@parentView</span>.addToSelected <span class="keyword">this</span>, e.ctrlKey <span class="keyword">or</span> e.metaKey
+
+        <span class="keyword">if</span> <span class="keyword">not</span> <span class="property">@parentView</span>.editEnabled
+            <span class="keyword">return</span></pre></div>
+        
+      
+        
+        <p>If using the &quot;delete&quot; key combination, then remove the shape.</p>
+
+        
+          <div class='highlight'><pre>        <span class="keyword">if</span> <span class="property">@isEventDelete</span> e
+            <span class="property">@blinkAndRemove</span>()
+            <span class="keyword">return</span></pre></div>
+        
+      
+        
+        <p>Saves the current dimensions to the <code>ow</code> and <code>oh</code> variables and remove shadow.</p>
+
+        
+          <div class='highlight'><pre>        <span class="property">@ow</span> = <span class="property">@width</span>()
+        <span class="property">@oh</span> = <span class="property">@height</span>()
+        <span class="property">@unhighlight</span>()</pre></div>
+        
+      
+        
+        <p>When user is dragging a shape, check if it&#39;s a new link creation and
+if not, reset link positions.</p>
+
+        
+          <div class='highlight'><pre>    resizeMove: (dx, dy) =&gt;
+        <span class="keyword">if</span> <span class="keyword">not</span> <span class="property">@parentView</span>.editEnabled
+            <span class="keyword">return</span>
+
+        w = dx * <span class="property">@parentView</span>.currentZoom + <span class="property">@ow</span>
+        h = dy * <span class="property">@parentView</span>.currentZoom + <span class="property">@oh</span>
+
+        minWidth = SystemApp.Settings.Map.minGridSizeBlocks * <span class="property">@parentView</span>.model.gridSizeX()
+        minHeight = SystemApp.Settings.Map.minGridSizeBlocks * <span class="property">@parentView</span>.model.gridSizeY()
+
+        w = minWidth <span class="keyword">if</span> w &lt; minWidth
+        h = minHeight <span class="keyword">if</span> h &lt; minHeight
+
+        <span class="property">@resizing</span> = <span class="literal">true</span>
+        <span class="property">@setDimensions</span> w, h
+        <span class="property">@resetLinks</span> <span class="literal">true</span></pre></div>
+        
+      
+        
+        <p>When user has finished dragging a shape, calculate the current position
+and snaps the shape to the grid. If user was creating a new link (Shift
+pressed) then proceed to <code>linkCreatorEnd()</code>.</p>
+
+        
+          <div class='highlight'><pre>    resizeEnd: =&gt;
+        <span class="keyword">if</span> <span class="keyword">not</span> <span class="property">@parentView</span>.editEnabled
+            <span class="keyword">return</span>
+
+        <span class="keyword">if</span> <span class="keyword">not</span> <span class="property">@resizing</span>
+            <span class="keyword">return</span>
+
+        <span class="property">@resizing</span> = <span class="literal">false</span>
+
+        w = <span class="property">@width</span>()
+        h = <span class="property">@height</span>()
+
+        gridX = <span class="property">@parentView</span>.model.gridSizeX()
+        gridY = <span class="property">@parentView</span>.model.gridSizeY()</pre></div>
+        
+      
+        
+        <p>Calculates the snap position based on grid size of the map.</p>
+
+        
+          <div class='highlight'><pre>        snapX = w - (gridX * Math.floor(w / gridX))
+        snapY = h - (gridY * Math.floor(h / gridY))
+
+        <span class="keyword">if</span> snapX &gt; gridX / <span class="number">2</span>
+            snapX = gridX - snapX
+        <span class="keyword">else</span>
+            snapX = snapX * -<span class="number">1</span>
+
+        <span class="keyword">if</span> snapY &gt; gridY / <span class="number">2</span>
+            snapY = gridY - snapY
+        <span class="keyword">else</span>
+            snapY = snapY * -<span class="number">1</span>
+
+        <span class="property">@setDimensions</span> w + snapX, h + snapY, <span class="literal">true</span>
+        <span class="property">@resetLinks</span> <span class="literal">false</span>
+
+        _.delay <span class="property">@highlight</span>, SystemApp.Settings.Map.shadowDelay</pre></div>
+        
+      
+        
+        <h2>LINKS AND CONNECTIONS</h2>
+
+        
+      
+        
+        <p>Starts linking two elements when user is holding the &quot;Create&quot; key / mouse combination.</p>
+
+        
+          <div class='highlight'><pre>    linkCreatorStart: =&gt;
+        <span class="keyword">if</span> <span class="keyword">not</span> <span class="property">@parentView</span>.editEnabled
+            <span class="keyword">return</span></pre></div>
+        
+      
+        
+        <p>Tell the <a href="mapView.html">Map View</a> that we&#39;re creating a new link.</p>
+
+        
+          <div class='highlight'><pre>        <span class="property">@parentView</span>.isCreatingLink = <span class="literal">true</span>
+
+        <span class="property">@setTempPosition</span>()
+
+        <span class="property">@linkCreatorView</span> = <span class="keyword">new</span> SystemApp.MapLinkCreatorView {model: <span class="keyword">new</span> SystemApp.Link {sourceId: <span class="property">@model</span>.id}}
+        <span class="property">@linkCreatorView</span>.render <span class="keyword">this</span></pre></div>
+        
+      
+        
+        <p>Move the end of the temporary link while moving the mouse.
+If the mouse goes over another shape, it will call
+<code>highlight()</code> to temporary highlight it.</p>
+
+        
+          <div class='highlight'><pre>    linkCreatorMove: (dx, dy) =&gt;
+        <span class="keyword">if</span> <span class="keyword">not</span> <span class="property">@parentView</span>.editEnabled
+            <span class="keyword">return</span>
+
+        posX = <span class="property">@ox</span> + dx * <span class="property">@parentView</span>.currentZoom
+        posY = <span class="property">@oy</span> + dy * <span class="property">@parentView</span>.currentZoom
+        pointedShape =  <span class="property">@parentView</span>.hoverShape
+
+        <span class="property">@linkCreatorView</span>.setPosition posX, posY
+
+        <span class="keyword">if</span> pointedShape <span class="keyword">is</span> <span class="keyword">this</span>
+            <span class="keyword">return</span>
+
+        <span class="keyword">if</span> <span class="property">@linkCreatorView</span>.target <span class="keyword">isnt</span> pointedShape
+            <span class="property">@linkCreatorView</span>.target?.unhighlight()
+            <span class="property">@linkCreatorView</span>.target = pointedShape
+            <span class="property">@linkCreatorView</span>.target?.highlight SystemApp.Settings.Map.refShadowColor</pre></div>
+        
+      
+        
+        <p>Destroy the temporary link and if a current reference element
+is highlighted, create and save the new link.</p>
+
+        
+          <div class='highlight'><pre>    linkCreatorEnd: (e) =&gt;
+        <span class="keyword">if</span> <span class="keyword">not</span> <span class="property">@parentView</span>.editEnabled
+            <span class="keyword">return</span></pre></div>
+        
+      
+        
+        <p>We&#39;re done with link creation, set the <a href="mapView.html">Map View</a> <code>isCreatingLink</code> to false.</p>
+
+        
+          <div class='highlight'><pre>        <span class="property">@parentView</span>.isCreatingLink = <span class="literal">false</span>
+
+        e.stopPropagation()
+        e.preventDefault()
+
+        existingLink = <span class="property">@hasLink</span> <span class="property">@linkCreatorView</span>.target
+        <span class="property">@linkCreatorSave</span>() <span class="keyword">if</span> <span class="property">@linkCreatorView</span>?.target <span class="keyword">isnt</span> <span class="literal">null</span> <span class="keyword">and</span> existingLink <span class="keyword">is</span> <span class="literal">false</span>
+
+        <span class="property">@linkCreatorView</span>?.target?.unhighlight()
+        <span class="property">@linkCreatorView</span>?.dispose()
+        <span class="property">@linkCreatorView</span> = <span class="literal">null</span></pre></div>
+        
+      
+        
+        <p>Saves the new link to the map.</p>
+
+        
+          <div class='highlight'><pre>    linkCreatorSave: =&gt;
+        <span class="keyword">if</span> <span class="keyword">not</span> <span class="property">@parentView</span>.editEnabled
+            <span class="keyword">return</span>
+
+        <span class="property">@linkCreatorView</span>.model.targetId <span class="property">@linkCreatorView</span>.target.model.id
+        <span class="property">@linkCreatorView</span>.model.generateId()
+
+        <span class="property">@parentView</span>.model.links().add <span class="property">@linkCreatorView</span>.model</pre></div>
+        
+      
+        
+        <p>Check if there&#39;s a link to the specified shape already,
+and if so, return the link view.</p>
+
+        
+          <div class='highlight'><pre>    hasLink: (shape) =&gt;
+        result = <span class="literal">false</span>
+
+        <span class="keyword">if</span> <span class="keyword">not</span> shape?
+            <span class="keyword">return</span> <span class="literal">false</span>
+
+        <span class="property">@setLinkViews</span>()
+
+        _.each <span class="property">@linkViews</span>, (view) =&gt;
+            <span class="keyword">if</span> view.model.sourceId() <span class="keyword">is</span> shape.model.id <span class="keyword">or</span> view.model.targetId() <span class="keyword">is</span> shape.model.id
+                result = view
+
+        <span class="keyword">return</span> result</pre></div>
+        
+      
+        
+        <p>Reset all link positions, this is called when user is dragging shapes around.
+If <code>forceVisible</code> is set to false and the current <a href="mapView.html">Map View</a>
+has the &quot;Show links&quot; option set to false, then hide the link. Usually while
+dragging and moving shapes <code>forceVisible</code> will be true, but after dragged/resized
+it will be false.</p>
+
+        
+          <div class='highlight'><pre>    resetLinks: (forceVisible) =&gt;
+        forceVisible = <span class="literal">true</span> <span class="keyword">if</span> <span class="keyword">not</span> forceVisible?
+
+        <span class="keyword">if</span> <span class="property">@linkViews</span>?.length &gt; <span class="number">0</span>
+            _.each <span class="property">@linkViews</span>, (link) =&gt;
+                link.drag()
+                link.semiHide() <span class="keyword">if</span> <span class="keyword">not</span> forceVisible <span class="keyword">and</span> <span class="keyword">not</span> <span class="property">@parentView</span>.isLinksVisible</pre></div>
+        
+      
+        
+        <h2>RENDER AND POSITIONING</h2>
+
+        
+      
+        
+        <p>Render the svg on the <a href="mapView.html">Map View</a>.</p>
+
+        
+          <div class='highlight'><pre>    render: (mapView) =&gt;
+        iconSize = SystemApp.Settings.Map.icoActionsSize
+        iconOpacity = SystemApp.Settings.Map.icoActionsOpacity
+
+        <span class="property">@parentView</span> = mapView <span class="keyword">if</span> mapView?
+
+        <span class="property">@zIndexHide</span>()
+
+        <span class="keyword">if</span> <span class="keyword">not</span> <span class="property">@svg</span>?
+            <span class="property">@svg</span> = <span class="property">@parentView</span>.paper.rect <span class="number">0</span>, <span class="number">0</span>, <span class="property">@width</span>(), <span class="property">@height</span>(), <span class="number">0</span>
+            <span class="property">@svg</span>.drag <span class="property">@dragMove</span>, <span class="property">@dragStart</span>, <span class="property">@dragEnd</span>
+            <span class="property">@bindSvgDefaults</span> <span class="property">@svg</span>
+            <span class="property">@setElement</span> <span class="property">@svg</span>
+
+        <span class="keyword">if</span> <span class="keyword">not</span> <span class="property">@svgIcon</span>?
+            <span class="property">@svgIcon</span> = <span class="property">@parentView</span>.paper.path()
+            <span class="property">@svgIcon</span>.drag <span class="property">@dragMove</span>, <span class="property">@dragStart</span>, <span class="property">@dragEnd</span>
+            <span class="property">@bindSvgDefaults</span> <span class="property">@svgIcon</span>
+
+        <span class="keyword">if</span> <span class="keyword">not</span> <span class="property">@svgLinker</span>?
+            <span class="property">@svgLinker</span> = <span class="property">@parentView</span>.paper.image SystemApp.Settings.Map.icoLinkerUrl, <span class="number">0</span>, <span class="number">0</span>, iconSize, iconSize
+            <span class="property">@svgLinker</span>.drag <span class="property">@linkCreatorMove</span>, <span class="property">@linkCreatorStart</span>, <span class="property">@linkCreatorEnd</span>
+            <span class="property">@svgLinker</span>.mouseover <span class="property">@linkerMouseOver</span>
+            <span class="property">@svgLinker</span>.mouseout <span class="property">@linkerMouseOut</span>
+            <span class="property">@bindSvgDefaults</span> <span class="property">@svgLinker</span>
+
+        <span class="keyword">if</span> <span class="keyword">not</span> <span class="property">@svgResizer</span>?
+            <span class="property">@svgResizer</span> = <span class="property">@parentView</span>.paper.image SystemApp.Settings.Map.icoResizeUrl, <span class="number">0</span>, <span class="number">0</span>, iconSize, iconSize
+            <span class="property">@svgResizer</span>.drag <span class="property">@resizeMove</span>, <span class="property">@resizeStart</span>, <span class="property">@resizeEnd</span>
+            <span class="property">@bindSvgDefaults</span> <span class="property">@svgResizer</span>
+
+        <span class="keyword">if</span> <span class="keyword">not</span> <span class="property">@labelsView</span>?
+            <span class="property">@labelsView</span> = <span class="keyword">new</span> SystemApp.MapShapeLabelsView(model: <span class="property">@model</span>)
+
+        <span class="property">@svg</span>.attr {<span class="string">"fill"</span>: <span class="property">@model</span>.background(), <span class="string">"stroke"</span>: <span class="property">@model</span>.stroke(), <span class="string">"stroke-width"</span>: <span class="property">@model</span>.strokeWidthComputed()}
+        <span class="property">@svg</span>.attr {<span class="string">"fill-opacity"</span>: <span class="property">@model</span>.opacity(), <span class="string">"cursor"</span>: <span class="string">"move"</span>}
+        <span class="property">@svgIcon</span>.attr {<span class="string">"cursor"</span>: <span class="string">"pointer"</span>, <span class="string">"fill"</span>: <span class="property">@model</span>.stroke(), <span class="string">"stroke"</span>: <span class="string">"none"</span>}
+        <span class="property">@svgLinker</span>.attr {<span class="string">"cursor"</span>: <span class="string">"pointer"</span>, <span class="string">"title"</span>: SystemApp.Messages.tooltipLinker, <span class="string">"opacity"</span>: iconOpacity}
+        <span class="property">@svgResizer</span>.attr {<span class="string">"cursor"</span>: <span class="string">"nw-resize"</span>, <span class="string">"title"</span>: SystemApp.Messages.tooltipResize}
+
+        <span class="property">@labelsView</span>.render <span class="keyword">this</span>
+
+        <span class="property">@toggleEdit</span> <span class="property">@parentView</span>.editEnabled
+        <span class="property">@setIcon</span>()
+        <span class="property">@setRoundedCorners</span>()
+
+        <span class="keyword">return</span> <span class="keyword">this</span></pre></div>
+        
+      
+        
+        <p>Remove the shape from the map and dispose its contents.</p>
+
+        
+          <div class='highlight'><pre>    removeFromMap: =&gt;
+        <span class="property">@setLinkViews</span>()
+        <span class="property">@model</span>.destroy()
+        <span class="property">@dispose</span>()</pre></div>
+        
+      
+        
+        <p>Blink and remove the shape (so the user gets the attention of what&#39;s being removed).</p>
+
+        
+          <div class='highlight'><pre>    blinkAndRemove: =&gt;
+        <span class="property">@svg</span>.undrag()
+        <span class="property">@blink</span> <span class="number">2</span>, <span class="property">@removeFromMap</span></pre></div>
+        
+      
+        
+        <p>Bind defaults (data and events) to the shape&#39;s SVG element(s).</p>
+
+        
+          <div class='highlight'><pre>    bindSvgDefaults: (svg) =&gt;
+        svg.data <span class="string">"viewRef"</span>, <span class="keyword">this</span>
+        svg.mouseover <span class="property">@mouseOver</span>
+        svg.mouseout <span class="property">@mouseOut</span></pre></div>
+        
+      
+        
+        <p>Show the shape on the map (set opacity to the model&#39;s defined opacity).</p>
+
+        
+          <div class='highlight'><pre>    show: (interval) =&gt;
+        <span class="keyword">if</span> <span class="keyword">not</span> <span class="property">@svg</span>?
+            <span class="keyword">return</span>
+
+        interval = SystemApp.Settings.Map.blinkInterval <span class="keyword">if</span> <span class="keyword">not</span> interval?
+
+        bgOpacity = {<span class="string">"opacity"</span>: <span class="property">@model</span>.opacity()}
+        opacity = {<span class="string">"opacity"</span>: <span class="number">1</span>}
+
+        <span class="property">@svg</span>.animate bgOpacity, interval
+        <span class="property">@svgIcon</span>.animate bgOpacity, interval
+        <span class="property">@svgLinker</span>.animate opacity, interval
+        <span class="property">@svgResizer</span>.animate opacity, interval</pre></div>
+        
+      
+        
+        <p>Show the &quot;add link&quot; icon and the labels inside the <a href="shapeLabelsView.html">Shape Labels View</a>,
+and repaint the label text shadows.</p>
+
+        
+          <div class='highlight'><pre>    showAfterDragging: =&gt;
+        <span class="property">@svgLinker</span>.show()
+        <span class="property">@labelsView</span>.show()</pre></div>
+        
+      
+        
+        <p>Hide the shape on the map (set opacity to 0). If no interval is set, it will use
+the default blinkInterval from the <a href="settings.html">Settings</a>.</p>
+
+        
+          <div class='highlight'><pre>    hide: (interval) =&gt;
+        <span class="keyword">if</span> <span class="keyword">not</span> <span class="property">@svg</span>?
+            <span class="keyword">return</span>
+
+        interval = SystemApp.Settings.Map.blinkInterval <span class="keyword">if</span> <span class="keyword">not</span> interval?
+
+        opacity = {<span class="string">"opacity"</span>: <span class="number">0</span>}
+        <span class="property">@svg</span>.animate opacity, interval
+        <span class="property">@svgIcon</span>.animate opacity, interval
+        <span class="property">@svgLinker</span>.animate opacity, interval
+        <span class="property">@svgResizer</span>.animate opacity, interval</pre></div>
+        
+      
+        
+        <p>Hide the &quot;add link&quot; icon and the labels inside the <a href="shapeLabelsView.html">Shape Labels View</a>,
+and remove the label shadows.</p>
+
+        
+          <div class='highlight'><pre>    hideWhileDragging: =&gt;
+        <span class="property">@svgLinker</span>.hide()
+        <span class="property">@labelsView</span>.hideIcons()</pre></div>
+        
+      
+        
+        <p>Set the shape absolute dimensions passing the width and height, and set the relative grid
+dimensions based on the current <a href="map.html">Map</a> <code>gridSizeX</code> and <code>gridSizeY</code>.
+If <code>save</code> is true, it will save the new shape dimensions to the current map.</p>
+
+        
+          <div class='highlight'><pre>    setDimensions: (w, h, save) =&gt;
+        <span class="property">@svg</span>.attr { width: w, height: h }
+
+        <span class="property">@model</span>.sizeX Math.round(w / <span class="property">@parentView</span>.model.gridSizeX())
+        <span class="property">@model</span>.sizeY Math.round(h / <span class="property">@parentView</span>.model.gridSizeY())
+
+        <span class="property">@setPosition</span>()
+
+        <span class="keyword">if</span> save
+            <span class="property">@model</span>.save()
+            <span class="property">@parentView</span>.model.save()</pre></div>
+        
+      
+        
+        <p>Reset the shape dimensions based on current values. This is usually
+called when the user changes the current <a href="map.html">Map</a> <code>gridSizeX</code> or <code>gridSizeY</code>.</p>
+
+        
+          <div class='highlight'><pre>    resetDimensions: =&gt;
+        <span class="property">@svg</span>.attr <span class="string">"x"</span>, <span class="property">@model</span>.x() * <span class="property">@parentView</span>.model.gridSizeX()
+        <span class="property">@svg</span>.attr <span class="string">"y"</span>, <span class="property">@model</span>.y() * <span class="property">@parentView</span>.model.gridSizeY()
+
+        w = <span class="property">@model</span>.sizeX() * <span class="property">@parentView</span>.model.gridSizeX()
+        h = <span class="property">@model</span>.sizeY() * <span class="property">@parentView</span>.model.gridSizeY()
+
+        <span class="property">@setDimensions</span> w, h</pre></div>
+        
+      
+        
+        <p>Set the shape position on the map. If <code>save</code> is true, it will save
+the new shape position to the current map.
+If no parameters are passed (for example, the call inside <code>setDimensions</code>)
+it will use the current <code>x</code> and <code>y</code> values.</p>
+
+        
+          <div class='highlight'><pre>    setPosition: (posX, posY, save) =&gt;
+        posX = <span class="property">@x</span>() <span class="keyword">if</span> <span class="keyword">not</span> posX?
+        posY = <span class="property">@y</span>() <span class="keyword">if</span> <span class="keyword">not</span> posY?
+
+        maximumX = <span class="property">@parentView</span>.model.paperSizeX() - <span class="property">@width</span>()
+        maximumY = <span class="property">@parentView</span>.model.paperSizeY() - <span class="property">@height</span>()
+
+        <span class="keyword">if</span> posX &lt; <span class="number">0</span>
+            posX = <span class="number">0</span>
+        <span class="keyword">else</span> <span class="keyword">if</span> posX &gt; maximumX
+            posX = maximumX
+
+        <span class="keyword">if</span> posY &lt; <span class="number">0</span>
+            posY = <span class="number">0</span>
+        <span class="keyword">else</span> <span class="keyword">if</span> posY &gt; maximumY
+            posY = maximumY
+
+        <span class="property">@svg</span>.attr <span class="property">@getBoxPositionAtt</span> posX, posY
+        <span class="property">@svgLinker</span>.attr <span class="property">@getLinkerPositionAtt</span> posX, posY
+        <span class="property">@svgResizer</span>.attr <span class="property">@getResizerPositionAtt</span> posX, posY
+        <span class="property">@svgZIndex</span>?.attr <span class="property">@getZIndexLabelPositionAtt</span> posX, posY
+        <span class="property">@labelsView</span>.setPosition()
+
+        <span class="property">@setIconGeometry</span> posX, posY
+
+        <span class="property">@model</span>.x posX / <span class="property">@parentView</span>.model.gridSizeX()
+        <span class="property">@model</span>.y posY / <span class="property">@parentView</span>.model.gridSizeY()
+
+        <span class="keyword">if</span> save
+            <span class="property">@resetLinks</span> <span class="literal">false</span>
+            <span class="property">@model</span>.save()
+            <span class="property">@parentView</span>.model.save()
+            <span class="property">@svg</span>.paper.safari()</pre></div>
+        
+      
+        
+        <p>Set the positon and scale of the shape&#39;s icon. The values depend
+if shape is in <code>fullSizeIcon</code>.</p>
+
+        
+          <div class='highlight'><pre>    setIconGeometry: (posX, posY) =&gt;
+        <span class="keyword">if</span> <span class="property">@model</span>.hasFullIcon()
+            posX = <span class="property">@x</span>() <span class="keyword">if</span> <span class="keyword">not</span> posX?
+            posY = <span class="property">@y</span>() <span class="keyword">if</span> <span class="keyword">not</span> posY?
+            scaleW = ((<span class="property">@width</span>() - <span class="number">2</span>) / <span class="property">@svgIcon</span>.getBBox(<span class="literal">true</span>).width).toFixed(<span class="number">2</span>)
+            scaleH = ((<span class="property">@height</span>() - <span class="number">2</span>) / <span class="property">@svgIcon</span>.getBBox(<span class="literal">true</span>).height).toFixed(<span class="number">2</span>)
+            iconX = posX - <span class="number">16</span> + <span class="property">@width</span>() / <span class="number">2</span>
+            iconY = posY - <span class="number">18</span> + <span class="property">@height</span>() / <span class="number">2</span>
+        <span class="keyword">else</span>
+            posX = <span class="property">@x</span>() <span class="keyword">if</span> <span class="keyword">not</span> posX?
+            posY = <span class="property">@y</span>() <span class="keyword">if</span> <span class="keyword">not</span> posY?
+            scaleW = <span class="number">0.6</span>
+            scaleH = <span class="number">0.6</span>
+            iconX = posX - <span class="number">8</span>
+            iconY = posY - <span class="number">26</span>
+
+        <span class="property">@svgIcon</span>.transform <span class="string">"T<span class="subst">#{iconX}</span>,<span class="subst">#{iconY}</span>S<span class="subst">#{scaleW}</span>,<span class="subst">#{scaleH}</span>"</span></pre></div>
+        
+      
+        
+        <p>Get the box position attribute based on the X and Y values.</p>
+
+        
+          <div class='highlight'><pre>    getBoxPositionAtt: (posX, posY) =&gt;
+        <span class="keyword">if</span> <span class="property">@model</span>.format() <span class="keyword">is</span> <span class="string">"circle"</span>
+            <span class="keyword">return</span> { cx: posX, cy: posY }
+        <span class="keyword">else</span>
+            <span class="keyword">return</span> { x: posX, y: posY }</pre></div>
+        
+      
+        
+        <p>Get the title text position attribute based on the X and Y values.
+Should be at the very top of the shape.</p>
+
+        
+          <div class='highlight'><pre>    getTitlePositionAtt: (posX, posY) =&gt;
+        posX += <span class="property">@width</span>() / <span class="number">2</span> - <span class="number">1</span>
+        posY -= SystemApp.Settings.Map.titleOffsetY
+        <span class="keyword">return</span> { x: posX, y: posY }</pre></div>
+        
+      
+        
+        <p>Get the link creator circle position attribute based on the X and Y values.
+Should be around the right-middle center of the shape.</p>
+
+        
+          <div class='highlight'><pre>    getLinkerPositionAtt: (posX, posY) =&gt;
+        posX += <span class="property">@width</span>() - <span class="property">@model</span>.strokeWidthComputed() - SystemApp.Settings.Map.icoActionsSize
+        posY += <span class="property">@model</span>.strokeWidthComputed()
+        <span class="keyword">return</span> { x: posX, y: posY }</pre></div>
+        
+      
+        
+        <p>Get the &quot;z-index identifier&quot; text position. This SVG element is shown
+when user clicks the &quot;Identify z-index&quot; button on the <a href="mapOptionsView.html">map options</a>.</p>
+
+        
+          <div class='highlight'><pre>    getZIndexLabelPositionAtt: (posX, posY) =&gt;
+        posX += <span class="property">@width</span>() / <span class="number">2</span>
+        posY += <span class="property">@height</span>() / <span class="number">2</span>
+        <span class="keyword">return</span> { x: posX, y: posY }</pre></div>
+        
+      
+        
+        <p>Get the image resizer position attribute based on the X and Y values.
+Should be the bottom right corner of the shape.</p>
+
+        
+          <div class='highlight'><pre>    getResizerPositionAtt: (posX, posY) =&gt;
+        posX += <span class="property">@width</span>() - SystemApp.Settings.Map.icoActionsSize
+        posY += <span class="property">@height</span>() - SystemApp.Settings.Map.icoActionsSize
+        <span class="keyword">return</span> { x: posX, y: posY }</pre></div>
+        
+      
+        
+        <p>Bring the shape and its associated elements (title, label, etc) to front.
+If <code>saveZIndex</code> is true, it will reorder and save the current <a href="map.html">Map</a> shape collection.</p>
+
+        
+          <div class='highlight'><pre>    toFront: (saveZIndex) =&gt;
+        <span class="property">@svg</span>.toFront()
+        <span class="property">@svgIcon</span>.toFront()
+        <span class="property">@svgLinker</span>.toFront()
+        <span class="property">@svgResizer</span>.toFront()
+        <span class="property">@labelsView</span>.toFront()
+
+        <span class="keyword">if</span> saveZIndex? <span class="keyword">and</span> saveZIndex
+            <span class="property">@parentView</span>.model.shapes().remove(<span class="property">@parentView</span>.model.shapes().get(<span class="property">@model</span>.id), {silent: <span class="literal">true</span>})
+            <span class="property">@parentView</span>.model.shapes().push(<span class="property">@model</span>, {silent: <span class="literal">true</span>})
+            <span class="property">@parentView</span>.model.save()</pre></div>
+        
+      
+        
+        <p>Send the shape and its associated elements (title, label, etc) to back.
+If <code>saveZIndex</code> is true, it will reorder and save the current <a href="map.html">Map</a> shape collection.</p>
+
+        
+          <div class='highlight'><pre>    toBack: (saveZIndex) =&gt;
+        <span class="property">@labelsView</span>.toBack()
+        <span class="property">@svgResizer</span>.toBack()
+        <span class="property">@svgLinker</span>.toBack()
+        <span class="property">@svgIcon</span>.toBack()
+        <span class="property">@svg</span>.toBack()
+
+        <span class="property">@parentView</span>.toBack()
+
+        <span class="keyword">if</span> saveZIndex? <span class="keyword">and</span> saveZIndex
+            <span class="property">@parentView</span>.model.shapes().remove(<span class="property">@parentView</span>.model.shapes().get(<span class="property">@model</span>.id), {silent: <span class="literal">true</span>})
+            <span class="property">@parentView</span>.model.shapes().unshift(<span class="property">@model</span>, {silent: <span class="literal">true</span>})
+            <span class="property">@parentView</span>.model.save()</pre></div>
+        
+      
+        
+        <p>When user put map on &quot;Edit Mode&quot;, show the resizer icon and the link creator circle.
+If in locked mode, hide them.</p>
+
+        
+          <div class='highlight'><pre>    toggleEdit: (enabled) =&gt;
+        <span class="keyword">if</span> enabled
+            <span class="property">@svgLinker</span>.show()
+            <span class="property">@svgResizer</span>.show()
+        <span class="keyword">else</span>
+            <span class="property">@svgLinker</span>.hide()
+            <span class="property">@svgResizer</span>.hide()</pre></div>
+        
+      
+        
+        <p>When user zooms in or out, resize the shape title accordingly.</p>
+
+        
+          <div class='highlight'><pre>    onZoom: =&gt;
+        <span class="property">@setFontSize</span>()</pre></div>
+        
+      
+        
+        <p>Toggles the text showing the z-index (stack level) of the shape, represented
+by the element <code>svgZIndex</code>. If the parameter <code>visible</code> is not passed, then
+assume it is &quot;true&quot;.</p>
+
+        
+          <div class='highlight'><pre>    toggleZIndexDisplay: (visible) =&gt;
+        visible = <span class="literal">true</span> <span class="keyword">if</span> <span class="keyword">not</span> visible?
+
+        <span class="keyword">if</span> visible
+            <span class="property">@zIndexShow</span>()
+        <span class="keyword">else</span>
+            <span class="property">@zIndexHide</span>()</pre></div>
+        
+      
+        
+        <p>Show the z-index (stack level) of the shape.</p>
+
+        
+          <div class='highlight'><pre>    zIndexShow: =&gt;
+        <span class="keyword">if</span> <span class="keyword">not</span> <span class="property">@svgZIndex</span>?
+            <span class="property">@svgZIndex</span> = <span class="property">@parentView</span>.paper.text <span class="number">0</span>, <span class="number">0</span>, <span class="property">@model</span>.zIndex()
+            <span class="property">@svgZIndex</span>.insertAfter <span class="property">@svgResizer</span>
+        <span class="keyword">else</span>
+            <span class="property">@svgZIndex</span>.attr {<span class="string">"text"</span>: <span class="property">@model</span>.zIndex()}
+
+        pos = <span class="property">@getZIndexLabelPositionAtt</span> <span class="property">@x</span>(), <span class="property">@y</span>()
+
+        <span class="property">@svgZIndex</span>.attr pos
+        <span class="property">@svgZIndex</span>.attr {<span class="string">"fill"</span>: <span class="property">@model</span>.background(), <span class="string">"stroke"</span>: <span class="property">@model</span>.stroke(), <span class="string">"font-size"</span>: <span class="property">@model</span>.sizeY() * <span class="number">13</span>}
+
+        <span class="property">@svg</span>.mousedown</pre></div>
+        
+      
+        
+        <p>Hide the z-index (stack level) of the shape.</p>
+
+        
+          <div class='highlight'><pre>    zIndexHide: =&gt;
+        <span class="keyword">if</span> <span class="keyword">not</span> <span class="property">@svgZIndex</span>?
+            <span class="keyword">return</span>
+
+        <span class="property">@svgZIndex</span>.remove()
+        <span class="property">@svgZIndex</span> = <span class="literal">null</span></pre></div>
+        
+      
+        
+        <h2>HIGHLIGHT AND SHADOW</h2>
+
+        
+      
+        
+        <p>When user hovers the mouse over an &quot;linker&quot; icon, set its opacity to 1.</p>
+
+        
+          <div class='highlight'><pre>    linkerMouseOver: =&gt;
+        <span class="property">@svgLinker</span>?.attr {<span class="string">"opacity"</span>: <span class="number">1</span>}</pre></div>
+        
+      
+        
+        <p>When mouse leaves an &quot;linker&quot; icon, set its opacity to the value set on the <a href="settings.html">Settings</a>.</p>
+
+        
+          <div class='highlight'><pre>    linkerMouseOut: =&gt;
+        <span class="property">@svgLinker</span>?.attr {<span class="string">"opacity"</span>: SystemApp.Settings.Map.icoActionsOpacity}</pre></div>
+        
+      
+        
+        <p>Create a shadow behind the shape, with optional color and strength.</p>
+
+        
+          <div class='highlight'><pre>    highlight: (color, strength) =&gt;
+        color = SystemApp.Settings.Map.shadowColor <span class="keyword">if</span> <span class="keyword">not</span> color?
+        strength = SystemApp.Settings.Map.shadowStrength <span class="keyword">if</span> <span class="keyword">not</span> strength?
+
+        <span class="property">@svg</span>.attr {<span class="string">"stroke"</span>: color, <span class="string">"stroke-width"</span>: strength}</pre></div>
+        
+      
+        
+        <p>Remove the shadow from the shape (if there&#39;s one present).</p>
+
+        
+          <div class='highlight'><pre>    unhighlight: =&gt;
+        <span class="property">@svg</span>?.attr {<span class="string">"stroke"</span>: <span class="property">@model</span>.stroke(), <span class="string">"stroke-width"</span>: <span class="property">@model</span>.strokeWidthComputed()}</pre></div>
+        
+      
+        
+        <p>Blink the entire shape with optional amount of times (default is 2). This is a recursive function.
+If times is 1 and the <code>callback</code> is specified, call it when it has finished blinking.</p>
+
+        
+          <div class='highlight'><pre>    blink: (times, callback) =&gt;
+        times = <span class="number">2</span> <span class="keyword">if</span> <span class="keyword">not</span> times? <span class="keyword">or</span> times <span class="keyword">is</span> <span class="string">""</span>
+        extraMs = <span class="number">15</span>
+
+        <span class="property">@hide</span>()
+        _.delay(<span class="property">@show</span>, SystemApp.Settings.Map.blinkInterval + extraMs)
+        _.delay(<span class="property">@blink</span>, SystemApp.Settings.Map.blinkInterval * <span class="number">2</span> + extraMs * <span class="number">2</span>, times - <span class="number">1</span>, callback) <span class="keyword">if</span> times &gt; <span class="number">1</span>
+        _.delay(callback, SystemApp.Settings.Map.blinkInterval * <span class="number">2</span> + extraMs * <span class="number">4</span>) <span class="keyword">if</span> times <span class="keyword">is</span> <span class="number">1</span> <span class="keyword">and</span> callback?</pre></div>
+        
+      
+        
+        <p>Slowly blink the entire shape with optional amount of times (default is 2). This is a recursive function.
+If times is 1 and the <code>callback</code> is specified, call it when it has finished blinking.</p>
+
+        
+          <div class='highlight'><pre>    slowBlink: (times, callback) =&gt;
+        times = <span class="number">2</span> <span class="keyword">if</span> <span class="keyword">not</span> times? <span class="keyword">or</span> times <span class="keyword">is</span> <span class="string">""</span>
+
+        <span class="property">@hide</span>(SystemApp.Settings.Map.blinkSlowInterval)
+        _.delay(<span class="property">@show</span>, SystemApp.Settings.Map.blinkSlowInterval, SystemApp.Settings.Map.blinkSlowInterval)
+        _.delay(<span class="property">@slowBlink</span>, SystemApp.Settings.Map.blinkSlowInterval * <span class="number">2</span>, times - <span class="number">1</span>, callback) <span class="keyword">if</span> times &gt; <span class="number">1</span>
+        _.delay(callback, SystemApp.Settings.Map.blinkSlowInterval * <span class="number">3</span>) <span class="keyword">if</span> times <span class="keyword">is</span> <span class="number">1</span> <span class="keyword">and</span> callback?</pre></div>
+        
+      
+      <div class="fleur">h</div>
+    </div>
+  </div>
+</body>
+</html>

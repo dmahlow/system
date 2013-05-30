@@ -1,0 +1,962 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+  <title>auditEventManagerView.coffee</title>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <link rel="stylesheet" media="all" href="public/stylesheets/normalize.css" />
+  <link rel="stylesheet" media="all" href="docco.css" />
+</head>
+<body>
+  <div class="container">
+    <div class="page">
+
+      <div class="header">
+        
+          <h1>auditEventManagerView.coffee</h1>
+        
+
+        
+          <div class="toc">
+            <h3>Table of Contents</h3>
+            <ol>
+              
+                
+                <li>
+                  <a class="source" href="admin.html">
+                    admin.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="api.auditData.html">
+                    api.auditData.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="api.auditEvent.html">
+                    api.auditEvent.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="api.html">
+                    api.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="api.entity.html">
+                    api.entity.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="api.map.html">
+                    api.map.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="api.server.html">
+                    api.server.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="api.variable.html">
+                    api.variable.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="api.view.html">
+                    api.view.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="app.html">
+                    app.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="app.instance.html">
+                    app.instance.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="data.html">
+                    data.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="dataUtil.html">
+                    dataUtil.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="messages.html">
+                    messages.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="auditData.html">
+                    auditData.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="auditEvent.html">
+                    auditEvent.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="base.html">
+                    base.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="entityDefinition.html">
+                    entityDefinition.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="entityObject.html">
+                    entityObject.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="eventAction.html">
+                    eventAction.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="eventRule.html">
+                    eventRule.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="link.html">
+                    link.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="map.html">
+                    map.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="shape.html">
+                    shape.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="user.html">
+                    user.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="userSettings.html">
+                    userSettings.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="variable.html">
+                    variable.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="adminRoutes.html">
+                    adminRoutes.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="appRoutes.html">
+                    appRoutes.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="settings.html">
+                    settings.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="sockets.html">
+                    sockets.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="tutorial.html">
+                    tutorial.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="vectors.html">
+                    vectors.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="statusTabView.html">
+                    statusTabView.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="toolsTabView.html">
+                    toolsTabView.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="usersTabView.html">
+                    usersTabView.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="adminView.html">
+                    adminView.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="alertView.html">
+                    alertView.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="auditDataManagerView.html">
+                    auditDataManagerView.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="auditEventManagerView.html">
+                    auditEventManagerView.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="baseView.html">
+                    baseView.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="createMapView.html">
+                    createMapView.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="entityManagerView.html">
+                    entityManagerView.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="footerView.html">
+                    footerView.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="helpView.html">
+                    helpView.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="entitiesTabView.html">
+                    entitiesTabView.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="inspectorTabView.html">
+                    inspectorTabView.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="mapTabView.html">
+                    mapTabView.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="shapeTabView.html">
+                    shapeTabView.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="controlsView.html">
+                    controlsView.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="labelEditView.html">
+                    labelEditView.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="linkCreatorView.html">
+                    linkCreatorView.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="linkLabelsView.html">
+                    linkLabelsView.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="linkView.html">
+                    linkView.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="shapeLabelsView.html">
+                    shapeLabelsView.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="shapeView.html">
+                    shapeView.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="shapesMoverView.html">
+                    shapesMoverView.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="mapView.html">
+                    mapView.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="menuView.html">
+                    menuView.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="overlayView.html">
+                    overlayView.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="scriptEditorView.html">
+                    scriptEditorView.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="selfTestView.html">
+                    selfTestView.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="settingsView.html">
+                    settingsView.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="startView.html">
+                    startView.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="variableManagerView.html">
+                    variableManagerView.coffee
+                  </a>
+                </li>
+              
+            </ol>
+          </div>
+        
+      </div>
+
+      
+        
+        <h2>AUDIT EVENT MANAGER VIEW</h2>
+
+        
+      
+        
+        <p>Represents the Audit Events overlay.</p>
+
+        
+          <div class='highlight'><pre><span class="class"><span class="keyword">class</span> <span class="title">SystemApp</span>.<span class="title">AuditEventManagerView</span> <span class="keyword">extends</span> <span class="title">SystemApp</span>.<span class="title">OverlayView</span></span>
+
+    $txtCreate: <span class="literal">null</span>         <span class="comment"># the text input used to create a new audit event</span>
+    $butCreate: <span class="literal">null</span>         <span class="comment"># the button used to create a new audit event</span>
+    $txtDescription: <span class="literal">null</span>    <span class="comment"># the "Description" textbox when editing the audit event</span>
+    $chkActive: <span class="literal">null</span>         <span class="comment"># the "Active" checkbox when editing the audit event</span>
+    $gridRules: <span class="literal">null</span>         <span class="comment"># the right grid containing the current's event rules</span>
+    $gridActions: <span class="literal">null</span>       <span class="comment"># the right grid containing the current's event actions</span>
+    $rowAddRule: <span class="literal">null</span>        <span class="comment"># the last rules row, containing the "Add rule" fields</span>
+    $rowAddAction: <span class="literal">null</span>      <span class="comment"># the last actions row, containing the "Add action" fields</span>
+    $icoAddRule: <span class="literal">null</span>        <span class="comment"># the "Add" icon on the right of the add RULE row</span>
+    $icoAddAction: <span class="literal">null</span>      <span class="comment"># the "Add" icon on the right of the add ACTION row</span></pre></div>
+        
+      
+        
+        <h2>INIT AND DISPOSE</h2>
+
+        
+      
+        
+        <p>Init the Audit Events overlay view.</p>
+
+        
+          <div class='highlight'><pre>    initialize: =&gt;
+        <span class="property">@currentSettings</span> = SystemApp.Settings.AuditEvent
+        <span class="property">@overlayInit</span> <span class="string">"#auditevents"</span>
+        <span class="property">@setDom</span>()
+        <span class="property">@setEvents</span>()</pre></div>
+        
+      
+        
+        <p>Dispose the Audit Events view.</p>
+
+        
+          <div class='highlight'><pre>    dispose: =&gt;
+        <span class="property">@baseDispose</span>()</pre></div>
+        
+      
+        
+        <p>Set the DOM elements cache.</p>
+
+        
+          <div class='highlight'><pre>    setDom: =&gt;
+        <span class="property">@$menuItem</span> = $ <span class="string">"#menu-auditevents"</span>
+        <span class="property">@$modelsList</span> = $ <span class="string">"#auditevents-list"</span>
+        <span class="property">@$txtCreate</span> = $ <span class="string">"#auditevents-txt-create"</span>
+        <span class="property">@$butCreate</span> = $ <span class="string">"#auditevents-but-create"</span>
+
+        <span class="property">@$txtDescription</span> = $ <span class="string">"#auditevents-txt-description"</span>
+        <span class="property">@$chkActive</span> = $ <span class="string">"#auditevents-chk-active"</span>
+
+        <span class="property">@$gridRules</span> = <span class="property">@$el</span>.find <span class="string">"#auditevents-tab-rules div .grid"</span>
+        <span class="property">@$gridActions</span> = <span class="property">@$el</span>.find <span class="string">"#auditevents-tab-actions div .grid"</span>
+
+        <span class="property">@$rowAddRule</span> = <span class="property">@$el</span>.find <span class="string">"#auditevents-tab-rules div .addrow"</span>
+        <span class="property">@$rowAddAction</span> = <span class="property">@$el</span>.find <span class="string">"#auditevents-tab-actions div .addrow"</span>
+        <span class="property">@$icoAddRule</span> = <span class="property">@$rowAddRule</span>.children(<span class="string">".add"</span>)
+        <span class="property">@$icoAddAction</span> = <span class="property">@$rowAddAction</span>.children(<span class="string">".add"</span>)</pre></div>
+        
+      
+        
+        <p>Bind events to the DOM.</p>
+
+        
+          <div class='highlight'><pre>    setEvents: =&gt;
+        <span class="property">@$butCreate</span>.click <span class="property">@createEventClick</span>
+        <span class="property">@$txtCreate</span>.keyup <span class="property">@createEventKeyUp</span>
+
+        <span class="property">@$txtDescription</span>.change <span class="property">@inputOnChange</span>
+        <span class="property">@$chkActive</span>.change <span class="property">@inputOnChange</span>
+
+        <span class="property">@$rowAddRule</span>.children(<span class="string">".source"</span>).keyup <span class="property">@createRuleKeyUp</span>
+        <span class="property">@$rowAddRule</span>.children(<span class="string">".target"</span>).keyup <span class="property">@createRuleKeyUp</span>
+        <span class="property">@$icoAddRule</span>.click <span class="property">@createRuleClick</span>
+
+        <span class="property">@$rowAddAction</span>.children(<span class="string">".value"</span>).keyup <span class="property">@createActionKeyUp</span>
+        <span class="property">@$icoAddAction</span>.click <span class="property">@createActionClick</span></pre></div>
+        
+      
+        
+        <h2>AUDIT EVENTS LIST</h2>
+
+        
+      
+        
+        <p>Clear the current view by setting the <code>model</code> to null
+and emptying the data grids.</p>
+
+        
+          <div class='highlight'><pre>    clear: =&gt;
+        <span class="property">@model</span> = <span class="literal">null</span>
+        <span class="property">@$modelsList</span>.empty()
+        <span class="property">@clearTextInputs</span>()
+
+        <span class="property">@bindRules</span>()
+        <span class="property">@bindActions</span>()</pre></div>
+        
+      
+        
+        <p>Clear only the text input fields.</p>
+
+        
+          <div class='highlight'><pre>    clearTextInputs: =&gt;
+        <span class="property">@$txtCreate</span>.val <span class="string">""</span></pre></div>
+        
+      
+        
+        <p>Bind all <a href="auditEvent.html">AuditEvent</a> from the <a href="data.html">data store</a>.</p>
+
+        
+          <div class='highlight'><pre>    bindAuditEvents: =&gt;
+        <span class="property">@clear</span>()
+        <span class="property">@addToModelsList</span> item <span class="keyword">for</span> item <span class="keyword">in</span> SystemApp.Data.auditEvents.models</pre></div>
+        
+      
+        
+        <h2>CREATING AUDIT EVENTS</h2>
+
+        
+      
+        
+        <p>When user clicks the &quot;Create&quot; button, add a new record to the audit events
+collection with the title entered at the <code>$txtCreate</code> field.</p>
+
+        
+          <div class='highlight'><pre>    createEventClick: (e) =&gt;
+        newId = <span class="property">@$txtCreate</span>.val()</pre></div>
+        
+      
+        
+        <p>The ID must have at least 2 chars.</p>
+
+        
+          <div class='highlight'><pre>        <span class="keyword">if</span> newId.length &lt; <span class="number">2</span>
+            <span class="property">@warnField</span> <span class="property">@$txtCreate</span>
+            <span class="keyword">return</span>
+        <span class="keyword">else</span>
+            newId = SystemApp.DataUtil.normalize newId, <span class="literal">true</span>
+
+        SystemApp.Data.auditEvents.create {friendlyId: newId}, {wait: <span class="literal">true</span>}
+        <span class="property">@clearTextInputs</span>()</pre></div>
+        
+      
+        
+        <p>If the <code>$txtCreate</code> field has focus, pressing Enter will call the <code>click</code>
+event on the <code>$butCreate</code>.</p>
+
+        
+          <div class='highlight'><pre>    createEventKeyUp: (e) =&gt;
+        <span class="keyword">if</span> e.keyCode <span class="keyword">is</span> <span class="number">13</span>
+            <span class="property">@$butCreate</span>.click()</pre></div>
+        
+      
+        
+        <h2>AUDIT EVENT PROPERTIES</h2>
+
+        
+      
+        
+        <p>Bind entity properties and refresh the shape template.</p>
+
+        
+          <div class='highlight'><pre>    onBindModel: =&gt;
+        <span class="keyword">if</span> <span class="property">@model</span>?
+            <span class="property">@$txtDescription</span>.val <span class="property">@model</span>.description()
+            <span class="property">@$chkActive</span>.prop <span class="string">"checked"</span>, <span class="property">@model</span>.active()
+
+        <span class="property">@bindRules</span>()
+        <span class="property">@bindActions</span>()</pre></div>
+        
+      
+        
+        <h2>RULES</h2>
+
+        
+      
+        
+        <p>Bind all rules of the <code>model</code> to the <code>$gridRules</code>. This is called
+whenever the user clicks / selects an <a href="auditEvent.html">AuditEvent</a> on the <code>$gridAlerts</code>.</p>
+
+        
+          <div class='highlight'><pre>    bindRules: =&gt;
+        <span class="property">@$gridRules</span>.empty()
+
+        <span class="keyword">if</span> <span class="property">@model</span>?
+            <span class="property">@stopListening</span> <span class="property">@model</span>.rules()
+            <span class="property">@listenTo</span> <span class="property">@model</span>.rules(), <span class="string">"add"</span>, <span class="property">@addRuleToGrid</span>
+            <span class="property">@listenTo</span> <span class="property">@model</span>.rules(), <span class="string">"remove"</span>, <span class="property">@removeRuleFromGrid</span>
+
+            <span class="property">@addRuleToGrid</span> item <span class="keyword">for</span> item <span class="keyword">in</span> <span class="property">@model</span>.rules().models
+            <span class="property">@$rowAddRule</span>.show()
+        <span class="keyword">else</span>
+            <span class="property">@$gridRules</span>.append $(document.createElement <span class="string">"label"</span>).html(SystemApp.Messages.pleaseSelectAnAlert)
+            <span class="property">@$rowAddRule</span>.hide()</pre></div>
+        
+      
+        
+        <p>Add a single <a href="eventRule.html">Alert Rule</a> to the <code>$gridRules</code>.</p>
+
+        
+          <div class='highlight'><pre>    addRuleToGrid: (rule) =&gt;
+        row = $(document.createElement <span class="string">"div"</span>)
+        row.attr <span class="string">"id"</span>, SystemApp.Settings.AuditEvent.rowRulePrefix + rule.id
+        row.data <span class="string">"DataItem"</span>, rule
+        row.addClass <span class="string">"row"</span>
+
+        source = $(document.createElement <span class="string">"input"</span>)
+        source.data <span class="string">"propertyname"</span>, <span class="string">"source"</span>
+        source.attr <span class="string">"type"</span>, <span class="string">"text"</span>
+        source.attr <span class="string">"title"</span>, SystemApp.Messages.tooltipEventRuleSource
+        source.addClass <span class="string">"source"</span>
+        source.val rule.source()
+        source.change rule, <span class="property">@inputOnChange</span>
+
+        comparator = $(document.createElement <span class="string">"select"</span>)
+        comparator.data <span class="string">"propertyname"</span>, <span class="string">"comparator"</span>
+        comparator.attr <span class="string">"title"</span>, SystemApp.Messages.tooltipEventRuleComparator
+        comparator.addClass <span class="string">"comparator"</span>
+        comparator.append($(document.createElement <span class="string">"option"</span>).html(<span class="string">"="</span>))
+        comparator.append($(document.createElement <span class="string">"option"</span>).html(<span class="string">"!="</span>))
+        comparator.append($(document.createElement <span class="string">"option"</span>).html(<span class="string">"&gt;"</span>))
+        comparator.append($(document.createElement <span class="string">"option"</span>).html(<span class="string">"&gt;="</span>))
+        comparator.append($(document.createElement <span class="string">"option"</span>).html(<span class="string">"&lt;"</span>))
+        comparator.append($(document.createElement <span class="string">"option"</span>).html(<span class="string">"&lt;="</span>))
+        comparator.val rule.comparator()
+        comparator.change rule, <span class="property">@inputOnChange</span>
+
+        target = $(document.createElement <span class="string">"input"</span>)
+        target.data <span class="string">"propertyname"</span>, <span class="string">"target"</span>
+        target.attr <span class="string">"type"</span>, <span class="string">"text"</span>
+        target.attr <span class="string">"title"</span>, SystemApp.Messages.tooltipEventRuleTarget
+        target.addClass <span class="string">"target"</span>
+        target.val rule.target()
+        target.change rule, <span class="property">@inputOnChange</span>
+
+        row.append source
+        row.append comparator
+        row.append target
+
+        <span class="property">@appendDeleteIcon</span> rule, row
+        <span class="property">@$gridRules</span>.append row</pre></div>
+        
+      
+        
+        <p>Remove the specified rule from the <code>$gridRules</code>.</p>
+
+        
+          <div class='highlight'><pre>    removeRuleFromGrid: (rule) =&gt;
+        $(<span class="string">"#"</span> + SystemApp.Settings.AuditEvent.rowRulePrefix + rule.id).remove()
+        <span class="property">@model</span>?.save()</pre></div>
+        
+      
+        
+        <p>When user clicks the &quot;Add rule&quot; icon, add a new <a href="eventRule.html">Alert Rule</a>
+to the <code>model</code> rules collection.</p>
+
+        
+          <div class='highlight'><pre>    createRuleClick: (e) =&gt;
+        row = $(e.currentTarget).parent()
+        source = row.children <span class="string">".source"</span>
+        target = row.children <span class="string">".target"</span>
+        comparator = row.children <span class="string">".comparator"</span>
+
+        sourceVal = source.val()
+        targetVal = target.val()
+        comparatorVal = comparator.val()</pre></div>
+        
+      
+        
+        <p>Source value must be set!</p>
+
+        
+          <div class='highlight'><pre>        <span class="keyword">if</span> <span class="keyword">not</span> sourceVal? <span class="keyword">or</span> sourceVal <span class="keyword">is</span> <span class="string">""</span>
+            <span class="property">@warnField</span> source
+            source.focus()
+            <span class="keyword">return</span>
+
+        rule = <span class="keyword">new</span> SystemApp.EventRule()
+        rule.generateId()
+        rule.source sourceVal
+        rule.target targetVal
+        rule.comparator comparatorVal
+
+        <span class="property">@model</span>.rules().add rule
+        <span class="property">@model</span>.save()</pre></div>
+        
+      
+        
+        <p>Reset the values of the &quot;add&quot; fields and focus on the source field.</p>
+
+        
+          <div class='highlight'><pre>        target.val <span class="string">""</span>
+        source.val <span class="string">""</span>
+        source.focus()</pre></div>
+        
+      
+        
+        <p>If user presses &quot;Enter&quot; when editing a field of the &quot;Create rule&quot; row
+it will force a <code>click</code> event on the row&#39;s add icon.</p>
+
+        
+          <div class='highlight'><pre>    createRuleKeyUp: (e) =&gt;
+        <span class="keyword">if</span> e.keyCode <span class="keyword">is</span> <span class="number">13</span>
+            <span class="property">@$icoAddRule</span>.click()</pre></div>
+        
+      
+        
+        <h2>ACTIONS</h2>
+
+        
+      
+        
+        <p>Bind all actions of the <code>model</code> to the <code>$gridActions</code>. This is called
+whenever the user clicks / selects an <a href="auditEvent.html">AuditEvent</a> on the <code>$gridAlerts</code>.</p>
+
+        
+          <div class='highlight'><pre>    bindActions: =&gt;
+        <span class="property">@$gridActions</span>.empty()
+
+        <span class="keyword">if</span> <span class="property">@model</span>?
+            <span class="property">@stopListening</span> <span class="property">@model</span>.actions()
+            <span class="property">@listenTo</span> <span class="property">@model</span>.actions(), <span class="string">"add"</span>, <span class="property">@addActionToGrid</span>
+            <span class="property">@listenTo</span> <span class="property">@model</span>.actions(), <span class="string">"remove"</span>, <span class="property">@removeActionFromGrid</span>
+
+            <span class="property">@addActionToGrid</span> item <span class="keyword">for</span> item <span class="keyword">in</span> <span class="property">@model</span>.actions().models
+            <span class="property">@$rowAddAction</span>.show()
+        <span class="keyword">else</span>
+            <span class="property">@$gridActions</span>.append $(document.createElement <span class="string">"label"</span>).html(SystemApp.Messages.pleaseSelectAnAlert)
+            <span class="property">@$rowAddAction</span>.hide()</pre></div>
+        
+      
+        
+        <p>Add a single <a href="eventAction.html">Alert Action</a> to the <code>$gridActions</code>.</p>
+
+        
+          <div class='highlight'><pre>    addActionToGrid: (action) =&gt;
+        row = $(document.createElement <span class="string">"div"</span>)
+        row.attr <span class="string">"id"</span>, SystemApp.Settings.AuditEvent.rowActionPrefix + action.id
+        row.data <span class="string">"DataItem"</span>, action
+        row.addClass <span class="string">"row"</span>
+
+        actionType = $(document.createElement <span class="string">"select"</span>)
+        actionType.data <span class="string">"propertyname"</span>, <span class="string">"actionType"</span>
+        actionType.attr <span class="string">"title"</span>, SystemApp.Messages.tooltipEventActionType
+        actionType.addClass <span class="string">"type"</span>
+        actionType.append($(document.createElement <span class="string">"option"</span>).val(<span class="string">"blink"</span>).html(<span class="string">"blink"</span>))
+        actionType.append($(document.createElement <span class="string">"option"</span>).val(<span class="string">"colorBg"</span>).html(<span class="string">"background color"</span>))
+        actionType.append($(document.createElement <span class="string">"option"</span>).val(<span class="string">"colorBorder"</span>).html(<span class="string">"border color"</span>))
+        actionType.append($(document.createElement <span class="string">"option"</span>).val(<span class="string">"footerMessage"</span>).html(<span class="string">"footer message"</span>))
+        actionType.val action.actionType()
+        actionType.change action, <span class="property">@inputOnChange</span>
+
+        actionValue = $(document.createElement <span class="string">"input"</span>)
+        actionValue.data <span class="string">"propertyname"</span>, <span class="string">"actionValue"</span>
+        actionValue.attr <span class="string">"title"</span>, SystemApp.Messages.tooltipEventActionValue
+        actionValue.attr <span class="string">"type"</span>, <span class="string">"text"</span>
+        actionValue.addClass <span class="string">"value"</span>
+        actionValue.val action.actionValue()
+        actionValue.change action, <span class="property">@inputOnChange</span>
+
+        row.append actionType
+        row.append actionValue
+
+        <span class="property">@appendDeleteIcon</span> action, row
+        <span class="property">@$gridActions</span>.append row</pre></div>
+        
+      
+        
+        <p>Remove the specified action from the <code>$gridActions</code>.</p>
+
+        
+          <div class='highlight'><pre>    removeActionFromGrid: (action) =&gt;
+        $(<span class="string">"#"</span> + SystemApp.Settings.AuditEvent.rowActionPrefix + action.id).remove()
+        <span class="property">@model</span>?.save()</pre></div>
+        
+      
+        
+        <p>When user clicks the &quot;Add action&quot; icon, add a new <a href="eventAction.html">Alert Action</a>
+to the <code>model</code> actions collection.</p>
+
+        
+          <div class='highlight'><pre>    createActionClick: (e) =&gt;
+        row = $(e.currentTarget).parent()
+        type = row.children <span class="string">".type"</span>
+        value = row.children <span class="string">".value"</span>
+
+        typeVal = type.val()
+        valueVal = value.val()
+
+        action = <span class="keyword">new</span> SystemApp.EventAction()
+        action.generateId()
+        action.actionType typeVal
+        action.actionValue valueVal
+
+        <span class="property">@model</span>.actions().add action
+        <span class="property">@model</span>.save()</pre></div>
+        
+      
+        
+        <p>Reset the value of the &quot;add&quot; fields and focus on the value field.</p>
+
+        
+          <div class='highlight'><pre>        value.val <span class="string">""</span>
+        value.focus()</pre></div>
+        
+      
+        
+        <p>If user presses &quot;Enter&quot; when editing a field of the &quot;Create action&quot; row
+it will force a <code>click</code> event on the row&#39;s add icon.</p>
+
+        
+          <div class='highlight'><pre>    createActionKeyUp: (e) =&gt;
+        <span class="keyword">if</span> e.keyCode <span class="keyword">is</span> <span class="number">13</span>
+            <span class="property">@$icoAddAction</span>.click()</pre></div>
+        
+      
+        
+        <h2>SAVE AND DELETE</h2>
+
+        
+      
+        
+        <p>Create a &quot;delete icon&quot; on the DOM and append it to the specified row.</p>
+
+        
+          <div class='highlight'><pre>    appendDeleteIcon: (item, row) =&gt;
+        delIcon = $(document.createElement <span class="string">"div"</span>)
+        delIcon.attr <span class="string">"title"</span>, SystemApp.Messages.tooltipDeleteItem
+        delIcon.addClass <span class="string">"delete"</span>
+        delIcon.click item, <span class="property">@clickDeleteIcon</span>
+
+        row.append delIcon</pre></div>
+        
+      
+        
+        <h2>SHOW AND HIDE</h2>
+
+        
+      
+        
+        <p>Bind the <code>keyUp</code> event when overlay is shown.</p>
+
+        
+          <div class='highlight'><pre>    onShow: =&gt;
+        <span class="property">@bindAuditEvents</span>()
+
+        $(document).keyup <span class="property">@hasModelListKeyUp</span>
+        <span class="property">@listenTo</span> SystemApp.Data.auditEvents, <span class="string">"add"</span>, <span class="property">@addToModelsList</span>
+        <span class="property">@listenTo</span> SystemApp.Data.auditEvents, <span class="string">"remove"</span>, <span class="property">@removeFromModelsList</span></pre></div>
+        
+      
+        
+        <p>Save the <code>model</code> (if there&#39;s one) when the overlay is closed,
+and remove the <code>keyUp</code> from the document.</p>
+
+        
+          <div class='highlight'><pre>    onHide: =&gt;
+        $(document).unbind <span class="string">"keyup"</span>, <span class="property">@hasModelListKeyUp</span>
+        <span class="property">@stopListening</span>()
+
+        <span class="property">@model</span>?.save()
+        <span class="property">@model</span> = <span class="literal">null</span></pre></div>
+        
+      
+      <div class="fleur">h</div>
+    </div>
+  </div>
+</body>
+</html>

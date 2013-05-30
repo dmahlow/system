@@ -1,0 +1,640 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+  <title>admin.coffee</title>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <link rel="stylesheet" media="all" href="public/stylesheets/normalize.css" />
+  <link rel="stylesheet" media="all" href="docco.css" />
+</head>
+<body>
+  <div class="container">
+    <div class="page">
+
+      <div class="header">
+        
+          <h1>admin.coffee</h1>
+        
+
+        
+          <div class="toc">
+            <h3>Table of Contents</h3>
+            <ol>
+              
+                
+                <li>
+                  <a class="source" href="admin.html">
+                    admin.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="api.auditData.html">
+                    api.auditData.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="api.auditEvent.html">
+                    api.auditEvent.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="api.html">
+                    api.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="api.entity.html">
+                    api.entity.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="api.map.html">
+                    api.map.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="api.server.html">
+                    api.server.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="api.variable.html">
+                    api.variable.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="api.view.html">
+                    api.view.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="app.html">
+                    app.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="app.instance.html">
+                    app.instance.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="data.html">
+                    data.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="dataUtil.html">
+                    dataUtil.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="messages.html">
+                    messages.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="auditData.html">
+                    auditData.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="auditEvent.html">
+                    auditEvent.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="base.html">
+                    base.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="entityDefinition.html">
+                    entityDefinition.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="entityObject.html">
+                    entityObject.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="eventAction.html">
+                    eventAction.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="eventRule.html">
+                    eventRule.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="link.html">
+                    link.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="map.html">
+                    map.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="shape.html">
+                    shape.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="user.html">
+                    user.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="userSettings.html">
+                    userSettings.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="variable.html">
+                    variable.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="adminRoutes.html">
+                    adminRoutes.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="appRoutes.html">
+                    appRoutes.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="settings.html">
+                    settings.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="sockets.html">
+                    sockets.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="tutorial.html">
+                    tutorial.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="vectors.html">
+                    vectors.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="statusTabView.html">
+                    statusTabView.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="toolsTabView.html">
+                    toolsTabView.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="usersTabView.html">
+                    usersTabView.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="adminView.html">
+                    adminView.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="alertView.html">
+                    alertView.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="auditDataManagerView.html">
+                    auditDataManagerView.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="auditEventManagerView.html">
+                    auditEventManagerView.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="baseView.html">
+                    baseView.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="createMapView.html">
+                    createMapView.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="entityManagerView.html">
+                    entityManagerView.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="footerView.html">
+                    footerView.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="helpView.html">
+                    helpView.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="entitiesTabView.html">
+                    entitiesTabView.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="inspectorTabView.html">
+                    inspectorTabView.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="mapTabView.html">
+                    mapTabView.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="shapeTabView.html">
+                    shapeTabView.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="controlsView.html">
+                    controlsView.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="labelEditView.html">
+                    labelEditView.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="linkCreatorView.html">
+                    linkCreatorView.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="linkLabelsView.html">
+                    linkLabelsView.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="linkView.html">
+                    linkView.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="shapeLabelsView.html">
+                    shapeLabelsView.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="shapeView.html">
+                    shapeView.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="shapesMoverView.html">
+                    shapesMoverView.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="mapView.html">
+                    mapView.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="menuView.html">
+                    menuView.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="overlayView.html">
+                    overlayView.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="scriptEditorView.html">
+                    scriptEditorView.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="selfTestView.html">
+                    selfTestView.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="settingsView.html">
+                    settingsView.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="startView.html">
+                    startView.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="variableManagerView.html">
+                    variableManagerView.coffee
+                  </a>
+                </li>
+              
+            </ol>
+          </div>
+        
+      </div>
+
+      
+        
+        <h2>System APP</h2>
+
+        
+      
+        
+        <p>This is the base app controller.</p>
+<p>= require app.instance.coffee</p>
+<h2>LIBS</h2>
+
+        
+      
+        
+        <p>= require lib/jquery.js
+= require lib/jquery.localdata.js
+= require lib/jquery.cookie.js
+= require lib/jsonpath.js
+= require lib/lodash.js
+= require lib/backbone.js
+= require lib/async.js
+= require lib/moment.js</p>
+<h2>APP UTILS AND MANAGERS</h2>
+
+        
+      
+        
+        <p>= require settings.coffee
+= require messages.coffee
+= require dataUtil.coffee
+= require routes/adminRoutes.coffee</p>
+<h2>APP MODELS</h2>
+
+        
+      
+        
+        <p>= require model/base.coffee
+= require model/entityObject.coffee
+= require model/entityDefinition.coffee
+= require model/shape.coffee
+= require model/link.coffee
+= require model/map.coffee
+= require model/auditData.coffee
+= require model/eventRule.coffee
+= require model/eventAction.coffee
+= require model/auditEvent.coffee
+= require model/variable.coffee
+= require model/user.coffee
+= require model/userSettings.coffee</p>
+<h2>APP DATA, SOCKETS, TUTORIAL</h2>
+
+        
+      
+        
+        <p>= require data.coffee
+= require sockets.coffee</p>
+<h2>MAIN LAYOUT VIEWS</h2>
+
+        
+      
+        
+        <p>= require view/baseView.coffee
+= require view/adminView.coffee
+= require view/admin/usersTabView.coffee
+= require view/admin/toolsTabView.coffee</p>
+<h2>ROUTES</h2>
+
+        
+      
+        
+        <p>All routes should be defined inside the <a href="routes.html">Routes</a> file.</p>
+
+        
+          <div class='highlight'><pre>SystemApp.routes = <span class="literal">null</span></pre></div>
+        
+      
+        
+        <h2>INIT AND DISPOSE</h2>
+
+        
+      
+        
+        <p>Inits the app. First prepare the views, them set the DOM cache,
+load data to the Data object, init the menu and finally init the footer.</p>
+
+        
+          <div class='highlight'><pre>SystemApp.<span class="function"><span class="title">init</span></span> = -&gt;
+    window.onerror = SystemApp.onError
+    SystemApp.currentView = <span class="keyword">new</span> SystemApp.AdminView()</pre></div>
+        
+      
+        
+        <h2>HELPERS</h2>
+
+        
+      
+        
+        <p>Prevent accidental use of backspace which could trigger a <code>history.back()</code> on the page.</p>
+
+        
+          <div class='highlight'><pre>SystemApp.<span class="function"><span class="title">suppressBackspace</span></span> = (e) -&gt;
+    <span class="keyword">if</span> e.keyCode <span class="keyword">is</span> <span class="number">8</span> <span class="keyword">and</span> <span class="keyword">not</span> <span class="regexp">/input|textarea/i</span>.test(e.target.nodeName)
+        e.preventDefault()
+        e.stopPropagation()
+        <span class="keyword">return</span> <span class="literal">false</span></pre></div>
+        
+      
+        
+        <h2>DEBUGGING AND ERROR LOGGING</h2>
+
+        
+      
+        
+        <p>Helper method to log to the console, but only if <code>debug</code> is set to true.</p>
+
+        
+          <div class='highlight'><pre>SystemApp.<span class="function"><span class="title">consoleLog</span></span> = (method, message, obj) -&gt;
+    <span class="keyword">if</span> SystemApp.Settings.General.debug
+        <span class="keyword">if</span> obj <span class="keyword">isnt</span> <span class="literal">undefined</span>
+            console.log method, message, obj
+        <span class="keyword">else</span>
+            console.log method, message</pre></div>
+        
+      
+        
+        <p>When an error occurs, log to the browser console and show the error message
+on the footer - <a href="alertView.html">Alert View</a>.</p>
+
+        
+          <div class='highlight'><pre>SystemApp.<span class="function"><span class="title">onError</span></span> = (msg, url, line) -&gt;
+    <span class="keyword">try</span>
+        console.error msg, url, line
+        SystemApp.alertEvents.trigger <span class="string">"footer"</span>, {title: <span class="string">"ERROR!"</span>, message: <span class="string">"<span class="subst">#{msg}</span> (line <span class="subst">#{line}</span>)"</span>, isError: <span class="literal">true</span>}
+    <span class="keyword">catch</span> ex
+        console.error <span class="string">"FATAL ERROR!"</span>, ex
+    <span class="keyword">return</span> <span class="literal">false</span></pre></div>
+        
+      
+        
+        <h2>STARTING</h2>
+
+        
+      
+        
+        
+        
+          <div class='highlight'><pre>$(document).ready -&gt;
+    SystemApp.Data.init()
+    SystemApp.Sockets.start()
+    SystemApp.init()</pre></div>
+        
+      
+      <div class="fleur">h</div>
+    </div>
+  </div>
+</body>
+</html>

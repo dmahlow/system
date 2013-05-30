@@ -1,0 +1,1392 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+  <title>labelEditView.coffee</title>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <link rel="stylesheet" media="all" href="public/stylesheets/normalize.css" />
+  <link rel="stylesheet" media="all" href="docco.css" />
+</head>
+<body>
+  <div class="container">
+    <div class="page">
+
+      <div class="header">
+        
+          <h1>labelEditView.coffee</h1>
+        
+
+        
+          <div class="toc">
+            <h3>Table of Contents</h3>
+            <ol>
+              
+                
+                <li>
+                  <a class="source" href="admin.html">
+                    admin.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="api.auditData.html">
+                    api.auditData.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="api.auditEvent.html">
+                    api.auditEvent.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="api.html">
+                    api.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="api.entity.html">
+                    api.entity.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="api.map.html">
+                    api.map.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="api.server.html">
+                    api.server.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="api.variable.html">
+                    api.variable.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="api.view.html">
+                    api.view.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="app.html">
+                    app.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="app.instance.html">
+                    app.instance.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="data.html">
+                    data.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="dataUtil.html">
+                    dataUtil.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="messages.html">
+                    messages.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="auditData.html">
+                    auditData.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="auditEvent.html">
+                    auditEvent.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="base.html">
+                    base.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="entityDefinition.html">
+                    entityDefinition.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="entityObject.html">
+                    entityObject.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="eventAction.html">
+                    eventAction.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="eventRule.html">
+                    eventRule.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="link.html">
+                    link.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="map.html">
+                    map.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="shape.html">
+                    shape.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="user.html">
+                    user.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="userSettings.html">
+                    userSettings.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="variable.html">
+                    variable.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="adminRoutes.html">
+                    adminRoutes.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="appRoutes.html">
+                    appRoutes.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="settings.html">
+                    settings.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="sockets.html">
+                    sockets.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="tutorial.html">
+                    tutorial.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="vectors.html">
+                    vectors.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="statusTabView.html">
+                    statusTabView.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="toolsTabView.html">
+                    toolsTabView.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="usersTabView.html">
+                    usersTabView.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="adminView.html">
+                    adminView.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="alertView.html">
+                    alertView.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="auditDataManagerView.html">
+                    auditDataManagerView.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="auditEventManagerView.html">
+                    auditEventManagerView.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="baseView.html">
+                    baseView.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="createMapView.html">
+                    createMapView.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="entityManagerView.html">
+                    entityManagerView.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="footerView.html">
+                    footerView.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="helpView.html">
+                    helpView.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="entitiesTabView.html">
+                    entitiesTabView.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="inspectorTabView.html">
+                    inspectorTabView.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="mapTabView.html">
+                    mapTabView.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="shapeTabView.html">
+                    shapeTabView.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="controlsView.html">
+                    controlsView.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="labelEditView.html">
+                    labelEditView.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="linkCreatorView.html">
+                    linkCreatorView.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="linkLabelsView.html">
+                    linkLabelsView.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="linkView.html">
+                    linkView.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="shapeLabelsView.html">
+                    shapeLabelsView.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="shapeView.html">
+                    shapeView.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="shapesMoverView.html">
+                    shapesMoverView.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="mapView.html">
+                    mapView.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="menuView.html">
+                    menuView.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="overlayView.html">
+                    overlayView.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="scriptEditorView.html">
+                    scriptEditorView.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="selfTestView.html">
+                    selfTestView.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="settingsView.html">
+                    settingsView.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="startView.html">
+                    startView.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="variableManagerView.html">
+                    variableManagerView.coffee
+                  </a>
+                </li>
+              
+            </ol>
+          </div>
+        
+      </div>
+
+      
+        
+        <h2>LABEL EDIT VIEW</h2>
+
+        
+      
+        
+        <p>Overlay that is shown whenever the user clicks an editable label on the map.
+Right now this can happen on <a href="shapeView.html">Shape Views</a> and <a href="linkView.html">Link Views</a>.</p>
+
+        
+          <div class='highlight'><pre><span class="class"><span class="keyword">class</span> <span class="title">SystemApp</span>.<span class="title">MapLabelEditView</span> <span class="keyword">extends</span> <span class="title">SystemApp</span>.<span class="title">BaseView</span></span>
+
+    tagName: <span class="string">"div"</span>
+    className: SystemApp.Settings.LabelEdit.className
+
+    ox: <span class="number">0</span>                       <span class="comment"># temporary value to hold the original X (left) position of the view</span>
+    oy: <span class="number">0</span>                       <span class="comment"># temporary value to hold the original Y (top) position of the view</span>
+    lastPressedKey: <span class="literal">null</span>        <span class="comment"># holds the last pressed key by the user</span>
+    lastEvalCode: <span class="literal">null</span>          <span class="comment"># holds the value of the last entered / validated eval code</span>
+    currentVariable: <span class="literal">null</span>       <span class="comment"># holds the current [Variable](variable.html) being edited</span>
+
+    $currentValueSpan: <span class="literal">null</span>     <span class="comment"># the span with the current value of the attached label</span>
+    $txtSimple: <span class="literal">null</span>            <span class="comment"># the textbox used to edit the label</span>
+    $txtCustomVarName: <span class="literal">null</span>     <span class="comment"># the textbox that sets the name of the new [Variable](variable.html)</span>
+    $txtCustomVarCode: <span class="literal">null</span>     <span class="comment"># the textarea used to edit complex eval values</span>
+    $linkCreateCustomVar: <span class="literal">null</span>  <span class="comment"># the link/button to create a new custom variable</span>
+    $butSaveCustomVar: <span class="literal">null</span>     <span class="comment"># the "Save custom variable" button</span>
+    $autoCompleteDiv: <span class="literal">null</span>      <span class="comment"># the autocomplete div (displayed below the edit textbox)</span>
+    $simpleWrapper: <span class="literal">null</span>        <span class="comment"># the simple div container (wrapper for the txtSimple and autoCompleteDiv)</span>
+    $customVarWrapper: <span class="literal">null</span>     <span class="comment"># the custom variable div container (wrapper for txtCustomVarName and txtCustomVarCode)</span></pre></div>
+        
+      
+        
+        <h2>INIT AND DISPOSE</h2>
+
+        
+      
+        
+        <p>Init the label edit view and set its parent view.</p>
+
+        
+          <div class='highlight'><pre>    initialize: =&gt;
+        <span class="property">@baseInit</span>()</pre></div>
+        
+      
+        
+        <p>Base dispose for all shapes.</p>
+
+        
+          <div class='highlight'><pre>    dispose: =&gt;
+        <span class="property">@hide</span>()
+        <span class="property">@currentVariable</span> = <span class="literal">null</span>
+        <span class="property">@baseDispose</span>()</pre></div>
+        
+      
+        
+        <h2>HELPER PROPERTIES</h2>
+
+        
+      
+        
+        <p>Helper to get / set the current value of <code>$txtCustomVarName</code>.</p>
+
+        
+          <div class='highlight'><pre>    customVarNameValue: (value) =&gt;
+        <span class="keyword">if</span> value?
+            <span class="property">@$txtCustomVarName</span>.val value
+        <span class="property">@$txtCustomVarName</span>.val()</pre></div>
+        
+      
+        
+        <p>Helper to get / set the current value of <code>$txtCustomVarCode</code>.</p>
+
+        
+          <div class='highlight'><pre>    customVarCodeValue: (value) =&gt;
+        <span class="keyword">if</span> value?
+            <span class="property">@$txtCustomVarCode</span>.val value
+        <span class="property">@$txtCustomVarCode</span>.val()</pre></div>
+        
+      
+        
+        <p>Helper to get / set the current value of <code>$txtSimple</code>.</p>
+
+        
+          <div class='highlight'><pre>    simpleValue: (value) =&gt;
+        <span class="keyword">if</span> value?
+            <span class="property">@$txtSimple</span>.val value
+        <span class="property">@$txtSimple</span>.val()</pre></div>
+        
+      
+        
+        <p>Helper to get / set the value of the <code>$currentValueSpan</code> element.</p>
+
+        
+          <div class='highlight'><pre>    currentValue: (value) =&gt;
+        <span class="keyword">if</span> value?
+            <span class="property">@$currentValueSpan</span>.html value
+        <span class="property">@$currentValueSpan</span>.html()</pre></div>
+        
+      
+        
+        <p>Helper to get / set the value of the <code>$autoCompleteDiv</code> element.</p>
+
+        
+          <div class='highlight'><pre>    autoCompleteValue: (value) =&gt;
+        <span class="keyword">if</span> value?
+            <span class="property">@$autoCompleteDiv</span>.empty()</pre></div>
+        
+      
+        
+        <p>If value is array, bind each of its elements.</p>
+
+        
+          <div class='highlight'><pre>            <span class="keyword">if</span> value <span class="keyword">instanceof</span> Array
+                <span class="property">@$autoCompleteDiv</span>.append item <span class="keyword">for</span> item <span class="keyword">in</span> value
+            <span class="keyword">else</span>
+                <span class="property">@$autoCompleteDiv</span>.append value</pre></div>
+        
+      
+        
+        <p>If value is empty, hide the div so it doesn&#39;t show a white space.</p>
+
+        
+          <div class='highlight'><pre>            <span class="keyword">if</span> <span class="property">@$autoCompleteDiv</span>.html().length &gt; <span class="number">1</span>
+                <span class="property">@$autoCompleteDiv</span>.css <span class="string">"display"</span>, <span class="string">""</span>
+            <span class="keyword">else</span>
+                <span class="property">@$autoCompleteDiv</span>.css <span class="string">"display"</span>, <span class="string">"none"</span>
+
+        <span class="property">@$autoCompleteDiv</span>.html()</pre></div>
+        
+      
+        
+        <h2>RENDER AND POSITIONING</h2>
+<p>$</p>
+<p>Render the label edit view on the map. The <code>mapView</code> cached variable is
+set following the hierarchy: <em>LabelsView &gt; </em>View &gt; MapView.</p>
+
+        
+          <div class='highlight'><pre>    render: (parent) =&gt;
+        <span class="keyword">if</span> parent?
+            <span class="property">@parentView</span> = parent
+            <span class="property">@mapView</span> = parent.parentView.parentView</pre></div>
+        
+      
+        
+        <p>Create the simple label text field.</p>
+
+        
+          <div class='highlight'><pre>        <span class="property">@$txtCustomVarName</span> = $ document.createElement <span class="string">"input"</span>
+        <span class="property">@$txtCustomVarName</span>.attr <span class="string">"type"</span>, <span class="string">"text"</span>
+        <span class="property">@$txtCustomVarName</span>.attr <span class="string">"placeholder"</span>, SystemApp.Messages.customVarNameWatermark
+        <span class="property">@$txtCustomVarName</span>.attr <span class="string">"title"</span>, SystemApp.Messages.tooltipVariableName
+        <span class="property">@$txtCustomVarName</span>.addClass <span class="string">"variable"</span>
+        <span class="property">@$txtCustomVarName</span>.keyup <span class="property">@customVarNameKeyUp</span></pre></div>
+        
+      
+        
+        <p>Create the custom variable &quot;code&quot; textarea.</p>
+
+        
+          <div class='highlight'><pre>        <span class="property">@$txtCustomVarCode</span> = $ document.createElement <span class="string">"textarea"</span>
+        <span class="property">@$txtCustomVarCode</span>.attr <span class="string">"placeholder"</span>,  SystemApp.Messages.customVarCodeWatermark
+        <span class="property">@$txtCustomVarCode</span>.attr <span class="string">"title"</span>, SystemApp.Messages.tooltipVariableCode
+        <span class="property">@$txtCustomVarCode</span>.addClass <span class="string">"variable"</span>
+        <span class="property">@$txtCustomVarCode</span>.keyup <span class="property">@customVarCodeKeyUp</span>
+        <span class="property">@$txtCustomVarCode</span>.bind <span class="string">"mousewheel"</span>, <span class="property">@editingMouseWheel</span></pre></div>
+        
+      
+        
+        <p>Create the &quot;Save&quot; custom variable button.</p>
+
+        
+          <div class='highlight'><pre>        <span class="property">@$butSaveCustomVar</span> = $ document.createElement <span class="string">"button"</span>
+        <span class="property">@$butSaveCustomVar</span>.addClass <span class="string">"variable save"</span>
+        <span class="property">@$butSaveCustomVar</span>.html SystemApp.Messages.saveVariable
+        <span class="property">@$butSaveCustomVar</span>.attr <span class="string">"title"</span>, SystemApp.Messages.tooltipCreateVariable
+        <span class="property">@$butSaveCustomVar</span>.click <span class="property">@customVarSaveClick</span></pre></div>
+        
+      
+        
+        <p>Create the custom variable name + code wrapper.</p>
+
+        
+          <div class='highlight'><pre>        <span class="property">@$customVarWrapper</span> = $ document.createElement <span class="string">"div"</span>
+        <span class="property">@$customVarWrapper</span>.addClass <span class="string">"variable"</span>
+        <span class="property">@$customVarWrapper</span>.append <span class="property">@$txtCustomVarName</span>
+        <span class="property">@$customVarWrapper</span>.append <span class="property">@$txtCustomVarCode</span>
+        <span class="property">@$customVarWrapper</span>.append <span class="property">@$butSaveCustomVar</span></pre></div>
+        
+      
+        
+        <p>Create the simple label text field.</p>
+
+        
+          <div class='highlight'><pre>        <span class="property">@$txtSimple</span> = $ document.createElement <span class="string">"input"</span>
+        <span class="property">@$txtSimple</span>.attr <span class="string">"type"</span>, <span class="string">"text"</span>
+        <span class="property">@$txtSimple</span>.keyup <span class="property">@simpleKeyUp</span></pre></div>
+        
+      
+        
+        <p>Create the &quot;new custom variable&quot; link</p>
+
+        
+          <div class='highlight'><pre>        <span class="property">@$linkCreateCustomVar</span> = $ document.createElement <span class="string">"span"</span>
+        <span class="property">@$linkCreateCustomVar</span>.addClass <span class="string">"create-variable"</span>
+        <span class="property">@$linkCreateCustomVar</span>.html SystemApp.Messages.createVariable
+        <span class="property">@$linkCreateCustomVar</span>.click <span class="property">@showCustomVar</span></pre></div>
+        
+      
+        
+        <p>Create the autocomplete div and the current value span.</p>
+
+        
+          <div class='highlight'><pre>        <span class="property">@$autoCompleteDiv</span> = $ document.createElement <span class="string">"div"</span>
+        <span class="property">@$autoCompleteDiv</span>.bind <span class="string">"mousewheel"</span>, <span class="property">@editingMouseWheel</span>
+        <span class="property">@$autoCompleteDiv</span>.addClass <span class="string">"autocomplete"</span></pre></div>
+        
+      
+        
+        <p>Create the current value span.</p>
+
+        
+          <div class='highlight'><pre>        <span class="property">@$currentValueSpan</span> = $ document.createElement <span class="string">"span"</span>
+        <span class="property">@$currentValueSpan</span>.addClass <span class="string">"current-value"</span></pre></div>
+        
+      
+        
+        <p>Create the simple field + autocomplete wrapper.</p>
+
+        
+          <div class='highlight'><pre>        <span class="property">@$simpleWrapper</span> = $ document.createElement <span class="string">"div"</span>
+        <span class="property">@$simpleWrapper</span>.addClass <span class="string">"simple"</span>
+        <span class="property">@$simpleWrapper</span>.append <span class="property">@$txtSimple</span>
+        <span class="property">@$simpleWrapper</span>.append <span class="property">@$linkCreateCustomVar</span>
+        <span class="property">@$simpleWrapper</span>.append <span class="property">@$autoCompleteDiv</span></pre></div>
+        
+      
+        
+        <p>Append all elements to the current view, and the itself to the <a href="mapView.html">Map View</a>.</p>
+
+        
+          <div class='highlight'><pre>        <span class="property">@$el</span>.css <span class="string">"display"</span>, <span class="string">"none"</span>
+        <span class="property">@$el</span>.addClass <span class="string">"styled"</span>
+        <span class="property">@$el</span>.append <span class="property">@$currentValueSpan</span>
+        <span class="property">@$el</span>.append <span class="property">@$customVarWrapper</span>
+        <span class="property">@$el</span>.append <span class="property">@$simpleWrapper</span>
+
+        <span class="property">@mapView</span>.$el.append <span class="property">@$el</span>
+
+        <span class="keyword">return</span> <span class="keyword">this</span></pre></div>
+        
+      
+        
+        <p>Save the current value by triggering the <code>save</code> event, and hide the view.
+When adding a new custom variable, this will be called just after the
+<code>saveCustomVar</code>.</p>
+
+        
+          <div class='highlight'><pre>    save: =&gt;
+        value = <span class="property">@simpleValue</span>()
+
+        <span class="property">@currentValue</span> <span class="property">@simpleValue</span>()
+        <span class="property">@trigger</span> <span class="string">"save"</span>, <span class="keyword">this</span>, value
+        <span class="property">@hide</span>()</pre></div>
+        
+      
+        
+        <p>Creates a new <a href="variable.html">Variable</a> with the specified name and code,
+and set the label value to the variable prefix &quot;#&quot; plus the added variable name.</p>
+
+        
+          <div class='highlight'><pre>    saveCustomVar: =&gt;
+        varName = <span class="property">@$txtCustomVarName</span>.val().replace RegExp(<span class="string">" "</span>, <span class="string">"g"</span>), <span class="string">""</span>
+        varCode = $.trim <span class="property">@$txtCustomVarCode</span>.val()
+
+        <span class="keyword">if</span> <span class="property">@currentVariable</span>?
+            <span class="property">@currentVariable</span>.friendlyId varName
+            <span class="property">@currentVariable</span>.code varCode
+            <span class="property">@currentVariable</span>.save()
+        <span class="keyword">else</span>
+            customVar = <span class="keyword">new</span> SystemApp.Variable()
+            customVar.friendlyId varName
+            customVar.code varCode
+
+            SystemApp.Data.variables.add customVar
+            customVar.save()
+
+        <span class="property">@customVarNameValue</span> <span class="string">""</span>
+        <span class="property">@simpleValue</span> SystemApp.Settings.General.dataBindingKey + SystemApp.Settings.Variable.bindingNamespace + <span class="string">"."</span> + varName
+        <span class="property">@showSimple</span>()</pre></div>
+        
+      
+        
+        <p>Show the view with the specified value and position.</p>
+
+        
+          <div class='highlight'><pre>    show: (value, x, y) =&gt;
+        $(document).unbind <span class="string">"keyup"</span>, <span class="property">@documentKeyUp</span>
+        $(document).keyup <span class="property">@documentKeyUp</span>
+
+        <span class="property">@$el</span>.unbind <span class="string">"click"</span>, <span class="property">@setFocus</span>
+        <span class="property">@$el</span>.click <span class="property">@setFocus</span>
+
+        <span class="property">@stopListening</span>()
+        <span class="property">@listenTo</span> SystemApp.mapEvents, <span class="string">"zoom"</span>, <span class="property">@hide</span>
+
+        value = <span class="string">""</span> <span class="keyword">if</span> <span class="keyword">not</span> value?
+
+        <span class="property">@simpleValue</span> value
+
+        <span class="property">@ox</span> = x
+        <span class="property">@oy</span> = y
+
+        <span class="property">@showSimple</span>()
+        <span class="property">@currentValue</span> SystemApp.Messages.current + <span class="string">": "</span> + value
+
+        <span class="property">@$el</span>.show()
+
+        <span class="property">@$txtSimple</span>.focus()</pre></div>
+        
+      
+        
+        <p>Hide the <code>$txtCustomVarCode</code> text area and bring back the simple text field
+and its autocomplete div to the view.</p>
+
+        
+          <div class='highlight'><pre>    showSimple: =&gt;
+        $(document).unbind <span class="string">"mousedown"</span>, <span class="property">@editingMouseDown</span>
+        $(document).mousedown <span class="property">@editingMouseDown</span>
+
+        size = <span class="property">@simpleValue</span>().length + <span class="number">1</span>
+        size = SystemApp.Settings.LabelEdit.minTxtSize <span class="keyword">if</span> size &lt; SystemApp.Settings.LabelEdit.minTxtSize
+
+        <span class="property">@$txtSimple</span>.attr <span class="string">"size"</span>, size
+        <span class="property">@autoCompleteValue</span> <span class="property">@simpleValue</span>()
+        <span class="property">@parseValue</span>()
+        <span class="property">@bindAutoComplete</span>()
+
+        <span class="property">@currentVariable</span> = <span class="literal">null</span>
+
+        <span class="property">@$customVarWrapper</span>.css <span class="string">"display"</span>, <span class="string">"none"</span>
+        <span class="property">@$simpleWrapper</span>.css <span class="string">"display"</span>, <span class="string">""</span>
+        <span class="property">@setPosition</span>()
+
+        <span class="property">@$txtSimple</span>.focus()</pre></div>
+        
+      
+        
+        <p>Show the <code>$txtCustomVarCode</code> text area which allows the user to enter
+ANY javascript evlatuation to bind data to the label. This will
+hide the simple text editor and its autocomplete box.
+The <code>initial</code> value is optional.</p>
+
+        
+          <div class='highlight'><pre>    showCustomVar: (variable) =&gt;
+        $(document).unbind <span class="string">"mousedown"</span>, <span class="property">@editingMouseDown</span>
+
+        <span class="property">@$simpleWrapper</span>.css <span class="string">"display"</span>, <span class="string">"none"</span>
+        <span class="property">@$customVarWrapper</span>.css <span class="string">"display"</span>, <span class="string">""</span>
+        <span class="property">@$txtCustomVarName</span>.prop <span class="string">"disabled"</span>, <span class="literal">false</span>
+
+        <span class="property">@setPosition</span>()
+
+        <span class="keyword">if</span> variable?.friendlyId?
+            <span class="property">@currentVariable</span> = variable
+            <span class="property">@customVarNameValue</span> <span class="property">@currentVariable</span>.friendlyId()
+            <span class="property">@customVarCodeValue</span> <span class="property">@currentVariable</span>.code()
+            <span class="property">@$txtCustomVarCode</span>.focus()
+        <span class="keyword">else</span>
+            <span class="property">@currentVariable</span> = <span class="literal">null</span>
+            <span class="property">@customVarNameValue</span> <span class="string">""</span>
+            <span class="property">@customVarCodeValue</span> <span class="string">""</span>
+            <span class="property">@$txtCustomVarName</span>.focus()</pre></div>
+        
+      
+        
+        <p>After editing the label, remove the temporary textbox (or if user cancels editing).</p>
+
+        
+          <div class='highlight'><pre>    hide: =&gt;
+        $(document).unbind <span class="string">"mousedown"</span>, <span class="property">@editingMouseDown</span>
+        $(document).unbind <span class="string">"keyup"</span>, <span class="property">@documentKeyUp</span>
+        <span class="property">@$el</span>.unbind <span class="string">"click"</span>, <span class="property">@setFocus</span>
+
+        <span class="property">@stopListening</span>()
+
+        <span class="property">@$el</span>.hide()
+
+        <span class="property">@lastPressedKey</span> = <span class="literal">null</span>
+        <span class="property">@currentVariable</span> = <span class="literal">null</span></pre></div>
+        
+      
+        
+        <p>Called to check the current position and size of the view, so it never
+overlaps the borders of the page.</p>
+
+        
+          <div class='highlight'><pre>    setPosition: () =&gt;
+        x = <span class="property">@ox</span>
+        y = <span class="property">@oy</span>
+
+        x = x * (<span class="number">1</span> / <span class="property">@mapView</span>.currentZoom) - <span class="property">@$el</span>.outerWidth() / <span class="number">2</span>
+        x = x - <span class="property">@mapView</span>.getViewBox().x * (<span class="number">1</span> / <span class="property">@mapView</span>.currentZoom)
+        y = y * (<span class="number">1</span> / <span class="property">@mapView</span>.currentZoom) + <span class="number">10</span>
+        y = y - <span class="property">@mapView</span>.getViewBox().y * (<span class="number">1</span> / <span class="property">@mapView</span>.currentZoom)
+
+        maxX = $(window).outerWidth() - <span class="property">@$el</span>.outerWidth() - $(<span class="string">"#map-controls"</span>).outerWidth() - <span class="number">10</span>
+        maxY = $(window).outerHeight() - <span class="property">@$el</span>.outerHeight() - $(<span class="string">"#footer"</span>).outerHeight() - <span class="number">10</span>
+
+        x = <span class="number">1</span> <span class="keyword">if</span> x &lt; <span class="number">1</span>
+        x = maxX <span class="keyword">if</span> x &gt; maxX
+        y = <span class="number">1</span> <span class="keyword">if</span> y &lt; <span class="number">1</span>
+        y = maxY <span class="keyword">if</span> y &gt; maxY
+
+        <span class="property">@$el</span>.css <span class="string">"left"</span>, x
+        <span class="property">@$el</span>.css <span class="string">"top"</span>, y
+        <span class="property">@setFocus</span>()</pre></div>
+        
+      
+        
+        <p>Shift focus to the view by increasing its z-index.</p>
+
+        
+          <div class='highlight'><pre>    setFocus: (e) =&gt;
+        <span class="property">@$el</span>.css <span class="string">"z-index"</span>, <span class="property">@mapView</span>.zIndexMax
+        <span class="property">@mapView</span>.zIndexMax = <span class="property">@mapView</span>.zIndexMax + <span class="number">1</span></pre></div>
+        
+      
+        
+        <p>Check if user is writing a static value, or binding to an [AuditData](auditData.html} using a special key.</p>
+
+        
+          <div class='highlight'><pre>    parseValue: =&gt;
+        value = <span class="property">@simpleValue</span>()
+
+        <span class="keyword">if</span> SystemApp.DataUtil.hasAuditData value
+            <span class="property">@$txtSimple</span>.addClass <span class="string">"highlight"</span>
+        <span class="keyword">else</span>
+            <span class="property">@$txtSimple</span>.removeClass <span class="string">"highlight"</span>
+
+        <span class="property">@bindAutoComplete</span>()</pre></div>
+        
+      
+        
+        <h2>AUTOCOMPLETE</h2>
+
+        
+      
+        
+        <p>Check the current <code>$txtSimple</code> value and if it&#39;s a valid <a href="auditData.html">Audit Data item</a>
+then bind its contents to the <code>$autoCompleteDiv</code>.</p>
+
+        
+          <div class='highlight'><pre>    bindAutoComplete: =&gt;
+        auditDataNamespace = SystemApp.Settings.General.dataBindingKey + SystemApp.Settings.AuditData.bindingNamespace
+        value = <span class="property">@simpleValue</span>()
+
+        <span class="keyword">if</span> value.indexOf(<span class="string">"."</span>) &lt; <span class="number">1</span>
+            <span class="property">@bindAutoCompleteEntities</span>()
+        <span class="keyword">else</span> <span class="keyword">if</span> value.indexOf(auditDataNamespace) &gt;= <span class="number">0</span>
+            value = value.replace auditDataNamespace, <span class="string">""</span>
+            auditDataName = value.split(<span class="string">"."</span>)[<span class="number">1</span>].split(<span class="string">"["</span>)[<span class="number">0</span>]
+            <span class="property">@bindAutoCompleteProperties</span> auditDataName <span class="keyword">if</span> auditDataName.length &gt; <span class="number">0</span></pre></div>
+        
+      
+        
+        <p>Populate the <code>$autoCompleteDiv</code> with a list of possible <a href="auditData.html">AuditData</a> entities.</p>
+
+        
+          <div class='highlight'><pre>    bindAutoCompleteEntities: =&gt;
+        auditDataNamespace = SystemApp.Settings.General.dataBindingKey + SystemApp.Settings.AuditData.bindingNamespace
+        variableNamespace = SystemApp.Settings.General.dataBindingKey + SystemApp.Settings.Variable.bindingNamespace
+        value = <span class="property">@simpleValue</span>()
+        arr = []</pre></div>
+        
+      
+        
+        <p>If the entered value is empty or the custom variable special key <code>#</code>,
+add the list of registered <a href="variable.html">Variables</a> to the resulting array.</p>
+
+        
+          <div class='highlight'><pre>        <span class="keyword">if</span> value.length &lt; <span class="number">1</span> <span class="keyword">or</span> value.indexOf(variableNamespace) &gt;= <span class="number">0</span>
+
+            ulCustomVar = $(document.createElement <span class="string">"ul"</span>)
+            ulCustomVar.addClass <span class="string">"variable"</span>
+
+            _.each SystemApp.Data.variables.models, (item) =&gt;
+                li = $(document.createElement <span class="string">"li"</span>)
+
+                name = $(document.createElement <span class="string">"span"</span>)
+                name.attr <span class="string">"title"</span>, variableNamespace + <span class="string">"."</span> + item.friendlyId()
+                name.html item.friendlyId()
+                name.click <span class="property">@autoCompleteClick</span>
+
+                edit = $(document.createElement <span class="string">"img"</span>)
+                edit.attr <span class="string">"src"</span>, <span class="string">"images/ico-edit.png"</span>
+                edit.data <span class="string">"variable"</span>, item
+                edit.click <span class="property">@customVarEditClick</span>
+
+                li.append name
+                li.append edit
+                ulCustomVar.append li
+
+            arr.push ulCustomVar</pre></div>
+        
+      
+        
+        <p>If the entered value is empty or the audit data special key <code>$</code>,
+add the list of registered <a href="auditData.html">AuditData</a> to the resulting array.</p>
+
+        
+          <div class='highlight'><pre>        <span class="keyword">if</span> value.length &lt; <span class="number">1</span> <span class="keyword">or</span> value.indexOf(auditDataNamespace) &gt;= <span class="number">0</span>
+
+            ulAuditData = $(document.createElement <span class="string">"ul"</span>)
+            ulAuditData.addClass <span class="string">"auditdata"</span>
+
+            _.each SystemApp.Data.auditData.models, (item) =&gt;
+                li = $(document.createElement <span class="string">"li"</span>)
+                li.attr <span class="string">"title"</span>, auditDataNamespace + <span class="string">"."</span> + item.friendlyId() + <span class="string">"."</span>
+                li.html item.friendlyId()
+                li.click <span class="property">@autoCompleteClick</span>
+
+                ulAuditData.append li
+
+            arr.push ulAuditData
+
+        <span class="property">@autoCompleteValue</span> arr</pre></div>
+        
+      
+        
+        <p>Populate the <code>$autoCompleteDiv</code> with a list of properties for the specified <a href="auditData.html">AuditData</a>.
+If no <code>auditDataName</code> is passed, then bind all found properties from all <a href="auditData.html">AuditData</a> items.</p>
+
+        
+          <div class='highlight'><pre>    bindAutoCompleteProperties: (friendlyId) =&gt;
+        json = []
+        auditData = _.filter SystemApp.Data.auditData.models, (item) -&gt; item.attributes.friendlyId.indexOf(friendlyId) &gt;= <span class="number">0</span>
+
+        <span class="keyword">if</span> auditData.length &gt; <span class="number">0</span>
+            _.each auditData, (item) =&gt; json.push <span class="property">@auditDataDumper</span> item</pre></div>
+        
+      
+        
+        <p>Bind the search results and reset the position to make
+sure it&#39;s not going outside the current view.</p>
+
+        
+          <div class='highlight'><pre>            <span class="property">@autoCompleteValue</span> json
+            <span class="property">@setPosition</span>()
+
+        <span class="keyword">else</span>
+
+            <span class="property">@autoCompleteValue</span> <span class="string">""</span></pre></div>
+        
+      
+        
+        <p>Dump the <a href="auditData.html">AuditData</a> to an easy to read and clickable HTML.
+This is used by the property auto complete.</p>
+
+        
+          <div class='highlight'><pre>    auditDataDumper: (auditData) =&gt;
+        data = auditData.data()
+        path = SystemApp.Settings.General.dataBindingKey + SystemApp.Settings.AuditData.bindingNamespace + <span class="string">"."</span> + auditData.friendlyId()
+        div = $(document.createElement <span class="string">"div"</span>)</pre></div>
+        
+      
+        
+        <p>Recursively parse and bind all properties to the autocomplete area.</p>
+
+        
+          <div class='highlight'><pre>        <span class="property">@auditPropertyDump</span> data, path, <span class="number">1</span>, div, data <span class="keyword">instanceof</span> Array
+
+        <span class="keyword">return</span> div</pre></div>
+        
+      
+        
+        <p>Dump a single object property to the autocomplete box. This function is
+recursive and started by the <code>auditDataDumper</code> method above.</p>
+
+        
+          <div class='highlight'><pre>    auditPropertyDump: (obj, path, level, parentDiv, fromArray) =&gt;
+        <span class="keyword">return</span> <span class="keyword">if</span> <span class="keyword">not</span> obj?
+        searchTerms = <span class="property">@simpleValue</span>()</pre></div>
+        
+      
+        
+        <p>Add current object&#39;s keys to an array.</p>
+
+        
+          <div class='highlight'><pre>        keys = []
+        keys.push k <span class="keyword">for</span> k <span class="keyword">of</span> obj</pre></div>
+        
+      
+        
+        <p>Only sort if the object is NOT an array.</p>
+
+        
+          <div class='highlight'><pre>        keys.sort() <span class="keyword">if</span> <span class="keyword">not</span> fromArray
+
+        <span class="keyword">for</span> k <span class="keyword">of</span> keys
+            propName = keys[k]
+            propValue = obj[propName]
+
+            <span class="keyword">if</span> fromArray
+
+                propHtml = propValue
+                title = <span class="string">"<span class="subst">#{path}</span>[<span class="subst">#{k}</span>]"</span>
+
+            <span class="keyword">else</span>
+
+                propHtml = propName
+
+                <span class="keyword">if</span> propName.indexOf(<span class="string">"."</span>) &gt; <span class="number">0</span>
+                    title = <span class="string">"<span class="subst">#{path}</span>['<span class="subst">#{propName}</span>']"</span>
+                <span class="keyword">else</span>
+                    title = <span class="string">"<span class="subst">#{path}</span>.<span class="subst">#{propName}</span>"</span></pre></div>
+        
+      
+        
+        <p>Create a cleaner version of search terms and title to be used
+while comparing values (code below).</p>
+
+        
+          <div class='highlight'><pre>            altSearchTerms = searchTerms.replace(<span class="regexp">/\./g, "").replace(/\[/g, "").replace(/\]/g, "").replace(/\'/g</span>, <span class="string">""</span>)
+            altTitle = title.replace(<span class="regexp">/\./g, "").replace(/\[/g, "").replace(/\]/g, "").replace(/\'/g</span>, <span class="string">""</span>)</pre></div>
+        
+      
+        
+        <p>Only bind property if it matches the current text entered
+on the <code>txtSimple</code> input field.</p>
+
+        
+          <div class='highlight'><pre>            <span class="keyword">if</span> altSearchTerms <span class="keyword">is</span> <span class="string">""</span> <span class="keyword">or</span> altSearchTerms.indexOf(altTitle) &gt;= <span class="number">0</span> <span class="keyword">or</span> altTitle.indexOf(altSearchTerms) &gt;= <span class="number">0</span>
+                spanProp = $(document.createElement <span class="string">"span"</span>)
+                spanProp.html propHtml
+                spanProp.addClass <span class="string">"level"</span> + level
+                spanProp.attr <span class="string">"title"</span>, title
+                spanProp.click <span class="property">@autoCompleteClick</span>
+                parentDiv.append spanProp</pre></div>
+        
+      
+        
+        <p>If property value is an object, proceed with recursion.</p>
+
+        
+          <div class='highlight'><pre>                <span class="keyword">if</span> <span class="keyword">typeof</span> propValue <span class="keyword">is</span> <span class="string">"object"</span>
+                    <span class="property">@auditPropertyDump</span> propValue, title, level + <span class="number">1</span>, parentDiv, (propValue <span class="keyword">instanceof</span> Array)</pre></div>
+        
+      
+        
+        <p>When user clicks an object (entity or property name) on the <code>$autoCompleteDiv</code>, copy its value
+and paste to the <code>$txtSimple</code>.</p>
+
+        
+          <div class='highlight'><pre>    autoCompleteClick: (e) =&gt;
+        obj = $ e.target
+        value = obj.attr <span class="string">"title"</span>
+        currentValue = <span class="property">@simpleValue</span>()</pre></div>
+        
+      
+        
+        <p>If user clicks twice on a property, it will save the new value and hide this view.</p>
+
+        
+          <div class='highlight'><pre>        <span class="keyword">if</span> value <span class="keyword">is</span> currentValue
+            <span class="property">@save</span>()
+        <span class="keyword">else</span>
+            <span class="property">@simpleValue</span> value
+            <span class="property">@parseValue</span>()
+            <span class="property">@$txtSimple</span>.focus()
+
+        e.preventDefault()
+        e.stopPropagation()</pre></div>
+        
+      
+        
+        <p>When user clicks the &quot;edit&quot; icon next to a <a href="variable.html">Variable</a>, open
+the custom variable textfields for editing.</p>
+
+        
+          <div class='highlight'><pre>    customVarEditClick: (e) =&gt;
+        src = $ e.currentTarget
+        variable = src.data <span class="string">"variable"</span>
+        <span class="property">@showCustomVar</span> variable</pre></div>
+        
+      
+        
+        <h2>MOUSE AND KEYBOARD EVENTS</h2>
+
+        
+      
+        
+        <p>When user is editing a label and clicks somewhere on the map, check for the
+source element. If it&#39;s not part of this view then hide it.</p>
+
+        
+          <div class='highlight'><pre>    editingMouseDown: (e) =&gt;
+        css = SystemApp.Settings.LabelEdit.className
+        src = $ e.target
+        parent = src.parents <span class="string">".<span class="subst">#{css}</span>"</span>
+        labelPosition = src.data <span class="string">"labelPosition"</span>
+        parentLabelPosition = src.parent().data <span class="string">"labelPosition"</span>
+        isLabel = (labelPosition? <span class="keyword">and</span> labelPosition <span class="keyword">isnt</span> <span class="string">""</span>) <span class="keyword">or</span> (parentLabelPosition? <span class="keyword">and</span> parentLabelPosition <span class="keyword">isnt</span> <span class="string">""</span>)</pre></div>
+        
+      
+        
+        <p>If user hasn&#39;t clicked inside the editing box, then hide the view.</p>
+
+        
+          <div class='highlight'><pre>        <span class="keyword">if</span> <span class="keyword">not</span> isLabel <span class="keyword">and</span> <span class="keyword">not</span> src.hasClass(css) <span class="keyword">and</span> parent.length &lt; <span class="number">1</span>
+            <span class="property">@hide</span>()
+        <span class="keyword">else</span>
+            e.stopPropagation()</pre></div>
+        
+      
+        
+        <p>When editing the label, the mouse wheel should stop propagation to
+avoid the map zoom being changed - but only when mouse is over the
+<code>$autoCompleteDiv</code> or the <code>$txtCustomVarCode</code> elements.</p>
+
+        
+          <div class='highlight'><pre>    editingMouseWheel: (e) =&gt;
+        e.stopPropagation()</pre></div>
+        
+      
+        
+        <p>When user presses a key while editing the label value. Pressing &quot;Enter&quot; will trigger <code>save</code>,
+pressing &quot;Esc&quot; will hide the view.</p>
+
+        
+          <div class='highlight'><pre>    documentKeyUp: (e) =&gt;
+        <span class="property">@hide</span>() <span class="keyword">if</span> e.which <span class="keyword">is</span> <span class="number">27</span></pre></div>
+        
+      
+        
+        <p>When pressing keys on <code>$txtSimple</code>, check if the value is blank and the key being pressed
+is the special key defined on the <a href="settings.html">Settings</a>. If so, starts the
+autocomplete feature. Pressing &quot;Enter&quot; will save.</p>
+
+        
+          <div class='highlight'><pre>    simpleKeyUp: (e) =&gt;
+        <span class="property">@parseValue</span>()
+        <span class="property">@save</span>() <span class="keyword">if</span> e.which <span class="keyword">is</span> <span class="number">13</span></pre></div>
+        
+      
+        
+        <h2>EVAL</h2>
+
+        
+      
+        
+        <p>Validate the <code>$txtCustomVarCode</code> field, and if it fails, then add the <code>.error</code>
+class to alert the user.</p>
+
+        
+          <div class='highlight'><pre>    validateCustomVar: =&gt;
+        name = <span class="property">@customVarNameValue</span>()
+        code = $.trim <span class="property">@customVarCodeValue</span>()
+
+        <span class="keyword">if</span> code <span class="keyword">is</span> <span class="string">""</span>
+            <span class="property">@simpleValue</span> <span class="string">""</span>
+            <span class="property">@showSimple</span>()
+            <span class="keyword">return</span></pre></div>
+        
+      
+        
+        <p>Check if user has entered a variable name, and if the code has a return statement.</p>
+
+        
+          <div class='highlight'><pre>        <span class="keyword">if</span> name.length &lt; <span class="number">2</span>
+            <span class="property">@warnField</span> <span class="property">@$txtCustomVarName</span>
+            <span class="property">@$txtCustomVarName</span>.focus()
+            valMessage = {message: SystemApp.Messages.valNameIsRequired}
+        <span class="keyword">else</span> <span class="keyword">if</span> code.indexOf(<span class="string">"return"</span>) &lt; <span class="number">0</span>
+            valMessage = {message: SystemApp.Messages.errEvalReturn}
+        <span class="keyword">else</span>
+            valMessage = SystemApp.DataUtil.validateEval code</pre></div>
+        
+      
+        
+        <p>Check if variable name is duplicate or not.</p>
+
+        
+          <div class='highlight'><pre>        <span class="keyword">if</span> <span class="property">@currentVariable</span>?
+            duplicateItem = SystemApp.Data.variables.getByFriendlyId name
+            <span class="keyword">if</span> duplicateItem? <span class="keyword">and</span> duplicateItem.length &gt; <span class="number">0</span> <span class="keyword">and</span> duplicateItem[<span class="number">0</span>].id <span class="keyword">isnt</span> <span class="property">@currentVariable</span>.id
+                <span class="property">@warnField</span> <span class="property">@$txtCustomVarName</span>
+                <span class="property">@$txtCustomVarName</span>.focus()
+                valMessage = {message: SystemApp.Messages.valNameIsDuplicate}</pre></div>
+        
+      
+        
+        <p>If has a validation message, display it and stop here.</p>
+
+        
+          <div class='highlight'><pre>        <span class="keyword">if</span> valMessage?
+            <span class="property">@lastEvalCode</span> = code
+            <span class="property">@evalShowError</span> valMessage
+            <span class="keyword">return</span> <span class="literal">false</span>
+
+        <span class="property">@$txtCustomVarCode</span>.removeClass <span class="string">"error"</span>
+        <span class="keyword">return</span> <span class="literal">true</span></pre></div>
+        
+      
+        
+        <p>If the eval parsing fails, quickly display the error message on the <code>$txtCustomVarCode</code>,
+and then put the original text back after a few seconds by calling <code>evalClearError</code>.</p>
+
+        
+          <div class='highlight'><pre>    evalShowError: (valMessage) =&gt;
+        console.warn <span class="string">"Error while parsing the eval field!"</span>, valMessage, <span class="keyword">this</span>
+
+        text = valMessage.message
+        text += <span class="string">"\n\n"</span> + valMessage.stacktrace <span class="keyword">if</span> valMessage.stacktrace?
+
+        <span class="property">@$txtCustomVarCode</span>.val text
+        <span class="property">@$txtCustomVarCode</span>.prop <span class="string">"disabled"</span>, <span class="literal">true</span>
+        <span class="property">@$txtCustomVarCode</span>.addClass <span class="string">"error"</span>
+
+        <span class="property">@lastPressedKey</span> = <span class="literal">null</span>
+
+        setTimeout <span class="property">@evalClearError</span>, SystemApp.Settings.LabelEdit.evalErrorTimeout</pre></div>
+        
+      
+        
+        <p>Clear the validation error message and set the <code>$txtCustomVarCode</code> back to its original text.</p>
+
+        
+          <div class='highlight'><pre>    evalClearError: =&gt;
+        <span class="property">@$txtCustomVarCode</span>.unbind <span class="string">"keydown"</span>
+        <span class="property">@$txtCustomVarCode</span>.val <span class="property">@lastEvalCode</span> <span class="keyword">if</span> <span class="property">@lastEvalCode</span>?
+        <span class="property">@$txtCustomVarCode</span>.prop <span class="string">"disabled"</span>, <span class="literal">false</span>
+        <span class="property">@$txtCustomVarCode</span>.removeClass <span class="string">"error"</span>
+
+        <span class="property">@lastEvalCode</span> = <span class="literal">null</span></pre></div>
+        
+      
+        
+        <p>When pressing keys on <code>$txtCustomVarName</code>, check the key pressed to hide (Esc)
+or move focus to <code>$txtCustomVarCode</code> on (Enter).</p>
+
+        
+          <div class='highlight'><pre>    customVarNameKeyUp: (e) =&gt;
+        keyCode = e.which
+        isEnter = keyCode <span class="keyword">is</span> <span class="number">13</span></pre></div>
+        
+      
+        
+        <p>If user pressed &quot;Esc&quot; and the <code>$txtCustomVarName</code> has less than 2 characters
+then hide the eval field and show the simple one.</p>
+
+        
+          <div class='highlight'><pre>        <span class="keyword">if</span> keyCode <span class="keyword">is</span> <span class="number">27</span> <span class="keyword">and</span> <span class="property">@customVarCodeValue</span>.length &lt; <span class="number">2</span>
+            <span class="property">@simpleValue</span> <span class="string">""</span>
+            <span class="property">@showSimple</span>()
+            e.stopPropagation()
+            e.preventDefault()</pre></div>
+        
+      
+        
+        <p>If user pressed &quot;Enter&quot; and a value was entered, change focus to <code>$txtCustomVarCode</code>.</p>
+
+        
+          <div class='highlight'><pre>        <span class="keyword">else</span> <span class="keyword">if</span> isEnter <span class="keyword">and</span> <span class="property">@customVarNameValue</span>().length &gt; <span class="number">0</span>
+            <span class="property">@$txtCustomVarCode</span>.focus()
+
+        <span class="property">@lastPressedKey</span> = keyCode</pre></div>
+        
+      
+        
+        <p>When pressing keys on <code>$txtCustomVarCode</code>, check the key pressed to hide (Esc)
+or save (Enter) the label value.</p>
+
+        
+          <div class='highlight'><pre>    customVarCodeKeyUp: (e) =&gt;
+        keyCode = e.which</pre></div>
+        
+      
+        
+        <p>If user pressed &quot;Esc&quot; and the <code>$txtCustomVarCode</code> has less than 2 characters
+then hide the eval field and show the simple one.</p>
+
+        
+          <div class='highlight'><pre>        <span class="keyword">if</span> keyCode <span class="keyword">is</span> <span class="number">27</span> <span class="keyword">and</span> <span class="property">@customVarCodeValue</span>.length &lt; <span class="number">2</span>
+            <span class="property">@simpleValue</span> <span class="string">""</span>
+            <span class="property">@showSimple</span>()
+            e.stopPropagation()
+            e.preventDefault()
+
+        <span class="property">@lastPressedKey</span> = keyCode</pre></div>
+        
+      
+        
+        <p>When user clicks the &quot;Save variable&quot; button, validate the entered values and proceed
+only if the <a href="variable.html">Variable</a> name is not a duplicate, and
+the entered code is working and valid.</p>
+
+        
+          <div class='highlight'><pre>    customVarSaveClick: =&gt;
+        <span class="keyword">if</span> <span class="property">@validateCustomVar</span>()
+            <span class="property">@saveCustomVar</span>()</pre></div>
+        
+      
+      <div class="fleur">h</div>
+    </div>
+  </div>
+</body>
+</html>

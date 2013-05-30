@@ -1,0 +1,896 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+  <title>shapeTabView.coffee</title>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <link rel="stylesheet" media="all" href="public/stylesheets/normalize.css" />
+  <link rel="stylesheet" media="all" href="docco.css" />
+</head>
+<body>
+  <div class="container">
+    <div class="page">
+
+      <div class="header">
+        
+          <h1>shapeTabView.coffee</h1>
+        
+
+        
+          <div class="toc">
+            <h3>Table of Contents</h3>
+            <ol>
+              
+                
+                <li>
+                  <a class="source" href="admin.html">
+                    admin.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="api.auditData.html">
+                    api.auditData.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="api.auditEvent.html">
+                    api.auditEvent.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="api.html">
+                    api.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="api.entity.html">
+                    api.entity.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="api.map.html">
+                    api.map.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="api.server.html">
+                    api.server.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="api.variable.html">
+                    api.variable.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="api.view.html">
+                    api.view.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="app.html">
+                    app.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="app.instance.html">
+                    app.instance.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="data.html">
+                    data.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="dataUtil.html">
+                    dataUtil.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="messages.html">
+                    messages.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="auditData.html">
+                    auditData.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="auditEvent.html">
+                    auditEvent.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="base.html">
+                    base.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="entityDefinition.html">
+                    entityDefinition.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="entityObject.html">
+                    entityObject.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="eventAction.html">
+                    eventAction.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="eventRule.html">
+                    eventRule.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="link.html">
+                    link.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="map.html">
+                    map.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="shape.html">
+                    shape.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="user.html">
+                    user.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="userSettings.html">
+                    userSettings.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="variable.html">
+                    variable.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="adminRoutes.html">
+                    adminRoutes.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="appRoutes.html">
+                    appRoutes.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="settings.html">
+                    settings.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="sockets.html">
+                    sockets.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="tutorial.html">
+                    tutorial.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="vectors.html">
+                    vectors.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="statusTabView.html">
+                    statusTabView.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="toolsTabView.html">
+                    toolsTabView.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="usersTabView.html">
+                    usersTabView.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="adminView.html">
+                    adminView.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="alertView.html">
+                    alertView.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="auditDataManagerView.html">
+                    auditDataManagerView.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="auditEventManagerView.html">
+                    auditEventManagerView.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="baseView.html">
+                    baseView.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="createMapView.html">
+                    createMapView.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="entityManagerView.html">
+                    entityManagerView.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="footerView.html">
+                    footerView.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="helpView.html">
+                    helpView.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="entitiesTabView.html">
+                    entitiesTabView.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="inspectorTabView.html">
+                    inspectorTabView.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="mapTabView.html">
+                    mapTabView.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="shapeTabView.html">
+                    shapeTabView.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="controlsView.html">
+                    controlsView.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="labelEditView.html">
+                    labelEditView.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="linkCreatorView.html">
+                    linkCreatorView.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="linkLabelsView.html">
+                    linkLabelsView.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="linkView.html">
+                    linkView.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="shapeLabelsView.html">
+                    shapeLabelsView.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="shapeView.html">
+                    shapeView.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="shapesMoverView.html">
+                    shapesMoverView.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="mapView.html">
+                    mapView.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="menuView.html">
+                    menuView.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="overlayView.html">
+                    overlayView.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="scriptEditorView.html">
+                    scriptEditorView.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="selfTestView.html">
+                    selfTestView.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="settingsView.html">
+                    settingsView.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="startView.html">
+                    startView.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="variableManagerView.html">
+                    variableManagerView.coffee
+                  </a>
+                </li>
+              
+            </ol>
+          </div>
+        
+      </div>
+
+      
+        
+        <h2>MAP CONTROLS: SHAPE DETAILS VIEW</h2>
+
+        
+      
+        
+        <p>Represents the &quot;Shape properties&quot; tab inside a <a href="controlsView.html">Map Controls View</a>.</p>
+
+        
+          <div class='highlight'><pre><span class="class"><span class="keyword">class</span> <span class="title">SystemApp</span>.<span class="title">MapControlsShapeTabView</span> <span class="keyword">extends</span> <span class="title">SystemApp</span>.<span class="title">BaseView</span></span>
+
+    currentBoundViews: <span class="literal">null</span> <span class="comment"># holds the current shape being shown</span></pre></div>
+        
+      
+        
+        <h2>DOM ELEMENTS</h2>
+
+        
+      
+        
+        
+        
+          <div class='highlight'><pre>    $topDescription: <span class="literal">null</span>           <span class="comment"># the "H6" element on top of the tab</span>
+    $txtBackground: <span class="literal">null</span>            <span class="comment"># the "Background" text field</span>
+    $txtForeground: <span class="literal">null</span>            <span class="comment"># the "Label color" text field</span>
+    $txtTitleForeground: <span class="literal">null</span>       <span class="comment"># the "Title color" text field</span>
+    $txtStroke: <span class="literal">null</span>                <span class="comment"># the "Border color" text field</span>
+    $selIcon: <span class="literal">null</span>                  <span class="comment"># the "Icon" select field</span>
+    $selStrokeWidth: <span class="literal">null</span>           <span class="comment"># the "Border width" select field</span>
+    $selFontSize: <span class="literal">null</span>              <span class="comment"># the "Font size" select field</span>
+    $selOpacity: <span class="literal">null</span>               <span class="comment"># the "Opacity" select field</span>
+    $selArrowSource: <span class="literal">null</span>           <span class="comment"># the "Source arrow style" select field</span>
+    $selArrowTarget: <span class="literal">null</span>           <span class="comment"># the "Target arrow style" select field</span>
+    $selOpacity: <span class="literal">null</span>               <span class="comment"># the "Opacity" select field</span>
+    $chkIconFull: <span class="literal">null</span>              <span class="comment"># the "Full size icon" toggle</span>
+    $chkRoundedCorners: <span class="literal">null</span>        <span class="comment"># the "Rounded corners" toggle</span>
+    $chkSmoothLink: <span class="literal">null</span>            <span class="comment"># the "Smooth link" toggle</span>
+    $zIndexDiv: <span class="literal">null</span>                <span class="comment"># the "Stack level/z-index" wrapper</span>
+    $butDeleteShape: <span class="literal">null</span>           <span class="comment"># the "Remove shape" button</span>
+    $butConfirmDeleteShape: <span class="literal">null</span>    <span class="comment"># the "Confirm" button to remove a shape from the map</span></pre></div>
+        
+      
+        
+        <h2>INIT AND DISPOSE</h2>
+
+        
+      
+        
+        <p>Inits the view. Parent will be the <a href="controlsView.html">Map Controls View</a>.</p>
+
+        
+          <div class='highlight'><pre>    initialize: (parent) =&gt;
+        <span class="property">@baseInit</span> parent
+        <span class="property">@setDom</span>()
+        <span class="property">@setEvents</span>()
+        <span class="property">@bindInitial</span>()</pre></div>
+        
+      
+        
+        <p>Dispose the shape details view control.</p>
+
+        
+          <div class='highlight'><pre>    dispose: =&gt;
+        <span class="property">@baseDispose</span>()</pre></div>
+        
+      
+        
+        <p>Set the DOM elements cache.</p>
+
+        
+          <div class='highlight'><pre>    setDom: =&gt;
+        <span class="property">@setElement</span> $ <span class="string">"#map-ctl-tab-shape"</span>
+
+        <span class="property">@$topDescription</span> = <span class="property">@$el</span>.find <span class="string">"h6"</span>
+
+        <span class="property">@$selIcon</span> = $ <span class="string">"#map-ctl-shape-icon"</span>
+        <span class="property">@$txtBackground</span> = $ <span class="string">"#map-ctl-shape-background"</span>
+        <span class="property">@$txtForeground</span> = $ <span class="string">"#map-ctl-shape-foreground"</span>
+        <span class="property">@$txtTitleForeground</span> = $ <span class="string">"#map-ctl-shape-title-foreground"</span>
+        <span class="property">@$txtStroke</span> = $ <span class="string">"#map-ctl-shape-stroke"</span>
+        <span class="property">@$selStrokeWidth</span> = $ <span class="string">"#map-ctl-shape-strokewidth"</span>
+        <span class="property">@$selFontSize</span> = $ <span class="string">"#map-ctl-shape-fontsize"</span>
+        <span class="property">@$selOpacity</span> = $ <span class="string">"#map-ctl-shape-opacity"</span>
+        <span class="property">@$selArrowSource</span> = $ <span class="string">"#map-ctl-link-arrow-source"</span>
+        <span class="property">@$selArrowTarget</span> = $ <span class="string">"#map-ctl-link-arrow-target"</span>
+        <span class="property">@$selOpacity</span> = $ <span class="string">"#map-ctl-shape-opacity"</span>
+        <span class="property">@$chkIconFull</span> = $ <span class="string">"#map-ctl-shape-icon-full"</span>
+        <span class="property">@$chkRoundedCorners</span> = $ <span class="string">"#map-ctl-shape-roundedcorners"</span>
+        <span class="property">@$chkSmoothLink</span> = $ <span class="string">"#map-ctl-link-smooth"</span>
+
+        <span class="property">@$zIndexDiv</span> = $ <span class="string">"#map-ctl-shape-zindex"</span>
+
+        <span class="property">@$butDeleteShape</span> = $ <span class="string">"#map-ctl-shape-delete"</span>
+        <span class="property">@$butConfirmDeleteShape</span> = $ <span class="string">"#map-ctl-shape-confirmdelete"</span></pre></div>
+        
+      
+        
+        <p>Set propertyName data on all editable fields.</p>
+
+        
+          <div class='highlight'><pre>        <span class="property">@$txtBackground</span>.data <span class="string">"propertyName"</span>, <span class="string">"background"</span>
+        <span class="property">@$txtForeground</span>.data <span class="string">"propertyName"</span>, <span class="string">"foreground"</span>
+        <span class="property">@$txtTitleForeground</span>.data <span class="string">"propertyName"</span>, <span class="string">"titleForeground"</span>
+        <span class="property">@$txtStroke</span>.data <span class="string">"propertyName"</span>, <span class="string">"stroke"</span>
+        <span class="property">@$selStrokeWidth</span>.data <span class="string">"propertyName"</span>, <span class="string">"strokeWidth"</span>
+        <span class="property">@$selFontSize</span>.data <span class="string">"propertyName"</span>, <span class="string">"fontSize"</span>
+        <span class="property">@$selOpacity</span>.data <span class="string">"propertyName"</span>, <span class="string">"opacity"</span>
+        <span class="property">@$selArrowSource</span>.data <span class="string">"propertyName"</span>, <span class="string">"arrowSource"</span>
+        <span class="property">@$selArrowTarget</span>.data <span class="string">"propertyName"</span>, <span class="string">"arrowTarget"</span>
+        <span class="property">@$selIcon</span>.data <span class="string">"propertyName"</span>, <span class="string">"icon"</span>
+        <span class="property">@$chkIconFull</span>.data <span class="string">"propertyName"</span>, <span class="string">"iconFull"</span>
+        <span class="property">@$chkRoundedCorners</span>.data <span class="string">"propertyName"</span>, <span class="string">"roundedCorners"</span>
+        <span class="property">@$chkSmoothLink</span>.data <span class="string">"propertyName"</span>, <span class="string">"smooth"</span></pre></div>
+        
+      
+        
+        <p>Hide editable forms initially.</p>
+
+        
+          <div class='highlight'><pre>        <span class="property">@toggleForms</span> <span class="literal">false</span></pre></div>
+        
+      
+        
+        <p>Bind events to DOM and other controls.</p>
+
+        
+          <div class='highlight'><pre>    setEvents: =&gt;
+        <span class="property">@listenTo</span> SystemApp.mapEvents, <span class="string">"edit:toggle"</span>, <span class="property">@setEnabled</span>
+
+        fields = [<span class="property">@$txtBackground</span>, <span class="property">@$txtForeground</span>, <span class="property">@$txtTitleForeground</span>, <span class="property">@$txtStroke</span>]
+        <span class="keyword">for</span> elm <span class="keyword">in</span> fields
+            elm.keyup <span class="property">@editablePropertyKeyUp</span>
+            elm.blur <span class="property">@editablePropertySave</span>
+
+        selects = [<span class="property">@$selIcon</span>, <span class="property">@$selStrokeWidth</span>, <span class="property">@$selFontSize</span>, <span class="property">@$selOpacity</span>, <span class="property">@$selArrowSource</span>, <span class="property">@$selArrowTarget</span>,
+                   <span class="property">@$chkIconFull</span>, <span class="property">@$chkRoundedCorners</span>, <span class="property">@$chkSmoothLink</span>]
+        <span class="keyword">for</span> elm <span class="keyword">in</span> selects
+            elm.change <span class="property">@editablePropertySave</span>
+
+        <span class="property">@$zIndexDiv</span>.children(<span class="string">"div"</span>).click <span class="property">@zIndexSave</span>
+        <span class="property">@$butDeleteShape</span>.click <span class="property">@deleteShapeClick</span>
+        <span class="property">@$butConfirmDeleteShape</span>.click <span class="property">@confirmDeleteShapeClick</span></pre></div>
+        
+      
+        
+        <p>Disable the &quot;full icon&quot; toggle when no icon is selected.</p>
+
+        
+          <div class='highlight'><pre>        <span class="property">@$selIcon</span>.change <span class="property">@selIconChanged</span></pre></div>
+        
+      
+        
+        <p>Enable or disable editing the current <a href="shape.html">Shape</a> properties.</p>
+
+        
+          <div class='highlight'><pre>    setEnabled: (value) =&gt;
+        fields = [<span class="property">@$selIcon</span>, <span class="property">@$txtBackground</span>, <span class="property">@$txtForeground</span>, <span class="property">@$txtTitleForeground</span>, <span class="property">@$txtStroke</span>, <span class="property">@$selStrokeWidth</span>,
+                  <span class="property">@$selFontSize</span>, <span class="property">@$selOpacity</span>, <span class="property">@$selArrowSource</span>, <span class="property">@$selArrowTarget</span>,
+                  <span class="property">@$chkRoundedCorners</span>, <span class="property">@$chkSmoothLink</span>, <span class="property">@$zIndexDiv</span>, <span class="property">@$butDeleteShape</span>]
+
+        <span class="keyword">if</span> <span class="keyword">not</span> value
+            elm.attr(<span class="string">"disabled"</span>, <span class="string">"disabled"</span>).addClass(<span class="string">"disabled"</span>) <span class="keyword">for</span> elm <span class="keyword">in</span> fields
+        <span class="keyword">else</span>
+            elm.removeAttr(<span class="string">"disabled"</span>).removeClass(<span class="string">"disabled"</span>) <span class="keyword">for</span> elm <span class="keyword">in</span> fields</pre></div>
+        
+      
+        
+        <h2>BINDING AND CLEARING</h2>
+
+        
+      
+        
+        <p>When the view is first loaded, bind the initial and default values.</p>
+
+        
+          <div class='highlight'><pre>    bindInitial: =&gt;
+        <span class="property">@$selIcon</span>.append $(document.createElement <span class="string">"option"</span>).val(<span class="string">"0"</span>).text(SystemApp.Messages.noIcon)
+        _.each SystemApp.Vectors, (item, key) =&gt; <span class="property">@$selIcon</span>.append $(document.createElement <span class="string">"option"</span>).val(key).text(key)</pre></div>
+        
+      
+        
+        <p>Bind one or more <a href="shapeView.html">Shape Views</a> or <a href="linkView.html">Link Views</a> to the control
+and display its editable properties. If multiple shapes are bound, show an alert that changes
+will affect all selected shapes.</p>
+
+        
+          <div class='highlight'><pre>    bind: (views) =&gt;
+        <span class="property">@currentBoundViews</span> = views
+
+        <span class="property">@$butDeleteShape</span>.removeClass <span class="string">"hidden"</span>
+
+        <span class="property">@bindProperties</span>()
+        <span class="property">@resetDeleteShape</span>()</pre></div>
+        
+      
+        
+        <p>Show or hide forms depending on what&#39;s selected on the map.</p>
+
+        
+          <div class='highlight'><pre>    toggleForms: (visible) =&gt;
+        <span class="keyword">if</span> visible
+            <span class="property">@$el</span>.find(<span class="string">"h5,.panel"</span>).show()
+        <span class="keyword">else</span>
+            <span class="property">@$el</span>.find(<span class="string">"h5,.panel"</span>).hide()
+            <span class="property">@$topDescription</span>.text SystemApp.Messages.noShapeSelected
+            <span class="property">@$topDescription</span>.show()</pre></div>
+        
+      
+        
+        <h2>SHAPE EDITING TAB</h2>
+
+        
+      
+        
+        <p>Bind all editable properties of the current <a href="shape.html">Shape</a>
+or <a href="link.html">Link</a> to the &quot;Element properties&quot; tab.</p>
+
+        
+          <div class='highlight'><pre>    bindProperties: =&gt;
+        <span class="keyword">if</span> <span class="property">@currentBoundViews</span>?</pre></div>
+        
+      
+        
+        <p>If only one view is bound, show its properties, otherwise show empty boxes
+so user can edit multiple selected elements.</p>
+
+        
+          <div class='highlight'><pre>            <span class="keyword">if</span> <span class="property">@currentBoundViews</span>.model?.id?
+
+                <span class="property">@$topDescription</span>.hide()
+
+                <span class="property">@$txtForeground</span>.val <span class="property">@currentBoundViews</span>.model.foreground()
+                <span class="property">@$txtForeground</span>.keyup()
+                <span class="property">@$txtStroke</span>.val <span class="property">@currentBoundViews</span>.model.stroke()
+                <span class="property">@$txtStroke</span>.keyup()
+                <span class="property">@$selStrokeWidth</span>.val <span class="property">@currentBoundViews</span>.model.strokeWidth()
+                <span class="property">@$selFontSize</span>.val <span class="property">@currentBoundViews</span>.model.fontSize()
+                <span class="property">@$selOpacity</span>.val <span class="property">@currentBoundViews</span>.model.opacity()</pre></div>
+        
+      
+        
+        <p>If the selected item is a shape, then hide all &quot;only-for-links&quot; properties.</p>
+
+        
+          <div class='highlight'><pre>                <span class="keyword">if</span> <span class="property">@currentBoundViews</span>.constructor <span class="keyword">is</span> SystemApp.MapShapeView
+                    <span class="property">@$selIcon</span>.val <span class="property">@currentBoundViews</span>.model.icon()
+                    <span class="property">@$txtBackground</span>.val <span class="property">@currentBoundViews</span>.model.background()
+                    <span class="property">@$txtBackground</span>.keyup()
+                    <span class="property">@$txtTitleForeground</span>.val <span class="property">@currentBoundViews</span>.model.titleForeground()
+                    <span class="property">@$txtTitleForeground</span>.keyup()
+                    <span class="property">@$chkIconFull</span>.prop <span class="string">"checked"</span>, <span class="property">@currentBoundViews</span>.model.iconFull()
+                    <span class="property">@$chkRoundedCorners</span>.prop <span class="string">"checked"</span>, <span class="property">@currentBoundViews</span>.model.roundedCorners()
+                    <span class="property">@$el</span>.find(<span class="string">".only-for-links"</span>).hide()
+                    <span class="property">@$el</span>.find(<span class="string">".not-for-links"</span>).show()
+                    <span class="property">@$butDeleteShape</span>.html SystemApp.Messages.removeShape</pre></div>
+        
+      
+        
+        <p>If selected item is a link, then hide all &quot;not-for-links&quot; properties.</p>
+
+        
+          <div class='highlight'><pre>                <span class="keyword">else</span>
+                    <span class="property">@$selArrowSource</span>.val <span class="property">@currentBoundViews</span>.model.arrowSource()
+                    <span class="property">@$selArrowTarget</span>.val <span class="property">@currentBoundViews</span>.model.arrowTarget()
+                    <span class="property">@$chkSmoothLink</span>.prop <span class="string">"checked"</span>, <span class="property">@currentBoundViews</span>.model.smooth()
+                    <span class="property">@$el</span>.find(<span class="string">".not-for-links"</span>).hide()
+                    <span class="property">@$el</span>.find(<span class="string">".only-for-links"</span>).show()
+                    <span class="property">@$butDeleteShape</span>.html SystemApp.Messages.removeLink
+
+                <span class="property">@$zIndexDiv</span>.children(<span class="string">"div"</span>).removeClass(<span class="string">"active"</span>).eq(<span class="property">@currentBoundViews</span>.model.zIndex() - <span class="number">1</span>).addClass <span class="string">"active"</span>
+
+            <span class="keyword">else</span>
+
+                <span class="property">@$topDescription</span>.text SystemApp.Messages.multipleShapesSelected
+                <span class="property">@$topDescription</span>.show()
+
+                <span class="property">@$txtForeground</span>.val()
+                <span class="property">@$txtStroke</span>.val()
+                <span class="property">@$selStrokeWidth</span>.val()
+                <span class="property">@$selFontSize</span>.val()
+                <span class="property">@$selOpacity</span>.val()</pre></div>
+        
+      
+        
+        <p>Show all editable panels.</p>
+
+        
+          <div class='highlight'><pre>            <span class="property">@toggleForms</span> <span class="literal">true</span>
+
+        <span class="keyword">else</span></pre></div>
+        
+      
+        
+        <p>No shape(s) selected, so hide panels and show the h6 element with the &quot;no shapes selected text&quot;.</p>
+
+        
+          <div class='highlight'><pre>            <span class="property">@toggleForms</span> <span class="literal">false</span></pre></div>
+        
+      
+        
+        <p>When user is pressing keys on any of the editable text fields, check for
+the pressed key and if it&#39;s Enter, save the value to the model.</p>
+
+        
+          <div class='highlight'><pre>    editablePropertyKeyUp: (e) =&gt;
+        <span class="keyword">if</span> e.keyCode <span class="keyword">is</span> <span class="number">13</span>
+            <span class="property">@editablePropertySave</span> e
+            <span class="keyword">return</span>
+
+        src = $ e.target
+        preview = src.next()
+
+        <span class="keyword">if</span> preview?.hasClass <span class="string">"preview"</span>
+            preview.css <span class="string">"background-color"</span>, src.val()</pre></div>
+        
+      
+        
+        <p>When a text field of the editable properties losts focus, changes or gets clicked,
+saves the new value to the current <a href="shape.html">Shape</a> model.</p>
+
+        
+          <div class='highlight'><pre>    editablePropertySave: (e) =&gt;
+        <span class="keyword">if</span> <span class="keyword">not</span> <span class="property">@currentBoundViews</span>?
+            <span class="keyword">return</span>
+
+        src = $ e.target
+        propertyName = src.data <span class="string">"propertyName"</span>
+
+        <span class="keyword">if</span> src.attr(<span class="string">"type"</span>) <span class="keyword">is</span> <span class="string">"checkbox"</span>
+            value = src.prop <span class="string">"checked"</span>
+        <span class="keyword">else</span>
+            value = src.val()
+            <span class="keyword">if</span> <span class="keyword">not</span> isNaN(value)</pre></div>
+        
+      
+        
+        <p>Make sure numeric values are saved as numbers, not string.</p>
+
+        
+          <div class='highlight'><pre>                value = parseFloat value
+
+        <span class="keyword">if</span> value? <span class="keyword">and</span> value <span class="keyword">isnt</span> <span class="string">""</span>
+            <span class="property">@currentBoundViews</span>.model.set propertyName, value
+            <span class="property">@currentBoundViews</span>.model.save()
+            <span class="property">@parentView</span>.model.save()
+        <span class="keyword">else</span>
+            src.val <span class="property">@currentBoundViews</span>.model.get propertyName</pre></div>
+        
+      
+        
+        <p>When user selects no icon, disable the &quot;full icon&quot; toggle.</p>
+
+        
+          <div class='highlight'><pre>    selIconChanged: =&gt;
+        <span class="keyword">if</span> <span class="property">@$selIcon</span>.val().toString() <span class="keyword">is</span> <span class="string">"0"</span>
+            <span class="property">@$chkIconFull</span>.attr(<span class="string">"disabled"</span>, <span class="string">"disabled"</span>).addClass <span class="string">"disabled"</span>
+        <span class="keyword">else</span>
+            <span class="property">@$chkIconFull</span>.removeAttr(<span class="string">"disabled"</span>).removeClass <span class="string">"disabled"</span></pre></div>
+        
+      
+        
+        <p>Saves the selected stack lavel (z-index) to the current
+<a href="shape.html">Shape</a>.</p>
+
+        
+          <div class='highlight'><pre>    zIndexSave: (e) =&gt;
+        <span class="keyword">if</span> <span class="keyword">not</span> <span class="property">@parentView</span>.parentView?.editEnabled
+            <span class="keyword">return</span>
+
+        src = $ e.target
+        <span class="property">@$zIndexDiv</span>.children(<span class="string">"div"</span>).removeClass <span class="string">"active"</span>
+        src.addClass <span class="string">"active"</span>
+
+        <span class="property">@currentBoundViews</span>.model.set <span class="string">"zIndex"</span>, parseInt src.html()
+        <span class="property">@currentBoundViews</span>.model.save()
+        <span class="property">@parentView</span>.model.save()</pre></div>
+        
+      
+        
+        <p>Clicks the &quot;Remove shape&quot; button, show the &quot;Confirm&quot; button
+right next to it so user can confirm the shape removal.</p>
+
+        
+          <div class='highlight'><pre>    deleteShapeClick: =&gt;
+        $(document).mouseup <span class="property">@resetDeleteShape</span>
+        <span class="property">@$butConfirmDeleteShape</span>.removeClass <span class="string">"hidden"</span></pre></div>
+        
+      
+        
+        <p>User clicks the &quot;Confirm&quot; button, so proceed with shape removal.</p>
+
+        
+          <div class='highlight'><pre>    confirmDeleteShapeClick: (e) =&gt;
+        <span class="property">@currentBoundViews</span>.blinkAndRemove()
+        <span class="property">@resetDeleteShape</span> e</pre></div>
+        
+      
+        
+        <p>Hide the &quot;Confirm&quot; shape removal button if user clicks anywhere on the page
+while the button is visible, or after user confirms the deletion.</p>
+
+        
+          <div class='highlight'><pre>    resetDeleteShape: =&gt;
+        $(document).unbind <span class="string">"mouseup"</span>, <span class="property">@resetDeleteShape</span>
+        <span class="property">@$butConfirmDeleteShape</span>.addClass <span class="string">"hidden"</span></pre></div>
+        
+      
+      <div class="fleur">h</div>
+    </div>
+  </div>
+</body>
+</html>

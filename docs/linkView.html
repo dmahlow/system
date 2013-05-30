@@ -1,0 +1,792 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+  <title>linkView.coffee</title>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <link rel="stylesheet" media="all" href="public/stylesheets/normalize.css" />
+  <link rel="stylesheet" media="all" href="docco.css" />
+</head>
+<body>
+  <div class="container">
+    <div class="page">
+
+      <div class="header">
+        
+          <h1>linkView.coffee</h1>
+        
+
+        
+          <div class="toc">
+            <h3>Table of Contents</h3>
+            <ol>
+              
+                
+                <li>
+                  <a class="source" href="admin.html">
+                    admin.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="api.auditData.html">
+                    api.auditData.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="api.auditEvent.html">
+                    api.auditEvent.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="api.html">
+                    api.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="api.entity.html">
+                    api.entity.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="api.map.html">
+                    api.map.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="api.server.html">
+                    api.server.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="api.variable.html">
+                    api.variable.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="api.view.html">
+                    api.view.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="app.html">
+                    app.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="app.instance.html">
+                    app.instance.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="data.html">
+                    data.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="dataUtil.html">
+                    dataUtil.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="messages.html">
+                    messages.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="auditData.html">
+                    auditData.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="auditEvent.html">
+                    auditEvent.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="base.html">
+                    base.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="entityDefinition.html">
+                    entityDefinition.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="entityObject.html">
+                    entityObject.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="eventAction.html">
+                    eventAction.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="eventRule.html">
+                    eventRule.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="link.html">
+                    link.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="map.html">
+                    map.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="shape.html">
+                    shape.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="user.html">
+                    user.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="userSettings.html">
+                    userSettings.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="variable.html">
+                    variable.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="adminRoutes.html">
+                    adminRoutes.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="appRoutes.html">
+                    appRoutes.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="settings.html">
+                    settings.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="sockets.html">
+                    sockets.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="tutorial.html">
+                    tutorial.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="vectors.html">
+                    vectors.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="statusTabView.html">
+                    statusTabView.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="toolsTabView.html">
+                    toolsTabView.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="usersTabView.html">
+                    usersTabView.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="adminView.html">
+                    adminView.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="alertView.html">
+                    alertView.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="auditDataManagerView.html">
+                    auditDataManagerView.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="auditEventManagerView.html">
+                    auditEventManagerView.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="baseView.html">
+                    baseView.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="createMapView.html">
+                    createMapView.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="entityManagerView.html">
+                    entityManagerView.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="footerView.html">
+                    footerView.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="helpView.html">
+                    helpView.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="entitiesTabView.html">
+                    entitiesTabView.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="inspectorTabView.html">
+                    inspectorTabView.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="mapTabView.html">
+                    mapTabView.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="shapeTabView.html">
+                    shapeTabView.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="controlsView.html">
+                    controlsView.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="labelEditView.html">
+                    labelEditView.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="linkCreatorView.html">
+                    linkCreatorView.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="linkLabelsView.html">
+                    linkLabelsView.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="linkView.html">
+                    linkView.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="shapeLabelsView.html">
+                    shapeLabelsView.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="shapeView.html">
+                    shapeView.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="shapesMoverView.html">
+                    shapesMoverView.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="mapView.html">
+                    mapView.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="menuView.html">
+                    menuView.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="overlayView.html">
+                    overlayView.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="scriptEditorView.html">
+                    scriptEditorView.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="selfTestView.html">
+                    selfTestView.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="settingsView.html">
+                    settingsView.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="startView.html">
+                    startView.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="variableManagerView.html">
+                    variableManagerView.coffee
+                  </a>
+                </li>
+              
+            </ol>
+          </div>
+        
+      </div>
+
+      
+        
+        <h2>LINK VIEW</h2>
+
+        
+      
+        
+        <p>Represents a link on the map, that might contain an attached label to it.</p>
+
+        
+          <div class='highlight'><pre><span class="class"><span class="keyword">class</span> <span class="title">SystemApp</span>.<span class="title">MapLinkView</span> <span class="keyword">extends</span> <span class="title">SystemApp</span>.<span class="title">BaseView</span></span>
+
+    visible: <span class="literal">true</span>          <span class="comment"># cached variable to check if link is currently visible</span>
+    labelsView: <span class="literal">null</span>       <span class="comment"># holds the 3 editable / dynamic labels of the link</span>
+    svg: <span class="literal">null</span>              <span class="comment"># the link svg object (raphael.link.js)</span>
+    svgSourceArrow: <span class="literal">null</span>   <span class="comment"># the svg arrow pointing to the source element (optional)</span>
+    svgTargetArrow: <span class="literal">null</span>   <span class="comment"># the svg arrow pointing to the target element (optional)</span>
+    source: <span class="literal">null</span>           <span class="comment"># the source view (usually taken from the parentView)</span>
+    target: <span class="literal">null</span>           <span class="comment"># the target view (usually taken from the parentView)</span>
+    blinking: <span class="literal">false</span>        <span class="comment"># is it blinking?</span></pre></div>
+        
+      
+        
+        <h2>INIT AND DISPOSE</h2>
+
+        
+      
+        
+        <p>Initialize the link view and bind model events.</p>
+
+        
+          <div class='highlight'><pre>    initialize: =&gt;
+        <span class="property">@listenTo</span> SystemApp.mapEvents, <span class="string">"zoom:in"</span>, <span class="property">@onZoom</span>
+        <span class="property">@listenTo</span> SystemApp.mapEvents, <span class="string">"zoom:out"</span>, <span class="property">@onZoom</span>
+
+        <span class="property">@listenTo</span> <span class="property">@model</span>, <span class="string">"change"</span>, <span class="property">@render</span>
+        <span class="property">@listenTo</span> <span class="property">@model</span>, <span class="string">"change:stroke"</span>, <span class="property">@setStroke</span>
+        <span class="property">@listenTo</span> <span class="property">@model</span>, <span class="string">"change:strokeWidth"</span>, <span class="property">@setStroke</span>
+        <span class="property">@listenTo</span> <span class="property">@model</span>, <span class="string">"change:zIndex"</span>, <span class="property">@setZIndex</span></pre></div>
+        
+      
+        
+        <p>Dispose the link view.</p>
+
+        
+          <div class='highlight'><pre>    dispose: =&gt;
+        <span class="property">@unhighlight</span>()
+
+        <span class="property">@labelsView</span>?.dispose()
+        <span class="property">@svg</span>?.remove()
+
+        <span class="property">@svg</span> = <span class="literal">null</span>
+        <span class="property">@source</span> = <span class="literal">null</span>
+        <span class="property">@target</span> = <span class="literal">null</span>
+
+        <span class="property">@baseDispose</span>()</pre></div>
+        
+      
+        
+        <h2>HELPER PROPERTIES</h2>
+
+        
+      
+        
+        <p>Return an array with all the SVG elements for this link.</p>
+
+        
+          <div class='highlight'><pre>    svgs: =&gt;
+        result = [<span class="property">@svg</span>.svgLine]
+        result.push svg <span class="keyword">for</span> svg <span class="keyword">in</span> <span class="property">@labelsView</span>.svgs() <span class="keyword">if</span> <span class="property">@labelsView</span>?
+
+        <span class="keyword">return</span> result</pre></div>
+        
+      
+        
+        <h2>RENDER AND ANIMATE</h2>
+
+        
+      
+        
+        <p>Render the link on the map. If smoothLine is true it will render a
+curved line, otherwise a straight one. You can also pass a parentView
+to attach this link to.</p>
+
+        
+          <div class='highlight'><pre>    render: (parentView) =&gt;
+        <span class="property">@parentView</span> = parentView <span class="keyword">if</span> parentView?.shapeViews?
+
+        source = <span class="property">@parentView</span>.shapeViews[<span class="property">@model</span>.sourceId()]
+        target = <span class="property">@parentView</span>.shapeViews[<span class="property">@model</span>.targetId()]
+
+        options =
+            arrowSize: SystemApp.Settings.Link.arrowSize
+            arrowSource: <span class="property">@model</span>.arrowSource()
+            arrowTarget: <span class="property">@model</span>.arrowTarget()
+            opacity: <span class="property">@model</span>.opacity()
+            smooth: <span class="property">@model</span>.smooth()
+            stroke: <span class="property">@model</span>.stroke()
+            width: <span class="property">@model</span>.strokeWidth()
+
+        <span class="keyword">if</span> <span class="keyword">not</span> <span class="property">@svg</span>?
+            options.onClick = <span class="property">@lineClick</span>
+            <span class="property">@svg</span> = <span class="property">@parentView</span>.paper.link source.svg, target.svg, options
+            <span class="property">@setElement</span> <span class="property">@svg</span>
+        <span class="keyword">else</span>
+            <span class="property">@parentView</span>.paper.link <span class="property">@svg</span>, options
+
+        <span class="keyword">if</span> <span class="keyword">not</span> <span class="property">@labelsView</span>?
+            <span class="property">@labelsView</span> = <span class="keyword">new</span> SystemApp.MapLinkLabelsView {model: <span class="property">@model</span>}
+
+        <span class="property">@labelsView</span>.render <span class="keyword">this</span>
+
+        <span class="keyword">return</span> <span class="keyword">this</span></pre></div>
+        
+      
+        
+        <p>Remove the link from the map and dispose its contents.</p>
+
+        
+          <div class='highlight'><pre>    removeFromMap: =&gt;
+        <span class="property">@dispose</span>()
+        <span class="property">@model</span>.destroy()</pre></div>
+        
+      
+        
+        <p>Blink and remove the link (so the user gets the attention of what&#39;s being removed).</p>
+
+        
+          <div class='highlight'><pre>    blinkAndRemove: =&gt;
+        <span class="property">@blink</span> <span class="number">2</span>, <span class="property">@removeFromMap</span></pre></div>
+        
+      
+        
+        <p>When user clicks the link path, bring it to front or to back, depending on the
+mouse button and on the current modifier keys for the user.</p>
+
+        
+          <div class='highlight'><pre>    lineClick: (e) =&gt;</pre></div>
+        
+      
+        
+        <p>If using the &quot;delete&quot; key / mouse combination, then remove the shape.</p>
+
+        
+          <div class='highlight'><pre>        <span class="keyword">if</span> <span class="property">@isEventDelete</span> e
+            <span class="property">@blinkAndRemove</span>()
+        <span class="keyword">else</span>
+            <span class="property">@parentView</span>.addToSelected <span class="keyword">this</span></pre></div>
+        
+      
+        
+        <p>Send the link to the back of the current <a href="r.html">Map View</a>.</p>
+
+        
+          <div class='highlight'><pre>    toBack: =&gt;
+        <span class="property">@svg</span>.toBack()
+        <span class="property">@parentView</span>.toBack()</pre></div>
+        
+      
+        
+        <p>Send the link to the front of the current <a href="mapView.html">Map View</a>.</p>
+
+        
+          <div class='highlight'><pre>    toFront: =&gt;
+        <span class="property">@svg</span>.toFront()</pre></div>
+        
+      
+        
+        <p>Show the link on the map using a &quot;fade in&quot; effect.</p>
+
+        
+          <div class='highlight'><pre>    show: =&gt;
+        <span class="property">@svg</span>.show SystemApp.Settings.Map.blinkInterval
+        <span class="property">@labelsView</span>.show()
+        <span class="property">@visible</span> = <span class="literal">true</span></pre></div>
+        
+      
+        
+        <p>Hide the link on the map using a &quot;fade out&quot; effect.</p>
+
+        
+          <div class='highlight'><pre>    hide: =&gt;
+        <span class="property">@svg</span>.hide SystemApp.Settings.Map.blinkInterval
+        <span class="property">@labelsView</span>.hide()
+        <span class="property">@visible</span> = <span class="literal">false</span></pre></div>
+        
+      
+        
+        <p>Fade the link opacity to 0.1, so it&#39;s almost hidden.</p>
+
+        
+          <div class='highlight'><pre>    semiHide: =&gt;
+        <span class="property">@svg</span>.semiHide SystemApp.Settings.Map.blinkInterval
+        <span class="property">@labelsView</span>.hide()
+        <span class="property">@visible</span> = <span class="literal">false</span></pre></div>
+        
+      
+        
+        <p>Make the link smooth (curved) if the parameter <code>enabled</code> is true, or straight if false.</p>
+
+        
+          <div class='highlight'><pre>    smooth: (enabled) =&gt;
+        <span class="property">@parentView</span>.paper.link <span class="property">@svg</span>, {smooth: enabled}</pre></div>
+        
+      
+        
+        <p>Set the link drag handler.</p>
+
+        
+          <div class='highlight'><pre>    drag: =&gt;
+        <span class="property">@parentView</span>.paper.link <span class="property">@svg</span>
+        <span class="property">@labelsView</span>?.setPosition()</pre></div>
+        
+      
+        
+        <h2>VIEW UPDATE EVENTS</h2>
+
+        
+      
+        
+        <p>Update the stroke (color and width) of the link.</p>
+
+        
+          <div class='highlight'><pre>    setStroke: =&gt;
+        <span class="property">@svg</span>.svgLine.attr {<span class="string">"stroke"</span>: <span class="property">@model</span>.stroke(), <span class="string">"stroke-width"</span>: <span class="property">@model</span>.strokeWidth()}
+        _.delay <span class="property">@strokeUpdatedBackToSelected</span>, SystemApp.Settings.Map.borderUpdatedDelay</pre></div>
+        
+      
+        
+        <p>Update the zIndex the link by changing its position under the DOM tree.</p>
+
+        
+          <div class='highlight'><pre>    setZIndex: =&gt;
+        <span class="property">@parentView</span>.regroupElement <span class="keyword">this</span></pre></div>
+        
+      
+        
+        <p>When user zooms in or out, check the current zoom level and resize
+the link label accordingly. Font size will increase when zooming out,
+but won&#39;t decrease when zooming in (zoom more than 1).</p>
+
+        
+          <div class='highlight'><pre>    onZoom: =&gt;
+        <span class="keyword">if</span> <span class="property">@parentView</span>.currentZoom &lt; <span class="number">1</span>
+            <span class="keyword">return</span>
+
+        fontSize = <span class="property">@model</span>.fontSize() * <span class="property">@parentView</span>.currentZoom
+        fontSize = Math.round fontSize
+
+        <span class="property">@svg</span>.label?.attr {<span class="string">"font-size"</span>: fontSize}</pre></div>
+        
+      
+        
+        <p>When the user changes border details (color or width), the link will display the
+new border for a period of time - default 1400ms, set on the
+<a href="settings.html">Settings</a> - and if after that period the
+shape is still selected, then set its border back to the &quot;selected&quot; style
+by calling the <code>highlight</code> method.</p>
+
+        
+          <div class='highlight'><pre>    strokeUpdatedBackToSelected: =&gt;
+        <span class="keyword">if</span> <span class="property">@parentView</span>.currentShape?.model.id <span class="keyword">is</span> <span class="property">@model</span>.id
+            <span class="property">@highlight</span>()</pre></div>
+        
+      
+        
+        <h2>SHADOW AND HIGHLIGHT</h2>
+
+        
+      
+        
+        <p>Blink the link with optional amount of times (default is 2). This is a recursive function.
+If times is 1 and the <code>callback</code> is specified, call it when it has finished blinking.</p>
+
+        
+          <div class='highlight'><pre>    blink: (times, callback) =&gt;
+        times = <span class="number">2</span> <span class="keyword">if</span> <span class="keyword">not</span> times?
+        extraMs = <span class="number">15</span>
+
+        <span class="property">@hide</span>()
+        _.delay(<span class="property">@show</span>, SystemApp.Settings.Map.blinkInterval + extraMs)
+        _.delay(<span class="property">@blink</span>, SystemApp.Settings.Map.blinkInterval * <span class="number">2</span> + extraMs * <span class="number">2</span>, times - <span class="number">1</span>, callback) <span class="keyword">if</span> times &gt; <span class="number">1</span>
+        _.delay(callback, SystemApp.Settings.Map.blinkInterval * <span class="number">2</span> + extraMs * <span class="number">4</span>) <span class="keyword">if</span> times <span class="keyword">is</span> <span class="number">1</span> <span class="keyword">and</span> callback?</pre></div>
+        
+      
+        
+        <p>Create a shadow behind the link, with optional color and strength.</p>
+
+        
+          <div class='highlight'><pre>    highlight: (color, strength) =&gt;
+        color = SystemApp.Settings.Map.shadowColor <span class="keyword">if</span> <span class="keyword">not</span> color?
+        strength = SystemApp.Settings.Map.shadowStrength <span class="keyword">if</span> <span class="keyword">not</span> strength?
+
+        <span class="property">@svg</span>.svgLine.attr {<span class="string">"stroke"</span>: color, <span class="string">"stroke-width"</span>: strength}</pre></div>
+        
+      
+        
+        <p>Remove the shadow from the link (if there&#39;s one present).</p>
+
+        
+          <div class='highlight'><pre>    unhighlight: =&gt;
+        <span class="property">@svg</span>?.svgLine.attr {<span class="string">"stroke"</span>: <span class="property">@model</span>.stroke(), <span class="string">"stroke-width"</span>: <span class="property">@model</span>.strokeWidth()}</pre></div>
+        
+      
+      <div class="fleur">h</div>
+    </div>
+  </div>
+</body>
+</html>

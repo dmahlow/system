@@ -1,0 +1,884 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+  <title>shape.coffee</title>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <link rel="stylesheet" media="all" href="public/stylesheets/normalize.css" />
+  <link rel="stylesheet" media="all" href="docco.css" />
+</head>
+<body>
+  <div class="container">
+    <div class="page">
+
+      <div class="header">
+        
+          <h1>shape.coffee</h1>
+        
+
+        
+          <div class="toc">
+            <h3>Table of Contents</h3>
+            <ol>
+              
+                
+                <li>
+                  <a class="source" href="admin.html">
+                    admin.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="api.auditData.html">
+                    api.auditData.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="api.auditEvent.html">
+                    api.auditEvent.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="api.html">
+                    api.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="api.entity.html">
+                    api.entity.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="api.map.html">
+                    api.map.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="api.server.html">
+                    api.server.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="api.variable.html">
+                    api.variable.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="api.view.html">
+                    api.view.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="app.html">
+                    app.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="app.instance.html">
+                    app.instance.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="data.html">
+                    data.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="dataUtil.html">
+                    dataUtil.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="messages.html">
+                    messages.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="auditData.html">
+                    auditData.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="auditEvent.html">
+                    auditEvent.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="base.html">
+                    base.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="entityDefinition.html">
+                    entityDefinition.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="entityObject.html">
+                    entityObject.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="eventAction.html">
+                    eventAction.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="eventRule.html">
+                    eventRule.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="link.html">
+                    link.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="map.html">
+                    map.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="shape.html">
+                    shape.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="user.html">
+                    user.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="userSettings.html">
+                    userSettings.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="variable.html">
+                    variable.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="adminRoutes.html">
+                    adminRoutes.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="appRoutes.html">
+                    appRoutes.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="settings.html">
+                    settings.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="sockets.html">
+                    sockets.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="tutorial.html">
+                    tutorial.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="vectors.html">
+                    vectors.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="statusTabView.html">
+                    statusTabView.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="toolsTabView.html">
+                    toolsTabView.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="usersTabView.html">
+                    usersTabView.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="adminView.html">
+                    adminView.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="alertView.html">
+                    alertView.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="auditDataManagerView.html">
+                    auditDataManagerView.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="auditEventManagerView.html">
+                    auditEventManagerView.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="baseView.html">
+                    baseView.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="createMapView.html">
+                    createMapView.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="entityManagerView.html">
+                    entityManagerView.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="footerView.html">
+                    footerView.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="helpView.html">
+                    helpView.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="entitiesTabView.html">
+                    entitiesTabView.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="inspectorTabView.html">
+                    inspectorTabView.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="mapTabView.html">
+                    mapTabView.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="shapeTabView.html">
+                    shapeTabView.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="controlsView.html">
+                    controlsView.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="labelEditView.html">
+                    labelEditView.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="linkCreatorView.html">
+                    linkCreatorView.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="linkLabelsView.html">
+                    linkLabelsView.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="linkView.html">
+                    linkView.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="shapeLabelsView.html">
+                    shapeLabelsView.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="shapeView.html">
+                    shapeView.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="shapesMoverView.html">
+                    shapesMoverView.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="mapView.html">
+                    mapView.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="menuView.html">
+                    menuView.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="overlayView.html">
+                    overlayView.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="scriptEditorView.html">
+                    scriptEditorView.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="selfTestView.html">
+                    selfTestView.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="settingsView.html">
+                    settingsView.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="startView.html">
+                    startView.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="variableManagerView.html">
+                    variableManagerView.coffee
+                  </a>
+                </li>
+              
+            </ol>
+          </div>
+        
+      </div>
+
+      
+        
+        <h2>SHAPE MODEL</h2>
+
+        
+      
+        
+        <p>This model represents shapes on a map. Shapes will have their layout and
+properties defined depending on its related entity type.</p>
+
+        
+          <div class='highlight'><pre><span class="class"><span class="keyword">class</span> <span class="title">SystemApp</span>.<span class="title">Shape</span> <span class="keyword">extends</span> <span class="title">SystemApp</span>.<span class="title">BaseModel</span></span>
+    typeName: <span class="string">"Shape"</span>
+    defaults:
+        background: SystemApp.Settings.Shape.background
+        format: SystemApp.Settings.Shape.format
+        fontSize: SystemApp.Settings.Shape.fontSize
+        foreground: SystemApp.Settings.Shape.foreground
+        opacity: SystemApp.Settings.Map.opacityStatic
+        roundedCorners: SystemApp.Settings.Shape.roundedCorners
+        sizeX: SystemApp.Settings.Shape.gridViewSizeX
+        sizeY: SystemApp.Settings.Shape.gridViewSizeY
+        stroke: SystemApp.Settings.Shape.stroke
+        strokeWidth: SystemApp.Settings.Shape.strokeWidth
+        titleForeground: SystemApp.Settings.Shape.titleForeground
+        zIndex: SystemApp.Settings.Shape.zIndex</pre></div>
+        
+      
+        
+        <h2>SYNC</h2>
+
+        
+      
+        
+        <p>Override the &quot;save&quot; method as we don&#39;t need to sync individual links with the server.</p>
+
+        
+          <div class='highlight'><pre>    save: (key, value, options) =&gt; <span class="property">@noSyncSave</span> key, value, options</pre></div>
+        
+      
+        
+        <p>Override the &quot;destroy&quot; method as we don&#39;t need to sync individual links with the server.</p>
+
+        
+          <div class='highlight'><pre>    destroy: (options) =&gt; <span class="property">@noSyncDestroy</span> options</pre></div>
+        
+      
+        
+        <h2>MAIN PROPERTIES</h2>
+
+        
+      
+        
+        <p>Helper to get / set the array of <a href="auditEvent.html">AuditEvent</a> IDs.</p>
+
+        
+          <div class='highlight'><pre>    auditEventIds: (value) =&gt;
+        <span class="keyword">if</span> value?
+            <span class="property">@set</span> <span class="string">"auditEventIds"</span>, value
+        <span class="property">@get</span> <span class="string">"auditEventIds"</span></pre></div>
+        
+      
+        
+        <p>Helper to set / set the shape background color.</p>
+
+        
+          <div class='highlight'><pre>    background: (value) =&gt;
+        <span class="keyword">if</span> value?
+            <span class="property">@set</span> <span class="string">"background"</span>, value
+        <span class="property">@get</span> <span class="string">"background"</span></pre></div>
+        
+      
+        
+        <p>Helper to set / set the shape font size.</p>
+
+        
+          <div class='highlight'><pre>    fontSize: (value) =&gt;
+        <span class="keyword">if</span> value?
+            <span class="property">@set</span> <span class="string">"fontSize"</span>, value
+        <span class="property">@get</span> <span class="string">"fontSize"</span></pre></div>
+        
+      
+        
+        <p>Helper to set / set the shape foreground (text) color.</p>
+
+        
+          <div class='highlight'><pre>    foreground: (value) =&gt;
+        <span class="keyword">if</span> value?
+            <span class="property">@set</span> <span class="string">"foreground"</span>, value
+        <span class="property">@get</span> <span class="string">"foreground"</span></pre></div>
+        
+      
+        
+        <p>Helper to set / set the shape format, possible values are <strong>rect</strong> and <strong>circle</strong>.</p>
+
+        
+          <div class='highlight'><pre>    format: (value) =&gt;
+        <span class="keyword">if</span> value?
+            <span class="property">@set</span> <span class="string">"format"</span>, value
+        <span class="property">@get</span> <span class="string">"format"</span></pre></div>
+        
+      
+        
+        <p>Helper to get / set the shape&#39;s icon.</p>
+
+        
+          <div class='highlight'><pre>    icon: (value) =&gt;
+        <span class="keyword">if</span> value?
+            <span class="property">@set</span> <span class="string">"icon"</span>, value
+        <span class="property">@get</span> <span class="string">"icon"</span></pre></div>
+        
+      
+        
+        <p>Helper to get / set the shape&#39;s icon full size (true or false).</p>
+
+        
+          <div class='highlight'><pre>    iconFull: (value) =&gt;
+        <span class="keyword">if</span> value?
+            <span class="property">@set</span> <span class="string">"iconFull"</span>, value
+        <span class="property">@get</span> <span class="string">"iconFull"</span></pre></div>
+        
+      
+        
+        <p>Helper to get / set the shape opacity level, from 0.5 to 1;</p>
+
+        
+          <div class='highlight'><pre>    opacity: (value) =&gt;
+        <span class="keyword">if</span> value?
+            <span class="property">@set</span> <span class="string">"opacity"</span>, value
+        <span class="property">@get</span> <span class="string">"opacity"</span></pre></div>
+        
+      
+        
+        <p>Helper to set / set the shape font size.</p>
+
+        
+          <div class='highlight'><pre>    roundedCorners: (value) =&gt;
+        <span class="keyword">if</span> value?
+            <span class="property">@set</span> <span class="string">"roundedCorners"</span>, value
+        <span class="property">@get</span> <span class="string">"roundedCorners"</span></pre></div>
+        
+      
+        
+        <p>Helper to get / set the shape grid X size (for example 2 means it will be 2 blocks long).</p>
+
+        
+          <div class='highlight'><pre>    sizeX: (value)  =&gt;
+        <span class="keyword">if</span> value?
+            <span class="property">@set</span> <span class="string">"sizeX"</span>, value
+        <span class="property">@get</span> <span class="string">"sizeX"</span></pre></div>
+        
+      
+        
+        <p>Helper to get / set the shape grid Y size (for example 3 means it will be 3 blocks high).</p>
+
+        
+          <div class='highlight'><pre>    sizeY: (value)  =&gt;
+        <span class="keyword">if</span> value?
+            <span class="property">@set</span> <span class="string">"sizeY"</span>, value
+        <span class="property">@get</span> <span class="string">"sizeY"</span></pre></div>
+        
+      
+        
+        <p>Helper to set / set the shape stroke / border color.</p>
+
+        
+          <div class='highlight'><pre>    stroke: (value) =&gt;
+        <span class="keyword">if</span> value?
+            <span class="property">@set</span> <span class="string">"stroke"</span>, value
+        <span class="property">@get</span> <span class="string">"stroke"</span></pre></div>
+        
+      
+        
+        <p>Helper to set / set the shape stroke / border width.</p>
+
+        
+          <div class='highlight'><pre>    strokeWidth: (value) =&gt;
+        <span class="keyword">if</span> value?
+            <span class="property">@set</span> <span class="string">"strokeWidth"</span>, value
+        parseInt <span class="property">@get</span> <span class="string">"strokeWidth"</span></pre></div>
+        
+      
+        
+        <p>Helper to get / set the shape title.</p>
+
+        
+          <div class='highlight'><pre>    title: (value) =&gt;
+        <span class="keyword">if</span> value?
+            <span class="property">@set</span> <span class="string">"title"</span>, value
+        <span class="property">@get</span> <span class="string">"title"</span></pre></div>
+        
+      
+        
+        <p>Helper to set / set the shape title foreground color.</p>
+
+        
+          <div class='highlight'><pre>    titleForeground: (value) =&gt;
+        <span class="keyword">if</span> value?
+            <span class="property">@set</span> <span class="string">"titleForeground"</span>, value
+        <span class="property">@get</span> <span class="string">"titleForeground"</span></pre></div>
+        
+      
+        
+        <p>Helper to get / set the shape z-index, from 1 to 9.</p>
+
+        
+          <div class='highlight'><pre>    zIndex: (value)  =&gt;
+        <span class="keyword">if</span> value?
+            <span class="property">@set</span> <span class="string">"zIndex"</span>, value
+        <span class="property">@get</span> <span class="string">"zIndex"</span></pre></div>
+        
+      
+        
+        <h2>POSITION PROPERTIES</h2>
+
+        
+      
+        
+        <p>Helper to get / set the X coordinate.</p>
+
+        
+          <div class='highlight'><pre>    x: (value) =&gt;
+        <span class="keyword">if</span> value?
+            <span class="property">@set</span> <span class="string">"x"</span>, value
+
+        result = <span class="property">@get</span> <span class="string">"x"</span>
+        result = <span class="number">0</span> <span class="keyword">if</span> <span class="keyword">not</span> result? <span class="keyword">or</span> result &lt; <span class="number">0</span>
+
+        <span class="keyword">return</span> result</pre></div>
+        
+      
+        
+        <p>Helper to get / set the Y coordinate.</p>
+
+        
+          <div class='highlight'><pre>    y: (value)  =&gt;
+        <span class="keyword">if</span> value?
+            <span class="property">@set</span> <span class="string">"y"</span>, value
+
+        result = <span class="property">@get</span> <span class="string">"y"</span>
+        result = <span class="number">0</span> <span class="keyword">if</span> <span class="keyword">not</span> result? <span class="keyword">or</span> result &lt; <span class="number">0</span>
+
+        <span class="keyword">return</span> result</pre></div>
+        
+      
+        
+        <h2>LABEL PROPERTIES</h2>
+
+        
+      
+        
+        <p>Helper to get the shape&#39;s default text.</p>
+
+        
+          <div class='highlight'><pre>    defaultText: =&gt;
+        <span class="property">@textTitle</span>()</pre></div>
+        
+      
+        
+        <p>Helper to get / set the shape title text.</p>
+
+        
+          <div class='highlight'><pre>    textTitle: (value) =&gt;
+        <span class="keyword">if</span> value?
+            <span class="property">@set</span> <span class="string">"textTitle"</span>, value
+        <span class="property">@get</span> <span class="string">"textTitle"</span></pre></div>
+        
+      
+        
+        <p>Helper to get / set the shape central text.</p>
+
+        
+          <div class='highlight'><pre>    textCenter: (value) =&gt;
+        <span class="keyword">if</span> value?
+            <span class="property">@set</span> <span class="string">"textCenter"</span>, value
+        <span class="property">@get</span> <span class="string">"textCenter"</span></pre></div>
+        
+      
+        
+        <p>Helper to get / set the shape left dynamic text.</p>
+
+        
+          <div class='highlight'><pre>    textLeft: (value) =&gt;
+        <span class="keyword">if</span> value?
+            <span class="property">@set</span> <span class="string">"textLeft"</span>, value
+        <span class="property">@get</span> <span class="string">"textLeft"</span></pre></div>
+        
+      
+        
+        <p>Helper to get / set the shape top dynamic text.</p>
+
+        
+          <div class='highlight'><pre>    textTop: (value) =&gt;
+        <span class="keyword">if</span> value?
+            <span class="property">@set</span> <span class="string">"textTop"</span>, value
+        <span class="property">@get</span> <span class="string">"textTop"</span></pre></div>
+        
+      
+        
+        <p>Helper to get / set the shape right dynamic text.</p>
+
+        
+          <div class='highlight'><pre>    textRight: (value) =&gt;
+        <span class="keyword">if</span> value?
+            <span class="property">@set</span> <span class="string">"textRight"</span>, value
+        <span class="property">@get</span> <span class="string">"textRight"</span></pre></div>
+        
+      
+        
+        <p>Helper to get / set the shape bottom dynamic text.</p>
+
+        
+          <div class='highlight'><pre>    textBottom: (value) =&gt;
+        <span class="keyword">if</span> value?
+            <span class="property">@set</span> <span class="string">"textBottom"</span>, value
+        <span class="property">@get</span> <span class="string">"textBottom"</span></pre></div>
+        
+      
+        
+        <h2>ENTITY PROPERTIES</h2>
+
+        
+      
+        
+        <p>Helper to get / set the entity type (DataCenter, Machine, Host, Service, etc).</p>
+
+        
+          <div class='highlight'><pre>    entityDefinitionId: (value) =&gt;
+        <span class="keyword">if</span> value?
+            <span class="property">@set</span> <span class="string">"entityDefinitionId"</span>, value
+        <span class="property">@get</span> <span class="string">"entityDefinitionId"</span></pre></div>
+        
+      
+        
+        <p>Helper to get / set the entity ID.</p>
+
+        
+          <div class='highlight'><pre>    entityObjectId: (value) =&gt;
+        <span class="keyword">if</span> value?
+            <span class="property">@set</span> <span class="string">"entityObjectId"</span>, value
+        <span class="property">@get</span> <span class="string">"entityObjectId"</span></pre></div>
+        
+      
+        
+        <h2>EXTRA PROPERTIES</h2>
+
+        
+      
+        
+        <p>Helper to check if shape has a full size icon.</p>
+
+        
+          <div class='highlight'><pre>    hasFullIcon: =&gt;
+        icon = <span class="property">@icon</span>()
+        <span class="keyword">return</span> icon? <span class="keyword">and</span> icon <span class="keyword">isnt</span> <span class="string">""</span> <span class="keyword">and</span> icon <span class="keyword">isnt</span> <span class="number">0</span> <span class="keyword">and</span> <span class="property">@iconFull</span>()</pre></div>
+        
+      
+        
+        <p>Helper to get the computed stroke width (will always be 0 if shape has a full icon).</p>
+
+        
+          <div class='highlight'><pre>    strokeWidthComputed: =&gt;
+        <span class="keyword">if</span> <span class="property">@hasFullIcon</span>()
+            <span class="keyword">return</span> <span class="number">0</span>
+        <span class="keyword">return</span> <span class="property">@strokeWidth</span>()</pre></div>
+        
+      
+        
+        <h2>SHAPE COLLECTION</h2>
+
+        
+      
+        
+        <p>Base abstract collection for all shapes.</p>
+
+        
+          <div class='highlight'><pre><span class="class"><span class="keyword">class</span> <span class="title">SystemApp</span>.<span class="title">ShapeCollection</span> <span class="keyword">extends</span> <span class="title">SystemApp</span>.<span class="title">BaseCollection</span></span>
+    typeName: <span class="string">"ShapeCollection"</span>
+    model: SystemApp.Shape</pre></div>
+        
+      
+        
+        <p>Override the default &quot;create&quot; method, as we don&#39;t need to sync
+Shape models directly with the server.</p>
+
+        
+          <div class='highlight'><pre>    create: (model, options) =&gt; <span class="property">@noSyncCreate</span> model, options</pre></div>
+        
+      
+        
+        <p>Set the comparator function to order the shapes collection by z-index.</p>
+
+        
+          <div class='highlight'><pre>    comparator: (shape) -&gt; <span class="keyword">return</span> shape.zIndex()</pre></div>
+        
+      
+      <div class="fleur">h</div>
+    </div>
+  </div>
+</body>
+</html>

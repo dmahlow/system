@@ -1,0 +1,914 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+  <title>mapTabView.coffee</title>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <link rel="stylesheet" media="all" href="public/stylesheets/normalize.css" />
+  <link rel="stylesheet" media="all" href="docco.css" />
+</head>
+<body>
+  <div class="container">
+    <div class="page">
+
+      <div class="header">
+        
+          <h1>mapTabView.coffee</h1>
+        
+
+        
+          <div class="toc">
+            <h3>Table of Contents</h3>
+            <ol>
+              
+                
+                <li>
+                  <a class="source" href="admin.html">
+                    admin.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="api.auditData.html">
+                    api.auditData.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="api.auditEvent.html">
+                    api.auditEvent.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="api.html">
+                    api.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="api.entity.html">
+                    api.entity.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="api.map.html">
+                    api.map.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="api.server.html">
+                    api.server.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="api.variable.html">
+                    api.variable.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="api.view.html">
+                    api.view.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="app.html">
+                    app.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="app.instance.html">
+                    app.instance.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="data.html">
+                    data.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="dataUtil.html">
+                    dataUtil.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="messages.html">
+                    messages.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="auditData.html">
+                    auditData.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="auditEvent.html">
+                    auditEvent.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="base.html">
+                    base.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="entityDefinition.html">
+                    entityDefinition.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="entityObject.html">
+                    entityObject.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="eventAction.html">
+                    eventAction.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="eventRule.html">
+                    eventRule.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="link.html">
+                    link.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="map.html">
+                    map.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="shape.html">
+                    shape.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="user.html">
+                    user.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="userSettings.html">
+                    userSettings.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="variable.html">
+                    variable.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="adminRoutes.html">
+                    adminRoutes.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="appRoutes.html">
+                    appRoutes.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="settings.html">
+                    settings.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="sockets.html">
+                    sockets.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="tutorial.html">
+                    tutorial.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="vectors.html">
+                    vectors.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="statusTabView.html">
+                    statusTabView.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="toolsTabView.html">
+                    toolsTabView.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="usersTabView.html">
+                    usersTabView.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="adminView.html">
+                    adminView.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="alertView.html">
+                    alertView.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="auditDataManagerView.html">
+                    auditDataManagerView.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="auditEventManagerView.html">
+                    auditEventManagerView.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="baseView.html">
+                    baseView.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="createMapView.html">
+                    createMapView.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="entityManagerView.html">
+                    entityManagerView.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="footerView.html">
+                    footerView.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="helpView.html">
+                    helpView.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="entitiesTabView.html">
+                    entitiesTabView.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="inspectorTabView.html">
+                    inspectorTabView.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="mapTabView.html">
+                    mapTabView.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="shapeTabView.html">
+                    shapeTabView.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="controlsView.html">
+                    controlsView.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="labelEditView.html">
+                    labelEditView.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="linkCreatorView.html">
+                    linkCreatorView.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="linkLabelsView.html">
+                    linkLabelsView.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="linkView.html">
+                    linkView.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="shapeLabelsView.html">
+                    shapeLabelsView.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="shapeView.html">
+                    shapeView.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="shapesMoverView.html">
+                    shapesMoverView.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="mapView.html">
+                    mapView.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="menuView.html">
+                    menuView.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="overlayView.html">
+                    overlayView.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="scriptEditorView.html">
+                    scriptEditorView.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="selfTestView.html">
+                    selfTestView.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="settingsView.html">
+                    settingsView.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="startView.html">
+                    startView.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="variableManagerView.html">
+                    variableManagerView.coffee
+                  </a>
+                </li>
+              
+            </ol>
+          </div>
+        
+      </div>
+
+      
+        
+        <h2>MAP CONTROLS: OPTIONS VIEW</h2>
+
+        
+      
+        
+        <p>Represents the &quot;Shape properties&quot; tab inside a <a href="controlsView.html">Map Controls View</a>.</p>
+
+        
+          <div class='highlight'><pre><span class="class"><span class="keyword">class</span> <span class="title">SystemApp</span>.<span class="title">MapControlsMapTabView</span> <span class="keyword">extends</span> <span class="title">SystemApp</span>.<span class="title">BaseView</span></span>
+
+    timerHideZIndex: <span class="literal">null</span>           <span class="comment"># a timer to auto hide the z-index after user clicked the "Identify z-index" button</span>
+
+    $txtName: <span class="literal">null</span>            <span class="comment"># the "Name" textbox</span>
+    $txtPaperSizeX: <span class="literal">null</span>      <span class="comment"># the "X" paper size textbox</span>
+    $txtPaperSizeY: <span class="literal">null</span>      <span class="comment"># the "Y" paper size textbox</span>
+    $txtGridSizeX: <span class="literal">null</span>       <span class="comment"># the "X" grid size textbox</span>
+    $txtGridSizeY: <span class="literal">null</span>       <span class="comment"># the "Y" grid size textbox</span>
+    $butDelete: <span class="literal">null</span>          <span class="comment"># the "Delete map" button</span>
+    $butConfirmDelete: <span class="literal">null</span>   <span class="comment"># the "Confirm delete!!!" button, appears after user clicks "Delete map"</span>
+
+    $selDisplayProps: <span class="literal">null</span>          <span class="comment"># the property select box that holds all available shape display properties</span>
+    $chkShowLinks: <span class="literal">null</span>             <span class="comment"># the "Show links" checkbox</span>
+    $zoomSpan: <span class="literal">null</span>                 <span class="comment"># the zoom span</span>
+    $zoomIn: <span class="literal">null</span>                   <span class="comment"># the zoom in icon</span>
+    $zoomOut: <span class="literal">null</span>                  <span class="comment"># the zoom out icon</span>
+    $butInitScript: <span class="literal">null</span>            <span class="comment"># the init script button</span>
+    $butZIndexIdentify: <span class="literal">null</span>        <span class="comment"># the "Identify z-index" button</span>
+    $butExportSvg: <span class="literal">null</span>             <span class="comment"># the "Export to SVG" button</span></pre></div>
+        
+      
+        
+        <h2>INIT AND DISPOSE</h2>
+
+        
+      
+        
+        <p>Inits the view. Parent will be the <a href="controlsView.html">Map Controls View</a>.</p>
+
+        
+          <div class='highlight'><pre>    initialize: (parent) =&gt;
+        <span class="property">@baseInit</span> parent
+        <span class="property">@setDom</span>()
+        <span class="property">@setEvents</span>()
+        <span class="property">@bindInitialState</span>()
+        <span class="property">@bindDisplayProps</span> SystemApp.Settings.Map.displayProps</pre></div>
+        
+      
+        
+        <p>Dispose the map tab view.</p>
+
+        
+          <div class='highlight'><pre>    dispose: =&gt;
+        <span class="property">@baseDispose</span>()</pre></div>
+        
+      
+        
+        <p>Set the DOM elements cache.</p>
+
+        
+          <div class='highlight'><pre>    setDom: =&gt;
+        <span class="property">@setElement</span> $ <span class="string">"#map-ctl-tab-map"</span>
+
+        <span class="property">@$txtName</span> = $ <span class="string">"#map-ctl-name"</span>
+        <span class="property">@$txtPaperSizeX</span> = $ <span class="string">"#map-ctl-papersize-x"</span>
+        <span class="property">@$txtPaperSizeY</span> = $ <span class="string">"#map-ctl-papersize-y"</span>
+        <span class="property">@$txtGridSizeX</span> = $ <span class="string">"#map-ctl-gridsize-x"</span>
+        <span class="property">@$txtGridSizeY</span> = $ <span class="string">"#map-ctl-gridsize-y"</span>
+        <span class="property">@$butInitScript</span> = $ <span class="string">"#map-ctl-init-script"</span>
+        <span class="property">@$butDelete</span> = $ <span class="string">"#map-ctl-delete"</span>
+        <span class="property">@$butConfirmDelete</span> = $ <span class="string">"#map-ctl-confirmdelete"</span>
+
+        <span class="property">@$selDisplayProps</span> = $ <span class="string">"#map-ctl-displayprops"</span>
+        <span class="property">@$chkShowLinks</span> = $ <span class="string">"#map-ctl-showlinks"</span>
+        <span class="property">@$zoomSpan</span> = $ <span class="string">"#footer-zoom-span"</span>
+        <span class="property">@$zoomIn</span> = $ <span class="string">"#footer-zoom-in"</span>
+        <span class="property">@$zoomOut</span> = $ <span class="string">"#footer-zoom-out"</span>
+        <span class="property">@$butExportSvg</span> = $ <span class="string">"#map-ctl-export-svg"</span>
+        <span class="property">@$butZIndexIdentify</span> = $ <span class="string">"#map-ctl-zindex-identify"</span></pre></div>
+        
+      
+        
+        <p>Bind events to DOM and other controls.</p>
+
+        
+          <div class='highlight'><pre>    setEvents: =&gt;
+        <span class="property">@$txtName</span>.blur <span class="property">@setName</span>
+        <span class="property">@$txtPaperSizeX</span>.blur <span class="property">@setPaperSizeX</span>
+        <span class="property">@$txtPaperSizeY</span>.blur <span class="property">@setPaperSizeY</span>
+        <span class="property">@$txtGridSizeX</span>.blur <span class="property">@setGridSizeX</span>
+        <span class="property">@$txtGridSizeY</span>.blur <span class="property">@setGridSizeY</span>
+        <span class="property">@$butInitScript</span>.click <span class="property">@showInitScript</span>
+        <span class="property">@$butDelete</span>.click <span class="property">@askDeleteMap</span>
+        <span class="property">@$butConfirmDelete</span>.click <span class="property">@confirmDeleteMap</span>
+
+        <span class="property">@$selDisplayProps</span>.change <span class="property">@onDisplayPropsChange</span>
+        <span class="property">@$chkShowLinks</span>.change <span class="property">@onShowLinksChange</span>
+        <span class="property">@$zoomIn</span>.click <span class="string">"in"</span>, <span class="property">@onZoom</span>
+        <span class="property">@$zoomOut</span>.click <span class="string">"out"</span>, <span class="property">@onZoom</span>
+        <span class="property">@$butExportSvg</span>.click <span class="property">@exportToSvg</span>
+        <span class="property">@$butZIndexIdentify</span>.click <span class="property">@zIndexIdentify</span>
+
+        <span class="property">@listenTo</span> SystemApp.mapEvents, <span class="string">"loaded"</span>, <span class="property">@bindMap</span>
+        <span class="property">@listenTo</span> SystemApp.mapEvents, <span class="string">"zoom"</span>, <span class="property">@setZoomLabel</span>
+        <span class="property">@listenTo</span> SystemApp.mapEvents, <span class="string">"edit:toggle"</span>, <span class="property">@setEnabled</span></pre></div>
+        
+      
+        
+        <p>Set the initial state of map options based on the <a href="userSettings.html">User Settings</a>
+saved on the browser&#39;s local storage.</p>
+
+        
+          <div class='highlight'><pre>    bindInitialState: =&gt;
+        <span class="property">@$selDisplayProps</span>.val SystemApp.Data.userSettings.mapOverrideShapeTitle()
+        <span class="property">@$chkShowLinks</span>.prop <span class="string">"checked"</span>, SystemApp.Data.userSettings.mapShowLinks()</pre></div>
+        
+      
+        
+        <h2>HELPER PROPERTIES</h2>
+
+        
+      
+        
+        <p>Get the text of the current selected &quot;Display property&quot;.</p>
+
+        
+          <div class='highlight'><pre>    currentDisplayProperty: =&gt;
+        (<span class="property">@$selDisplayProps</span>.find <span class="string">"option:selected"</span>).val()</pre></div>
+        
+      
+        
+        <p>Is the &quot;Show links&quot; checkbox on?</p>
+
+        
+          <div class='highlight'><pre>    isLinksVisible: =&gt;
+        <span class="property">@$chkShowLinks</span>.prop <span class="string">"checked"</span></pre></div>
+        
+      
+        
+        <h2>EVENTS</h2>
+
+        
+      
+        
+        <p>Triggered whenever user changes the current shape&#39;s title property.</p>
+
+        
+          <div class='highlight'><pre>    onDisplayPropsChange: (e) =&gt;
+        val = <span class="property">@currentDisplayProperty</span>()
+        SystemApp.mapEvents.trigger <span class="string">"shapes:overridetitle"</span>, val
+        SystemApp.Data.userSettings.mapOverrideShapeTitle val</pre></div>
+        
+      
+        
+        <p>Triggered whenever user toggles the &quot;Show links&quot; on or off.</p>
+
+        
+          <div class='highlight'><pre>    onShowLinksChange: (e) =&gt;
+        val = <span class="property">@isLinksVisible</span>()
+        SystemApp.mapEvents.trigger <span class="string">"links:toggle"</span>, val
+        SystemApp.Data.userSettings.mapShowLinks val</pre></div>
+        
+      
+        
+        <p>When user clicks on the zoom icons, trigger the zoom event on the <code>mapEvents</code> dispatcher.</p>
+
+        
+          <div class='highlight'><pre>    onZoom: (e) =&gt;
+        SystemApp.mapEvents.trigger <span class="string">"zoom:<span class="subst">#{e.data}</span>"</span></pre></div>
+        
+      
+        
+        <p>Trigger whenever the current <a href="map.html">Map</a> name has changed.</p>
+
+        
+          <div class='highlight'><pre>    setName: =&gt;
+        value = <span class="property">@$txtName</span>.val()
+
+        <span class="property">@model</span>.name value <span class="keyword">if</span> value.length &gt; <span class="number">0</span></pre></div>
+        
+      
+        
+        <p>Triggered whenever the current <a href="map.html">Map</a> <code>paperSizeX</code> has changed, <code>$txtPaperSizeX</code> onBlur event.</p>
+
+        
+          <div class='highlight'><pre>    setPaperSizeX: =&gt;
+        <span class="property">@setSize</span> <span class="property">@$txtPaperSizeX</span>, <span class="property">@model</span>.paperSizeX, SystemApp.Settings.Map.minPaperSize</pre></div>
+        
+      
+        
+        <p>Triggered whenever the current <a href="map.html">Map</a> <code>paperSizeY</code> has changed, <code>$txtPaperSizeY</code> onBlur event.</p>
+
+        
+          <div class='highlight'><pre>    setPaperSizeY: =&gt;
+        <span class="property">@setSize</span> <span class="property">@$txtPaperSizeY</span>, <span class="property">@model</span>.paperSizeY, SystemApp.Settings.Map.minPaperSize</pre></div>
+        
+      
+        
+        <p>Triggered whenever the current <a href="map.html">Map</a> <code>gridSizeX</code> has changed, <code>$txtGridSizeX</code> onBlur event.</p>
+
+        
+          <div class='highlight'><pre>    setGridSizeX: =&gt;
+        <span class="property">@setSize</span> <span class="property">@$txtGridSizeX</span>, <span class="property">@model</span>.gridSizeX, SystemApp.Settings.Map.minGridSize</pre></div>
+        
+      
+        
+        <p>Triggered whenever the current <a href="map.html">Map</a> <code>gridSizeY</code> has changed, <code>$txtGridSizeY</code> onBlur event.</p>
+
+        
+          <div class='highlight'><pre>    setGridSizeY: =&gt;
+        <span class="property">@setSize</span> <span class="property">@$txtGridSizeY</span>, <span class="property">@model</span>.gridSizeY, SystemApp.Settings.Map.minGridSize</pre></div>
+        
+      
+        
+        <p>Sets the &quot;zoom&quot; span, to display the current <a href="mapView.html">Map View</a> zoom level.</p>
+
+        
+          <div class='highlight'><pre>    setZoomLabel: (zoomLevel) =&gt;
+        <span class="property">@$zoomSpan</span>.html <span class="string">"Zoom "</span> + (<span class="number">1</span> / zoomLevel).toFixed(<span class="number">2</span>)</pre></div>
+        
+      
+        
+        <p>Update one of the current <a href="map.html">Map</a> sizes, which can be paperSizeX, paperSizeY,
+gridSizeX or gridSizeY. A text input field, property name and the minimum accepted
+value must be passed. <em>Internal use only!</em></p>
+
+        
+          <div class='highlight'><pre>    setSize: (textField, propertyName, minValue) =&gt;
+        size = textField.val()
+
+        <span class="keyword">if</span> $.isNumeric size
+            size = Math.round size
+        <span class="keyword">else</span>
+            size = propertyName()
+            textField.val size
+
+        size = minValue <span class="keyword">if</span> size &lt; minValue
+
+        propertyName size</pre></div>
+        
+      
+        
+        <p>Enable or disable editing the current <a href="map.html">Map</a> settings.</p>
+
+        
+          <div class='highlight'><pre>    setEnabled: (value) =&gt;
+        formElements = [<span class="property">@$el</span>, <span class="property">@$txtName</span>, <span class="property">@$txtPaperSizeX</span>, <span class="property">@$txtPaperSizeY</span>,
+                        <span class="property">@$txtGridSizeX</span>, <span class="property">@$txtGridSizeY</span>,
+                        <span class="property">@$butInitScript</span>, <span class="property">@$butDelete</span>]
+
+        <span class="keyword">if</span> <span class="keyword">not</span> value
+            <span class="keyword">for</span> elm <span class="keyword">in</span> formElements
+                elm.attr(<span class="string">"disabled"</span>, <span class="string">"disabled"</span>)
+        <span class="keyword">else</span>
+            <span class="keyword">for</span> elm <span class="keyword">in</span> formElements
+                elm.removeAttr(<span class="string">"disabled"</span>)</pre></div>
+        
+      
+        
+        <h2>BINDIND AND OPTIONS</h2>
+
+        
+      
+        
+        <p>Bind map to the control.</p>
+
+        
+          <div class='highlight'><pre>    bindMap: (map) =&gt;
+        <span class="property">@model</span> = map
+        <span class="property">@$txtName</span>.val map.name()
+        <span class="property">@$txtPaperSizeX</span>.val map.paperSizeX()
+        <span class="property">@$txtPaperSizeY</span>.val map.paperSizeY()
+        <span class="property">@$txtGridSizeX</span>.val map.gridSizeX()
+        <span class="property">@$txtGridSizeY</span>.val map.gridSizeY()</pre></div>
+        
+      
+        
+        <p>Bind display properties to the select box (so user can change
+what&#39;s displayed on the title of the shapes on the map).</p>
+
+        
+          <div class='highlight'><pre>    bindDisplayProps: (displayProps) =&gt;
+        <span class="property">@$selDisplayProps</span>.empty()
+
+        option = $(document.createElement <span class="string">"option"</span>)
+        option.val <span class="string">""</span>
+        option.html <span class="string">"default"</span>
+        <span class="property">@$selDisplayProps</span>.append option</pre></div>
+        
+      
+        
+        <p>Each group of properties is separated by |.
+For example name|internal_ip,lan_ip|external_ip,public_ip.
+Please note that the commas are used below to separate similar properties.</p>
+
+        
+          <div class='highlight'><pre>        arr = displayProps.split <span class="string">"|"</span>
+
+        <span class="keyword">for</span> value <span class="keyword">in</span> arr</pre></div>
+        
+      
+        
+        <p>Similar properties are separated by commas.
+For example name,hostname,server_name could all mean the name of the entity.</p>
+
+        
+          <div class='highlight'><pre>            splitValue = value.split <span class="string">","</span>
+            option = $(document.createElement <span class="string">"option"</span>)
+            option.val value
+
+            <span class="keyword">if</span> splitValue.length &gt; <span class="number">1</span>
+                option.html splitValue[<span class="number">0</span>]
+            <span class="keyword">else</span>
+                option.html value
+
+            <span class="property">@$selDisplayProps</span>.append option</pre></div>
+        
+      
+        
+        <p>Open the <a href="scriptEditorView.html">script editor</a> to edit the map&#39;s init script.</p>
+
+        
+          <div class='highlight'><pre>    showInitScript: =&gt;
+        <span class="keyword">if</span> <span class="property">@model</span>?
+            SystemApp.routes.openScriptEditor <span class="property">@model</span>, <span class="string">"initScript"</span></pre></div>
+        
+      
+        
+        <h2>EXPORT AND Z-INDEX</h2>
+
+        
+      
+        
+        <p>Briefly show a text with the z-index value on each of the current <a href="map.html">Map</a>
+shapes. The z-index texts will get hidden after a few seconds, or if the user
+presses the &quot;Esc&quot; key.</p>
+
+        
+          <div class='highlight'><pre>    zIndexIdentify: =&gt;
+        SystemApp.mapEvents.trigger <span class="string">"zindex:toggle"</span>, <span class="literal">true</span>
+
+        <span class="keyword">if</span> <span class="property">@timerHideZIndex</span>?
+            clearTimeout <span class="property">@timerHideZIndex</span>
+            <span class="property">@timerHideZIndex</span> = <span class="literal">null</span>
+
+        <span class="property">@timerHideZIndex</span> = setTimeout <span class="property">@zIndexHide</span>, SystemApp.Settings.Map.zIndexHideTimeout
+
+        $(document).keydown <span class="property">@zIndexKeyDown</span></pre></div>
+        
+      
+        
+        <p>When z-index is being shown and user presses a key, check if it is the
+&quot;Esc&quot; key to hide the z-index identifiers.</p>
+
+        
+          <div class='highlight'><pre>    zIndexKeyDown: (e) =&gt;
+        <span class="property">@zIndexHide</span>() <span class="keyword">if</span> e.keyCode <span class="keyword">is</span> <span class="number">27</span></pre></div>
+        
+      
+        
+        <p>Triggers the event to hide the z-index identifiers.</p>
+
+        
+          <div class='highlight'><pre>    zIndexHide: =&gt;
+        $(document).unbind <span class="string">"keydown"</span>, <span class="property">@zIndexHide</span>
+
+        <span class="keyword">if</span> <span class="property">@timerHideZIndex</span>?
+            clearTimeout <span class="property">@timerHideZIndex</span>
+            <span class="property">@timerHideZIndex</span> = <span class="literal">null</span>
+
+        SystemApp.mapEvents.trigger <span class="string">"zindex:toggle"</span>, <span class="literal">false</span></pre></div>
+        
+      
+        
+        <p>Export to current <a href="mapView.html">Map View</a> to a SVG image on a new browser window.</p>
+
+        
+          <div class='highlight'><pre>    exportToSvg: =&gt;
+        <span class="keyword">return</span> <span class="keyword">if</span> <span class="keyword">not</span> <span class="property">@model</span>?
+
+        newWindow = window.open <span class="string">"about:blank"</span>, <span class="string">"ExportSVG"</span>
+        newWindow.document.title = <span class="string">"Exported SVG: "</span> + <span class="property">@model</span>.name()
+        newWindow.document.write <span class="property">@parentView</span>.parentView.$el.html()
+        newWindow.document.execCommand <span class="string">"SaveAs"</span>, <span class="literal">true</span>
+
+        $(newWindow).keyup (e) -&gt; <span class="keyword">this</span>.close() <span class="keyword">if</span> e.keyCode <span class="keyword">is</span> <span class="number">27</span>
+
+        <span class="keyword">return</span></pre></div>
+        
+      
+        
+        <h2>DELETE MAP</h2>
+
+        
+      
+        
+        <p>When user clicks the &quot;Delete map&quot; button, show the &quot;Confirm delete&quot;
+button. Map will be deleted only if user confirms
+clicking the second button!</p>
+
+        
+          <div class='highlight'><pre>    askDeleteMap: =&gt;
+        $(document).mouseup <span class="property">@resetDelete</span>
+        <span class="property">@$butConfirmDelete</span>.removeClass <span class="string">"hidden"</span></pre></div>
+        
+      
+        
+        <p>When user clicks the &quot;Confirm delete&quot; button, proceed with map deletion.</p>
+
+        
+          <div class='highlight'><pre>    confirmDeleteMap: (e) =&gt;
+        <span class="property">@model</span>.destroy()
+        <span class="property">@resetDelete</span> e</pre></div>
+        
+      
+        
+        <p>Hide the &quot;Confirm delete&quot; button if user clicks anywhere on the page
+while the button is visible, or after user confirms the deletion.</p>
+
+        
+          <div class='highlight'><pre>    resetDelete: =&gt;
+        $(document).unbind <span class="string">"mouseup"</span>, <span class="property">@resetDelete</span>
+        <span class="property">@$butConfirmDelete</span>.addClass <span class="string">"hidden"</span></pre></div>
+        
+      
+      <div class="fleur">h</div>
+    </div>
+  </div>
+</body>
+</html>

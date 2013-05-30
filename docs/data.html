@@ -1,0 +1,701 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+  <title>data.coffee</title>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <link rel="stylesheet" media="all" href="public/stylesheets/normalize.css" />
+  <link rel="stylesheet" media="all" href="docco.css" />
+</head>
+<body>
+  <div class="container">
+    <div class="page">
+
+      <div class="header">
+        
+          <h1>data.coffee</h1>
+        
+
+        
+          <div class="toc">
+            <h3>Table of Contents</h3>
+            <ol>
+              
+                
+                <li>
+                  <a class="source" href="admin.html">
+                    admin.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="api.auditData.html">
+                    api.auditData.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="api.auditEvent.html">
+                    api.auditEvent.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="api.html">
+                    api.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="api.entity.html">
+                    api.entity.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="api.map.html">
+                    api.map.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="api.server.html">
+                    api.server.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="api.variable.html">
+                    api.variable.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="api.view.html">
+                    api.view.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="app.html">
+                    app.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="app.instance.html">
+                    app.instance.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="data.html">
+                    data.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="dataUtil.html">
+                    dataUtil.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="messages.html">
+                    messages.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="auditData.html">
+                    auditData.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="auditEvent.html">
+                    auditEvent.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="base.html">
+                    base.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="entityDefinition.html">
+                    entityDefinition.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="entityObject.html">
+                    entityObject.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="eventAction.html">
+                    eventAction.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="eventRule.html">
+                    eventRule.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="link.html">
+                    link.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="map.html">
+                    map.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="shape.html">
+                    shape.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="user.html">
+                    user.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="userSettings.html">
+                    userSettings.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="variable.html">
+                    variable.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="adminRoutes.html">
+                    adminRoutes.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="appRoutes.html">
+                    appRoutes.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="settings.html">
+                    settings.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="sockets.html">
+                    sockets.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="tutorial.html">
+                    tutorial.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="vectors.html">
+                    vectors.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="statusTabView.html">
+                    statusTabView.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="toolsTabView.html">
+                    toolsTabView.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="usersTabView.html">
+                    usersTabView.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="adminView.html">
+                    adminView.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="alertView.html">
+                    alertView.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="auditDataManagerView.html">
+                    auditDataManagerView.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="auditEventManagerView.html">
+                    auditEventManagerView.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="baseView.html">
+                    baseView.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="createMapView.html">
+                    createMapView.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="entityManagerView.html">
+                    entityManagerView.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="footerView.html">
+                    footerView.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="helpView.html">
+                    helpView.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="entitiesTabView.html">
+                    entitiesTabView.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="inspectorTabView.html">
+                    inspectorTabView.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="mapTabView.html">
+                    mapTabView.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="shapeTabView.html">
+                    shapeTabView.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="controlsView.html">
+                    controlsView.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="labelEditView.html">
+                    labelEditView.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="linkCreatorView.html">
+                    linkCreatorView.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="linkLabelsView.html">
+                    linkLabelsView.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="linkView.html">
+                    linkView.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="shapeLabelsView.html">
+                    shapeLabelsView.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="shapeView.html">
+                    shapeView.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="shapesMoverView.html">
+                    shapesMoverView.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="mapView.html">
+                    mapView.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="menuView.html">
+                    menuView.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="overlayView.html">
+                    overlayView.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="scriptEditorView.html">
+                    scriptEditorView.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="selfTestView.html">
+                    selfTestView.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="settingsView.html">
+                    settingsView.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="startView.html">
+                    startView.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="variableManagerView.html">
+                    variableManagerView.coffee
+                  </a>
+                </li>
+              
+            </ol>
+          </div>
+        
+      </div>
+
+      
+        
+        <h2>System DATA</h2>
+
+        
+      
+        
+        <p>This is a data manager for all collections and models used by SystemApp.</p>
+
+        
+          <div class='highlight'><pre>SystemApp.Data =
+
+    autoUpdateEnabled: <span class="literal">false</span>
+    timerRefreshLabels: <span class="literal">null</span>
+    timerSaveUserSettings: <span class="literal">null</span></pre></div>
+        
+      
+        
+        <h2>COLLECTIONS</h2>
+
+        
+      
+        
+        <p>The logged <a href="user.html">user</a> and the user&#39;s settings.</p>
+
+        
+          <div class='highlight'><pre>    loggedUser: <span class="keyword">new</span> SystemApp.User()
+    userSettings: <span class="keyword">new</span> SystemApp.UserSettings()</pre></div>
+        
+      
+        
+        <p>Holds the global collections for entities, maps, variables, events etc.</p>
+
+        
+          <div class='highlight'><pre>    auditData: <span class="keyword">new</span> SystemApp.AuditDataCollection()
+    auditEvents: <span class="keyword">new</span> SystemApp.AuditEventCollection()
+    entities: <span class="keyword">new</span> SystemApp.EntityDefinitionCollection()
+    maps: <span class="keyword">new</span> SystemApp.MapCollection()
+    users: <span class="keyword">new</span> SystemApp.UserCollection()
+    variables: <span class="keyword">new</span> SystemApp.VariableCollection()</pre></div>
+        
+      
+        
+        <p>Helper array to iterate through all collections.</p>
+
+        
+          <div class='highlight'><pre>    allCollections: []</pre></div>
+        
+      
+        
+        <h2>LOADING FROM SERVER</h2>
+
+        
+      
+        
+        <p>Load all JSON files from server and sets a success and error callback.
+While loading, the <code>fetching</code> property of collections will be set true.</p>
+
+        
+          <div class='highlight'><pre>    init: -&gt;
+        <span class="property">@loggedUser</span>.url = SystemApp.Settings.User.loggedUrl
+        <span class="property">@loggedUser</span>.fetch()
+        <span class="property">@userSettings</span>.fetch()
+
+        <span class="property">@allCollections</span> = [<span class="property">@auditData</span>, <span class="property">@auditEvents</span>, <span class="property">@entities</span>, <span class="property">@maps</span>, <span class="property">@variables</span>]
+
+        <span class="property">@timerRefreshLabels</span> = <span class="literal">null</span>
+        <span class="property">@autoUpdateEnabled</span> = <span class="property">@userSettings</span>.mapAutoRefresh()
+        <span class="property">@setEvents</span>()</pre></div>
+        
+      
+        
+        <p>Set event listerners related to the app&#39;s data.</p>
+
+        
+          <div class='highlight'><pre>    setEvents: -&gt;
+        <span class="property">@auditData</span>.<span class="literal">off</span> <span class="string">"sync"</span>, <span class="property">@startTimers</span>
+        <span class="property">@auditData</span>.<span class="literal">on</span> <span class="string">"sync"</span>, <span class="property">@startTimers</span>
+        <span class="property">@userSettings</span>.<span class="literal">off</span> <span class="string">"change"</span>, <span class="property">@saveUserSettings</span>
+        <span class="property">@userSettings</span>.<span class="literal">on</span> <span class="string">"change"</span>, <span class="property">@saveUserSettings</span>
+
+        SystemApp.mapEvents?.<span class="literal">off</span> <span class="string">"zoom"</span>, <span class="property">@userSettings</span>.mapZoom
+        SystemApp.mapEvents?.<span class="literal">on</span> <span class="string">"zoom"</span>, <span class="property">@userSettings</span>.mapZoom</pre></div>
+        
+      
+        
+        <p>Fetch all collections in parallel.</p>
+
+        
+          <div class='highlight'><pre>    fetch: -&gt;
+        <span class="function"><span class="title">taskEntities</span></span> = (callback) =&gt;
+            <span class="property">@entities</span>.onFetchCallback = callback
+            <span class="property">@entities</span>.fetch()
+
+        <span class="function"><span class="title">taskAuditData</span></span> = (callback) =&gt;
+            <span class="property">@auditData</span>.onFetchCallback = callback
+            <span class="property">@auditData</span>.fetch()
+
+        <span class="function"><span class="title">taskAuditEvents</span></span> = (callback) =&gt;
+            <span class="property">@auditEvents</span>.onFetchCallback = callback
+            <span class="property">@auditEvents</span>.fetch()
+
+        <span class="function"><span class="title">taskVariables</span></span> = (callback) =&gt;
+            <span class="property">@variables</span>.onFetchCallback = callback
+            <span class="property">@variables</span>.fetch()
+
+        <span class="function"><span class="title">taskMaps</span></span> = (callback) =&gt;
+            <span class="property">@maps</span>.onFetchCallback = callback
+            <span class="property">@maps</span>.fetch()</pre></div>
+        
+      
+        
+        <p>Fetch all collections from the server using <code>async</code>.</p>
+
+        
+          <div class='highlight'><pre>        parallels = [taskEntities, taskAuditData, taskAuditEvents, taskVariables, taskMaps]
+        async.parallel parallels, <span class="property">@fetchFinished</span></pre></div>
+        
+      
+        
+        <p>Triggered after all data has loaded successfully.</p>
+
+        
+          <div class='highlight'><pre>    fetchFinished: (err, results) -&gt;
+        SystemApp.consoleLog <span class="string">"Data.load"</span>, <span class="string">"Error loading data."</span>, err <span class="keyword">if</span> err?
+        SystemApp.dataEvents?.trigger <span class="string">"load"</span></pre></div>
+        
+      
+        
+        <p>Make sure that the entities collections have up-to-date data.</p>
+
+        
+          <div class='highlight'><pre>        <span class="keyword">for</span> entityDef <span class="keyword">in</span> SystemApp.Data.entities.models
+            url = entityDef.sourceUrl()
+            data = entityDef.data()
+            <span class="keyword">if</span> data.length &lt; <span class="number">1</span> <span class="keyword">and</span> url? <span class="keyword">and</span> url <span class="keyword">isnt</span> <span class="string">""</span>
+                entityDef.refreshData()
+                SystemApp.consoleLog <span class="string">"Data.fetchFinished"</span>, <span class="string">"Entity Definition <span class="subst">#{entityDef.friendlyId()}</span> has no data. Force refreshing!"</span>, url</pre></div>
+        
+      
+        
+        <h2>DATA PERSISTENCE</h2>
+
+        
+      
+        
+        <p>Saves all collections to the database (or local storage if network is down).</p>
+
+        
+          <div class='highlight'><pre>    save: -&gt;
+        <span class="property">@entities</span>.save()
+        <span class="property">@auditData</span>.save()
+        <span class="property">@auditEvents</span>.save()
+        <span class="property">@variables</span>.save()
+        <span class="property">@maps</span>.save()
+        <span class="property">@userSettings</span>.save()
+
+        SystemApp.alertEvents?.trigger <span class="string">"footer"</span>, {title: SystemApp.Messages.dataSaved, message: SystemApp.Messages.okDataSavedLocally}</pre></div>
+        
+      
+        
+        <p>Auto save user settings to local storage whenever any of its properties gets updated.</p>
+
+        
+          <div class='highlight'><pre>    saveUserSettings: -&gt;
+        <span class="keyword">if</span> SystemApp.Data.timerSaveUserSettings?
+            clearTimeout SystemApp.Data.timerSaveUserSettings
+            SystemApp.Data.timerSaveUserSettings = <span class="literal">null</span>
+
+        interval = SystemApp.Settings.General.saveInterval
+        callback = SystemApp.Data.userSettings.save
+
+        SystemApp.Data.timerSaveUserSettings = setTimeout callback, interval</pre></div>
+        
+      
+        
+        <h2>AUTOREFRESH TIMERS</h2>
+
+        
+      
+        
+        <p>Start the auto refreshing timers for <a href="auditData.html">AuditData</a> and normal entities.</p>
+
+        
+          <div class='highlight'><pre>    startTimers: -&gt;
+        <span class="keyword">return</span> <span class="keyword">if</span> <span class="keyword">not</span> SystemApp.Data.autoUpdateEnabled
+
+        SystemApp.consoleLog <span class="string">"Data.startTimers"</span>, <span class="string">"Auto Refresh Timers: STARTED"</span>
+        SystemApp.Data.stopTimers <span class="literal">true</span></pre></div>
+        
+      
+        
+        <p>Start the map refresh timer.</p>
+
+        
+          <div class='highlight'><pre>        <span class="keyword">if</span> <span class="keyword">not</span> SystemApp.Data.timerRefreshLabels?
+            interval = setInterval SystemApp.mapView.refreshLabels, SystemApp.Data.userSettings.mapLabelRefreshInterval()
+            SystemApp.Data.timerRefreshLabels = interval</pre></div>
+        
+      
+        
+        <p>Stop and cancel the auto refreshing timers to update [Shape Labels]</p>
+
+        
+          <div class='highlight'><pre>    stopTimers: (doNotLog) -&gt;
+        <span class="keyword">if</span> <span class="keyword">not</span> doNotLog
+            SystemApp.consoleLog <span class="string">"Data.stopTimers"</span>, <span class="string">"Auto Refresh Timers: STOPPED"</span>
+
+        <span class="keyword">if</span> SystemApp.Data.timerRefreshLabels?
+            clearInterval SystemApp.Data.timerRefreshLabels
+            SystemApp.Data.timerRefreshLabels = <span class="literal">null</span></pre></div>
+        
+      
+      <div class="fleur">h</div>
+    </div>
+  </div>
+</body>
+</html>

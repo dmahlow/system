@@ -1,0 +1,472 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+  <title>settings.coffee</title>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <link rel="stylesheet" media="all" href="public/stylesheets/normalize.css" />
+  <link rel="stylesheet" media="all" href="docco.css" />
+</head>
+<body>
+  <div class="container">
+    <div class="page">
+
+      <div class="header">
+        
+          <h1>settings.coffee</h1>
+        
+
+        
+          <div class="toc">
+            <h3>Table of Contents</h3>
+            <ol>
+              
+                
+                <li>
+                  <a class="source" href="configure.html">
+                    configure.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="database.html">
+                    database.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="imaging.html">
+                    imaging.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="logger.html">
+                    logger.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="mail.html">
+                    mail.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="manager.html">
+                    manager.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="routes.html">
+                    routes.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="security.html">
+                    security.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="settings.html">
+                    settings.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="sockets.html">
+                    sockets.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="sync.html">
+                    sync.coffee
+                  </a>
+                </li>
+              
+            </ol>
+          </div>
+        
+      </div>
+
+      
+        
+        <h2>DEFAULT SERVER SETTINGS</h2>
+
+        
+      
+        
+        <p>Has all default server side settings for the app. Please DOT NOT edit
+this file unless you know excatly what you&#39;re doing. To override settings,
+please edit (or create) a <code>settings.json</code> file containing the specific
+keys and values to be overriden.</p>
+<p>For example to specific the application title, set debug mode and the DB
+connection string, the <code>settings.json</code> should look like:
+{
+  &quot;General&quot;: {
+    &quot;appTitle&quot;: &quot;My System App&quot;,
+    &quot;debug&quot;: true
+  },
+  &quot;Database&quot; {
+    &quot;connString&quot;: &quot;mongodb://my-mongodbhost.com/systemapp&quot;
+  }
+}</p>
+
+        
+          <div class='highlight'><pre><span class="class"><span class="keyword">class</span> <span class="title">Settings</span></span></pre></div>
+        
+      
+        
+        <h2>GENERAL</h2>
+
+        
+      
+        
+        
+        
+          <div class='highlight'><pre>    General:</pre></div>
+        
+      
+        
+        <p>The app title.</p>
+
+        
+          <div class='highlight'><pre>        appTitle: <span class="string">"System App"</span></pre></div>
+        
+      
+        
+        <p>When debug is true, more messages will be logged to file and console.</p>
+
+        
+          <div class='highlight'><pre>        debug: <span class="literal">true</span></pre></div>
+        
+      
+        
+        <h2>DATABASE</h2>
+
+        
+      
+        
+        
+        
+          <div class='highlight'><pre>    Database:</pre></div>
+        
+      
+        
+        <p>Connection string to MongoDB.</p>
+
+        
+          <div class='highlight'><pre>        connString: <span class="string">"mongodb://localhost/systemapp"</span></pre></div>
+        
+      
+        
+        <p>Wait for flush to file system before acknowlegement? Default is false.</p>
+
+        
+          <div class='highlight'><pre>        fsync: <span class="literal">false</span></pre></div>
+        
+      
+        
+        <p>For how many hours should the DB keep insert/update/delete logs? Default is 2 hours.</p>
+
+        
+          <div class='highlight'><pre>        logExpires: <span class="number">2</span></pre></div>
+        
+      
+        
+        <h2>PATHS</h2>
+
+        
+      
+        
+        
+        
+          <div class='highlight'><pre>    Paths:</pre></div>
+        
+      
+        
+        <p>Path to the logs directory.</p>
+
+        
+          <div class='highlight'><pre>        logsDir: <span class="string">"./logs/"</span></pre></div>
+        
+      
+        
+        <p>Path to the Jade views directory.</p>
+
+        
+          <div class='highlight'><pre>        viewsDir: <span class="string">"./views/"</span></pre></div>
+        
+      
+        
+        <p>Path to the public static folder.</p>
+
+        
+          <div class='highlight'><pre>        publicDir: <span class="string">"./public/"</span></pre></div>
+        
+      
+        
+        <p>Path where downloads will be stored.</p>
+
+        
+          <div class='highlight'><pre>        downloadsDir: <span class="string">"./public/downloads/"</span></pre></div>
+        
+      
+        
+        <p>Path where images are stored.</p>
+
+        
+          <div class='highlight'><pre>        imagesDir: <span class="string">"./public/images/"</span></pre></div>
+        
+      
+        
+        <h2>LOGGING</h2>
+
+        
+      
+        
+        
+        
+          <div class='highlight'><pre>    Log:</pre></div>
+        
+      
+        
+        <p>Delete log files older than 30 days by default.</p>
+
+        
+          <div class='highlight'><pre>        cleanOldDays: <span class="number">30</span></pre></div>
+        
+      
+        
+        <p>Max filesize for each log is around 1MB.</p>
+
+        
+          <div class='highlight'><pre>        maxFileSize: <span class="number">1024000</span></pre></div>
+        
+      
+        
+        <p>Recent log list is for the last 24 hours.</p>
+
+        
+          <div class='highlight'><pre>        recentMinutes: <span class="number">1440</span></pre></div>
+        
+      
+        
+        <p>Token for the Logentries service. If left null or blank, logs will be saved to the /logs
+directory. If a valid token is specified, logs will be saved ONLY to Logentries.</p>
+
+        
+          <div class='highlight'><pre>        logentriesToken: <span class="literal">null</span></pre></div>
+        
+      
+        
+        <h2>IMAGES</h2>
+
+        
+      
+        
+        
+        
+          <div class='highlight'><pre>    Images:</pre></div>
+        
+      
+        
+        <p>Size of map thumbnails (width).</p>
+
+        
+          <div class='highlight'><pre>        mapThumbSize: <span class="number">600</span></pre></div>
+        
+      
+        
+        <h2>WEB</h2>
+
+        
+      
+        
+        
+        
+          <div class='highlight'><pre>    Web:</pre></div>
+        
+      
+        
+        <p>Generate an error alert after a download has failed X manytimes.</p>
+
+        
+          <div class='highlight'><pre>        alertAfterFailedDownloads: <span class="number">5</span></pre></div>
+        
+      
+        
+        <p>The amount of time to wait for new connection requests, in case the internet
+or network is down. Time in milliseconds.</p>
+
+        
+          <div class='highlight'><pre>        connRestartInterval: <span class="number">120000</span></pre></div>
+        
+      
+        
+        <p>Timeout to wait for downloads to complete</p>
+
+        
+          <div class='highlight'><pre>        downloadTimeout: <span class="number">30000</span></pre></div>
+        
+      
+        
+        <p>Auth user and password when downloading external contents (Audit Data and Entity Objects, for example).
+Please note that whis will be used for ALL requests. If you need to pass credentials for only a specific
+URL, use the <code>http://username:password@domain.com/path</code> format on that particular URL.</p>
+
+        
+          <div class='highlight'><pre>        downloaderUser: <span class="literal">null</span>
+        downloaderPassword: <span class="literal">null</span></pre></div>
+        
+      
+        
+        <p>Headers to add to requests when downloading external contents, accepting key:value properties.
+For example the Pingdom API requires an <code>App-Key</code> to be passed, so you could add here:
+{&quot;App-Key&quot;:&quot;my-pingdom-api-key&quot;}.</p>
+
+        
+          <div class='highlight'><pre>        downloaderHeaders: <span class="literal">null</span></pre></div>
+        
+      
+        
+        <p>The minimum time between external data refresh, in seconds.</p>
+
+        
+          <div class='highlight'><pre>        minimumRefreshInterval: <span class="number">3</span></pre></div>
+        
+      
+        
+        <p>If true, all JSON response will be minified before passed to the clients.</p>
+
+        
+          <div class='highlight'><pre>        minifyJsonResponse: <span class="literal">true</span></pre></div>
+        
+      
+        
+        <p>If true, some settings might be overriden by cloud environment variables (AppFog and OpenShift, for example).
+Web IP, port, and logentriesToken are among the settings that might be altered if <code>paas</code> is true.</p>
+
+        
+          <div class='highlight'><pre>        paas: <span class="literal">true</span></pre></div>
+        
+      
+        
+        <p>The Node.js port to bind the app to.</p>
+
+        
+          <div class='highlight'><pre>        port: <span class="number">3003</span></pre></div>
+        
+      
+        
+        <h2>SECURITY</h2>
+
+        
+      
+        
+        
+        
+          <div class='highlight'><pre>    Security:</pre></div>
+        
+      
+        
+        <p>If true, users will be able to see the app in read-only mode when not authenticated.
+In this case, to authenticate, they&#39;ll have to manually access the /login page.</p>
+
+        
+          <div class='highlight'><pre>        guestEnabled: <span class="literal">true</span></pre></div>
+        
+      
+        
+        <p>Redirect user to 401 page after X failed logins.</p>
+
+        
+          <div class='highlight'><pre>        maxFailedLogins: <span class="number">3</span></pre></div>
+        
+      
+        
+        <p>Key used for session encryption.
+IMPORTANT! If you change the sessionKey, current sessions will be invalidated!</p>
+
+        
+          <div class='highlight'><pre>        sessionKey: <span class="string">"Ss!0nPROtw"</span></pre></div>
+        
+      
+        
+        <p>For how many seconds should the logged users cache keep data?</p>
+
+        
+          <div class='highlight'><pre>        userCacheExpires: <span class="number">30</span></pre></div>
+        
+      
+        
+        <p>Key used for user password encryption.
+IMPORTANT! If you change the userPasswordKey after creating users, their passwords
+will be invalidated and they won&#39;t be able to login UNLESS you manually update the
+database with the new password hashes!</p>
+
+        
+          <div class='highlight'><pre>        userPasswordKey: <span class="string">"P4sssYs13!"</span></pre></div>
+        
+      
+        
+        <h2>Singleton implementation.</h2>
+
+        
+      
+        
+        
+        
+          <div class='highlight'><pre>Settings.<span class="function"><span class="title">getInstance</span></span> = -&gt;
+    <span class="keyword">if</span> <span class="keyword">not</span> <span class="property">@instance</span>?
+        <span class="property">@instance</span> = <span class="keyword">new</span> Settings()
+
+        fs = require <span class="string">"fs"</span>
+        filename = __dirname + <span class="string">"/settings.json"</span></pre></div>
+        
+      
+        
+        <p>Check if there&#39;s a <code>settings.json</code> file, and overwrite settings if so.</p>
+
+        
+          <div class='highlight'><pre>        <span class="keyword">if</span> fs.existsSync filename
+            settingsJson = require filename</pre></div>
+        
+      
+        
+        <p>Helper function to overwrite settings.</p>
+
+        
+          <div class='highlight'><pre>            <span class="function"><span class="title">xtend</span></span> = (source, target) -&gt;
+                <span class="keyword">for</span> prop, value <span class="keyword">of</span> source
+                    <span class="keyword">if</span> value?.constructor <span class="keyword">is</span> Object
+                        xtend source[prop], target[prop]
+                    <span class="keyword">else</span>
+                        target[prop] = source[prop]
+
+            xtend settingsJson, <span class="property">@instance</span>
+
+    <span class="keyword">return</span> <span class="property">@instance</span>
+
+module.exports = exports = Settings.getInstance()</pre></div>
+        
+      
+      <div class="fleur">h</div>
+    </div>
+  </div>
+</body>
+</html>

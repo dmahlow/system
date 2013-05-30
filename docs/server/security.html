@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+  <title>security.coffee</title>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <link rel="stylesheet" media="all" href="public/stylesheets/normalize.css" />
+  <link rel="stylesheet" media="all" href="docco.css" />
+</head>
+<body>
+  <div class="container">
+    <div class="page">
+
+      <div class="header">
+        
+          <h1>security.coffee</h1>
+        
+
+        
+          <div class="toc">
+            <h3>Table of Contents</h3>
+            <ol>
+              
+                
+                <li>
+                  <a class="source" href="configure.html">
+                    configure.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="database.html">
+                    database.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="imaging.html">
+                    imaging.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="logger.html">
+                    logger.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="mail.html">
+                    mail.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="manager.html">
+                    manager.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="routes.html">
+                    routes.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="security.html">
+                    security.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="settings.html">
+                    settings.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="sockets.html">
+                    sockets.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="sync.html">
+                    sync.coffee
+                  </a>
+                </li>
+              
+            </ol>
+          </div>
+        
+      </div>
+
+      
+        
+        <h2>SERVER SECURITY</h2>
+
+        
+      
+        
+        <p>This security module will handle all security and authentication related
+procedures of the app. The <code>init</code> method is called when the app starts.</p>
+
+        
+          <div class='highlight'><pre><span class="class"><span class="keyword">class</span> <span class="title">Security</span></span></pre></div>
+        
+      
+        
+        <p>Required modules.</p>
+
+        
+          <div class='highlight'><pre>    crypto = require <span class="string">"crypto"</span>
+    database = require <span class="string">"./database.coffee"</span>
+    logger = require <span class="string">"./logger.coffee"</span>
+    moment = require <span class="string">"moment"</span>
+    passport = require <span class="string">"passport"</span>
+    passportHttp = require <span class="string">"passport-http"</span>
+    settings = require <span class="string">"./settings.coffee"</span></pre></div>
+        
+      
+        
+        <p>Cache with logged users to avoid hitting the database all the time.
+The default expirty time is 1 minute.</p>
+
+        
+          <div class='highlight'><pre>    cachedUsers: <span class="literal">null</span></pre></div>
+        
+      
+        
+        <p>Init all security related stuff. Set the passport strategy to
+authenticate users using basic HTTP authentication.</p>
+
+        
+          <div class='highlight'><pre>    init: =&gt;
+        <span class="property">@cachedUsers</span> = {}
+        <span class="property">@ensureAdminUser</span>()</pre></div>
+        
+      
+        
+        <p>Helper to validate user login. If no user was specified and <a href="settings.html">settings</a>
+allow guest access, then log as guest.</p>
+
+        
+          <div class='highlight'><pre>        <span class="function"><span class="title">validateUser</span></span> = (user, password, callback) =&gt;
+            <span class="keyword">if</span> <span class="keyword">not</span> user? <span class="keyword">or</span> user <span class="keyword">is</span> <span class="string">""</span> <span class="keyword">or</span> user <span class="keyword">is</span> <span class="string">"guest"</span>
+                <span class="keyword">if</span> settings.Security.guestEnabled
+                    guest = {id: <span class="string">"guest"</span>, displayName: <span class="string">"Guest"</span>, username: <span class="string">"guest"</span>, roles: [<span class="string">"guest"</span>]}
+                    <span class="keyword">return</span> callback <span class="literal">null</span>, guest
+                <span class="keyword">else</span>
+                    <span class="keyword">return</span> callback <span class="literal">null</span>, <span class="literal">false</span>, {message: <span class="string">"Username was not specified."</span>}</pre></div>
+        
+      
+        
+        <p>Check if user should be fetched by ID or username.</p>
+
+        
+          <div class='highlight'><pre>            <span class="keyword">if</span> <span class="keyword">not</span> user.id?
+                filter = {username: user}
+            <span class="keyword">else</span>
+                fromCache = <span class="property">@cachedUsers</span>[user.id]
+                filter = user</pre></div>
+        
+      
+        
+        <p>Add password hash to filter.</p>
+
+        
+          <div class='highlight'><pre>            <span class="keyword">if</span> password <span class="keyword">isnt</span> <span class="literal">false</span>
+                filter.passwordHash = <span class="property">@getPasswordHash</span> user, password</pre></div>
+        
+      
+        
+        <p>Check if user was previously cached. If not valid, delete from cache.</p>
+
+        
+          <div class='highlight'><pre>            <span class="keyword">if</span> fromCache?.cacheExpiryDate?
+                <span class="keyword">if</span> fromCache.cacheExpiryDate.isAfter(moment())
+                    <span class="keyword">return</span> callback <span class="literal">null</span>, fromCache
+                <span class="keyword">delete</span> <span class="property">@cachedUsers</span>[user.id]</pre></div>
+        
+      
+        
+        <p>Get user from database.</p>
+
+        
+          <div class='highlight'><pre>            database.getUser filter, (err, result) =&gt;
+                <span class="keyword">if</span> err?
+                    <span class="keyword">return</span> callback err
+                <span class="keyword">else</span> <span class="keyword">if</span> <span class="keyword">not</span> result? <span class="keyword">or</span> result.length &lt; <span class="number">1</span>
+                    <span class="keyword">return</span> callback <span class="literal">null</span>, <span class="literal">false</span>, {message: <span class="string">"User and password combination not found."</span>}
+
+                result = result[<span class="number">0</span>] <span class="keyword">if</span> result.length &gt; <span class="number">0</span></pre></div>
+        
+      
+        
+        <p>Set expiry date for the user cache.</p>
+
+        
+          <div class='highlight'><pre>                result.cacheExpiryDate = moment().add <span class="string">"s"</span>, settings.Security.userCacheExpires
+                <span class="property">@cachedUsers</span>[result.id] = result</pre></div>
+        
+      
+        
+        <p>Return the login callback.</p>
+
+        
+          <div class='highlight'><pre>                <span class="keyword">return</span> callback <span class="literal">null</span>, result</pre></div>
+        
+      
+        
+        <p>Use HTTP basic authentication.</p>
+
+        
+          <div class='highlight'><pre>        passport.use <span class="keyword">new</span> passportHttp.BasicStrategy (username, password, callback) =&gt;
+            validateUser username, password, callback</pre></div>
+        
+      
+        
+        <p>User serializer will user the user ID only.</p>
+
+        
+          <div class='highlight'><pre>        passport.serializeUser (user, callback) -&gt;
+            callback <span class="literal">null</span>, user.id</pre></div>
+        
+      
+        
+        <p>User deserializer will get user details from the database.</p>
+
+        
+          <div class='highlight'><pre>        passport.deserializeUser (user, callback) -&gt;
+            <span class="keyword">if</span> user <span class="keyword">is</span> <span class="string">"guest"</span>
+                validateUser <span class="string">"guest"</span>, <span class="literal">null</span>, callback
+            <span class="keyword">else</span>
+                validateUser {id: user}, <span class="literal">false</span>, callback</pre></div>
+        
+      
+        
+        <p>Ensure that there&#39;s at least one admin user registered. The default
+admin user will have username &quot;admin&quot;, password &quot;system&quot;.</p>
+
+        
+          <div class='highlight'><pre>    ensureAdminUser: =&gt;
+        database.getUser <span class="literal">null</span>, (err, result) =&gt;
+            <span class="keyword">if</span> err?
+                logger.error <span class="string">"Security.ensureAdminUser"</span>, err
+                <span class="keyword">return</span></pre></div>
+        
+      
+        
+        <p>If no users were found, create the default admin user.</p>
+
+        
+          <div class='highlight'><pre>            <span class="keyword">if</span> <span class="keyword">not</span> result? <span class="keyword">or</span> result.length &lt; <span class="number">1</span>
+                passwordHash = <span class="property">@getPasswordHash</span> <span class="string">"admin"</span>, <span class="string">"system"</span>
+                user = {displayName: <span class="string">"Administrator"</span>, username: <span class="string">"admin"</span>, roles:[<span class="string">"admin"</span>], passwordHash: passwordHash}
+                database.setUser user
+                logger.info <span class="string">"Security.ensureAdminUser"</span>, <span class="string">"Default admin user was created."</span></pre></div>
+        
+      
+        
+        <h2>AUTHENTICATION METHODS</h2>
+
+        
+      
+        
+        <p>Generates a password hash based on the provided <code>username</code> and <code>password</code>,
+along with the <code>Settings.User.passwordSecretKey</code>. This is mainly used
+by the HTTP authentication module. If password is empty, return an empty string.</p>
+
+        
+          <div class='highlight'><pre>    getPasswordHash: (username, password) =&gt;
+        <span class="keyword">return</span> <span class="string">""</span> <span class="keyword">if</span> <span class="keyword">not</span> password? <span class="keyword">or</span> password <span class="keyword">is</span> <span class="string">""</span>
+        text = username + <span class="string">"|"</span> + password + <span class="string">"|"</span> + settings.Security.userPasswordKey
+        <span class="keyword">return</span> crypto.createHash(<span class="string">"sha256"</span>).update(text).digest <span class="string">"hex"</span></pre></div>
+        
+      
+        
+        <h2>Singleton implementation</h2>
+
+        
+      
+        
+        
+        
+          <div class='highlight'><pre>Security.<span class="function"><span class="title">getInstance</span></span> = -&gt;
+    <span class="property">@instance</span> = <span class="keyword">new</span> Security() <span class="keyword">if</span> <span class="keyword">not</span> <span class="property">@instance</span>?
+    <span class="keyword">return</span> <span class="property">@instance</span>
+
+module.exports = exports = Security.getInstance()</pre></div>
+        
+      
+      <div class="fleur">h</div>
+    </div>
+  </div>
+</body>
+</html>

@@ -1,0 +1,907 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+  <title>alertView.coffee</title>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <link rel="stylesheet" media="all" href="public/stylesheets/normalize.css" />
+  <link rel="stylesheet" media="all" href="docco.css" />
+</head>
+<body>
+  <div class="container">
+    <div class="page">
+
+      <div class="header">
+        
+          <h1>alertView.coffee</h1>
+        
+
+        
+          <div class="toc">
+            <h3>Table of Contents</h3>
+            <ol>
+              
+                
+                <li>
+                  <a class="source" href="admin.html">
+                    admin.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="api.auditData.html">
+                    api.auditData.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="api.auditEvent.html">
+                    api.auditEvent.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="api.html">
+                    api.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="api.entity.html">
+                    api.entity.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="api.map.html">
+                    api.map.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="api.server.html">
+                    api.server.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="api.variable.html">
+                    api.variable.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="api.view.html">
+                    api.view.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="app.html">
+                    app.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="app.instance.html">
+                    app.instance.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="data.html">
+                    data.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="dataUtil.html">
+                    dataUtil.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="messages.html">
+                    messages.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="auditData.html">
+                    auditData.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="auditEvent.html">
+                    auditEvent.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="base.html">
+                    base.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="entityDefinition.html">
+                    entityDefinition.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="entityObject.html">
+                    entityObject.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="eventAction.html">
+                    eventAction.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="eventRule.html">
+                    eventRule.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="link.html">
+                    link.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="map.html">
+                    map.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="shape.html">
+                    shape.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="user.html">
+                    user.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="userSettings.html">
+                    userSettings.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="variable.html">
+                    variable.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="adminRoutes.html">
+                    adminRoutes.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="appRoutes.html">
+                    appRoutes.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="settings.html">
+                    settings.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="sockets.html">
+                    sockets.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="tutorial.html">
+                    tutorial.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="vectors.html">
+                    vectors.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="statusTabView.html">
+                    statusTabView.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="toolsTabView.html">
+                    toolsTabView.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="usersTabView.html">
+                    usersTabView.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="adminView.html">
+                    adminView.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="alertView.html">
+                    alertView.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="auditDataManagerView.html">
+                    auditDataManagerView.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="auditEventManagerView.html">
+                    auditEventManagerView.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="baseView.html">
+                    baseView.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="createMapView.html">
+                    createMapView.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="entityManagerView.html">
+                    entityManagerView.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="footerView.html">
+                    footerView.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="helpView.html">
+                    helpView.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="entitiesTabView.html">
+                    entitiesTabView.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="inspectorTabView.html">
+                    inspectorTabView.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="mapTabView.html">
+                    mapTabView.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="shapeTabView.html">
+                    shapeTabView.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="controlsView.html">
+                    controlsView.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="labelEditView.html">
+                    labelEditView.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="linkCreatorView.html">
+                    linkCreatorView.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="linkLabelsView.html">
+                    linkLabelsView.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="linkView.html">
+                    linkView.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="shapeLabelsView.html">
+                    shapeLabelsView.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="shapeView.html">
+                    shapeView.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="shapesMoverView.html">
+                    shapesMoverView.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="mapView.html">
+                    mapView.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="menuView.html">
+                    menuView.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="overlayView.html">
+                    overlayView.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="scriptEditorView.html">
+                    scriptEditorView.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="selfTestView.html">
+                    selfTestView.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="settingsView.html">
+                    settingsView.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="startView.html">
+                    startView.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="variableManagerView.html">
+                    variableManagerView.coffee
+                  </a>
+                </li>
+              
+            </ol>
+          </div>
+        
+      </div>
+
+      
+        
+        <h2>ALERT VIEW</h2>
+
+        
+      
+        
+        <p>Controls and display alerts. This is NOT related to audit events, for these
+please go to the <a href="auditEventManagerView.html">Audit Events View</a>.</p>
+<p>Right now we have two alerts styles:
+Footer, which will show the alert on the footer bar, and Tooltip,
+which will display a floating overlay alert on the app.
+The main method to look here is the <code>showFooter</code>, which
+receives an alert object with the following possible properties:</p>
+<ul>
+<li>(object) savedModel: if you&#39;re saving a model, you only need to set this property</li>
+<li>(object) removedModel: if you&#39;re removing a model, you only need to set this property</li>
+<li>(string) title: the title, which appears in strong text</li>
+<li>(string) message: the alert message or description</li>
+<li>(bool) isError: if true, alert will show in red, if false will show in green</li>
+</ul>
+
+        
+          <div class='highlight'><pre><span class="class"><span class="keyword">class</span> <span class="title">SystemApp</span>.<span class="title">AlertView</span> <span class="keyword">extends</span> <span class="title">SystemApp</span>.<span class="title">BaseView</span></span>
+
+    serverErrors: []          <span class="comment"># keep a list of errors that happened on the server side</span>
+    queueFooter: []           <span class="comment"># queue of footer alerts to be displayed</span>
+    queueTooltip: []          <span class="comment"># queue of tooltip alerts to be displayed</span>
+    isFooterVisible: <span class="literal">false</span>    <span class="comment"># is the footer alert being displayed at the moment?</span>
+    isTooltipVisible: <span class="literal">false</span>   <span class="comment"># is the tooltip alert being displayed at the moment?</span>
+    lastFooterAlert: <span class="literal">null</span>     <span class="comment"># holds the last footer alert</span></pre></div>
+        
+      
+        
+        <h2>DOM CACHE</h2>
+
+        
+      
+        
+        
+        
+          <div class='highlight'><pre>    $wrapperFooter: <span class="literal">null</span>   <span class="comment"># the wrapper for the footer alert</span>
+    $titleFooter: <span class="literal">null</span>     <span class="comment"># footer title element</span>
+    $msgFooter: <span class="literal">null</span>       <span class="comment"># footer message span</span>
+    $timeFooter: <span class="literal">null</span>      <span class="comment"># footer timespan element</span>
+
+    $wrapperTooltip: <span class="literal">null</span>  <span class="comment"># the wrapper for the tooltip (overlay) alert</span>
+    $titleTooltip: <span class="literal">null</span>    <span class="comment"># tooltip title element</span>
+    $msgTooltip: <span class="literal">null</span>      <span class="comment"># tooltip message span</span>
+    $timeTooltip: <span class="literal">null</span>     <span class="comment"># tooltip timespan element</span></pre></div>
+        
+      
+        
+        <h2>INIT AND DISPOSE</h2>
+
+        
+      
+        
+        <p>Init the alert view control.</p>
+
+        
+          <div class='highlight'><pre>    initialize: =&gt;
+        <span class="property">@setDom</span>()
+        <span class="property">@setEvents</span>()</pre></div>
+        
+      
+        
+        <p>Dispose the alert cview control.</p>
+
+        
+          <div class='highlight'><pre>    dispose: =&gt;
+        $(document).<span class="literal">off</span> <span class="string">"keydown"</span>, <span class="property">@keyDown</span>
+
+        SystemApp.alertEvents.<span class="literal">off</span> <span class="string">"footer"</span>, <span class="property">@showFooter</span>
+        SystemApp.alertEvents.<span class="literal">off</span> <span class="string">"tooltip"</span>, <span class="property">@showTooltip</span>
+        SystemApp.serverEvents.<span class="literal">off</span> <span class="string">"error"</span>, <span class="property">@showServerError</span>
+
+        <span class="keyword">for</span> collection <span class="keyword">in</span> SystemApp.Data.allCollections
+            collection.<span class="literal">off</span> <span class="string">"add"</span>, <span class="property">@modelAdded</span>
+            collection.<span class="literal">off</span> <span class="string">"remove"</span>, <span class="property">@modelRemoved</span>
+
+        <span class="property">@$wrapperFooter</span>.css <span class="string">"display"</span>, <span class="string">"none"</span>
+
+        <span class="property">@queueFooter</span> = <span class="literal">null</span>
+        <span class="property">@queueTooltip</span> = <span class="literal">null</span>
+
+        <span class="property">@baseDispose</span>()</pre></div>
+        
+      
+        
+        <p>Set the DOM elements cache.</p>
+
+        
+          <div class='highlight'><pre>    setDom: =&gt;
+        <span class="property">@$wrapperFooter</span> = $ <span class="string">"#alert-footer"</span>
+        <span class="property">@$titleFooter</span> = <span class="property">@$wrapperFooter</span>.children <span class="string">"label"</span>
+        <span class="property">@$msgFooter</span> = <span class="property">@$wrapperFooter</span>.children <span class="string">"span"</span>
+        <span class="property">@$timeFooter</span> = <span class="property">@$wrapperFooter</span>.children <span class="string">"time"</span>
+
+        <span class="property">@$wrapperTooltip</span> = $ <span class="string">"#alert-tooltip"</span>
+        <span class="property">@$titleTooltip</span> = <span class="property">@$wrapperTooltip</span>.find <span class="string">"div &gt; label"</span>
+        <span class="property">@$msgTooltip</span> = <span class="property">@$wrapperTooltip</span>.find <span class="string">"div &gt; span"</span>
+        <span class="property">@$timeTooltip</span> = <span class="property">@$wrapperTooltip</span>.find <span class="string">"div &gt; time"</span></pre></div>
+        
+      
+        
+        <p>Set and bind alert events to the view. It will automatically listen to models
+added and removed from all collections available on the <a href="data.html">data store</a>.</p>
+
+        
+          <div class='highlight'><pre>    setEvents: =&gt;
+        $(document).keydown <span class="property">@keyDown</span>
+
+        SystemApp.alertEvents.<span class="literal">on</span> <span class="string">"footer"</span>, <span class="property">@showFooter</span>
+        SystemApp.alertEvents.<span class="literal">on</span> <span class="string">"tooltip"</span>, <span class="property">@showTooltip</span>
+        SystemApp.serverEvents.<span class="literal">on</span> <span class="string">"error"</span>, <span class="property">@showServerError</span></pre></div>
+        
+      
+        
+        <h2>LISTEN TO MODEL UPDATES</h2>
+
+        
+      
+        
+        <p>If <code>listen</code> is true, view will show a footer alert whenever any model is added
+or removed from the <a href="data.html">data</a> collections. Set <code>listen</code> to false to stop
+listening to these events.</p>
+
+        
+          <div class='highlight'><pre>    listenToModels: (listen) =&gt;
+        <span class="keyword">for</span> collection <span class="keyword">in</span> SystemApp.Data.allCollections
+            collection.<span class="literal">off</span> <span class="string">"add"</span>, <span class="property">@modelAdded</span>
+            collection.<span class="literal">off</span> <span class="string">"remove"</span>, <span class="property">@modelRemoved</span>
+            collection.<span class="literal">off</span> <span class="string">"error"</span>, <span class="property">@modelError</span>
+
+        <span class="keyword">if</span> listen
+            <span class="keyword">for</span> collection <span class="keyword">in</span> SystemApp.Data.allCollections
+                collection.<span class="literal">on</span> <span class="string">"add"</span>, <span class="property">@modelAdded</span>
+                collection.<span class="literal">on</span> <span class="string">"remove"</span>, <span class="property">@modelRemoved</span>
+                collection.<span class="literal">on</span> <span class="string">"error"</span>, <span class="property">@modelError</span></pre></div>
+        
+      
+        
+        <p>Listen to model updates.</p>
+
+        
+          <div class='highlight'><pre>    modelAdded: (model) =&gt;
+        <span class="property">@showFooter</span> {savedModel: model}</pre></div>
+        
+      
+        
+        <p>Listen to model removals.</p>
+
+        
+          <div class='highlight'><pre>    modelRemoved: (model) =&gt;
+        <span class="property">@showFooter</span> {removedModel: model}</pre></div>
+        
+      
+        
+        <p>Listen to model errors (while saving or fetching from server).</p>
+
+        
+          <div class='highlight'><pre>    modelError: (model, xhr) =&gt;
+        message = SystemApp.Messages.errParseModel + <span class="string">" "</span> + xhr.responseText
+        <span class="property">@showFooter</span> {isError: <span class="literal">true</span>, title: model.typeName, message: message}</pre></div>
+        
+      
+        
+        <h2>FOOTER ALERTS</h2>
+
+        
+      
+        
+        <p>Shows the specified title and message on the footer area.</p>
+
+        
+          <div class='highlight'><pre>    showFooter: (alertObj) =&gt;
+        alertObj.timestamp = <span class="keyword">new</span> Date()
+
+        <span class="keyword">if</span> <span class="property">@lastFooterAlert</span>?
+            timeoutLess = (alertObj.timestamp - <span class="property">@lastFooterAlert</span>.timestamp) &lt; SystemApp.Settings.Alert.similarTimeout
+            sameAlert = alertObj.title <span class="keyword">is</span> <span class="property">@lastFooterAlert</span>.title <span class="keyword">and</span> alertObj.message <span class="keyword">is</span> <span class="property">@lastFooterAlert</span>.message</pre></div>
+        
+      
+        
+        <p>Avoid showing repeated alerts multiple times in a row.</p>
+
+        
+          <div class='highlight'><pre>            <span class="keyword">if</span> timeoutLess <span class="keyword">and</span> sameAlert
+                <span class="keyword">return</span>
+
+        <span class="property">@lastFooterAlert</span> = _.clone alertObj
+        <span class="property">@queueFooter</span>.push alertObj
+        <span class="property">@nextFooter</span>()</pre></div>
+        
+      
+        
+        <p>Get the next footer alert from the queue and display it.</p>
+
+        
+          <div class='highlight'><pre>    nextFooter: =&gt;
+        <span class="keyword">if</span> <span class="property">@isFooterVisible</span> <span class="keyword">or</span> <span class="property">@queueFooter</span>.length &lt; <span class="number">1</span>
+            <span class="keyword">return</span>
+
+        alertObj = <span class="property">@queueFooter</span>.shift()
+        title = <span class="literal">null</span>
+        message = <span class="literal">null</span></pre></div>
+        
+      
+        
+        <p>If there&#39;s a <code>savedModel</code> or <code>removedModel</code> property, try to use its
+<code>text</code> or <code>name</code> property as title, and the type of the entity as the message.
+Otherwise use the <code>title</code> and <code>message</code> properties of the alert object.</p>
+
+        
+          <div class='highlight'><pre>        <span class="keyword">if</span> alertObj.savedModel?
+            <span class="keyword">if</span> alertObj.savedModel.text?
+                title = alertObj.savedModel.text()
+            <span class="keyword">else</span> <span class="keyword">if</span> alertObj.savedModel.friendlyId?
+                title = alertObj.savedModel.friendlyId()
+            <span class="keyword">else</span>
+                title = alertObj.savedModel.id
+            message = alertObj.savedModel.typeName + <span class="string">" saved to the database!"</span>
+        <span class="keyword">else</span> <span class="keyword">if</span> alertObj.removedModel?
+            <span class="keyword">if</span> alertObj.removedModel.text?
+                title = alertObj.removedModel.text()
+            <span class="keyword">else</span> <span class="keyword">if</span> alertObj.removedModel.friendlyId?
+                title = alertObj.removedModel.friendlyId()
+            <span class="keyword">else</span>
+                title = alertObj.removedModel.id
+            message = alertObj.removedModel.typeName + <span class="string">" REMOVED from the database!"</span>
+        <span class="keyword">else</span>
+            title = alertObj.title
+            message = alertObj.message</pre></div>
+        
+      
+        
+        <p>Strip the timezone out of the time string, to keep it &quot;compact&quot;.</p>
+
+        
+          <div class='highlight'><pre>        time = alertObj.timestamp.toTimeString()
+        sep = time.indexOf <span class="string">"("</span>
+        time = time.substring(<span class="number">0</span>, sep - <span class="number">1</span>) <span class="keyword">if</span> sep &gt; <span class="number">0</span>
+
+        <span class="property">@$titleFooter</span>.html title
+        <span class="property">@$msgFooter</span>.html message
+        <span class="property">@$timeFooter</span>.html time
+
+        <span class="property">@$wrapperFooter</span>.removeClass()
+
+        <span class="keyword">if</span> alertObj.isError
+            <span class="property">@$wrapperFooter</span>.addClass <span class="string">"error"</span>
+        <span class="keyword">else</span>
+            <span class="property">@$wrapperFooter</span>.addClass <span class="string">"ok"</span></pre></div>
+        
+      
+        
+        <p>If no <code>delay</code> is passed, use the default one.</p>
+
+        
+          <div class='highlight'><pre>        delay = alertObj.delay
+        delay = SystemApp.Settings.Alert.hideDelay <span class="keyword">if</span> <span class="keyword">not</span> delay?
+
+        <span class="property">@$wrapperFooter</span>.fadeIn SystemApp.Settings.Alert.opacityInterval
+        <span class="property">@isFooterVisible</span> = <span class="literal">true</span>
+        _.delay <span class="property">@hideFooter</span>, delay + SystemApp.Settings.Alert.opacityInterval</pre></div>
+        
+      
+        
+        <p>Log alerts to the console only if app is in debug mode.</p>
+
+        
+          <div class='highlight'><pre>        <span class="keyword">if</span> SystemApp.Settings.General.debug
+            <span class="keyword">if</span> alertObj.isError
+                console.warn <span class="string">"Alert Error"</span>, title, message
+            <span class="keyword">else</span>
+                console.log <span class="string">"Alert Info"</span>, title, message</pre></div>
+        
+      
+        
+        <p>Hide the footer alert and call <code>nextFooter</code> again to check for new alerts.</p>
+
+        
+          <div class='highlight'><pre>    hideFooter: =&gt;
+        <span class="property">@isFooterVisible</span> = <span class="literal">false</span>
+        <span class="property">@$wrapperFooter</span>.fadeOut SystemApp.Settings.Alert.opacityInterval, <span class="property">@nextFooter</span></pre></div>
+        
+      
+        
+        <h2>TOOLTIP ALERTS</h2>
+
+        
+      
+        
+        <p>Show a tooltip alert.</p>
+
+        
+          <div class='highlight'><pre>    showTooltip: (alertObj) =&gt;
+        alertObj.timestamp = <span class="keyword">new</span> Date()</pre></div>
+        
+      
+        
+        <p>Log alerts to the console only if app is in debug mode.</p>
+
+        
+          <div class='highlight'><pre>        <span class="keyword">if</span> SystemApp.Settings.General.debug
+            <span class="keyword">if</span> alertObj.isError
+                console.error <span class="string">"Alert"</span>, alertObj
+            <span class="keyword">else</span>
+                console.log <span class="string">"Alert"</span>, alertObj
+
+        <span class="property">@queueTooltip</span>.push alertObj
+        <span class="property">@nextTooltip</span>()</pre></div>
+        
+      
+        
+        <p>Get the next tooltip alert from the queue and display it.</p>
+
+        
+          <div class='highlight'><pre>    nextTooltip: =&gt;
+        <span class="keyword">if</span> <span class="property">@isTooltipVisible</span> <span class="keyword">or</span> <span class="property">@queueTooltip</span>.length &lt; <span class="number">1</span>
+            <span class="keyword">return</span>
+
+        alertObj = <span class="property">@queueTooltip</span>.shift()</pre></div>
+        
+      
+        
+        <p>Strip the timezone out of the time string, to keep it &quot;compact&quot;.</p>
+
+        
+          <div class='highlight'><pre>        time = alertObj.timestamp.toTimeString()
+        sep = time.indexOf <span class="string">"("</span>
+        time = time.substring(<span class="number">0</span>, sep - <span class="number">1</span>) <span class="keyword">if</span> sep &gt; <span class="number">0</span>
+
+        <span class="property">@$titleTooltip</span>.html alertObj.title
+        <span class="property">@$msgTooltip</span>.html alertObj.message
+        <span class="property">@$timeTooltip</span>.html time
+
+        <span class="property">@$wrapperTooltip</span>.unbind <span class="string">"click"</span>
+        <span class="property">@$wrapperTooltip</span>.removeClass()</pre></div>
+        
+      
+        
+        <p>Append the <code>error</code> or <code>ok</code> class, depending if isError is true or false.</p>
+
+        
+          <div class='highlight'><pre>        <span class="keyword">if</span> alertObj.isError
+            <span class="property">@$wrapperTooltip</span>.addClass <span class="string">"error"</span>
+        <span class="keyword">else</span>
+            <span class="property">@$wrapperTooltip</span>.addClass <span class="string">"ok"</span></pre></div>
+        
+      
+        
+        <p>If <code>hideOnClick</code> is not false, bind hide to click event.</p>
+
+        
+          <div class='highlight'><pre>        <span class="keyword">if</span> alertObj <span class="keyword">isnt</span> <span class="literal">false</span>
+            <span class="property">@$wrapperTooltip</span>.click <span class="property">@hideTooltip</span>()</pre></div>
+        
+      
+        
+        <p>Bind the click action to the tooltip container, if there&#39;s one specified.</p>
+
+        
+          <div class='highlight'><pre>        <span class="keyword">if</span> alertObj.clickAction?
+            <span class="property">@$wrapperTooltip</span>.click alertObj.clickAction</pre></div>
+        
+      
+        
+        <p>If no <code>delay</code> is passed, use the default one.</p>
+
+        
+          <div class='highlight'><pre>        delay = alertObj.delay
+        delay = SystemApp.Settings.Alert.hideDelay <span class="keyword">if</span> <span class="keyword">not</span> delay?
+
+        <span class="property">@$wrapperTooltip</span>.fadeIn SystemApp.Settings.Alert.opacityInterval
+        <span class="property">@isTooltipVisible</span> = <span class="literal">true</span>
+        _.delay <span class="property">@hideTooltip</span>, delay + SystemApp.Settings.Alert.opacityInterval</pre></div>
+        
+      
+        
+        <p>Hide a tooltip alert.</p>
+
+        
+          <div class='highlight'><pre>    hideTooltip: =&gt;
+        <span class="property">@isTooltipVisible</span> = <span class="literal">false</span>
+        <span class="property">@$wrapperTooltip</span>.fadeOut SystemApp.Settings.Alert.opacityInterval, <span class="property">@nextTooltip</span></pre></div>
+        
+      
+        
+        <h2>SERVER ALERTS</h2>
+
+        
+      
+        
+        <p>Show an alert whenever an error happens on the node.js server.
+This is triggered using Socket.IO.</p>
+
+        
+          <div class='highlight'><pre>    showServerError: (err) =&gt;
+        <span class="keyword">if</span> SystemApp.Settings.General.debug
+            <span class="property">@showFooter</span> {isError: <span class="literal">true</span>, title: SystemApp.Messages.server + <span class="string">" "</span> + err.title, message: err.message}</pre></div>
+        
+      
+        
+        <h2>KEYBOARD EVENTS</h2>
+
+        
+      
+        
+        <p>When user presses the ESC key, hide the tooltip alert (if there&#39;s one visible).</p>
+
+        
+          <div class='highlight'><pre>    keyDown: (e) =&gt;
+        keyCode = e.keyCode
+        <span class="keyword">if</span> keyCode <span class="keyword">is</span> <span class="number">27</span>
+            <span class="property">@hideTooltip</span>()</pre></div>
+        
+      
+      <div class="fleur">h</div>
+    </div>
+  </div>
+</body>
+</html>

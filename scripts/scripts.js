@@ -2,8 +2,11 @@ $(document).ready(function()
 {
     var $window = $(window),
         $body = $("body");
+        $wrapper = $("#wrapper"),
         $toFullDemo = $("#tofulldemo"),
         $demoFrame = $("#demoframe"),
+        $header = $("#header"),
+        $miniHeader = $("#miniheader"),
         originalX = $demoFrame.css("left"),
         originalY = $demoFrame.css("top"),
         originalW = $demoFrame.css("width"),
@@ -16,6 +19,24 @@ $(document).ready(function()
         $body.css("zoom", 0.75);
     }
 
+    // Mini header variables.
+    var headerHeight = $header.outerHeight();
+    var miniHeaderVisible = false;
+
+    // Scroll handler to show the mini header.
+    $window.scroll(function(e) {
+        var stop = window.pageYOffset || document.documentElement.scrollTop;
+
+        if (stop > headerHeight && !miniHeaderVisible) {
+            $miniHeader.fadeIn();
+            miniHeaderVisible = true;
+        } else if (stop <= headerHeight && miniHeaderVisible) {
+            $miniHeader.fadeOut();
+            miniHeaderVisible = false;
+        }
+
+    });
+
     // Attach full demo click handler.
     $toFullDemo.attr("href", "#demo");
     $toFullDemo.click(function(e)
@@ -25,13 +46,13 @@ $(document).ready(function()
         if ($body.hasClass("fulldemo"))
         {
             $body.removeClass("fulldemo");
-            $toFullDemo.html("expand to full demo");
+            $toFullDemo.html("expand Sample System Map");
             options = {left: originalX, top: originalY, width: originalW, height: originalH, padding: originalP};
         }
         else
         {
             $body.addClass("fulldemo");
-            $toFullDemo.html("minimize demo");
+            $toFullDemo.html("collapse Sample System Map");
             options = {left: 0, top: 0, width: $window.innerWidth(), height: $window.innerHeight(), padding: 0};
         }
 

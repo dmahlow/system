@@ -56,7 +56,7 @@ body.fulldemo #tofulldemo
     bottom: 5px !important;
     left: auto;
     position: fixed !important;
-    right: 140px !important;
+    right: 150px !important;
     top: auto;
 }
 
@@ -159,7 +159,7 @@ code
     cursor: pointer;
     display: block;
     font-size: 11px;
-    left: 556px;
+    left: 517px;
     padding-right: 22px;
     position: absolute;
     top: 374px;
@@ -168,6 +168,36 @@ code
 #tofulldemo:hover
 {
     color: rgb(252, 252, 252);
+}
+
+#miniheader
+{
+    background: rgba(0, 0, 0, 0.9);
+    box-shadow: 0 0 20px rgb(20, 20, 20);
+    color: rgb(250, 248, 245);
+    left: 50%;
+    margin-left: -600px;
+    padding: 3px 0 5px 0;
+    position: fixed;
+    top: 0;
+    width: 1200px;
+}
+
+#miniheader div
+{
+    font-size: 14px;
+    text-align: left;
+}
+
+#miniheader a
+{
+    color: rgb(250, 248, 245);
+    margin: 0 10px 0 10px;
+}
+
+#miniheader span
+{
+    float: right;
 }
 
 h1
@@ -226,21 +256,31 @@ h6
     background: url(../images/ico_monitor.png) no-repeat top;
 }
 
-#topdemo div
+#topdemo
+{
+    margin-top: 20px;
+}
+
+#topdemo h5
 {
     margin: auto;
     text-align: center;
+    font-family: 'OpenSansBold', "Helvetica Neue", Helvetica, Arial;
+    font-size: 20px;
 }
 
 #topdemo div
 {
-    font-family: 'OpenSansBold', "Helvetica Neue", Helvetica, Arial;
+    display: block;
+    font-size: 16px;
+    margin-top: 10px;
 }
 
 #topdemo small
 {
     display: block;
-    font-size: 14px;
+    font-size: 12px;
+    margin-top: 10px;
 }
 
 /* CONTENTS

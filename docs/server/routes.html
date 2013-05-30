@@ -1,0 +1,1293 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+  <title>routes.coffee</title>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <link rel="stylesheet" media="all" href="public/stylesheets/normalize.css" />
+  <link rel="stylesheet" media="all" href="docco.css" />
+</head>
+<body>
+  <div class="container">
+    <div class="page">
+
+      <div class="header">
+        
+          <h1>routes.coffee</h1>
+        
+
+        
+          <div class="toc">
+            <h3>Table of Contents</h3>
+            <ol>
+              
+                
+                <li>
+                  <a class="source" href="configure.html">
+                    configure.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="database.html">
+                    database.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="imaging.html">
+                    imaging.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="logger.html">
+                    logger.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="mail.html">
+                    mail.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="manager.html">
+                    manager.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="routes.html">
+                    routes.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="security.html">
+                    security.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="settings.html">
+                    settings.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="sockets.html">
+                    sockets.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="sync.html">
+                    sync.coffee
+                  </a>
+                </li>
+              
+            </ol>
+          </div>
+        
+      </div>
+
+      
+        
+        <h2>SERVER ROUTES</h2>
+
+        
+      
+        
+        <p>Define server routes.</p>
+
+        
+          <div class='highlight'><pre>module.<span class="function"><span class="title">exports</span></span> = (app) -&gt;</pre></div>
+        
+      
+        
+        <p>Define required modules.</p>
+
+        
+          <div class='highlight'><pre>    logger = require <span class="string">"./logger.coffee"</span>
+    database = require <span class="string">"./database.coffee"</span>
+    fs = require <span class="string">"fs"</span>
+    imaging = require <span class="string">"./imaging.coffee"</span>
+    manager = require <span class="string">"./manager.coffee"</span>
+    passport = require <span class="string">"passport"</span>
+    security = require <span class="string">"./security.coffee"</span>
+    settings = require <span class="string">"./settings.coffee"</span>
+    sockets = require <span class="string">"./sockets.coffee"</span>
+    sync = require <span class="string">"./sync.coffee"</span></pre></div>
+        
+      
+        
+        <p>Define the package.json.</p>
+
+        
+          <div class='highlight'><pre>    packageJson = require <span class="string">"./../package.json"</span></pre></div>
+        
+      
+        
+        <p>When was the package.json last modified?</p>
+
+        
+          <div class='highlight'><pre>    lastModified = <span class="literal">null</span></pre></div>
+        
+      
+        
+        <h2>MAIN ROUTE</h2>
+
+        
+      
+        
+        <p>The main index page.</p>
+
+        
+          <div class='highlight'><pre>    <span class="function"><span class="title">getIndex</span></span> = (req, res) -&gt;
+        <span class="keyword">if</span> <span class="keyword">not</span> req.user?
+            res.redirect <span class="string">"/login"</span>
+            <span class="keyword">return</span>
+
+        options =  getResponseOptions req</pre></div>
+        
+      
+        
+        <p>Render the index page.</p>
+
+        
+          <div class='highlight'><pre>        res.render <span class="string">"index"</span>, options</pre></div>
+        
+      
+        
+        <h2>ADMIN ROUTES</h2>
+
+        
+      
+        
+        <p>The main index page. Only users with the &quot;admin&quot; role will be able to
+access this page.</p>
+
+        
+          <div class='highlight'><pre>    <span class="function"><span class="title">getAdmin</span></span> = (req, res) -&gt;
+        <span class="keyword">if</span> <span class="keyword">not</span> req.user?
+            res.redirect <span class="string">"/login"</span>
+            <span class="keyword">return</span>
+
+        options =  getResponseOptions req</pre></div>
+        
+      
+        
+        <p>Make sure user has admin role.</p>
+
+        
+          <div class='highlight'><pre>        <span class="keyword">if</span> options.roles.admin <span class="keyword">isnt</span> <span class="literal">true</span>
+            res.redirect <span class="string">"/401"</span>
+            <span class="keyword">return</span></pre></div>
+        
+      
+        
+        <p>Render the admin page.</p>
+
+        
+          <div class='highlight'><pre>        res.render <span class="string">"admin"</span>, options</pre></div>
+        
+      
+        
+        <p>Run the system upgrader.</p>
+
+        
+          <div class='highlight'><pre>    <span class="function"><span class="title">runUpgrade</span></span> = (req, res) -&gt;
+        files = fs.readdirSync <span class="string">"./upgrade/"</span>
+
+        <span class="keyword">for</span> f <span class="keyword">in</span> files
+            <span class="keyword">if</span> f.indexOf(<span class="string">".coffee"</span>) &gt; <span class="number">0</span>
+                require <span class="string">"../upgrade/"</span> + f
+
+        res.send <span class="string">"UPGRADED!!!"</span></pre></div>
+        
+      
+        
+        <h2>ENTITY ROUTES</h2>
+
+        
+      
+        
+        <p>Get a single or a collection of <a href="entityDefinition.html">Entity Definitions</a>.</p>
+
+        
+          <div class='highlight'><pre>    <span class="function"><span class="title">getEntityDefinition</span></span> = (req, res) -&gt;
+        database.getEntityDefinition getIdFromRequest(req), (err, result) -&gt;
+            <span class="keyword">if</span> result? <span class="keyword">and</span> <span class="keyword">not</span> err?
+                res.send minifyJson result
+            <span class="keyword">else</span>
+                sendErrorResponse res, <span class="string">"Entity GET"</span>, err</pre></div>
+        
+      
+        
+        <p>Add or update an <a href="entityDefinition.html">Entity Definition</a>.
+This will also restart the entity timers on the server <a href="manager.html">manager</a>.</p>
+
+        
+          <div class='highlight'><pre>    <span class="function"><span class="title">postEntityDefinition</span></span> = (req, res) -&gt;
+        roles = getUserRoles req
+        <span class="keyword">if</span> <span class="keyword">not</span> roles.admin <span class="keyword">and</span> <span class="keyword">not</span> roles.entities
+            sendForbiddenResponse res, <span class="string">"Entity POST"</span>
+            <span class="keyword">return</span>
+
+        database.setEntityDefinition getDocumentFromBody(req), <span class="literal">null</span>, (err, result) -&gt;
+            <span class="keyword">if</span> result? <span class="keyword">and</span> <span class="keyword">not</span> err?
+                manager.initEntityTimers()
+                res.send minifyJson result
+            <span class="keyword">else</span>
+                sendErrorResponse res, <span class="string">"Entity POST"</span>, err</pre></div>
+        
+      
+        
+        <p>Patch only the specified properties of an <a href="entityDefinition.html">Entity Definition</a>.</p>
+
+        
+          <div class='highlight'><pre>    <span class="function"><span class="title">patchEntityDefinition</span></span> = (req, res) -&gt;
+        roles = getUserRoles req
+        <span class="keyword">if</span> <span class="keyword">not</span> roles.admin <span class="keyword">and</span> <span class="keyword">not</span> roles.entities
+            sendForbiddenResponse res, <span class="string">"Entity PATCH"</span>
+            <span class="keyword">return</span>
+
+        database.setEntityDefinition getDocumentFromBody(req), {patch: <span class="literal">true</span>}, (err, result) -&gt;
+            <span class="keyword">if</span> result? <span class="keyword">and</span> <span class="keyword">not</span> err?
+                manager.initEntityTimers()
+                res.send minifyJson result
+            <span class="keyword">else</span>
+                sendErrorResponse res, <span class="string">"Entity PATCH"</span>, err</pre></div>
+        
+      
+        
+        <p>Delete an <a href="entityDefinition.html">Entity Definition</a>.
+This will also restart the entity timers on the server <a href="manager.html">manager</a>.</p>
+
+        
+          <div class='highlight'><pre>    <span class="function"><span class="title">deleteEntityDefinition</span></span> = (req, res) -&gt;
+        roles = getUserRoles req
+        <span class="keyword">if</span> <span class="keyword">not</span> roles.admin <span class="keyword">and</span> <span class="keyword">not</span> roles.entities
+            sendForbiddenResponse res, <span class="string">"Entity DELETE"</span>
+            <span class="keyword">return</span>
+
+        database.deleteEntityDefinition getIdFromRequest(req), (err, result) -&gt;
+            <span class="keyword">if</span> <span class="keyword">not</span> err?
+                manager.initEntityTimers()
+                res.send <span class="string">""</span>
+            <span class="keyword">else</span>
+                sendErrorResponse res, <span class="string">"Entity DELETE"</span>, err</pre></div>
+        
+      
+        
+        <p>Get the data for the specified <a href="entityDefinition.html">Entity Definition</a>.
+This effectively returns the <a href="entityObject.html">Entity Objects Collection</a>
+related to the definition.</p>
+
+        
+          <div class='highlight'><pre>    <span class="function"><span class="title">getEntityObject</span></span> = (req, res) -&gt;
+        friendlyId = getIdFromRequest(req)
+        database.getEntityDefinition {friendlyId: friendlyId}, (err, result) -&gt;
+            <span class="keyword">if</span> result? <span class="keyword">and</span> <span class="keyword">not</span> err?
+                filename = <span class="string">"entity.<span class="subst">#{friendlyId}</span>.json"</span></pre></div>
+        
+      
+        
+        <p>Results is an array! If it has no models, then the
+specified <code>friendlyId</code> wasn&#39;t found in the database.</p>
+
+        
+          <div class='highlight'><pre>                <span class="keyword">if</span> result.length &lt; <span class="number">1</span>
+                    sendErrorResponse res, <span class="string">"EntityObject GET - could not find entity definition ID "</span> + friendlyId
+                    <span class="keyword">return</span>
+
+                result = result[<span class="number">0</span>]</pre></div>
+        
+      
+        
+        <p>Got the entity definition, now download from its SourceUrl.</p>
+
+        
+          <div class='highlight'><pre>                sync.download result.sourceUrl, app.downloadsDir + filename, (errorMessage, localFile) -&gt;
+                    <span class="keyword">if</span> errorMessage?
+                        sendErrorResponse res, <span class="string">"EntityObject GET - download failed: "</span> + localFile, errorMessage
+                    <span class="keyword">else</span>
+                        fs.readFile localFile, (fileError, fileData) -&gt;
+                            <span class="keyword">if</span> fileError?
+                                sendErrorResponse res, <span class="string">"EntityObject GET - downloaded, but read failed: "</span> + localFile, fileError
+                            <span class="keyword">else</span>
+                                data = fileData.toString()
+                                result.data = database.cleanObjectForInsertion data
+                                database.setEntityDefinition result, {patch: <span class="literal">true</span>}
+                                res.send data</pre></div>
+        
+      
+        
+        <p>If we can&#39;t find the matching entity definition, return an error.</p>
+
+        
+          <div class='highlight'><pre>            <span class="keyword">else</span>
+                sendErrorResponse res, <span class="string">"Entity Data GET"</span>, err</pre></div>
+        
+      
+        
+        <h2>AUDIT DATA ROUTES</h2>
+
+        
+      
+        
+        <p>Get all <a href="auditData.html">AuditData</a>.</p>
+
+        
+          <div class='highlight'><pre>    <span class="function"><span class="title">getAuditData</span></span> = (req, res) -&gt;
+        database.getAuditData getIdFromRequest(req), (err, result) -&gt;
+            <span class="keyword">if</span> result? <span class="keyword">and</span> <span class="keyword">not</span> err?
+                res.send minifyJson result
+            <span class="keyword">else</span>
+                sendErrorResponse res, <span class="string">"Audit Data GET"</span>, err</pre></div>
+        
+      
+        
+        <p>Add or update an <a href="auditData.html">AuditData</a>.</p>
+
+        
+          <div class='highlight'><pre>    <span class="function"><span class="title">postAuditData</span></span> = (req, res) -&gt;
+        roles = getUserRoles req
+        <span class="keyword">if</span> <span class="keyword">not</span> roles.admin <span class="keyword">and</span> <span class="keyword">not</span> roles.auditdata
+            sendForbiddenResponse res, <span class="string">"Audit Data POST"</span>
+            <span class="keyword">return</span>
+
+        database.setAuditData getDocumentFromBody(req), <span class="literal">null</span>, (err, result) -&gt;
+            <span class="keyword">if</span> result? <span class="keyword">and</span> <span class="keyword">not</span> err?
+                manager.initAuditDataTimers()
+                res.send minifyJson result
+            <span class="keyword">else</span>
+                sendErrorResponse res, <span class="string">"Audit Data POST"</span>, err</pre></div>
+        
+      
+        
+        <p>Patch only the specified properties of an <a href="auditData.html">AuditData</a>.</p>
+
+        
+          <div class='highlight'><pre>    <span class="function"><span class="title">patchAuditData</span></span> = (req, res) -&gt;
+        roles = getUserRoles req
+        <span class="keyword">if</span> <span class="keyword">not</span> roles.admin <span class="keyword">and</span> <span class="keyword">not</span> roles.auditdata
+            sendForbiddenResponse res, <span class="string">"Audit Data PATCH"</span>
+            <span class="keyword">return</span>
+
+        database.setAuditData getDocumentFromBody(req), {patch: <span class="literal">true</span>}, (err, result) -&gt;
+            <span class="keyword">if</span> result? <span class="keyword">and</span> <span class="keyword">not</span> err?
+                manager.initAuditDataTimers()
+                res.send minifyJson result
+            <span class="keyword">else</span>
+                sendErrorResponse res, <span class="string">"Audit Data PATCH"</span>, err</pre></div>
+        
+      
+        
+        <p>Delete an <a href="auditData.html">AuditData</a>.</p>
+
+        
+          <div class='highlight'><pre>    <span class="function"><span class="title">deleteAuditData</span></span> = (req, res) -&gt;
+        roles = getUserRoles req
+        <span class="keyword">if</span> <span class="keyword">not</span> roles.admin <span class="keyword">and</span> <span class="keyword">not</span> roles.auditdata
+            sendForbiddenResponse res, <span class="string">"Audit Data DELETE"</span>
+            <span class="keyword">return</span>
+
+        database.deleteAuditData getIdFromRequest(req), (err, result) -&gt;
+            <span class="keyword">if</span> <span class="keyword">not</span> err?
+                manager.initAuditDataTimers()
+                res.send <span class="string">""</span>
+            <span class="keyword">else</span>
+                sendErrorResponse res, <span class="string">"Audit Data DELETE"</span>, err</pre></div>
+        
+      
+        
+        <h2>AUDIT EVENT ROUTES</h2>
+
+        
+      
+        
+        <p>Get a single or a collection of <a href="auditEvent.html">Audit Events</a>.</p>
+
+        
+          <div class='highlight'><pre>    <span class="function"><span class="title">getAuditEvent</span></span> = (req, res) -&gt;
+        database.getAuditEvent getIdFromRequest(req), (err, result) -&gt;
+            <span class="keyword">if</span> result? <span class="keyword">and</span> <span class="keyword">not</span> err?
+                res.send minifyJson result
+            <span class="keyword">else</span>
+                sendErrorResponse res, <span class="string">"Audit Event GET"</span>, err</pre></div>
+        
+      
+        
+        <p>Add or update an <a href="auditEvent.html">AuditEvent</a>.</p>
+
+        
+          <div class='highlight'><pre>    <span class="function"><span class="title">postAuditEvent</span></span> = (req, res) -&gt;
+        roles = getUserRoles req
+        <span class="keyword">if</span> <span class="keyword">not</span> roles.admin <span class="keyword">and</span> <span class="keyword">not</span> roles.auditevents
+            sendForbiddenResponse res, <span class="string">"Audit Event POST"</span>
+            <span class="keyword">return</span>
+
+        database.setAuditEvent getDocumentFromBody(req), <span class="literal">null</span>, (err, result) -&gt;
+            <span class="keyword">if</span> result? <span class="keyword">and</span> <span class="keyword">not</span> err?
+                res.send minifyJson result
+            <span class="keyword">else</span>
+                sendErrorResponse res, <span class="string">"Audit Event POST"</span>, err</pre></div>
+        
+      
+        
+        <p>Patch only the specified properties of an <a href="auditEvent.html">AuditEvent</a>.</p>
+
+        
+          <div class='highlight'><pre>    <span class="function"><span class="title">patchAuditEvent</span></span> = (req, res) -&gt;
+        roles = getUserRoles req
+        <span class="keyword">if</span> <span class="keyword">not</span> roles.admin <span class="keyword">and</span> <span class="keyword">not</span> roles.auditevents
+            sendForbiddenResponse res, <span class="string">"Audit Event PATCH"</span>
+            <span class="keyword">return</span>
+
+        database.setAuditEvent getDocumentFromBody(req), {patch: <span class="literal">true</span>}, (err, result) -&gt;
+            <span class="keyword">if</span> result? <span class="keyword">and</span> <span class="keyword">not</span> err?
+                res.send minifyJson result
+            <span class="keyword">else</span>
+                sendErrorResponse res, <span class="string">"Audit Event PATCH"</span>, err</pre></div>
+        
+      
+        
+        <p>Delete an <a href="auditEvent.html">AuditEvent</a>.</p>
+
+        
+          <div class='highlight'><pre>    <span class="function"><span class="title">deleteAuditEvent</span></span> = (req, res) -&gt;
+        roles = getUserRoles req
+        <span class="keyword">if</span> <span class="keyword">not</span> roles.admin <span class="keyword">and</span> <span class="keyword">not</span> roles.auditevents
+            sendForbiddenResponse res, <span class="string">"Audit Event DELETE"</span>
+            <span class="keyword">return</span>
+
+        database.deleteAuditEvent getIdFromRequest(req), (err, result) -&gt;
+            <span class="keyword">if</span> <span class="keyword">not</span> err?
+                res.send <span class="string">""</span>
+            <span class="keyword">else</span>
+                sendErrorResponse res, <span class="string">"Audit Event DELETE"</span>, err</pre></div>
+        
+      
+        
+        <h2>VARIABLE ROUTES</h2>
+
+        
+      
+        
+        <p>Get a single or a collection of <a href="variable.html">Variables</a>.</p>
+
+        
+          <div class='highlight'><pre>    <span class="function"><span class="title">getVariable</span></span> = (req, res) -&gt;
+        database.getVariable getIdFromRequest(req), (err, result) -&gt;
+            <span class="keyword">if</span> result? <span class="keyword">and</span> <span class="keyword">not</span> err?
+                res.send minifyJson result
+            <span class="keyword">else</span>
+                sendErrorResponse res, <span class="string">"Variable GET"</span>, err</pre></div>
+        
+      
+        
+        <p>Add or update an <a href="variable.html">Variable</a>.</p>
+
+        
+          <div class='highlight'><pre>    <span class="function"><span class="title">postVariable</span></span> = (req, res) -&gt;
+        roles = getUserRoles req
+        <span class="keyword">if</span> <span class="keyword">not</span> roles.admin <span class="keyword">and</span> <span class="keyword">not</span> roles.variables
+            sendForbiddenResponse res, <span class="string">"Variable POST"</span>
+            <span class="keyword">return</span>
+
+        database.setVariable getDocumentFromBody(req), <span class="literal">null</span>, (err, result) -&gt;
+            <span class="keyword">if</span> result? <span class="keyword">and</span> <span class="keyword">not</span> err?
+                res.send minifyJson result
+            <span class="keyword">else</span>
+                sendErrorResponse res, <span class="string">"Variable POST"</span>, err</pre></div>
+        
+      
+        
+        <p>Patch only the specified properties of a <a href="variable.html">Variable</a>.</p>
+
+        
+          <div class='highlight'><pre>    <span class="function"><span class="title">patchVariable</span></span> = (req, res) -&gt;
+        roles = getUserRoles req
+        <span class="keyword">if</span> <span class="keyword">not</span> roles.admin <span class="keyword">and</span> <span class="keyword">not</span> roles.variables
+            sendForbiddenResponse res, <span class="string">"Variable PATCH"</span>
+            <span class="keyword">return</span>
+
+        database.setVariable getDocumentFromBody(req), {patch: <span class="literal">true</span>}, (err, result) -&gt;
+            <span class="keyword">if</span> result? <span class="keyword">and</span> <span class="keyword">not</span> err?
+                res.send minifyJson result
+            <span class="keyword">else</span>
+                sendErrorResponse res, <span class="string">"Variable PATCH"</span>, err</pre></div>
+        
+      
+        
+        <p>Delete a <a href="variable.html">Variable</a>.</p>
+
+        
+          <div class='highlight'><pre>    <span class="function"><span class="title">deleteVariable</span></span> = (req, res) -&gt;
+        roles = getUserRoles req
+        <span class="keyword">if</span> <span class="keyword">not</span> roles.admin <span class="keyword">and</span> <span class="keyword">not</span> roles.variables
+            sendForbiddenResponse res, <span class="string">"Variable DELETE"</span>
+            <span class="keyword">return</span>
+
+        database.deleteVariable getIdFromRequest(req), (err, result) -&gt;
+            <span class="keyword">if</span> <span class="keyword">not</span> err?
+                res.send <span class="string">""</span>
+            <span class="keyword">else</span>
+                sendErrorResponse res, <span class="string">"Variable DELETE"</span>, err</pre></div>
+        
+      
+        
+        <h2>MAP ROUTES</h2>
+
+        
+      
+        
+        <p>Get a single or a collection of <a href="map.html">Maps</a>.</p>
+
+        
+          <div class='highlight'><pre>    <span class="function"><span class="title">getMap</span></span> = (req, res) -&gt;
+        database.getMap getIdFromRequest(req), (err, result) -&gt;
+            <span class="keyword">if</span> result? <span class="keyword">and</span> <span class="keyword">not</span> err?
+                res.send minifyJson result
+            <span class="keyword">else</span>
+                sendErrorResponse res, <span class="string">"Map GET"</span>, err</pre></div>
+        
+      
+        
+        <p>Add or update a <a href="map.html">Map</a>.</p>
+
+        
+          <div class='highlight'><pre>    <span class="function"><span class="title">postMap</span></span> = (req, res) -&gt;
+        roles = getUserRoles req
+        <span class="keyword">if</span> <span class="keyword">not</span> roles.admin <span class="keyword">and</span> <span class="keyword">not</span> roles.mapcreate <span class="keyword">and</span> <span class="keyword">not</span> roles.mapedit
+            sendForbiddenResponse res, <span class="string">"Map POST"</span>
+            <span class="keyword">return</span></pre></div>
+        
+      
+        
+        <p>Get map from request body.</p>
+
+        
+          <div class='highlight'><pre>        map = getDocumentFromBody req</pre></div>
+        
+      
+        
+        <p>If map is new, set the <code>createdByUserId</code> to the current logged user&#39;s ID.</p>
+
+        
+          <div class='highlight'><pre>        <span class="keyword">if</span> <span class="keyword">not</span> map.id? <span class="keyword">or</span> map.id <span class="keyword">is</span> <span class="string">""</span>
+            map.createdByUserId = req.user.id
+
+        database.setMap map, <span class="literal">null</span>, (err, result) -&gt;
+            <span class="keyword">if</span> result? <span class="keyword">and</span> <span class="keyword">not</span> err?
+                res.send minifyJson result
+            <span class="keyword">else</span>
+                sendErrorResponse res, <span class="string">"Map POST"</span>, err</pre></div>
+        
+      
+        
+        <p>Patch only the specified properties of a <a href="map.html">Map</a>.</p>
+
+        
+          <div class='highlight'><pre>    <span class="function"><span class="title">patchMap</span></span> = (req, res) -&gt;
+        roles = getUserRoles req
+        <span class="keyword">if</span> <span class="keyword">not</span> roles.admin <span class="keyword">and</span> <span class="keyword">not</span> roles.mapedit
+            sendForbiddenResponse res, <span class="string">"Map PATCH"</span>
+            <span class="keyword">return</span>
+
+        database.setMap getDocumentFromBody(req), {patch: <span class="literal">true</span>}, (err, result) -&gt;
+            <span class="keyword">if</span> result? <span class="keyword">and</span> <span class="keyword">not</span> err?
+                res.send minifyJson result
+            <span class="keyword">else</span>
+                sendErrorResponse res, <span class="string">"Map PATCH"</span>, err</pre></div>
+        
+      
+        
+        <p>Delete a <a href="map.html">Map</a>.</p>
+
+        
+          <div class='highlight'><pre>    <span class="function"><span class="title">deleteMap</span></span> = (req, res) -&gt;
+        roles = getUserRoles req
+        <span class="keyword">if</span> <span class="keyword">not</span> roles.admin <span class="keyword">and</span> <span class="keyword">not</span> roles.mapedit
+            sendForbiddenResponse res, <span class="string">"Map DELETE"</span>
+            <span class="keyword">return</span>
+
+        database.deleteMap getIdFromRequest(req), (err, result) -&gt;
+            <span class="keyword">if</span> <span class="keyword">not</span> err?
+                res.send <span class="string">""</span>
+            <span class="keyword">else</span>
+                sendErrorResponse res, <span class="string">"Map DELETE"</span>, err</pre></div>
+        
+      
+        
+        <h2>MAP THUMBS</h2>
+
+        
+      
+        
+        <p>Generates a thumbnail of the specified <a href="map.html">Map</a>, by passing
+its ID and SVG representation.</p>
+
+        
+          <div class='highlight'><pre>    <span class="function"><span class="title">postMapThumb</span></span> = (req, res) -&gt;
+        <span class="keyword">if</span> <span class="keyword">not</span> req.user?
+            sendForbiddenResponse res, <span class="string">"Map Thumbnail POST"</span>
+            <span class="keyword">return</span>
+
+        svg = req.body.svg
+        svgPath = settings.Paths.imagesDir + <span class="string">"mapthumbs/"</span> + req.params[<span class="string">"id"</span>] + <span class="string">".svg"</span>
+
+        fs.writeFile svgPath, svg, (err) -&gt;
+            <span class="keyword">if</span> err?
+                sendErrorResponse res, <span class="string">"Map Thumbnail POST"</span>, err
+            <span class="keyword">else</span>
+                imaging.svgToPng svgPath, settings.Images.mapThumbSize, (err2, result) -&gt;
+                    <span class="keyword">if</span> err2?
+                        sendErrorResponse res, <span class="string">"Map Thumbnail POST"</span>, err2
+                    <span class="keyword">else</span>
+                        res.send result</pre></div>
+        
+      
+        
+        <h2>USER ROUTES</h2>
+
+        
+      
+        
+        <p>Get a single or a collection of <a href="user.html">Users</a>.</p>
+
+        
+          <div class='highlight'><pre>    <span class="function"><span class="title">getUser</span></span> = (req, res) -&gt;
+        <span class="keyword">if</span> <span class="keyword">not</span> req.user?
+            sendForbiddenResponse res, <span class="string">"User GET"</span>
+            <span class="keyword">return</span>
+
+        roles = getUserRoles req</pre></div>
+        
+      
+        
+        <p>Check if should get the logged user&#39;s details.</p>
+
+        
+          <div class='highlight'><pre>        id = getIdFromRequest(req)
+        id = req.user.id <span class="keyword">if</span> id <span class="keyword">is</span> <span class="string">"logged"</span>
+
+        database.getUser id, (err, result) -&gt;
+            <span class="keyword">if</span> result? <span class="keyword">and</span> <span class="keyword">not</span> err?</pre></div>
+        
+      
+        
+        <p>Check user permissions.</p>
+
+        
+          <div class='highlight'><pre>                <span class="keyword">if</span> <span class="keyword">not</span> roles.admin <span class="keyword">and</span> result.id <span class="keyword">isnt</span> req.user.id
+                    sendForbiddenResponse res, <span class="string">"User GET"</span>
+                    <span class="keyword">return</span></pre></div>
+        
+      
+        
+        <p>Make sure password fields are removed.</p>
+
+        
+          <div class='highlight'><pre>                <span class="keyword">delete</span> result[<span class="string">"passwordHash"</span>]
+                <span class="keyword">delete</span> result[<span class="string">"password"</span>]
+
+                res.send minifyJson result
+            <span class="keyword">else</span>
+                sendErrorResponse res, <span class="string">"User GET"</span>, err</pre></div>
+        
+      
+        
+        <p>Add or update a <a href="user.html">Users</a>.</p>
+
+        
+          <div class='highlight'><pre>    <span class="function"><span class="title">postUser</span></span> = (req, res) -&gt;
+        roles = getUserRoles req
+        user = getDocumentFromBody req</pre></div>
+        
+      
+        
+        <p>Check user permissions.</p>
+
+        
+          <div class='highlight'><pre>        <span class="keyword">if</span> <span class="keyword">not</span> roles.admin <span class="keyword">and</span> user.id <span class="keyword">isnt</span> req.user.id
+            sendForbiddenResponse res, <span class="string">"User POST"</span>
+            <span class="keyword">return</span></pre></div>
+        
+      
+        
+        <p>Make sure password hash is set and remove clear text password.</p>
+
+        
+          <div class='highlight'><pre>        <span class="keyword">if</span> user.password?
+            user[<span class="string">"passwordHash"</span>] = security.getPasswordHash user.username, user.password
+            <span class="keyword">delete</span> user[<span class="string">"password"</span>]
+
+        database.setUser user, <span class="literal">null</span>, (err, result) -&gt;
+            <span class="keyword">if</span> result? <span class="keyword">and</span> <span class="keyword">not</span> err?</pre></div>
+        
+      
+        
+        <p>Make sure password fields are removed.</p>
+
+        
+          <div class='highlight'><pre>                <span class="keyword">delete</span> result[<span class="string">"passwordHash"</span>]
+                <span class="keyword">delete</span> result[<span class="string">"password"</span>]
+
+                res.send minifyJson result
+            <span class="keyword">else</span>
+                sendErrorResponse res, <span class="string">"User POST"</span>, err</pre></div>
+        
+      
+        
+        <p>Patch only the specified properties of a <a href="user.html">Users</a>.</p>
+
+        
+          <div class='highlight'><pre>    <span class="function"><span class="title">patchUser</span></span> = (req, res) -&gt;
+        roles = getUserRoles req
+        user = getDocumentFromBody req</pre></div>
+        
+      
+        
+        <p>Check user permissions.</p>
+
+        
+          <div class='highlight'><pre>        <span class="keyword">if</span> <span class="keyword">not</span> roles.admin <span class="keyword">and</span> user.id <span class="keyword">isnt</span> req.user.id
+            sendForbiddenResponse res, <span class="string">"User PATCH"</span>
+            <span class="keyword">return</span></pre></div>
+        
+      
+        
+        <p>Make sure user password hash is set.</p>
+
+        
+          <div class='highlight'><pre>        user = getDocumentFromBody req
+        <span class="keyword">if</span> user.password?
+            user[<span class="string">"passwordHash"</span>] = security.getPasswordHash user.username, user.password
+            <span class="keyword">delete</span> user[<span class="string">"password"</span>]
+
+        database.setUser user, {patch: <span class="literal">true</span>}, (err, result) -&gt;
+            <span class="keyword">if</span> result? <span class="keyword">and</span> <span class="keyword">not</span> err?</pre></div>
+        
+      
+        
+        <p>Make sure password fields are removed.</p>
+
+        
+          <div class='highlight'><pre>                <span class="keyword">delete</span> result[<span class="string">"passwordHash"</span>]
+                <span class="keyword">delete</span> result[<span class="string">"password"</span>]
+
+                res.send minifyJson result
+            <span class="keyword">else</span>
+                sendErrorResponse res, <span class="string">"User PATCH"</span>, err</pre></div>
+        
+      
+        
+        <p>Delete a <a href="user.html">Users</a>.</p>
+
+        
+          <div class='highlight'><pre>    <span class="function"><span class="title">deleteUser</span></span> = (req, res) -&gt;
+        roles = getUserRoles req</pre></div>
+        
+      
+        
+        <p>Check user permissions.</p>
+
+        
+          <div class='highlight'><pre>        <span class="keyword">if</span> <span class="keyword">not</span> roles.admin
+            sendForbiddenResponse res, <span class="string">"User DELETE"</span>
+            <span class="keyword">return</span>
+
+        database.deleteUser getIdFromRequest(req), (err, result) -&gt;
+            <span class="keyword">if</span> <span class="keyword">not</span> err?
+                res.send <span class="string">""</span>
+            <span class="keyword">else</span>
+                sendErrorResponse res, <span class="string">"User DELETE"</span>, err</pre></div>
+        
+      
+        
+        <h2>PROXY DOWNLOAD</h2>
+
+        
+      
+        
+        <p>Download an external file and serve it to the client, thus acting like a &quot;proxy&quot;.
+The local filename is provided after the /downloader/ on the url, and the
+download URL is provided with the post parameter &quot;url&quot;.</p>
+
+        
+          <div class='highlight'><pre>    <span class="function"><span class="title">downloader</span></span> = (req, res) -&gt;
+        remoteUrl = req.body.url
+        filename = req.params[<span class="string">"filename"</span>]
+
+        sync.download remoteUrl, app.downloadsDir + filename, (errorMessage, localFile) -&gt;
+            <span class="keyword">if</span> errorMessage?
+                sendErrorResponse res, <span class="string">"Download failed: "</span> + localFile, errorMessage
+            <span class="keyword">else</span>
+                fs.readFile localFile, (err, data) -&gt;
+                    <span class="keyword">if</span> err?
+                        sendErrorResponse res, <span class="string">"Downloaded, read failed: "</span> + localFile, err
+                    <span class="keyword">else</span>
+                        res.send data.toString()</pre></div>
+        
+      
+        
+        <h2>STATUS ROUTES</h2>
+
+        
+      
+        
+        <p>Get the system status page.</p>
+
+        
+          <div class='highlight'><pre>    <span class="function"><span class="title">getDocs</span></span> = (req, res) -&gt;
+        res.redirect <span class="string">"/docs/README.html"</span></pre></div>
+        
+      
+        
+        <p>Get the system status page.</p>
+
+        
+          <div class='highlight'><pre>    <span class="function"><span class="title">getStatus</span></span> = (req, res) -&gt;
+        res.json { status: <span class="string">"ok"</span> }</pre></div>
+        
+      
+        
+        <p>Error 401 (not authorized) page.</p>
+
+        
+          <div class='highlight'><pre>    <span class="function"><span class="title">get401</span></span> = (req, res) -&gt;
+        res.status <span class="number">401</span>
+        res.render <span class="string">"status401"</span>, title: settings.General.appTitle,</pre></div>
+        
+      
+        
+        <p>Error 404 (not found) page.</p>
+
+        
+          <div class='highlight'><pre>    <span class="function"><span class="title">get404</span></span> = (req, res) -&gt;
+        res.status <span class="number">404</span>
+        res.render <span class="string">"status404"</span>, title: settings.General.appTitle,</pre></div>
+        
+      
+        
+        <p>Get the list of server logs for the past 24 hours. Value can be changed on
+the <a href="settings.html">Server Settings</a>.</p>
+
+        
+          <div class='highlight'><pre>    <span class="function"><span class="title">getLogsRecent</span></span> = (req, res) -&gt;
+        <span class="keyword">if</span> <span class="keyword">not</span> req.user?
+            sendForbiddenResponse res, <span class="string">"Logs Recent GET"</span>
+            <span class="keyword">return</span>
+
+        logger.getRecent (err, result) -&gt;
+            <span class="keyword">if</span> <span class="keyword">not</span> err?
+                res.send minifyJson result
+            <span class="keyword">else</span>
+                res.json err</pre></div>
+        
+      
+        
+        <h2>HELPER METHODS</h2>
+
+        
+      
+        
+        <p>Minify the passed JSON value. Please note that the result will be minified
+ONLY if the <code>Web.minifyJsonResponse</code> setting is set to true.</p>
+
+        
+          <div class='highlight'><pre>    <span class="function"><span class="title">minifyJson</span></span> = (source) -&gt;
+        <span class="keyword">return</span> source <span class="keyword">if</span> settings.Web.minifyJsonResponse
+
+        source = JSON.stringify source <span class="keyword">if</span> <span class="keyword">typeof</span> source <span class="keyword">is</span> <span class="string">"object"</span>
+        index = <span class="number">0</span>
+        length = source.length
+        result = <span class="string">""</span>
+        symbol = <span class="literal">undefined</span>
+        position = <span class="literal">undefined</span>
+        
+        <span class="keyword">while</span> index &lt; length
+
+            symbol = source.charAt(index)
+            <span class="keyword">switch</span> symbol</pre></div>
+        
+      
+        
+        <p>Ignore whitespace tokens. According to ES 5.1 section 15.12.1.1,
+whitespace tokens include tabs, carriage returns, line feeds, and
+space characters.</p>
+
+        
+          <div class='highlight'><pre>                <span class="keyword">when</span> <span class="string">"\t"</span>, <span class="string">"\r"</span>
+                , <span class="string">"\n"</span>
+                , <span class="string">" "</span>
+                    index += <span class="number">1</span></pre></div>
+        
+      
+        
+        <p>Ignore line and block comments.</p>
+
+        
+          <div class='highlight'><pre>                <span class="keyword">when</span> <span class="string">"/"</span>
+                    symbol = source.charAt(index += <span class="number">1</span>)
+                    <span class="keyword">switch</span> symbol</pre></div>
+        
+      
+        
+        <p>Line comments.</p>
+
+        
+          <div class='highlight'><pre>                        <span class="keyword">when</span> <span class="string">"/"</span>
+                            position = source.indexOf(<span class="string">"\n"</span>, index)</pre></div>
+        
+      
+        
+        <p>Check for CR-style line endings.</p>
+
+        
+          <div class='highlight'><pre>                            position = source.indexOf(<span class="string">"\r"</span>, index)  <span class="keyword">if</span> position &lt; <span class="number">0</span>
+                            index = (<span class="keyword">if</span> position &gt; -<span class="number">1</span> <span class="keyword">then</span> position <span class="keyword">else</span> length)</pre></div>
+        
+      
+        
+        <p>Block comments.</p>
+
+        
+          <div class='highlight'><pre>                        <span class="keyword">when</span> <span class="string">"*"</span>
+                            position = source.indexOf(<span class="string">"*/"</span>, index)
+                            <span class="keyword">if</span> position &gt; -<span class="number">1</span></pre></div>
+        
+      
+        
+        <p>Advance the scanner&#39;s position past the end of the comment.</p>
+
+        
+          <div class='highlight'><pre>                                index = position += <span class="number">2</span>
+                                <span class="keyword">break</span>
+                            <span class="keyword">throw</span> SyntaxError(<span class="string">"Unterminated block comment."</span>)
+                        <span class="keyword">else</span>
+                            <span class="keyword">throw</span> SyntaxError(<span class="string">"Invalid comment."</span>)</pre></div>
+        
+      
+        
+        <p>Parse strings separately to ensure that any whitespace characters and
+JavaScript-style comments within them are preserved.</p>
+
+        
+          <div class='highlight'><pre>                <span class="keyword">when</span> <span class="string">"\""</span>
+                    position = index
+                    <span class="keyword">while</span> index &lt; length
+                        symbol = source.charAt(index += <span class="number">1</span>)
+                        <span class="keyword">if</span> symbol <span class="keyword">is</span> <span class="string">"\\"</span></pre></div>
+        
+      
+        
+        <p>Skip past escaped characters.</p>
+
+        
+          <div class='highlight'><pre>                            index += <span class="number">1</span>
+                        <span class="keyword">else</span> <span class="keyword">break</span>  <span class="keyword">if</span> symbol <span class="keyword">is</span> <span class="string">"\""</span>
+                    <span class="keyword">if</span> source.charAt(index) <span class="keyword">is</span> <span class="string">"\""</span>
+                        result += source.slice(position, index += <span class="number">1</span>)
+                        <span class="keyword">break</span>
+                    <span class="keyword">throw</span> SyntaxError(<span class="string">"Unterminated string."</span>)</pre></div>
+        
+      
+        
+        <p>Preserve all other characters.</p>
+
+        
+          <div class='highlight'><pre>                <span class="keyword">else</span>
+                    result += symbol
+                    index += <span class="number">1</span>
+        result</pre></div>
+        
+      
+        
+        <p>Return the ID from the request. Give preference to the ID parameter
+on the body first, and then to the parameter passed on the URL path.</p>
+
+        
+          <div class='highlight'><pre>    <span class="function"><span class="title">getIdFromRequest</span></span> = (req) -&gt;
+        <span class="keyword">if</span> req.body?.id?
+            <span class="keyword">return</span> req.body.id
+        <span class="keyword">else</span>
+            <span class="keyword">return</span> req.params.id</pre></div>
+        
+      
+        
+        <p>Return the document from the request body.
+Make sure the document ID is set by checking its body and
+if necessary appending from the request parameters.</p>
+
+        
+          <div class='highlight'><pre>    <span class="function"><span class="title">getDocumentFromBody</span></span> = (req) -&gt;
+        obj = req.body
+        obj.id = req.params.id <span class="keyword">if</span> <span class="keyword">not</span> obj.id?
+        <span class="keyword">return</span> obj</pre></div>
+        
+      
+        
+        <p>Get default app and server variables to be sent with responses.</p>
+
+        
+          <div class='highlight'><pre>    <span class="function"><span class="title">getResponseOptions</span></span> = (req) -&gt;
+        os = require <span class="string">"os"</span>
+        moment = require <span class="string">"moment"</span>
+        host = req.headers[<span class="string">"host"</span>]</pre></div>
+        
+      
+        
+        <p>Check the last modified date.</p>
+
+        
+          <div class='highlight'><pre>        lastModified = fs.statSync(<span class="string">"./package.json"</span>).mtime <span class="keyword">if</span> <span class="keyword">not</span> lastModified?</pre></div>
+        
+      
+        
+        <p>Set render options.</p>
+
+        
+          <div class='highlight'><pre>        options =
+            title: settings.General.appTitle,
+            version: packageJson.version,
+            lastModified: moment(lastModified).format(<span class="string">"YYYY-MM-DD hh:mm"</span>),
+            serverUptime: moment.duration(os.uptime(), <span class="string">"s"</span>).humanize(),
+            serverHostname: os.hostname(),
+            serverPort: settings.Web.port,
+            serverOS: os.type() + <span class="string">" "</span> + os.release(),
+            serverCpuLoad: os.loadavg()[<span class="number">0</span>].toFixed(<span class="number">2</span>),
+            serverRamLoad: (os.freemem() / os.totalmem() * <span class="number">100</span>).toFixed(<span class="number">2</span>),
+            roles: getUserRoles req
+
+        <span class="keyword">return</span> options</pre></div>
+        
+      
+        
+        <p>Return an object with the user roles, based on the authenticated user&#39;s roles array.
+Please note that the &quot;admin&quot; role will be returned always for the online demo.</p>
+
+        
+          <div class='highlight'><pre>    <span class="function"><span class="title">getUserRoles</span></span> = (req) =&gt;
+        roles = {}
+        <span class="keyword">return</span> roles <span class="keyword">if</span> <span class="keyword">not</span> req.user?</pre></div>
+        
+      
+        
+        <p>Set roles object using role_name: true.</p>
+
+        
+          <div class='highlight'><pre>        <span class="keyword">for</span> r <span class="keyword">in</span> req.user.roles
+            roles[r] = <span class="literal">true</span>
+
+        <span class="keyword">return</span> roles</pre></div>
+        
+      
+        
+        <p>When the server can&#39;t return a valid result,
+send an error response with status code 500.</p>
+
+        
+          <div class='highlight'><pre>    <span class="function"><span class="title">sendErrorResponse</span></span> = (res, method, message) -&gt;
+        logger.error <span class="string">"HTTP 500"</span>, method, message
+
+        res.statusCode = <span class="number">500</span>
+        res.send <span class="string">"Error: <span class="subst">#{method}</span> - <span class="subst">#{message}</span>"</span></pre></div>
+        
+      
+        
+        <p>When user is not authorized to request a resource, send an 403 error
+with an &quot;access denied&quot; message.</p>
+
+        
+          <div class='highlight'><pre>    <span class="function"><span class="title">sendForbiddenResponse</span></span> = (res, method) -&gt;
+        logger.error <span class="string">"HTTP 403"</span>, method
+
+        res.statusCode = <span class="number">403</span>
+        res.send <span class="string">"Access denied for <span class="subst">#{method}</span>."</span></pre></div>
+        
+      
+        
+        <h2>SET MAIN ROUTES</h2>
+
+        
+      
+        
+        <p>Set basic HTTP authentication options.</p>
+
+        
+          <div class='highlight'><pre>    passportOptions = {session: <span class="literal">true</span>}</pre></div>
+        
+      
+        
+        <p>The login page/</p>
+
+        
+          <div class='highlight'><pre>    app.get <span class="string">"/login"</span>, passport.authenticate(<span class="string">"basic"</span>, passportOptions), (req, res) -&gt; res.send req.user.username</pre></div>
+        
+      
+        
+        <p>Main index.</p>
+
+        
+          <div class='highlight'><pre>    app.get <span class="string">"/"</span>, passport.authenticate(<span class="string">"basic"</span>, passportOptions), getIndex</pre></div>
+        
+      
+        
+        <h2>SET ADMIN ROUTES</h2>
+
+        
+      
+        
+        <p>Admin area.</p>
+
+        
+          <div class='highlight'><pre>    app.get <span class="string">"/admin"</span>, passport.authenticate(<span class="string">"basic"</span>, passportOptions), getAdmin</pre></div>
+        
+      
+        
+        <p>Upgrader page.</p>
+
+        
+          <div class='highlight'><pre>    app.get <span class="string">"/upgrade"</span>, runUpgrade</pre></div>
+        
+      
+        
+        <p>Server status and log routes.</p>
+
+        
+          <div class='highlight'><pre>    app.get <span class="string">"/logs/recent"</span>, getLogsRecent</pre></div>
+        
+      
+        
+        <h2>SET DATA AND SPECIAL ROUTES</h2>
+
+        
+      
+        
+        <p>Entity definition routes.</p>
+
+        
+          <div class='highlight'><pre>    app.get     <span class="string">"/json/entitydefinition"</span>,     getEntityDefinition
+    app.get     <span class="string">"/json/entitydefinition/:id"</span>, getEntityDefinition
+    app.post    <span class="string">"/json/entitydefinition"</span>,     postEntityDefinition
+    app.put     <span class="string">"/json/entitydefinition/:id"</span>, postEntityDefinition
+    app.patch   <span class="string">"/json/entitydefinition/:id"</span>, patchEntityDefinition
+    app.<span class="keyword">delete</span>  <span class="string">"/json/entitydefinition/:id"</span>, deleteEntityDefinition</pre></div>
+        
+      
+        
+        <p>Entity data (objects) routes.</p>
+
+        
+          <div class='highlight'><pre>    app.get     <span class="string">"/json/entityobject/:id"</span>, getEntityObject</pre></div>
+        
+      
+        
+        <p>Audit Data routes.</p>
+
+        
+          <div class='highlight'><pre>    app.get     <span class="string">"/json/auditdata"</span>,        getAuditData
+    app.get     <span class="string">"/json/auditdata/:id"</span>,    getAuditData
+    app.post    <span class="string">"/json/auditdata"</span>,        postAuditData
+    app.put     <span class="string">"/json/auditdata/:id"</span>,    postAuditData
+    app.patch   <span class="string">"/json/auditdata/:id"</span>,    patchAuditData
+    app.<span class="keyword">delete</span>  <span class="string">"/json/auditdata/:id"</span>,    deleteAuditData</pre></div>
+        
+      
+        
+        <p>Audit Event routes.</p>
+
+        
+          <div class='highlight'><pre>    app.get     <span class="string">"/json/auditevent"</span>,       getAuditEvent
+    app.get     <span class="string">"/json/auditevent/:id"</span>,   getAuditEvent
+    app.post    <span class="string">"/json/auditevent"</span>,       postAuditEvent
+    app.put     <span class="string">"/json/auditevent/:id"</span>,   postAuditEvent
+    app.patch   <span class="string">"/json/auditevent/:id"</span>,   patchAuditEvent
+    app.<span class="keyword">delete</span>  <span class="string">"/json/auditevent/:id"</span>,   deleteAuditEvent</pre></div>
+        
+      
+        
+        <p>Variable routes.</p>
+
+        
+          <div class='highlight'><pre>    app.get     <span class="string">"/json/variable"</span>,         getVariable
+    app.get     <span class="string">"/json/variable/:id"</span>,     getVariable
+    app.post    <span class="string">"/json/variable"</span>,         postVariable
+    app.put     <span class="string">"/json/variable/:id"</span>,     postVariable
+    app.patch   <span class="string">"/json/variable/:id"</span>,     patchVariable
+    app.<span class="keyword">delete</span>  <span class="string">"/json/variable/:id"</span>,     deleteVariable</pre></div>
+        
+      
+        
+        <p>Map routes.</p>
+
+        
+          <div class='highlight'><pre>    app.get     <span class="string">"/json/map"</span>,        getMap
+    app.get     <span class="string">"/json/map/:id"</span>,    getMap
+    app.post    <span class="string">"/json/map"</span>,        postMap
+    app.put     <span class="string">"/json/map/:id"</span>,    postMap
+    app.patch   <span class="string">"/json/map/:id"</span>,    patchMap
+    app.<span class="keyword">delete</span>  <span class="string">"/json/map/:id"</span>,    deleteMap</pre></div>
+        
+      
+        
+        <p>Map thumbnails.</p>
+
+        
+          <div class='highlight'><pre>    app.post    <span class="string">"/images/mapthumbs/:id"</span>, postMapThumb</pre></div>
+        
+      
+        
+        <p>User routes.</p>
+
+        
+          <div class='highlight'><pre>    app.get     <span class="string">"/json/user"</span>,       getUser
+    app.get     <span class="string">"/json/user/:id"</span>,   getUser
+    app.post    <span class="string">"/json/user"</span>,       postUser
+    app.put     <span class="string">"/json/user/:id"</span>,   postUser
+    app.patch   <span class="string">"/json/user/:id"</span>,   patchUser
+    app.<span class="keyword">delete</span>  <span class="string">"/json/user/:id"</span>,   deleteUser</pre></div>
+        
+      
+        
+        <p>External downloader.</p>
+
+        
+          <div class='highlight'><pre>    app.post    <span class="string">"/downloader/:filename"</span>, downloader</pre></div>
+        
+      
+        
+        <h2>SET DOCS AND STATUS ROUTES</h2>
+
+        
+      
+        
+        <p>Error and status routes.</p>
+
+        
+          <div class='highlight'><pre>    app.get <span class="string">"/docs"</span>, getDocs
+    app.get <span class="string">"/status"</span>, getStatus
+    app.get <span class="string">"/401"</span>, get401
+    app.get <span class="string">"/404"</span>, get404</pre></div>
+        
+      
+      <div class="fleur">h</div>
+    </div>
+  </div>
+</body>
+</html>

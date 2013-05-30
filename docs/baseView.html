@@ -1,0 +1,772 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+  <title>baseView.coffee</title>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <link rel="stylesheet" media="all" href="public/stylesheets/normalize.css" />
+  <link rel="stylesheet" media="all" href="docco.css" />
+</head>
+<body>
+  <div class="container">
+    <div class="page">
+
+      <div class="header">
+        
+          <h1>baseView.coffee</h1>
+        
+
+        
+          <div class="toc">
+            <h3>Table of Contents</h3>
+            <ol>
+              
+                
+                <li>
+                  <a class="source" href="admin.html">
+                    admin.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="api.auditData.html">
+                    api.auditData.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="api.auditEvent.html">
+                    api.auditEvent.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="api.html">
+                    api.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="api.entity.html">
+                    api.entity.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="api.map.html">
+                    api.map.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="api.server.html">
+                    api.server.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="api.variable.html">
+                    api.variable.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="api.view.html">
+                    api.view.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="app.html">
+                    app.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="app.instance.html">
+                    app.instance.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="data.html">
+                    data.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="dataUtil.html">
+                    dataUtil.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="messages.html">
+                    messages.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="auditData.html">
+                    auditData.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="auditEvent.html">
+                    auditEvent.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="base.html">
+                    base.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="entityDefinition.html">
+                    entityDefinition.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="entityObject.html">
+                    entityObject.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="eventAction.html">
+                    eventAction.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="eventRule.html">
+                    eventRule.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="link.html">
+                    link.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="map.html">
+                    map.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="shape.html">
+                    shape.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="user.html">
+                    user.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="userSettings.html">
+                    userSettings.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="variable.html">
+                    variable.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="adminRoutes.html">
+                    adminRoutes.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="appRoutes.html">
+                    appRoutes.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="settings.html">
+                    settings.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="sockets.html">
+                    sockets.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="tutorial.html">
+                    tutorial.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="vectors.html">
+                    vectors.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="statusTabView.html">
+                    statusTabView.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="toolsTabView.html">
+                    toolsTabView.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="usersTabView.html">
+                    usersTabView.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="adminView.html">
+                    adminView.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="alertView.html">
+                    alertView.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="auditDataManagerView.html">
+                    auditDataManagerView.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="auditEventManagerView.html">
+                    auditEventManagerView.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="baseView.html">
+                    baseView.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="createMapView.html">
+                    createMapView.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="entityManagerView.html">
+                    entityManagerView.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="footerView.html">
+                    footerView.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="helpView.html">
+                    helpView.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="entitiesTabView.html">
+                    entitiesTabView.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="inspectorTabView.html">
+                    inspectorTabView.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="mapTabView.html">
+                    mapTabView.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="shapeTabView.html">
+                    shapeTabView.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="controlsView.html">
+                    controlsView.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="labelEditView.html">
+                    labelEditView.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="linkCreatorView.html">
+                    linkCreatorView.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="linkLabelsView.html">
+                    linkLabelsView.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="linkView.html">
+                    linkView.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="shapeLabelsView.html">
+                    shapeLabelsView.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="shapeView.html">
+                    shapeView.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="shapesMoverView.html">
+                    shapesMoverView.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="mapView.html">
+                    mapView.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="menuView.html">
+                    menuView.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="overlayView.html">
+                    overlayView.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="scriptEditorView.html">
+                    scriptEditorView.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="selfTestView.html">
+                    selfTestView.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="settingsView.html">
+                    settingsView.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="startView.html">
+                    startView.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="variableManagerView.html">
+                    variableManagerView.coffee
+                  </a>
+                </li>
+              
+            </ol>
+          </div>
+        
+      </div>
+
+      
+        
+        <h2>BASE VIEW</h2>
+
+        
+      
+        
+        <p>Base abstract view class. All views MUST inherit from this one, as it has
+some basic features like event triggering and elements disposing.</p>
+
+        
+          <div class='highlight'><pre><span class="class"><span class="keyword">class</span> <span class="title">SystemApp</span>.<span class="title">BaseView</span> <span class="keyword">extends</span> <span class="title">Backbone</span>.<span class="title">View</span></span></pre></div>
+        
+      
+        
+        <p>Holds the parent view. Please note that the parent view does not necessarily the parent DOM container.</p>
+
+        
+          <div class='highlight'><pre>    parentView: <span class="literal">null</span></pre></div>
+        
+      
+        
+        <p>DOM elements and variables cache. This is set by calling and passing the selectors to <code>domInit</code>.</p>
+
+        
+          <div class='highlight'><pre>    dom: {}</pre></div>
+        
+      
+        
+        <h2>BASE HELPER METHODS</h2>
+
+        
+      
+        
+        <p>Init the view and set the parent view (if the <code>p</code> parameter is passed).</p>
+
+        
+          <div class='highlight'><pre>    baseInit: (parent) =&gt;
+        <span class="property">@parentView</span> = parent <span class="keyword">if</span> parent?</pre></div>
+        
+      
+        
+        <p>Dispose the view element and set it to null.</p>
+
+        
+          <div class='highlight'><pre>    baseDispose: =&gt;
+        <span class="property">@stopListening</span>()
+
+        <span class="keyword">try</span>
+            <span class="property">@remove</span>()
+        <span class="keyword">catch</span> ex
+            console.warn <span class="string">"Could not remove element. Maybe it was already removed?"</span>, <span class="keyword">this</span>
+
+        <span class="property">@$el</span> = <span class="literal">null</span>
+        <span class="property">@el</span> = <span class="literal">null</span>
+        <span class="property">@parentView</span> = <span class="literal">null</span></pre></div>
+        
+      
+        
+        <h2>DOM HELPERS</h2>
+
+        
+      
+        
+        <p>Set the DOM elements. The arr should be an array containing all the selectors which
+will populate the <code>dom</code> property. The key will be made of the selector minus its special characters.
+Example:
+<code>view.domInit [&quot;#butCreate&quot;, &quot;#txtCreate&quot;, &quot;.tabs&quot;, &quot;.tab-headers&quot;]</code></p>
+
+        
+          <div class='highlight'><pre>    domInit: (arr) =&gt;
+        <span class="property">@addToDom</span> selector <span class="keyword">for</span> selector <span class="keyword">in</span> arr</pre></div>
+        
+      
+        
+        <p>Add the specified DOM element(s) to the <code>dom</code> cache.</p>
+
+        
+          <div class='highlight'><pre>    addToDom: (selector) =&gt;
+        <span class="keyword">return</span> <span class="keyword">if</span> <span class="keyword">not</span> selector? <span class="keyword">or</span> selector <span class="keyword">is</span> <span class="string">""</span>
+
+        domId = SystemApp.DataUtil.normalize selector, <span class="literal">true</span>
+        <span class="property">@dom</span>[domId] = $ selector</pre></div>
+        
+      
+        
+        <h2>UI HELPERS</h2>
+
+        
+      
+        
+        <p>Set the window title and append the default app name on it.</p>
+
+        
+          <div class='highlight'><pre>    setTitle: (value) =&gt;
+        <span class="keyword">if</span> value?
+            value = <span class="string">"<span class="subst">#{value}</span> - <span class="subst">#{SystemApp.Settings.General.appTitle}</span>"</span>
+        <span class="keyword">else</span>
+            value = SystemApp.Settings.General.appTitle
+        document.title = value</pre></div>
+        
+      
+        
+        <p>Warn the user by blinking the specified field with a red background.</p>
+
+        
+          <div class='highlight'><pre>    warnField: (field) =&gt;
+        extraMs = SystemApp.Settings.General.elementBlinkInterval / <span class="number">2</span>
+        redClass = <span class="string">"error"</span>
+
+        <span class="property">@addClass</span> field, redClass
+        _.delay <span class="property">@removeClass</span>, SystemApp.Settings.General.elementBlinkInterval, field, redClass
+        _.delay <span class="property">@addClass</span>, SystemApp.Settings.General.elementBlinkInterval + extraMs, field, redClass
+        _.delay <span class="property">@removeClass</span>, SystemApp.Settings.General.elementBlinkInterval * <span class="number">2</span>, field, redClass
+        _.delay <span class="property">@addClass</span>, SystemApp.Settings.General.elementBlinkInterval * <span class="number">2</span> + extraMs, field, redClass
+        _.delay <span class="property">@removeClass</span>, SystemApp.Settings.General.elementBlinkInterval * <span class="number">3</span>, field, redClass</pre></div>
+        
+      
+        
+        <p>Show a &quot;saved&quot; message next to the specified field, and fade it out after a few seconds.</p>
+
+        
+          <div class='highlight'><pre>    fieldSaved: (field) =&gt;
+        parent = field.parent()
+        parent = parent.parent() <span class="keyword">if</span> parent.hasClass(<span class="string">"toggle"</span>)</pre></div>
+        
+      
+        
+        <p>Do not proceed if container has the class &quot;silent&quot;.</p>
+
+        
+          <div class='highlight'><pre>        <span class="keyword">return</span> <span class="keyword">if</span> parent.hasClass <span class="string">"silent"</span></pre></div>
+        
+      
+        
+        <p>Last element of the container.</p>
+
+        
+          <div class='highlight'><pre>        lastChild = parent.children(<span class="string">"span:last-child"</span>)</pre></div>
+        
+      
+        
+        <p>Create alert.</p>
+
+        
+          <div class='highlight'><pre>        alert = $(document.createElement <span class="string">"span"</span>)
+        alert.addClass <span class="string">"saved"</span>
+        alert.html SystemApp.Messages.saved</pre></div>
+        
+      
+        
+        <p>Append the &quot;saved&quot; at the very end of the field container,
+but only if a &quot;saved&quot; is not present yet.</p>
+
+        
+          <div class='highlight'><pre>        <span class="keyword">if</span> <span class="keyword">not</span> lastChild.hasClass <span class="string">"saved"</span>
+            parent.append alert</pre></div>
+        
+      
+        
+        <p>Fade out and then remove from the DOM.</p>
+
+        
+          <div class='highlight'><pre>            alert.fadeOut SystemApp.Settings.General.fadeRemoveDelay * <span class="number">2</span>, () -&gt; alert.remove()</pre></div>
+        
+      
+        
+        <p>Remove a DOM element representing a model from the view. This will add the class &quot;removed&quot;
+and then fade the element out.</p>
+
+        
+          <div class='highlight'><pre>    modelElementRemove: (el) =&gt;
+        el.removeClass(<span class="string">"active"</span>).addClass <span class="string">"removed"</span>
+        el.fadeOut SystemApp.Settings.General.fadeRemoveDelay, () -&gt; el.remove()</pre></div>
+        
+      
+        
+        <p>Add the specified class to an element.</p>
+
+        
+          <div class='highlight'><pre>    addClass: (el, className) =&gt;
+        el?.addClass className</pre></div>
+        
+      
+        
+        <p>Remove the specified class from the element.</p>
+
+        
+          <div class='highlight'><pre>    removeClass: (el, className) =&gt;
+        el?.removeClass className</pre></div>
+        
+      
+        
+        <p>Sort the specified list. The default item selector is the tag <code>li</code>, but you can override this.
+To sort descending, set <code>desc</code> to true.</p>
+
+        
+          <div class='highlight'><pre>    sortList: (list, selector, desc) =&gt;
+        selector = <span class="string">"li"</span> <span class="keyword">if</span> <span class="keyword">not</span> selector?
+        desc = <span class="literal">false</span> <span class="keyword">if</span> <span class="keyword">not</span> desc?
+        items = list.children(selector).get()</pre></div>
+        
+      
+        
+        <p>If <code>desc</code> is true, sort descending.</p>
+
+        
+          <div class='highlight'><pre>        <span class="keyword">if</span> desc
+            <span class="function"><span class="title">sorter</span></span> = (a, b) -&gt;
+                a = $ a
+                b = $ b
+                keyA = a.text()
+                keyB = a.text()
+                <span class="keyword">return</span> -<span class="number">1</span> <span class="keyword">if</span> keyA &gt; keyB
+                <span class="keyword">return</span> <span class="number">1</span> <span class="keyword">if</span> keyA &lt; keyB
+                <span class="keyword">return</span> <span class="number">0</span>
+            items.sort sorter
+        <span class="keyword">else</span>
+            items.sort()</pre></div>
+        
+      
+        
+        <p>Reappend each item on its correct position after sorting.</p>
+
+        
+          <div class='highlight'><pre>        $.each items, (i, el) -&gt; list.append el</pre></div>
+        
+      
+        
+        <h2>MODIFIER KEY HELPERS</h2>
+
+        
+      
+        
+        <p>Check if user is pressing the key combination for delete actions (when deleting a link for example).
+The default combination is &quot;Ctrl + Left Click&quot;, set on the <a href="settings.html">Settings</a>.</p>
+
+        
+          <div class='highlight'><pre>    isEventDelete: (e) =&gt;
+        <span class="keyword">if</span> <span class="keyword">not</span> e?
+            <span class="keyword">return</span> <span class="literal">false</span>
+        <span class="keyword">return</span> <span class="property">@testModifierEvent</span>(e, SystemApp.Data.userSettings.modifierDelete())</pre></div>
+        
+      
+        
+        <p>Check if user is pressing key combination for multiple selections (when selecting multiple shapes for example).
+The default combination is &quot;Shift + Left Click&quot;, set on the <a href="settings.html">Settings</a>.</p>
+
+        
+          <div class='highlight'><pre>    isEventMultiple: (e) =&gt;
+        <span class="keyword">if</span> <span class="keyword">not</span> e?
+            <span class="keyword">return</span> <span class="literal">false</span>
+        <span class="keyword">return</span> <span class="property">@testModifierEvent</span>(e, SystemApp.Data.userSettings.modifierMultiple())</pre></div>
+        
+      
+        
+        <p>Check if user is pressing the key combination for &quot;send to back&quot; (when reordering map shapes for example).
+The default combination is &quot;Right Click&quot;, set on the <a href="settings.html">Settings</a>.</p>
+
+        
+          <div class='highlight'><pre>    isEventToBack: (e) =&gt;
+        <span class="keyword">if</span> <span class="keyword">not</span> e?
+            <span class="keyword">return</span> <span class="literal">false</span>
+        <span class="keyword">return</span> <span class="property">@testModifierEvent</span>(e, SystemApp.Data.userSettings.modifierToBack())</pre></div>
+        
+      
+        
+        <p>Test a modifier key combination against a keyboard / mouse event.</p>
+
+        
+          <div class='highlight'><pre>    testModifierEvent: (e, modifier) =&gt;
+        hasLeftClick = modifier.indexOf(<span class="string">"leftclick"</span>) &gt;= <span class="number">0</span>
+        hasRightClick = modifier.indexOf(<span class="string">"rightclick"</span>) &gt;= <span class="number">0</span>
+        hasCtrl = modifier.indexOf(<span class="string">"ctrl"</span>) &gt;= <span class="number">0</span>
+        hasShift = modifier.indexOf(<span class="string">"shift"</span>) &gt;= <span class="number">0</span>
+        hasAlt = modifier.indexOf(<span class="string">"alt"</span>) &gt;= <span class="number">0</span>
+        hasNone = (!hasCtrl <span class="keyword">and</span> !hasShift <span class="keyword">and</span> !hasAlt)
+
+        keyOk = (hasCtrl <span class="keyword">and</span> e.ctrlKey) <span class="keyword">or</span> (hasShift <span class="keyword">and</span> e.shiftKey) <span class="keyword">or</span> (hasAlt <span class="keyword">and</span> e.altKey) <span class="keyword">or</span> hasNone
+        mouseOk = (hasLeftClick <span class="keyword">and</span> e.which <span class="keyword">is</span> <span class="number">1</span>) <span class="keyword">or</span> (hasRightClick <span class="keyword">and</span> e.which <span class="keyword">is</span> <span class="number">3</span>)
+
+        <span class="keyword">return</span> mouseOk <span class="keyword">and</span> keyOk</pre></div>
+        
+      
+      <div class="fleur">h</div>
+    </div>
+  </div>
+</body>
+</html>

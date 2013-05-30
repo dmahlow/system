@@ -1,0 +1,763 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+  <title>variableManagerView.coffee</title>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <link rel="stylesheet" media="all" href="public/stylesheets/normalize.css" />
+  <link rel="stylesheet" media="all" href="docco.css" />
+</head>
+<body>
+  <div class="container">
+    <div class="page">
+
+      <div class="header">
+        
+          <h1>variableManagerView.coffee</h1>
+        
+
+        
+          <div class="toc">
+            <h3>Table of Contents</h3>
+            <ol>
+              
+                
+                <li>
+                  <a class="source" href="admin.html">
+                    admin.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="api.auditData.html">
+                    api.auditData.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="api.auditEvent.html">
+                    api.auditEvent.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="api.html">
+                    api.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="api.entity.html">
+                    api.entity.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="api.map.html">
+                    api.map.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="api.server.html">
+                    api.server.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="api.variable.html">
+                    api.variable.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="api.view.html">
+                    api.view.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="app.html">
+                    app.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="app.instance.html">
+                    app.instance.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="data.html">
+                    data.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="dataUtil.html">
+                    dataUtil.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="messages.html">
+                    messages.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="auditData.html">
+                    auditData.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="auditEvent.html">
+                    auditEvent.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="base.html">
+                    base.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="entityDefinition.html">
+                    entityDefinition.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="entityObject.html">
+                    entityObject.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="eventAction.html">
+                    eventAction.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="eventRule.html">
+                    eventRule.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="link.html">
+                    link.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="map.html">
+                    map.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="shape.html">
+                    shape.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="user.html">
+                    user.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="userSettings.html">
+                    userSettings.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="variable.html">
+                    variable.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="adminRoutes.html">
+                    adminRoutes.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="appRoutes.html">
+                    appRoutes.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="settings.html">
+                    settings.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="sockets.html">
+                    sockets.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="tutorial.html">
+                    tutorial.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="vectors.html">
+                    vectors.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="statusTabView.html">
+                    statusTabView.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="toolsTabView.html">
+                    toolsTabView.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="usersTabView.html">
+                    usersTabView.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="adminView.html">
+                    adminView.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="alertView.html">
+                    alertView.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="auditDataManagerView.html">
+                    auditDataManagerView.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="auditEventManagerView.html">
+                    auditEventManagerView.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="baseView.html">
+                    baseView.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="createMapView.html">
+                    createMapView.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="entityManagerView.html">
+                    entityManagerView.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="footerView.html">
+                    footerView.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="helpView.html">
+                    helpView.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="entitiesTabView.html">
+                    entitiesTabView.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="inspectorTabView.html">
+                    inspectorTabView.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="mapTabView.html">
+                    mapTabView.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="shapeTabView.html">
+                    shapeTabView.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="controlsView.html">
+                    controlsView.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="labelEditView.html">
+                    labelEditView.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="linkCreatorView.html">
+                    linkCreatorView.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="linkLabelsView.html">
+                    linkLabelsView.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="linkView.html">
+                    linkView.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="shapeLabelsView.html">
+                    shapeLabelsView.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="shapeView.html">
+                    shapeView.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="shapesMoverView.html">
+                    shapesMoverView.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="mapView.html">
+                    mapView.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="menuView.html">
+                    menuView.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="overlayView.html">
+                    overlayView.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="scriptEditorView.html">
+                    scriptEditorView.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="selfTestView.html">
+                    selfTestView.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="settingsView.html">
+                    settingsView.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="startView.html">
+                    startView.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="variableManagerView.html">
+                    variableManagerView.coffee
+                  </a>
+                </li>
+              
+            </ol>
+          </div>
+        
+      </div>
+
+      
+        
+        <h2>VARIABLE MANAGER VIEW</h2>
+
+        
+      
+        
+        <p>Represents the Variables overlay.</p>
+
+        
+          <div class='highlight'><pre><span class="class"><span class="keyword">class</span> <span class="title">SystemApp</span>.<span class="title">VariableManagerView</span> <span class="keyword">extends</span> <span class="title">SystemApp</span>.<span class="title">OverlayView</span></span>
+
+    $txtCreate: <span class="literal">null</span>        <span class="comment"># the text input used to create a new variable</span>
+    $butCreate: <span class="literal">null</span>        <span class="comment"># the button used to create a new variable</span>
+    $txtDescription: <span class="literal">null</span>   <span class="comment"># the "Description" textbox when editing an variable item</span>
+    $txtCode: <span class="literal">null</span>          <span class="comment"># the "URL" textbox when editing an variable item</span>
+    $butSave: <span class="literal">null</span>          <span class="comment"># the "Save" button</span>
+    $codeErrorMsg: <span class="literal">null</span>     <span class="comment"># message shown if code is not valid</span>
+
+    timerHideError: <span class="literal">null</span>    <span class="comment"># cached timer to hide the error message</span></pre></div>
+        
+      
+        
+        <h2>INIT AND DISPOSE</h2>
+
+        
+      
+        
+        <p>Init the Audit Data overlay view.</p>
+
+        
+          <div class='highlight'><pre>    initialize: =&gt;
+        <span class="property">@currentSettings</span> = SystemApp.Settings.Variable
+        <span class="property">@overlayInit</span> <span class="string">"#variables"</span>
+        <span class="property">@setDom</span>()
+        <span class="property">@setEvents</span>()</pre></div>
+        
+      
+        
+        <p>Dispose the Audit Data view.</p>
+
+        
+          <div class='highlight'><pre>    dispose: =&gt;
+        <span class="property">@baseDispose</span>()</pre></div>
+        
+      
+        
+        <p>Set the DOM elements cache.</p>
+
+        
+          <div class='highlight'><pre>    setDom: =&gt;
+        <span class="property">@$menuItem</span> = $ <span class="string">"#menu-variables"</span>
+        <span class="property">@$modelsList</span> = $ <span class="string">"#variables-list"</span>
+        <span class="property">@$txtCreate</span> = $ <span class="string">"#variables-txt-create"</span>
+        <span class="property">@$butCreate</span> = $ <span class="string">"#variables-but-create"</span>
+
+        <span class="property">@$txtDescription</span> = $ <span class="string">"#variables-txt-description"</span>
+        <span class="property">@$txtCode</span> = $ <span class="string">"#variables-txt-code"</span>
+        <span class="property">@$butSave</span> = $ <span class="string">"#variables-but-save"</span>
+        <span class="property">@$codeErrorMsg</span> = $ <span class="string">"#variables-code-error"</span></pre></div>
+        
+      
+        
+        <p>Bind events to the DOM.</p>
+
+        
+          <div class='highlight'><pre>    setEvents: =&gt;
+        <span class="property">@$butCreate</span>.click <span class="property">@createVariableClick</span>
+        <span class="property">@$txtCreate</span>.keyup <span class="property">@createVariableKeyUp</span>
+
+        <span class="property">@$txtDescription</span>.change <span class="property">@inputOnChange</span>
+        <span class="property">@$butSave</span>.click <span class="property">@validateAndSaveCode</span></pre></div>
+        
+      
+        
+        <h2>VARIABLE LIST</h2>
+
+        
+      
+        
+        <p>Clear the current view by setting the <code>model</code> to null
+and emptying the <code>$modelsList</code>.</p>
+
+        
+          <div class='highlight'><pre>    clear: =&gt;
+        <span class="property">@model</span> = <span class="literal">null</span>
+        <span class="property">@$modelsList</span>.empty()
+        <span class="property">@clearTextInputs</span>()</pre></div>
+        
+      
+        
+        <p>Clear the text input fields.</p>
+
+        
+          <div class='highlight'><pre>    clearTextInputs: =&gt;
+        <span class="property">@$txtCreate</span>.val <span class="string">""</span></pre></div>
+        
+      
+        
+        <p>Bind all <a href="variable.html">Variable</a> information from the <a href="data.html">data store</a>.</p>
+
+        
+          <div class='highlight'><pre>    bindVariables: =&gt;
+        <span class="property">@clear</span>()
+        <span class="property">@addToModelsList</span> item <span class="keyword">for</span> item <span class="keyword">in</span> SystemApp.Data.variables.models</pre></div>
+        
+      
+        
+        <h2>CREATING VARIABLE</h2>
+
+        
+      
+        
+        <p>When user clicks the &quot;Add&quot; variable button, add a new record to the
+<a href="data.html">Data.variables</a> and move focus to the properties form.</p>
+
+        
+          <div class='highlight'><pre>    createVariableClick: (e) =&gt;
+        newId = <span class="property">@$txtCreate</span>.val()</pre></div>
+        
+      
+        
+        <p>The ID must have at least 2 chars.</p>
+
+        
+          <div class='highlight'><pre>        <span class="keyword">if</span> newId.length &lt; <span class="number">2</span>
+            <span class="property">@warnField</span> <span class="property">@$txtCreate</span>
+            <span class="keyword">return</span>
+        <span class="keyword">else</span>
+            newId = SystemApp.DataUtil.normalize newId, <span class="literal">true</span>
+
+        item = SystemApp.Data.variables.create {friendlyId: newId}, {wait: <span class="literal">true</span>}
+        <span class="property">@clearTextInputs</span>()</pre></div>
+        
+      
+        
+        <p>If the <code>$txtCreate</code> field has focus, pressing Enter will call the <code>click</code>
+event on the <code>$butCreate</code>.</p>
+
+        
+          <div class='highlight'><pre>    createVariableKeyUp: (e) =&gt;
+        <span class="keyword">if</span> e.keyCode <span class="keyword">is</span> <span class="number">13</span>
+            <span class="property">@$butCreate</span>.click()</pre></div>
+        
+      
+        
+        <h2>VARIABLE PROPERTIES</h2>
+
+        
+      
+        
+        <p>Bind the variable information to the right form.
+Listen to <code>refresh</code> events.</p>
+
+        
+          <div class='highlight'><pre>    onBindModel: =&gt;
+        <span class="keyword">if</span> <span class="property">@model</span>?
+            <span class="property">@$txtDescription</span>.val <span class="property">@model</span>.description()
+            <span class="property">@$txtCode</span>.val <span class="property">@model</span>.code()</pre></div>
+        
+      
+        
+        <p>Force the current data to be refreshed and displayed on the right panel.</p>
+
+        
+          <div class='highlight'><pre>    refreshData: =&gt;
+        <span class="property">@model</span>.sourceUrl <span class="property">@$txtCode</span>.val()
+        <span class="property">@model</span>.refreshData()</pre></div>
+        
+      
+        
+        <p>Triggered when the actual data of an <a href="variable.html">Variable</a> item has been updated.
+This will update the right panel with the new data.</p>
+
+        
+          <div class='highlight'><pre>    refreshDataOk: (item, data) =&gt;
+        <span class="property">@$preview</span>.html JSON.stringify data, <span class="literal">null</span>, <span class="number">4</span></pre></div>
+        
+      
+        
+        <p>Triggered when the actual data of an <a href="variable.html">Variable</a> could not be refreshed.
+This will show a message to the user.</p>
+
+        
+          <div class='highlight'><pre>    refreshDataError: (item, error) =&gt;
+        <span class="property">@$preview</span>.html error</pre></div>
+        
+      
+        
+        <p>Validate and save the script to the <code>code</code> property.</p>
+
+        
+          <div class='highlight'><pre>    validateAndSaveCode: (e) =&gt;
+        code = <span class="property">@$txtCode</span>.val()
+        valMessage = SystemApp.DataUtil.validateEval code</pre></div>
+        
+      
+        
+        <p>If has a validation message, display it and stop here.</p>
+
+        
+          <div class='highlight'><pre>        <span class="keyword">if</span> valMessage?
+            <span class="property">@showCodeError</span> valMessage
+            <span class="keyword">return</span> <span class="literal">false</span></pre></div>
+        
+      
+        
+        <p>All good? Save the code to the model.</p>
+
+        
+          <div class='highlight'><pre>        <span class="property">@model</span>.code code
+        <span class="property">@model</span>.save()
+
+        <span class="property">@fieldSaved</span> <span class="property">@$butSave</span></pre></div>
+        
+      
+        
+        <p>If script vaildation fails, show a message to the user.</p>
+
+        
+          <div class='highlight'><pre>    showCodeError: (message) =&gt;
+        <span class="property">@warnField</span> <span class="property">@$txtCode</span>
+
+        <span class="property">@$codeErrorMsg</span>.html message
+        <span class="property">@$codeErrorMsg</span>.show()</pre></div>
+        
+      
+        
+        <p>Hide the error message after a few seconds.</p>
+
+        
+          <div class='highlight'><pre>        clearTimeout(<span class="property">@timerHideError</span>) <span class="keyword">if</span> <span class="property">@timerHideError</span>?
+        <span class="property">@timerHideError</span> = setTimeout <span class="property">@hideCodeError</span>, SystemApp.Settings.Alert.hideDelay</pre></div>
+        
+      
+        
+        <p>Hide the error message and clear the <code>timerHideError</code> timeout.</p>
+
+        
+          <div class='highlight'><pre>    hideCodeError: =&gt;
+        <span class="property">@timerHideError</span> = <span class="literal">null</span>
+        <span class="property">@$codeErrorMsg</span>.hide()</pre></div>
+        
+      
+        
+        <h2>SHOW AND HIDE</h2>
+
+        
+      
+        
+        <p>Bind the <code>keyUp</code> event when overlay is shown.</p>
+
+        
+          <div class='highlight'><pre>    onShow: =&gt;
+        <span class="property">@bindVariables</span>()
+
+        $(document).keyup <span class="property">@hasModelListKeyUp</span>
+        SystemApp.Data.variables.<span class="literal">on</span> <span class="string">"add"</span>, <span class="property">@addToModelsList</span>
+        SystemApp.Data.variables.<span class="literal">on</span> <span class="string">"remove"</span>, <span class="property">@removeFromModelsList</span></pre></div>
+        
+      
+        
+        <p>Save the <code>model</code> (if there&#39;s one) when the overlay is closed,
+and remove the <code>keyUp</code> from the document.</p>
+
+        
+          <div class='highlight'><pre>    onHide: =&gt;
+        $(document).unbind <span class="string">"keyup"</span>, <span class="property">@hasModelListKeyUp</span>
+        SystemApp.Data.variables.<span class="literal">off</span> <span class="string">"add"</span>, <span class="property">@addToModelsList</span>
+        SystemApp.Data.variables.<span class="literal">off</span> <span class="string">"remove"</span>, <span class="property">@removeFromModelsList</span>
+
+        <span class="property">@model</span>?.save()
+        <span class="property">@model</span> = <span class="literal">null</span></pre></div>
+        
+      
+      <div class="fleur">h</div>
+    </div>
+  </div>
+</body>
+</html>

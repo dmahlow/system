@@ -1,0 +1,860 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+  <title>controlsView.coffee</title>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <link rel="stylesheet" media="all" href="public/stylesheets/normalize.css" />
+  <link rel="stylesheet" media="all" href="docco.css" />
+</head>
+<body>
+  <div class="container">
+    <div class="page">
+
+      <div class="header">
+        
+          <h1>controlsView.coffee</h1>
+        
+
+        
+          <div class="toc">
+            <h3>Table of Contents</h3>
+            <ol>
+              
+                
+                <li>
+                  <a class="source" href="admin.html">
+                    admin.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="api.auditData.html">
+                    api.auditData.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="api.auditEvent.html">
+                    api.auditEvent.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="api.html">
+                    api.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="api.entity.html">
+                    api.entity.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="api.map.html">
+                    api.map.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="api.server.html">
+                    api.server.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="api.variable.html">
+                    api.variable.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="api.view.html">
+                    api.view.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="app.html">
+                    app.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="app.instance.html">
+                    app.instance.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="data.html">
+                    data.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="dataUtil.html">
+                    dataUtil.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="messages.html">
+                    messages.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="auditData.html">
+                    auditData.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="auditEvent.html">
+                    auditEvent.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="base.html">
+                    base.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="entityDefinition.html">
+                    entityDefinition.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="entityObject.html">
+                    entityObject.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="eventAction.html">
+                    eventAction.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="eventRule.html">
+                    eventRule.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="link.html">
+                    link.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="map.html">
+                    map.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="shape.html">
+                    shape.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="user.html">
+                    user.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="userSettings.html">
+                    userSettings.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="variable.html">
+                    variable.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="adminRoutes.html">
+                    adminRoutes.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="appRoutes.html">
+                    appRoutes.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="settings.html">
+                    settings.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="sockets.html">
+                    sockets.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="tutorial.html">
+                    tutorial.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="vectors.html">
+                    vectors.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="statusTabView.html">
+                    statusTabView.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="toolsTabView.html">
+                    toolsTabView.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="usersTabView.html">
+                    usersTabView.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="adminView.html">
+                    adminView.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="alertView.html">
+                    alertView.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="auditDataManagerView.html">
+                    auditDataManagerView.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="auditEventManagerView.html">
+                    auditEventManagerView.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="baseView.html">
+                    baseView.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="createMapView.html">
+                    createMapView.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="entityManagerView.html">
+                    entityManagerView.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="footerView.html">
+                    footerView.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="helpView.html">
+                    helpView.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="entitiesTabView.html">
+                    entitiesTabView.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="inspectorTabView.html">
+                    inspectorTabView.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="mapTabView.html">
+                    mapTabView.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="shapeTabView.html">
+                    shapeTabView.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="controlsView.html">
+                    controlsView.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="labelEditView.html">
+                    labelEditView.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="linkCreatorView.html">
+                    linkCreatorView.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="linkLabelsView.html">
+                    linkLabelsView.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="linkView.html">
+                    linkView.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="shapeLabelsView.html">
+                    shapeLabelsView.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="shapeView.html">
+                    shapeView.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="shapesMoverView.html">
+                    shapesMoverView.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="mapView.html">
+                    mapView.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="menuView.html">
+                    menuView.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="overlayView.html">
+                    overlayView.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="scriptEditorView.html">
+                    scriptEditorView.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="selfTestView.html">
+                    selfTestView.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="settingsView.html">
+                    settingsView.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="startView.html">
+                    startView.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="variableManagerView.html">
+                    variableManagerView.coffee
+                  </a>
+                </li>
+              
+            </ol>
+          </div>
+        
+      </div>
+
+      
+        
+        <h2>MAP CONTROLS VIEW</h2>
+
+        
+      
+        
+        <p>Contains all controls related to map manipulation, editing and filtering.</p>
+
+        
+          <div class='highlight'><pre><span class="class"><span class="keyword">class</span> <span class="title">SystemApp</span>.<span class="title">MapControlsView</span> <span class="keyword">extends</span> <span class="title">SystemApp</span>.<span class="title">BaseView</span></span></pre></div>
+        
+      
+        
+        <h2>PROPERTIES, VARIABLES AND CHILD VIEWS</h2>
+
+        
+      
+        
+        
+        
+          <div class='highlight'><pre>    mapTabView: <span class="literal">null</span>                <span class="comment"># the [map tab](mapTabView.html) map control</span>
+    entitiesTabView: <span class="literal">null</span>           <span class="comment"># the [entities tab](entitiesTabView.html) map control</span>
+    shapeTabView: <span class="literal">null</span>              <span class="comment"># the [shape tab](shapeTabView.html) map control</span>
+    inspectorTabView: <span class="literal">null</span>          <span class="comment"># the [events tab](inspectorTabView.html) map control</span></pre></div>
+        
+      
+        
+        <h2>DOM ELEMENTS</h2>
+
+        
+      
+        
+        
+        
+          <div class='highlight'><pre>    $chkEditable: <span class="literal">null</span>         <span class="comment"># the "Edit enabled" checkbox</span>
+    $chkAutoUpdate: <span class="literal">null</span>       <span class="comment"># the "Timer auto-update" checkbox</span>
+    $imgLock: <span class="literal">null</span>             <span class="comment"># the top "Lock" icon</span>
+    $imgAutoUpdate: <span class="literal">null</span>       <span class="comment"># the top "Timer auto-update" icon</span>
+    $imgFullscreen: <span class="literal">null</span>       <span class="comment"># the top right "Fullscreen" icon</span>
+    $tabDivs: <span class="literal">null</span>             <span class="comment"># the tab divs (each div is a tab)</span>
+    $tabHeaders: <span class="literal">null</span>          <span class="comment"># to get each h4 element on the tab headers</span>
+    $tabInspectorHeader: <span class="literal">null</span>  <span class="comment"># the "Inspector" tab header</span>
+    $tabEntitiesHeader: <span class="literal">null</span>   <span class="comment"># the "Objects" tab header</span></pre></div>
+        
+      
+        
+        <h2>INIT AND DISPOSE</h2>
+
+        
+      
+        
+        <p>Init all map controls and call the <code>resize</code> method to set correct sizing.</p>
+
+        
+          <div class='highlight'><pre>    initialize: (parent) =&gt;
+        <span class="property">@baseInit</span> parent
+        <span class="property">@setDom</span>()
+        <span class="property">@setChildViews</span>()
+        <span class="property">@setEvents</span>()
+        <span class="property">@bindInitialState</span>()
+
+        <span class="property">@resize</span>()
+        <span class="property">@width</span> = <span class="property">@$el</span>.outerWidth()</pre></div>
+        
+      
+        
+        <p>Clear controls and unbind events.</p>
+
+        
+          <div class='highlight'><pre>    dispose: =&gt;
+        $(window).unbind <span class="string">"resize"</span>, <span class="property">@resize</span>
+
+        <span class="property">@mapTabView</span>.dispose()
+        <span class="property">@entitiesTabView</span>.dispose()
+        <span class="property">@shapeTabView</span>.dispose()
+        <span class="property">@inspectorTabView</span>.dispose()
+
+        <span class="property">@baseDispose</span>()</pre></div>
+        
+      
+        
+        <p>Set the child map control views.</p>
+
+        
+          <div class='highlight'><pre>    setChildViews: =&gt;
+        <span class="property">@mapTabView</span> = <span class="keyword">new</span> SystemApp.MapControlsMapTabView <span class="keyword">this</span>
+        <span class="property">@entitiesTabView</span> = <span class="keyword">new</span> SystemApp.MapControlsEntitiesTabView <span class="keyword">this</span>
+        <span class="property">@shapeTabView</span> = <span class="keyword">new</span> SystemApp.MapControlsShapeTabView <span class="keyword">this</span>
+        <span class="property">@inspectorTabView</span> = <span class="keyword">new</span> SystemApp.MapControlsInspectorTabView <span class="keyword">this</span></pre></div>
+        
+      
+        
+        <p>Set the DOM elements cache.</p>
+
+        
+          <div class='highlight'><pre>    setDom: =&gt;
+        <span class="property">@setElement</span> $ <span class="string">"#map-controls"</span>
+
+        <span class="property">@$tabDivs</span> = <span class="property">@$el</span>.children <span class="string">"div.tab"</span>
+        <span class="property">@$tabHeaders</span> = $ <span class="string">"#map-ctl-tab-headers"</span>
+        <span class="property">@$chkEditable</span> = $ <span class="string">"#map-ctl-editable"</span>
+        <span class="property">@$chkAutoUpdate</span> = $ <span class="string">"#map-ctl-autoupdate"</span>
+        <span class="property">@$imgLock</span> = $ <span class="string">"#top-img-lock"</span>
+        <span class="property">@$imgAutoUpdate</span> = $ <span class="string">"#top-img-autoupdate"</span>
+        <span class="property">@$imgFullscreen</span> = $ <span class="string">"#top-img-fullscreen"</span>
+
+        <span class="property">@$tabInspectorHeader</span> = $ <span class="string">"#map-ctl-tab-header-inspector"</span>
+        <span class="property">@$tabEntitiesHeader</span> = $ <span class="string">"#map-ctl-tab-header-entities"</span></pre></div>
+        
+      
+        
+        <p>Bind events to DOM and other controls.</p>
+
+        
+          <div class='highlight'><pre>    setEvents: =&gt;
+        $(window).resize <span class="property">@resize</span>
+
+        <span class="property">@$chkEditable</span>.change <span class="property">@setEditEnabled</span>
+        <span class="property">@$chkAutoUpdate</span>.change <span class="property">@setAutoUpdate</span>
+        <span class="property">@$imgFullscreen</span>.click <span class="property">@toggleFullscreen</span></pre></div>
+        
+      
+        
+        <p>Bind click to tab headers.</p>
+
+        
+          <div class='highlight'><pre>        <span class="property">@$tabHeaders</span>.children(<span class="string">"h4"</span>).click <span class="property">@tabClick</span>
+        <span class="property">@$tabInspectorHeader</span>.click <span class="property">@tabInspectorClick</span>
+        <span class="property">@$tabEntitiesHeader</span>.click <span class="property">@tabEntitiesClick</span>
+
+        <span class="property">@listenTo</span> SystemApp.mapEvents, <span class="string">"loaded"</span>, <span class="property">@bindMap</span>
+        <span class="property">@listenTo</span> SystemApp.mapEvents, <span class="string">"edit:toggle"</span>, <span class="property">@editSetState</span></pre></div>
+        
+      
+        
+        <p>Bind the saved <a href="userSettings.html">User Settings</a> and current <a href="data.html">Data</a> to the map map controls.</p>
+
+        
+          <div class='highlight'><pre>    bindInitialState: =&gt;
+        <span class="property">@$chkAutoUpdate</span>.prop <span class="string">"checked"</span>, SystemApp.Data.userSettings.mapAutoRefresh()</pre></div>
+        
+      
+        
+        <p>When window has loaded or resized, call this to resize the map controls accordingly.
+TODO! Properly calculate the diff instead of using the hard coded value.</p>
+
+        
+          <div class='highlight'><pre>    resize: =&gt;
+        height = $(window).innerHeight() - $(<span class="string">"#header"</span>).outerHeight() - $(<span class="string">"#footer"</span>).outerHeight() - <span class="number">1</span>
+        <span class="property">@$el</span>.css <span class="string">"height"</span>, height
+        <span class="property">@$tabDivs</span>.css <span class="string">"height"</span>, height - <span class="number">32</span></pre></div>
+        
+      
+        
+        <h2>BIND INFORMATION</h2>
+
+        
+      
+        
+        <p>Bind the loaded <a href="map.html">map</a> to the view.</p>
+
+        
+          <div class='highlight'><pre>    bindMap: (map) =&gt;
+        <span class="property">@model</span> = map</pre></div>
+        
+      
+        
+        <p>Bind the selected shape details to the <a href="shapeTabView.html">Shape Details View</a>.</p>
+
+        
+          <div class='highlight'><pre>    bind: (views) =&gt;
+        <span class="property">@shapeTabView</span>.bind views
+        <span class="property">@inspectorTabView</span>.bind views</pre></div>
+        
+      
+        
+        <h2>HELPER PROPERTIES</h2>
+
+        
+      
+        
+        <p>Is the &quot;Show links&quot; checkbox checked?</p>
+
+        
+          <div class='highlight'><pre>    isLinksVisible: =&gt;
+        <span class="property">@mapTabView</span>.isLinksVisible()</pre></div>
+        
+      
+        
+        <h2>SWITCHES, SHOW AND HIDE</h2>
+
+        
+      
+        
+        <p>Set the &quot;Edit&quot; checkbox state when user toggles the edit mode on or off.</p>
+
+        
+          <div class='highlight'><pre>    editSetState: (value) =&gt;
+        <span class="property">@$chkEditable</span>.prop <span class="string">"checked"</span>, <span class="keyword">not</span> value
+
+        <span class="keyword">if</span> <span class="keyword">not</span> value
+            <span class="property">@$imgLock</span>.attr <span class="string">"src"</span>, <span class="string">"images/ico-locked.png"</span>
+        <span class="keyword">else</span>
+            <span class="property">@$imgLock</span>.attr <span class="string">"src"</span>, <span class="string">"images/ico-unlocked.png"</span></pre></div>
+        
+      
+        
+        <p>Enable or disable editing the current <a href="map.html">Map</a>.</p>
+
+        
+          <div class='highlight'><pre>    setEditEnabled: (value) =&gt;
+        <span class="keyword">if</span> value <span class="keyword">isnt</span> <span class="literal">false</span> <span class="keyword">and</span> (value <span class="keyword">is</span> <span class="literal">undefined</span> <span class="keyword">or</span> value.data <span class="keyword">is</span> <span class="literal">null</span>)
+            value = <span class="keyword">not</span> (<span class="property">@$chkEditable</span>.prop <span class="string">"checked"</span>)</pre></div>
+        
+      
+        
+        <p>Get user permissions.</p>
+
+        
+          <div class='highlight'><pre>        hasPermission = SystemApp.Data.loggedUser.hasRole <span class="string">"mapedit"</span>
+        readOnly = <span class="property">@model</span>.isReadOnly()
+        isOwner = (<span class="property">@model</span>.createdByUserId() <span class="keyword">is</span> SystemApp.Data.loggedUser.id)</pre></div>
+        
+      
+        
+        <p>Make sure user has permissions to edit this map.</p>
+
+        
+          <div class='highlight'><pre>        <span class="keyword">if</span> value <span class="keyword">is</span> <span class="literal">true</span>
+            <span class="keyword">if</span> <span class="keyword">not</span> hasPermission <span class="keyword">and</span> <span class="keyword">not</span> isOwner
+                value = <span class="literal">false</span>
+                errorMsg = SystemApp.Messages.errNoPermissionTo.replace <span class="string">"#"</span>, SystemApp.Messages.editThisMap
+            <span class="keyword">else</span> <span class="keyword">if</span> readOnly
+                value = <span class="literal">false</span>
+                errorMsg = SystemApp.Messages.errMapIsReadOnly
+
+            <span class="keyword">if</span> <span class="keyword">not</span> value
+                SystemApp.alertEvents.trigger <span class="string">"tooltip"</span>, {isError: <span class="literal">true</span>, title: SystemApp.Messages.accessDenied, message: errorMsg}
+                <span class="property">@$chkEditable</span>.prop <span class="string">"checked"</span>, <span class="literal">false</span>
+
+        SystemApp.mapEvents.trigger <span class="string">"edit:toggle"</span>, value
+        SystemApp.consoleLog <span class="string">"MapControlsView.setEditEnabled"</span>, value</pre></div>
+        
+      
+        
+        <p>Enable or disable the <a href="auditData.html">AuditData</a> timers to auto-update
+the values of related labels on the map.</p>
+
+        
+          <div class='highlight'><pre>    setAutoUpdate: (value) =&gt;
+        <span class="keyword">if</span> value <span class="keyword">isnt</span> <span class="literal">false</span> <span class="keyword">and</span> (value <span class="keyword">is</span> <span class="literal">undefined</span> <span class="keyword">or</span> value.data <span class="keyword">is</span> <span class="literal">null</span>)
+            value = <span class="keyword">not</span> (<span class="property">@$chkAutoUpdate</span>.prop <span class="string">"checked"</span>)
+
+        <span class="property">@$chkAutoUpdate</span>.prop <span class="string">"checked"</span>, <span class="keyword">not</span> value
+
+        <span class="keyword">if</span> <span class="keyword">not</span> value
+            <span class="property">@$imgAutoUpdate</span>.removeClass <span class="string">"disabled"</span>
+        <span class="keyword">else</span>
+            <span class="property">@$imgAutoUpdate</span>.addClass <span class="string">"disabled"</span>
+
+        SystemApp.Data.autoUpdateEnabled = <span class="keyword">not</span> value
+        SystemApp.Data.userSettings.mapAutoRefresh SystemApp.Data.autoUpdateEnable
+
+        <span class="keyword">if</span> <span class="keyword">not</span> value
+            SystemApp.Data.startTimers()
+        <span class="keyword">else</span>
+            SystemApp.Data.stopTimers()</pre></div>
+        
+      
+        
+        <p>Toggle the fullscreen mode on or off. While on fullscreen, the app <a href="menuView.html">Menu</a>
+and <a href="controlsView.html">Map Controls</a> will be hidden.</p>
+
+        
+          <div class='highlight'><pre>    toggleFullscreen: (fullscreen) =&gt;
+        <span class="keyword">if</span> <span class="keyword">not</span> fullscreen? <span class="keyword">or</span> fullscreen.originalEvent?
+            fullscreen = $(<span class="string">"#header"</span>).<span class="keyword">is</span>(<span class="string">":visible"</span>)
+
+        <span class="keyword">if</span> fullscreen
+
+            $(<span class="string">"#header"</span>).hide()
+            $(<span class="string">"#footer"</span>).addClass(<span class="string">"transparent"</span>)
+            $(<span class="string">"body"</span>).addClass <span class="string">"fullscreen"</span>
+
+            <span class="property">@$imgFullscreen</span>.attr <span class="string">"src"</span>, <span class="string">"images/ico-showcontrols.png"</span>
+            <span class="property">@hide</span>()
+
+        <span class="keyword">else</span>
+
+            $(<span class="string">"#header"</span>).show()
+            $(<span class="string">"#footer"</span>).removeClass(<span class="string">"transparent"</span>)
+            $(<span class="string">"body"</span>).removeClass <span class="string">"fullscreen"</span>
+
+            <span class="property">@$imgFullscreen</span>.attr <span class="string">"src"</span>, <span class="string">"images/ico-hidecontrols.png"</span>
+            <span class="property">@show</span>()
+
+            <span class="property">@mapDivWidth</span> = $(window).innerWidth()
+            <span class="property">@mapDivHeight</span> = $(window).innerHeight() - $(<span class="string">"#header"</span>).outerHeight() - $(<span class="string">"#footer"</span>).outerHeight()
+            <span class="property">@parentView</span>.$el.css <span class="string">"width"</span>, <span class="property">@mapDivWidth</span>
+            <span class="property">@parentView</span>.$el.css <span class="string">"height"</span>, <span class="property">@mapDivHeight</span></pre></div>
+        
+      
+        
+        <p>Save the current fullscreen state on the <a href="userSettings.html">User Settings</a> model.</p>
+
+        
+          <div class='highlight'><pre>        SystemApp.Data.userSettings.mapFullscreen fullscreen</pre></div>
+        
+      
+        
+        <p>Hide the map controls and show the minimzed icon on the top right corner.</p>
+
+        
+          <div class='highlight'><pre>    hide: (e) =&gt;
+        <span class="property">@$el</span>.hide()
+        <span class="property">@width</span> = <span class="number">0</span></pre></div>
+        
+      
+        
+        <p>If an event object is passed then stop its propagation and default behaviour.</p>
+
+        
+          <div class='highlight'><pre>        e?.stopPropagation()
+        e?.preventDefault()</pre></div>
+        
+      
+        
+        <p>Show the map controls and hide the minimzed icon.</p>
+
+        
+          <div class='highlight'><pre>    show: =&gt;
+        <span class="property">@$el</span>.show()
+        <span class="property">@width</span> = <span class="property">@$el</span>.outerWidth()</pre></div>
+        
+      
+        
+        <h2>TABS HANDLING</h2>
+
+        
+      
+        
+        <p>Hide the map controls and show the minimzed icon on the top right corner.</p>
+
+        
+          <div class='highlight'><pre>    tabClick: (e) =&gt;
+        tabHeader = $ e.target
+        tabDiv = $ tabHeader.data <span class="string">"tabid"</span>
+
+        <span class="property">@$tabHeaders</span>.children(<span class="string">"h4"</span>).removeClass <span class="string">"active"</span>
+        tabHeader.addClass <span class="string">"active"</span>
+
+        <span class="property">@$tabDivs</span>.hide()
+        tabDiv.show()</pre></div>
+        
+      
+        
+        <p>When user clicks the &quot;Inspector&quot; tab, call its <code>resize</code> handler.</p>
+
+        
+          <div class='highlight'><pre>    tabInspectorClick: =&gt;
+        <span class="property">@inspectorTabView</span>.resize()</pre></div>
+        
+      
+        
+        <p>When user clicks the &quot;Objects&quot; tab, call its <code>resize</code> handler.</p>
+
+        
+          <div class='highlight'><pre>    tabEntitiesClick: =&gt;
+        <span class="property">@entitiesTabView</span>.resize()</pre></div>
+        
+      
+      <div class="fleur">h</div>
+    </div>
+  </div>
+</body>
+</html>

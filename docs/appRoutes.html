@@ -1,0 +1,746 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+  <title>appRoutes.coffee</title>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <link rel="stylesheet" media="all" href="public/stylesheets/normalize.css" />
+  <link rel="stylesheet" media="all" href="docco.css" />
+</head>
+<body>
+  <div class="container">
+    <div class="page">
+
+      <div class="header">
+        
+          <h1>appRoutes.coffee</h1>
+        
+
+        
+          <div class="toc">
+            <h3>Table of Contents</h3>
+            <ol>
+              
+                
+                <li>
+                  <a class="source" href="admin.html">
+                    admin.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="api.auditData.html">
+                    api.auditData.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="api.auditEvent.html">
+                    api.auditEvent.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="api.html">
+                    api.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="api.entity.html">
+                    api.entity.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="api.map.html">
+                    api.map.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="api.server.html">
+                    api.server.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="api.variable.html">
+                    api.variable.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="api.view.html">
+                    api.view.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="app.html">
+                    app.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="app.instance.html">
+                    app.instance.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="data.html">
+                    data.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="dataUtil.html">
+                    dataUtil.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="messages.html">
+                    messages.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="auditData.html">
+                    auditData.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="auditEvent.html">
+                    auditEvent.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="base.html">
+                    base.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="entityDefinition.html">
+                    entityDefinition.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="entityObject.html">
+                    entityObject.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="eventAction.html">
+                    eventAction.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="eventRule.html">
+                    eventRule.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="link.html">
+                    link.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="map.html">
+                    map.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="shape.html">
+                    shape.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="user.html">
+                    user.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="userSettings.html">
+                    userSettings.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="variable.html">
+                    variable.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="adminRoutes.html">
+                    adminRoutes.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="appRoutes.html">
+                    appRoutes.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="settings.html">
+                    settings.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="sockets.html">
+                    sockets.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="tutorial.html">
+                    tutorial.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="vectors.html">
+                    vectors.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="statusTabView.html">
+                    statusTabView.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="toolsTabView.html">
+                    toolsTabView.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="usersTabView.html">
+                    usersTabView.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="adminView.html">
+                    adminView.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="alertView.html">
+                    alertView.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="auditDataManagerView.html">
+                    auditDataManagerView.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="auditEventManagerView.html">
+                    auditEventManagerView.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="baseView.html">
+                    baseView.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="createMapView.html">
+                    createMapView.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="entityManagerView.html">
+                    entityManagerView.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="footerView.html">
+                    footerView.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="helpView.html">
+                    helpView.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="entitiesTabView.html">
+                    entitiesTabView.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="inspectorTabView.html">
+                    inspectorTabView.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="mapTabView.html">
+                    mapTabView.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="shapeTabView.html">
+                    shapeTabView.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="controlsView.html">
+                    controlsView.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="labelEditView.html">
+                    labelEditView.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="linkCreatorView.html">
+                    linkCreatorView.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="linkLabelsView.html">
+                    linkLabelsView.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="linkView.html">
+                    linkView.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="shapeLabelsView.html">
+                    shapeLabelsView.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="shapeView.html">
+                    shapeView.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="shapesMoverView.html">
+                    shapesMoverView.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="mapView.html">
+                    mapView.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="menuView.html">
+                    menuView.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="overlayView.html">
+                    overlayView.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="scriptEditorView.html">
+                    scriptEditorView.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="selfTestView.html">
+                    selfTestView.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="settingsView.html">
+                    settingsView.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="startView.html">
+                    startView.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="variableManagerView.html">
+                    variableManagerView.coffee
+                  </a>
+                </li>
+              
+            </ol>
+          </div>
+        
+      </div>
+
+      
+        
+        <h2>System ROUTES</h2>
+
+        
+      
+        
+        <p>Handle deep linking using the hashtag.
+Implemented using the Backbone Router.</p>
+
+        
+          <div class='highlight'><pre><span class="class"><span class="keyword">class</span> <span class="title">SystemApp</span>.<span class="title">AppRoutes</span> <span class="keyword">extends</span> <span class="title">Backbone</span>.<span class="title">Router</span></span>
+
+    routes:
+        <span class="string">""</span>: <span class="string">"openDefault"</span>                   <span class="comment"># the default route will change the view based on the last view state</span>
+        <span class="string">"map/:id"</span>: <span class="string">"openMap"</span>                <span class="comment"># open a map on the [Map View](mapView.html)</span>
+        <span class="string">"auditdata"</span>: <span class="string">"openAuditData"</span>        <span class="comment"># open the [Audit Data Manager](auditDataManagerView.html) overlay</span>
+        <span class="string">"auditevents"</span>: <span class="string">"openAuditEvents"</span>    <span class="comment"># open the [Audit Event Manager](auditEventManagerView.html) overlay</span>
+        <span class="string">"createmap"</span>: <span class="string">"openCreateMap"</span>        <span class="comment"># open the [Create Map](createMapView.html) overlay</span>
+        <span class="string">"entities"</span>: <span class="string">"openEntities"</span>          <span class="comment"># open the [Entity Manager](entityManagerView.html) overlay</span>
+        <span class="string">"help"</span>: <span class="string">"openHelp"</span>                  <span class="comment"># open the [Help](helpView.html) overlay</span>
+        <span class="string">"maps"</span>: <span class="string">"openStart"</span>                 <span class="comment"># open the [Start](startView.html) overlay</span>
+        <span class="string">"settings"</span>: <span class="string">"openSettings"</span>          <span class="comment"># open the [Settings](settingsView.html) overlay</span>
+        <span class="string">"start"</span>: <span class="string">"openStart"</span>                <span class="comment"># open the [Start](startView.html) overlay</span>
+        <span class="string">"variables"</span>: <span class="string">"openVariables"</span>        <span class="comment"># open the [Variables Manager](variableManagerView.html) overlay</span>
+        <span class="string">":invalid"</span>: <span class="string">"openInvalid"</span>           <span class="comment"># default catch-all routes, display an "invalid path" to the user</span></pre></div>
+        
+      
+        
+        <h2>ROUTER METHODS</h2>
+
+        
+      
+        
+        <p>The default route &quot;/&quot; will check if there&#39;s a map open. If there&#39;s none,
+then open the <a href="startView.html">start view</a>.</p>
+
+        
+          <div class='highlight'><pre>    openDefault: =&gt;
+        <span class="keyword">if</span> SystemApp.mapView.model?
+            <span class="property">@showOverlay</span> <span class="literal">false</span>
+        <span class="keyword">else</span>
+            <span class="property">@openStart</span>()</pre></div>
+        
+      
+        
+        <p>Show the specified map on the <a href="mapView.html">Map View</a>.
+If the map is invalid, then show a <a href="alertView.html">Footer Alert</a>.</p>
+
+        
+          <div class='highlight'><pre>    openMap: (id) =&gt;
+        SystemApp.consoleLog <span class="string">"ROUTE"</span>, <span class="string">"openMap"</span>, id
+
+        SystemApp.auditDataManagerView.hide()
+        SystemApp.settingsView.hide()
+        SystemApp.startView.hide()
+        SystemApp.helpView.hide()</pre></div>
+        
+      
+        
+        <p>If no valid ID is specified, then clear the current map.</p>
+
+        
+          <div class='highlight'><pre>        <span class="keyword">if</span> <span class="keyword">not</span> id? <span class="keyword">or</span> id <span class="keyword">is</span> <span class="number">0</span>
+            SystemApp.mapView.bind <span class="literal">null</span>
+            <span class="keyword">return</span>
+
+        urlKey = SystemApp.DataUtil.getUrlKey id</pre></div>
+        
+      
+        
+        <p>Find map based on its friendly URL key. If no map is found, trying using the value as its ID.</p>
+
+        
+          <div class='highlight'><pre>        <span class="keyword">if</span> SystemApp.Settings.Map.enableLocalMap <span class="keyword">and</span> id <span class="keyword">is</span> SystemApp.Settings.Map.localMapId
+            map = <span class="keyword">new</span> SystemApp.Map()
+            map.initLocalMap()
+        <span class="keyword">else</span>
+            map = _.find SystemApp.Data.maps.models, (item) -&gt; item.urlKey() <span class="keyword">is</span> urlKey
+            map = SystemApp.Data.maps.get(id) <span class="keyword">if</span> <span class="keyword">not</span> map?
+
+        <span class="keyword">if</span> map?
+            SystemApp.mapView.bind map
+            SystemApp.menuEvents.trigger <span class="string">"active:map"</span>, map
+            <span class="property">@showOverlay</span> <span class="literal">false</span>
+        <span class="keyword">else</span>
+            msg = SystemApp.Messages.errMapDoesNotExist
+            SystemApp.alertEvents.trigger <span class="string">"footer"</span>, {isError: <span class="literal">true</span>, title: SystemApp.Messages.error, message: msg}
+            SystemApp.toggleLoading <span class="literal">false</span>
+            <span class="property">@navigate</span> <span class="string">""</span>, {trigger: <span class="literal">false</span>}</pre></div>
+        
+      
+        
+        <p>Show the <a href="auditDataManagerView.html">Audit Data Manager View</a>.</p>
+
+        
+          <div class='highlight'><pre>    openAuditData: =&gt;
+        SystemApp.consoleLog <span class="string">"ROUTE"</span>, <span class="string">"openAuditData"</span>
+        <span class="property">@showOverlay</span> SystemApp.auditDataManagerView</pre></div>
+        
+      
+        
+        <p>Show the <a href="auditDataManagerView.html">Audit Event Manager View</a>.</p>
+
+        
+          <div class='highlight'><pre>    openAuditEvents: =&gt;
+        SystemApp.consoleLog <span class="string">"ROUTE"</span>, <span class="string">"openAuditEvents"</span>
+        <span class="property">@showOverlay</span> SystemApp.auditEventManagerView</pre></div>
+        
+      
+        
+        <p>Show the <a href="createMapView.html">Create Map View</a>.</p>
+
+        
+          <div class='highlight'><pre>    openCreateMap: =&gt;
+        SystemApp.consoleLog <span class="string">"ROUTE"</span>, <span class="string">"openCreateMap"</span>
+        <span class="property">@showOverlay</span> SystemApp.createMapView</pre></div>
+        
+      
+        
+        <p>Show the <a href="entityManagerView.html">Entity Manager View</a>.</p>
+
+        
+          <div class='highlight'><pre>    openEntities: =&gt;
+        SystemApp.consoleLog <span class="string">"ROUTE"</span>, <span class="string">"openEntities"</span>
+        <span class="property">@showOverlay</span> SystemApp.entityManagerView</pre></div>
+        
+      
+        
+        <p>Show the <a href="helpView.html">Help View</a>.</p>
+
+        
+          <div class='highlight'><pre>    openHelp: =&gt;
+        SystemApp.consoleLog <span class="string">"ROUTE"</span>, <span class="string">"openHelp"</span>
+        <span class="property">@showOverlay</span> SystemApp.helpView</pre></div>
+        
+      
+        
+        <p>Show the <a href="settingsView.html">Settings View</a>.</p>
+
+        
+          <div class='highlight'><pre>    openSettings: =&gt;
+        SystemApp.consoleLog <span class="string">"ROUTE"</span>, <span class="string">"openSettings"</span>
+        <span class="property">@showOverlay</span> SystemApp.settingsView</pre></div>
+        
+      
+        
+        <p>Show the <a href="scriptEditorView.html">Script Editor View</a>.</p>
+
+        
+          <div class='highlight'><pre>    openScriptEditor: (model, propertyName) =&gt;
+        SystemApp.consoleLog <span class="string">"ROUTE"</span>, <span class="string">"openScriptEditor"</span>
+        <span class="property">@showOverlay</span> SystemApp.scriptEditorView, model, propertyName</pre></div>
+        
+      
+        
+        <p>Show the <a href="startView.html">Start View</a>.</p>
+
+        
+          <div class='highlight'><pre>    openStart: =&gt;
+        SystemApp.consoleLog <span class="string">"ROUTE"</span>, <span class="string">"openStart"</span>
+        <span class="property">@showOverlay</span> SystemApp.startView</pre></div>
+        
+      
+        
+        <p>Show the <a href="variableManagerView.html">Variables Manager View</a>.</p>
+
+        
+          <div class='highlight'><pre>    openVariables: =&gt;
+        SystemApp.consoleLog <span class="string">"ROUTE"</span>, <span class="string">"openVariables"</span>
+        <span class="property">@showOverlay</span> SystemApp.variableManagerView</pre></div>
+        
+      
+        
+        <p>Open default page and show an alert with &quot;invalid path&quot; to the user.</p>
+
+        
+          <div class='highlight'><pre>    openInvalid: =&gt;
+        SystemApp.consoleLog <span class="string">"ROUTE"</span>, <span class="string">"openInvalid"</span>
+
+        errorTitle = SystemApp.Messages.invalidRoute
+        errorMsg = SystemApp.Messages.errInvalidRoute
+        SystemApp.alertEvents.trigger <span class="string">"tooltip"</span>, {isError: <span class="literal">true</span>, title: errorTitle, message: errorMsg}
+
+        <span class="property">@openDefault</span>()
+        <span class="property">@navigate</span> <span class="string">""</span>, {trigger: <span class="literal">false</span>}</pre></div>
+        
+      
+        
+        <h2>HELPER METHODS</h2>
+
+        
+      
+        
+        <p>Hide all overlays (if there&#39;s any open) and show the specified view.
+The new overlay can receive up to 2 parameters.
+TODO! Refactor and use events to properly hide the other overlays!</p>
+
+        
+          <div class='highlight'><pre>    showOverlay: (overlay, param1, param2) =&gt;
+        <span class="keyword">for</span> view <span class="keyword">in</span> [
+            SystemApp.auditDataManagerView,
+            SystemApp.auditEventManagerView,
+            SystemApp.createMapView,
+            SystemApp.entityManagerView,
+            SystemApp.helpView,
+            SystemApp.settingsView,
+            SystemApp.scriptEditorView,
+            SystemApp.startView,
+            SystemApp.variableManagerView]
+            view.hide() <span class="keyword">if</span> overlay <span class="keyword">isnt</span> view
+
+        <span class="keyword">if</span> overlay <span class="keyword">isnt</span> <span class="literal">false</span>
+            SystemApp.toggleLoading <span class="literal">false</span>
+            overlay.show param1, param2</pre></div>
+        
+      
+        
+        <p>Refresh the page in X milliseconds. If milliseconds is more than 0, show an alert
+which allows the user to cancel the refresh.</p>
+
+        
+          <div class='highlight'><pre>    refresh: (delay) =&gt;
+        <span class="function"><span class="title">refreshCallback</span></span> = -&gt; window.document.location.href = window.location.href
+
+        <span class="keyword">if</span> <span class="keyword">not</span> delay? <span class="keyword">or</span> delay &lt; <span class="number">1</span>
+            SystemApp.consoleLog <span class="string">"ROUTE"</span>, <span class="string">"Refresh current page now."</span>
+            refreshCallback()
+        <span class="keyword">else</span>
+            SystemApp.consoleLog <span class="string">"ROUTE"</span>, <span class="string">"Refresh current page in <span class="subst">#{delay}</span> milliseconds."</span></pre></div>
+        
+      
+        
+        <p>Set refresh message and info.</p>
+
+        
+          <div class='highlight'><pre>            time = moment().add(<span class="string">"ms"</span>, delay).format <span class="string">"HH:mm:ss"</span>
+            title = SystemApp.Messages.attention
+            message = SystemApp.Messages.scheduledRefreshAlert.replace <span class="string">"#"</span>, time</pre></div>
+        
+      
+        
+        <p>Set timeout and handler to cancel using ESC.</p>
+
+        
+          <div class='highlight'><pre>            refreshTimer = setTimeout refreshCallback, delay
+            <span class="function"><span class="title">clickAction</span></span> = (e) -&gt;
+                <span class="keyword">if</span> e.keyCode <span class="keyword">is</span> <span class="number">27</span>
+                    clearTimeout refreshTimer</pre></div>
+        
+      
+        
+        <p>Trigger the tooltip alert.</p>
+
+        
+          <div class='highlight'><pre>            SystemApp.alertEvents.trigger <span class="string">"tooltip"</span>, {title: title, message: message, delay: delay, clickAction: clickAction}</pre></div>
+        
+      
+      <div class="fleur">h</div>
+    </div>
+  </div>
+</body>
+</html>

@@ -1,0 +1,812 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+  <title>shapesMoverView.coffee</title>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <link rel="stylesheet" media="all" href="public/stylesheets/normalize.css" />
+  <link rel="stylesheet" media="all" href="docco.css" />
+</head>
+<body>
+  <div class="container">
+    <div class="page">
+
+      <div class="header">
+        
+          <h1>shapesMoverView.coffee</h1>
+        
+
+        
+          <div class="toc">
+            <h3>Table of Contents</h3>
+            <ol>
+              
+                
+                <li>
+                  <a class="source" href="admin.html">
+                    admin.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="api.auditData.html">
+                    api.auditData.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="api.auditEvent.html">
+                    api.auditEvent.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="api.html">
+                    api.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="api.entity.html">
+                    api.entity.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="api.map.html">
+                    api.map.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="api.server.html">
+                    api.server.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="api.variable.html">
+                    api.variable.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="api.view.html">
+                    api.view.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="app.html">
+                    app.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="app.instance.html">
+                    app.instance.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="data.html">
+                    data.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="dataUtil.html">
+                    dataUtil.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="messages.html">
+                    messages.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="auditData.html">
+                    auditData.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="auditEvent.html">
+                    auditEvent.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="base.html">
+                    base.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="entityDefinition.html">
+                    entityDefinition.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="entityObject.html">
+                    entityObject.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="eventAction.html">
+                    eventAction.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="eventRule.html">
+                    eventRule.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="link.html">
+                    link.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="map.html">
+                    map.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="shape.html">
+                    shape.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="user.html">
+                    user.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="userSettings.html">
+                    userSettings.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="variable.html">
+                    variable.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="adminRoutes.html">
+                    adminRoutes.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="appRoutes.html">
+                    appRoutes.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="settings.html">
+                    settings.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="sockets.html">
+                    sockets.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="tutorial.html">
+                    tutorial.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="vectors.html">
+                    vectors.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="statusTabView.html">
+                    statusTabView.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="toolsTabView.html">
+                    toolsTabView.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="usersTabView.html">
+                    usersTabView.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="adminView.html">
+                    adminView.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="alertView.html">
+                    alertView.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="auditDataManagerView.html">
+                    auditDataManagerView.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="auditEventManagerView.html">
+                    auditEventManagerView.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="baseView.html">
+                    baseView.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="createMapView.html">
+                    createMapView.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="entityManagerView.html">
+                    entityManagerView.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="footerView.html">
+                    footerView.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="helpView.html">
+                    helpView.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="entitiesTabView.html">
+                    entitiesTabView.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="inspectorTabView.html">
+                    inspectorTabView.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="mapTabView.html">
+                    mapTabView.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="shapeTabView.html">
+                    shapeTabView.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="controlsView.html">
+                    controlsView.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="labelEditView.html">
+                    labelEditView.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="linkCreatorView.html">
+                    linkCreatorView.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="linkLabelsView.html">
+                    linkLabelsView.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="linkView.html">
+                    linkView.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="shapeLabelsView.html">
+                    shapeLabelsView.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="shapeView.html">
+                    shapeView.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="shapesMoverView.html">
+                    shapesMoverView.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="mapView.html">
+                    mapView.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="menuView.html">
+                    menuView.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="overlayView.html">
+                    overlayView.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="scriptEditorView.html">
+                    scriptEditorView.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="selfTestView.html">
+                    selfTestView.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="settingsView.html">
+                    settingsView.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="startView.html">
+                    startView.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="variableManagerView.html">
+                    variableManagerView.coffee
+                  </a>
+                </li>
+              
+            </ol>
+          </div>
+        
+      </div>
+
+      
+        
+        <h2>SHAPES MOVER VIEW</h2>
+
+        
+      
+        
+        <p>Overlay that is shown whenever the user is selecting and moving multiple shapes on the map.</p>
+
+        
+          <div class='highlight'><pre><span class="class"><span class="keyword">class</span> <span class="title">SystemApp</span>.<span class="title">MapShapesMoverView</span> <span class="keyword">extends</span> <span class="title">SystemApp</span>.<span class="title">BaseView</span></span>
+
+    svg: <span class="literal">null</span>           <span class="comment"># the main SVG rectangle</span>
+    svgCount: <span class="literal">null</span>      <span class="comment"># the SVG count / text</span>
+    shapeViews: <span class="literal">null</span>    <span class="comment"># array containing all shape views being moved</span>
+    ox: <span class="number">0</span>               <span class="comment"># temporary X coordinates</span>
+    oy: <span class="number">0</span>               <span class="comment"># temporary Y coordinates</span></pre></div>
+        
+      
+        
+        <h2>INIT AND DISPOSE</h2>
+
+        
+      
+        
+        <p>Init the label edit view and set its parent view.</p>
+
+        
+          <div class='highlight'><pre>    initialize: (parent) =&gt;
+        <span class="property">@baseInit</span> parent</pre></div>
+        
+      
+        
+        <p>Base dispose for all shapes.</p>
+
+        
+          <div class='highlight'><pre>    dispose: =&gt;
+        <span class="property">@remove</span>()
+        <span class="property">@baseDispose</span>()</pre></div>
+        
+      
+        
+        <h2>HELPER PROPERTIES</h2>
+
+        
+      
+        
+        <p>Helper to get the X position on the rectangle.</p>
+
+        
+          <div class='highlight'><pre>    x: =&gt;
+        <span class="keyword">return</span> <span class="property">@svg</span>.attr <span class="string">"x"</span></pre></div>
+        
+      
+        
+        <p>Helper to get the Y position on the rectangle.</p>
+
+        
+          <div class='highlight'><pre>    y: =&gt;
+        <span class="keyword">return</span> <span class="property">@svg</span>.attr <span class="string">"y"</span></pre></div>
+        
+      
+        
+        <p>Helper to get the X position on the rectangle.</p>
+
+        
+          <div class='highlight'><pre>    width: =&gt;
+        <span class="keyword">return</span> <span class="property">@svg</span>.attr <span class="string">"width"</span></pre></div>
+        
+      
+        
+        <p>Helper to get the Y position on the rectangle.</p>
+
+        
+          <div class='highlight'><pre>    height: =&gt;
+        <span class="keyword">return</span> <span class="property">@svg</span>.attr <span class="string">"height"</span></pre></div>
+        
+      
+        
+        <h2>RENDER AND BIND</h2>
+
+        
+      
+        
+        <p>Render the shapes mover rectangle on the specified parent <a href="mapView.html">Map View</a>.</p>
+
+        
+          <div class='highlight'><pre>    render: =&gt;
+        <span class="property">@hide</span>()
+        <span class="property">@remove</span>()
+
+        <span class="property">@svg</span> = <span class="property">@parentView</span>.paper.rect(<span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>)
+        <span class="property">@svg</span>.attr {<span class="string">"fill"</span>: SystemApp.Settings.MapMover.background, <span class="string">"opacity"</span>: <span class="number">0</span>, <span class="string">"cursor"</span>: <span class="string">"move"</span>}
+
+        <span class="property">@setElement</span> <span class="property">@svg</span>
+
+        <span class="keyword">return</span> <span class="keyword">this</span></pre></div>
+        
+      
+        
+        <p>Remove the element from the document and set <code>svg</code> to null.</p>
+
+        
+          <div class='highlight'><pre>    remove: =&gt;
+        <span class="keyword">if</span> <span class="property">@svg</span>?
+            <span class="keyword">try</span>
+                <span class="property">@svg</span>.undrag()
+                <span class="property">@svg</span>.remove()
+            <span class="keyword">catch</span> ex
+                console.error <span class="string">"MapShapesMoverView.remove"</span>, <span class="string">"Could not remove element, maybe it was already cleared?"</span>, ex
+
+        <span class="property">@svg</span> = <span class="literal">null</span></pre></div>
+        
+      
+        
+        <p>Show the view on the specified <code>x</code> and <code>y</code> position.
+Will set the opacity to the value defined on the <a href="settings.html">Settings</a>.</p>
+
+        
+          <div class='highlight'><pre>    show: (x, y) =&gt;
+        <span class="property">@ox</span> = x
+        <span class="property">@oy</span> = y - <span class="number">30</span>
+
+        <span class="property">@setSize</span> <span class="number">1</span>, <span class="number">1</span>
+        <span class="property">@setPosition</span> x, y
+
+        <span class="property">@svg</span>.attr {<span class="string">"opacity"</span>: SystemApp.Settings.MapMover.opacity}
+        <span class="property">@svg</span>.toFront()
+
+        $(document).mousemove <span class="property">@mouseMoveResize</span>
+        $(document).mouseup <span class="property">@mouseUpResize</span>
+        $(document).keyup <span class="property">@documentKeyUp</span></pre></div>
+        
+      
+        
+        <p>Hide the view (user has finished moving, or pressed the &quot;Esc&quot; key).
+This will also force removing the selected <a href="shapeView.html">Shape Views</a>
+shadows and unbind mouse and keyboard events.</p>
+
+        
+          <div class='highlight'><pre>    hide: =&gt;
+        <span class="keyword">if</span> <span class="property">@svg</span>?
+            <span class="property">@svg</span>.undrag()
+            <span class="property">@svg</span>.toBack()
+            <span class="property">@svg</span>.attr {<span class="string">"opacity"</span>: <span class="number">0</span>}
+            <span class="property">@setSize</span> <span class="number">0</span>, <span class="number">0</span>
+
+        <span class="keyword">if</span> <span class="property">@shapeViews</span>?.length &gt; <span class="number">0</span>
+            <span class="property">@parentView</span>.model.save()
+            view.unhighlight() <span class="keyword">for</span> view <span class="keyword">in</span> <span class="property">@shapeViews</span>
+
+        <span class="property">@shapeViews</span> = <span class="literal">null</span>
+
+        $(document).<span class="literal">off</span> <span class="string">"mousemove"</span>, <span class="property">@mouseMoveResize</span>
+        $(document).<span class="literal">off</span> <span class="string">"mouseup"</span>, <span class="property">@mouseUpResize</span>
+        $(document).<span class="literal">off</span> <span class="string">"keyup"</span>, <span class="property">@documentKeyUp</span></pre></div>
+        
+      
+        
+        <p>Stop resizing and select all elements inside the selected area.</p>
+
+        
+          <div class='highlight'><pre>    selectShapes: =&gt;
+        <span class="property">@shapeViews</span> = []
+
+        _.each <span class="property">@parentView</span>.shapeViews, (view) =&gt;
+            shapeCenter = view.centerPoint()
+            box = <span class="property">@svg</span>.getBBox()
+
+            <span class="keyword">if</span> Raphael.isPointInsideBBox box, shapeCenter.x, shapeCenter.y
+                <span class="property">@shapeViews</span>.push view
+                view.highlight SystemApp.Settings.MapMover.shadowColor</pre></div>
+        
+      
+        
+        <p>If shapes were selected then set the drag handlers, otherwise hide the rectangle.</p>
+
+        
+          <div class='highlight'><pre>        <span class="keyword">if</span> <span class="property">@shapeViews</span>.length &gt; <span class="number">0</span>
+            <span class="property">@setDrag</span>()
+        <span class="keyword">else</span>
+            <span class="property">@hide</span>()</pre></div>
+        
+      
+        
+        <p>When user presses a key while the map mover view is visible.
+Pressing &quot;Esc&quot; will hide the view.</p>
+
+        
+          <div class='highlight'><pre>    documentKeyUp: (e) =&gt;
+        <span class="keyword">if</span> e.which <span class="keyword">is</span> <span class="number">27</span>
+            <span class="property">@hide</span>()</pre></div>
+        
+      
+        
+        <h2>RESIZING AND POSITIONING</h2>
+
+        
+      
+        
+        <p>Resize the rectangle passing a <code>width</code> and <code>height</code>.</p>
+
+        
+          <div class='highlight'><pre>    setSize: (width, height) =&gt;
+        width = width * <span class="property">@parentView</span>.currentZoom
+        height = height * <span class="property">@parentView</span>.currentZoom
+
+        <span class="property">@svg</span>.attr {<span class="string">"width"</span>: width, <span class="string">"height"</span>: height}</pre></div>
+        
+      
+        
+        <p>Set the rectangle position, passing a <code>x</code> and <code>y</code>. If absolute is false, it will also
+consider the current <a href="mapView.html">Map View</a> view box to calculate the real positioning.</p>
+
+        
+          <div class='highlight'><pre>    setPosition: (x, y, absolute) =&gt;
+        <span class="keyword">if</span> <span class="keyword">not</span> absolute
+            viewBox = <span class="property">@parentView</span>.getViewBox()
+            x = x * <span class="property">@parentView</span>.currentZoom + viewBox.x
+            y = y * <span class="property">@parentView</span>.currentZoom + viewBox.y
+
+        <span class="property">@svg</span>.attr {<span class="string">"x"</span>: x, <span class="string">"y"</span>: y}</pre></div>
+        
+      
+        
+        <p>When user is moving the mouse while the view is visible, calculate size and call <code>resize</code>.</p>
+
+        
+          <div class='highlight'><pre>    mouseMoveResize: (e) =&gt;
+        w = e.pageX - <span class="property">@ox</span>
+        h = e.pageY - <span class="property">@oy</span> - <span class="number">40</span>
+        x = <span class="property">@ox</span>
+        y = <span class="property">@oy</span>
+
+        <span class="keyword">if</span> w &lt; <span class="number">0</span>
+            w = w * -<span class="number">1</span>
+            x = e.pageX
+
+        <span class="keyword">if</span> h &lt; <span class="number">0</span>
+            h = h * -<span class="number">1</span>
+            y = e.pageY - <span class="number">40</span>
+
+        <span class="property">@setSize</span> w, h
+        <span class="property">@setPosition</span> x, y, <span class="literal">false</span></pre></div>
+        
+      
+        
+        <p>When user releases the mouse button, stop resizing the view and select all shapes inside it.</p>
+
+        
+          <div class='highlight'><pre>    mouseUpResize: (e) =&gt;
+        $(document).<span class="literal">off</span> <span class="string">"mousemove"</span>, <span class="property">@mouseMoveResize</span>
+        $(document).<span class="literal">off</span> <span class="string">"mouseup"</span>, <span class="property">@mouseUpResize</span>
+
+        <span class="property">@selectShapes</span>()</pre></div>
+        
+      
+        
+        <h2>DRAGGING AND MOVING</h2>
+
+        
+      
+        
+        <p>Prepare the rectangle to be draggable after shapes were selected.</p>
+
+        
+          <div class='highlight'><pre>    setDrag: =&gt;
+        <span class="property">@svg</span>.drag <span class="property">@dragMove</span>, <span class="property">@dragStart</span>, <span class="property">@dragEnd</span></pre></div>
+        
+      
+        
+        <p>User has started dragging the rectangle.</p>
+
+        
+          <div class='highlight'><pre>    dragStart: (x, y, e) =&gt;
+        <span class="property">@ox</span> = <span class="property">@x</span>()
+        <span class="property">@oy</span> = <span class="property">@y</span>()
+
+        <span class="keyword">if</span> <span class="property">@isEventDelete</span> e
+            <span class="property">@hide</span>()
+            <span class="keyword">return</span></pre></div>
+        
+      
+        
+        <p>Set the temporary <code>ox</code> and <code>oy</code> on all shape views and bind their <a href="linkView.html">Link Views</a>.</p>
+
+        
+          <div class='highlight'><pre>        <span class="keyword">for</span> view <span class="keyword">in</span> <span class="property">@shapeViews</span>
+            view.dragStart x, y, e
+
+        <span class="property">@parentView</span>.addToSelected <span class="literal">null</span></pre></div>
+        
+      
+        
+        <p>When user is dragging the rectangle, change its positiong and the position
+of all selected <a href="shapeView.html">Shape Views</a>.</p>
+
+        
+          <div class='highlight'><pre>    dragMove: (dx, dy) =&gt;
+        posX = <span class="property">@ox</span> + dx * <span class="property">@parentView</span>.currentZoom
+        posY = <span class="property">@oy</span> + dy * <span class="property">@parentView</span>.currentZoom
+
+        <span class="property">@setPosition</span> posX, posY, <span class="literal">true</span></pre></div>
+        
+      
+        
+        <p>Set shape views and links position.</p>
+
+        
+          <div class='highlight'><pre>        <span class="keyword">for</span> view <span class="keyword">in</span> <span class="property">@shapeViews</span>
+            view.dragMove dx, dy</pre></div>
+        
+      
+        
+        <p>Recreate all selected <a href="shapeView.html">Shape Views</a> shadows, and bring the rectangle to front.</p>
+
+        
+          <div class='highlight'><pre>    dragEnd: (e) =&gt;
+        <span class="keyword">for</span> view <span class="keyword">in</span> <span class="property">@shapeViews</span>
+            view.dragEnd e, SystemApp.Settings.MapMover.shadowColor
+
+        <span class="property">@svg</span>.toFront()</pre></div>
+        
+      
+      <div class="fleur">h</div>
+    </div>
+  </div>
+</body>
+</html>

@@ -1,0 +1,761 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+  <title>entityDefinition.coffee</title>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <link rel="stylesheet" media="all" href="public/stylesheets/normalize.css" />
+  <link rel="stylesheet" media="all" href="docco.css" />
+</head>
+<body>
+  <div class="container">
+    <div class="page">
+
+      <div class="header">
+        
+          <h1>entityDefinition.coffee</h1>
+        
+
+        
+          <div class="toc">
+            <h3>Table of Contents</h3>
+            <ol>
+              
+                
+                <li>
+                  <a class="source" href="admin.html">
+                    admin.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="api.auditData.html">
+                    api.auditData.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="api.auditEvent.html">
+                    api.auditEvent.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="api.html">
+                    api.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="api.entity.html">
+                    api.entity.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="api.map.html">
+                    api.map.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="api.server.html">
+                    api.server.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="api.variable.html">
+                    api.variable.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="api.view.html">
+                    api.view.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="app.html">
+                    app.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="app.instance.html">
+                    app.instance.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="data.html">
+                    data.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="dataUtil.html">
+                    dataUtil.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="messages.html">
+                    messages.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="auditData.html">
+                    auditData.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="auditEvent.html">
+                    auditEvent.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="base.html">
+                    base.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="entityDefinition.html">
+                    entityDefinition.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="entityObject.html">
+                    entityObject.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="eventAction.html">
+                    eventAction.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="eventRule.html">
+                    eventRule.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="link.html">
+                    link.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="map.html">
+                    map.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="shape.html">
+                    shape.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="user.html">
+                    user.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="userSettings.html">
+                    userSettings.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="variable.html">
+                    variable.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="adminRoutes.html">
+                    adminRoutes.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="appRoutes.html">
+                    appRoutes.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="settings.html">
+                    settings.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="sockets.html">
+                    sockets.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="tutorial.html">
+                    tutorial.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="vectors.html">
+                    vectors.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="statusTabView.html">
+                    statusTabView.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="toolsTabView.html">
+                    toolsTabView.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="usersTabView.html">
+                    usersTabView.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="adminView.html">
+                    adminView.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="alertView.html">
+                    alertView.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="auditDataManagerView.html">
+                    auditDataManagerView.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="auditEventManagerView.html">
+                    auditEventManagerView.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="baseView.html">
+                    baseView.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="createMapView.html">
+                    createMapView.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="entityManagerView.html">
+                    entityManagerView.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="footerView.html">
+                    footerView.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="helpView.html">
+                    helpView.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="entitiesTabView.html">
+                    entitiesTabView.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="inspectorTabView.html">
+                    inspectorTabView.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="mapTabView.html">
+                    mapTabView.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="shapeTabView.html">
+                    shapeTabView.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="controlsView.html">
+                    controlsView.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="labelEditView.html">
+                    labelEditView.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="linkCreatorView.html">
+                    linkCreatorView.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="linkLabelsView.html">
+                    linkLabelsView.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="linkView.html">
+                    linkView.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="shapeLabelsView.html">
+                    shapeLabelsView.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="shapeView.html">
+                    shapeView.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="shapesMoverView.html">
+                    shapesMoverView.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="mapView.html">
+                    mapView.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="menuView.html">
+                    menuView.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="overlayView.html">
+                    overlayView.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="scriptEditorView.html">
+                    scriptEditorView.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="selfTestView.html">
+                    selfTestView.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="settingsView.html">
+                    settingsView.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="startView.html">
+                    startView.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="variableManagerView.html">
+                    variableManagerView.coffee
+                  </a>
+                </li>
+              
+            </ol>
+          </div>
+        
+      </div>
+
+      
+        
+        <h2>ENTITY DEFINITION MODEL</h2>
+
+        
+      
+        
+        <p>Represents a single entity definition and structure. The entity objects
+are represented by the <a href="entityObject.html">EntityObject</a> model.</p>
+
+        
+          <div class='highlight'><pre><span class="class"><span class="keyword">class</span> <span class="title">SystemApp</span>.<span class="title">EntityDefinition</span> <span class="keyword">extends</span> <span class="title">SystemApp</span>.<span class="title">BaseModel</span></span>
+    typeName: <span class="string">"EntityDefinition"</span>
+    defaults:
+        objectIdAttribute: SystemApp.Settings.EntityDefinition.objectIdAttribute
+        objectTitleAttribute: SystemApp.Settings.EntityDefinition.objectTitleAttribute
+        refreshInterval: SystemApp.Settings.EntityDefinition.refreshInterval
+        shapeBackground: SystemApp.Settings.Shape.background
+        shapeFormat: SystemApp.Settings.Shape.format
+        shapeFontSize: SystemApp.Settings.Shape.fontSize
+        shapeForeground: SystemApp.Settings.Shape.foreground
+        shapeOpacity: SystemApp.Settings.Map.opacityStatic
+        shapeRoundedCorners: SystemApp.Settings.Shape.roundedCorners
+        shapeSizeX: SystemApp.Settings.Shape.gridViewSizeX
+        shapeSizeY: SystemApp.Settings.Shape.gridViewSizeY
+        shapeStroke: SystemApp.Settings.Shape.stroke
+        shapeStrokeWidth: SystemApp.Settings.Shape.strokeWidth
+        shapeTitleForeground: SystemApp.Settings.Shape.titleForeground
+        shapeZIndex: SystemApp.Settings.Shape.zIndex
+
+    relations:
+        data: SystemApp.EntityObjectCollection</pre></div>
+        
+      
+        
+        <h2>PROPERTIES</h2>
+
+        
+      
+        
+        <p>Helper to get / set the entity objects data.
+If a collection is already set, only updated its models.</p>
+
+        
+          <div class='highlight'><pre>    data: (value) =&gt;
+        <span class="keyword">if</span> value?
+            currentValue = <span class="property">@get</span> <span class="string">"data"</span>
+            <span class="keyword">if</span> currentValue?.typeName?
+                value = value.models <span class="keyword">if</span> value.typeName?
+                currentValue.set value
+            <span class="keyword">else</span>
+                value = <span class="keyword">new</span> SystemApp.EntityObjectCollection(value) <span class="keyword">if</span> <span class="keyword">not</span> value.typeName?
+                value.parentModel = <span class="keyword">this</span>
+                <span class="property">@set</span> <span class="string">"data"</span>, value
+        <span class="property">@get</span> <span class="string">"data"</span></pre></div>
+        
+      
+        
+        <p>Helper to get / set the description of the entity.</p>
+
+        
+          <div class='highlight'><pre>    description: (value) =&gt;
+        <span class="keyword">if</span> value?
+            <span class="property">@set</span> <span class="string">"description"</span>, value
+        <span class="property">@get</span> <span class="string">"description"</span></pre></div>
+        
+      
+        
+        <p>Helper to get / set the id attribute.</p>
+
+        
+          <div class='highlight'><pre>    objectIdAttribute: (value) =&gt;
+        <span class="keyword">if</span> value?
+            <span class="property">@set</span> <span class="string">"objectIdAttribute"</span>, value
+        <span class="property">@get</span> <span class="string">"objectIdAttribute"</span></pre></div>
+        
+      
+        
+        <p>Helper to get / set the title attribute(s).
+More than one value can be set, separated by commas.
+For example: &quot;name,title,details&quot;</p>
+
+        
+          <div class='highlight'><pre>    objectTitleAttribute: (value) =&gt;
+        <span class="keyword">if</span> value?
+            <span class="property">@set</span> <span class="string">"objectTitleAttribute"</span>, value
+        <span class="property">@get</span> <span class="string">"objectTitleAttribute"</span></pre></div>
+        
+      
+        
+        <p>Helper to get / set the refresh interval.</p>
+
+        
+          <div class='highlight'><pre>    refreshInterval: (value) =&gt;
+        <span class="keyword">if</span> value?
+            <span class="property">@set</span> <span class="string">"refreshInterval"</span>, value
+        <span class="property">@get</span> <span class="string">"refreshInterval"</span></pre></div>
+        
+      
+        
+        <p>Helper to get / set the entity data source URL.</p>
+
+        
+          <div class='highlight'><pre>    sourceUrl: (value) =&gt;
+        <span class="keyword">if</span> value?
+            <span class="property">@set</span> <span class="string">"sourceUrl"</span>, value
+        <span class="property">@get</span> <span class="string">"sourceUrl"</span></pre></div>
+        
+      
+        
+        <h2>SHAPE TEMPLATE PROPERTIES</h2>
+
+        
+      
+        
+        <p>Helper to get / set the shape template background.</p>
+
+        
+          <div class='highlight'><pre>    shapeBackground: (value) =&gt;
+        <span class="keyword">if</span> value?
+            <span class="property">@set</span> <span class="string">"shapeBackground"</span>, value
+        <span class="property">@get</span> <span class="string">"shapeBackground"</span></pre></div>
+        
+      
+        
+        <p>Helper to get / set the shape template font size.</p>
+
+        
+          <div class='highlight'><pre>    shapeFontSize: (value) =&gt;
+        <span class="keyword">if</span> value?
+            <span class="property">@set</span> <span class="string">"shapeFontSize"</span>, value
+        <span class="property">@get</span> <span class="string">"shapeFontSize"</span></pre></div>
+        
+      
+        
+        <p>Helper to get / set the shape template label colour.</p>
+
+        
+          <div class='highlight'><pre>    shapeForeground: (value) =&gt;
+        <span class="keyword">if</span> value?
+            <span class="property">@set</span> <span class="string">"shapeForeground"</span>, value
+        <span class="property">@get</span> <span class="string">"shapeForeground"</span></pre></div>
+        
+      
+        
+        <p>Helper to get / set the shape icon.</p>
+
+        
+          <div class='highlight'><pre>    shapeIcon: (value) =&gt;
+        <span class="keyword">if</span> value?
+            <span class="property">@set</span> <span class="string">"shapeIcon"</span>, value
+        <span class="property">@get</span> <span class="string">"shapeIcon"</span></pre></div>
+        
+      
+        
+        <p>Helper to get / set the shape opacity (0.0 to 1.0).</p>
+
+        
+          <div class='highlight'><pre>    shapeOpacity: (value) =&gt;
+        <span class="keyword">if</span> value?
+            <span class="property">@set</span> <span class="string">"shapeOpacity"</span>, value
+        <span class="property">@get</span> <span class="string">"shapeOpacity"</span></pre></div>
+        
+      
+        
+        <p>Helper to get / set the shape rounded corners (true or false).</p>
+
+        
+          <div class='highlight'><pre>    shapeRoundedCorners: (value) =&gt;
+        <span class="keyword">if</span> value?
+            <span class="property">@set</span> <span class="string">"shapeRoundedCorners"</span>, value
+        <span class="property">@get</span> <span class="string">"shapeRoundedCorners"</span></pre></div>
+        
+      
+        
+        <p>Helper to get / set the shape template size X.</p>
+
+        
+          <div class='highlight'><pre>    shapeSizeX: (value) =&gt;
+        <span class="keyword">if</span> value?
+            <span class="property">@set</span> <span class="string">"shapeSizeX"</span>, value
+        <span class="property">@get</span> <span class="string">"shapeSizeX"</span></pre></div>
+        
+      
+        
+        <p>Helper to get / set the shape template size Y.</p>
+
+        
+          <div class='highlight'><pre>    shapeSizeY: (value) =&gt;
+        <span class="keyword">if</span> value?
+            <span class="property">@set</span> <span class="string">"shapeSizeY"</span>, value
+        <span class="property">@get</span> <span class="string">"shapeSizeY"</span></pre></div>
+        
+      
+        
+        <p>Helper to get / set the shape template border colour.</p>
+
+        
+          <div class='highlight'><pre>    shapeStroke: (value) =&gt;
+        <span class="keyword">if</span> value?
+            <span class="property">@set</span> <span class="string">"shapeStroke"</span>, value
+        <span class="property">@get</span> <span class="string">"shapeStroke"</span></pre></div>
+        
+      
+        
+        <p>Helper to get / set the shape template border width.</p>
+
+        
+          <div class='highlight'><pre>    shapeStrokeWidth: (value) =&gt;
+        <span class="keyword">if</span> value?
+            <span class="property">@set</span> <span class="string">"shapeStrokeWidth"</span>, value
+        <span class="property">@get</span> <span class="string">"shapeStrokeWidth"</span></pre></div>
+        
+      
+        
+        <p>Helper to get / set the shape template title colour.</p>
+
+        
+          <div class='highlight'><pre>    shapeTitleForeground: (value) =&gt;
+        <span class="keyword">if</span> value?
+            <span class="property">@set</span> <span class="string">"shapeTitleForeground"</span>, value
+        <span class="property">@get</span> <span class="string">"shapeTitleForeground"</span></pre></div>
+        
+      
+        
+        <p>Helper to get / set the shape z-index / stack lavel.</p>
+
+        
+          <div class='highlight'><pre>    shapeZIndex: (value) =&gt;
+        <span class="keyword">if</span> value?
+            <span class="property">@set</span> <span class="string">"shapeZIndex"</span>, value
+        <span class="property">@get</span> <span class="string">"shapeZIndex"</span></pre></div>
+        
+      
+        
+        <h2>METHODS</h2>
+
+        
+      
+        
+        <p>Refresh the entity objects collection by fetching the specified
+<code>sourceUrl</code> and updating the <code>data</code> property.
+Only fetch external data if there&#39;s a URL specified.</p>
+
+        
+          <div class='highlight'><pre>    refreshData: =&gt;
+        url = <span class="property">@sourceUrl</span>()
+        <span class="keyword">if</span> url? <span class="keyword">and</span> url.length &gt; <span class="number">0</span>
+            <span class="property">@data</span>().fetch {update: <span class="literal">true</span>}</pre></div>
+        
+      
+        
+        <h2>ENTITY COLLECTION</h2>
+
+        
+      
+        
+        <p>Represents a collection of entity definitions.</p>
+
+        
+          <div class='highlight'><pre><span class="class"><span class="keyword">class</span> <span class="title">SystemApp</span>.<span class="title">EntityDefinitionCollection</span> <span class="keyword">extends</span> <span class="title">SystemApp</span>.<span class="title">BaseCollection</span></span>
+    typeName: <span class="string">"EntityDefinitionCollection"</span>
+    model: SystemApp.EntityDefinition
+    url: SystemApp.Settings.EntityDefinition.url</pre></div>
+        
+      
+        
+        <p>Set the comparator function to order the entity definitions by friendlyId.</p>
+
+        
+          <div class='highlight'><pre>    comparator: (entityDef) -&gt; <span class="keyword">return</span> entityDef.friendlyId()</pre></div>
+        
+      
+      <div class="fleur">h</div>
+    </div>
+  </div>
+</body>
+</html>

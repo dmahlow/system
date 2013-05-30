@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+  <title>configure.coffee</title>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <link rel="stylesheet" media="all" href="public/stylesheets/normalize.css" />
+  <link rel="stylesheet" media="all" href="docco.css" />
+</head>
+<body>
+  <div class="container">
+    <div class="page">
+
+      <div class="header">
+        
+          <h1>configure.coffee</h1>
+        
+
+        
+          <div class="toc">
+            <h3>Table of Contents</h3>
+            <ol>
+              
+                
+                <li>
+                  <a class="source" href="configure.html">
+                    configure.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="database.html">
+                    database.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="imaging.html">
+                    imaging.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="logger.html">
+                    logger.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="mail.html">
+                    mail.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="manager.html">
+                    manager.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="routes.html">
+                    routes.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="security.html">
+                    security.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="settings.html">
+                    settings.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="sockets.html">
+                    sockets.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="sync.html">
+                    sync.coffee
+                  </a>
+                </li>
+              
+            </ol>
+          </div>
+        
+      </div>
+
+      
+        
+        <h2>SERVER CONFIG</h2>
+
+        
+      
+        
+        <p>Define the basic configuration options for the node server.</p>
+
+        
+          <div class='highlight'><pre>module.<span class="function"><span class="title">exports</span></span> = (app, express) -&gt;</pre></div>
+        
+      
+        
+        <p>Define the database and settings objects.</p>
+
+        
+          <div class='highlight'><pre>    database = require <span class="string">"./database.coffee"</span>
+    logger = require <span class="string">"./logger.coffee"</span>
+    manager = require <span class="string">"./manager.coffee"</span>
+    passport = require <span class="string">"passport"</span>
+    security = require <span class="string">"./security.coffee"</span>
+    settings = require <span class="string">"./settings.coffee"</span>
+    sockets = require <span class="string">"./sockets.coffee"</span></pre></div>
+        
+      
+        
+        <p>Helper function to configure the app in OpenShift and AppFog.
+Please note that this will only apply if the <code>Settings.Web.pass</code> is true.</p>
+
+        
+          <div class='highlight'><pre>    <span class="function"><span class="title">configPaaS</span></span> = -&gt;</pre></div>
+        
+      
+        
+        <p>Check for web (IP and port) variables.</p>
+
+        
+          <div class='highlight'><pre>        ip = process.env.OPENSHIFT_INTERNAL_IP
+        port = process.env.OPENSHIFT_INTERNAL_PORT
+        port = process.env.VCAP_APP_PORT <span class="keyword">if</span> <span class="keyword">not</span> port? <span class="keyword">or</span> port <span class="keyword">is</span> <span class="string">""</span>
+        settings.Web.ip = ip <span class="keyword">if</span> ip? <span class="keyword">and</span> ip <span class="keyword">isnt</span> <span class="string">""</span>
+        settings.Web.port = port <span class="keyword">if</span> port? <span class="keyword">and</span> port <span class="keyword">isnt</span> <span class="string">""</span></pre></div>
+        
+      
+        
+        <p>Check for Mongo variables.</p>
+
+        
+          <div class='highlight'><pre>        vcap = process.env.VCAP_SERVICES
+        vcap = JSON.parse vcap <span class="keyword">if</span> vcap?
+        <span class="keyword">if</span> vcap? <span class="keyword">and</span> vcap <span class="keyword">isnt</span> <span class="string">""</span>
+            mongo = vcap[<span class="string">"mongodb-1.8"</span>]
+            mongo = mongo[<span class="number">0</span>][<span class="string">"credentials"</span>] <span class="keyword">if</span> mongo?
+            <span class="keyword">if</span> mongo?
+                settings.Database.connString = <span class="string">"mongodb://<span class="subst">#{mongo.hostname}</span>:<span class="subst">#{mongo.port}</span>/<span class="subst">#{mongo.db}</span>"</span></pre></div>
+        
+      
+        
+        <p>Check for logging variables.</p>
+
+        
+          <div class='highlight'><pre>        logentries = process.env.LOGENTRIES_TOKEN
+        settings.Log.logentriesToken = logentries <span class="keyword">if</span> logentries? <span class="keyword">and</span> logentries <span class="keyword">isnt</span> <span class="string">""</span></pre></div>
+        
+      
+        
+        <p>Common configuration for all envrionments. This will tweak process settings, bind error
+handlers and init all the necessary modules.</p>
+
+        
+          <div class='highlight'><pre>    app.configure -&gt;
+        process.setMaxListeners <span class="number">30</span>
+        process.<span class="literal">on</span> <span class="string">"uncaughtException"</span>, (err) -&gt;
+            sockets.sendServerError <span class="string">"Proc unhandled exception!"</span>, err
+            console.error <span class="string">"Proc unhandled exception!"</span>, err
+        app.<span class="literal">on</span> <span class="string">"uncaughtException"</span>, (err) -&gt;
+            sockets.sendServerError <span class="string">"App unhandled exception!"</span>, err
+            console.error <span class="string">"App unhandled exception!"</span>, err</pre></div>
+        
+      
+        
+        <p>If the <code>Settings.Web.paas</code> is true, then override settings with environmental variables.</p>
+
+        
+          <div class='highlight'><pre>        configPaaS() <span class="keyword">if</span> settings.Web.paas</pre></div>
+        
+      
+        
+        <p>Init other modules.</p>
+
+        
+          <div class='highlight'><pre>        logger.init()
+        manager.init()
+        security.init()</pre></div>
+        
+      
+        
+        <p>Sets the app path variables.</p>
+
+        
+          <div class='highlight'><pre>        app.viewsDir = settings.Paths.viewsDir
+        app.publicDir = settings.Paths.publicDir
+        app.downloadsDir = settings.Paths.downloadsDir</pre></div>
+        
+      
+        
+        <p>Set view options, use Jade.</p>
+
+        
+          <div class='highlight'><pre>        app.set <span class="string">"views"</span>, app.viewsDir
+        app.set <span class="string">"view engine"</span>, <span class="string">"jade"</span>
+        app.set <span class="string">"view options"</span>, { layout: <span class="literal">false</span> }</pre></div>
+        
+      
+        
+        <p>Set express methods.</p>
+
+        
+          <div class='highlight'><pre>        app.use express.bodyParser()
+        app.use express.methodOverride()
+        app.use express.cookieParser()
+        app.use express.session {secret: settings.Security.sessionKey}</pre></div>
+        
+      
+        
+        <p>Init passport middleware.</p>
+
+        
+          <div class='highlight'><pre>        app.use passport.initialize()
+        app.use passport.session()</pre></div>
+        
+      
+        
+        <p>Express routing.</p>
+
+        
+          <div class='highlight'><pre>        app.use app.router
+        app.use express[<span class="string">"static"</span>] app.publicDir</pre></div>
+        
+      
+        
+        <p>Config for development. Do not minify builds, and set debug to <code>true</code> in case it&#39;s unset.</p>
+
+        
+          <div class='highlight'><pre>    app.configure <span class="string">"development"</span>, -&gt;
+        settings.General.debug = <span class="literal">true</span> <span class="keyword">if</span> <span class="keyword">not</span> settings.General.debug?
+
+        ConnectAssets = (require <span class="string">"connect-assets"</span>) {build: <span class="literal">true</span>, buildDir: <span class="literal">false</span>, minifyBuilds: <span class="literal">false</span>}
+        app.use ConnectAssets
+        app.use express.errorHandler {dumpExceptions: <span class="literal">true</span>, showStack: <span class="literal">true</span>}</pre></div>
+        
+      
+        
+        <p>Config for production. JS and CSS will be minified. Set debug to <code>false</code> in case it&#39;s unset.</p>
+
+        
+          <div class='highlight'><pre>    app.configure <span class="string">"production"</span>, -&gt;
+        settings.General.debug = <span class="literal">false</span> <span class="keyword">if</span> <span class="keyword">not</span> settings.General.debug?
+
+        ConnectAssets = (require <span class="string">"connect-assets"</span>) {build: <span class="literal">true</span>, buildDir: <span class="literal">false</span>, minifyBuilds: <span class="literal">true</span>}
+        app.use ConnectAssets
+        app.use express.errorHandler()</pre></div>
+        
+      
+      <div class="fleur">h</div>
+    </div>
+  </div>
+</body>
+</html>

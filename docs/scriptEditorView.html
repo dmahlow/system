@@ -1,0 +1,671 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+  <title>scriptEditorView.coffee</title>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <link rel="stylesheet" media="all" href="public/stylesheets/normalize.css" />
+  <link rel="stylesheet" media="all" href="docco.css" />
+</head>
+<body>
+  <div class="container">
+    <div class="page">
+
+      <div class="header">
+        
+          <h1>scriptEditorView.coffee</h1>
+        
+
+        
+          <div class="toc">
+            <h3>Table of Contents</h3>
+            <ol>
+              
+                
+                <li>
+                  <a class="source" href="admin.html">
+                    admin.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="api.auditData.html">
+                    api.auditData.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="api.auditEvent.html">
+                    api.auditEvent.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="api.html">
+                    api.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="api.entity.html">
+                    api.entity.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="api.map.html">
+                    api.map.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="api.server.html">
+                    api.server.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="api.variable.html">
+                    api.variable.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="api.view.html">
+                    api.view.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="app.html">
+                    app.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="app.instance.html">
+                    app.instance.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="data.html">
+                    data.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="dataUtil.html">
+                    dataUtil.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="messages.html">
+                    messages.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="auditData.html">
+                    auditData.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="auditEvent.html">
+                    auditEvent.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="base.html">
+                    base.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="entityDefinition.html">
+                    entityDefinition.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="entityObject.html">
+                    entityObject.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="eventAction.html">
+                    eventAction.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="eventRule.html">
+                    eventRule.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="link.html">
+                    link.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="map.html">
+                    map.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="shape.html">
+                    shape.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="user.html">
+                    user.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="userSettings.html">
+                    userSettings.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="variable.html">
+                    variable.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="adminRoutes.html">
+                    adminRoutes.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="appRoutes.html">
+                    appRoutes.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="settings.html">
+                    settings.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="sockets.html">
+                    sockets.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="tutorial.html">
+                    tutorial.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="vectors.html">
+                    vectors.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="statusTabView.html">
+                    statusTabView.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="toolsTabView.html">
+                    toolsTabView.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="usersTabView.html">
+                    usersTabView.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="adminView.html">
+                    adminView.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="alertView.html">
+                    alertView.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="auditDataManagerView.html">
+                    auditDataManagerView.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="auditEventManagerView.html">
+                    auditEventManagerView.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="baseView.html">
+                    baseView.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="createMapView.html">
+                    createMapView.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="entityManagerView.html">
+                    entityManagerView.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="footerView.html">
+                    footerView.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="helpView.html">
+                    helpView.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="entitiesTabView.html">
+                    entitiesTabView.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="inspectorTabView.html">
+                    inspectorTabView.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="mapTabView.html">
+                    mapTabView.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="shapeTabView.html">
+                    shapeTabView.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="controlsView.html">
+                    controlsView.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="labelEditView.html">
+                    labelEditView.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="linkCreatorView.html">
+                    linkCreatorView.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="linkLabelsView.html">
+                    linkLabelsView.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="linkView.html">
+                    linkView.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="shapeLabelsView.html">
+                    shapeLabelsView.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="shapeView.html">
+                    shapeView.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="shapesMoverView.html">
+                    shapesMoverView.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="mapView.html">
+                    mapView.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="menuView.html">
+                    menuView.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="overlayView.html">
+                    overlayView.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="scriptEditorView.html">
+                    scriptEditorView.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="selfTestView.html">
+                    selfTestView.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="settingsView.html">
+                    settingsView.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="startView.html">
+                    startView.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="variableManagerView.html">
+                    variableManagerView.coffee
+                  </a>
+                </li>
+              
+            </ol>
+          </div>
+        
+      </div>
+
+      
+        
+        <h2>SCRIPT EDIT VIEW</h2>
+
+        
+      
+        
+        <p>Overlay used to edit scripts and code snippets. At the moment it is used
+only to edit <a href="map.html">map</a> <code>initScript</code>.</p>
+
+        
+          <div class='highlight'><pre><span class="class"><span class="keyword">class</span> <span class="title">SystemApp</span>.<span class="title">ScriptEditorView</span> <span class="keyword">extends</span> <span class="title">SystemApp</span>.<span class="title">OverlayView</span></span>
+
+    $txtScriptValue: <span class="literal">null</span>   <span class="comment"># the textarea with the current script value</span>
+    $info: <span class="literal">null</span>             <span class="comment"># the info text shown above the textarea</span>
+    $butSave: <span class="literal">null</span>          <span class="comment"># the button used to save the script</span>
+    $errorMsg: <span class="literal">null</span>         <span class="comment"># placeholder to show validation error messages</span>
+
+    propertyName: <span class="literal">null</span>      <span class="comment"># the property which should be updated with the script value, for example a map initScript.</span>
+    timerHideError: <span class="literal">null</span>    <span class="comment"># cached timer to hide the error message</span></pre></div>
+        
+      
+        
+        <h2>INIT AND DISPOSE</h2>
+
+        
+      
+        
+        <p>Init the script edit view.</p>
+
+        
+          <div class='highlight'><pre>    initialize: =&gt;
+        <span class="property">@overlayInit</span> <span class="string">"#script-editor"</span>
+        <span class="property">@setDom</span>()
+        <span class="property">@setEvents</span>()
+        <span class="property">@fullWidth</span> = <span class="literal">false</span></pre></div>
+        
+      
+        
+        <p>Dispose the script edit view.</p>
+
+        
+          <div class='highlight'><pre>    dispose: =&gt;
+        <span class="property">@baseDispose</span>()</pre></div>
+        
+      
+        
+        <p>Set the DOM elements cache.</p>
+
+        
+          <div class='highlight'><pre>    setDom: =&gt;
+        <span class="property">@$txtScriptValue</span> = $ <span class="string">"#script-editor-value"</span>
+        <span class="property">@$info</span> = $ <span class="string">"#script-editor-info"</span>
+        <span class="property">@$butSave</span> = $ <span class="string">"#script-editor-but-save"</span>
+        <span class="property">@$errorMsg</span> = <span class="property">@$el</span>.find <span class="string">"span.error"</span></pre></div>
+        
+      
+        
+        <p>Bind events to the DOM. This will effectively update the <code>model</code> automatically
+whenever any input field value gets changed.</p>
+
+        
+          <div class='highlight'><pre>    setEvents: =&gt;
+        <span class="property">@$butSave</span>.click <span class="property">@saveScriptValue</span></pre></div>
+        
+      
+        
+        <p>Set the model and property name to which the script editor should save a script.</p>
+
+        
+          <div class='highlight'><pre>    bind: (model, propertyName) =&gt;
+        <span class="property">@stopListening</span> <span class="property">@model</span> <span class="keyword">if</span> <span class="property">@model</span>?
+
+        <span class="property">@model</span> = model
+        <span class="property">@propertyName</span> = propertyName
+        <span class="property">@$info</span>.html SystemApp.Messages.ScriptEditorInfo[propertyName]
+
+        <span class="keyword">if</span> model?
+            <span class="property">@$txtScriptValue</span>.val(model.get propertyName)</pre></div>
+        
+      
+        
+        <h2>HELPER PROPERTIES</h2>
+
+        
+      
+        
+        <p>Helper to get / set the current value of <code>$txtScriptValue</code>.</p>
+
+        
+          <div class='highlight'><pre>    currentValue: (value) =&gt;
+        <span class="keyword">if</span> value?
+            <span class="property">@$txtScriptValue</span>.val value
+        <span class="property">@$txtScriptValue</span>.val()</pre></div>
+        
+      
+        
+        <h2>VALIDATE AND SAVE</h2>
+
+        
+      
+        
+        <p>Validate and save the script to the property set on <code>propertyName</code> of the model.
+For example when using this view to edit a <a href="map.html">map</a> <code>initScript</code>.</p>
+
+        
+          <div class='highlight'><pre>    saveScriptValue: =&gt;
+        code = <span class="property">@currentValue</span>()
+        valMessage = SystemApp.DataUtil.validateEval code</pre></div>
+        
+      
+        
+        <p>If has a validation message, display it and stop here.</p>
+
+        
+          <div class='highlight'><pre>        <span class="keyword">if</span> valMessage?
+            <span class="property">@showError</span> valMessage
+            <span class="keyword">return</span> <span class="literal">false</span></pre></div>
+        
+      
+        
+        <p>All good? Save the script.</p>
+
+        
+          <div class='highlight'><pre>        <span class="property">@model</span>.set <span class="property">@propertyName</span>, code
+        <span class="property">@model</span>.save()
+
+        <span class="property">@hide</span>()</pre></div>
+        
+      
+        
+        <p>If script vaildation fails, show a message to the user.</p>
+
+        
+          <div class='highlight'><pre>    showError: (message) =&gt;
+        <span class="property">@warnField</span> <span class="property">@$txtScriptValue</span>
+
+        <span class="property">@$errorMsg</span>.html message
+        <span class="property">@$errorMsg</span>.show()</pre></div>
+        
+      
+        
+        <p>Hide the error message after a few seconds.</p>
+
+        
+          <div class='highlight'><pre>        clearTimeout(<span class="property">@timerHideError</span>) <span class="keyword">if</span> <span class="property">@timerHideError</span>?
+        <span class="property">@timerHideError</span> = setTimeout <span class="property">@hideError</span>, SystemApp.Settings.Alert.hideDelay</pre></div>
+        
+      
+        
+        <p>Hide the error message and clear the <code>timerHideError</code> timeout.</p>
+
+        
+          <div class='highlight'><pre>    hideError: =&gt;
+        <span class="property">@timerHideError</span> = <span class="literal">null</span>
+        <span class="property">@$errorMsg</span>.hide()</pre></div>
+        
+      
+        
+        <h1>SHOW AND HIDE</h1>
+<hr>
+
+        
+      
+        
+        <p>When showing the overlay, bind the <code>model</code> and <code>propertyName</code>. Make sure we
+stop listening to the current <code>model</code> first, if there&#39;s one.</p>
+
+        
+          <div class='highlight'><pre>    onShow: (model, propertyName) =&gt;
+        <span class="property">@bind</span> model, propertyName</pre></div>
+        
+      
+        
+        <p>Stop listening to events when the overlay is closed.</p>
+
+        
+          <div class='highlight'><pre>    onHide: =&gt;
+        <span class="property">@stopListening</span>()
+        <span class="property">@model</span> = <span class="literal">null</span>
+        <span class="property">@propertyName</span> = <span class="literal">null</span></pre></div>
+        
+      
+      <div class="fleur">h</div>
+    </div>
+  </div>
+</body>
+</html>

@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+  <title>System App - API Reame</title>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <link rel="stylesheet" media="all" href="public/stylesheets/normalize.css" />
+  <link rel="stylesheet" media="all" href="docco.css" />
+</head>
+<body>
+  <div class="container">
+    <div class="page">
+
+      <div class="header">
+        
+          
+          <h1>System App - API Reame</h1>
+<p>The System API can be used by scripts and external resources to script maps and
+interact with the System App.</p>
+<p>PLEASE NOTE! The API is still experimental and will probably change till we reach
+version 1.0.0. Any significant updates will be especifically written here
+and on specific code commits.</p>
+<h2>The API basics</h2>
+<p>All API methods are abstract wrappers for internal System collections:
+Maps, Shapes, Entities, Audit Data, Audit Events and Variables.
+The exception is the &quot;view&quot; api, which represents the app UI.</p>
+<p>In the vast majority of cases, whilst using the API you&#39;ll be dealing with
+the System&#39;s models implemented using Backbone.js.</p>
+<p>At the moment the API is operated in synchronous mode.</p>
+<h2>Getting data</h2>
+<p>All API wrappers have a <code>get</code> method accepting one <code>filter</code> argument, which can be:
+- The ID of a single element as a string or integer.
+- An object containing keys and values representing properties.
+- A callback filter.</p>
+<p>The <code>get</code> will ALWAYS return a collection of models, even when only one result is found.
+If nothing was found, the result will be an empty collection. If something goes wrong,
+<code>null</code> will be returned.</p>
+<h4>Samples: how to query data</h4>
+<ul>
+<li><p>Return the <a href="entityDefinition.html">EntityDefinition</a> with ID &quot;Host&quot;.
+<code>api.Entity.get(&quot;Host&quot;);</code></p>
+</li>
+<li><p>Return all <a href="shape.html">Shapes</a> from the current map with a zIndex 3.
+<code>api.Map.getShapes({zIndex: 3});</code></p>
+</li>
+<li><p>Return all <a href="auditData.html">AuditData</a> models with data coming from &quot;www.zalando.de&quot;.</p>
+<pre><code>var filter = function(obj) { return obj.get(&quot;sourceUrl&quot;).indexOf(&quot;www.zalando.de&quot;) &gt; 0 };
+api.AuditData.get(filter);</code></pre>
+</li>
+</ul>
+<h2>Inserting and updating</h2>
+<p>All API wrappers have a <code>create</code> method accepting one <code>props</code> argument, which defines
+the properties of the model to be created.</p>
+<h4>Samples: how to create and update models</h4>
+<ul>
+<li><p>Create a new <a href="variable.html">Variable</a> with name &quot;CurrentDate&quot; that returns the current date.
+<code>api.Variable.create({name: &quot;CurrentDate&quot;, code: &quot;var now = new Date(); return now.getDate();&quot;});</code></p>
+</li>
+<li><p>Create a new <a href="map.html">Map</a> with name &quot;Dashboard&quot;.
+<code>api.Map.create({name: &quot;Dashboard&quot;});</code></p>
+</li>
+<li><p>Add a new <a href="shape.html">Shape</a> to the current <a href="map.html">Map</a> representing
+an <a href="entityObject.html">EntityObject</a> and with size 6x4, around top left corner.</p>
+<pre><code>var props = {entityDefinitionId: &quot;Host&quot;, entityObjectId: &quot;http01&quot;, sizeX: 6, sizeY: 4, x: 2, y: 2}
+api.Map.createShape(props);</code></pre>
+</li>
+</ul>
+<h2>Sample map script</h2>
+<p>This will create a map of http hosts divided in 3 segments, having 3 columns of servers per segment.</p>
+<pre><code>// Iterators and general variables.
+var s, h, x, y, c, props;
+
+// Default size of each http shape (both horizontal and vertical).
+var sizeX = 5;
+var sizeY = 4;
+var startX = 2;
+var startY = 3;
+
+// Spacing between shapes.
+var spacingX = 1;
+var spacingY = 2;
+
+// How many columns of http hosts per segment.
+var cols = 3;
+
+// Get current map.
+var map = api.Map.current();
+map.links().reset();
+map.shapes().reset();
+
+// Get the &quot;Host&quot; entity definition.
+var hostsEntity = api.Entity.get(&quot;Host&quot;)[0];
+
+// Get all http hosts.
+var httpFilter = function(obj) { return obj.get(&quot;hostname&quot;).indexOf(&quot;http&quot;) &gt;= 0; };
+var httpHosts = api.Entity.getObjects(hostsEntity, httpFilter);
+
+// Get all solr hosts.
+var solrFilter = function(obj) { return obj.get(&quot;hostname&quot;).indexOf(&quot;solr&quot;) &gt;= 0; };
+var solrHosts = api.Entity.getObjects(hostsEntity, solrFilter);
+
+// Set the default segment size.
+var segmentSizeX = sizeX * cols + spacingX;
+var segmentSizeY = 20;
+
+// Create custom shapes which represents &quot;server segments&quot;.
+var segment1 = api.Map.createShape({labelTitle: &quot;Segment 1&quot;, zIndex: 2, sizeX: segmentSizeX, sizeY: segmentSizeY, x: 1, y: 1});
+var segment2 = api.Map.createShape({labelTitle: &quot;Segment 2&quot;, zIndex: 2, sizeX: segmentSizeX, sizeY: segmentSizeY, x: segmentSizeX + spacingX * 2, y: 1});
+var segment3 = api.Map.createShape({labelTitle: &quot;Segment 3&quot;, zIndex: 2, sizeX: segmentSizeX, sizeY: segmentSizeY, x: segmentSizeX * 2 + spacingX * 3, y: 1});
+var arrSegments = [segment1, segment2, segment3];
+
+// Add the http hosts to the map inside the segments. We&#39;re assuming here
+// that the servers are already sorted on the JSON.
+for (s = 0; s &lt; arrSegments.length; s++) {
+
+x = startX + s * (segmentSizeX + spacingX);
+y = startY;
+
+// Reset column to 1.
+c = 1;
+
+for (h = s; h &lt; httpHosts.length; h += 3) {
+
+// Set shape properties.
+props = {entityDefinitionId: &quot;Host&quot;, entityObjectId: httpHosts[h].id, sizeX: sizeX, sizeY: sizeY, x: x, y: y, textTitle: h, textCenter: s, textLeft: x, textRight: y}
+
+// Add a new shape representing the host to the map.
+api.Map.createShape(props);
+
+// Update column and x.
+c += 1;
+x += sizeX + spacingX;
+
+// Limit columns per segment. If reached the max columns
+// per segment, increase the y and reset x to startX.
+if (c &gt; cols) {
+c = 1;
+x = startX + s * (segmentSizeX + spacingX);
+y += sizeY + spacingY;
+}
+}
+}</code></pre>
+
+          
+        
+
+        
+          <div class="toc">
+            <h3>Table of Contents</h3>
+            <ol>
+              
+                
+                <li>
+                  <a class="source" href="README.html">
+                    README.md
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="README_API.html">
+                    README_API.md
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="README.html">
+                    README.md
+                  </a>
+                </li>
+              
+            </ol>
+          </div>
+        
+      </div>
+
+      
+      <div class="fleur">h</div>
+    </div>
+  </div>
+</body>
+</html>

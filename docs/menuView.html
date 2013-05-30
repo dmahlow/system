@@ -1,0 +1,821 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+  <title>menuView.coffee</title>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <link rel="stylesheet" media="all" href="public/stylesheets/normalize.css" />
+  <link rel="stylesheet" media="all" href="docco.css" />
+</head>
+<body>
+  <div class="container">
+    <div class="page">
+
+      <div class="header">
+        
+          <h1>menuView.coffee</h1>
+        
+
+        
+          <div class="toc">
+            <h3>Table of Contents</h3>
+            <ol>
+              
+                
+                <li>
+                  <a class="source" href="admin.html">
+                    admin.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="api.auditData.html">
+                    api.auditData.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="api.auditEvent.html">
+                    api.auditEvent.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="api.html">
+                    api.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="api.entity.html">
+                    api.entity.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="api.map.html">
+                    api.map.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="api.server.html">
+                    api.server.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="api.variable.html">
+                    api.variable.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="api.view.html">
+                    api.view.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="app.html">
+                    app.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="app.instance.html">
+                    app.instance.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="data.html">
+                    data.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="dataUtil.html">
+                    dataUtil.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="messages.html">
+                    messages.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="auditData.html">
+                    auditData.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="auditEvent.html">
+                    auditEvent.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="base.html">
+                    base.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="entityDefinition.html">
+                    entityDefinition.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="entityObject.html">
+                    entityObject.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="eventAction.html">
+                    eventAction.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="eventRule.html">
+                    eventRule.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="link.html">
+                    link.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="map.html">
+                    map.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="shape.html">
+                    shape.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="user.html">
+                    user.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="userSettings.html">
+                    userSettings.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="variable.html">
+                    variable.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="adminRoutes.html">
+                    adminRoutes.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="appRoutes.html">
+                    appRoutes.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="settings.html">
+                    settings.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="sockets.html">
+                    sockets.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="tutorial.html">
+                    tutorial.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="vectors.html">
+                    vectors.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="statusTabView.html">
+                    statusTabView.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="toolsTabView.html">
+                    toolsTabView.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="usersTabView.html">
+                    usersTabView.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="adminView.html">
+                    adminView.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="alertView.html">
+                    alertView.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="auditDataManagerView.html">
+                    auditDataManagerView.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="auditEventManagerView.html">
+                    auditEventManagerView.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="baseView.html">
+                    baseView.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="createMapView.html">
+                    createMapView.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="entityManagerView.html">
+                    entityManagerView.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="footerView.html">
+                    footerView.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="helpView.html">
+                    helpView.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="entitiesTabView.html">
+                    entitiesTabView.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="inspectorTabView.html">
+                    inspectorTabView.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="mapTabView.html">
+                    mapTabView.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="shapeTabView.html">
+                    shapeTabView.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="controlsView.html">
+                    controlsView.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="labelEditView.html">
+                    labelEditView.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="linkCreatorView.html">
+                    linkCreatorView.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="linkLabelsView.html">
+                    linkLabelsView.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="linkView.html">
+                    linkView.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="shapeLabelsView.html">
+                    shapeLabelsView.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="shapeView.html">
+                    shapeView.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="shapesMoverView.html">
+                    shapesMoverView.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="mapView.html">
+                    mapView.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="menuView.html">
+                    menuView.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="overlayView.html">
+                    overlayView.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="scriptEditorView.html">
+                    scriptEditorView.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="selfTestView.html">
+                    selfTestView.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="settingsView.html">
+                    settingsView.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="startView.html">
+                    startView.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="variableManagerView.html">
+                    variableManagerView.coffee
+                  </a>
+                </li>
+              
+            </ol>
+          </div>
+        
+      </div>
+
+      
+        
+        <h2>MENU VIEW</h2>
+
+        
+      
+        
+        <p>Represents the top menu with links to all sub-views of the app like maps,
+settings, audit data, alerts and help overlay.</p>
+
+        
+          <div class='highlight'><pre><span class="class"><span class="keyword">class</span> <span class="title">SystemApp</span>.<span class="title">MenuView</span> <span class="keyword">extends</span> <span class="title">SystemApp</span>.<span class="title">BaseView</span></span>
+
+    height: <span class="number">0</span>                   <span class="comment"># cached variable that holds the header height</span>
+    timerHideMenu: <span class="literal">null</span>         <span class="comment"># timer to hide the menu after X milliseconds.</span>
+
+    $allMenus: <span class="literal">null</span>             <span class="comment"># helper array containing all the menu items</span>
+    $menuCreateMap: <span class="literal">null</span>        <span class="comment"># the "Create map" menu item</span>
+    $menuMaps: <span class="literal">null</span>             <span class="comment"># the "Available maps" menu item</span>
+    $menuEntities: <span class="literal">null</span>         <span class="comment"># the "Entities" menu item</span>
+    $menuVariables: <span class="literal">null</span>        <span class="comment"># the "Variables" menu item</span>
+    $menuAuditData: <span class="literal">null</span>        <span class="comment"># the "Audit Data" menu item</span>
+    $menuAuditEvents: <span class="literal">null</span>      <span class="comment"># the "Audit Events" menu item</span>
+    $menuSettings: <span class="literal">null</span>         <span class="comment"># the "Settings" menu item</span>
+    $menuHelp: <span class="literal">null</span>             <span class="comment"># the "Help" menu item</span>
+    $subMenuItems: <span class="literal">null</span>         <span class="comment"># the div containing all sub menu items (which represents maps)</span>
+    $localMapLink: <span class="literal">null</span>         <span class="comment"># represents the link to the "My Local Map"</span>
+    $currentSub: <span class="literal">null</span>           <span class="comment"># current selected map (sub-menu div)</span></pre></div>
+        
+      
+        
+        <h2>INIT AND DISPOSE</h2>
+
+        
+      
+        
+        <p>Init the menu view by settings the DOM, events, and creating the
+submenu list with all available maps.</p>
+
+        
+          <div class='highlight'><pre>    initialize: =&gt;
+        <span class="property">@setDom</span>()
+        <span class="property">@setEvents</span>()
+
+        <span class="property">@createSubLocalMap</span>() <span class="keyword">if</span> SystemApp.Settings.Map.enableLocalMap</pre></div>
+        
+      
+        
+        <p>Dispose the menu view.</p>
+
+        
+          <div class='highlight'><pre>    dispose: =&gt;
+        <span class="property">@$menuMaps</span>.unbind <span class="string">"click"</span>
+        <span class="property">@$menuMaps</span>.unbind <span class="string">"mouseover"</span>
+        <span class="property">@$menuMaps</span>.unbind <span class="string">"mouseout"</span>
+        <span class="property">@$subMenuItems</span>.unbind <span class="string">"mouseover"</span>
+        <span class="property">@$subMenuItems</span>.unbind <span class="string">"mouseout"</span>
+
+        <span class="property">@baseDispose</span>()</pre></div>
+        
+      
+        
+        <p>Set all DOM elements.</p>
+
+        
+          <div class='highlight'><pre>    setDom: =&gt;
+        <span class="property">@setElement</span> $ <span class="string">"#menu"</span>
+
+        <span class="property">@$menuCreateMap</span> = $ <span class="string">"#menu-createmap"</span>
+        <span class="property">@$menuMaps</span> = $ <span class="string">"#menu-maps"</span>
+        <span class="property">@$menuEntities</span> = $ <span class="string">"#menu-entities"</span>
+        <span class="property">@$menuVariables</span> = $ <span class="string">"#menu-variables"</span>
+        <span class="property">@$menuAuditData</span> = $ <span class="string">"#menu-auditdata"</span>
+        <span class="property">@$menuAuditEvents</span> = $ <span class="string">"#menu-auditevents"</span>
+        <span class="property">@$menuSettings</span> = $ <span class="string">"#menu-settings"</span>
+        <span class="property">@$menuHelp</span> = $ <span class="string">"#menu-help"</span>
+
+        <span class="property">@$allMenus</span> = [<span class="property">@$menuCreateMap</span>, <span class="property">@$menuMaps</span>, <span class="property">@$menuEntities</span>, <span class="property">@$menuAuditData</span>,
+                      <span class="property">@$menuAuditEvents</span>, <span class="property">@$menuSettings</span>, <span class="property">@$menuHelp</span>]
+
+        <span class="property">@$subMenuItems</span> = $ <span class="string">"#submenu-items"</span>
+
+        <span class="property">@height</span> = <span class="property">@$el</span>.outerHeight()</pre></div>
+        
+      
+        
+        <p>Bind events to DOM and sub views.</p>
+
+        
+          <div class='highlight'><pre>    setEvents: =&gt;
+        <span class="property">@$menuCreateMap</span>.click <span class="string">"click:createmap"</span>, <span class="property">@menuClick</span>
+        <span class="property">@$menuMaps</span>.click <span class="string">"click:maps"</span>, <span class="property">@menuClick</span>
+        <span class="property">@$menuEntities</span>.click <span class="string">"click:entities"</span>, <span class="property">@menuClick</span>
+        <span class="property">@$menuVariables</span>.click <span class="string">"click:variables"</span>, <span class="property">@menuClick</span>
+        <span class="property">@$menuAuditData</span>.click <span class="string">"click:auditdata"</span>, <span class="property">@menuClick</span>
+        <span class="property">@$menuAuditEvents</span>.click <span class="string">"click:auditevents"</span>, <span class="property">@menuClick</span>
+        <span class="property">@$menuSettings</span>.click <span class="string">"click:settings"</span>, <span class="property">@menuClick</span>
+        <span class="property">@$menuHelp</span>.click <span class="string">"click:help"</span>, <span class="property">@menuClick</span></pre></div>
+        
+      
+        
+        <p>Make sure submenu with maps is hidden when user clicks the &quot;Maps...&quot; option.</p>
+
+        
+          <div class='highlight'><pre>        <span class="property">@$menuMaps</span>.click () =&gt; <span class="property">@toggleSubMenu</span> <span class="literal">false</span></pre></div>
+        
+      
+        
+        <p>Show and hide submenu on mouse over and out.</p>
+
+        
+          <div class='highlight'><pre>        <span class="property">@$menuMaps</span>.mouseover <span class="property">@showSubMaps</span>
+        <span class="property">@$menuMaps</span>.mouseout <span class="literal">false</span>, <span class="property">@showSubMaps</span>
+        <span class="property">@$subMenuItems</span>.mouseover <span class="literal">true</span>, <span class="property">@showSubMaps</span>
+        <span class="property">@$subMenuItems</span>.mouseout <span class="literal">false</span>, <span class="property">@showSubMaps</span></pre></div>
+        
+      
+        
+        <p>Listen to map and app events.</p>
+
+        
+          <div class='highlight'><pre>        <span class="property">@listenTo</span> SystemApp.Data.maps, <span class="string">"sync"</span>, <span class="property">@sortSubMenu</span>
+        <span class="property">@listenTo</span> SystemApp.Data.maps, <span class="string">"add"</span>, <span class="property">@createSubMap</span>
+        <span class="property">@listenTo</span> SystemApp.Data.maps, <span class="string">"remove"</span>, <span class="property">@removeSubMap</span>
+        <span class="property">@listenTo</span> SystemApp.mapEvents, <span class="string">"load"</span>, <span class="property">@onMapLoad</span>
+        <span class="property">@listenTo</span> SystemApp.menuEvents, <span class="string">"active:menu"</span>, <span class="property">@setActiveMenu</span>
+        <span class="property">@listenTo</span> SystemApp.menuEvents, <span class="string">"active:map"</span>, <span class="property">@setActiveMap</span></pre></div>
+        
+      
+        
+        <h2>MAP MENU AND SUBMENUS</h2>
+
+        
+      
+        
+        <p>When a <a href="map.html">map</a> is loaded on the main <a href="mapView.html">map view</a>,
+set the &quot;Maps&quot; menu to active.</p>
+
+        
+          <div class='highlight'><pre>    onMapLoad: =&gt;
+        <span class="property">@setActiveMenu</span> <span class="property">@$menuMaps</span></pre></div>
+        
+      
+        
+        <p>Add the &quot;My Local Map&quot; to the maps list. This will be triggered only if the <code>enableLocalMap</code> setting is true.</p>
+
+        
+          <div class='highlight'><pre>    createSubLocalMap: =&gt;
+        map = <span class="keyword">new</span> SystemApp.Map()
+        map.initLocalMap()
+
+        <span class="property">@$localMapLink</span> = <span class="property">@createSubMap</span> map</pre></div>
+        
+      
+        
+        <p>Add a single div to the <code>$subMenuItems</code>, which represents
+a <a href="map.html">Map</a>. If firstBind is true, it means the menu hasn&#39;t been populated before,
+otherwise it&#39;s a newly created <a href="map.html">Map</a> being added.</p>
+
+        
+          <div class='highlight'><pre>    createSubMap: (map) =&gt;
+        <span class="keyword">if</span> map.<span class="literal">on</span>?
+            map.<span class="literal">on</span> <span class="string">"change"</span>, <span class="property">@updateMapInfo</span>
+            map.<span class="literal">on</span> <span class="string">"destroy"</span>, <span class="property">@removeSubMap</span></pre></div>
+        
+      
+        
+        <p>Map properties and date as cached variables.</p>
+
+        
+          <div class='highlight'><pre>        mapId = map.id
+        mapName = map.name()
+        dateCreated = map.dateCreated()
+        now = <span class="keyword">new</span> Date()</pre></div>
+        
+      
+        
+        <p>Create the map link.</p>
+
+        
+          <div class='highlight'><pre>        link = document.createElement <span class="string">"a"</span>
+        link = $ link
+        link.attr <span class="string">"id"</span>, SystemApp.Settings.Menu.subPrefix + mapId
+        link.attr <span class="string">"href"</span>, <span class="string">"#map/"</span> + map.urlKey()
+        link.addClass <span class="string">"menu-item"</span>
+        link.html mapName
+        link.click <span class="property">@menuClick</span></pre></div>
+        
+      
+        
+        <p>Append map link to the div.</p>
+
+        
+          <div class='highlight'><pre>        <span class="property">@$subMenuItems</span>.append link</pre></div>
+        
+      
+        
+        <p>Make local maps italic.</p>
+
+        
+          <div class='highlight'><pre>        <span class="keyword">if</span> map.isLocal()
+            link.addClass <span class="string">"italic"</span></pre></div>
+        
+      
+        
+        <p>If map was created less than 1 minute ago, auto select it.</p>
+
+        
+          <div class='highlight'><pre>        <span class="keyword">if</span> dateCreated? <span class="keyword">and</span> (now - dateCreated) / <span class="number">1000</span> &lt; SystemApp.Settings.Map.isNewInterval
+            <span class="property">@setActiveMap</span> map</pre></div>
+        
+      
+        
+        <p>Return the created link.</p>
+
+        
+          <div class='highlight'><pre>        <span class="keyword">return</span> link</pre></div>
+        
+      
+        
+        <p>Remove an exisiting div representing a <a href="map.html">Map</a>. Fired whenever
+an item is removed from the main <a href="data.html">Map Collection</a>.</p>
+
+        
+          <div class='highlight'><pre>    removeSubMap: (map) =&gt;
+        <span class="keyword">try</span>
+            map.<span class="literal">off</span>()
+            element = $ <span class="string">"#"</span> + SystemApp.Settings.Menu.subPrefix + map.id
+            element.remove() <span class="keyword">if</span> element.length &gt; <span class="number">0</span>
+        <span class="keyword">catch</span> ex
+            console.warn <span class="string">"Could not remove menu map <span class="subst">#{map.id}</span>. Maybe it was already removed?"</span>, ex</pre></div>
+        
+      
+        
+        <p>Show or hide submenu items based on e.data, which can
+be the source element, true to keep it shown, or false to force hide.
+If e.data is the source element, then show the submenu items
+which have that specific data type (datacenter, or machine, or host, or view...).</p>
+
+        
+          <div class='highlight'><pre>    showSubMaps: (e) =&gt;
+        <span class="keyword">if</span> <span class="property">@$menuMaps</span>.hasClass <span class="string">"active"</span>
+            <span class="property">@toggleSubMenu</span> <span class="literal">false</span>
+            <span class="keyword">return</span>
+
+        <span class="keyword">if</span> <span class="property">@timerHideMenu</span> <span class="keyword">isnt</span> <span class="literal">null</span>
+            window.clearTimeout <span class="property">@timerHideMenu</span>
+            <span class="property">@timerHideMenu</span> = <span class="literal">null</span>
+
+        <span class="keyword">if</span> e.data <span class="keyword">is</span> <span class="literal">false</span>
+            <span class="property">@timerHideMenu</span> = window.setTimeout <span class="property">@toggleSubMenu</span>, SystemApp.Settings.Menu.hideTimeout
+            <span class="keyword">return</span>
+
+        <span class="keyword">if</span> e.data <span class="keyword">is</span> <span class="literal">true</span>
+            <span class="keyword">return</span>
+
+        <span class="property">@$subMenuItems</span>.css <span class="string">"left"</span>, <span class="property">@$menuMaps</span>.offset().left
+        <span class="property">@toggleSubMenu</span> <span class="literal">true</span></pre></div>
+        
+      
+        
+        <p>Show or hide the submenu items div, depending on the parameter <code>show</code>.</p>
+
+        
+          <div class='highlight'><pre>    toggleSubMenu: (show) =&gt;
+        <span class="keyword">if</span> show? <span class="keyword">and</span> show
+            <span class="property">@$menuMaps</span>.addClass <span class="string">"hover"</span>
+            <span class="property">@$subMenuItems</span>.show()
+        <span class="keyword">else</span>
+            <span class="property">@$menuMaps</span>.removeClass <span class="string">"hover"</span>
+            <span class="property">@$subMenuItems</span>.hide()</pre></div>
+        
+      
+        
+        <p>Sort the items on the map submenu.</p>
+
+        
+          <div class='highlight'><pre>    sortSubMenu: =&gt;
+        <span class="property">@sortList</span> <span class="property">@$subMenuItems</span>, <span class="string">"a"</span>
+
+        <span class="keyword">if</span> <span class="property">@$localMapLink</span>?
+            <span class="property">@$subMenuItems</span>.prepend <span class="property">@$localMapLink</span></pre></div>
+        
+      
+        
+        <h2>MAP INTERACTIONS</h2>
+
+        
+      
+        
+        <p>When user clicks a menu button, trigger the event data
+and hide all submenus.</p>
+
+        
+          <div class='highlight'><pre>    menuClick: (e) =&gt;
+        <span class="property">@toggleSubMenu</span> <span class="literal">false</span>
+        SystemApp.menuEvents.trigger e.data</pre></div>
+        
+      
+        
+        <p>Set the active menu item by making it look like a selected tab.</p>
+
+        
+          <div class='highlight'><pre>    setActiveMenu: (menu) =&gt;
+        item.removeClass(<span class="string">"active"</span>) <span class="keyword">for</span> item <span class="keyword">in</span> <span class="property">@$allMenus</span>
+        menu.addClass <span class="string">"active"</span></pre></div>
+        
+      
+        
+        <p>Set the current active (highlighted) map on the menu.</p>
+
+        
+          <div class='highlight'><pre>    setActiveMap: (map) =&gt;
+        sub = $ <span class="string">"#<span class="subst">#{SystemApp.Settings.Menu.subPrefix}</span><span class="subst">#{map.id}</span>"</span>
+        <span class="property">@$currentSub</span>?.removeClass <span class="string">"active"</span>
+        <span class="property">@$currentSub</span> = sub
+
+        <span class="keyword">if</span> sub?
+            sub.addClass <span class="string">"active"</span>
+            <span class="property">@setActiveMenu</span> <span class="property">@$menuMaps</span></pre></div>
+        
+      
+        
+        <p>Triggered when a submenu item, representing a <a href="map.html">Map</a>,
+has its name changed by the server or by the user.</p>
+
+        
+          <div class='highlight'><pre>    updateMapInfo: (map) =&gt;
+        link = $(<span class="string">"#"</span> + SystemApp.Settings.Menu.subPrefix + map.id)
+        link.html map.name()
+        link.attr <span class="string">"href"</span>, <span class="string">"#map/"</span> + map.urlKey()</pre></div>
+        
+      
+      <div class="fleur">h</div>
+    </div>
+  </div>
+</body>
+</html>

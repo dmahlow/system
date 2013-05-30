@@ -1,0 +1,406 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+  <title>sync.coffee</title>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <link rel="stylesheet" media="all" href="public/stylesheets/normalize.css" />
+  <link rel="stylesheet" media="all" href="docco.css" />
+</head>
+<body>
+  <div class="container">
+    <div class="page">
+
+      <div class="header">
+        
+          <h1>sync.coffee</h1>
+        
+
+        
+          <div class="toc">
+            <h3>Table of Contents</h3>
+            <ol>
+              
+                
+                <li>
+                  <a class="source" href="configure.html">
+                    configure.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="database.html">
+                    database.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="imaging.html">
+                    imaging.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="logger.html">
+                    logger.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="mail.html">
+                    mail.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="manager.html">
+                    manager.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="routes.html">
+                    routes.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="security.html">
+                    security.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="settings.html">
+                    settings.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="sockets.html">
+                    sockets.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="sync.html">
+                    sync.coffee
+                  </a>
+                </li>
+              
+            </ol>
+          </div>
+        
+      </div>
+
+      
+        
+        <h2>SERVER SYNC</h2>
+
+        
+      
+        
+        <p>Handles syncing data (downloads and uploads) to external resources.</p>
+
+        
+          <div class='highlight'><pre><span class="class"><span class="keyword">class</span> <span class="title">Sync</span></span></pre></div>
+        
+      
+        
+        <p>Define required modules.</p>
+
+        
+          <div class='highlight'><pre>    fs = require <span class="string">"fs"</span>
+    http = require <span class="string">"http"</span>
+    logger = require <span class="string">"./logger.coffee"</span>
+    moment = require <span class="string">"moment"</span>
+    settings = require <span class="string">"./settings.coffee"</span>
+    sockets = require <span class="string">"./sockets.coffee"</span>
+    url = require <span class="string">"url"</span></pre></div>
+        
+      
+        
+        <p>Holds a copy of all files being downloaded.</p>
+
+        
+          <div class='highlight'><pre>    currentDownloads: {}</pre></div>
+        
+      
+        
+        <p>Holds how many errors happened for downloads.
+If a download throws errors too many times, it will cancel all downloads for
+that specific URL for a brief period of time.</p>
+
+        
+          <div class='highlight'><pre>    errorCounters: {}</pre></div>
+        
+      
+        
+        <p>Download an external file and save it to the local disk.
+Do not proceed if <code>remoteUrl</code> is not valid, or if the file is already being
+downloaded at the moment.</p>
+
+        
+          <div class='highlight'><pre>    download: (remoteUrl, localFile, callback, contentType) =&gt;
+        <span class="keyword">if</span> <span class="keyword">not</span> remoteUrl?
+            logger.warn <span class="string">"Download aborted, remoteUrl is not defined."</span>, localFile
+            <span class="keyword">return</span>
+
+        now = <span class="keyword">new</span> Date()
+        existing = <span class="property">@currentDownloads</span>[localFile]</pre></div>
+        
+      
+        
+        <p>Check existing download time.</p>
+
+        
+          <div class='highlight'><pre>        <span class="keyword">if</span> existing? <span class="keyword">and</span> now.getTime() - existing.date.getTime() &lt; settings.Web.downloadTimeout
+            logger.warn <span class="string">"Download aborted, already downloading!"</span>, localFile, existing
+            <span class="keyword">return</span></pre></div>
+        
+      
+        
+        <p>Check if the specified <code>remoteUrl</code> has failed to download repeatedly. If so, proceed
+only after some time (defined by the <code>connRestartInterval</code> web setting).</p>
+
+        
+          <div class='highlight'><pre>        errorCount = <span class="property">@errorCounters</span>[remoteUrl]
+        <span class="keyword">if</span> errorCount?
+            <span class="keyword">if</span> errorCount &gt; settings.Web.connRestartInterval
+                <span class="keyword">if</span> moment().valueOf() &lt; errorCount
+                    <span class="keyword">if</span> settings.General.debug
+                        logger.warn <span class="string">"Sync.download"</span>, <span class="string">"Abort because failed too many times before."</span>, remoteUrl
+                    <span class="keyword">return</span>
+                <span class="keyword">else</span>
+                    <span class="keyword">delete</span> <span class="property">@errorCounters</span>[remoteUrl]</pre></div>
+        
+      
+        
+        <p>Add it to the <code>currentDownloads</code> object to avoid having multiple downloads
+of the same file at the same time.</p>
+
+        
+          <div class='highlight'><pre>        <span class="property">@currentDownloads</span>[localFile] = {url: remoteUrl, date: now}</pre></div>
+        
+      
+        
+        <p>If no content type was passed, set the default to JSON.</p>
+
+        
+          <div class='highlight'><pre>        contentType = <span class="string">"application/json"</span> <span class="keyword">if</span> <span class="keyword">not</span> contentType?</pre></div>
+        
+      
+        
+        <p>Check if <code>Settings.Web.downloaderHeaders</code> is not null, and if so append
+it to the content type header.</p>
+
+        
+          <div class='highlight'><pre>        <span class="keyword">if</span> settings.Web.downloaderHeaders? <span class="keyword">and</span> settings.Web.downloaderHeaders <span class="keyword">isnt</span> <span class="string">""</span>
+            headers = settings.Web.downloaderHeaders
+            headers[<span class="string">"Content-Type"</span>] = contentType
+        <span class="keyword">else</span>
+            headers = {<span class="string">"Content-Type"</span>: contentType}</pre></div>
+        
+      
+        
+        <p>Reset error message and set options.</p>
+
+        
+          <div class='highlight'><pre>        errorMessage = <span class="literal">null</span>
+        urlInfo = url.parse remoteUrl
+        options = {host: urlInfo.hostname, port: urlInfo.port, path: urlInfo.path, headers: headers}</pre></div>
+        
+      
+        
+        <p>Make sure port is 443 for https, if left undefined.</p>
+
+        
+          <div class='highlight'><pre>        <span class="keyword">if</span> remoteUrl.indexOf(<span class="string">"https"</span>) <span class="keyword">is</span> <span class="number">0</span> <span class="keyword">and</span> <span class="keyword">not</span> urlInfo.port?
+            options.port = <span class="number">443</span></pre></div>
+        
+      
+        
+        <p>Check for credentials on the URL.</p>
+
+        
+          <div class='highlight'><pre>        <span class="keyword">if</span> urlInfo.auth? <span class="keyword">and</span> urlInfo.auth <span class="keyword">isnt</span> <span class="string">""</span>
+            options.auth = urlInfo.auth</pre></div>
+        
+      
+        
+        <p>Append auth information, if specified on the <a href="settings.html">settings</a> but
+only if no credentials were passed directly on the URL.</p>
+
+        
+          <div class='highlight'><pre>        <span class="keyword">if</span> <span class="keyword">not</span> options.auth? <span class="keyword">and</span> settings.Web.downloaderUser? <span class="keyword">and</span> settings.Web.downloaderUser <span class="keyword">isnt</span> <span class="string">""</span>
+            options.auth = <span class="string">"<span class="subst">#{settings.Web.downloaderUser}</span>:<span class="subst">#{settings.Web.downloaderPassword}</span>"</span></pre></div>
+        
+      
+        
+        <p>Helper function to proccess and notify the user about download errors.</p>
+
+        
+          <div class='highlight'><pre>        <span class="function"><span class="title">downloadError</span></span> = (error) =&gt;
+            counter = <span class="property">@errorCounters</span>[remoteUrl]</pre></div>
+        
+      
+        
+        <p>Add up to the error counter.</p>
+
+        
+          <div class='highlight'><pre>            <span class="keyword">if</span> counter? <span class="keyword">and</span> counter &lt; settings.Web.alertAfterFailedDownloads
+                counter = counter + <span class="number">1</span>
+            <span class="keyword">else</span>
+                counter = <span class="number">1</span></pre></div>
+        
+      
+        
+        <p>If download has failed many times, log and error instead of warning and
+update the <code>errorCounters</code> reference value with the current time plus
+the value specified on the <code>connRestartInterval</code> web setting.</p>
+
+        
+          <div class='highlight'><pre>            <span class="keyword">if</span> counter <span class="keyword">is</span> settings.Web.alertAfterFailedDownloads
+                time = moment().add(<span class="string">"ms"</span>, settings.Web.connRestartInterval).valueOf()
+                <span class="property">@errorCounters</span>[remoteUrl] = time
+                logger.error <span class="string">"Sync.download"</span>, remoteUrl, error
+            <span class="keyword">else</span>
+                <span class="property">@errorCounters</span>[remoteUrl] = counter
+                logger.warn <span class="string">"Sync.download"</span>, remoteUrl, error</pre></div>
+        
+      
+        
+        <p>Send error using Socket.IO.</p>
+
+        
+          <div class='highlight'><pre>            sockets.sendServerError <span class="string">"Download error: "</span> + remoteUrl + <span class="string">" "</span> + error.code</pre></div>
+        
+      
+        
+        <p>Callback passing the error object.</p>
+
+        
+          <div class='highlight'><pre>            errorMessage = error.message
+            callback(errorMessage, localFile) <span class="keyword">if</span> callback?</pre></div>
+        
+      
+        
+        <p>Remove download reference from <code>currentDownloads</code>.</p>
+
+        
+          <div class='highlight'><pre>            <span class="property">@currentDownloads</span>[localFile] = <span class="literal">null</span>
+            <span class="keyword">delete</span> <span class="property">@currentDownloads</span>[localFile]
+
+        req = http.get options, (response) =&gt;
+
+            localFileTemp = localFile + <span class="string">".download"</span></pre></div>
+        
+      
+        
+        <p>If status is not 200 or 304, it means something went wrong so do not proceed
+with the download. Otherwise proceed and listen to the <code>data</code> and <code>end</code> events.</p>
+
+        
+          <div class='highlight'><pre>            <span class="keyword">if</span> response.statusCode <span class="keyword">isnt</span> <span class="number">200</span> <span class="keyword">and</span> response.statusCode <span class="keyword">isnt</span> <span class="number">304</span>
+
+                downloadError {code: response.statusCode, message: <span class="string">"Server returned an unexpected status code."</span>}
+
+            <span class="keyword">else</span></pre></div>
+        
+      
+        
+        <p>Create the file stream with a .download extension. This will be renamed after the
+download has finished and the file is totally written.</p>
+
+        
+          <div class='highlight'><pre>                fileWriter = fs.createWriteStream localFileTemp, {<span class="string">"flags"</span>: <span class="string">"w+"</span>}
+
+                response.addListener <span class="string">"data"</span>, (data) =&gt;
+                    fileWriter.write data
+
+                response.addListener <span class="string">"end"</span>, () =&gt;
+                    fileWriter.addListener <span class="string">"close"</span>, () =&gt;</pre></div>
+        
+      
+        
+        <p>If .download file can&#39;t be found, stop here but do not throw the error.</p>
+
+        
+          <div class='highlight'><pre>                        <span class="keyword">if</span> <span class="keyword">not</span> fs.existsSync localFileTemp
+                            <span class="keyword">delete</span> <span class="property">@currentDownloads</span>[localFile]
+                            <span class="keyword">return</span></pre></div>
+        
+      
+        
+        <p>Delete the old file (if there&#39;s one) and rename the .download file to its original name.</p>
+
+        
+          <div class='highlight'><pre>                        fs.unlinkSync localFile <span class="keyword">if</span> fs.existsSync localFile</pre></div>
+        
+      
+        
+        <p>Remove .download extension.</p>
+
+        
+          <div class='highlight'><pre>                        fs.renameSync localFileTemp, localFile</pre></div>
+        
+      
+        
+        <p>Proceed with the callback.</p>
+
+        
+          <div class='highlight'><pre>                        callback(errorMessage, localFile) <span class="keyword">if</span> callback?</pre></div>
+        
+      
+        
+        <p>Remove download reference from <code>currentDownloads</code> when finished.</p>
+
+        
+          <div class='highlight'><pre>                        <span class="keyword">delete</span> <span class="property">@currentDownloads</span>[localFile]
+                        <span class="keyword">delete</span> <span class="property">@errorCounters</span>[remoteUrl]
+
+                        <span class="keyword">if</span> settings.General.debug
+                            logger.info <span class="string">"Sync.download"</span>, remoteUrl, localFile
+
+                    fileWriter.end()
+                    fileWriter.destroySoon()</pre></div>
+        
+      
+        
+        <p>Unhandled error, call the downloadError helper.</p>
+
+        
+          <div class='highlight'><pre>        req.<span class="literal">on</span> <span class="string">"error"</span>, (error) =&gt;
+            downloadError error</pre></div>
+        
+      
+        
+        <h2>Singleton implementation</h2>
+
+        
+      
+        
+        
+        
+          <div class='highlight'><pre>Sync.<span class="function"><span class="title">getInstance</span></span> = -&gt;
+    <span class="property">@instance</span> = <span class="keyword">new</span> Sync() <span class="keyword">if</span> <span class="keyword">not</span> <span class="property">@instance</span>?
+    <span class="keyword">return</span> <span class="property">@instance</span>
+
+module.exports = exports = Sync.getInstance()</pre></div>
+        
+      
+      <div class="fleur">h</div>
+    </div>
+  </div>
+</body>
+</html>
