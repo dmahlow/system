@@ -140,12 +140,19 @@ class SystemApp.MapControlsView extends SystemApp.BaseView
 
         # Get user permissions.
         hasPermission = SystemApp.Data.loggedUser.hasRole "mapedit"
+        readOnly = @model.isReadOnly()
         isOwner = (@model.createdByUserId() is SystemApp.Data.loggedUser.id)
 
         # Make sure user has permissions to edit this map.
-        if value is true and not hasPermission and not isOwner
+        if value is true
+            if not hasPermission and not isOwner
                 value = false
                 errorMsg = SystemApp.Messages.errNoPermissionTo.replace "#", SystemApp.Messages.editThisMap
+            else if readOnly
+                value = false
+                errorMsg = SystemApp.Messages.errMapIsReadOnly
+
+            if not value
                 SystemApp.alertEvents.trigger "tooltip", {isError: true, title: SystemApp.Messages.accessDenied, message: errorMsg}
                 @$chkEditable.prop "checked", false
 

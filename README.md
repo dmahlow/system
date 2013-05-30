@@ -13,6 +13,7 @@ The final 1.0.0 version is expected to be ready by Summer 2013.
 
 ##### Sooner than later
 - Users and roles. Basic HTTP authentication is done and ready, LDAP to follow.
+- Enforce roles validation also on the server side.
 - Admin area to manage server, settings and users directly on the browser.
 - Better and smarter auto completion when editing shape labels.
 - Auto completion when editing Audit Event rules (just like on shape labels).

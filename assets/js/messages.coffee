@@ -92,6 +92,7 @@ SystemApp.Messages =
     errEvalReturn: "Eval must have a return statement!"
     errInvalidRoute: "The path you have entered does not exist."
     errMapDoesNotExist: "The specified map does not exist!"
+    errMapIsReadOnly: "This map is read-only and cannot be updated."
     errMapNameExists: "There's already a map called #."
     errNoPermissionTo: "You don't have the necessary permissions to #."
     errParseModel: "Error while parsing data from server."

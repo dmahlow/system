@@ -84,7 +84,7 @@ class SystemApp.AuditDataManagerView extends SystemApp.OverlayView
         else
             newId = SystemApp.DataUtil.normalize newId, true
 
-        item = SystemApp.Data.auditData.create {friendlyId: newId}, {wait: true}
+        SystemApp.Data.auditData.create {friendlyId: newId}, {wait: true}
         @clearTextInputs()
 
     # If the `$txtCreate` field has focus, pressing Enter will call the `click`
