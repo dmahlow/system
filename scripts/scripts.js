@@ -42,7 +42,7 @@ $(document).ready(function()
             miniHeaderVisible = false;
         }
 
-        sTop = sTop + 380;
+        sTop = sTop + 390;
 
         if (miniHeaderVisible) {
             var newTopLink;
