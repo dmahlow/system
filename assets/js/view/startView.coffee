@@ -40,6 +40,11 @@ class SystemApp.StartView extends SystemApp.OverlayView
             _.delay @bindMaps, SystemApp.Settings.General.refetchDelay
             return
 
+        if SystemApp.Settings.Map.enableLocalMap
+            map = new SystemApp.Map()
+            map.initLocalMap()
+            @addMapToList map
+
         @addMapToList item for item in SystemApp.Data.maps.models
 
     # Add a single [Map](map.html) to the `$mapList` element.

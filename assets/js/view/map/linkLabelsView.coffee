@@ -6,6 +6,7 @@
 
 class SystemApp.MapLinkLabelsView extends SystemApp.BaseView
 
+    visible: true                       # cached variable to check if labels are visible or hidden
     currentEditingPosition: null        # holds the position which is being currently edited (Start, Center. End)
     labelEditView: null                 # holds a [Label Edit View](labelEditView.html), used to change label values
     svgStart: null                      # the label on the start of the link path
@@ -168,6 +169,8 @@ class SystemApp.MapLinkLabelsView extends SystemApp.BaseView
 
     # Show the link labels and icons.
     show: =>
+        @visible = true
+
         # Set opacity 1 on all labels.
         opacity = {"opacity": 1}
         svgs = @svgsLabels()
@@ -180,6 +183,7 @@ class SystemApp.MapLinkLabelsView extends SystemApp.BaseView
 
     # Hide the link labels and icons.
     hide: =>
+        @visible = false
         @currentEditingPosition = null
 
         opacity = {"opacity": 0}
@@ -193,9 +197,8 @@ class SystemApp.MapLinkLabelsView extends SystemApp.BaseView
         s?.animate(opacity, SystemApp.Settings.Map.blinkInterval) for s in svgs
 
     # Set the link label positions on the map.
-    setPosition: (posX, posY, location) =>
-        posX = @parentView.x() if not posX?
-        posY = @parentView.y() if not posY?
+    setPosition: (location) =>
+        return if not @visible
 
         iconSize = SystemApp.Settings.Map.icoActionsSize
         iconHalfSize = iconSize / 2

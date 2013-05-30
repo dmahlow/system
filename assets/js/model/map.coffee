@@ -14,7 +14,7 @@ class SystemApp.Map extends SystemApp.BaseModel
         gridSizeY: SystemApp.Settings.Map.gridSizeY
         thumbnailDate: new Date(2000, 1, 1)
         silent: false
-        readOnly: false
+        isReadOnly: false
 
     relations:
         links: SystemApp.LinkCollection
@@ -85,10 +85,10 @@ class SystemApp.Map extends SystemApp.BaseModel
         @get "isLocal"
 
     # Helper to get / set map read only flag.
-    readOnly: (value) =>
+    isReadOnly: (value) =>
         if value?
-            @set "readOnly", value
-        @get "readOnly"
+            @set "isReadOnly", value
+        @get "isReadOnly"
 
     # Helper to get / set the map silent mode.
     silent: (value) =>

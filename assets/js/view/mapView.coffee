@@ -857,9 +857,11 @@ class SystemApp.MapView extends SystemApp.BaseView
     # THUMBNAILS
     # ----------------------------------------------------------------------
 
-    # Post the SVG representation of the map to the server to
-    # generate the SVG and PNG thumbnails.
+    # Post the SVG representation of the map to the server to generate the SVG and PNG thumbnails.
+    # This WON'T happen for local maps.
     generateThumbnail: =>
+        return if @model.isLocal()
+
         now = new Date()
         thumbnailDate = @model.thumbnailDate()
 

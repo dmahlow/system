@@ -672,7 +672,7 @@ class SystemApp.MapShapeView extends SystemApp.BaseView
         @svgLinker.attr @getLinkerPositionAtt posX, posY
         @svgResizer.attr @getResizerPositionAtt posX, posY
         @svgZIndex?.attr @getZIndexLabelPositionAtt posX, posY
-        @labelsView.setPosition posX, posY
+        @labelsView.setPosition()
 
         @setIconGeometry posX, posY
 
