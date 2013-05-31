@@ -341,6 +341,10 @@ module.exports = (app) ->
         if not map.id? or map.id is ""
             map.createdByUserId = req.user.id
 
+        # Make sure creation date is set.
+        if not map.dateCreated? or map.dateCreated is ""
+            map.dateCreated = new Date()
+
         database.setMap map, null, (err, result) ->
             if result? and not err?
                 res.send minifyJson result
@@ -380,10 +384,6 @@ module.exports = (app) ->
     # Generates a thumbnail of the specified [Map](map.html), by passing
     # its ID and SVG representation.
     postMapThumb = (req, res) ->
-        if not req.user?
-            sendForbiddenResponse res, "Map Thumbnail POST"
-            return
-
         svg = req.body.svg
         svgPath = settings.Paths.imagesDir + "mapthumbs/" + req.params["id"] + ".svg"
 
