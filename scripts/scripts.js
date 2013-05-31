@@ -8,11 +8,14 @@ $(document).ready(function()
         $header = $("#header"),
         $miniHeader = $("#miniheader"),
         $miniHeaderLinks = $miniHeader.find("a"),
+        $tooltipExpand = $("#tooltip-expand"),
+        $tooltipCollapse = $("#tooltip-collapse"),
         originalX = $demoFrame.css("left"),
         originalY = $demoFrame.css("top"),
         originalW = $demoFrame.css("width"),
         originalH = $demoFrame.css("height"),
-        originalP = $demoFrame.css("padding-left");
+        originalP = $demoFrame.css("padding-left"),
+        expandClicked = false;
 
     // Make sure if fits on smaller screens.
     if ($window.innerWidth() < $body.innerWidth() - 1)
@@ -44,6 +47,7 @@ $(document).ready(function()
 
         sTop = sTop + 390;
 
+        // Select current active header link.
         if (miniHeaderVisible) {
             var newTopLink;
 
@@ -68,25 +72,50 @@ $(document).ready(function()
         }
     });
 
+    // Helper to "pulsate" an element.
+    var pulsate = function(el) {
+        el.fadeIn(250, function() {
+            el.fadeOut(50, function() {
+                el.fadeIn(50, function() {
+                    el.fadeOut(50, function() {
+                        el.fadeIn(100, function() {
+                            el.fadeOut(4500);
+                        });
+                    });
+                });
+            });
+        });
+    };
+
     // Attach full demo click handler.
     $toFullDemo.attr("href", "#demo");
     $toFullDemo.click(function(e)
     {
-        var options;
+        var options, expand;
 
         if ($body.hasClass("fulldemo"))
         {
+            expand = false;
             $body.removeClass("fulldemo");
             $toFullDemo.html("expand Sample System Map");
             options = {left: originalX, top: originalY, width: originalW, height: originalH, padding: originalP};
         }
         else
         {
+            expand = true;
             $body.addClass("fulldemo");
             $toFullDemo.html("collapse Sample System Map");
             options = {left: 0, top: 0, width: $window.innerWidth(), height: $window.innerHeight(), padding: 0};
         }
 
-        $demoFrame.animate(options, 300);
+        $demoFrame.animate(options, 300, function() {
+            if (expand && !expandClicked) {
+                setTimeout(function() { pulsate($tooltipCollapse); }, 500);
+            }
+
+            expandClicked = true;
+        });
     });
+
+    setTimeout(function() { pulsate($tooltipExpand); }, 4000);
 });

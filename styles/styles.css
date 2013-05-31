@@ -344,3 +344,73 @@ ul.paas small
     float: right;
     margin-left: 20px;
 }
+
+/* TOOLTIPS
+// ------------------------------------------------------------------------- */
+
+#fork
+{
+    background: url(../images/fork.png) no-repeat;
+    display: block;
+    height: 149px;
+    position: absolute;
+    right: 0;
+    top: 0;
+    width: 149px;
+    z-index: 90;
+}
+
+#tooltip-expand
+{
+    left: 696px;
+    position: absolute;
+    top: 373px;
+}
+
+#tooltip-collapse
+{
+    right: 336px;
+    position: fixed;
+    bottom: 3px;
+}
+
+.tooltip
+{
+    display: inline-block;
+    font-size: 11px;
+    z-index: 99
+}
+
+.tooltip > div
+{
+    background: rgb(200, 240, 180);
+    color: rgb(0, 0, 0);
+    height: 19px;
+    padding: 1px 6px 0 6px;
+    position: relative;
+}
+
+.tooltip > div:after, .tooltip > div:before
+{
+    border: solid transparent;
+    border-width: 10px;
+    content: " ";
+    height: 0;
+    width: 0;
+    position: absolute;
+    pointer-events: none;
+    top: 50%;
+    margin-top: -10px;
+}
+
+.tooltip > div.left:after, .tooltip > div.left:before
+{
+    border-right-color: rgb(200, 240, 180);
+    right: 100%;
+}
+
+.tooltip > div.right:before, .tooltip > div.right:after
+{
+    border-left-color: rgb(200, 240, 180);
+    left: 100%;
+}
