@@ -57,9 +57,9 @@ class SystemApp.EntityObjectCollection extends SystemApp.BaseCollection
     # property `sourceUrl`. If not parent model was set, return a generic "for-all" URL.
     url: =>
         if @parentModel?
-            return SystemApp.Settings.EntityObject.url + "/" + @parentModel.friendlyId()
+            return SystemApp.Settings.entityObject.url + "/" + @parentModel.friendlyId()
         else
-            return SystemApp.Settings.EntityObject.url
+            return SystemApp.Settings.entityObject.url
 
     # Set the comparator function to order the entity objects by title.
     comparator: (shape) -> return shape.title()

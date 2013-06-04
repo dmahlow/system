@@ -90,7 +90,7 @@ SystemApp.Sockets =
             return
 
         # Default seconds is 10.
-        seconds = SystemApp.Settings.Sockets.clientRefreshSeconds if not seconds?
+        seconds = SystemApp.Settings.sockets.clientRefreshSeconds if not seconds?
 
         # Emit event.
         SystemApp.Sockets.socket.emit "clients:refresh", {seconds: seconds}

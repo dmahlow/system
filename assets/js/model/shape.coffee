@@ -6,18 +6,18 @@
 class SystemApp.Shape extends SystemApp.BaseModel
     typeName: "Shape"
     defaults:
-        background: SystemApp.Settings.Shape.background
-        format: SystemApp.Settings.Shape.format
-        fontSize: SystemApp.Settings.Shape.fontSize
-        foreground: SystemApp.Settings.Shape.foreground
-        opacity: SystemApp.Settings.Map.opacityStatic
-        roundedCorners: SystemApp.Settings.Shape.roundedCorners
-        sizeX: SystemApp.Settings.Shape.gridViewSizeX
-        sizeY: SystemApp.Settings.Shape.gridViewSizeY
-        stroke: SystemApp.Settings.Shape.stroke
-        strokeWidth: SystemApp.Settings.Shape.strokeWidth
-        titleForeground: SystemApp.Settings.Shape.titleForeground
-        zIndex: SystemApp.Settings.Shape.zIndex
+        background: SystemApp.Settings.shape.background
+        format: SystemApp.Settings.shape.format
+        fontSize: SystemApp.Settings.shape.fontSize
+        foreground: SystemApp.Settings.shape.foreground
+        opacity: SystemApp.Settings.map.opacityStatic
+        roundedCorners: SystemApp.Settings.shape.roundedCorners
+        sizeX: SystemApp.Settings.shape.gridViewSizeX
+        sizeY: SystemApp.Settings.shape.gridViewSizeY
+        stroke: SystemApp.Settings.shape.stroke
+        strokeWidth: SystemApp.Settings.shape.strokeWidth
+        titleForeground: SystemApp.Settings.shape.titleForeground
+        zIndex: SystemApp.Settings.shape.zIndex
 
 
     # SYNC

@@ -129,7 +129,7 @@ SystemApp.DataUtil =
         return false if not value? or value is ""
         value = value.toString()
 
-        namespace = SystemApp.Settings.General.dataBindingKey + SystemApp.Settings.AuditData.bindingNamespace
+        namespace = SystemApp.Settings.general.dataBindingKey + SystemApp.Settings.auditData.bindingNamespace
         specialKeyIndex = value.indexOf namespace
         return false if specialKeyIndex < 0
 
@@ -145,7 +145,7 @@ SystemApp.DataUtil =
     getOnlyTheAuditDataProperty: (value) ->
         return false if not value? or value is ""
 
-        namespace = SystemApp.Settings.General.dataBindingKey + SystemApp.Settings.AuditData.bindingNamespace
+        namespace = SystemApp.Settings.general.dataBindingKey + SystemApp.Settings.auditData.bindingNamespace
         specialKeyIndex = value.indexOf namespace
         value = value.substring specialKeyIndex
         spaceIndex = value.indexOf " "
@@ -160,7 +160,7 @@ SystemApp.DataUtil =
     getAuditDataValue: (value) ->
         return if not value? or value is ""
 
-        namespace = SystemApp.Settings.General.dataBindingKey + SystemApp.Settings.AuditData.bindingNamespace
+        namespace = SystemApp.Settings.general.dataBindingKey + SystemApp.Settings.auditData.bindingNamespace
         substr = value.substring(namespace.length + 1)
 
         dotPosition = substr.indexOf(".")
@@ -189,7 +189,7 @@ SystemApp.DataUtil =
         return false if not value? or value is ""
         value = value.toString()
 
-        namespace = SystemApp.Settings.General.dataBindingKey + SystemApp.Settings.Variable.bindingNamespace
+        namespace = SystemApp.Settings.general.dataBindingKey + SystemApp.Settings.variable.bindingNamespace
         specialKeyIndex = value.indexOf namespace
         return false if specialKeyIndex < 0
 
@@ -200,7 +200,7 @@ SystemApp.DataUtil =
     getVariableValue: (value, ref) ->
         return if not value? or value is ""
 
-        namespace = SystemApp.Settings.General.dataBindingKey + SystemApp.Settings.Variable.bindingNamespace
+        namespace = SystemApp.Settings.general.dataBindingKey + SystemApp.Settings.variable.bindingNamespace
         s = value.substring(namespace.length + 1)
 
         indexParentheses = s.indexOf "("
@@ -242,7 +242,7 @@ SystemApp.DataUtil =
         return false if not value? or value is ""
         value = value.toString()
 
-        namespace = SystemApp.Settings.General.dataBindingKey + SystemApp.Settings.EntityObject.bindingNamespace
+        namespace = SystemApp.Settings.general.dataBindingKey + SystemApp.Settings.entityObject.bindingNamespace
         specialKeyIndex = value.indexOf namespace
         return false if specialKeyIndex < 0
 
@@ -255,7 +255,7 @@ SystemApp.DataUtil =
     getEntityAttributeValue: (value, ref) ->
         return if not value? or value is ""
 
-        namespace = SystemApp.Settings.General.dataBindingKey + SystemApp.Settings.EntityObject.bindingNamespace
+        namespace = SystemApp.Settings.general.dataBindingKey + SystemApp.Settings.entityObject.bindingNamespace
         s = value.substring(namespace.length + 1)
         comma = s.indexOf ","
 
@@ -351,7 +351,7 @@ SystemApp.DataUtil =
 
         # Parse each value by checking if it represents a specific data.
         for s in splitValue
-            if s.substring(0, 1) is SystemApp.Settings.General.dataBindingKey
+            if s.substring(0, 1) is SystemApp.Settings.general.dataBindingKey
                 if SystemApp.DataUtil.hasAuditData s
                     newValue += " " + SystemApp.DataUtil.getAuditDataValue s
                 else if SystemApp.DataUtil.hasHasVariable s

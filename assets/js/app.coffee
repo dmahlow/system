@@ -262,7 +262,7 @@ SystemApp.setUiOptions = ->
 # If the hashtag is empty, show the [Start View](startView.html) automatically.
 SystemApp.start = ->
     now = new Date()
-    console.log "#{SystemApp.Settings.General.appTitle} START: #{now}"
+    console.log "#{SystemApp.Settings.general.appTitle} START: #{now}"
 
     # Disabled editing by default.
     SystemApp.mapEvents.trigger "edit:toggle", false
@@ -323,9 +323,9 @@ SystemApp.toggleLoading = (enabled) ->
     enabled = false if not enabled?
 
     if enabled
-        SystemApp.$loading.fadeIn SystemApp.Settings.General.fadeDelay
+        SystemApp.$loading.fadeIn SystemApp.Settings.general.fadeDelay
     else
-        SystemApp.$loading.fadeOut SystemApp.Settings.General.fadeDelay
+        SystemApp.$loading.fadeOut SystemApp.Settings.general.fadeDelay
 
 
 # HELPERS
@@ -333,7 +333,7 @@ SystemApp.toggleLoading = (enabled) ->
 
 # Enable or disable the `debug` mode.
 SystemApp.toggleDebug = (enabled) ->
-    SystemApp.Settings.General.debug = enabled
+    SystemApp.Settings.general.debug = enabled
 
     if enabled
         SystemApp.$debug.show()
@@ -353,7 +353,7 @@ SystemApp.suppressBackspace = (e) ->
 
 # Helper method to log to the console, but only if `debug` is set to true.
 SystemApp.consoleLog = (method, message, obj) ->
-    if SystemApp.Settings.General.debug
+    if SystemApp.Settings.general.debug
         if obj isnt undefined
             console.log method, message, obj
         else

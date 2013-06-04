@@ -8,7 +8,7 @@ SystemApp.Settings =
 
     # GENERAL
     # ----------------------------------------------------------------------
-    General:
+    general:
         # Force set the debug mode. If true, most actions will be logged to the console.
         # If not set, it will be `false` on production environments and `true` on all other environments.
         debug: null
@@ -52,7 +52,7 @@ SystemApp.Settings =
 
     # ENTITY DEFINITIONS
     # ----------------------------------------------------------------------
-    EntityDefinition:
+    entityDefinition:
         # The default URL where to get entities from.
         url: "json/entitydefinition"
         # Maximum allowed refresh interval for entities, in seconds.
@@ -73,7 +73,7 @@ SystemApp.Settings =
 
     # ENTITY OBJECTS
     # ----------------------------------------------------------------------
-    EntityObject:
+    entityObject:
         # The default URL where to get entities from.
         url: "json/entityobject"
         # The namespace used for data binding.
@@ -88,7 +88,7 @@ SystemApp.Settings =
 
     # MAP
     # ----------------------------------------------------------------------
-    Map:
+    map:
         # The id of the map background element.
         id: "map-bg"
         # The url to the map(s) JSON.
@@ -196,7 +196,7 @@ SystemApp.Settings =
 
     # MAP MOVER
     # ----------------------------------------------------------------------
-    MapMover:
+    mapMover:
         # The map shapes mover background.
         background: "#77AAFF"
         # The map shapes mover opacity.
@@ -207,7 +207,7 @@ SystemApp.Settings =
 
     # SHAPES
     # ----------------------------------------------------------------------
-    Shape:
+    shape:
         # The default shape background color.
         background: "#060606"
         # The namespace used for data binding.
@@ -242,7 +242,7 @@ SystemApp.Settings =
 
     # LINK
     # ----------------------------------------------------------------------
-    Link:
+    link:
         # Default arrow size.
         arrowSize: 12
         # Default source arrow. 0 = no arrow, 1 = filled arrow, 2 = open arrow
@@ -275,7 +275,7 @@ SystemApp.Settings =
 
     # LABEL EDITING
     # ----------------------------------------------------------------------
-    LabelEdit:
+    labelEdit:
         # CSS class name of the label edit view wrapper.
         className: "label-edit-view"
         # If eval fails, show the error message on the textbox for X milliseconds.
@@ -288,7 +288,7 @@ SystemApp.Settings =
 
     # AUDIT DATA
     # ----------------------------------------------------------------------
-    AuditData:
+    auditData:
         # The url to the audit data(s) JSON.
         url: "json/auditdata"
         # The namespace used for data binding.
@@ -317,7 +317,7 @@ SystemApp.Settings =
 
     # AUDIT ALERT
     # ----------------------------------------------------------------------
-    AuditEvent:
+    auditEvent:
         # The url to the audit event(s) JSON.
         url: "json/auditevent"
         # The namespace used for data binding.
@@ -340,7 +340,7 @@ SystemApp.Settings =
 
     # AUDIT ALERT
     # ----------------------------------------------------------------------
-    Variable:
+    variable:
         # The url to the variable(s) JSON.
         url: "json/variable"
         # The namespace used for data binding.
@@ -351,7 +351,7 @@ SystemApp.Settings =
 
     # USER SETTINGS
     # ----------------------------------------------------------------------
-    User:
+    user:
         # The url to the user's JSON.
         url: "json/user"
         # The url to the logged user's JSON.
@@ -368,7 +368,7 @@ SystemApp.Settings =
 
     # MENU
     # ----------------------------------------------------------------------
-    Menu:
+    menu:
         # Timeout to hide submenus when mouse leaves them.
         hideTimeout: 400
         # Prefix of the ID of submenu items.
@@ -377,7 +377,7 @@ SystemApp.Settings =
 
     # ALERT
     # ----------------------------------------------------------------------
-    Alert:
+    alert:
         # How long should the alerts stay shown.
         hideDelay: 3000
         # How long it takes to fade in / out alerts.
@@ -389,13 +389,13 @@ SystemApp.Settings =
 
     # FOOTER
     # ----------------------------------------------------------------------
-    Footer:
+    footer:
         # How long it takes to fade in / out footer information.
         opacityInterval: 400
 
 
     # SOCKET SETTINGS
     # ----------------------------------------------------------------------
-    Sockets:
+    sockets:
         # Default "clients:refresh" command is 60 seconds.
         clientRefreshSeconds: 60

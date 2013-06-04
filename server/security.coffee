@@ -69,12 +69,10 @@ class Security
 
         # User serializer will user the user ID only.
         expresser.app.passport.serializeUser (user, callback) ->
-            console.warn "SSSEEERRRR", user
             callback null, user.id
 
         # User deserializer will get user details from the database.
         expresser.app.passport.deserializeUser (user, callback) ->
-            console.warn "DDDEEESSSS", user
             if user is "guest"
                 validateUser "guest", null, callback
             else

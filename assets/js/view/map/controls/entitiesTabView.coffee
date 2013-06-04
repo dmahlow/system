@@ -67,9 +67,9 @@ class SystemApp.MapControlsEntitiesTabView extends SystemApp.BaseView
     # Toggles the visibility on or off, using a fade effect.
     toggleVisibility: (visible) =>
         if visible
-            @$el.fadeIn SystemApp.Settings.Map.opacityInterval
+            @$el.fadeIn SystemApp.Settings.map.opacityInterval
         else
-            @$el.fadeOut SystemApp.Settings.Map.opacityInterval
+            @$el.fadeOut SystemApp.Settings.map.opacityInterval
 
     # When window has loaded or resized, set the height to the parent's height.
     resize: =>
@@ -129,7 +129,7 @@ class SystemApp.MapControlsEntitiesTabView extends SystemApp.BaseView
     # When the entity's [data](entityObject.html) has entity objects deleted, remove them
     # from the `$list`.
     entityDataRemoved: (entityObject) =>
-        li = $ SystemApp.Settings.Map.entityListPrefix + entityObject.entityDefinitionId() + "-" + entityObject.id
+        li = $ SystemApp.Settings.map.entityListPrefix + entityObject.entityDefinitionId() + "-" + entityObject.id
         li.remove()
 
 
@@ -156,8 +156,8 @@ class SystemApp.MapControlsEntitiesTabView extends SystemApp.BaseView
     # is NOT bound to any entity, thus its values are totally customizable.
     addCustomShapeToList: =>
         li = $(document.createElement "li")
-        li.attr "id", SystemApp.Settings.Map.entityListPrefix + "0"
-        li.html SystemApp.Settings.Shape.customText
+        li.attr "id", SystemApp.Settings.map.entityListPrefix + "0"
+        li.html SystemApp.Settings.shape.customText
         li.addClass "custom"
 
         # Add an empty span which represents the entity's count.
@@ -172,10 +172,10 @@ class SystemApp.MapControlsEntitiesTabView extends SystemApp.BaseView
     addToList: (obj) =>
         obj = obj.model if obj.model?
         definitionId = obj.entityDefinitionId()
-        definitionId = SystemApp.Settings.Shape.customId if not definitionId?
+        definitionId = SystemApp.Settings.shape.customId if not definitionId?
 
         li = $(document.createElement "li")
-        li.attr "id", SystemApp.Settings.Map.entityListPrefix + definitionId + "-" + obj.id
+        li.attr "id", SystemApp.Settings.map.entityListPrefix + definitionId + "-" + obj.id
         li.attr "title", obj.title()
         li.html obj.title()
         li.data "entity", obj
@@ -200,7 +200,7 @@ class SystemApp.MapControlsEntitiesTabView extends SystemApp.BaseView
         li.css "display", "none"
         li.mousedown @dragStart
         @$list.append li
-        li.fadeIn SystemApp.Settings.Map.opacityInterval
+        li.fadeIn SystemApp.Settings.map.opacityInterval
 
     # Helper method to get the entity counter element based on a map shape.
     # Return the default "Custom Shape" list item in case no items are found for the
@@ -209,8 +209,8 @@ class SystemApp.MapControlsEntitiesTabView extends SystemApp.BaseView
         entityDefId = shape.entityDefinitionId()
         entityObjId = shape.entityObjectId()
 
-        li = $ "#" + SystemApp.Settings.Map.entityListPrefix + entityDefId + "-" + entityObjId
-        li = $ "#" + SystemApp.Settings.Map.entityListPrefix + "0" if li.length < 1
+        li = $ "#" + SystemApp.Settings.map.entityListPrefix + entityDefId + "-" + entityObjId
+        li = $ "#" + SystemApp.Settings.map.entityListPrefix + "0" if li.length < 1
 
         return li.find "span.count"
 
@@ -275,7 +275,7 @@ class SystemApp.MapControlsEntitiesTabView extends SystemApp.BaseView
             title = entityDefinition.objectTitleAttribute()
             sep = title.indexOf ","
             title = title.substring(0, sep) if title.indexOf(",") > 0
-            title = SystemApp.Settings.General.dataBindingKey + SystemApp.Settings.EntityObject.bindingNamespace + "." + title
+            title = SystemApp.Settings.general.dataBindingKey + SystemApp.Settings.entityObject.bindingNamespace + "." + title
 
             # Set shape options based on the [entity definition](entityDefinition) template.
             shapeOptions.textTitle = title
@@ -311,10 +311,10 @@ class SystemApp.MapControlsEntitiesTabView extends SystemApp.BaseView
         # Get the list element and default shape settings.
         li = $ e.target
         entity = li.data "entity"
-        background = SystemApp.Settings.Shape.background
-        foreground = SystemApp.Settings.Shape.foreground
-        sizeX = SystemApp.Settings.Shape.gridViewSizeX
-        sizeY = SystemApp.Settings.Shape.gridViewSizeY
+        background = SystemApp.Settings.shape.background
+        foreground = SystemApp.Settings.shape.foreground
+        sizeX = SystemApp.Settings.shape.gridViewSizeX
+        sizeY = SystemApp.Settings.shape.gridViewSizeY
 
         @$shapeDragger = li.clone false
         @$shapeDragger.addClass "shape-dragger"
@@ -403,7 +403,7 @@ class SystemApp.MapControlsEntitiesTabView extends SystemApp.BaseView
             @$txtSearch.val ""
 
         window.clearTimeout @timerSearch if @timerSearch isnt null
-        @timerSearch = window.setTimeout @search, SystemApp.Settings.General.searchDelay
+        @timerSearch = window.setTimeout @search, SystemApp.Settings.general.searchDelay
 
     # Filter the elements being shown on the entity list based on the `$txtSearch` value.
     # The "Custom shape..." is always shown on the results.

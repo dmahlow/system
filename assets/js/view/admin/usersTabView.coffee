@@ -119,7 +119,7 @@ class SystemApp.AdminUsersTabView extends SystemApp.BaseView
         row = $ row
 
         # Set row ID.
-        row.attr "id", SystemApp.Settings.User.rowListPrefix + user.id
+        row.attr "id", SystemApp.Settings.user.rowListPrefix + user.id
 
         # Bind edit and delete events.
         row.find(".actions .edit").click user, @editClick
@@ -130,7 +130,7 @@ class SystemApp.AdminUsersTabView extends SystemApp.BaseView
 
     # When a user is removed from the users collection.
     removeUserFromGrid: (user) =>
-        row = $("#" + SystemApp.Settings.User.rowListPrefix + user.id)
+        row = $("#" + SystemApp.Settings.user.rowListPrefix + user.id)
         @modelElementRemove row
 
     # Bind registered users to the users grid.
@@ -142,7 +142,7 @@ class SystemApp.AdminUsersTabView extends SystemApp.BaseView
     # to the top form so it can be edited.
     editClick: (e) =>
         if @selectedUser?
-            $("#" + SystemApp.Settings.User.rowListPrefix + @selectedUser.id).removeClass "active"
+            $("#" + SystemApp.Settings.user.rowListPrefix + @selectedUser.id).removeClass "active"
 
         # Highlight the clicked row.
         row = $(e.target).parent().parent()

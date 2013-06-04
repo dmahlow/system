@@ -110,8 +110,8 @@ class SystemApp.MapView extends SystemApp.BaseView
 
     # Set the Raphael/SVG paper and its properties.
     setPaper: =>
-        width = SystemApp.Settings.Map.paperSizeX
-        height = SystemApp.Settings.Map.paperSizeY
+        width = SystemApp.Settings.map.paperSizeX
+        height = SystemApp.Settings.map.paperSizeY
 
         @selectedShapes = {}
         @paper = new Raphael "map", width, height
@@ -180,7 +180,7 @@ class SystemApp.MapView extends SystemApp.BaseView
 
     # Bind a [Map](map.html) to the map. this will reset the map state!
     bind: (map) =>
-        console.profile "MapView.bind" if SystemApp.Settings.General.profile
+        console.profile "MapView.bind" if SystemApp.Settings.general.profile
         SystemApp.consoleLog "MapView.bind", "#{map.name()}, #{map.shapes().length} shapes, #{map.links().length} links"
 
         @model?.save()
@@ -226,7 +226,7 @@ class SystemApp.MapView extends SystemApp.BaseView
         # Finally bind map events.
         @bindEvents()
 
-        console.profileEnd "MapView.bind" if SystemApp.Settings.General.profile
+        console.profileEnd "MapView.bind" if SystemApp.Settings.general.profile
 
     # Bind event listeners to the current [Map](map.html).
     bindEvents: =>
@@ -256,7 +256,7 @@ class SystemApp.MapView extends SystemApp.BaseView
         else
             @paperBg = @paper.rect(0, 0, @paper.width, @paper.height).attr {fill: @paperBg}
 
-        @paperBg.node.id = SystemApp.Settings.Map.id
+        @paperBg.node.id = SystemApp.Settings.map.id
 
     # Create the map groups using raphael.group.js plugin.
     bindGroups: =>
@@ -415,7 +415,7 @@ class SystemApp.MapView extends SystemApp.BaseView
         # If `prop` is passed, then make sure we append the data binding key and the
         # entity object namespace before its value.
         if prop? and prop isnt ""
-            prop = "#{SystemApp.Settings.General.dataBindingKey}#{SystemApp.Settings.EntityObject.bindingNamespace}.#{prop}"
+            prop = "#{SystemApp.Settings.general.dataBindingKey}#{SystemApp.Settings.entityObject.bindingNamespace}.#{prop}"
 
         @overrideShapeTitle = prop
         _.each @shapeViews, (view) => view.labelsView.refreshTitle()
@@ -524,8 +524,8 @@ class SystemApp.MapView extends SystemApp.BaseView
     # Set the current view box (zoom and panning) of the map.
     # The max and min zoom values are defined on the [Settings](settings.html).
     setViewBox: =>
-        @currentZoom = SystemApp.Settings.Map.minZoom if @currentZoom < SystemApp.Settings.Map.minZoom
-        @currentZoom = SystemApp.Settings.Map.maxZoom if @currentZoom > SystemApp.Settings.Map.maxZoom
+        @currentZoom = SystemApp.Settings.map.minZoom if @currentZoom < SystemApp.Settings.map.minZoom
+        @currentZoom = SystemApp.Settings.map.maxZoom if @currentZoom > SystemApp.Settings.map.maxZoom
 
         boxWidth = @paper.width * @currentZoom
         boxHeight = @paper.height * @currentZoom
@@ -539,12 +539,12 @@ class SystemApp.MapView extends SystemApp.BaseView
 
     # Zoom in, with optional `amount` parameter.
     zoomIn: (amount) =>
-        amount = SystemApp.Settings.Map.zoomStep if not amount?
+        amount = SystemApp.Settings.map.zoomStep if not amount?
         @zoomSet @currentZoom - amount
 
     # Zoom out, with optional `amount` parameter.
     zoomOut: (amount) =>
-        amount = SystemApp.Settings.Map.zoomStep if not amount?
+        amount = SystemApp.Settings.map.zoomStep if not amount?
         @zoomSet @currentZoom + amount
 
     # Set the `currentZoom` variable and update the view.
@@ -555,7 +555,7 @@ class SystemApp.MapView extends SystemApp.BaseView
 
         if @timerAfterZoom?
             clearTimeout @timerAfterZoom
-        @timerAfterZoom = setTimeout @afterZoomSet, SystemApp.Settings.Map.zoomUpdateDelay
+        @timerAfterZoom = setTimeout @afterZoomSet, SystemApp.Settings.map.zoomUpdateDelay
 
     # Delayed trigger to update font sizes on labels and save zoom to
     # the [user settings](userSettings.html), to achieve better performance.
@@ -615,7 +615,7 @@ class SystemApp.MapView extends SystemApp.BaseView
             while i++ < lengthY
                 pathString += "M0 " + i * sizeY + "H" + @paper.width
 
-        @gridLines = @paper.path(pathString).attr("stroke", SystemApp.Settings.Map.gridStroke)
+        @gridLines = @paper.path(pathString).attr("stroke", SystemApp.Settings.map.gridStroke)
         @gridLines.toBack()
 
         @paperBg.toBack()
@@ -655,13 +655,13 @@ class SystemApp.MapView extends SystemApp.BaseView
             posX = view.x()
             posY = view.y()
 
-            if posX - x < SystemApp.Settings.Map.gridSizeX
-                x += SystemApp.Settings.Map.gridSizeX
+            if posX - x < SystemApp.Settings.map.gridSizeX
+                x += SystemApp.Settings.map.gridSizeX
 
-            if posY - y < SystemApp.Settings.Map.gridSizeY
-                y += SystemApp.Settings.Map.gridSizeY
+            if posY - y < SystemApp.Settings.map.gridSizeY
+                y += SystemApp.Settings.map.gridSizeY
 
-        return new SystemApp.Shape {x: x / SystemApp.Settings.Map.gridSizeX, y: y / SystemApp.Settings.Map.gridSizeY}
+        return new SystemApp.Shape {x: x / SystemApp.Settings.map.gridSizeX, y: y / SystemApp.Settings.map.gridSizeY}
 
 
     # Blink the selected [Shape](shapeView.html) on the map.
@@ -714,15 +714,15 @@ class SystemApp.MapView extends SystemApp.BaseView
 
         # Temp variables to check where the user clicked.
         isBaseSvgTag = src.tagName isnt "svg"
-        isMapTag = targetId isnt SystemApp.Settings.Map.id
-        isGridLine = targetId.indexOf(SystemApp.Settings.Map.gridIdPrefix) < 0
+        isMapTag = targetId isnt SystemApp.Settings.map.id
+        isGridLine = targetId.indexOf(SystemApp.Settings.map.gridIdPrefix) < 0
 
         # If click wasn't on the map background or any of the grid lines, do not proceed with panning.
         if e.which > 1 or (@editEnabled and isBaseSvgTag and isMapTag and isGridLine)
             return
 
         # If user clicked on a blank area, deselect the current [Shape View](shapeView.html).
-        if targetId is SystemApp.Settings.Map.id
+        if targetId is SystemApp.Settings.map.id
             @shapesMoverView.hide()
             @clearSelectedShapes()
 
@@ -818,7 +818,7 @@ class SystemApp.MapView extends SystemApp.BaseView
     # the whole page.
     auditDataRemoved: (auditData) =>
         SystemApp.alertEvents.trigger "footer", {removedModel: auditData}
-        _.delay location.reload, SystemApp.Settings.General.refetchDelay
+        _.delay location.reload, SystemApp.Settings.general.refetchDelay
 
     # When an [AuditData](auditData.html) has been refreshed, run it against
     # all registered [Audit Events](auditEvent.html).
@@ -871,16 +871,20 @@ class SystemApp.MapView extends SystemApp.BaseView
             thumbnailDate = new Date()
 
         # If a thumbnail was generated less than 5 minutes ago, do nothing.
-        if now.getTime() - thumbnailDate.getTime() < SystemApp.Settings.Map.thumbnailExpires
+        if now.getTime() - thumbnailDate.getTime() < SystemApp.Settings.map.thumbnailExpires
             return
 
         # Update thumbnail date and generate new thumbnail using an AJAX post.
         @model.thumbnailDate now
 
+        # Clean SVG before sending to server.
+        svgData = @$el.html()
+        svgData = svgData.replace /<(image)[^>]*>[^<]*(<\/image>)/ig, ""
+
         $.ajax
-            url: SystemApp.Settings.Map.thumbnailBaseUrl + @model.id
+            url: SystemApp.Settings.map.thumbnailBaseUrl + @model.id
             cache: false
             dataType: "json"
             type: "POST"
             data:
-                svg: @$el.html()
+                svg: svgData

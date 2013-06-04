@@ -6,7 +6,7 @@
 class SystemApp.MapLabelEditView extends SystemApp.BaseView
 
     tagName: "div"
-    className: SystemApp.Settings.LabelEdit.className
+    className: SystemApp.Settings.labelEdit.className
 
     ox: 0                       # temporary value to hold the original X (left) position of the view
     oy: 0                       # temporary value to hold the original Y (top) position of the view
@@ -192,7 +192,7 @@ class SystemApp.MapLabelEditView extends SystemApp.BaseView
             customVar.save()
 
         @customVarNameValue ""
-        @simpleValue SystemApp.Settings.General.dataBindingKey + SystemApp.Settings.Variable.bindingNamespace + "." + varName
+        @simpleValue SystemApp.Settings.general.dataBindingKey + SystemApp.Settings.variable.bindingNamespace + "." + varName
         @showSimple()
 
     # Show the view with the specified value and position.
@@ -227,7 +227,7 @@ class SystemApp.MapLabelEditView extends SystemApp.BaseView
         $(document).mousedown @editingMouseDown
 
         size = @simpleValue().length + 1
-        size = SystemApp.Settings.LabelEdit.minTxtSize if size < SystemApp.Settings.LabelEdit.minTxtSize
+        size = SystemApp.Settings.labelEdit.minTxtSize if size < SystemApp.Settings.labelEdit.minTxtSize
 
         @$txtSimple.attr "size", size
         @autoCompleteValue @simpleValue()
@@ -325,7 +325,7 @@ class SystemApp.MapLabelEditView extends SystemApp.BaseView
     # Check the current `$txtSimple` value and if it's a valid [Audit Data item](auditData.html)
     # then bind its contents to the `$autoCompleteDiv`.
     bindAutoComplete: =>
-        auditDataNamespace = SystemApp.Settings.General.dataBindingKey + SystemApp.Settings.AuditData.bindingNamespace
+        auditDataNamespace = SystemApp.Settings.general.dataBindingKey + SystemApp.Settings.auditData.bindingNamespace
         value = @simpleValue()
 
         if value.indexOf(".") < 1
@@ -337,8 +337,8 @@ class SystemApp.MapLabelEditView extends SystemApp.BaseView
 
     # Populate the `$autoCompleteDiv` with a list of possible [AuditData](auditData.html) entities.
     bindAutoCompleteEntities: =>
-        auditDataNamespace = SystemApp.Settings.General.dataBindingKey + SystemApp.Settings.AuditData.bindingNamespace
-        variableNamespace = SystemApp.Settings.General.dataBindingKey + SystemApp.Settings.Variable.bindingNamespace
+        auditDataNamespace = SystemApp.Settings.general.dataBindingKey + SystemApp.Settings.auditData.bindingNamespace
+        variableNamespace = SystemApp.Settings.general.dataBindingKey + SystemApp.Settings.variable.bindingNamespace
         value = @simpleValue()
         arr = []
 
@@ -409,7 +409,7 @@ class SystemApp.MapLabelEditView extends SystemApp.BaseView
     # This is used by the property auto complete.
     auditDataDumper: (auditData) =>
         data = auditData.data()
-        path = SystemApp.Settings.General.dataBindingKey + SystemApp.Settings.AuditData.bindingNamespace + "." + auditData.friendlyId()
+        path = SystemApp.Settings.general.dataBindingKey + SystemApp.Settings.auditData.bindingNamespace + "." + auditData.friendlyId()
         div = $(document.createElement "div")
 
         # Recursively parse and bind all properties to the autocomplete area.
@@ -499,7 +499,7 @@ class SystemApp.MapLabelEditView extends SystemApp.BaseView
     # When user is editing a label and clicks somewhere on the map, check for the
     # source element. If it's not part of this view then hide it.
     editingMouseDown: (e) =>
-        css = SystemApp.Settings.LabelEdit.className
+        css = SystemApp.Settings.labelEdit.className
         src = $ e.target
         parent = src.parents ".#{css}"
         labelPosition = src.data "labelPosition"
@@ -586,7 +586,7 @@ class SystemApp.MapLabelEditView extends SystemApp.BaseView
 
         @lastPressedKey = null
 
-        setTimeout @evalClearError, SystemApp.Settings.LabelEdit.evalErrorTimeout
+        setTimeout @evalClearError, SystemApp.Settings.labelEdit.evalErrorTimeout
 
     # Clear the validation error message and set the `$txtCustomVarCode` back to its original text.
     evalClearError: =>

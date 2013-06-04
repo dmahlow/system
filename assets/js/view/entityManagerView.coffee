@@ -29,7 +29,7 @@ class SystemApp.EntityManagerView extends SystemApp.OverlayView
 
     # Init the Entity Manager overlay view.
     initialize: =>
-        @currentSettings = SystemApp.Settings.EntityDefinition
+        @currentSettings = SystemApp.Settings.entityDefinition
         @overlayInit "#entitymanager"
         @setDom()
         @setEvents()
@@ -68,8 +68,8 @@ class SystemApp.EntityManagerView extends SystemApp.OverlayView
         @$shapePreview = $ "#entitymanager-shape-preview > div"
 
         # Add dynamic attributes to input fields.
-        @$txtRefresh.attr "min", SystemApp.Settings.EntityDefinition.minRefreshInterval
-        @$txtRefresh.attr "max", SystemApp.Settings.EntityDefinition.maxRefreshInterval
+        @$txtRefresh.attr "min", SystemApp.Settings.entityDefinition.minRefreshInterval
+        @$txtRefresh.attr "max", SystemApp.Settings.entityDefinition.maxRefreshInterval
 
     # Bind events to the DOM. This will effectively update the `model` automatically
     # whenever any input field value gets changed.
@@ -194,9 +194,9 @@ class SystemApp.EntityManagerView extends SystemApp.OverlayView
             "border": "#{@model.shapeStrokeWidth()}px solid #{@model.shapeStroke()}"
             "border-radius": borderRadius
             "font-size": "#{@model.shapeFontSize()}px"
-            "height": @model.shapeSizeY() * SystemApp.Settings.Map.gridSizeY - @model.shapeStrokeWidth()
+            "height": @model.shapeSizeY() * SystemApp.Settings.map.gridSizeY - @model.shapeStrokeWidth()
             "opacity": @model.shapeOpacity()
-            "width": @model.shapeSizeX() * SystemApp.Settings.Map.gridSizeX - @model.shapeStrokeWidth()
+            "width": @model.shapeSizeX() * SystemApp.Settings.map.gridSizeX - @model.shapeStrokeWidth()
 
         titleCss =
             "color": @model.shapeTitleForeground()

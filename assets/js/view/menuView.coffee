@@ -31,7 +31,7 @@ class SystemApp.MenuView extends SystemApp.BaseView
         @setDom()
         @setEvents()
 
-        @createSubLocalMap() if SystemApp.Settings.Map.enableLocalMap
+        @createSubLocalMap() if SystemApp.Settings.map.enableLocalMap
 
     # Dispose the menu view.
     dispose: =>
@@ -124,7 +124,7 @@ class SystemApp.MenuView extends SystemApp.BaseView
         # Create the map link.
         link = document.createElement "a"
         link = $ link
-        link.attr "id", SystemApp.Settings.Menu.subPrefix + mapId
+        link.attr "id", SystemApp.Settings.menu.subPrefix + mapId
         link.attr "href", "#map/" + map.urlKey()
         link.addClass "menu-item"
         link.html mapName
@@ -138,7 +138,7 @@ class SystemApp.MenuView extends SystemApp.BaseView
             link.addClass "italic"
 
         # If map was created less than 1 minute ago, auto select it.
-        if dateCreated? and (now - dateCreated) / 1000 < SystemApp.Settings.Map.isNewInterval
+        if dateCreated? and (now - dateCreated) / 1000 < SystemApp.Settings.map.isNewInterval
             @setActiveMap map
 
         # Return the created link.
@@ -149,7 +149,7 @@ class SystemApp.MenuView extends SystemApp.BaseView
     removeSubMap: (map) =>
         try
             map.off()
-            element = $ "#" + SystemApp.Settings.Menu.subPrefix + map.id
+            element = $ "#" + SystemApp.Settings.menu.subPrefix + map.id
             element.remove() if element.length > 0
         catch ex
             console.warn "Could not remove menu map #{map.id}. Maybe it was already removed?", ex
@@ -168,7 +168,7 @@ class SystemApp.MenuView extends SystemApp.BaseView
             @timerHideMenu = null
 
         if e.data is false
-            @timerHideMenu = window.setTimeout @toggleSubMenu, SystemApp.Settings.Menu.hideTimeout
+            @timerHideMenu = window.setTimeout @toggleSubMenu, SystemApp.Settings.menu.hideTimeout
             return
 
         if e.data is true
@@ -211,7 +211,7 @@ class SystemApp.MenuView extends SystemApp.BaseView
 
     # Set the current active (highlighted) map on the menu.
     setActiveMap: (map) =>
-        sub = $ "##{SystemApp.Settings.Menu.subPrefix}#{map.id}"
+        sub = $ "##{SystemApp.Settings.menu.subPrefix}#{map.id}"
         @$currentSub?.removeClass "active"
         @$currentSub = sub
 
@@ -222,6 +222,6 @@ class SystemApp.MenuView extends SystemApp.BaseView
     # Triggered when a submenu item, representing a [Map](map.html),
     # has its name changed by the server or by the user.
     updateMapInfo: (map) =>
-        link = $("#" + SystemApp.Settings.Menu.subPrefix + map.id)
+        link = $("#" + SystemApp.Settings.menu.subPrefix + map.id)
         link.html map.name()
         link.attr "href", "#map/" + map.urlKey()

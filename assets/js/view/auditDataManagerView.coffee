@@ -17,7 +17,7 @@ class SystemApp.AuditDataManagerView extends SystemApp.OverlayView
 
     # Init the Audit Data overlay view.
     initialize: =>
-        @currentSettings = SystemApp.Settings.AuditData
+        @currentSettings = SystemApp.Settings.auditData
         @overlayInit "#auditdata"
         @setDom()
         @setEvents()

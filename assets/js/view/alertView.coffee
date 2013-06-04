@@ -128,7 +128,7 @@ class SystemApp.AlertView extends SystemApp.BaseView
         alertObj.timestamp = new Date()
 
         if @lastFooterAlert?
-            timeoutLess = (alertObj.timestamp - @lastFooterAlert.timestamp) < SystemApp.Settings.Alert.similarTimeout
+            timeoutLess = (alertObj.timestamp - @lastFooterAlert.timestamp) < SystemApp.Settings.alert.similarTimeout
             sameAlert = alertObj.title is @lastFooterAlert.title and alertObj.message is @lastFooterAlert.message
 
             # Avoid showing repeated alerts multiple times in a row.
@@ -189,14 +189,14 @@ class SystemApp.AlertView extends SystemApp.BaseView
 
         # If no `delay` is passed, use the default one.
         delay = alertObj.delay
-        delay = SystemApp.Settings.Alert.hideDelay if not delay?
+        delay = SystemApp.Settings.alert.hideDelay if not delay?
 
-        @$wrapperFooter.fadeIn SystemApp.Settings.Alert.opacityInterval
+        @$wrapperFooter.fadeIn SystemApp.Settings.alert.opacityInterval
         @isFooterVisible = true
-        _.delay @hideFooter, delay + SystemApp.Settings.Alert.opacityInterval
+        _.delay @hideFooter, delay + SystemApp.Settings.alert.opacityInterval
 
         # Log alerts to the console only if app is in debug mode.
-        if SystemApp.Settings.General.debug
+        if SystemApp.Settings.general.debug
             if alertObj.isError
                 console.warn "Alert Error", title, message
             else
@@ -205,7 +205,7 @@ class SystemApp.AlertView extends SystemApp.BaseView
     # Hide the footer alert and call `nextFooter` again to check for new alerts.
     hideFooter: =>
         @isFooterVisible = false
-        @$wrapperFooter.fadeOut SystemApp.Settings.Alert.opacityInterval, @nextFooter
+        @$wrapperFooter.fadeOut SystemApp.Settings.alert.opacityInterval, @nextFooter
 
 
     # TOOLTIP ALERTS
@@ -216,7 +216,7 @@ class SystemApp.AlertView extends SystemApp.BaseView
         alertObj.timestamp = new Date()
 
         # Log alerts to the console only if app is in debug mode.
-        if SystemApp.Settings.General.debug
+        if SystemApp.Settings.general.debug
             if alertObj.isError
                 console.error "Alert", alertObj
             else
@@ -260,16 +260,16 @@ class SystemApp.AlertView extends SystemApp.BaseView
 
         # If no `delay` is passed, use the default one.
         delay = alertObj.delay
-        delay = SystemApp.Settings.Alert.hideDelay if not delay?
+        delay = SystemApp.Settings.alert.hideDelay if not delay?
 
-        @$wrapperTooltip.fadeIn SystemApp.Settings.Alert.opacityInterval
+        @$wrapperTooltip.fadeIn SystemApp.Settings.alert.opacityInterval
         @isTooltipVisible = true
-        _.delay @hideTooltip, delay + SystemApp.Settings.Alert.opacityInterval
+        _.delay @hideTooltip, delay + SystemApp.Settings.alert.opacityInterval
 
     # Hide a tooltip alert.
     hideTooltip: =>
         @isTooltipVisible = false
-        @$wrapperTooltip.fadeOut SystemApp.Settings.Alert.opacityInterval, @nextTooltip
+        @$wrapperTooltip.fadeOut SystemApp.Settings.alert.opacityInterval, @nextTooltip
 
 
     # SERVER ALERTS
@@ -278,7 +278,7 @@ class SystemApp.AlertView extends SystemApp.BaseView
     # Show an alert whenever an error happens on the node.js server.
     # This is triggered using Socket.IO.
     showServerError: (err) =>
-        if SystemApp.Settings.General.debug
+        if SystemApp.Settings.general.debug
             @showFooter {isError: true, title: SystemApp.Messages.server + " " + err.title, message: err.message}
 
 

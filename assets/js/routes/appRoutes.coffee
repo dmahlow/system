@@ -49,7 +49,7 @@ class SystemApp.AppRoutes extends Backbone.Router
         urlKey = SystemApp.DataUtil.getUrlKey id
 
         # Find map based on its friendly URL key. If no map is found, trying using the value as its ID.
-        if SystemApp.Settings.Map.enableLocalMap and id is SystemApp.Settings.Map.localMapId
+        if SystemApp.Settings.map.enableLocalMap and id is SystemApp.Settings.map.localMapId
             map = new SystemApp.Map()
             map.initLocalMap()
         else

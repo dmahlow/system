@@ -5,7 +5,7 @@
 class SystemApp.AuditData extends SystemApp.BaseModel
     typeName: "AuditData"
     defaults:
-        refreshInterval: SystemApp.Settings.AuditData.refreshInterval
+        refreshInterval: SystemApp.Settings.auditData.refreshInterval
 
     # Holds the refresh error count. We'll use this to alert the user in case the audit data
     # couldn't be refreshed for more than X times - defined at the [Settings](settings.html).
@@ -61,7 +61,7 @@ class SystemApp.AuditData extends SystemApp.BaseModel
             return SystemApp.Messages.valInvalidUrl
 
         # Refresh interval can't be too low.
-        if attrs.refreshInterval < SystemApp.Settings.AuditData.minRefreshInterval
+        if attrs.refreshInterval < SystemApp.Settings.auditData.minRefreshInterval
             return SystemApp.Messages.valRefreshIntervalTooLow
 
 
@@ -78,7 +78,7 @@ class SystemApp.AuditData extends SystemApp.BaseModel
         @fetching = true
 
         $.ajax
-            url: SystemApp.Settings.General.remoteDownloaderUrl + "auditdata-" + @id
+            url: SystemApp.Settings.general.remoteDownloaderUrl + "auditdata-" + @id
             timeout: @refreshInterval() * 3
             cache: false
             dataType: "json"
@@ -103,7 +103,7 @@ class SystemApp.AuditData extends SystemApp.BaseModel
         @data resp
         @lastDataRefresh = new Date()
 
-        if @lastDataRefresh - @lastDataSave > SystemApp.Settings.AuditData.dataSaveInterval
+        if @lastDataRefresh - @lastDataSave > SystemApp.Settings.auditData.dataSaveInterval
             @save()
             @lastDataSave = new Date()
 
@@ -123,7 +123,7 @@ class SystemApp.AuditData extends SystemApp.BaseModel
 
         # If the refresh error count is more than 2 times the value set to show an alert, then
         # reset it to 0 so the user will see the alert again soon.
-        if @refreshErrorCount > SystemApp.Settings.AuditData.alertOnErrorCount * 2
+        if @refreshErrorCount > SystemApp.Settings.auditData.alertOnErrorCount * 2
             @refreshErrorCount = 0
 
         @trigger "refresh:error", this, error
@@ -149,7 +149,7 @@ class SystemApp.AuditData extends SystemApp.BaseModel
 
         # If the value is a number, make sure it's passed as Float and with 2 decimal cases.
         if newValue? and not isNaN(newValue)
-            newValue = parseFloat(newValue[0]).toFixed SystemApp.Settings.AuditData.decimalCases
+            newValue = parseFloat(newValue[0]).toFixed SystemApp.Settings.auditData.decimalCases
 
         return newValue
 
@@ -162,4 +162,4 @@ class SystemApp.AuditData extends SystemApp.BaseModel
 class SystemApp.AuditDataCollection extends SystemApp.BaseCollection
 
     model: SystemApp.AuditData
-    url: SystemApp.Settings.AuditData.url
+    url: SystemApp.Settings.auditData.url

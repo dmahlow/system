@@ -13,10 +13,10 @@ class SystemApp.UserSettings extends SystemApp.BaseModel
         mapFullscreen: false
         mapOverrideShapeTitle: false
         mapZoom: 1
-        mapLabelRefreshInterval: SystemApp.Settings.Map.labelRefreshInterval
-        modifierDelete: SystemApp.Settings.User.modifierDelete
-        modifierMultiple: SystemApp.Settings.User.modifierMultiple
-        modifierToBack: SystemApp.Settings.User.modifierToBack
+        mapLabelRefreshInterval: SystemApp.Settings.map.labelRefreshInterval
+        modifierDelete: SystemApp.Settings.user.modifierDelete
+        modifierMultiple: SystemApp.Settings.user.modifierMultiple
+        modifierToBack: SystemApp.Settings.user.modifierToBack
         slowDevice: false
 
 
@@ -80,21 +80,21 @@ class SystemApp.UserSettings extends SystemApp.BaseModel
     modifierDelete: (value) =>
         if value?
             @set "modifierDelete", value
-        return SystemApp.Settings.User.modifierDelete
+        return SystemApp.Settings.user.modifierDelete
         @get "modifierDelete"
 
     # Helper to get / set the "Multiple" modifier combination keys. Default is "Shift".
     modifierMultiple: (value) =>
         if value?
             @set "modifierMultiple", value
-        return SystemApp.Settings.User.modifierMultiple
+        return SystemApp.Settings.user.modifierMultiple
         @get "modifierMultiple"
 
     # OBSOLETE!!! Helper to get / set the "To Back" modifier combination keys.
     modifierToBack: (value) =>
         if value?
             @set "modifierToBack", value
-        return SystemApp.Settings.User.modifierToBack
+        return SystemApp.Settings.user.modifierToBack
         @get "modifierToBack"
 
 

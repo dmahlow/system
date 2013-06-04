@@ -21,7 +21,7 @@ class SystemApp.AuditEventManagerView extends SystemApp.OverlayView
 
     # Init the Audit Events overlay view.
     initialize: =>
-        @currentSettings = SystemApp.Settings.AuditEvent
+        @currentSettings = SystemApp.Settings.auditEvent
         @overlayInit "#auditevents"
         @setDom()
         @setEvents()
@@ -147,7 +147,7 @@ class SystemApp.AuditEventManagerView extends SystemApp.OverlayView
     # Add a single [Alert Rule](eventRule.html) to the `$gridRules`.
     addRuleToGrid: (rule) =>
         row = $(document.createElement "div")
-        row.attr "id", SystemApp.Settings.AuditEvent.rowRulePrefix + rule.id
+        row.attr "id", SystemApp.Settings.auditEvent.rowRulePrefix + rule.id
         row.data "DataItem", rule
         row.addClass "row"
 
@@ -189,7 +189,7 @@ class SystemApp.AuditEventManagerView extends SystemApp.OverlayView
 
     # Remove the specified rule from the `$gridRules`.
     removeRuleFromGrid: (rule) =>
-        $("#" + SystemApp.Settings.AuditEvent.rowRulePrefix + rule.id).remove()
+        $("#" + SystemApp.Settings.auditEvent.rowRulePrefix + rule.id).remove()
         @model?.save()
 
     # When user clicks the "Add rule" icon, add a new [Alert Rule](eventRule.html)
@@ -252,7 +252,7 @@ class SystemApp.AuditEventManagerView extends SystemApp.OverlayView
     # Add a single [Alert Action](eventAction.html) to the `$gridActions`.
     addActionToGrid: (action) =>
         row = $(document.createElement "div")
-        row.attr "id", SystemApp.Settings.AuditEvent.rowActionPrefix + action.id
+        row.attr "id", SystemApp.Settings.auditEvent.rowActionPrefix + action.id
         row.data "DataItem", action
         row.addClass "row"
 
@@ -283,7 +283,7 @@ class SystemApp.AuditEventManagerView extends SystemApp.OverlayView
 
     # Remove the specified action from the `$gridActions`.
     removeActionFromGrid: (action) =>
-        $("#" + SystemApp.Settings.AuditEvent.rowActionPrefix + action.id).remove()
+        $("#" + SystemApp.Settings.auditEvent.rowActionPrefix + action.id).remove()
         @model?.save()
 
     # When user clicks the "Add action" icon, add a new [Alert Action](eventAction.html)

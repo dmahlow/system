@@ -84,7 +84,7 @@ SystemApp.Messages =
 
     # ERROR MESSAGES
     # ----------------------------------------------------------------------
-    errAuditDataRefreshCount: "Could not refresh # for #{SystemApp.Settings.AuditData.alertOnErrorCount} times in a row.
+    errAuditDataRefreshCount: "Could not refresh # for #{SystemApp.Settings.auditData.alertOnErrorCount} times in a row.
                                Maybe the URL is wrong? Click on this box to open the Audit Events view for editing."
     errCouldNotLoadFromServer: "Could not load data from server!"
     errCreatingMap: "Could not create new map."
@@ -102,12 +102,12 @@ SystemApp.Messages =
     # ----------------------------------------------------------------------
     valAllFieldsEmpty: "All fields are empty!"
     valDescriptionIsRequired: "A description is required."
-    valGridSizeTooSmall: "The grid size is too small. Minimum allowed is  #{SystemApp.Settings.Map.minGridSize}."
+    valGridSizeTooSmall: "The grid size is too small. Minimum allowed is  #{SystemApp.Settings.map.minGridSize}."
     valInvalidUrl: "The entered URL is not valid."
     valNameIsDuplicate: "The entered name already exists."
     valNameIsRequired: "A name is required."
-    valPaperSizeTooSmall: "The paper size too small. Minimum is  #{SystemApp.Settings.Map.minPaperSize}."
-    valRefreshIntervalTooLow: "Refresh interval too low. Minimum is #{SystemApp.Settings.AuditData.minRefreshInterval}."
+    valPaperSizeTooSmall: "The paper size too small. Minimum is  #{SystemApp.Settings.map.minPaperSize}."
+    valRefreshIntervalTooLow: "Refresh interval too low. Minimum is #{SystemApp.Settings.auditData.minRefreshInterval}."
     valTitleIsRequired: "A title is required."
 
 

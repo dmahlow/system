@@ -5,9 +5,12 @@ SYSTEM APP CHANGE LOG
 
 # -----------------------------------------------------------------------------
   0.6.5, 2013.05.31
-+ The System App is now using Expresser as its base platform:
-  . default port changed from 3003 to 8080
-  . improved database module
++ The System App is now using Expresser as its base platform.
+* Default port changed from 3003 to 8080.
+* Server settings refactoring, all settings starts lowercased.
+* Improved database module (via Expresser).
+* Preparations for LDAP support.
+- Removed Logger and Imaging modules (now hanlded by Expresser).
 
 # -----------------------------------------------------------------------------
   0.6.5, 2013.05.31

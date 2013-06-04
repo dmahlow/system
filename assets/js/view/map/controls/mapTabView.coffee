@@ -33,7 +33,7 @@ class SystemApp.MapControlsMapTabView extends SystemApp.BaseView
         @setDom()
         @setEvents()
         @bindInitialState()
-        @bindDisplayProps SystemApp.Settings.Map.displayProps
+        @bindDisplayProps SystemApp.Settings.map.displayProps
 
     # Dispose the map tab view.
     dispose: =>
@@ -130,19 +130,19 @@ class SystemApp.MapControlsMapTabView extends SystemApp.BaseView
 
     # Triggered whenever the current [Map](map.html) `paperSizeX` has changed, `$txtPaperSizeX` onBlur event.
     setPaperSizeX: =>
-        @setSize @$txtPaperSizeX, @model.paperSizeX, SystemApp.Settings.Map.minPaperSize
+        @setSize @$txtPaperSizeX, @model.paperSizeX, SystemApp.Settings.map.minPaperSize
 
     # Triggered whenever the current [Map](map.html) `paperSizeY` has changed, `$txtPaperSizeY` onBlur event.
     setPaperSizeY: =>
-        @setSize @$txtPaperSizeY, @model.paperSizeY, SystemApp.Settings.Map.minPaperSize
+        @setSize @$txtPaperSizeY, @model.paperSizeY, SystemApp.Settings.map.minPaperSize
 
     # Triggered whenever the current [Map](map.html) `gridSizeX` has changed, `$txtGridSizeX` onBlur event.
     setGridSizeX: =>
-        @setSize @$txtGridSizeX, @model.gridSizeX, SystemApp.Settings.Map.minGridSize
+        @setSize @$txtGridSizeX, @model.gridSizeX, SystemApp.Settings.map.minGridSize
 
     # Triggered whenever the current [Map](map.html) `gridSizeY` has changed, `$txtGridSizeY` onBlur event.
     setGridSizeY: =>
-        @setSize @$txtGridSizeY, @model.gridSizeY, SystemApp.Settings.Map.minGridSize
+        @setSize @$txtGridSizeY, @model.gridSizeY, SystemApp.Settings.map.minGridSize
 
     # Sets the "zoom" span, to display the current [Map View](mapView.html) zoom level.
     setZoomLabel: (zoomLevel) =>
@@ -239,7 +239,7 @@ class SystemApp.MapControlsMapTabView extends SystemApp.BaseView
             clearTimeout @timerHideZIndex
             @timerHideZIndex = null
 
-        @timerHideZIndex = setTimeout @zIndexHide, SystemApp.Settings.Map.zIndexHideTimeout
+        @timerHideZIndex = setTimeout @zIndexHide, SystemApp.Settings.map.zIndexHideTimeout
 
         $(document).keydown @zIndexKeyDown
 

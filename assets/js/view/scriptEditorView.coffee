@@ -90,7 +90,7 @@ class SystemApp.ScriptEditorView extends SystemApp.OverlayView
 
         # Hide the error message after a few seconds.
         clearTimeout(@timerHideError) if @timerHideError?
-        @timerHideError = setTimeout @hideError, SystemApp.Settings.Alert.hideDelay
+        @timerHideError = setTimeout @hideError, SystemApp.Settings.alert.hideDelay
 
     # Hide the error message and clear the `timerHideError` timeout.
     hideError: =>

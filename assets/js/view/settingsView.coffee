@@ -67,9 +67,9 @@ class SystemApp.SettingsView extends SystemApp.OverlayView
     bindOptions: =>
         @$chkFullscreen.prop "checked", SystemApp.Data.userSettings.mapFullscreen()
         @$chkAutoRefresh.prop "checked", SystemApp.Data.userSettings.mapAutoRefresh()
-        @$chkDebug.prop "checked", SystemApp.Settings.General.debug
+        @$chkDebug.prop "checked", SystemApp.Settings.general.debug
 
-        @$debugNote.hide() if not SystemApp.Settings.General.debug
+        @$debugNote.hide() if not SystemApp.Settings.general.debug
 
     # When user check/uncheck the "start maximized" map option.
     toggleMapFullscreen: (e) =>

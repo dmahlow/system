@@ -37,10 +37,10 @@ class SystemApp.StartView extends SystemApp.OverlayView
     # Bind the map list.
     bindMaps: =>
         if SystemApp.Data.maps.fetching or SystemApp.Data.maps.models.length < 1
-            _.delay @bindMaps, SystemApp.Settings.General.refetchDelay
+            _.delay @bindMaps, SystemApp.Settings.general.refetchDelay
             return
 
-        if SystemApp.Settings.Map.enableLocalMap
+        if SystemApp.Settings.map.enableLocalMap
             map = new SystemApp.Map()
             map.initLocalMap()
             @addMapToList map
@@ -78,7 +78,7 @@ class SystemApp.StartView extends SystemApp.OverlayView
 
     # Update the right image to show a preview of the current map under the mouse pointer.
     showMapPreview: (e) =>
-        @$imgPreview.attr "src", SystemApp.Settings.Map.thumbnailBaseUrl + e.data + ".png"
+        @$imgPreview.attr "src", SystemApp.Settings.map.thumbnailBaseUrl + e.data + ".png"
         @$imgPreview.css "display", ""
         e.preventDefault()
         e.stopPropagation()

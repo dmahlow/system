@@ -7,11 +7,11 @@ class SystemApp.Map extends SystemApp.BaseModel
     typeName: "Map"
     defaults:
         createdByUserId: null
-        background: SystemApp.Settings.Map.background
-        paperSizeX: SystemApp.Settings.Map.paperSizeX
-        paperSizeY: SystemApp.Settings.Map.paperSizeY
-        gridSizeX: SystemApp.Settings.Map.gridSizeX
-        gridSizeY: SystemApp.Settings.Map.gridSizeY
+        background: SystemApp.Settings.map.background
+        paperSizeX: SystemApp.Settings.map.paperSizeX
+        paperSizeY: SystemApp.Settings.map.paperSizeY
+        gridSizeX: SystemApp.Settings.map.gridSizeX
+        gridSizeY: SystemApp.Settings.map.gridSizeY
         thumbnailDate: new Date(2000, 1, 1)
         silent: false
         isReadOnly: false
@@ -119,7 +119,7 @@ class SystemApp.Map extends SystemApp.BaseModel
     # Helper to get the map's URL key based on its name: replace all spaces and special characters.
     urlKey: =>
         if @isLocal()
-            return SystemApp.Settings.Map.localMapId
+            return SystemApp.Settings.map.localMapId
         return SystemApp.DataUtil.getUrlKey @name()
 
 
@@ -128,8 +128,8 @@ class SystemApp.Map extends SystemApp.BaseModel
 
     # Helper to get data from local storage and set map as local.
     initLocalMap: =>
-        @id = SystemApp.Settings.Map.localMapId
-        @set "id", SystemApp.Settings.Map.localMapId
+        @id = SystemApp.Settings.map.localMapId
+        @set "id", SystemApp.Settings.map.localMapId
         @set "isLocal", true
         @fetch()
 
@@ -152,19 +152,19 @@ class SystemApp.Map extends SystemApp.BaseModel
             return SystemApp.Messages.valNameIsRequired
 
         # Grid size X can't be too low.
-        if not attrs.gridSizeX? or attrs.gridSizeX < SystemApp.Settings.Map.minGridSize
+        if not attrs.gridSizeX? or attrs.gridSizeX < SystemApp.Settings.map.minGridSize
             return SystemApp.Messages.valGridSizeTooSmall
 
         # Grid size Y can't be too low.
-        if not attrs.gridSizeY? or attrs.gridSizeY < SystemApp.Settings.Map.minGridSize
+        if not attrs.gridSizeY? or attrs.gridSizeY < SystemApp.Settings.map.minGridSize
             return SystemApp.Messages.valGridSizeTooSmall
 
         # Paper size X can't be too low.
-        if not attrs.paperSizeX? or attrs.paperSizeX < SystemApp.Settings.Map.minPaperSize
+        if not attrs.paperSizeX? or attrs.paperSizeX < SystemApp.Settings.map.minPaperSize
             return SystemApp.Messages.valPaperSizeTooSmall
 
         # Paper size Y can't be too low.
-        if not attrs.paperSizeY? or attrs.paperSizeY < SystemApp.Settings.Map.minPaperSize
+        if not attrs.paperSizeY? or attrs.paperSizeY < SystemApp.Settings.map.minPaperSize
             return SystemApp.Messages.valPaperSizeTooSmall
 
 
@@ -209,7 +209,7 @@ class SystemApp.Map extends SystemApp.BaseModel
 class SystemApp.MapCollection extends SystemApp.BaseCollection
     typeName: "MapCollection"
     model: SystemApp.Map
-    url: SystemApp.Settings.Map.url
+    url: SystemApp.Settings.map.url
 
     # Set the comparator function to order the maps collection by name.
     comparator: (map) -> return map.name()

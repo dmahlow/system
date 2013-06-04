@@ -34,7 +34,7 @@ class SystemApp.Variable extends SystemApp.BaseModel
 class SystemApp.VariableCollection extends SystemApp.BaseCollection
     typeName: "VariableCollection"
     model: SystemApp.Variable
-    url: SystemApp.Settings.Variable.url
+    url: SystemApp.Settings.variable.url
 
     # Set the comparator function to order the variable collection by friendlyId.
     comparator: (variable) -> return variable.friendlyId()

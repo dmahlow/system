@@ -109,7 +109,7 @@ class SystemApp.MapLinkLabelsView extends SystemApp.BaseView
         x = 0
         y = 0
         text = value
-        iconSize = SystemApp.Settings.Map.icoActionsSize
+        iconSize = SystemApp.Settings.map.icoActionsSize
 
         # If there's a label present already, copy its current position and text
         # before recreating it on a new label.
@@ -156,9 +156,9 @@ class SystemApp.MapLinkLabelsView extends SystemApp.BaseView
 
             # Create icon SVG if not existing yet.
             if not iconSvg?
-                iconSvg = @parentView.parentView.paper.image SystemApp.Settings.Map.icoAddLabelUrl, 0, 0, iconSize, iconSize
+                iconSvg = @parentView.parentView.paper.image SystemApp.Settings.map.icoAddLabelUrl, 0, 0, iconSize, iconSize
 
-            iconSvg.attr {"x": x, "y": y, cursor: "pointer", opacity: SystemApp.Settings.Map.icoActionsOpacity}
+            iconSvg.attr {"x": x, "y": y, cursor: "pointer", opacity: SystemApp.Settings.map.icoActionsOpacity}
             iconSvg.click @click
             iconSvg.mouseover @iconMouseOver
             iconSvg.mouseout @iconMouseOut
@@ -174,12 +174,12 @@ class SystemApp.MapLinkLabelsView extends SystemApp.BaseView
         # Set opacity 1 on all labels.
         opacity = {"opacity": 1}
         svgs = @svgsLabels()
-        s?.animate(opacity, SystemApp.Settings.Map.blinkInterval) for s in svgs
+        s?.animate(opacity, SystemApp.Settings.map.blinkInterval) for s in svgs
 
         # Set the opacity defined on the [Settings](settings.html), on all add label icons.
-        opacity = {"opacity": SystemApp.Settings.Map.icoActionsOpacity}
+        opacity = {"opacity": SystemApp.Settings.map.icoActionsOpacity}
         svgs = @svgsIcons()
-        s?.animate(opacity, SystemApp.Settings.Map.blinkInterval) for s in svgs
+        s?.animate(opacity, SystemApp.Settings.map.blinkInterval) for s in svgs
 
     # Hide the link labels and icons.
     hide: =>
@@ -188,19 +188,19 @@ class SystemApp.MapLinkLabelsView extends SystemApp.BaseView
 
         opacity = {"opacity": 0}
         svgs = @svgs()
-        s?.animate(opacity, SystemApp.Settings.Map.blinkInterval) for s in svgs
+        s?.animate(opacity, SystemApp.Settings.map.blinkInterval) for s in svgs
 
     # Hide only the icons (where no label text has been defined).
     hideIcons: =>
         opacity = {"opacity": 0}
         svgs = @svgsIcons()
-        s?.animate(opacity, SystemApp.Settings.Map.blinkInterval) for s in svgs
+        s?.animate(opacity, SystemApp.Settings.map.blinkInterval) for s in svgs
 
     # Set the link label positions on the map.
     setPosition: (location) =>
         return if not @visible
 
-        iconSize = SystemApp.Settings.Map.icoActionsSize
+        iconSize = SystemApp.Settings.map.icoActionsSize
         iconHalfSize = iconSize / 2
 
         path = @parentView.svg.svgLine
@@ -260,7 +260,7 @@ class SystemApp.MapLinkLabelsView extends SystemApp.BaseView
     # unless the `isCreatingLink` property of the [Map View](mapView.html) is true.
     iconMouseOut: ->
         return if SystemApp.mapView.isCreatingLink
-        @attr {"opacity": SystemApp.Settings.Map.icoActionsOpacity}
+        @attr {"opacity": SystemApp.Settings.map.icoActionsOpacity}
 
     # When user put map on "Edit Mode", show the label icons. If in locked mode, hide them.
     toggleEdit: (enabled) =>

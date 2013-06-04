@@ -57,22 +57,22 @@ class SystemApp.BaseView extends Backbone.View
     # Set the window title and append the default app name on it.
     setTitle: (value) =>
         if value?
-            value = "#{value} - #{SystemApp.Settings.General.appTitle}"
+            value = "#{value} - #{SystemApp.Settings.general.appTitle}"
         else
-            value = SystemApp.Settings.General.appTitle
+            value = SystemApp.Settings.general.appTitle
         document.title = value
 
     # Warn the user by blinking the specified field with a red background.
     warnField: (field) =>
-        extraMs = SystemApp.Settings.General.elementBlinkInterval / 2
+        extraMs = SystemApp.Settings.general.elementBlinkInterval / 2
         redClass = "error"
 
         @addClass field, redClass
-        _.delay @removeClass, SystemApp.Settings.General.elementBlinkInterval, field, redClass
-        _.delay @addClass, SystemApp.Settings.General.elementBlinkInterval + extraMs, field, redClass
-        _.delay @removeClass, SystemApp.Settings.General.elementBlinkInterval * 2, field, redClass
-        _.delay @addClass, SystemApp.Settings.General.elementBlinkInterval * 2 + extraMs, field, redClass
-        _.delay @removeClass, SystemApp.Settings.General.elementBlinkInterval * 3, field, redClass
+        _.delay @removeClass, SystemApp.Settings.general.elementBlinkInterval, field, redClass
+        _.delay @addClass, SystemApp.Settings.general.elementBlinkInterval + extraMs, field, redClass
+        _.delay @removeClass, SystemApp.Settings.general.elementBlinkInterval * 2, field, redClass
+        _.delay @addClass, SystemApp.Settings.general.elementBlinkInterval * 2 + extraMs, field, redClass
+        _.delay @removeClass, SystemApp.Settings.general.elementBlinkInterval * 3, field, redClass
 
     # Show a "saved" message next to the specified field, and fade it out after a few seconds.
     fieldSaved: (field) =>
@@ -96,13 +96,13 @@ class SystemApp.BaseView extends Backbone.View
             parent.append alert
 
             # Fade out and then remove from the DOM.
-            alert.fadeOut SystemApp.Settings.General.fadeRemoveDelay * 2, () -> alert.remove()
+            alert.fadeOut SystemApp.Settings.general.fadeRemoveDelay * 2, () -> alert.remove()
 
     # Remove a DOM element representing a model from the view. This will add the class "removed"
     # and then fade the element out.
     modelElementRemove: (el) =>
         el.removeClass("active").addClass "removed"
-        el.fadeOut SystemApp.Settings.General.fadeRemoveDelay, () -> el.remove()
+        el.fadeOut SystemApp.Settings.general.fadeRemoveDelay, () -> el.remove()
 
     # Add the specified class to an element.
     addClass: (el, className) =>

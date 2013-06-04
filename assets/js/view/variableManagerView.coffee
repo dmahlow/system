@@ -20,7 +20,7 @@ class SystemApp.VariableManagerView extends SystemApp.OverlayView
 
     # Init the Audit Data overlay view.
     initialize: =>
-        @currentSettings = SystemApp.Settings.Variable
+        @currentSettings = SystemApp.Settings.variable
         @overlayInit "#variables"
         @setDom()
         @setEvents()
@@ -145,7 +145,7 @@ class SystemApp.VariableManagerView extends SystemApp.OverlayView
 
         # Hide the error message after a few seconds.
         clearTimeout(@timerHideError) if @timerHideError?
-        @timerHideError = setTimeout @hideCodeError, SystemApp.Settings.Alert.hideDelay
+        @timerHideError = setTimeout @hideCodeError, SystemApp.Settings.alert.hideDelay
 
     # Hide the error message and clear the `timerHideError` timeout.
     hideCodeError: =>

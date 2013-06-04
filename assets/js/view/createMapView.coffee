@@ -39,7 +39,7 @@ class SystemApp.CreateMapView extends SystemApp.OverlayView
     onHide: =>
         $(document).unbind "keyup", @keyUp
         SystemApp.footerView.setText null
-        @$el.fadeOut SystemApp.Settings.General.fadeDelay
+        @$el.fadeOut SystemApp.Settings.general.fadeDelay
 
     # Show the view using a fade in effect and pass the entity type.
     # If user has no "mapcreate" role, hide the view immediately.
@@ -58,7 +58,7 @@ class SystemApp.CreateMapView extends SystemApp.OverlayView
 
         $(document).keyup @keyUp
         SystemApp.footerView.setText SystemApp.Messages.createMapText
-        @$el.fadeIn SystemApp.Settings.General.fadeDelay, @focus
+        @$el.fadeIn SystemApp.Settings.general.fadeDelay, @focus
 
         # Clear and set focus on the textbox.
         @$txtName.val ""

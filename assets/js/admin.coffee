@@ -82,7 +82,7 @@ SystemApp.suppressBackspace = (e) ->
 
 # Helper method to log to the console, but only if `debug` is set to true.
 SystemApp.consoleLog = (method, message, obj) ->
-    if SystemApp.Settings.General.debug
+    if SystemApp.Settings.general.debug
         if obj isnt undefined
             console.log method, message, obj
         else

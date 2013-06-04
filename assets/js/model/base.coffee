@@ -67,7 +67,7 @@ class SystemApp.BaseModel extends Backbone.Model
     # The URL to call when syncing with server. If the model's ID is set, then
     # append it to the end of the URL.
     url: =>
-        t = SystemApp.Settings.General.baseJsonUrl + @typeName.toLowerCase()
+        t = SystemApp.Settings.general.baseJsonUrl + @typeName.toLowerCase()
 
         if @id? and @id isnt ""
             return t + "/" + @id
@@ -214,7 +214,7 @@ class SystemApp.BaseModel extends Backbone.Model
                 @timerSave = null
 
             callback = () => @saveRemote options
-            @timerSave = setTimeout callback, SystemApp.Settings.General.saveInterval
+            @timerSave = setTimeout callback, SystemApp.Settings.general.saveInterval
 
     # Save model data to the local storage using jquery.localData plugin.
     saveLocal: (key, val, options) =>
@@ -228,7 +228,7 @@ class SystemApp.BaseModel extends Backbone.Model
         @timerSave = null
 
         options = {} if not options?
-        options.patch = SystemApp.Settings.General.savePatch
+        options.patch = SystemApp.Settings.general.savePatch
 
         # Override `success` and `error`. If these callbacks are passed, they'll be handled
         # later inside `saveSuccess` and `saveError`.

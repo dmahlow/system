@@ -33,7 +33,7 @@ SystemApp.Data =
     # Load all JSON files from server and sets a success and error callback.
     # While loading, the `fetching` property of collections will be set true.
     init: ->
-        @loggedUser.url = SystemApp.Settings.User.loggedUrl
+        @loggedUser.url = SystemApp.Settings.user.loggedUrl
         @loggedUser.fetch()
         @userSettings.fetch()
 
@@ -113,7 +113,7 @@ SystemApp.Data =
             clearTimeout SystemApp.Data.timerSaveUserSettings
             SystemApp.Data.timerSaveUserSettings = null
 
-        interval = SystemApp.Settings.General.saveInterval
+        interval = SystemApp.Settings.general.saveInterval
         callback = SystemApp.Data.userSettings.save
 
         SystemApp.Data.timerSaveUserSettings = setTimeout callback, interval

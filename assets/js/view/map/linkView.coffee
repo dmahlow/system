@@ -65,7 +65,7 @@ class SystemApp.MapLinkView extends SystemApp.BaseView
         target = @parentView.shapeViews[@model.targetId()]
 
         options =
-            arrowSize: SystemApp.Settings.Link.arrowSize
+            arrowSize: SystemApp.Settings.link.arrowSize
             arrowSource: @model.arrowSource()
             arrowTarget: @model.arrowTarget()
             opacity: @model.opacity()
@@ -116,19 +116,19 @@ class SystemApp.MapLinkView extends SystemApp.BaseView
 
     # Show the link on the map using a "fade in" effect.
     show: =>
-        @svg.show SystemApp.Settings.Map.blinkInterval
+        @svg.show SystemApp.Settings.map.blinkInterval
         @labelsView.show()
         @visible = true
 
     # Hide the link on the map using a "fade out" effect.
     hide: =>
-        @svg.hide SystemApp.Settings.Map.blinkInterval
+        @svg.hide SystemApp.Settings.map.blinkInterval
         @labelsView.hide()
         @visible = false
 
     # Fade the link opacity to 0.1, so it's almost hidden.
     semiHide: =>
-        @svg.semiHide SystemApp.Settings.Map.blinkInterval
+        @svg.semiHide SystemApp.Settings.map.blinkInterval
         @labelsView.hide()
         @visible = false
 
@@ -148,7 +148,7 @@ class SystemApp.MapLinkView extends SystemApp.BaseView
     # Update the stroke (color and width) of the link.
     setStroke: =>
         @svg.svgLine.attr {"stroke": @model.stroke(), "stroke-width": @model.strokeWidth()}
-        _.delay @strokeUpdatedBackToSelected, SystemApp.Settings.Map.borderUpdatedDelay
+        _.delay @strokeUpdatedBackToSelected, SystemApp.Settings.map.borderUpdatedDelay
 
     # Update the zIndex the link by changing its position under the DOM tree.
     setZIndex: =>
@@ -186,14 +186,14 @@ class SystemApp.MapLinkView extends SystemApp.BaseView
         extraMs = 15
 
         @hide()
-        _.delay(@show, SystemApp.Settings.Map.blinkInterval + extraMs)
-        _.delay(@blink, SystemApp.Settings.Map.blinkInterval * 2 + extraMs * 2, times - 1, callback) if times > 1
-        _.delay(callback, SystemApp.Settings.Map.blinkInterval * 2 + extraMs * 4) if times is 1 and callback?
+        _.delay(@show, SystemApp.Settings.map.blinkInterval + extraMs)
+        _.delay(@blink, SystemApp.Settings.map.blinkInterval * 2 + extraMs * 2, times - 1, callback) if times > 1
+        _.delay(callback, SystemApp.Settings.map.blinkInterval * 2 + extraMs * 4) if times is 1 and callback?
 
     # Create a shadow behind the link, with optional color and strength.
     highlight: (color, strength) =>
-        color = SystemApp.Settings.Map.shadowColor if not color?
-        strength = SystemApp.Settings.Map.shadowStrength if not strength?
+        color = SystemApp.Settings.map.shadowColor if not color?
+        strength = SystemApp.Settings.map.shadowStrength if not strength?
 
         @svg.svgLine.attr {"stroke": color, "stroke-width": strength}
 

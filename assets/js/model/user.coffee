@@ -65,7 +65,7 @@ class SystemApp.User extends SystemApp.BaseModel
 class SystemApp.UserCollection extends SystemApp.BaseCollection
     typeName: "UserCollection"
     model: SystemApp.User
-    url: SystemApp.Settings.User.url
+    url: SystemApp.Settings.user.url
 
     # Set the comparator function to order the user collection by username.
     comparator: (user) -> return user.us
