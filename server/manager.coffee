@@ -7,7 +7,7 @@ class Manager
 
     # Define the referenced objects.
     database = require "./database.coffee"
-    logger = require "./logger.coffee"
+    expresser = require "expresser"
     settings = require "./settings.coffee"
     sockets = require "./sockets.coffee"
     sync = require "./sync.coffee"
@@ -36,6 +36,10 @@ class Manager
 
     # Init the app manager by starting all the necessary timers.
     init: =>
+        if not expresser.database.db?
+            setTimeout @init, 100
+            return
+
         @initDatabaseTimer()
         @initEntityTimers()
         @initAuditDataTimers()
@@ -58,7 +62,7 @@ class Manager
     # of 2 hours and maximum of 3 hours.
     initDatabaseTimer: =>
         @stopDatabaseTimer()
-        @timerDatabaseClean = setInterval database.cleanLogs, settings.Database.logExpires * 1800000
+        @timerDatabaseClean = setInterval database.cleanLogs, settings.database.logExpires * 1800000
 
     # Stop the running database cleaner timer.
     stopDatabaseTimer: =>
@@ -73,8 +77,8 @@ class Manager
     # Init the [Entity](entityDefinition.html) refresh timers, by creating one interval
     # timer for each entity definition and transmitting the refreshed data to users via sockets.
     initEntityTimers: =>
-        if settings.General.debug
-            logger.info "Manager.initEntityTimers"
+        if settings.general.debug
+            expresser.logger.info "Manager.initEntityTimers"
 
         @stopEntityTimers()
         database.getEntityDefinition null, @startEntityTimers
@@ -93,8 +97,8 @@ class Manager
             sockets.sendServerError "Manager: could not load Entity Definition items.", err
         else
             @setEntityTimer entityDef for entityDef in result
-            if settings.General.debug
-                logger.info "Manager.startEntityTimers", "Started timers for #{result.length} entities."
+            if settings.general.debug
+                expresser.logger.info "Manager.startEntityTimers", "Started timers for #{result.length} entities."
 
     # Add an [Entity](entityDefinition.html) refresh timer to the `timersEntityRefresh` array.
     setEntityTimer: (entityDef) =>
@@ -102,9 +106,9 @@ class Manager
         interval = entityDef.refreshInterval
 
         # Make sure interval is at least 2 seconds.
-        if not interval? or interval < settings.Web.minimumRefreshInterval
-            interval = settings.Web.minimumRefreshInterval
-            logger.warn "Entity Definition data refresh interval is too low: ID #{entityDef.friendlyId}, interval #{entityDef.refreshInterval} seconds."
+        if not interval? or interval < settings.web.minimumRefreshInterval
+            interval = settings.web.minimumRefreshInterval
+            expresser.logger.warn "Entity Definition data refresh interval is too low: ID #{entityDef.friendlyId}, interval #{entityDef.refreshInterval} seconds."
 
         # Set the timer. Interval is in seconds, so we must multiply by 1000.
         timer = setInterval callback, interval * 1000
@@ -114,21 +118,21 @@ class Manager
 
         @timersEntityRefresh.push timer
 
-        if settings.General.debug
-            logger.info "Manager.setEntityTimer", entityDef.friendlyId, interval + "ms"
+        if settings.general.debug
+            expresser.logger.info "Manager.setEntityTimer", entityDef.friendlyId, interval + "ms"
 
     # Refresh the specified [Entity](entityDefinition.html) data. This will run ONLY
     # if there are connected clients, to avoid bandwidth and processing waste.
     refreshEntity: (entityDef) =>
-        if sockets.getConnectionCount() < 1
+        if expresser.sockets.getConnectionCount() < 1
             return
 
         # Only proceed if the entity sourceUrl is set.
         if entityDef.sourceUrl? and entityDef.sourceUrl isnt ""
-            sync.download entityDef.sourceUrl, settings.Paths.downloadsDir + "entityobjects." + entityDef.friendlyId + ".json", (err, localFile) =>
+            sync.download entityDef.sourceUrl, settings.path.downloadsDir + "entityobjects." + entityDef.friendlyId + ".json", (err, localFile) =>
                 @transmitDataToClients err, localFile, entityDef, sockets.sendEntityRefresh, database.setEntityDefinition
-        else if settings.General.debug
-            logger.warn "Manager.refreshEntity", entityDef.friendlyId, "No sourceUrl set. Abort."
+        else if settings.general.debug
+            expresser.logger.warn "Manager.refreshEntity", entityDef.friendlyId, "No sourceUrl set. Abort."
 
 
     # AUDIT DATA MANAGER
@@ -137,8 +141,8 @@ class Manager
     # Init the [AuditData](auditadta.html) refresh timers, by creating one interval
     # timer for each audit data and transmitting the refreshed data to users via sockets.
     initAuditDataTimers: =>
-        if settings.General.debug
-            logger.info "Manager.initAuditDataTimers"
+        if settings.general.debug
+            expresser.logger.info "Manager.initAuditDataTimers"
 
         @stopAuditDataTimers()
         database.getAuditData null, @startAuditDataTimers
@@ -157,8 +161,8 @@ class Manager
             sockets.sendServerError "Manager: could not load Audit Data items.", err
         else
             @setAuditDataTimer auditData for auditData in result
-            if settings.General.debug
-                logger.info "Manager.startAuditDataTimers", "Started timers for #{result.length} audit data."
+            if settings.general.debug
+                expresser.logger.info "Manager.startAuditDataTimers", "Started timers for #{result.length} audit data."
 
     # Add an [AuditData](auditadata.html) refresh timer to the `timersAuditDataRefresh` array.
     setAuditDataTimer: (auditData) =>
@@ -166,9 +170,9 @@ class Manager
         interval = auditData.refreshInterval
 
         # Make sure interval is at least 2 seconds.
-        if not interval? or interval < settings.Web.minimumRefreshInterval
-            interval = settings.Web.minimumRefreshInterval
-            logger.warn "Audit Data refresh interval is too low: ID #{auditData.friendlyId}, interval #{auditData.refreshInterval} seconds."
+        if not interval? or interval < settings.web.minimumRefreshInterval
+            interval = settings.web.minimumRefreshInterval
+            expresser.logger.warn "Audit Data refresh interval is too low: ID #{auditData.friendlyId}, interval #{auditData.refreshInterval} seconds."
 
         # Set the timer. Interval is in seconds, so we must multiply by 1000.
         timer = setInterval callback, interval * 1000
@@ -178,21 +182,21 @@ class Manager
 
         @timersAuditDataRefresh.push timer
 
-        if settings.General.debug
-            logger.info "Manager.setAuditDataTimer", auditData.friendlyId, interval + "ms"
+        if settings.general.debug
+            expresser.logger.info "Manager.setAuditDataTimer", auditData.friendlyId, interval + "ms"
 
     # Refresh the specified [AuditData](auditData.html) records. This will run ONLY
     # if there are connected clients, to avoid bandwidth and processing waste.
     refreshAuditData: (auditData) =>
-        if sockets.getConnectionCount() < 1
+        if expresser.sockets.getConnectionCount() < 1
             return
 
         # Only proceed if the audit data sourceUrl is properly set.
         if auditData.sourceUrl? and auditData.sourceUrl isnt ""
-            sync.download auditData.sourceUrl, settings.Paths.downloadsDir + "auditdata." + auditData.friendlyId + ".json", (err, localFile) =>
+            sync.download auditData.sourceUrl, settings.path.downloadsDir + "auditdata." + auditData.friendlyId + ".json", (err, localFile) =>
                 @transmitDataToClients err, localFile, auditData, sockets.sendAuditDataRefresh, database.setAuditData
-        else if settings.General.debug
-            logger.warn "Manager.refreshAuditData", auditData.friendlyId, "No sourceUrl set. Abort."
+        else if settings.general.debug
+            expresser.logger.warn "Manager.refreshAuditData", auditData.friendlyId, "No sourceUrl set. Abort."
 
 
     # HELPER METHODS
@@ -208,14 +212,14 @@ class Manager
                 if err1?
                     sockets.sendServerError "Manager: could not read #{localFile}.", err1
                 else
-                    if settings.General.debug
-                        logger.info "Manager.transmitDataToClients", localFile
+                    if settings.general.debug
+                        expresser.logger.info "Manager.transmitDataToClients", localFile
 
                     # Try parsing the data as JSON.
                     try
                         obj.data = JSON.parse result
                     catch err2
-                        logger.error err2
+                        expresser.logger.error err2
                         return
 
                     socketsCallback obj
@@ -232,7 +236,7 @@ class Manager
                     obj.data = database.cleanObjectForInsertion obj.data
                     dbCallback obj, {patch: true}
         else
-            logger.error "Manager.transmitDataToClients", localFile, err
+            expresser.logger.error "Manager.transmitDataToClients", localFile, err
 
 
 # Singleton implementation

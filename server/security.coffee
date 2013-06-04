@@ -8,10 +8,8 @@ class Security
     # Required modules.
     crypto = require "crypto"
     database = require "./database.coffee"
-    logger = require "./logger.coffee"
+    expresser = require "expresser"
     moment = require "moment"
-    passport = require "passport"
-    passportHttp = require "passport-http"
     settings = require "./settings.coffee"
 
     # Cache with logged users to avoid hitting the database all the time.
@@ -22,13 +20,12 @@ class Security
     # authenticate users using basic HTTP authentication.
     init: =>
         @cachedUsers = {}
-        @ensureAdminUser()
 
         # Helper to validate user login. If no user was specified and [settings](settings.html)
         # allow guest access, then log as guest.
         validateUser = (user, password, callback) =>
             if not user? or user is "" or user is "guest"
-                if settings.Security.guestEnabled
+                if settings.security.guestEnabled
                     guest = {id: "guest", displayName: "Guest", username: "guest", roles: ["guest"]}
                     return callback null, guest
                 else
@@ -61,22 +58,23 @@ class Security
                 result = result[0] if result.length > 0
 
                 # Set expiry date for the user cache.
-                result.cacheExpiryDate = moment().add "s", settings.Security.userCacheExpires
+                result.cacheExpiryDate = moment().add "s", settings.security.userCacheExpires
                 @cachedUsers[result.id] = result
 
                 # Return the login callback.
                 return callback null, result
 
         # Use HTTP basic authentication.
-        passport.use new passportHttp.BasicStrategy (username, password, callback) =>
-            validateUser username, password, callback
+        expresser.app.passportAuthenticate = validateUser
 
         # User serializer will user the user ID only.
-        passport.serializeUser (user, callback) ->
+        expresser.app.passport.serializeUser (user, callback) ->
+            console.warn "SSSEEERRRR", user
             callback null, user.id
 
         # User deserializer will get user details from the database.
-        passport.deserializeUser (user, callback) ->
+        expresser.app.passport.deserializeUser (user, callback) ->
+            console.warn "DDDEEESSSS", user
             if user is "guest"
                 validateUser "guest", null, callback
             else
@@ -87,7 +85,7 @@ class Security
     ensureAdminUser: =>
         database.getUser null, (err, result) =>
             if err?
-                logger.error "Security.ensureAdminUser", err
+                expresser.logger.error "Security.ensureAdminUser", err
                 return
 
             # If no users were found, create the default admin user.
@@ -95,7 +93,7 @@ class Security
                 passwordHash = @getPasswordHash "admin", "system"
                 user = {displayName: "Administrator", username: "admin", roles:["admin"], passwordHash: passwordHash}
                 database.setUser user
-                logger.info "Security.ensureAdminUser", "Default admin user was created."
+                expresser.logger.info "Security.ensureAdminUser", "Default admin user was created."
 
 
     # AUTHENTICATION METHODS
@@ -106,7 +104,7 @@ class Security
     # by the HTTP authentication module. If password is empty, return an empty string.
     getPasswordHash: (username, password) =>
         return "" if not password? or password is ""
-        text = username + "|" + password + "|" + settings.Security.userPasswordKey
+        text = username + "|" + password + "|" + settings.security.userPasswordKey
         return crypto.createHash("sha256").update(text).digest "hex"
 
 

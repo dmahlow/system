@@ -5,15 +5,12 @@
 module.exports = (app) ->
 
     # Define required modules.
-    logger = require "./logger.coffee"
     database = require "./database.coffee"
+    expresser = require "expresser"
     fs = require "fs"
-    imaging = require "./imaging.coffee"
     manager = require "./manager.coffee"
-    passport = require "passport"
     security = require "./security.coffee"
     settings = require "./settings.coffee"
-    sockets = require "./sockets.coffee"
     sync = require "./sync.coffee"
 
     # Define the package.json.
@@ -337,6 +334,11 @@ module.exports = (app) ->
         # Get map from request body.
         map = getDocumentFromBody req
 
+        # Check if map is read only.
+        if map.isReadOnly
+            sendForbiddenResponse res, "Map POST (read-only)"
+            return
+
         # If map is new, set the `createdByUserId` to the current logged user's ID.
         if not map.id? or map.id is ""
             map.createdByUserId = req.user.id
@@ -385,13 +387,13 @@ module.exports = (app) ->
     # its ID and SVG representation.
     postMapThumb = (req, res) ->
         svg = req.body.svg
-        svgPath = settings.Paths.imagesDir + "mapthumbs/" + req.params["id"] + ".svg"
+        svgPath = settings.path.imagesDir + "mapthumbs/" + req.params["id"] + ".svg"
 
         fs.writeFile svgPath, svg, (err) ->
             if err?
                 sendErrorResponse res, "Map Thumbnail POST", err
             else
-                imaging.svgToPng svgPath, settings.Images.mapThumbSize, (err2, result) ->
+                expresser.imaging.toPng svgPath, {size: settings.images.mapThumbSize}, (err2, result) ->
                     if err2?
                         sendErrorResponse res, "Map Thumbnail POST", err2
                     else
@@ -531,25 +533,12 @@ module.exports = (app) ->
     # Error 401 (not authorized) page.
     get401 = (req, res) ->
         res.status 401
-        res.render "status401", title: settings.General.appTitle,
+        res.render "status401", title: settings.general.appTitle,
 
     # Error 404 (not found) page.
     get404 = (req, res) ->
         res.status 404
-        res.render "status404", title: settings.General.appTitle,
-
-    # Get the list of server logs for the past 24 hours. Value can be changed on
-    # the [Server Settings](settings.html).
-    getLogsRecent = (req, res) ->
-        if not req.user?
-            sendForbiddenResponse res, "Logs Recent GET"
-            return
-
-        logger.getRecent (err, result) ->
-            if not err?
-                res.send minifyJson result
-            else
-                res.json err
+        res.render "status404", title: settings.general.appTitle,
 
 
     # HELPER METHODS
@@ -558,7 +547,7 @@ module.exports = (app) ->
     # Minify the passed JSON value. Please note that the result will be minified
     # ONLY if the `Web.minifyJsonResponse` setting is set to true.
     minifyJson = (source) ->
-        return source if settings.Web.minifyJsonResponse
+        return source if settings.web.minifyJsonResponse
 
         source = JSON.stringify source if typeof source is "object"
         index = 0
@@ -654,12 +643,12 @@ module.exports = (app) ->
 
         # Set render options.
         options =
-            title: settings.General.appTitle,
+            title: settings.general.appTitle,
             version: packageJson.version,
             lastModified: moment(lastModified).format("YYYY-MM-DD hh:mm"),
             serverUptime: moment.duration(os.uptime(), "s").humanize(),
             serverHostname: os.hostname(),
-            serverPort: settings.Web.port,
+            serverPort: settings.web.port,
             serverOS: os.type() + " " + os.release(),
             serverCpuLoad: os.loadavg()[0].toFixed(2),
             serverRamLoad: (os.freemem() / os.totalmem() * 100).toFixed(2),
@@ -682,7 +671,7 @@ module.exports = (app) ->
     # When the server can't return a valid result,
     # send an error response with status code 500.
     sendErrorResponse = (res, method, message) ->
-        logger.error "HTTP 500", method, message
+        expresser.logger.error "HTTP 500", method, message
 
         res.statusCode = 500
         res.send "Error: #{method} - #{message}"
@@ -690,7 +679,7 @@ module.exports = (app) ->
     # When user is not authorized to request a resource, send an 403 error
     # with an "access denied" message.
     sendForbiddenResponse = (res, method) ->
-        logger.error "HTTP 403", method
+        expresser.logger.error "HTTP 403", method
 
         res.statusCode = 403
         res.send "Access denied for #{method}."
@@ -703,23 +692,20 @@ module.exports = (app) ->
     passportOptions = {session: true}
 
     # The login page/
-    app.get "/login", passport.authenticate("basic", passportOptions), (req, res) -> res.send req.user.username
+    app.get "/login", expresser.app.passport.authenticate("basic", passportOptions), (req, res) -> res.send req.user.username
 
     # Main index.
-    app.get "/", passport.authenticate("basic", passportOptions), getIndex
+    app.get "/", expresser.app.passport.authenticate("basic", passportOptions), getIndex
 
 
     # SET ADMIN ROUTES
     # ----------------------------------------------------------------------
 
     # Admin area.
-    app.get "/admin", passport.authenticate("basic", passportOptions), getAdmin
+    app.get "/admin", expresser.app.passport.authenticate("basic", passportOptions), getAdmin
 
     # Upgrader page.
     app.get "/upgrade", runUpgrade
-
-    # Server status and log routes.
-    app.get "/logs/recent", getLogsRecent
 
 
     # SET DATA AND SPECIAL ROUTES

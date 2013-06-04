@@ -2,19 +2,22 @@
 # --------------------------------------------------------------------------
 
 # Required modules.
+path = require "path"
+expresser = require "expresser"
+manager = require "./server/manager.coffee"
+security = require "./server/security.coffee"
 settings = require "./server/settings.coffee"
 sockets = require "./server/sockets.coffee"
-express = require "express"
 
-# Create the express app.
-app = express()
+# Load settings.
+settingsPath = path.dirname(require.main.filename) + "/server/settings.json"
+expresser.settings.loadFromJson settingsPath
+
+# Init modules.
+expresser.init()
+manager.init()
+security.init()
+sockets.init()
 
 # Configure the app and set the routes.
-require("./server/configure.coffee")(app, express)
-require("./server/routes.coffee")(app, express)
-
-# Create server and bind Socket.IO to the app and listen to connections.
-# Port is defined on the [Server Settings](settings.html).
-server = require("http").createServer app
-server.listen settings.Web.port
-sockets.bind server
+require("./server/routes.coffee")(expresser.app.server)

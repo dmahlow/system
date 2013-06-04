@@ -5,12 +5,11 @@
 class Sync
 
     # Define required modules.
+    expresser = require "expresser"
     fs = require "fs"
     http = require "http"
-    logger = require "./logger.coffee"
     moment = require "moment"
     settings = require "./settings.coffee"
-    sockets = require "./sockets.coffee"
     url = require "url"
 
     # Holds a copy of all files being downloaded.
@@ -26,25 +25,25 @@ class Sync
     # downloaded at the moment.
     download: (remoteUrl, localFile, callback, contentType) =>
         if not remoteUrl?
-            logger.warn "Download aborted, remoteUrl is not defined.", localFile
+            expresser.logger.warn "Download aborted, remoteUrl is not defined.", localFile
             return
 
         now = new Date()
         existing = @currentDownloads[localFile]
 
         # Check existing download time.
-        if existing? and now.getTime() - existing.date.getTime() < settings.Web.downloadTimeout
-            logger.warn "Download aborted, already downloading!", localFile, existing
+        if existing? and now.getTime() - existing.date.getTime() < settings.web.downloadTimeout
+            expresser.logger.warn "Download aborted, already downloading!", localFile, existing
             return
 
         # Check if the specified `remoteUrl` has failed to download repeatedly. If so, proceed
         # only after some time (defined by the `connRestartInterval` web setting).
         errorCount = @errorCounters[remoteUrl]
         if errorCount?
-            if errorCount > settings.Web.connRestartInterval
+            if errorCount > settings.web.connRestartInterval
                 if moment().valueOf() < errorCount
-                    if settings.General.debug
-                        logger.warn "Sync.download", "Abort because failed too many times before.", remoteUrl
+                    if settings.general.debug
+                        expresser.logger.warn "Sync.download", "Abort because failed too many times before.", remoteUrl
                     return
                 else
                     delete @errorCounters[remoteUrl]
@@ -58,8 +57,8 @@ class Sync
 
         # Check if `Settings.Web.downloaderHeaders` is not null, and if so append
         # it to the content type header.
-        if settings.Web.downloaderHeaders? and settings.Web.downloaderHeaders isnt ""
-            headers = settings.Web.downloaderHeaders
+        if settings.web.downloaderHeaders? and settings.web.downloaderHeaders isnt ""
+            headers = settings.web.downloaderHeaders
             headers["Content-Type"] = contentType
         else
             headers = {"Content-Type": contentType}
@@ -79,15 +78,15 @@ class Sync
 
         # Append auth information, if specified on the [settings](settings.html) but
         # only if no credentials were passed directly on the URL.
-        if not options.auth? and settings.Web.downloaderUser? and settings.Web.downloaderUser isnt ""
-            options.auth = "#{settings.Web.downloaderUser}:#{settings.Web.downloaderPassword}"
+        if not options.auth? and settings.web.downloaderUser? and settings.web.downloaderUser isnt ""
+            options.auth = "#{settings.web.downloaderUser}:#{settings.web.downloaderPassword}"
 
         # Helper function to proccess and notify the user about download errors.
         downloadError = (error) =>
             counter = @errorCounters[remoteUrl]
 
             # Add up to the error counter.
-            if counter? and counter < settings.Web.alertAfterFailedDownloads
+            if counter? and counter < settings.web.alertAfterFailedDownloads
                 counter = counter + 1
             else
                 counter = 1
@@ -95,13 +94,13 @@ class Sync
             # If download has failed many times, log and error instead of warning and
             # update the `errorCounters` reference value with the current time plus
             # the value specified on the `connRestartInterval` web setting.
-            if counter is settings.Web.alertAfterFailedDownloads
-                time = moment().add("ms", settings.Web.connRestartInterval).valueOf()
+            if counter is settings.web.alertAfterFailedDownloads
+                time = moment().add("ms", settings.web.connRestartInterval).valueOf()
                 @errorCounters[remoteUrl] = time
-                logger.error "Sync.download", remoteUrl, error
+                expresser.logger.error "Sync.download", remoteUrl, error
             else
                 @errorCounters[remoteUrl] = counter
-                logger.warn "Sync.download", remoteUrl, error
+                expresser.logger.warn "Sync.download", remoteUrl, error
 
             # Send error using Socket.IO.
             sockets.sendServerError "Download error: " + remoteUrl + " " + error.code
@@ -154,8 +153,8 @@ class Sync
                         delete @currentDownloads[localFile]
                         delete @errorCounters[remoteUrl]
 
-                        if settings.General.debug
-                            logger.info "Sync.download", remoteUrl, localFile
+                        if settings.general.debug
+                            expresser.logger.info "Sync.download", remoteUrl, localFile
 
                     fileWriter.end()
                     fileWriter.destroySoon()

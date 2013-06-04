@@ -19,7 +19,7 @@ SystemApp.Sockets =
             url = window.location
             @socket = io.connect "http://#{url.hostname}:#{url.port}"
 
-        @socket.on "server:connectionCounter", @onServerConnectionCounter
+        @socket.on "connection-count", @onServerConnectionCounter
         @socket.on "server:error", @onServerError
         @socket.on "entitydata:refresh", @onEntityDataRefresh
         @socket.on "auditdata:refresh", @onAuditDataRefresh

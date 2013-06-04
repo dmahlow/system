@@ -56,6 +56,7 @@ SystemApp.Tutorial =
     # Starts the tutorial by showing the "Create entities..." tip.
     start: ->
         SystemApp.consoleLog "Tutorial", "Start at " + new Date()
+
         @$cancelbg = $("#tutorial-cancelbg")
         @$cancelbg.show()
         @$tour = $("#tutorial").joyride {postStepCallback: @postStepCallback, postRideCallback: @postRideCallback}

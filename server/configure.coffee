@@ -20,8 +20,8 @@ module.exports = (app, express) ->
         ip = process.env.OPENSHIFT_INTERNAL_IP
         port = process.env.OPENSHIFT_INTERNAL_PORT
         port = process.env.VCAP_APP_PORT if not port? or port is ""
-        settings.Web.ip = ip if ip? and ip isnt ""
-        settings.Web.port = port if port? and port isnt ""
+        settings.web.ip = ip if ip? and ip isnt ""
+        settings.web.port = port if port? and port isnt ""
 
         # Check for Mongo variables.
         vcap = process.env.VCAP_SERVICES
@@ -30,7 +30,7 @@ module.exports = (app, express) ->
             mongo = vcap["mongodb-1.8"]
             mongo = mongo[0]["credentials"] if mongo?
             if mongo?
-                settings.Database.connString = "mongodb://#{mongo.hostname}:#{mongo.port}/#{mongo.db}"
+                settings.database.connString = "mongodb://#{mongo.hostname}:#{mongo.port}/#{mongo.db}"
 
         # Check for logging variables.
         logentries = process.env.LOGENTRIES_TOKEN
@@ -48,17 +48,17 @@ module.exports = (app, express) ->
             console.error "App unhandled exception!", err
 
         # If the `Settings.Web.paas` is true, then override settings with environmental variables.
-        configPaaS() if settings.Web.paas
+        configPaaS() if settings.web.paas
 
         # Init other modules.
         logger.init()
-        manager.init()
-        security.init()
+
+
 
         # Sets the app path variables.
-        app.viewsDir = settings.Paths.viewsDir
-        app.publicDir = settings.Paths.publicDir
-        app.downloadsDir = settings.Paths.downloadsDir
+        app.viewsDir = settings.path.viewsDir
+        app.publicDir = settings.path.publicDir
+        app.downloadsDir = settings.path.downloadsDir
 
         # Set view options, use Jade.
         app.set "views", app.viewsDir
@@ -69,11 +69,9 @@ module.exports = (app, express) ->
         app.use express.bodyParser()
         app.use express.methodOverride()
         app.use express.cookieParser()
-        app.use express.session {secret: settings.Security.sessionKey}
+        app.use express.session {secret: settings.security.sessionKey}
 
-        # Init passport middleware.
-        app.use passport.initialize()
-        app.use passport.session()
+
 
         # Express routing.
         app.use app.router
@@ -81,7 +79,7 @@ module.exports = (app, express) ->
 
     # Config for development. Do not minify builds, and set debug to `true` in case it's unset.
     app.configure "development", ->
-        settings.General.debug = true if not settings.General.debug?
+        settings.general.debug = true if not settings.general.debug?
 
         ConnectAssets = (require "connect-assets") {build: true, buildDir: false, minifyBuilds: false}
         app.use ConnectAssets
@@ -89,7 +87,7 @@ module.exports = (app, express) ->
 
     # Config for production. JS and CSS will be minified. Set debug to `false` in case it's unset.
     app.configure "production", ->
-        settings.General.debug = false if not settings.General.debug?
+        settings.general.debug = false if not settings.general.debug?
 
         ConnectAssets = (require "connect-assets") {build: true, buildDir: false, minifyBuilds: true}
         app.use ConnectAssets

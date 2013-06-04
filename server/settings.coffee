@@ -21,7 +21,7 @@ class Settings
 
     # GENERAL
     # ----------------------------------------------------------------------
-    General:
+    general:
         # The app title.
         appTitle: "System App"
         # When debug is true, more messages will be logged to file and console.
@@ -30,7 +30,7 @@ class Settings
 
     # DATABASE
     # ----------------------------------------------------------------------
-    Database:
+    database:
         # Connection string to MongoDB.
         connString: "mongodb://localhost/systemapp"
         # Wait for flush to file system before acknowlegement? Default is false.
@@ -41,7 +41,7 @@ class Settings
 
     # PATHS
     # ----------------------------------------------------------------------
-    Paths:
+    path:
         # Path to the logs directory.
         logsDir: "./logs/"
         # Path to the Jade views directory.
@@ -56,7 +56,7 @@ class Settings
 
     # LOGGING
     # ----------------------------------------------------------------------
-    Log:
+    log:
         # Delete log files older than 30 days by default.
         cleanOldDays: 30
         # Max filesize for each log is around 1MB.
@@ -70,14 +70,14 @@ class Settings
 
     # IMAGES
     # ----------------------------------------------------------------------
-    Images:
+    images:
         # Size of map thumbnails (width).
         mapThumbSize: 600
 
 
     # WEB
     # ----------------------------------------------------------------------
-    Web:
+    web:
         # Generate an error alert after a download has failed X manytimes.
         alertAfterFailedDownloads: 5
         # The amount of time to wait for new connection requests, in case the internet
@@ -106,7 +106,7 @@ class Settings
 
     # SECURITY
     # ----------------------------------------------------------------------
-    Security:
+    security:
         # If true, users will be able to see the app in read-only mode when not authenticated.
         # In this case, to authenticate, they'll have to manually access the /login page.
         guestEnabled: true
@@ -141,6 +141,7 @@ Settings.getInstance = ->
             xtend = (source, target) ->
                 for prop, value of source
                     if value?.constructor is Object
+                        target[prop] = {} if not target[prop]?
                         xtend source[prop], target[prop]
                     else
                         target[prop] = source[prop]

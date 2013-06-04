@@ -6,12 +6,12 @@
 "model" :	"HP Integrity BL",
 "cpu_model" :	"Intel Xeon E3",
 "cpu_cores" :	"8",
-"cpu_load" :	"2.28",
+"cpu_load" :	"0.12",
 "ram_total" :	"32768",
 "disk_total" :	"1500",
-"disk_load" :	"0.26",
+"disk_load" :	"0.10",
 "management_ip" :	"",
-"audit_date" :	"2013-05-30 13:58:09"
+"audit_date" :	"2013-06-03 10:05:21"
 
 },
 {
@@ -21,12 +21,12 @@
 "model" :	"HP Integrity BL",
 "cpu_model" :	"Intel Xeon E5",
 "cpu_cores" :	"8",
-"cpu_load" :	"1.39",
+"cpu_load" :	"0.45",
 "ram_total" :	"32768",
 "disk_total" :	"1000",
-"disk_load" :	"0.38",
+"disk_load" :	"0.79",
 "management_ip" :	"",
-"audit_date" :	"2013-05-30 13:58:09"
+"audit_date" :	"2013-06-03 10:05:21"
 
 },
 {
@@ -36,12 +36,12 @@
 "model" :	"HP ProLiant Blade",
 "cpu_model" :	"Intel Xeon E7",
 "cpu_cores" :	"6",
-"cpu_load" :	"0.75",
+"cpu_load" :	"0.66",
 "ram_total" :	"32768",
 "disk_total" :	"1000",
-"disk_load" :	"0.05",
+"disk_load" :	"0.72",
 "management_ip" :	"",
-"audit_date" :	"2013-05-30 13:58:09"
+"audit_date" :	"2013-06-03 10:05:21"
 
 },
 {
@@ -54,9 +54,9 @@
 "cpu_load" :	"0.28",
 "ram_total" :	"65536",
 "disk_total" :	"1500",
-"disk_load" :	"0.18",
+"disk_load" :	"0.57",
 "management_ip" :	"",
-"audit_date" :	"2013-05-30 13:58:09"
+"audit_date" :	"2013-06-03 10:05:18"
 
 },
 {
@@ -66,12 +66,12 @@
 "model" :	"HP Integrity BL",
 "cpu_model" :	"AMD Opteron 4000",
 "cpu_cores" :	"8",
-"cpu_load" :	"1.47",
+"cpu_load" :	"1.13",
 "ram_total" :	"32768",
 "disk_total" :	"1500",
-"disk_load" :	"0.13",
+"disk_load" :	"0.57",
 "management_ip" :	"",
-"audit_date" :	"2013-05-30 13:57:59"
+"audit_date" :	"2013-06-03 10:05:18"
 
 },
 {
@@ -81,12 +81,12 @@
 "model" :	"HP ProLiant Blade",
 "cpu_model" :	"AMD Opteron 6000",
 "cpu_cores" :	"8",
-"cpu_load" :	"0.73",
+"cpu_load" :	"1.56",
 "ram_total" :	"32768",
 "disk_total" :	"1500",
-"disk_load" :	"0.66",
+"disk_load" :	"0.70",
 "management_ip" :	"",
-"audit_date" :	"2013-05-30 13:58:04"
+"audit_date" :	"2013-06-03 10:05:21"
 
 },
 {
@@ -96,12 +96,12 @@
 "model" :	"HP ProLiant Blade",
 "cpu_model" :	"AMD Opteron 4000",
 "cpu_cores" :	"6",
-"cpu_load" :	"1.10",
+"cpu_load" :	"2.68",
 "ram_total" :	"32768",
 "disk_total" :	"1500",
-"disk_load" :	"0.18",
+"disk_load" :	"0.80",
 "management_ip" :	"",
-"audit_date" :	"2013-05-30 13:58:04"
+"audit_date" :	"2013-06-03 10:05:21"
 
 },
 {
@@ -126,12 +126,12 @@
 "model" :	"HP Integrity BL",
 "cpu_model" :	"Intel Xeon E5",
 "cpu_cores" :	"6",
-"cpu_load" :	"2.85",
+"cpu_load" :	"1.84",
 "ram_total" :	"32768",
 "disk_total" :	"1000",
-"disk_load" :	"0.61",
+"disk_load" :	"0.54",
 "management_ip" :	"",
-"audit_date" :	"2013-05-30 13:58:09"
+"audit_date" :	"2013-06-03 10:05:18"
 
 },
 {
@@ -141,12 +141,12 @@
 "model" :	"HP ProLiant Blade",
 "cpu_model" :	"Intel Xeon E7",
 "cpu_cores" :	"6",
-"cpu_load" :	"0.42",
+"cpu_load" :	"0.29",
 "ram_total" :	"65536",
 "disk_total" :	"1000",
-"disk_load" :	"0.03",
+"disk_load" :	"0.75",
 "management_ip" :	"",
-"audit_date" :	"2013-05-30 13:58:09"
+"audit_date" :	"2013-06-03 10:05:21"
 
 },
 {
@@ -156,12 +156,12 @@
 "model" :	"HP ProLiant Blade",
 "cpu_model" :	"AMD Opteron 6000",
 "cpu_cores" :	"6",
-"cpu_load" :	"0.12",
+"cpu_load" :	"2.49",
 "ram_total" :	"32768",
 "disk_total" :	"1000",
-"disk_load" :	"0.53",
+"disk_load" :	"0.25",
 "management_ip" :	"",
-"audit_date" :	"2013-05-30 13:58:09"
+"audit_date" :	"2013-06-03 10:05:21"
 
 },
 {
@@ -171,12 +171,12 @@
 "model" :	"HP Integrity BL",
 "cpu_model" :	"AMD Opteron 6000",
 "cpu_cores" :	"8",
-"cpu_load" :	"1.68",
+"cpu_load" :	"1.42",
 "ram_total" :	"32768",
 "disk_total" :	"1500",
-"disk_load" :	"0.04",
+"disk_load" :	"0.72",
 "management_ip" :	"",
-"audit_date" :	"2013-05-30 13:58:09"
+"audit_date" :	"2013-06-03 10:05:18"
 
 },
 {
@@ -186,12 +186,12 @@
 "model" :	"Dell PowerEdge",
 "cpu_model" :	"Intel Xeon E5",
 "cpu_cores" :	"8",
-"cpu_load" :	"0.24",
+"cpu_load" :	"1.12",
 "ram_total" :	"32768",
 "disk_total" :	"1500",
-"disk_load" :	"0.12",
+"disk_load" :	"0.41",
 "management_ip" :	"",
-"audit_date" :	"2013-05-30 13:58:09"
+"audit_date" :	"2013-06-03 10:05:21"
 
 },
 {
@@ -201,12 +201,12 @@
 "model" :	"HP ProLiant Blade",
 "cpu_model" :	"AMD Opteron 6000",
 "cpu_cores" :	"8",
-"cpu_load" :	"2.12",
+"cpu_load" :	"0.80",
 "ram_total" :	"32768",
 "disk_total" :	"1500",
-"disk_load" :	"0.61",
+"disk_load" :	"0.33",
 "management_ip" :	"",
-"audit_date" :	"2013-05-30 13:58:09"
+"audit_date" :	"2013-06-03 10:05:21"
 
 },
 {
@@ -216,12 +216,12 @@
 "model" :	"HP Integrity BL",
 "cpu_model" :	"AMD Opteron 4000",
 "cpu_cores" :	"8",
-"cpu_load" :	"0.41",
+"cpu_load" :	"1.64",
 "ram_total" :	"65536",
 "disk_total" :	"1500",
-"disk_load" :	"0.06",
+"disk_load" :	"0.46",
 "management_ip" :	"",
-"audit_date" :	"2013-05-30 13:57:59"
+"audit_date" :	"2013-06-03 10:05:21"
 
 },
 {
@@ -231,12 +231,12 @@
 "model" :	"HP Integrity BL",
 "cpu_model" :	"Intel Xeon E5",
 "cpu_cores" :	"8",
-"cpu_load" :	"1.04",
+"cpu_load" :	"0.36",
 "ram_total" :	"65536",
 "disk_total" :	"2000",
-"disk_load" :	"0.76",
+"disk_load" :	"0.68",
 "management_ip" :	"",
-"audit_date" :	"2013-05-30 13:58:09"
+"audit_date" :	"2013-06-03 10:05:21"
 
 },
 {
@@ -246,12 +246,12 @@
 "model" :	"Dell PowerEdge",
 "cpu_model" :	"Intel Xeon E5",
 "cpu_cores" :	"6",
-"cpu_load" :	"1.14",
+"cpu_load" :	"2.57",
 "ram_total" :	"16384",
 "disk_total" :	"1500",
-"disk_load" :	"0.45",
+"disk_load" :	"0.10",
 "management_ip" :	"",
-"audit_date" :	"2013-05-30 13:58:09"
+"audit_date" :	"2013-06-03 10:05:21"
 
 },
 {
@@ -261,12 +261,12 @@
 "model" :	"Dell PowerEdge",
 "cpu_model" :	"AMD Opteron 4000",
 "cpu_cores" :	"8",
-"cpu_load" :	"0.37",
+"cpu_load" :	"2.18",
 "ram_total" :	"32768",
 "disk_total" :	"1000",
-"disk_load" :	"0.53",
+"disk_load" :	"0.59",
 "management_ip" :	"",
-"audit_date" :	"2013-05-30 13:58:09"
+"audit_date" :	"2013-06-03 10:05:18"
 
 },
 {
@@ -276,12 +276,12 @@
 "model" :	"Dell PowerEdge",
 "cpu_model" :	"AMD Opteron 6000",
 "cpu_cores" :	"8",
-"cpu_load" :	"2.38",
+"cpu_load" :	"1.48",
 "ram_total" :	"32768",
 "disk_total" :	"1500",
-"disk_load" :	"0.63",
+"disk_load" :	"0.23",
 "management_ip" :	"",
-"audit_date" :	"2013-05-30 13:58:09"
+"audit_date" :	"2013-06-03 10:05:15"
 
 },
 {
@@ -291,12 +291,12 @@
 "model" :	"HP ProLiant Blade",
 "cpu_model" :	"AMD Opteron 6000",
 "cpu_cores" :	"4",
-"cpu_load" :	"1.34",
+"cpu_load" :	"1.21",
 "ram_total" :	"32768",
 "disk_total" :	"1000",
-"disk_load" :	"0.40",
+"disk_load" :	"0.16",
 "management_ip" :	"",
-"audit_date" :	"2013-05-30 13:58:09"
+"audit_date" :	"2013-06-03 10:05:21"
 
 },
 {
@@ -306,12 +306,12 @@
 "model" :	"HP Integrity BL",
 "cpu_model" :	"Intel Xeon E7",
 "cpu_cores" :	"6",
-"cpu_load" :	"0.62",
+"cpu_load" :	"1.82",
 "ram_total" :	"65536",
 "disk_total" :	"1500",
-"disk_load" :	"0.78",
+"disk_load" :	"0.71",
 "management_ip" :	"",
-"audit_date" :	"2013-05-30 13:58:09"
+"audit_date" :	"2013-06-03 10:05:21"
 
 },
 {
@@ -321,12 +321,12 @@
 "model" :	"HP ProLiant Blade",
 "cpu_model" :	"Intel Xeon E7",
 "cpu_cores" :	"8",
-"cpu_load" :	"1.69",
+"cpu_load" :	"0.33",
 "ram_total" :	"16384",
 "disk_total" :	"1000",
-"disk_load" :	"0.58",
+"disk_load" :	"0.38",
 "management_ip" :	"",
-"audit_date" :	"2013-05-30 13:58:09"
+"audit_date" :	"2013-06-03 10:05:18"
 
 },
 {
@@ -336,12 +336,12 @@
 "model" :	"HP ProLiant Blade",
 "cpu_model" :	"Intel Xeon E5",
 "cpu_cores" :	"6",
-"cpu_load" :	"1.31",
+"cpu_load" :	"0.04",
 "ram_total" :	"32768",
 "disk_total" :	"1500",
-"disk_load" :	"0.55",
+"disk_load" :	"0.54",
 "management_ip" :	"",
-"audit_date" :	"2013-05-30 13:58:09"
+"audit_date" :	"2013-06-03 10:05:18"
 
 },
 {
@@ -351,12 +351,12 @@
 "model" :	"HP ProLiant Blade",
 "cpu_model" :	"Intel Xeon E7",
 "cpu_cores" :	"8",
-"cpu_load" :	"1.40",
+"cpu_load" :	"2.64",
 "ram_total" :	"32768",
 "disk_total" :	"1000",
-"disk_load" :	"0.28",
+"disk_load" :	"0.96",
 "management_ip" :	"",
-"audit_date" :	"2013-05-30 13:58:09"
+"audit_date" :	"2013-06-03 10:05:21"
 
 },
 {
@@ -366,12 +366,12 @@
 "model" :	"HP ProLiant Blade",
 "cpu_model" :	"AMD Opteron 4000",
 "cpu_cores" :	"6",
-"cpu_load" :	"0.16",
+"cpu_load" :	"1.71",
 "ram_total" :	"32768",
 "disk_total" :	"1500",
-"disk_load" :	"0.40",
+"disk_load" :	"0.98",
 "management_ip" :	"",
-"audit_date" :	"2013-05-30 13:58:09"
+"audit_date" :	"2013-06-03 10:05:21"
 
 },
 {
@@ -381,12 +381,12 @@
 "model" :	"HP Integrity BL",
 "cpu_model" :	"Intel Xeon E7",
 "cpu_cores" :	"8",
-"cpu_load" :	"0.89",
+"cpu_load" :	"1.12",
 "ram_total" :	"65536",
 "disk_total" :	"1000",
-"disk_load" :	"0.76",
+"disk_load" :	"0.57",
 "management_ip" :	"",
-"audit_date" :	"2013-05-30 13:58:09"
+"audit_date" :	"2013-06-03 10:05:21"
 
 },
 {
@@ -396,12 +396,12 @@
 "model" :	"Dell PowerEdge",
 "cpu_model" :	"Intel Xeon E7",
 "cpu_cores" :	"6",
-"cpu_load" :	"1.39",
+"cpu_load" :	"0.44",
 "ram_total" :	"65536",
 "disk_total" :	"1500",
-"disk_load" :	"0.77",
+"disk_load" :	"0.01",
 "management_ip" :	"",
-"audit_date" :	"2013-05-30 13:58:09"
+"audit_date" :	"2013-06-03 10:05:18"
 
 },
 {
@@ -411,12 +411,12 @@
 "model" :	"Dell PowerEdge",
 "cpu_model" :	"Intel Xeon E5",
 "cpu_cores" :	"12",
-"cpu_load" :	"2.27",
+"cpu_load" :	"0.82",
 "ram_total" :	"32768",
 "disk_total" :	"1500",
-"disk_load" :	"0.35",
+"disk_load" :	"0.51",
 "management_ip" :	"",
-"audit_date" :	"2013-05-30 13:58:09"
+"audit_date" :	"2013-06-03 10:05:21"
 
 },
 {
@@ -426,12 +426,12 @@
 "model" :	"HP ProLiant Blade",
 "cpu_model" :	"AMD Opteron 4000",
 "cpu_cores" :	"12",
-"cpu_load" :	"0.83",
+"cpu_load" :	"0.06",
 "ram_total" :	"32768",
 "disk_total" :	"1500",
-"disk_load" :	"0.10",
+"disk_load" :	"0.87",
 "management_ip" :	"",
-"audit_date" :	"2013-05-30 13:58:09"
+"audit_date" :	"2013-06-03 10:05:18"
 
 },
 {
@@ -441,12 +441,12 @@
 "model" :	"HP Integrity BL",
 "cpu_model" :	"AMD Opteron 6000",
 "cpu_cores" :	"8",
-"cpu_load" :	"0.08",
+"cpu_load" :	"0.14",
 "ram_total" :	"65536",
 "disk_total" :	"1500",
-"disk_load" :	"0.28",
+"disk_load" :	"0.39",
 "management_ip" :	"",
-"audit_date" :	"2013-05-30 13:58:09"
+"audit_date" :	"2013-06-03 10:05:21"
 
 },
 {
