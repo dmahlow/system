@@ -1,0 +1,107 @@
+// All server settings should be defined on this file!
+// These will be appended to the base Expresser Settings class, and some of the
+// Expresser settings might not be defined here (and in this case it will use the default values).
+//
+// For more details: https://expresser.codeplex.com/wikipage?title=Settings
+
+{
+    // GENERAL SETTINGS
+    "general": {
+        // The app title.
+        "appTitle": "System App",
+        // When debug is true, more messages will be logged especially to the console.
+        // Leaving it null will enable debug on development, and disable on production.
+        "debug": null
+    },
+
+    // EXPRESSER APP SETTINGS
+    "app": {
+        // Port on which the server will run. If left blank, default 8080 will be used.
+        "port": 3003
+    },
+
+    // SPECIAL PATHS
+    "path": {
+        // Path where downloads will be stored.
+        "downloadsDir": "./public/downloads/",
+        // Path where images are stored.
+        "imagesDir": "./public/images/"
+    },
+
+    // IMAGE HANDLING SETTINGS
+    "images": {
+        // Size of map thumbnails (width) when converting from SVG to PNG.
+        "mapThumbSize": 600
+    },
+
+    // MONGODB SETTINGS
+    "database": {
+        // The database connection string is DB "systemapp" running under "localhost" by default.
+        // Do not forget to include "mongodb://" before the hostname.
+        "connString": "mongodb://localhost/systemapp",
+        // For how many hours should the DB keep insert/update/delete logs? Default is 2 hours.
+        "logExpires": 2
+    },
+
+    // GENERAL WEB CONNECTIONS SETTINGS
+    "web": {
+        // Generate an error alert after a download has failed X manytimes.
+        "alertAfterFailedDownloads": 5,
+        // The amount of time to wait for new connection requests, in case the internet
+        // or network is down. Time in milliseconds.
+        "connRestartInterval": 120000,
+        // Timeout to wait for downloads to complete
+        "downloadTimeout": 30000,
+        // Credentials (user and password) when downloading external contents (Audit Data and Entity Objects, for example).
+        // Please note that this will be used for ALL requests. If you need to pass credentials for only a specific
+        // URL, use the `http://username:password@domain.com/path` format on that particular URL.
+        "downloaderUser": null,
+        "downloaderPassword": null,
+        // Headers to add to requests when downloading external contents, accepting key:value properties.
+        // For example the Pingdom API requires an `App-Key` to be passed, so you could add here:
+        // {"App-Key":"my-pingdom-api-key"}.
+        "downloaderHeaders": null,
+        // The minimum time between external data refresh, in seconds.
+        "minimumRefreshInterval": 3,
+        // If true, all JSON response will be minified before passed to the clients.
+        "minifyJsonResponse": true
+    },
+
+    // LOGGER SETTINGS
+    "logger": {
+        // By default, local logging is enabled and will save logs to the /logs folder. If you wish
+        // to use Logentries or Loggly, please read: https://expresser.codeplex.com/wikipage?title=Logger
+        "local": {
+            "enabled": true
+        }
+    },
+
+    // PASSPORT AND AUTHENTICATION SETTINGS
+    "passport": {
+        // Enable passport so the app is protected with user and password.
+        "enabled": true,
+        // By default the System App will use basic HTTP authentication.
+        "basic": {
+            "enabled": true
+        }
+    },
+
+    // SECURITY SETTINGS
+    "security": {
+        // If true, users will be able to see the app in read-only mode when not authenticated.
+        // In this case, to authenticate, they'll have to manually access the /login page.
+        "guestEnabled": true,
+        // Redirect user to 401 page after X failed logins.
+        "maxFailedLogins": 3,
+        // Key used for session encryption.
+        // IMPORTANT! If you change the sessionKey, current sessions will be invalidated!
+        "sessionKey": "Ss!0nPROtw",
+        // For how many seconds should the logged users cache keep data?
+        "userCacheExpires": 30,
+        // Key used for user password encryption.
+        // IMPORTANT! If you change the userPasswordKey after creating users, their passwords
+        // will be invalidated and they won't be able to login UNLESS you manually update the
+        // database with the new password hashes!
+        "userPasswordKey": "P4sssYs13!"
+    }
+}

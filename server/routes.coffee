@@ -4,13 +4,15 @@
 
 module.exports = (app) ->
 
-    # Define required modules.
-    database = require "./database.coffee"
+    # Require Expresser.
     expresser = require "expresser"
+    settings = expresser.settings
+
+    # Required modules.
+    database = require "./database.coffee"
     fs = require "fs"
     manager = require "./manager.coffee"
     security = require "./security.coffee"
-    settings = require "./settings.coffee"
     sync = require "./sync.coffee"
 
     # Define the package.json.
@@ -547,74 +549,10 @@ module.exports = (app) ->
     # Minify the passed JSON value. Please note that the result will be minified
     # ONLY if the `Web.minifyJsonResponse` setting is set to true.
     minifyJson = (source) ->
-        return source if settings.web.minifyJsonResponse
-
-        source = JSON.stringify source if typeof source is "object"
-        index = 0
-        length = source.length
-        result = ""
-        symbol = undefined
-        position = undefined
-        
-        while index < length
-
-            symbol = source.charAt(index)
-            switch symbol
-
-                # Ignore whitespace tokens. According to ES 5.1 section 15.12.1.1,
-                # whitespace tokens include tabs, carriage returns, line feeds, and
-                # space characters.
-                when "\t", "\r"
-                , "\n"
-                , " "
-                    index += 1
-
-                # Ignore line and block comments.
-                when "/"
-                    symbol = source.charAt(index += 1)
-                    switch symbol
-
-                        # Line comments.
-                        when "/"
-                            position = source.indexOf("\n", index)
-
-                            # Check for CR-style line endings.
-                            position = source.indexOf("\r", index)  if position < 0
-                            index = (if position > -1 then position else length)
-
-                        # Block comments.
-                        when "*"
-                            position = source.indexOf("*/", index)
-                            if position > -1
-
-                                # Advance the scanner's position past the end of the comment.
-                                index = position += 2
-                                break
-                            throw SyntaxError("Unterminated block comment.")
-                        else
-                            throw SyntaxError("Invalid comment.")
-
-                # Parse strings separately to ensure that any whitespace characters and
-                # JavaScript-style comments within them are preserved.
-                when "\""
-                    position = index
-                    while index < length
-                        symbol = source.charAt(index += 1)
-                        if symbol is "\\"
-
-                            # Skip past escaped characters.
-                            index += 1
-                        else break  if symbol is "\""
-                    if source.charAt(index) is "\""
-                        result += source.slice(position, index += 1)
-                        break
-                    throw SyntaxError("Unterminated string.")
-
-                # Preserve all other characters.
-                else
-                    result += symbol
-                    index += 1
-        result
+        if settings.web.minifyJsonResponse
+            return expresser.utils.minifyJson source
+        else
+            return source
 
     # Return the ID from the request. Give preference to the ID parameter
     # on the body first, and then to the parameter passed on the URL path.

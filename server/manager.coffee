@@ -5,15 +5,15 @@
 
 class Manager
 
-    # Define the referenced objects.
-    database = require "./database.coffee"
+    # Require Expresser.
     expresser = require "expresser"
-    settings = require "./settings.coffee"
+    settings = expresser.settings
+
+    # Required modules.
+    database = require "./database.coffee"
+    fs = require "fs"
     sockets = require "./sockets.coffee"
     sync = require "./sync.coffee"
-
-    # Require file system.
-    fs = require "fs"
 
 
     # TIMERS AND PROPERTIES
@@ -119,7 +119,7 @@ class Manager
         @timersEntityRefresh.push timer
 
         if settings.general.debug
-            expresser.logger.info "Manager.setEntityTimer", entityDef.friendlyId, interval + "ms"
+            expresser.logger.info "Manager.setEntityTimer", entityDef.friendlyId, interval + "s"
 
     # Refresh the specified [Entity](entityDefinition.html) data. This will run ONLY
     # if there are connected clients, to avoid bandwidth and processing waste.

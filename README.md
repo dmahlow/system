@@ -91,24 +91,24 @@ Detailed instructions are available on on the top of the `server/settings.coffee
 
 The following settings will need your attention:
 
-##### Settings.General
+#### general
 - `appTitle` - The app title, default is "System App". You can use something like "MyCompany System".
 - `debug` - Enable debbuging logs. This should be set to false before you deploy the app to production!
 
-##### Settings.Database
+#### database
 - `connString` - The MongoDB connection string. Default is host "localhost", database "systemapp".
 
-##### Settings.Web
+#### web
 - `port` - The port used by the Node.js server, default is 3003.
 - `paas` - Set to true if you're deploying to common PaaS services. More info below.
 
-##### Settings.Security
+#### security
 - `port` - The port used by the Node.js server, default is 3003.
 - `userPasswordKey` - The secret key/token used to encrypt passwords on the database.
 
-##### Deploying to PaaS
+#### Deploying to PaaS
 The System App can be easily deployed to AppFog, OpenShift and Heroku. The only requirement is
-that you set `Settings.Web.paas` to true (it is true by default). In this case we'll override a few
+that you set `web.paas` to true (it is true by default). In this case we'll override a few
 settings to cope with the PaaS environment. For example:
 - the web `port` will be automatically set so it doesn't matter what value you have entered.
 - if your app on AppFog has a MongoDB bound to it, the `connString` will be automatically set.

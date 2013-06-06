@@ -4,9 +4,9 @@
 
 class Sockets
 
+    # Require Expresser.
     expresser = require "expresser"
-    settings = require "./settings.coffee"
-
+    settings = expresser.settings
 
     # Init socket connections.
     init: =>

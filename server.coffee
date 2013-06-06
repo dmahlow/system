@@ -1,17 +1,20 @@
 # SERVER APP
 # --------------------------------------------------------------------------
 
-# Required modules.
-path = require "path"
+# Expresser.
 expresser = require "expresser"
+settings = expresser.settings
+
+# Required modules.
+lodash = require "lodash"
 manager = require "./server/manager.coffee"
+path = require "path"
 security = require "./server/security.coffee"
-settings = require "./server/settings.coffee"
 sockets = require "./server/sockets.coffee"
 
 # Load settings.
 settingsPath = path.dirname(require.main.filename) + "/server/settings.json"
-expresser.settings.loadFromJson settingsPath
+expresser.utils.loadSettingsFromJson settingsPath
 
 # Init modules.
 expresser.init()

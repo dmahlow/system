@@ -375,6 +375,13 @@ SystemApp.Settings =
         subPrefix: "menu-filter-"
 
 
+    # FOOTER
+    # ----------------------------------------------------------------------
+    footer:
+        # How long it takes to fade in / out footer information.
+        opacityInterval: 400
+
+
     # ALERT
     # ----------------------------------------------------------------------
     alert:
@@ -387,15 +394,15 @@ SystemApp.Settings =
         similarTimeout: 9000
 
 
-    # FOOTER
-    # ----------------------------------------------------------------------
-    footer:
-        # How long it takes to fade in / out footer information.
-        opacityInterval: 400
-
-
     # SOCKET SETTINGS
     # ----------------------------------------------------------------------
     sockets:
         # Default "clients:refresh" command is 60 seconds.
         clientRefreshSeconds: 60
+
+
+    # MANAGER SETTINGS
+    # ----------------------------------------------------------------------
+    manager:
+        # The interval to check entities status.
+        checkEntitiesInterval: 60000

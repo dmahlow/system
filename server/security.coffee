@@ -5,12 +5,14 @@
 
 class Security
 
+    # Require Expresser.
+    expresser = require "expresser"
+    settings = expresser.settings
+
     # Required modules.
     crypto = require "crypto"
     database = require "./database.coffee"
-    expresser = require "expresser"
     moment = require "moment"
-    settings = require "./settings.coffee"
 
     # Cache with logged users to avoid hitting the database all the time.
     # The default expirty time is 1 minute.

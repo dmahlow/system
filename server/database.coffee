@@ -4,9 +4,9 @@
 
 class Database
 
-    # Define required modules.
+    # Require Expresser.
     expresser = require "expresser"
-    settings = require "./settings.coffee"
+    settings = expresser.settings
 
 
     # ENTITY DEFINITIONS AND OBJECTS

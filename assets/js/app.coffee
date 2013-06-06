@@ -98,6 +98,10 @@
 #= require api/api.view.coffee
 #= require api/api.server.coffee
 
+# MANAGER
+# -----------------------------------------------------------------------------
+#= require manager.coffee
+
 
 # APP VARIABLES
 # -----------------------------------------------------------------------------

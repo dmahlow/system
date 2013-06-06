@@ -4,12 +4,14 @@
 
 class Sync
 
-    # Define required modules.
+    # Require Expresser.
     expresser = require "expresser"
+    settings = expresser.settings
+
+    # Required modules.
     fs = require "fs"
     http = require "http"
     moment = require "moment"
-    settings = require "./settings.coffee"
     url = require "url"
 
     # Holds a copy of all files being downloaded.

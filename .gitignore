@@ -5,4 +5,3 @@ gh-pages/
 logs/*.log
 node_modules/
 npm-shrinkwrap.json
-server/settings.json
