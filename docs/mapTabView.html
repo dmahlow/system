@@ -114,6 +114,13 @@
               
                 
                 <li>
+                  <a class="source" href="manager.html">
+                    manager.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
                   <a class="source" href="messages.html">
                     messages.coffee
                   </a>
@@ -450,13 +457,6 @@
               
                 
                 <li>
-                  <a class="source" href="selfTestView.html">
-                    selfTestView.coffee
-                  </a>
-                </li>
-              
-                
-                <li>
                   <a class="source" href="settingsView.html">
                     settingsView.coffee
                   </a>
@@ -527,7 +527,7 @@
         <span class="property">@setDom</span>()
         <span class="property">@setEvents</span>()
         <span class="property">@bindInitialState</span>()
-        <span class="property">@bindDisplayProps</span> SystemApp.Settings.Map.displayProps</pre></div>
+        <span class="property">@bindDisplayProps</span> SystemApp.Settings.map.displayProps</pre></div>
         
       
         
@@ -668,7 +668,7 @@ saved on the browser&#39;s local storage.</p>
 
         
           <div class='highlight'><pre>    setPaperSizeX: =&gt;
-        <span class="property">@setSize</span> <span class="property">@$txtPaperSizeX</span>, <span class="property">@model</span>.paperSizeX, SystemApp.Settings.Map.minPaperSize</pre></div>
+        <span class="property">@setSize</span> <span class="property">@$txtPaperSizeX</span>, <span class="property">@model</span>.paperSizeX, SystemApp.Settings.map.minPaperSize</pre></div>
         
       
         
@@ -676,7 +676,7 @@ saved on the browser&#39;s local storage.</p>
 
         
           <div class='highlight'><pre>    setPaperSizeY: =&gt;
-        <span class="property">@setSize</span> <span class="property">@$txtPaperSizeY</span>, <span class="property">@model</span>.paperSizeY, SystemApp.Settings.Map.minPaperSize</pre></div>
+        <span class="property">@setSize</span> <span class="property">@$txtPaperSizeY</span>, <span class="property">@model</span>.paperSizeY, SystemApp.Settings.map.minPaperSize</pre></div>
         
       
         
@@ -684,7 +684,7 @@ saved on the browser&#39;s local storage.</p>
 
         
           <div class='highlight'><pre>    setGridSizeX: =&gt;
-        <span class="property">@setSize</span> <span class="property">@$txtGridSizeX</span>, <span class="property">@model</span>.gridSizeX, SystemApp.Settings.Map.minGridSize</pre></div>
+        <span class="property">@setSize</span> <span class="property">@$txtGridSizeX</span>, <span class="property">@model</span>.gridSizeX, SystemApp.Settings.map.minGridSize</pre></div>
         
       
         
@@ -692,7 +692,7 @@ saved on the browser&#39;s local storage.</p>
 
         
           <div class='highlight'><pre>    setGridSizeY: =&gt;
-        <span class="property">@setSize</span> <span class="property">@$txtGridSizeY</span>, <span class="property">@model</span>.gridSizeY, SystemApp.Settings.Map.minGridSize</pre></div>
+        <span class="property">@setSize</span> <span class="property">@$txtGridSizeY</span>, <span class="property">@model</span>.gridSizeY, SystemApp.Settings.map.minGridSize</pre></div>
         
       
         
@@ -827,7 +827,7 @@ presses the &quot;Esc&quot; key.</p>
             clearTimeout <span class="property">@timerHideZIndex</span>
             <span class="property">@timerHideZIndex</span> = <span class="literal">null</span>
 
-        <span class="property">@timerHideZIndex</span> = setTimeout <span class="property">@zIndexHide</span>, SystemApp.Settings.Map.zIndexHideTimeout
+        <span class="property">@timerHideZIndex</span> = setTimeout <span class="property">@zIndexHide</span>, SystemApp.Settings.map.zIndexHideTimeout
 
         $(document).keydown <span class="property">@zIndexKeyDown</span></pre></div>
         

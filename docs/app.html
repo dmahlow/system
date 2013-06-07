@@ -114,6 +114,13 @@
               
                 
                 <li>
+                  <a class="source" href="manager.html">
+                    manager.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
                   <a class="source" href="messages.html">
                     messages.coffee
                   </a>
@@ -450,13 +457,6 @@
               
                 
                 <li>
-                  <a class="source" href="selfTestView.html">
-                    selfTestView.coffee
-                  </a>
-                </li>
-              
-                
-                <li>
                   <a class="source" href="settingsView.html">
                     settingsView.coffee
                   </a>
@@ -600,6 +600,12 @@
 = require api/api.variable.coffee
 = require api/api.view.coffee
 = require api/api.server.coffee</p>
+<h2>MANAGER</h2>
+
+        
+      
+        
+        <p>= require manager.coffee</p>
 <h2>APP VARIABLES</h2>
 
         
@@ -858,7 +864,7 @@ If the hashtag is empty, show the <a href="startView.html">Start View</a> automa
         
           <div class='highlight'><pre>SystemApp.<span class="function"><span class="title">start</span></span> = -&gt;
     now = <span class="keyword">new</span> Date()
-    console.log <span class="string">"<span class="subst">#{SystemApp.Settings.General.appTitle}</span> START: <span class="subst">#{now}</span>"</span></pre></div>
+    console.log <span class="string">"<span class="subst">#{SystemApp.Settings.general.appTitle}</span> START: <span class="subst">#{now}</span>"</span></pre></div>
         
       
         
@@ -872,9 +878,21 @@ If the hashtag is empty, show the <a href="startView.html">Start View</a> automa
         <p>Start listening to model updates.</p>
 
         
-          <div class='highlight'><pre>    SystemApp.alertView.listenToModels <span class="literal">true</span>
-    
-    Backbone.history.start()</pre></div>
+          <div class='highlight'><pre>    SystemApp.alertView.listenToModels <span class="literal">true</span></pre></div>
+        
+      
+        
+        <p>Start history.</p>
+
+        
+          <div class='highlight'><pre>    Backbone.history.start()</pre></div>
+        
+      
+        
+        <p>Start the <a href="manager.html">Manager</a>.</p>
+
+        
+          <div class='highlight'><pre>    SystemApp.Manager.start()</pre></div>
         
       
         
@@ -953,9 +971,9 @@ A fade in/out effect is applied.</p>
     enabled = <span class="literal">false</span> <span class="keyword">if</span> <span class="keyword">not</span> enabled?
 
     <span class="keyword">if</span> enabled
-        SystemApp.$loading.fadeIn SystemApp.Settings.General.fadeDelay
+        SystemApp.$loading.fadeIn SystemApp.Settings.general.fadeDelay
     <span class="keyword">else</span>
-        SystemApp.$loading.fadeOut SystemApp.Settings.General.fadeDelay</pre></div>
+        SystemApp.$loading.fadeOut SystemApp.Settings.general.fadeDelay</pre></div>
         
       
         
@@ -968,7 +986,7 @@ A fade in/out effect is applied.</p>
 
         
           <div class='highlight'><pre>SystemApp.<span class="function"><span class="title">toggleDebug</span></span> = (enabled) -&gt;
-    SystemApp.Settings.General.debug = enabled
+    SystemApp.Settings.general.debug = enabled
 
     <span class="keyword">if</span> enabled
         SystemApp.$debug.show()
@@ -997,7 +1015,7 @@ A fade in/out effect is applied.</p>
 
         
           <div class='highlight'><pre>SystemApp.<span class="function"><span class="title">consoleLog</span></span> = (method, message, obj) -&gt;
-    <span class="keyword">if</span> SystemApp.Settings.General.debug
+    <span class="keyword">if</span> SystemApp.Settings.general.debug
         <span class="keyword">if</span> obj <span class="keyword">isnt</span> <span class="literal">undefined</span>
             console.log method, message, obj
         <span class="keyword">else</span>

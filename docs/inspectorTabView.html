@@ -114,6 +114,13 @@
               
                 
                 <li>
+                  <a class="source" href="manager.html">
+                    manager.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
                   <a class="source" href="messages.html">
                     messages.coffee
                   </a>
@@ -450,13 +457,6 @@
               
                 
                 <li>
-                  <a class="source" href="selfTestView.html">
-                    selfTestView.coffee
-                  </a>
-                </li>
-              
-                
-                <li>
                   <a class="source" href="settingsView.html">
                     settingsView.coffee
                   </a>
@@ -700,7 +700,7 @@ and display its properties / related elements / links / etc.</p>
                 _.each entityObj.attributes, <span class="property">@bindAttribute</span>
             <span class="keyword">else</span>
                 span = $(document.createElement <span class="string">"span"</span>)
-                span.html SystemApp.Settings.Shape.customText
+                span.html SystemApp.Settings.shape.customText
                 <span class="property">@$attributesDiv</span>.append span</pre></div>
         
       
@@ -710,7 +710,7 @@ to see if that particular attribute should be ignored.</p>
 
         
           <div class='highlight'><pre>    bindAttribute: (propValue, propName) =&gt;
-        <span class="keyword">if</span> SystemApp.Settings.Map.ignoreDisplayProps.indexOf(propName) &gt; <span class="number">0</span>
+        <span class="keyword">if</span> SystemApp.Settings.map.ignoreDisplayProps.indexOf(propName) &gt; <span class="number">0</span>
             <span class="keyword">return</span>
 
         <span class="keyword">if</span> <span class="keyword">not</span> propValue? <span class="keyword">or</span> propValue <span class="keyword">is</span> <span class="string">""</span>
@@ -916,14 +916,14 @@ to search for it at the <a href="entityListView.html">Entity List View</a>.</p>
         checked = $ document.createElement <span class="string">"input"</span>
         title = $ document.createElement <span class="string">"label"</span>
 
-        checked.attr <span class="string">"id"</span>, SystemApp.Settings.AuditEvent.shapeCheckboxName + auditEvent.id
-        checked.attr <span class="string">"name"</span>, SystemApp.Settings.AuditEvent.shapeCheckboxName
+        checked.attr <span class="string">"id"</span>, SystemApp.Settings.auditEvent.shapeCheckboxName + auditEvent.id
+        checked.attr <span class="string">"name"</span>, SystemApp.Settings.auditEvent.shapeCheckboxName
         checked.attr <span class="string">"title"</span>, auditEvent.description() + <span class="string">" "</span> + SystemApp.Messages.tooltipShapeAuditEventCheckbox
         checked.attr <span class="string">"type"</span>, <span class="string">"checkbox"</span>
         checked.change auditEvent.id, <span class="property">@eventCheckChange</span>
 
         title.html auditEvent.friendlyId()
-        title.attr <span class="string">"for"</span>, SystemApp.Settings.AuditEvent.shapeCheckboxName + auditEvent.id
+        title.attr <span class="string">"for"</span>, SystemApp.Settings.auditEvent.shapeCheckboxName + auditEvent.id
         title.attr <span class="string">"title"</span>, SystemApp.Messages.tooltipShapeAuditEventCheckbox
 
         div.append checked
@@ -937,7 +937,7 @@ to search for it at the <a href="entityListView.html">Entity List View</a>.</p>
 
         
           <div class='highlight'><pre>    removeAuditEvent: (auditEvent) =&gt;
-        $(<span class="string">"#"</span> + SystemApp.Settings.AuditEvent.shapeCheckboxName + auditEvent.id).parent().remove()</pre></div>
+        $(<span class="string">"#"</span> + SystemApp.Settings.auditEvent.shapeCheckboxName + auditEvent.id).parent().remove()</pre></div>
         
       
         
@@ -946,7 +946,7 @@ to search for it at the <a href="entityListView.html">Entity List View</a>.</p>
         
           <div class='highlight'><pre>    updateAuditEventTitle: (auditEvent) =&gt;
         title = auditEvent.id
-        $(<span class="string">"#"</span> + SystemApp.Settings.AuditEvent.shapeCheckboxName + auditEvent.id).parent().children(<span class="string">"label"</span>).html title</pre></div>
+        $(<span class="string">"#"</span> + SystemApp.Settings.auditEvent.shapeCheckboxName + auditEvent.id).parent().children(<span class="string">"label"</span>).html title</pre></div>
         
       
         
@@ -972,7 +972,7 @@ mark the correspondent checkboxes.</p>
         
           <div class='highlight'><pre>        <span class="keyword">if</span> ids? <span class="keyword">and</span> ids.length &gt; <span class="number">0</span>
             <span class="keyword">for</span> alertId <span class="keyword">in</span> ids
-                $(<span class="string">"#"</span> + SystemApp.Settings.AuditEvent.shapeCheckboxName + alertId).prop(<span class="string">"checked"</span>, <span class="literal">true</span>)</pre></div>
+                $(<span class="string">"#"</span> + SystemApp.Settings.auditEvent.shapeCheckboxName + alertId).prop(<span class="string">"checked"</span>, <span class="literal">true</span>)</pre></div>
         
       
         
@@ -998,7 +998,7 @@ Active alerts will have a small icon next to them, set via a CSS class.</p>
         
           <div class='highlight'><pre>        <span class="keyword">if</span> <span class="property">@currentBoundViews</span>?.labelsView?.activeAuditEvents?
             _.each <span class="property">@currentBoundViews</span>.labelsView.activeAuditEvents, (auditEvent) =&gt;
-                $(<span class="string">"#"</span> + SystemApp.Settings.AuditEvent.shapeCheckboxName + auditEvent.id).parent().addClass <span class="string">"active"</span></pre></div>
+                $(<span class="string">"#"</span> + SystemApp.Settings.auditEvent.shapeCheckboxName + auditEvent.id).parent().addClass <span class="string">"active"</span></pre></div>
         
       
         

@@ -114,6 +114,13 @@
               
                 
                 <li>
+                  <a class="source" href="manager.html">
+                    manager.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
                   <a class="source" href="messages.html">
                     messages.coffee
                   </a>
@@ -450,13 +457,6 @@
               
                 
                 <li>
-                  <a class="source" href="selfTestView.html">
-                    selfTestView.coffee
-                  </a>
-                </li>
-              
-                
-                <li>
                   <a class="source" href="settingsView.html">
                     settingsView.coffee
                   </a>
@@ -577,9 +577,9 @@ Example:
         
           <div class='highlight'><pre>    setTitle: (value) =&gt;
         <span class="keyword">if</span> value?
-            value = <span class="string">"<span class="subst">#{value}</span> - <span class="subst">#{SystemApp.Settings.General.appTitle}</span>"</span>
+            value = <span class="string">"<span class="subst">#{value}</span> - <span class="subst">#{SystemApp.Settings.general.appTitle}</span>"</span>
         <span class="keyword">else</span>
-            value = SystemApp.Settings.General.appTitle
+            value = SystemApp.Settings.general.appTitle
         document.title = value</pre></div>
         
       
@@ -588,15 +588,15 @@ Example:
 
         
           <div class='highlight'><pre>    warnField: (field) =&gt;
-        extraMs = SystemApp.Settings.General.elementBlinkInterval / <span class="number">2</span>
+        extraMs = SystemApp.Settings.general.elementBlinkInterval / <span class="number">2</span>
         redClass = <span class="string">"error"</span>
 
         <span class="property">@addClass</span> field, redClass
-        _.delay <span class="property">@removeClass</span>, SystemApp.Settings.General.elementBlinkInterval, field, redClass
-        _.delay <span class="property">@addClass</span>, SystemApp.Settings.General.elementBlinkInterval + extraMs, field, redClass
-        _.delay <span class="property">@removeClass</span>, SystemApp.Settings.General.elementBlinkInterval * <span class="number">2</span>, field, redClass
-        _.delay <span class="property">@addClass</span>, SystemApp.Settings.General.elementBlinkInterval * <span class="number">2</span> + extraMs, field, redClass
-        _.delay <span class="property">@removeClass</span>, SystemApp.Settings.General.elementBlinkInterval * <span class="number">3</span>, field, redClass</pre></div>
+        _.delay <span class="property">@removeClass</span>, SystemApp.Settings.general.elementBlinkInterval, field, redClass
+        _.delay <span class="property">@addClass</span>, SystemApp.Settings.general.elementBlinkInterval + extraMs, field, redClass
+        _.delay <span class="property">@removeClass</span>, SystemApp.Settings.general.elementBlinkInterval * <span class="number">2</span>, field, redClass
+        _.delay <span class="property">@addClass</span>, SystemApp.Settings.general.elementBlinkInterval * <span class="number">2</span> + extraMs, field, redClass
+        _.delay <span class="property">@removeClass</span>, SystemApp.Settings.general.elementBlinkInterval * <span class="number">3</span>, field, redClass</pre></div>
         
       
         
@@ -644,7 +644,7 @@ but only if a &quot;saved&quot; is not present yet.</p>
         <p>Fade out and then remove from the DOM.</p>
 
         
-          <div class='highlight'><pre>            alert.fadeOut SystemApp.Settings.General.fadeRemoveDelay * <span class="number">2</span>, () -&gt; alert.remove()</pre></div>
+          <div class='highlight'><pre>            alert.fadeOut SystemApp.Settings.general.fadeRemoveDelay * <span class="number">2</span>, () -&gt; alert.remove()</pre></div>
         
       
         
@@ -654,7 +654,7 @@ and then fade the element out.</p>
         
           <div class='highlight'><pre>    modelElementRemove: (el) =&gt;
         el.removeClass(<span class="string">"active"</span>).addClass <span class="string">"removed"</span>
-        el.fadeOut SystemApp.Settings.General.fadeRemoveDelay, () -&gt; el.remove()</pre></div>
+        el.fadeOut SystemApp.Settings.general.fadeRemoveDelay, () -&gt; el.remove()</pre></div>
         
       
         

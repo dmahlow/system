@@ -114,6 +114,13 @@
               
                 
                 <li>
+                  <a class="source" href="manager.html">
+                    manager.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
                   <a class="source" href="messages.html">
                     messages.coffee
                   </a>
@@ -450,13 +457,6 @@
               
                 
                 <li>
-                  <a class="source" href="selfTestView.html">
-                    selfTestView.coffee
-                  </a>
-                </li>
-              
-                
-                <li>
                   <a class="source" href="settingsView.html">
                     settingsView.coffee
                   </a>
@@ -573,7 +573,7 @@ to attach this link to.</p>
         target = <span class="property">@parentView</span>.shapeViews[<span class="property">@model</span>.targetId()]
 
         options =
-            arrowSize: SystemApp.Settings.Link.arrowSize
+            arrowSize: SystemApp.Settings.link.arrowSize
             arrowSource: <span class="property">@model</span>.arrowSource()
             arrowTarget: <span class="property">@model</span>.arrowTarget()
             opacity: <span class="property">@model</span>.opacity()
@@ -653,7 +653,7 @@ mouse button and on the current modifier keys for the user.</p>
 
         
           <div class='highlight'><pre>    show: =&gt;
-        <span class="property">@svg</span>.show SystemApp.Settings.Map.blinkInterval
+        <span class="property">@svg</span>.show SystemApp.Settings.map.blinkInterval
         <span class="property">@labelsView</span>.show()
         <span class="property">@visible</span> = <span class="literal">true</span></pre></div>
         
@@ -663,7 +663,7 @@ mouse button and on the current modifier keys for the user.</p>
 
         
           <div class='highlight'><pre>    hide: =&gt;
-        <span class="property">@svg</span>.hide SystemApp.Settings.Map.blinkInterval
+        <span class="property">@svg</span>.hide SystemApp.Settings.map.blinkInterval
         <span class="property">@labelsView</span>.hide()
         <span class="property">@visible</span> = <span class="literal">false</span></pre></div>
         
@@ -673,7 +673,7 @@ mouse button and on the current modifier keys for the user.</p>
 
         
           <div class='highlight'><pre>    semiHide: =&gt;
-        <span class="property">@svg</span>.semiHide SystemApp.Settings.Map.blinkInterval
+        <span class="property">@svg</span>.semiHide SystemApp.Settings.map.blinkInterval
         <span class="property">@labelsView</span>.hide()
         <span class="property">@visible</span> = <span class="literal">false</span></pre></div>
         
@@ -706,7 +706,7 @@ mouse button and on the current modifier keys for the user.</p>
         
           <div class='highlight'><pre>    setStroke: =&gt;
         <span class="property">@svg</span>.svgLine.attr {<span class="string">"stroke"</span>: <span class="property">@model</span>.stroke(), <span class="string">"stroke-width"</span>: <span class="property">@model</span>.strokeWidth()}
-        _.delay <span class="property">@strokeUpdatedBackToSelected</span>, SystemApp.Settings.Map.borderUpdatedDelay</pre></div>
+        _.delay <span class="property">@strokeUpdatedBackToSelected</span>, SystemApp.Settings.map.borderUpdatedDelay</pre></div>
         
       
         
@@ -761,9 +761,9 @@ If times is 1 and the <code>callback</code> is specified, call it when it has fi
         extraMs = <span class="number">15</span>
 
         <span class="property">@hide</span>()
-        _.delay(<span class="property">@show</span>, SystemApp.Settings.Map.blinkInterval + extraMs)
-        _.delay(<span class="property">@blink</span>, SystemApp.Settings.Map.blinkInterval * <span class="number">2</span> + extraMs * <span class="number">2</span>, times - <span class="number">1</span>, callback) <span class="keyword">if</span> times &gt; <span class="number">1</span>
-        _.delay(callback, SystemApp.Settings.Map.blinkInterval * <span class="number">2</span> + extraMs * <span class="number">4</span>) <span class="keyword">if</span> times <span class="keyword">is</span> <span class="number">1</span> <span class="keyword">and</span> callback?</pre></div>
+        _.delay(<span class="property">@show</span>, SystemApp.Settings.map.blinkInterval + extraMs)
+        _.delay(<span class="property">@blink</span>, SystemApp.Settings.map.blinkInterval * <span class="number">2</span> + extraMs * <span class="number">2</span>, times - <span class="number">1</span>, callback) <span class="keyword">if</span> times &gt; <span class="number">1</span>
+        _.delay(callback, SystemApp.Settings.map.blinkInterval * <span class="number">2</span> + extraMs * <span class="number">4</span>) <span class="keyword">if</span> times <span class="keyword">is</span> <span class="number">1</span> <span class="keyword">and</span> callback?</pre></div>
         
       
         
@@ -771,8 +771,8 @@ If times is 1 and the <code>callback</code> is specified, call it when it has fi
 
         
           <div class='highlight'><pre>    highlight: (color, strength) =&gt;
-        color = SystemApp.Settings.Map.shadowColor <span class="keyword">if</span> <span class="keyword">not</span> color?
-        strength = SystemApp.Settings.Map.shadowStrength <span class="keyword">if</span> <span class="keyword">not</span> strength?
+        color = SystemApp.Settings.map.shadowColor <span class="keyword">if</span> <span class="keyword">not</span> color?
+        strength = SystemApp.Settings.map.shadowStrength <span class="keyword">if</span> <span class="keyword">not</span> strength?
 
         <span class="property">@svg</span>.svgLine.attr {<span class="string">"stroke"</span>: color, <span class="string">"stroke-width"</span>: strength}</pre></div>
         

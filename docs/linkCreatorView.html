@@ -114,6 +114,13 @@
               
                 
                 <li>
+                  <a class="source" href="manager.html">
+                    manager.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
                   <a class="source" href="messages.html">
                     messages.coffee
                   </a>
@@ -450,13 +457,6 @@
               
                 
                 <li>
-                  <a class="source" href="selfTestView.html">
-                    selfTestView.coffee
-                  </a>
-                </li>
-              
-                
-                <li>
                   <a class="source" href="settingsView.html">
                     settingsView.coffee
                   </a>
@@ -537,8 +537,8 @@
           <div class='highlight'><pre>    render: (parentView) =&gt;
         x = parentView.x()
         y = parentView.y()
-        stroke = SystemApp.Settings.Link.creatorStroke
-        width = SystemApp.Settings.Link.creatorWidth</pre></div>
+        stroke = SystemApp.Settings.link.creatorStroke
+        width = SystemApp.Settings.link.creatorWidth</pre></div>
         
       
         
@@ -551,7 +551,7 @@ to set the source <a href="shapeView.html">shape view</a> and the parent
             <span class="property">@source</span> = parentView
             <span class="property">@parentView</span> = parentView.parentView
 
-        <span class="property">@svgConnector</span> = <span class="property">@parentView</span>.paper.circle <span class="number">0</span>, <span class="number">0</span>, SystemApp.Settings.Map.icoActionsSize / <span class="number">2</span> <span class="keyword">if</span> <span class="property">@svgConnector</span> <span class="keyword">is</span> <span class="literal">null</span>
+        <span class="property">@svgConnector</span> = <span class="property">@parentView</span>.paper.circle <span class="number">0</span>, <span class="number">0</span>, SystemApp.Settings.map.icoActionsSize / <span class="number">2</span> <span class="keyword">if</span> <span class="property">@svgConnector</span> <span class="keyword">is</span> <span class="literal">null</span>
         <span class="property">@svgConnector</span>.attr {<span class="string">"stroke"</span>: stroke, <span class="string">"stroke-width"</span>: width}
         <span class="property">@svgConnector</span>.toFront()
 
@@ -562,10 +562,10 @@ to set the source <a href="shapeView.html">shape view</a> and the parent
         <p>Set the link options.</p>
 
         
-          <div class='highlight'><pre>        stroke = SystemApp.Settings.Link.creatorStroke
-        width = SystemApp.Settings.Link.creatorWidth
+          <div class='highlight'><pre>        stroke = SystemApp.Settings.link.creatorStroke
+        width = SystemApp.Settings.link.creatorWidth
         text = SystemApp.Messages.newLink
-        smooth = SystemApp.Settings.Link.smooth
+        smooth = SystemApp.Settings.link.smooth
         options = {stroke: stroke, width: width, labelStroke: stroke, text: text, smooth: smooth}</pre></div>
         
       
@@ -583,8 +583,8 @@ shape plus half the width of the connector itself.</p>
 
         
           <div class='highlight'><pre>    setPosition: (posX, posY) =&gt;
-        posX = posX + <span class="property">@source</span>.width() - SystemApp.Settings.Map.icoActionsSize / <span class="number">2</span>
-        posY = posY + SystemApp.Settings.Map.icoActionsSize / <span class="number">2</span>
+        posX = posX + <span class="property">@source</span>.width() - SystemApp.Settings.map.icoActionsSize / <span class="number">2</span>
+        posY = posY + SystemApp.Settings.map.icoActionsSize / <span class="number">2</span>
 
         pos = { cx: posX, cy: posY }
 

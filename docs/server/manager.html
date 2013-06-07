@@ -23,36 +23,8 @@
               
                 
                 <li>
-                  <a class="source" href="configure.html">
-                    configure.coffee
-                  </a>
-                </li>
-              
-                
-                <li>
                   <a class="source" href="database.html">
                     database.coffee
-                  </a>
-                </li>
-              
-                
-                <li>
-                  <a class="source" href="imaging.html">
-                    imaging.coffee
-                  </a>
-                </li>
-              
-                
-                <li>
-                  <a class="source" href="logger.html">
-                    logger.coffee
-                  </a>
-                </li>
-              
-                
-                <li>
-                  <a class="source" href="mail.html">
-                    mail.coffee
                   </a>
                 </li>
               
@@ -74,13 +46,6 @@
                 <li>
                   <a class="source" href="security.html">
                     security.coffee
-                  </a>
-                </li>
-              
-                
-                <li>
-                  <a class="source" href="settings.html">
-                    settings.coffee
                   </a>
                 </li>
               
@@ -118,21 +83,21 @@ refresh, CMDB updates etc. The manager is started automatically with the app.</p
         
       
         
-        <p>Define the referenced objects.</p>
+        <p>Require Expresser.</p>
 
         
-          <div class='highlight'><pre>    database = require <span class="string">"./database.coffee"</span>
-    logger = require <span class="string">"./logger.coffee"</span>
-    settings = require <span class="string">"./settings.coffee"</span>
-    sockets = require <span class="string">"./sockets.coffee"</span>
-    sync = require <span class="string">"./sync.coffee"</span></pre></div>
+          <div class='highlight'><pre>    expresser = require <span class="string">"expresser"</span>
+    settings = expresser.settings</pre></div>
         
       
         
-        <p>Require file system.</p>
+        <p>Required modules.</p>
 
         
-          <div class='highlight'><pre>    fs = require <span class="string">"fs"</span></pre></div>
+          <div class='highlight'><pre>    database = require <span class="string">"./database.coffee"</span>
+    fs = require <span class="string">"fs"</span>
+    sockets = require <span class="string">"./sockets.coffee"</span>
+    sync = require <span class="string">"./sync.coffee"</span></pre></div>
         
       
         
@@ -170,6 +135,10 @@ after a few seconds - value is defined at the <a href="settings.html">Settings</
 
         
           <div class='highlight'><pre>    init: =&gt;
+        <span class="keyword">if</span> <span class="keyword">not</span> expresser.database.db?
+            setTimeout <span class="property">@init</span>, <span class="number">100</span>
+            <span class="keyword">return</span>
+
         <span class="property">@initDatabaseTimer</span>()
         <span class="property">@initEntityTimers</span>()
         <span class="property">@initAuditDataTimers</span>()</pre></div>
@@ -202,7 +171,7 @@ of 2 hours and maximum of 3 hours.</p>
         
           <div class='highlight'><pre>    initDatabaseTimer: =&gt;
         <span class="property">@stopDatabaseTimer</span>()
-        <span class="property">@timerDatabaseClean</span> = setInterval database.cleanLogs, settings.Database.logExpires * <span class="number">1800000</span></pre></div>
+        <span class="property">@timerDatabaseClean</span> = setInterval database.cleanLogs, settings.database.logExpires * <span class="number">1800000</span></pre></div>
         
       
         
@@ -226,8 +195,8 @@ timer for each entity definition and transmitting the refreshed data to users vi
 
         
           <div class='highlight'><pre>    initEntityTimers: =&gt;
-        <span class="keyword">if</span> settings.General.debug
-            logger.info <span class="string">"Manager.initEntityTimers"</span>
+        <span class="keyword">if</span> settings.general.debug
+            expresser.logger.info <span class="string">"Manager.initEntityTimers"</span>
 
         <span class="property">@stopEntityTimers</span>()
         database.getEntityDefinition <span class="literal">null</span>, <span class="property">@startEntityTimers</span></pre></div>
@@ -254,8 +223,8 @@ and error (if any) in result of the <code>getAuditData</code> database call.</p>
             sockets.sendServerError <span class="string">"Manager: could not load Entity Definition items."</span>, err
         <span class="keyword">else</span>
             <span class="property">@setEntityTimer</span> entityDef <span class="keyword">for</span> entityDef <span class="keyword">in</span> result
-            <span class="keyword">if</span> settings.General.debug
-                logger.info <span class="string">"Manager.startEntityTimers"</span>, <span class="string">"Started timers for <span class="subst">#{result.length}</span> entities."</span></pre></div>
+            <span class="keyword">if</span> settings.general.debug
+                expresser.logger.info <span class="string">"Manager.startEntityTimers"</span>, <span class="string">"Started timers for <span class="subst">#{result.length}</span> entities."</span></pre></div>
         
       
         
@@ -271,9 +240,9 @@ and error (if any) in result of the <code>getAuditData</code> database call.</p>
         <p>Make sure interval is at least 2 seconds.</p>
 
         
-          <div class='highlight'><pre>        <span class="keyword">if</span> <span class="keyword">not</span> interval? <span class="keyword">or</span> interval &lt; settings.Web.minimumRefreshInterval
-            interval = settings.Web.minimumRefreshInterval
-            logger.warn <span class="string">"Entity Definition data refresh interval is too low: ID <span class="subst">#{entityDef.friendlyId}</span>, interval <span class="subst">#{entityDef.refreshInterval}</span> seconds."</span></pre></div>
+          <div class='highlight'><pre>        <span class="keyword">if</span> <span class="keyword">not</span> interval? <span class="keyword">or</span> interval &lt; settings.web.minimumRefreshInterval
+            interval = settings.web.minimumRefreshInterval
+            expresser.logger.warn <span class="string">"Entity Definition data refresh interval is too low: ID <span class="subst">#{entityDef.friendlyId}</span>, interval <span class="subst">#{entityDef.refreshInterval}</span> seconds."</span></pre></div>
         
       
         
@@ -291,8 +260,8 @@ and error (if any) in result of the <code>getAuditData</code> database call.</p>
 
         <span class="property">@timersEntityRefresh</span>.push timer
 
-        <span class="keyword">if</span> settings.General.debug
-            logger.info <span class="string">"Manager.setEntityTimer"</span>, entityDef.friendlyId, interval + <span class="string">"ms"</span></pre></div>
+        <span class="keyword">if</span> settings.general.debug
+            expresser.logger.info <span class="string">"Manager.setEntityTimer"</span>, entityDef.friendlyId, interval + <span class="string">"s"</span></pre></div>
         
       
         
@@ -301,7 +270,7 @@ if there are connected clients, to avoid bandwidth and processing waste.</p>
 
         
           <div class='highlight'><pre>    refreshEntity: (entityDef) =&gt;
-        <span class="keyword">if</span> sockets.getConnectionCount() &lt; <span class="number">1</span>
+        <span class="keyword">if</span> expresser.sockets.getConnectionCount() &lt; <span class="number">1</span>
             <span class="keyword">return</span></pre></div>
         
       
@@ -310,10 +279,10 @@ if there are connected clients, to avoid bandwidth and processing waste.</p>
 
         
           <div class='highlight'><pre>        <span class="keyword">if</span> entityDef.sourceUrl? <span class="keyword">and</span> entityDef.sourceUrl <span class="keyword">isnt</span> <span class="string">""</span>
-            sync.download entityDef.sourceUrl, settings.Paths.downloadsDir + <span class="string">"entityobjects."</span> + entityDef.friendlyId + <span class="string">".json"</span>, (err, localFile) =&gt;
+            sync.download entityDef.sourceUrl, settings.path.downloadsDir + <span class="string">"entityobjects."</span> + entityDef.friendlyId + <span class="string">".json"</span>, (err, localFile) =&gt;
                 <span class="property">@transmitDataToClients</span> err, localFile, entityDef, sockets.sendEntityRefresh, database.setEntityDefinition
-        <span class="keyword">else</span> <span class="keyword">if</span> settings.General.debug
-            logger.warn <span class="string">"Manager.refreshEntity"</span>, entityDef.friendlyId, <span class="string">"No sourceUrl set. Abort."</span></pre></div>
+        <span class="keyword">else</span> <span class="keyword">if</span> settings.general.debug
+            expresser.logger.warn <span class="string">"Manager.refreshEntity"</span>, entityDef.friendlyId, <span class="string">"No sourceUrl set. Abort."</span></pre></div>
         
       
         
@@ -327,8 +296,8 @@ timer for each audit data and transmitting the refreshed data to users via socke
 
         
           <div class='highlight'><pre>    initAuditDataTimers: =&gt;
-        <span class="keyword">if</span> settings.General.debug
-            logger.info <span class="string">"Manager.initAuditDataTimers"</span>
+        <span class="keyword">if</span> settings.general.debug
+            expresser.logger.info <span class="string">"Manager.initAuditDataTimers"</span>
 
         <span class="property">@stopAuditDataTimers</span>()
         database.getAuditData <span class="literal">null</span>, <span class="property">@startAuditDataTimers</span></pre></div>
@@ -355,8 +324,8 @@ and error (if any) in result of the <code>getAuditData</code> database call.</p>
             sockets.sendServerError <span class="string">"Manager: could not load Audit Data items."</span>, err
         <span class="keyword">else</span>
             <span class="property">@setAuditDataTimer</span> auditData <span class="keyword">for</span> auditData <span class="keyword">in</span> result
-            <span class="keyword">if</span> settings.General.debug
-                logger.info <span class="string">"Manager.startAuditDataTimers"</span>, <span class="string">"Started timers for <span class="subst">#{result.length}</span> audit data."</span></pre></div>
+            <span class="keyword">if</span> settings.general.debug
+                expresser.logger.info <span class="string">"Manager.startAuditDataTimers"</span>, <span class="string">"Started timers for <span class="subst">#{result.length}</span> audit data."</span></pre></div>
         
       
         
@@ -372,9 +341,9 @@ and error (if any) in result of the <code>getAuditData</code> database call.</p>
         <p>Make sure interval is at least 2 seconds.</p>
 
         
-          <div class='highlight'><pre>        <span class="keyword">if</span> <span class="keyword">not</span> interval? <span class="keyword">or</span> interval &lt; settings.Web.minimumRefreshInterval
-            interval = settings.Web.minimumRefreshInterval
-            logger.warn <span class="string">"Audit Data refresh interval is too low: ID <span class="subst">#{auditData.friendlyId}</span>, interval <span class="subst">#{auditData.refreshInterval}</span> seconds."</span></pre></div>
+          <div class='highlight'><pre>        <span class="keyword">if</span> <span class="keyword">not</span> interval? <span class="keyword">or</span> interval &lt; settings.web.minimumRefreshInterval
+            interval = settings.web.minimumRefreshInterval
+            expresser.logger.warn <span class="string">"Audit Data refresh interval is too low: ID <span class="subst">#{auditData.friendlyId}</span>, interval <span class="subst">#{auditData.refreshInterval}</span> seconds."</span></pre></div>
         
       
         
@@ -392,8 +361,8 @@ and error (if any) in result of the <code>getAuditData</code> database call.</p>
 
         <span class="property">@timersAuditDataRefresh</span>.push timer
 
-        <span class="keyword">if</span> settings.General.debug
-            logger.info <span class="string">"Manager.setAuditDataTimer"</span>, auditData.friendlyId, interval + <span class="string">"ms"</span></pre></div>
+        <span class="keyword">if</span> settings.general.debug
+            expresser.logger.info <span class="string">"Manager.setAuditDataTimer"</span>, auditData.friendlyId, interval + <span class="string">"ms"</span></pre></div>
         
       
         
@@ -402,7 +371,7 @@ if there are connected clients, to avoid bandwidth and processing waste.</p>
 
         
           <div class='highlight'><pre>    refreshAuditData: (auditData) =&gt;
-        <span class="keyword">if</span> sockets.getConnectionCount() &lt; <span class="number">1</span>
+        <span class="keyword">if</span> expresser.sockets.getConnectionCount() &lt; <span class="number">1</span>
             <span class="keyword">return</span></pre></div>
         
       
@@ -411,10 +380,10 @@ if there are connected clients, to avoid bandwidth and processing waste.</p>
 
         
           <div class='highlight'><pre>        <span class="keyword">if</span> auditData.sourceUrl? <span class="keyword">and</span> auditData.sourceUrl <span class="keyword">isnt</span> <span class="string">""</span>
-            sync.download auditData.sourceUrl, settings.Paths.downloadsDir + <span class="string">"auditdata."</span> + auditData.friendlyId + <span class="string">".json"</span>, (err, localFile) =&gt;
+            sync.download auditData.sourceUrl, settings.path.downloadsDir + <span class="string">"auditdata."</span> + auditData.friendlyId + <span class="string">".json"</span>, (err, localFile) =&gt;
                 <span class="property">@transmitDataToClients</span> err, localFile, auditData, sockets.sendAuditDataRefresh, database.setAuditData
-        <span class="keyword">else</span> <span class="keyword">if</span> settings.General.debug
-            logger.warn <span class="string">"Manager.refreshAuditData"</span>, auditData.friendlyId, <span class="string">"No sourceUrl set. Abort."</span></pre></div>
+        <span class="keyword">else</span> <span class="keyword">if</span> settings.general.debug
+            expresser.logger.warn <span class="string">"Manager.refreshAuditData"</span>, auditData.friendlyId, <span class="string">"No sourceUrl set. Abort."</span></pre></div>
         
       
         
@@ -435,8 +404,8 @@ The <code>socketsCallback</code> and <code>dbCallback</code> are called against 
                 <span class="keyword">if</span> err1?
                     sockets.sendServerError <span class="string">"Manager: could not read <span class="subst">#{localFile}</span>."</span>, err1
                 <span class="keyword">else</span>
-                    <span class="keyword">if</span> settings.General.debug
-                        logger.info <span class="string">"Manager.transmitDataToClients"</span>, localFile</pre></div>
+                    <span class="keyword">if</span> settings.general.debug
+                        expresser.logger.info <span class="string">"Manager.transmitDataToClients"</span>, localFile</pre></div>
         
       
         
@@ -446,7 +415,7 @@ The <code>socketsCallback</code> and <code>dbCallback</code> are called against 
           <div class='highlight'><pre>                    <span class="keyword">try</span>
                         obj.data = JSON.parse result
                     <span class="keyword">catch</span> err2
-                        logger.error err2
+                        expresser.logger.error err2
                         <span class="keyword">return</span>
 
                     socketsCallback obj</pre></div>
@@ -471,7 +440,7 @@ The <code>socketsCallback</code> and <code>dbCallback</code> are called against 
           <div class='highlight'><pre>                    obj.data = database.cleanObjectForInsertion obj.data
                     dbCallback obj, {patch: <span class="literal">true</span>}
         <span class="keyword">else</span>
-            logger.error <span class="string">"Manager.transmitDataToClients"</span>, localFile, err</pre></div>
+            expresser.logger.error <span class="string">"Manager.transmitDataToClients"</span>, localFile, err</pre></div>
         
       
         

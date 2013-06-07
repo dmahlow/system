@@ -23,36 +23,8 @@
               
                 
                 <li>
-                  <a class="source" href="configure.html">
-                    configure.coffee
-                  </a>
-                </li>
-              
-                
-                <li>
                   <a class="source" href="database.html">
                     database.coffee
-                  </a>
-                </li>
-              
-                
-                <li>
-                  <a class="source" href="imaging.html">
-                    imaging.coffee
-                  </a>
-                </li>
-              
-                
-                <li>
-                  <a class="source" href="logger.html">
-                    logger.coffee
-                  </a>
-                </li>
-              
-                
-                <li>
-                  <a class="source" href="mail.html">
-                    mail.coffee
                   </a>
                 </li>
               
@@ -74,13 +46,6 @@
                 <li>
                   <a class="source" href="security.html">
                     security.coffee
-                  </a>
-                </li>
-              
-                
-                <li>
-                  <a class="source" href="settings.html">
-                    settings.coffee
                   </a>
                 </li>
               
@@ -117,18 +82,21 @@
         
       
         
-        <p>Define required modules.</p>
+        <p>Require Expresser.</p>
 
         
-          <div class='highlight'><pre>    logger = require <span class="string">"./logger.coffee"</span>
-    database = require <span class="string">"./database.coffee"</span>
+          <div class='highlight'><pre>    expresser = require <span class="string">"expresser"</span>
+    settings = expresser.settings</pre></div>
+        
+      
+        
+        <p>Required modules.</p>
+
+        
+          <div class='highlight'><pre>    database = require <span class="string">"./database.coffee"</span>
     fs = require <span class="string">"fs"</span>
-    imaging = require <span class="string">"./imaging.coffee"</span>
     manager = require <span class="string">"./manager.coffee"</span>
-    passport = require <span class="string">"passport"</span>
     security = require <span class="string">"./security.coffee"</span>
-    settings = require <span class="string">"./settings.coffee"</span>
-    sockets = require <span class="string">"./sockets.coffee"</span>
     sync = require <span class="string">"./sync.coffee"</span></pre></div>
         
       
@@ -585,11 +553,28 @@ specified <code>friendlyId</code> wasn&#39;t found in the database.</p>
         
       
         
+        <p>Check if map is read only.</p>
+
+        
+          <div class='highlight'><pre>        <span class="keyword">if</span> map.isReadOnly
+            sendForbiddenResponse res, <span class="string">"Map POST (read-only)"</span>
+            <span class="keyword">return</span></pre></div>
+        
+      
+        
         <p>If map is new, set the <code>createdByUserId</code> to the current logged user&#39;s ID.</p>
 
         
           <div class='highlight'><pre>        <span class="keyword">if</span> <span class="keyword">not</span> map.id? <span class="keyword">or</span> map.id <span class="keyword">is</span> <span class="string">""</span>
-            map.createdByUserId = req.user.id
+            map.createdByUserId = req.user.id</pre></div>
+        
+      
+        
+        <p>Make sure creation date is set.</p>
+
+        
+          <div class='highlight'><pre>        <span class="keyword">if</span> <span class="keyword">not</span> map.dateCreated? <span class="keyword">or</span> map.dateCreated <span class="keyword">is</span> <span class="string">""</span>
+            map.dateCreated = <span class="keyword">new</span> Date()
 
         database.setMap map, <span class="literal">null</span>, (err, result) -&gt;
             <span class="keyword">if</span> result? <span class="keyword">and</span> <span class="keyword">not</span> err?
@@ -643,18 +628,14 @@ its ID and SVG representation.</p>
 
         
           <div class='highlight'><pre>    <span class="function"><span class="title">postMapThumb</span></span> = (req, res) -&gt;
-        <span class="keyword">if</span> <span class="keyword">not</span> req.user?
-            sendForbiddenResponse res, <span class="string">"Map Thumbnail POST"</span>
-            <span class="keyword">return</span>
-
         svg = req.body.svg
-        svgPath = settings.Paths.imagesDir + <span class="string">"mapthumbs/"</span> + req.params[<span class="string">"id"</span>] + <span class="string">".svg"</span>
+        svgPath = settings.path.imagesDir + <span class="string">"mapthumbs/"</span> + req.params[<span class="string">"id"</span>] + <span class="string">".svg"</span>
 
         fs.writeFile svgPath, svg, (err) -&gt;
             <span class="keyword">if</span> err?
                 sendErrorResponse res, <span class="string">"Map Thumbnail POST"</span>, err
             <span class="keyword">else</span>
-                imaging.svgToPng svgPath, settings.Images.mapThumbSize, (err2, result) -&gt;
+                expresser.imaging.toPng svgPath, {size: settings.images.mapThumbSize}, (err2, result) -&gt;
                     <span class="keyword">if</span> err2?
                         sendErrorResponse res, <span class="string">"Map Thumbnail POST"</span>, err2
                     <span class="keyword">else</span>
@@ -871,7 +852,7 @@ download URL is provided with the post parameter &quot;url&quot;.</p>
         
           <div class='highlight'><pre>    <span class="function"><span class="title">get401</span></span> = (req, res) -&gt;
         res.status <span class="number">401</span>
-        res.render <span class="string">"status401"</span>, title: settings.General.appTitle,</pre></div>
+        res.render <span class="string">"status401"</span>, title: settings.general.appTitle,</pre></div>
         
       
         
@@ -880,24 +861,7 @@ download URL is provided with the post parameter &quot;url&quot;.</p>
         
           <div class='highlight'><pre>    <span class="function"><span class="title">get404</span></span> = (req, res) -&gt;
         res.status <span class="number">404</span>
-        res.render <span class="string">"status404"</span>, title: settings.General.appTitle,</pre></div>
-        
-      
-        
-        <p>Get the list of server logs for the past 24 hours. Value can be changed on
-the <a href="settings.html">Server Settings</a>.</p>
-
-        
-          <div class='highlight'><pre>    <span class="function"><span class="title">getLogsRecent</span></span> = (req, res) -&gt;
-        <span class="keyword">if</span> <span class="keyword">not</span> req.user?
-            sendForbiddenResponse res, <span class="string">"Logs Recent GET"</span>
-            <span class="keyword">return</span>
-
-        logger.getRecent (err, result) -&gt;
-            <span class="keyword">if</span> <span class="keyword">not</span> err?
-                res.send minifyJson result
-            <span class="keyword">else</span>
-                res.json err</pre></div>
+        res.render <span class="string">"status404"</span>, title: settings.general.appTitle,</pre></div>
         
       
         
@@ -911,110 +875,10 @@ ONLY if the <code>Web.minifyJsonResponse</code> setting is set to true.</p>
 
         
           <div class='highlight'><pre>    <span class="function"><span class="title">minifyJson</span></span> = (source) -&gt;
-        <span class="keyword">return</span> source <span class="keyword">if</span> settings.Web.minifyJsonResponse
-
-        source = JSON.stringify source <span class="keyword">if</span> <span class="keyword">typeof</span> source <span class="keyword">is</span> <span class="string">"object"</span>
-        index = <span class="number">0</span>
-        length = source.length
-        result = <span class="string">""</span>
-        symbol = <span class="literal">undefined</span>
-        position = <span class="literal">undefined</span>
-        
-        <span class="keyword">while</span> index &lt; length
-
-            symbol = source.charAt(index)
-            <span class="keyword">switch</span> symbol</pre></div>
-        
-      
-        
-        <p>Ignore whitespace tokens. According to ES 5.1 section 15.12.1.1,
-whitespace tokens include tabs, carriage returns, line feeds, and
-space characters.</p>
-
-        
-          <div class='highlight'><pre>                <span class="keyword">when</span> <span class="string">"\t"</span>, <span class="string">"\r"</span>
-                , <span class="string">"\n"</span>
-                , <span class="string">" "</span>
-                    index += <span class="number">1</span></pre></div>
-        
-      
-        
-        <p>Ignore line and block comments.</p>
-
-        
-          <div class='highlight'><pre>                <span class="keyword">when</span> <span class="string">"/"</span>
-                    symbol = source.charAt(index += <span class="number">1</span>)
-                    <span class="keyword">switch</span> symbol</pre></div>
-        
-      
-        
-        <p>Line comments.</p>
-
-        
-          <div class='highlight'><pre>                        <span class="keyword">when</span> <span class="string">"/"</span>
-                            position = source.indexOf(<span class="string">"\n"</span>, index)</pre></div>
-        
-      
-        
-        <p>Check for CR-style line endings.</p>
-
-        
-          <div class='highlight'><pre>                            position = source.indexOf(<span class="string">"\r"</span>, index)  <span class="keyword">if</span> position &lt; <span class="number">0</span>
-                            index = (<span class="keyword">if</span> position &gt; -<span class="number">1</span> <span class="keyword">then</span> position <span class="keyword">else</span> length)</pre></div>
-        
-      
-        
-        <p>Block comments.</p>
-
-        
-          <div class='highlight'><pre>                        <span class="keyword">when</span> <span class="string">"*"</span>
-                            position = source.indexOf(<span class="string">"*/"</span>, index)
-                            <span class="keyword">if</span> position &gt; -<span class="number">1</span></pre></div>
-        
-      
-        
-        <p>Advance the scanner&#39;s position past the end of the comment.</p>
-
-        
-          <div class='highlight'><pre>                                index = position += <span class="number">2</span>
-                                <span class="keyword">break</span>
-                            <span class="keyword">throw</span> SyntaxError(<span class="string">"Unterminated block comment."</span>)
-                        <span class="keyword">else</span>
-                            <span class="keyword">throw</span> SyntaxError(<span class="string">"Invalid comment."</span>)</pre></div>
-        
-      
-        
-        <p>Parse strings separately to ensure that any whitespace characters and
-JavaScript-style comments within them are preserved.</p>
-
-        
-          <div class='highlight'><pre>                <span class="keyword">when</span> <span class="string">"\""</span>
-                    position = index
-                    <span class="keyword">while</span> index &lt; length
-                        symbol = source.charAt(index += <span class="number">1</span>)
-                        <span class="keyword">if</span> symbol <span class="keyword">is</span> <span class="string">"\\"</span></pre></div>
-        
-      
-        
-        <p>Skip past escaped characters.</p>
-
-        
-          <div class='highlight'><pre>                            index += <span class="number">1</span>
-                        <span class="keyword">else</span> <span class="keyword">break</span>  <span class="keyword">if</span> symbol <span class="keyword">is</span> <span class="string">"\""</span>
-                    <span class="keyword">if</span> source.charAt(index) <span class="keyword">is</span> <span class="string">"\""</span>
-                        result += source.slice(position, index += <span class="number">1</span>)
-                        <span class="keyword">break</span>
-                    <span class="keyword">throw</span> SyntaxError(<span class="string">"Unterminated string."</span>)</pre></div>
-        
-      
-        
-        <p>Preserve all other characters.</p>
-
-        
-          <div class='highlight'><pre>                <span class="keyword">else</span>
-                    result += symbol
-                    index += <span class="number">1</span>
-        result</pre></div>
+        <span class="keyword">if</span> settings.web.minifyJsonResponse
+            <span class="keyword">return</span> expresser.utils.minifyJson source
+        <span class="keyword">else</span>
+            <span class="keyword">return</span> source</pre></div>
         
       
         
@@ -1063,12 +927,12 @@ if necessary appending from the request parameters.</p>
 
         
           <div class='highlight'><pre>        options =
-            title: settings.General.appTitle,
+            title: settings.general.appTitle,
             version: packageJson.version,
             lastModified: moment(lastModified).format(<span class="string">"YYYY-MM-DD hh:mm"</span>),
             serverUptime: moment.duration(os.uptime(), <span class="string">"s"</span>).humanize(),
             serverHostname: os.hostname(),
-            serverPort: settings.Web.port,
+            serverPort: settings.web.port,
             serverOS: os.type() + <span class="string">" "</span> + os.release(),
             serverCpuLoad: os.loadavg()[<span class="number">0</span>].toFixed(<span class="number">2</span>),
             serverRamLoad: (os.freemem() / os.totalmem() * <span class="number">100</span>).toFixed(<span class="number">2</span>),
@@ -1103,7 +967,7 @@ send an error response with status code 500.</p>
 
         
           <div class='highlight'><pre>    <span class="function"><span class="title">sendErrorResponse</span></span> = (res, method, message) -&gt;
-        logger.error <span class="string">"HTTP 500"</span>, method, message
+        expresser.logger.error <span class="string">"HTTP 500"</span>, method, message
 
         res.statusCode = <span class="number">500</span>
         res.send <span class="string">"Error: <span class="subst">#{method}</span> - <span class="subst">#{message}</span>"</span></pre></div>
@@ -1115,7 +979,7 @@ with an &quot;access denied&quot; message.</p>
 
         
           <div class='highlight'><pre>    <span class="function"><span class="title">sendForbiddenResponse</span></span> = (res, method) -&gt;
-        logger.error <span class="string">"HTTP 403"</span>, method
+        expresser.logger.error <span class="string">"HTTP 403"</span>, method
 
         res.statusCode = <span class="number">403</span>
         res.send <span class="string">"Access denied for <span class="subst">#{method}</span>."</span></pre></div>
@@ -1137,14 +1001,14 @@ with an &quot;access denied&quot; message.</p>
         <p>The login page/</p>
 
         
-          <div class='highlight'><pre>    app.get <span class="string">"/login"</span>, passport.authenticate(<span class="string">"basic"</span>, passportOptions), (req, res) -&gt; res.send req.user.username</pre></div>
+          <div class='highlight'><pre>    app.get <span class="string">"/login"</span>, expresser.app.passport.authenticate(<span class="string">"basic"</span>, passportOptions), (req, res) -&gt; res.send req.user.username</pre></div>
         
       
         
         <p>Main index.</p>
 
         
-          <div class='highlight'><pre>    app.get <span class="string">"/"</span>, passport.authenticate(<span class="string">"basic"</span>, passportOptions), getIndex</pre></div>
+          <div class='highlight'><pre>    app.get <span class="string">"/"</span>, expresser.app.passport.authenticate(<span class="string">"basic"</span>, passportOptions), getIndex</pre></div>
         
       
         
@@ -1156,7 +1020,7 @@ with an &quot;access denied&quot; message.</p>
         <p>Admin area.</p>
 
         
-          <div class='highlight'><pre>    app.get <span class="string">"/admin"</span>, passport.authenticate(<span class="string">"basic"</span>, passportOptions), getAdmin</pre></div>
+          <div class='highlight'><pre>    app.get <span class="string">"/admin"</span>, expresser.app.passport.authenticate(<span class="string">"basic"</span>, passportOptions), getAdmin</pre></div>
         
       
         
@@ -1164,13 +1028,6 @@ with an &quot;access denied&quot; message.</p>
 
         
           <div class='highlight'><pre>    app.get <span class="string">"/upgrade"</span>, runUpgrade</pre></div>
-        
-      
-        
-        <p>Server status and log routes.</p>
-
-        
-          <div class='highlight'><pre>    app.get <span class="string">"/logs/recent"</span>, getLogsRecent</pre></div>
         
       
         

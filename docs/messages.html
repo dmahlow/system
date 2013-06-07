@@ -114,6 +114,13 @@
               
                 
                 <li>
+                  <a class="source" href="manager.html">
+                    manager.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
                   <a class="source" href="messages.html">
                     messages.coffee
                   </a>
@@ -450,13 +457,6 @@
               
                 
                 <li>
-                  <a class="source" href="selfTestView.html">
-                    selfTestView.coffee
-                  </a>
-                </li>
-              
-                
-                <li>
                   <a class="source" href="settingsView.html">
                     settingsView.coffee
                   </a>
@@ -513,6 +513,7 @@
     createVariable: <span class="string">"Create new variable..."</span>
     current: <span class="string">"Current value"</span>
     custom: <span class="string">"Custom"</span>
+    dataOutdated: <span class="string">"Data is not up-to-date!"</span>
     dataSaved: <span class="string">"Data saved!"</span>
     editThisMap: <span class="string">"edit this map"</span>
     elementsSelected: <span class="string">"elements selected"</span>
@@ -604,10 +605,11 @@
         
         
         
-          <div class='highlight'><pre>    errAuditDataRefreshCount: <span class="string">"Could not refresh # for <span class="subst">#{SystemApp.Settings.AuditData.alertOnErrorCount}</span> times in a row.
+          <div class='highlight'><pre>    errAuditDataRefreshCount: <span class="string">"Could not refresh # for <span class="subst">#{SystemApp.Settings.auditData.alertOnErrorCount}</span> times in a row.
                                Maybe the URL is wrong? Click on this box to open the Audit Events view for editing."</span>
     errCouldNotLoadFromServer: <span class="string">"Could not load data from server!"</span>
     errCreatingMap: <span class="string">"Could not create new map."</span>
+    errEntityOutdated: <span class="string">"Entity #E objects haven't been updated since #D."</span>
     errEvalFailed: <span class="string">"Eval failed!"</span>
     errEvalReturn: <span class="string">"Eval must have a return statement!"</span>
     errInvalidRoute: <span class="string">"The path you have entered does not exist."</span>
@@ -628,12 +630,12 @@
         
           <div class='highlight'><pre>    valAllFieldsEmpty: <span class="string">"All fields are empty!"</span>
     valDescriptionIsRequired: <span class="string">"A description is required."</span>
-    valGridSizeTooSmall: <span class="string">"The grid size is too small. Minimum allowed is  <span class="subst">#{SystemApp.Settings.Map.minGridSize}</span>."</span>
+    valGridSizeTooSmall: <span class="string">"The grid size is too small. Minimum allowed is  <span class="subst">#{SystemApp.Settings.map.minGridSize}</span>."</span>
     valInvalidUrl: <span class="string">"The entered URL is not valid."</span>
     valNameIsDuplicate: <span class="string">"The entered name already exists."</span>
     valNameIsRequired: <span class="string">"A name is required."</span>
-    valPaperSizeTooSmall: <span class="string">"The paper size too small. Minimum is  <span class="subst">#{SystemApp.Settings.Map.minPaperSize}</span>."</span>
-    valRefreshIntervalTooLow: <span class="string">"Refresh interval too low. Minimum is <span class="subst">#{SystemApp.Settings.AuditData.minRefreshInterval}</span>."</span>
+    valPaperSizeTooSmall: <span class="string">"The paper size too small. Minimum is  <span class="subst">#{SystemApp.Settings.map.minPaperSize}</span>."</span>
+    valRefreshIntervalTooLow: <span class="string">"Refresh interval too low. Minimum is <span class="subst">#{SystemApp.Settings.auditData.minRefreshInterval}</span>."</span>
     valTitleIsRequired: <span class="string">"A title is required."</span></pre></div>
         
       

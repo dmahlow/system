@@ -114,6 +114,13 @@
               
                 
                 <li>
+                  <a class="source" href="manager.html">
+                    manager.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
                   <a class="source" href="messages.html">
                     messages.coffee
                   </a>
@@ -450,13 +457,6 @@
               
                 
                 <li>
-                  <a class="source" href="selfTestView.html">
-                    selfTestView.coffee
-                  </a>
-                </li>
-              
-                
-                <li>
                   <a class="source" href="settingsView.html">
                     settingsView.coffee
                   </a>
@@ -589,9 +589,9 @@ map. The overlay is shown only when the map is in edit mode.</p>
         
           <div class='highlight'><pre>    toggleVisibility: (visible) =&gt;
         <span class="keyword">if</span> visible
-            <span class="property">@$el</span>.fadeIn SystemApp.Settings.Map.opacityInterval
+            <span class="property">@$el</span>.fadeIn SystemApp.Settings.map.opacityInterval
         <span class="keyword">else</span>
-            <span class="property">@$el</span>.fadeOut SystemApp.Settings.Map.opacityInterval</pre></div>
+            <span class="property">@$el</span>.fadeOut SystemApp.Settings.map.opacityInterval</pre></div>
         
       
         
@@ -680,7 +680,7 @@ from the <code>$list</code>.</p>
 
         
           <div class='highlight'><pre>    entityDataRemoved: (entityObject) =&gt;
-        li = $ SystemApp.Settings.Map.entityListPrefix + entityObject.entityDefinitionId() + <span class="string">"-"</span> + entityObject.id
+        li = $ SystemApp.Settings.map.entityListPrefix + entityObject.entityDefinitionId() + <span class="string">"-"</span> + entityObject.id
         li.remove()</pre></div>
         
       
@@ -720,8 +720,8 @@ is NOT bound to any entity, thus its values are totally customizable.</p>
         
           <div class='highlight'><pre>    addCustomShapeToList: =&gt;
         li = $(document.createElement <span class="string">"li"</span>)
-        li.attr <span class="string">"id"</span>, SystemApp.Settings.Map.entityListPrefix + <span class="string">"0"</span>
-        li.html SystemApp.Settings.Shape.customText
+        li.attr <span class="string">"id"</span>, SystemApp.Settings.map.entityListPrefix + <span class="string">"0"</span>
+        li.html SystemApp.Settings.shape.customText
         li.addClass <span class="string">"custom"</span></pre></div>
         
       
@@ -744,10 +744,10 @@ is NOT bound to any entity, thus its values are totally customizable.</p>
           <div class='highlight'><pre>    addToList: (obj) =&gt;
         obj = obj.model <span class="keyword">if</span> obj.model?
         definitionId = obj.entityDefinitionId()
-        definitionId = SystemApp.Settings.Shape.customId <span class="keyword">if</span> <span class="keyword">not</span> definitionId?
+        definitionId = SystemApp.Settings.shape.customId <span class="keyword">if</span> <span class="keyword">not</span> definitionId?
 
         li = $(document.createElement <span class="string">"li"</span>)
-        li.attr <span class="string">"id"</span>, SystemApp.Settings.Map.entityListPrefix + definitionId + <span class="string">"-"</span> + obj.id
+        li.attr <span class="string">"id"</span>, SystemApp.Settings.map.entityListPrefix + definitionId + <span class="string">"-"</span> + obj.id
         li.attr <span class="string">"title"</span>, obj.title()
         li.html obj.title()
         li.data <span class="string">"entity"</span>, obj
@@ -784,7 +784,7 @@ is NOT bound to any entity, thus its values are totally customizable.</p>
         li.css <span class="string">"display"</span>, <span class="string">"none"</span>
         li.mousedown <span class="property">@dragStart</span>
         <span class="property">@$list</span>.append li
-        li.fadeIn SystemApp.Settings.Map.opacityInterval</pre></div>
+        li.fadeIn SystemApp.Settings.map.opacityInterval</pre></div>
         
       
         
@@ -797,8 +797,8 @@ specified <a href="shape.html">Shape</a>.</p>
         entityDefId = shape.entityDefinitionId()
         entityObjId = shape.entityObjectId()
 
-        li = $ <span class="string">"#"</span> + SystemApp.Settings.Map.entityListPrefix + entityDefId + <span class="string">"-"</span> + entityObjId
-        li = $ <span class="string">"#"</span> + SystemApp.Settings.Map.entityListPrefix + <span class="string">"0"</span> <span class="keyword">if</span> li.length &lt; <span class="number">1</span>
+        li = $ <span class="string">"#"</span> + SystemApp.Settings.map.entityListPrefix + entityDefId + <span class="string">"-"</span> + entityObjId
+        li = $ <span class="string">"#"</span> + SystemApp.Settings.map.entityListPrefix + <span class="string">"0"</span> <span class="keyword">if</span> li.length &lt; <span class="number">1</span>
 
         <span class="keyword">return</span> li.find <span class="string">"span.count"</span></pre></div>
         
@@ -899,7 +899,7 @@ shape will be added on that specific position on the map.</p>
           <div class='highlight'><pre>            title = entityDefinition.objectTitleAttribute()
             sep = title.indexOf <span class="string">","</span>
             title = title.substring(<span class="number">0</span>, sep) <span class="keyword">if</span> title.indexOf(<span class="string">","</span>) &gt; <span class="number">0</span>
-            title = SystemApp.Settings.General.dataBindingKey + SystemApp.Settings.EntityObject.bindingNamespace + <span class="string">"."</span> + title</pre></div>
+            title = SystemApp.Settings.general.dataBindingKey + SystemApp.Settings.entityObject.bindingNamespace + <span class="string">"."</span> + title</pre></div>
         
       
         
@@ -948,10 +948,10 @@ shape will be added on that specific position on the map.</p>
         
           <div class='highlight'><pre>        li = $ e.target
         entity = li.data <span class="string">"entity"</span>
-        background = SystemApp.Settings.Shape.background
-        foreground = SystemApp.Settings.Shape.foreground
-        sizeX = SystemApp.Settings.Shape.gridViewSizeX
-        sizeY = SystemApp.Settings.Shape.gridViewSizeY
+        background = SystemApp.Settings.shape.background
+        foreground = SystemApp.Settings.shape.foreground
+        sizeX = SystemApp.Settings.shape.gridViewSizeX
+        sizeY = SystemApp.Settings.shape.gridViewSizeY
 
         <span class="property">@$shapeDragger</span> = li.clone <span class="literal">false</span>
         <span class="property">@$shapeDragger</span>.addClass <span class="string">"shape-dragger"</span>
@@ -1069,7 +1069,7 @@ will clear the search text field.</p>
             <span class="property">@$txtSearch</span>.val <span class="string">""</span>
 
         window.clearTimeout <span class="property">@timerSearch</span> <span class="keyword">if</span> <span class="property">@timerSearch</span> <span class="keyword">isnt</span> <span class="literal">null</span>
-        <span class="property">@timerSearch</span> = window.setTimeout <span class="property">@search</span>, SystemApp.Settings.General.searchDelay</pre></div>
+        <span class="property">@timerSearch</span> = window.setTimeout <span class="property">@search</span>, SystemApp.Settings.general.searchDelay</pre></div>
         
       
         

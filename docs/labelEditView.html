@@ -114,6 +114,13 @@
               
                 
                 <li>
+                  <a class="source" href="manager.html">
+                    manager.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
                   <a class="source" href="messages.html">
                     messages.coffee
                   </a>
@@ -450,13 +457,6 @@
               
                 
                 <li>
-                  <a class="source" href="selfTestView.html">
-                    selfTestView.coffee
-                  </a>
-                </li>
-              
-                
-                <li>
                   <a class="source" href="settingsView.html">
                     settingsView.coffee
                   </a>
@@ -495,7 +495,7 @@ Right now this can happen on <a href="shapeView.html">Shape Views</a> and <a hre
           <div class='highlight'><pre><span class="class"><span class="keyword">class</span> <span class="title">SystemApp</span>.<span class="title">MapLabelEditView</span> <span class="keyword">extends</span> <span class="title">SystemApp</span>.<span class="title">BaseView</span></span>
 
     tagName: <span class="string">"div"</span>
-    className: SystemApp.Settings.LabelEdit.className
+    className: SystemApp.Settings.labelEdit.className
 
     ox: <span class="number">0</span>                       <span class="comment"># temporary value to hold the original X (left) position of the view</span>
     oy: <span class="number">0</span>                       <span class="comment"># temporary value to hold the original Y (top) position of the view</span>
@@ -770,7 +770,7 @@ and set the label value to the variable prefix &quot;#&quot; plus the added vari
             customVar.save()
 
         <span class="property">@customVarNameValue</span> <span class="string">""</span>
-        <span class="property">@simpleValue</span> SystemApp.Settings.General.dataBindingKey + SystemApp.Settings.Variable.bindingNamespace + <span class="string">"."</span> + varName
+        <span class="property">@simpleValue</span> SystemApp.Settings.general.dataBindingKey + SystemApp.Settings.variable.bindingNamespace + <span class="string">"."</span> + varName
         <span class="property">@showSimple</span>()</pre></div>
         
       
@@ -813,7 +813,7 @@ and its autocomplete div to the view.</p>
         $(document).mousedown <span class="property">@editingMouseDown</span>
 
         size = <span class="property">@simpleValue</span>().length + <span class="number">1</span>
-        size = SystemApp.Settings.LabelEdit.minTxtSize <span class="keyword">if</span> size &lt; SystemApp.Settings.LabelEdit.minTxtSize
+        size = SystemApp.Settings.labelEdit.minTxtSize <span class="keyword">if</span> size &lt; SystemApp.Settings.labelEdit.minTxtSize
 
         <span class="property">@$txtSimple</span>.attr <span class="string">"size"</span>, size
         <span class="property">@autoCompleteValue</span> <span class="property">@simpleValue</span>()
@@ -936,7 +936,7 @@ then bind its contents to the <code>$autoCompleteDiv</code>.</p>
 
         
           <div class='highlight'><pre>    bindAutoComplete: =&gt;
-        auditDataNamespace = SystemApp.Settings.General.dataBindingKey + SystemApp.Settings.AuditData.bindingNamespace
+        auditDataNamespace = SystemApp.Settings.general.dataBindingKey + SystemApp.Settings.auditData.bindingNamespace
         value = <span class="property">@simpleValue</span>()
 
         <span class="keyword">if</span> value.indexOf(<span class="string">"."</span>) &lt; <span class="number">1</span>
@@ -952,8 +952,8 @@ then bind its contents to the <code>$autoCompleteDiv</code>.</p>
 
         
           <div class='highlight'><pre>    bindAutoCompleteEntities: =&gt;
-        auditDataNamespace = SystemApp.Settings.General.dataBindingKey + SystemApp.Settings.AuditData.bindingNamespace
-        variableNamespace = SystemApp.Settings.General.dataBindingKey + SystemApp.Settings.Variable.bindingNamespace
+        auditDataNamespace = SystemApp.Settings.general.dataBindingKey + SystemApp.Settings.auditData.bindingNamespace
+        variableNamespace = SystemApp.Settings.general.dataBindingKey + SystemApp.Settings.variable.bindingNamespace
         value = <span class="property">@simpleValue</span>()
         arr = []</pre></div>
         
@@ -1044,7 +1044,7 @@ This is used by the property auto complete.</p>
         
           <div class='highlight'><pre>    auditDataDumper: (auditData) =&gt;
         data = auditData.data()
-        path = SystemApp.Settings.General.dataBindingKey + SystemApp.Settings.AuditData.bindingNamespace + <span class="string">"."</span> + auditData.friendlyId()
+        path = SystemApp.Settings.general.dataBindingKey + SystemApp.Settings.auditData.bindingNamespace + <span class="string">"."</span> + auditData.friendlyId()
         div = $(document.createElement <span class="string">"div"</span>)</pre></div>
         
       
@@ -1179,7 +1179,7 @@ source element. If it&#39;s not part of this view then hide it.</p>
 
         
           <div class='highlight'><pre>    editingMouseDown: (e) =&gt;
-        css = SystemApp.Settings.LabelEdit.className
+        css = SystemApp.Settings.labelEdit.className
         src = $ e.target
         parent = src.parents <span class="string">".<span class="subst">#{css}</span>"</span>
         labelPosition = src.data <span class="string">"labelPosition"</span>
@@ -1303,7 +1303,7 @@ and then put the original text back after a few seconds by calling <code>evalCle
 
         <span class="property">@lastPressedKey</span> = <span class="literal">null</span>
 
-        setTimeout <span class="property">@evalClearError</span>, SystemApp.Settings.LabelEdit.evalErrorTimeout</pre></div>
+        setTimeout <span class="property">@evalClearError</span>, SystemApp.Settings.labelEdit.evalErrorTimeout</pre></div>
         
       
         

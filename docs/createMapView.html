@@ -114,6 +114,13 @@
               
                 
                 <li>
+                  <a class="source" href="manager.html">
+                    manager.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
                   <a class="source" href="messages.html">
                     messages.coffee
                   </a>
@@ -450,13 +457,6 @@
               
                 
                 <li>
-                  <a class="source" href="selfTestView.html">
-                    selfTestView.coffee
-                  </a>
-                </li>
-              
-                
-                <li>
                   <a class="source" href="settingsView.html">
                     settingsView.coffee
                   </a>
@@ -550,7 +550,7 @@ clicks a &quot;Create new...&quot; option on the top menu.</p>
           <div class='highlight'><pre>    onHide: =&gt;
         $(document).unbind <span class="string">"keyup"</span>, <span class="property">@keyUp</span>
         SystemApp.footerView.setText <span class="literal">null</span>
-        <span class="property">@$el</span>.fadeOut SystemApp.Settings.General.fadeDelay</pre></div>
+        <span class="property">@$el</span>.fadeOut SystemApp.Settings.general.fadeDelay</pre></div>
         
       
         
@@ -577,7 +577,7 @@ If user has no &quot;mapcreate&quot; role, hide the view immediately.</p>
 
         $(document).keyup <span class="property">@keyUp</span>
         SystemApp.footerView.setText SystemApp.Messages.createMapText
-        <span class="property">@$el</span>.fadeIn SystemApp.Settings.General.fadeDelay, <span class="property">@focus</span></pre></div>
+        <span class="property">@$el</span>.fadeIn SystemApp.Settings.general.fadeDelay, <span class="property">@focus</span></pre></div>
         
       
         

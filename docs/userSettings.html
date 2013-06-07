@@ -114,6 +114,13 @@
               
                 
                 <li>
+                  <a class="source" href="manager.html">
+                    manager.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
                   <a class="source" href="messages.html">
                     messages.coffee
                   </a>
@@ -450,13 +457,6 @@
               
                 
                 <li>
-                  <a class="source" href="selfTestView.html">
-                    selfTestView.coffee
-                  </a>
-                </li>
-              
-                
-                <li>
                   <a class="source" href="settingsView.html">
                     settingsView.coffee
                   </a>
@@ -502,10 +502,10 @@ Local Storage. This model is currently NOT sync&#39;d with MongoDB!</p>
         mapFullscreen: <span class="literal">false</span>
         mapOverrideShapeTitle: <span class="literal">false</span>
         mapZoom: <span class="number">1</span>
-        mapLabelRefreshInterval: SystemApp.Settings.Map.labelRefreshInterval
-        modifierDelete: SystemApp.Settings.User.modifierDelete
-        modifierMultiple: SystemApp.Settings.User.modifierMultiple
-        modifierToBack: SystemApp.Settings.User.modifierToBack
+        mapLabelRefreshInterval: SystemApp.Settings.map.labelRefreshInterval
+        modifierDelete: SystemApp.Settings.user.modifierDelete
+        modifierMultiple: SystemApp.Settings.user.modifierMultiple
+        modifierToBack: SystemApp.Settings.user.modifierToBack
         slowDevice: <span class="literal">false</span></pre></div>
         
       
@@ -607,7 +607,7 @@ Local Storage. This model is currently NOT sync&#39;d with MongoDB!</p>
           <div class='highlight'><pre>    modifierDelete: (value) =&gt;
         <span class="keyword">if</span> value?
             <span class="property">@set</span> <span class="string">"modifierDelete"</span>, value
-        <span class="keyword">return</span> SystemApp.Settings.User.modifierDelete
+        <span class="keyword">return</span> SystemApp.Settings.user.modifierDelete
         <span class="property">@get</span> <span class="string">"modifierDelete"</span></pre></div>
         
       
@@ -618,7 +618,7 @@ Local Storage. This model is currently NOT sync&#39;d with MongoDB!</p>
           <div class='highlight'><pre>    modifierMultiple: (value) =&gt;
         <span class="keyword">if</span> value?
             <span class="property">@set</span> <span class="string">"modifierMultiple"</span>, value
-        <span class="keyword">return</span> SystemApp.Settings.User.modifierMultiple
+        <span class="keyword">return</span> SystemApp.Settings.user.modifierMultiple
         <span class="property">@get</span> <span class="string">"modifierMultiple"</span></pre></div>
         
       
@@ -629,7 +629,7 @@ Local Storage. This model is currently NOT sync&#39;d with MongoDB!</p>
           <div class='highlight'><pre>    modifierToBack: (value) =&gt;
         <span class="keyword">if</span> value?
             <span class="property">@set</span> <span class="string">"modifierToBack"</span>, value
-        <span class="keyword">return</span> SystemApp.Settings.User.modifierToBack
+        <span class="keyword">return</span> SystemApp.Settings.user.modifierToBack
         <span class="property">@get</span> <span class="string">"modifierToBack"</span></pre></div>
         
       

@@ -114,6 +114,13 @@
               
                 
                 <li>
+                  <a class="source" href="manager.html">
+                    manager.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
                   <a class="source" href="messages.html">
                     messages.coffee
                   </a>
@@ -450,13 +457,6 @@
               
                 
                 <li>
-                  <a class="source" href="selfTestView.html">
-                    selfTestView.coffee
-                  </a>
-                </li>
-              
-                
-                <li>
                   <a class="source" href="settingsView.html">
                     settingsView.coffee
                   </a>
@@ -713,7 +713,7 @@ the model&#39;s stroke value.</p>
         <span class="keyword">else</span>
             <span class="property">@svg</span>.attr {<span class="string">"stroke"</span>: <span class="property">@model</span>.stroke()}
             <span class="property">@svgIcon</span>.attr {<span class="string">"fill"</span>: <span class="property">@model</span>.stroke()}
-            _.delay <span class="property">@strokeUpdatedBackToSelected</span>, SystemApp.Settings.Map.borderUpdatedDelay</pre></div>
+            _.delay <span class="property">@strokeUpdatedBackToSelected</span>, SystemApp.Settings.map.borderUpdatedDelay</pre></div>
         
       
         
@@ -724,7 +724,7 @@ the model&#39;s stroke value.</p>
         <span class="property">@svg</span>.attr {<span class="string">"stroke-width"</span>: <span class="property">@model</span>.strokeWidthComputed()}
         <span class="property">@svgLinker</span>.attr <span class="property">@getLinkerPositionAtt</span>(<span class="property">@x</span>(), <span class="property">@y</span>())
         <span class="property">@labelsView</span>.setPosition()
-        _.delay <span class="property">@strokeUpdatedBackToSelected</span>, SystemApp.Settings.Map.borderUpdatedDelay</pre></div>
+        _.delay <span class="property">@strokeUpdatedBackToSelected</span>, SystemApp.Settings.map.borderUpdatedDelay</pre></div>
         
       
         
@@ -790,7 +790,7 @@ and its icon (if there&#39;s one) will be resized to the full size.</p>
         
           <div class='highlight'><pre>    setRoundedCorners: =&gt;
         <span class="keyword">if</span> <span class="property">@model</span>.roundedCorners()
-            radius = SystemApp.Settings.Map.cornerRadius
+            radius = SystemApp.Settings.map.cornerRadius
         <span class="keyword">else</span>
             radius = <span class="number">0</span>
 
@@ -885,7 +885,7 @@ by calling the <code>highlight</code> method.</p>
           <div class='highlight'><pre>        <span class="property">@setTempPosition</span>()
         <span class="property">@dragging</span> = <span class="literal">true</span>
 
-        <span class="property">@svg</span>.animate {<span class="string">"opacity"</span>: SystemApp.Settings.Map.opacityDrag}, SystemApp.Settings.Map.opacityInterval</pre></div>
+        <span class="property">@svg</span>.animate {<span class="string">"opacity"</span>: SystemApp.Settings.map.opacityDrag}, SystemApp.Settings.map.opacityInterval</pre></div>
         
       
         
@@ -924,7 +924,7 @@ can be passed to set a custom shadow color of the shape after dragging.</p>
 
         <span class="keyword">return</span> <span class="keyword">if</span> <span class="keyword">not</span> <span class="property">@parentView</span>.editEnabled
 
-        <span class="property">@svg</span>.animate {<span class="string">"opacity"</span>: <span class="property">@model</span>.opacity()}, SystemApp.Settings.Map.opacityInterval</pre></div>
+        <span class="property">@svg</span>.animate {<span class="string">"opacity"</span>: <span class="property">@model</span>.opacity()}, SystemApp.Settings.map.opacityInterval</pre></div>
         
       
         
@@ -1025,8 +1025,8 @@ if not, reset link positions.</p>
         w = dx * <span class="property">@parentView</span>.currentZoom + <span class="property">@ow</span>
         h = dy * <span class="property">@parentView</span>.currentZoom + <span class="property">@oh</span>
 
-        minWidth = SystemApp.Settings.Map.minGridSizeBlocks * <span class="property">@parentView</span>.model.gridSizeX()
-        minHeight = SystemApp.Settings.Map.minGridSizeBlocks * <span class="property">@parentView</span>.model.gridSizeY()
+        minWidth = SystemApp.Settings.map.minGridSizeBlocks * <span class="property">@parentView</span>.model.gridSizeX()
+        minHeight = SystemApp.Settings.map.minGridSizeBlocks * <span class="property">@parentView</span>.model.gridSizeY()
 
         w = minWidth <span class="keyword">if</span> w &lt; minWidth
         h = minHeight <span class="keyword">if</span> h &lt; minHeight
@@ -1078,7 +1078,7 @@ pressed) then proceed to <code>linkCreatorEnd()</code>.</p>
         <span class="property">@setDimensions</span> w + snapX, h + snapY, <span class="literal">true</span>
         <span class="property">@resetLinks</span> <span class="literal">false</span>
 
-        _.delay <span class="property">@highlight</span>, SystemApp.Settings.Map.shadowDelay</pre></div>
+        _.delay <span class="property">@highlight</span>, SystemApp.Settings.map.shadowDelay</pre></div>
         
       
         
@@ -1129,7 +1129,7 @@ If the mouse goes over another shape, it will call
         <span class="keyword">if</span> <span class="property">@linkCreatorView</span>.target <span class="keyword">isnt</span> pointedShape
             <span class="property">@linkCreatorView</span>.target?.unhighlight()
             <span class="property">@linkCreatorView</span>.target = pointedShape
-            <span class="property">@linkCreatorView</span>.target?.highlight SystemApp.Settings.Map.refShadowColor</pre></div>
+            <span class="property">@linkCreatorView</span>.target?.highlight SystemApp.Settings.map.refShadowColor</pre></div>
         
       
         
@@ -1220,8 +1220,8 @@ it will be false.</p>
 
         
           <div class='highlight'><pre>    render: (mapView) =&gt;
-        iconSize = SystemApp.Settings.Map.icoActionsSize
-        iconOpacity = SystemApp.Settings.Map.icoActionsOpacity
+        iconSize = SystemApp.Settings.map.icoActionsSize
+        iconOpacity = SystemApp.Settings.map.icoActionsOpacity
 
         <span class="property">@parentView</span> = mapView <span class="keyword">if</span> mapView?
 
@@ -1239,14 +1239,14 @@ it will be false.</p>
             <span class="property">@bindSvgDefaults</span> <span class="property">@svgIcon</span>
 
         <span class="keyword">if</span> <span class="keyword">not</span> <span class="property">@svgLinker</span>?
-            <span class="property">@svgLinker</span> = <span class="property">@parentView</span>.paper.image SystemApp.Settings.Map.icoLinkerUrl, <span class="number">0</span>, <span class="number">0</span>, iconSize, iconSize
+            <span class="property">@svgLinker</span> = <span class="property">@parentView</span>.paper.image SystemApp.Settings.map.icoLinkerUrl, <span class="number">0</span>, <span class="number">0</span>, iconSize, iconSize
             <span class="property">@svgLinker</span>.drag <span class="property">@linkCreatorMove</span>, <span class="property">@linkCreatorStart</span>, <span class="property">@linkCreatorEnd</span>
             <span class="property">@svgLinker</span>.mouseover <span class="property">@linkerMouseOver</span>
             <span class="property">@svgLinker</span>.mouseout <span class="property">@linkerMouseOut</span>
             <span class="property">@bindSvgDefaults</span> <span class="property">@svgLinker</span>
 
         <span class="keyword">if</span> <span class="keyword">not</span> <span class="property">@svgResizer</span>?
-            <span class="property">@svgResizer</span> = <span class="property">@parentView</span>.paper.image SystemApp.Settings.Map.icoResizeUrl, <span class="number">0</span>, <span class="number">0</span>, iconSize, iconSize
+            <span class="property">@svgResizer</span> = <span class="property">@parentView</span>.paper.image SystemApp.Settings.map.icoResizeUrl, <span class="number">0</span>, <span class="number">0</span>, iconSize, iconSize
             <span class="property">@svgResizer</span>.drag <span class="property">@resizeMove</span>, <span class="property">@resizeStart</span>, <span class="property">@resizeEnd</span>
             <span class="property">@bindSvgDefaults</span> <span class="property">@svgResizer</span>
 
@@ -1305,7 +1305,7 @@ it will be false.</p>
         <span class="keyword">if</span> <span class="keyword">not</span> <span class="property">@svg</span>?
             <span class="keyword">return</span>
 
-        interval = SystemApp.Settings.Map.blinkInterval <span class="keyword">if</span> <span class="keyword">not</span> interval?
+        interval = SystemApp.Settings.map.blinkInterval <span class="keyword">if</span> <span class="keyword">not</span> interval?
 
         bgOpacity = {<span class="string">"opacity"</span>: <span class="property">@model</span>.opacity()}
         opacity = {<span class="string">"opacity"</span>: <span class="number">1</span>}
@@ -1335,7 +1335,7 @@ the default blinkInterval from the <a href="settings.html">Settings</a>.</p>
         <span class="keyword">if</span> <span class="keyword">not</span> <span class="property">@svg</span>?
             <span class="keyword">return</span>
 
-        interval = SystemApp.Settings.Map.blinkInterval <span class="keyword">if</span> <span class="keyword">not</span> interval?
+        interval = SystemApp.Settings.map.blinkInterval <span class="keyword">if</span> <span class="keyword">not</span> interval?
 
         opacity = {<span class="string">"opacity"</span>: <span class="number">0</span>}
         <span class="property">@svg</span>.animate opacity, interval
@@ -1472,7 +1472,7 @@ Should be at the very top of the shape.</p>
         
           <div class='highlight'><pre>    getTitlePositionAtt: (posX, posY) =&gt;
         posX += <span class="property">@width</span>() / <span class="number">2</span> - <span class="number">1</span>
-        posY -= SystemApp.Settings.Map.titleOffsetY
+        posY -= SystemApp.Settings.map.titleOffsetY
         <span class="keyword">return</span> { x: posX, y: posY }</pre></div>
         
       
@@ -1482,7 +1482,7 @@ Should be around the right-middle center of the shape.</p>
 
         
           <div class='highlight'><pre>    getLinkerPositionAtt: (posX, posY) =&gt;
-        posX += <span class="property">@width</span>() - <span class="property">@model</span>.strokeWidthComputed() - SystemApp.Settings.Map.icoActionsSize
+        posX += <span class="property">@width</span>() - <span class="property">@model</span>.strokeWidthComputed() - SystemApp.Settings.map.icoActionsSize
         posY += <span class="property">@model</span>.strokeWidthComputed()
         <span class="keyword">return</span> { x: posX, y: posY }</pre></div>
         
@@ -1504,8 +1504,8 @@ Should be the bottom right corner of the shape.</p>
 
         
           <div class='highlight'><pre>    getResizerPositionAtt: (posX, posY) =&gt;
-        posX += <span class="property">@width</span>() - SystemApp.Settings.Map.icoActionsSize
-        posY += <span class="property">@height</span>() - SystemApp.Settings.Map.icoActionsSize
+        posX += <span class="property">@width</span>() - SystemApp.Settings.map.icoActionsSize
+        posY += <span class="property">@height</span>() - SystemApp.Settings.map.icoActionsSize
         <span class="keyword">return</span> { x: posX, y: posY }</pre></div>
         
       
@@ -1633,7 +1633,7 @@ assume it is &quot;true&quot;.</p>
 
         
           <div class='highlight'><pre>    linkerMouseOut: =&gt;
-        <span class="property">@svgLinker</span>?.attr {<span class="string">"opacity"</span>: SystemApp.Settings.Map.icoActionsOpacity}</pre></div>
+        <span class="property">@svgLinker</span>?.attr {<span class="string">"opacity"</span>: SystemApp.Settings.map.icoActionsOpacity}</pre></div>
         
       
         
@@ -1641,8 +1641,8 @@ assume it is &quot;true&quot;.</p>
 
         
           <div class='highlight'><pre>    highlight: (color, strength) =&gt;
-        color = SystemApp.Settings.Map.shadowColor <span class="keyword">if</span> <span class="keyword">not</span> color?
-        strength = SystemApp.Settings.Map.shadowStrength <span class="keyword">if</span> <span class="keyword">not</span> strength?
+        color = SystemApp.Settings.map.shadowColor <span class="keyword">if</span> <span class="keyword">not</span> color?
+        strength = SystemApp.Settings.map.shadowStrength <span class="keyword">if</span> <span class="keyword">not</span> strength?
 
         <span class="property">@svg</span>.attr {<span class="string">"stroke"</span>: color, <span class="string">"stroke-width"</span>: strength}</pre></div>
         
@@ -1665,9 +1665,9 @@ If times is 1 and the <code>callback</code> is specified, call it when it has fi
         extraMs = <span class="number">15</span>
 
         <span class="property">@hide</span>()
-        _.delay(<span class="property">@show</span>, SystemApp.Settings.Map.blinkInterval + extraMs)
-        _.delay(<span class="property">@blink</span>, SystemApp.Settings.Map.blinkInterval * <span class="number">2</span> + extraMs * <span class="number">2</span>, times - <span class="number">1</span>, callback) <span class="keyword">if</span> times &gt; <span class="number">1</span>
-        _.delay(callback, SystemApp.Settings.Map.blinkInterval * <span class="number">2</span> + extraMs * <span class="number">4</span>) <span class="keyword">if</span> times <span class="keyword">is</span> <span class="number">1</span> <span class="keyword">and</span> callback?</pre></div>
+        _.delay(<span class="property">@show</span>, SystemApp.Settings.map.blinkInterval + extraMs)
+        _.delay(<span class="property">@blink</span>, SystemApp.Settings.map.blinkInterval * <span class="number">2</span> + extraMs * <span class="number">2</span>, times - <span class="number">1</span>, callback) <span class="keyword">if</span> times &gt; <span class="number">1</span>
+        _.delay(callback, SystemApp.Settings.map.blinkInterval * <span class="number">2</span> + extraMs * <span class="number">4</span>) <span class="keyword">if</span> times <span class="keyword">is</span> <span class="number">1</span> <span class="keyword">and</span> callback?</pre></div>
         
       
         
@@ -1678,10 +1678,10 @@ If times is 1 and the <code>callback</code> is specified, call it when it has fi
           <div class='highlight'><pre>    slowBlink: (times, callback) =&gt;
         times = <span class="number">2</span> <span class="keyword">if</span> <span class="keyword">not</span> times? <span class="keyword">or</span> times <span class="keyword">is</span> <span class="string">""</span>
 
-        <span class="property">@hide</span>(SystemApp.Settings.Map.blinkSlowInterval)
-        _.delay(<span class="property">@show</span>, SystemApp.Settings.Map.blinkSlowInterval, SystemApp.Settings.Map.blinkSlowInterval)
-        _.delay(<span class="property">@slowBlink</span>, SystemApp.Settings.Map.blinkSlowInterval * <span class="number">2</span>, times - <span class="number">1</span>, callback) <span class="keyword">if</span> times &gt; <span class="number">1</span>
-        _.delay(callback, SystemApp.Settings.Map.blinkSlowInterval * <span class="number">3</span>) <span class="keyword">if</span> times <span class="keyword">is</span> <span class="number">1</span> <span class="keyword">and</span> callback?</pre></div>
+        <span class="property">@hide</span>(SystemApp.Settings.map.blinkSlowInterval)
+        _.delay(<span class="property">@show</span>, SystemApp.Settings.map.blinkSlowInterval, SystemApp.Settings.map.blinkSlowInterval)
+        _.delay(<span class="property">@slowBlink</span>, SystemApp.Settings.map.blinkSlowInterval * <span class="number">2</span>, times - <span class="number">1</span>, callback) <span class="keyword">if</span> times &gt; <span class="number">1</span>
+        _.delay(callback, SystemApp.Settings.map.blinkSlowInterval * <span class="number">3</span>) <span class="keyword">if</span> times <span class="keyword">is</span> <span class="number">1</span> <span class="keyword">and</span> callback?</pre></div>
         
       
       <div class="fleur">h</div>

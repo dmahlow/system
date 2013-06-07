@@ -114,6 +114,13 @@
               
                 
                 <li>
+                  <a class="source" href="manager.html">
+                    manager.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
                   <a class="source" href="messages.html">
                     messages.coffee
                   </a>
@@ -450,13 +457,6 @@
               
                 
                 <li>
-                  <a class="source" href="selfTestView.html">
-                    selfTestView.coffee
-                  </a>
-                </li>
-              
-                
-                <li>
                   <a class="source" href="settingsView.html">
                     settingsView.coffee
                   </a>
@@ -598,7 +598,7 @@ load data to the Data object, init the menu and finally init the footer.</p>
 
         
           <div class='highlight'><pre>SystemApp.<span class="function"><span class="title">consoleLog</span></span> = (method, message, obj) -&gt;
-    <span class="keyword">if</span> SystemApp.Settings.General.debug
+    <span class="keyword">if</span> SystemApp.Settings.general.debug
         <span class="keyword">if</span> obj <span class="keyword">isnt</span> <span class="literal">undefined</span>
             console.log method, message, obj
         <span class="keyword">else</span>

@@ -114,6 +114,13 @@
               
                 
                 <li>
+                  <a class="source" href="manager.html">
+                    manager.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
                   <a class="source" href="messages.html">
                     messages.coffee
                   </a>
@@ -450,13 +457,6 @@
               
                 
                 <li>
-                  <a class="source" href="selfTestView.html">
-                    selfTestView.coffee
-                  </a>
-                </li>
-              
-                
-                <li>
                   <a class="source" href="settingsView.html">
                     settingsView.coffee
                   </a>
@@ -661,7 +661,7 @@ listening to these events.</p>
         alertObj.timestamp = <span class="keyword">new</span> Date()
 
         <span class="keyword">if</span> <span class="property">@lastFooterAlert</span>?
-            timeoutLess = (alertObj.timestamp - <span class="property">@lastFooterAlert</span>.timestamp) &lt; SystemApp.Settings.Alert.similarTimeout
+            timeoutLess = (alertObj.timestamp - <span class="property">@lastFooterAlert</span>.timestamp) &lt; SystemApp.Settings.alert.similarTimeout
             sameAlert = alertObj.title <span class="keyword">is</span> <span class="property">@lastFooterAlert</span>.title <span class="keyword">and</span> alertObj.message <span class="keyword">is</span> <span class="property">@lastFooterAlert</span>.message</pre></div>
         
       
@@ -742,18 +742,18 @@ Otherwise use the <code>title</code> and <code>message</code> properties of the 
 
         
           <div class='highlight'><pre>        delay = alertObj.delay
-        delay = SystemApp.Settings.Alert.hideDelay <span class="keyword">if</span> <span class="keyword">not</span> delay?
+        delay = SystemApp.Settings.alert.hideDelay <span class="keyword">if</span> <span class="keyword">not</span> delay?
 
-        <span class="property">@$wrapperFooter</span>.fadeIn SystemApp.Settings.Alert.opacityInterval
+        <span class="property">@$wrapperFooter</span>.fadeIn SystemApp.Settings.alert.opacityInterval
         <span class="property">@isFooterVisible</span> = <span class="literal">true</span>
-        _.delay <span class="property">@hideFooter</span>, delay + SystemApp.Settings.Alert.opacityInterval</pre></div>
+        _.delay <span class="property">@hideFooter</span>, delay + SystemApp.Settings.alert.opacityInterval</pre></div>
         
       
         
         <p>Log alerts to the console only if app is in debug mode.</p>
 
         
-          <div class='highlight'><pre>        <span class="keyword">if</span> SystemApp.Settings.General.debug
+          <div class='highlight'><pre>        <span class="keyword">if</span> SystemApp.Settings.general.debug
             <span class="keyword">if</span> alertObj.isError
                 console.warn <span class="string">"Alert Error"</span>, title, message
             <span class="keyword">else</span>
@@ -766,7 +766,7 @@ Otherwise use the <code>title</code> and <code>message</code> properties of the 
         
           <div class='highlight'><pre>    hideFooter: =&gt;
         <span class="property">@isFooterVisible</span> = <span class="literal">false</span>
-        <span class="property">@$wrapperFooter</span>.fadeOut SystemApp.Settings.Alert.opacityInterval, <span class="property">@nextFooter</span></pre></div>
+        <span class="property">@$wrapperFooter</span>.fadeOut SystemApp.Settings.alert.opacityInterval, <span class="property">@nextFooter</span></pre></div>
         
       
         
@@ -786,7 +786,7 @@ Otherwise use the <code>title</code> and <code>message</code> properties of the 
         <p>Log alerts to the console only if app is in debug mode.</p>
 
         
-          <div class='highlight'><pre>        <span class="keyword">if</span> SystemApp.Settings.General.debug
+          <div class='highlight'><pre>        <span class="keyword">if</span> SystemApp.Settings.general.debug
             <span class="keyword">if</span> alertObj.isError
                 console.error <span class="string">"Alert"</span>, alertObj
             <span class="keyword">else</span>
@@ -854,11 +854,11 @@ Otherwise use the <code>title</code> and <code>message</code> properties of the 
 
         
           <div class='highlight'><pre>        delay = alertObj.delay
-        delay = SystemApp.Settings.Alert.hideDelay <span class="keyword">if</span> <span class="keyword">not</span> delay?
+        delay = SystemApp.Settings.alert.hideDelay <span class="keyword">if</span> <span class="keyword">not</span> delay?
 
-        <span class="property">@$wrapperTooltip</span>.fadeIn SystemApp.Settings.Alert.opacityInterval
+        <span class="property">@$wrapperTooltip</span>.fadeIn SystemApp.Settings.alert.opacityInterval
         <span class="property">@isTooltipVisible</span> = <span class="literal">true</span>
-        _.delay <span class="property">@hideTooltip</span>, delay + SystemApp.Settings.Alert.opacityInterval</pre></div>
+        _.delay <span class="property">@hideTooltip</span>, delay + SystemApp.Settings.alert.opacityInterval</pre></div>
         
       
         
@@ -867,7 +867,7 @@ Otherwise use the <code>title</code> and <code>message</code> properties of the 
         
           <div class='highlight'><pre>    hideTooltip: =&gt;
         <span class="property">@isTooltipVisible</span> = <span class="literal">false</span>
-        <span class="property">@$wrapperTooltip</span>.fadeOut SystemApp.Settings.Alert.opacityInterval, <span class="property">@nextTooltip</span></pre></div>
+        <span class="property">@$wrapperTooltip</span>.fadeOut SystemApp.Settings.alert.opacityInterval, <span class="property">@nextTooltip</span></pre></div>
         
       
         
@@ -881,7 +881,7 @@ This is triggered using Socket.IO.</p>
 
         
           <div class='highlight'><pre>    showServerError: (err) =&gt;
-        <span class="keyword">if</span> SystemApp.Settings.General.debug
+        <span class="keyword">if</span> SystemApp.Settings.general.debug
             <span class="property">@showFooter</span> {isError: <span class="literal">true</span>, title: SystemApp.Messages.server + <span class="string">" "</span> + err.title, message: err.message}</pre></div>
         
       

@@ -114,6 +114,13 @@
               
                 
                 <li>
+                  <a class="source" href="manager.html">
+                    manager.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
                   <a class="source" href="messages.html">
                     messages.coffee
                   </a>
@@ -450,13 +457,6 @@
               
                 
                 <li>
-                  <a class="source" href="selfTestView.html">
-                    selfTestView.coffee
-                  </a>
-                </li>
-              
-                
-                <li>
                   <a class="source" href="settingsView.html">
                     settingsView.coffee
                   </a>
@@ -504,7 +504,7 @@ please edit (or create) the <code>settings.json</code> file on the same director
         
         
         
-          <div class='highlight'><pre>    General:</pre></div>
+          <div class='highlight'><pre>    general:</pre></div>
         
       
         
@@ -551,7 +551,7 @@ If not set, it will be <code>false</code> on production environments and <code>t
         
       
         
-        <p>Interval when blinking a form or HTMl field.</p>
+        <p>Interval when blinking a form or HTMl field, in milliseconds.</p>
 
         
           <div class='highlight'><pre>        elementBlinkInterval: <span class="number">150</span></pre></div>
@@ -644,7 +644,7 @@ the whole model will be sent.</p>
         
         
         
-          <div class='highlight'><pre>    EntityDefinition:</pre></div>
+          <div class='highlight'><pre>    entityDefinition:</pre></div>
         
       
         
@@ -711,7 +711,7 @@ the whole model will be sent.</p>
         
         
         
-          <div class='highlight'><pre>    EntityObject:</pre></div>
+          <div class='highlight'><pre>    entityObject:</pre></div>
         
       
         
@@ -757,7 +757,7 @@ the whole model will be sent.</p>
         
         
         
-          <div class='highlight'><pre>    Map:</pre></div>
+          <div class='highlight'><pre>    map:</pre></div>
         
       
         
@@ -1116,7 +1116,7 @@ value is defined in seconds. Default is 5 minutes.</p>
         
         
         
-          <div class='highlight'><pre>    MapMover:</pre></div>
+          <div class='highlight'><pre>    mapMover:</pre></div>
         
       
         
@@ -1148,7 +1148,7 @@ value is defined in seconds. Default is 5 minutes.</p>
         
         
         
-          <div class='highlight'><pre>    Shape:</pre></div>
+          <div class='highlight'><pre>    shape:</pre></div>
         
       
         
@@ -1264,7 +1264,7 @@ value is defined in seconds. Default is 5 minutes.</p>
         
         
         
-          <div class='highlight'><pre>    Link:</pre></div>
+          <div class='highlight'><pre>    link:</pre></div>
         
       
         
@@ -1373,7 +1373,7 @@ value is defined in seconds. Default is 5 minutes.</p>
         
         
         
-          <div class='highlight'><pre>    LabelEdit:</pre></div>
+          <div class='highlight'><pre>    labelEdit:</pre></div>
         
       
         
@@ -1412,7 +1412,7 @@ value is defined in seconds. Default is 5 minutes.</p>
         
         
         
-          <div class='highlight'><pre>    AuditData:</pre></div>
+          <div class='highlight'><pre>    auditData:</pre></div>
         
       
         
@@ -1507,7 +1507,7 @@ value is defined in seconds. Default is 5 minutes.</p>
         
         
         
-          <div class='highlight'><pre>    AuditEvent:</pre></div>
+          <div class='highlight'><pre>    auditEvent:</pre></div>
         
       
         
@@ -1581,7 +1581,7 @@ value is defined in seconds. Default is 5 minutes.</p>
         
         
         
-          <div class='highlight'><pre>    Variable:</pre></div>
+          <div class='highlight'><pre>    variable:</pre></div>
         
       
         
@@ -1613,7 +1613,7 @@ value is defined in seconds. Default is 5 minutes.</p>
         
         
         
-          <div class='highlight'><pre>    User:</pre></div>
+          <div class='highlight'><pre>    user:</pre></div>
         
       
         
@@ -1666,7 +1666,7 @@ value is defined in seconds. Default is 5 minutes.</p>
         
         
         
-          <div class='highlight'><pre>    Menu:</pre></div>
+          <div class='highlight'><pre>    menu:</pre></div>
         
       
         
@@ -1684,6 +1684,24 @@ value is defined in seconds. Default is 5 minutes.</p>
         
       
         
+        <h2>FOOTER</h2>
+
+        
+      
+        
+        
+        
+          <div class='highlight'><pre>    footer:</pre></div>
+        
+      
+        
+        <p>How long it takes to fade in / out footer information.</p>
+
+        
+          <div class='highlight'><pre>        opacityInterval: <span class="number">400</span></pre></div>
+        
+      
+        
         <h2>ALERT</h2>
 
         
@@ -1691,7 +1709,7 @@ value is defined in seconds. Default is 5 minutes.</p>
         
         
         
-          <div class='highlight'><pre>    Alert:</pre></div>
+          <div class='highlight'><pre>    alert:</pre></div>
         
       
         
@@ -1717,24 +1735,6 @@ For example if you save a map twice in less than 8 seconds, then just show the a
         
       
         
-        <h2>FOOTER</h2>
-
-        
-      
-        
-        
-        
-          <div class='highlight'><pre>    Footer:</pre></div>
-        
-      
-        
-        <p>How long it takes to fade in / out footer information.</p>
-
-        
-          <div class='highlight'><pre>        opacityInterval: <span class="number">400</span></pre></div>
-        
-      
-        
         <h2>SOCKET SETTINGS</h2>
 
         
@@ -1742,7 +1742,7 @@ For example if you save a map twice in less than 8 seconds, then just show the a
         
         
         
-          <div class='highlight'><pre>    Sockets:</pre></div>
+          <div class='highlight'><pre>    sockets:</pre></div>
         
       
         
@@ -1750,6 +1750,24 @@ For example if you save a map twice in less than 8 seconds, then just show the a
 
         
           <div class='highlight'><pre>        clientRefreshSeconds: <span class="number">60</span></pre></div>
+        
+      
+        
+        <h2>MANAGER SETTINGS</h2>
+
+        
+      
+        
+        
+        
+          <div class='highlight'><pre>    manager:</pre></div>
+        
+      
+        
+        <p>The interval to check entities status.</p>
+
+        
+          <div class='highlight'><pre>        checkEntitiesInterval: <span class="number">60000</span></pre></div>
         
       
       <div class="fleur">h</div>

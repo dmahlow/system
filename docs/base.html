@@ -114,6 +114,13 @@
               
                 
                 <li>
+                  <a class="source" href="manager.html">
+                    manager.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
                   <a class="source" href="messages.html">
                     messages.coffee
                   </a>
@@ -450,13 +457,6 @@
               
                 
                 <li>
-                  <a class="source" href="selfTestView.html">
-                    selfTestView.coffee
-                  </a>
-                </li>
-              
-                
-                <li>
                   <a class="source" href="settingsView.html">
                     settingsView.coffee
                   </a>
@@ -590,7 +590,7 @@ append it to the end of the URL.</p>
 
         
           <div class='highlight'><pre>    url: =&gt;
-        t = SystemApp.Settings.General.baseJsonUrl + <span class="property">@typeName</span>.toLowerCase()
+        t = SystemApp.Settings.general.baseJsonUrl + <span class="property">@typeName</span>.toLowerCase()
 
         <span class="keyword">if</span> <span class="property">@id</span>? <span class="keyword">and</span> <span class="property">@id</span> <span class="keyword">isnt</span> <span class="string">""</span>
             <span class="keyword">return</span> t + <span class="string">"/"</span> + <span class="property">@id</span>
@@ -796,7 +796,7 @@ Just make sure <code>options</code> is properly set.</p>
                 <span class="property">@timerSave</span> = <span class="literal">null</span>
 
             callback = () =&gt; <span class="property">@saveRemote</span> options
-            <span class="property">@timerSave</span> = setTimeout callback, SystemApp.Settings.General.saveInterval</pre></div>
+            <span class="property">@timerSave</span> = setTimeout callback, SystemApp.Settings.general.saveInterval</pre></div>
         
       
         
@@ -818,7 +818,7 @@ If no options are passed, created one, and set the
         <span class="property">@timerSave</span> = <span class="literal">null</span>
 
         options = {} <span class="keyword">if</span> <span class="keyword">not</span> options?
-        options.patch = SystemApp.Settings.General.savePatch</pre></div>
+        options.patch = SystemApp.Settings.general.savePatch</pre></div>
         
       
         

@@ -114,6 +114,13 @@
               
                 
                 <li>
+                  <a class="source" href="manager.html">
+                    manager.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
                   <a class="source" href="messages.html">
                     messages.coffee
                   </a>
@@ -450,13 +457,6 @@
               
                 
                 <li>
-                  <a class="source" href="selfTestView.html">
-                    selfTestView.coffee
-                  </a>
-                </li>
-              
-                
-                <li>
                   <a class="source" href="settingsView.html">
                     settingsView.coffee
                   </a>
@@ -547,10 +547,10 @@ opens the app for the first time.</p>
         
           <div class='highlight'><pre>    bindMaps: =&gt;
         <span class="keyword">if</span> SystemApp.Data.maps.fetching <span class="keyword">or</span> SystemApp.Data.maps.models.length &lt; <span class="number">1</span>
-            _.delay <span class="property">@bindMaps</span>, SystemApp.Settings.General.refetchDelay
+            _.delay <span class="property">@bindMaps</span>, SystemApp.Settings.general.refetchDelay
             <span class="keyword">return</span>
 
-        <span class="keyword">if</span> SystemApp.Settings.Map.enableLocalMap
+        <span class="keyword">if</span> SystemApp.Settings.map.enableLocalMap
             map = <span class="keyword">new</span> SystemApp.Map()
             map.initLocalMap()
             <span class="property">@addMapToList</span> map
@@ -604,7 +604,7 @@ opens the app for the first time.</p>
 
         
           <div class='highlight'><pre>    showMapPreview: (e) =&gt;
-        <span class="property">@$imgPreview</span>.attr <span class="string">"src"</span>, SystemApp.Settings.Map.thumbnailBaseUrl + e.data + <span class="string">".png"</span>
+        <span class="property">@$imgPreview</span>.attr <span class="string">"src"</span>, SystemApp.Settings.map.thumbnailBaseUrl + e.data + <span class="string">".png"</span>
         <span class="property">@$imgPreview</span>.css <span class="string">"display"</span>, <span class="string">""</span>
         e.preventDefault()
         e.stopPropagation()</pre></div>
