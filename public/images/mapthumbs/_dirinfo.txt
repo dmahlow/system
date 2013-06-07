@@ -1,0 +1,3 @@
+/public/images/mapthumbs
+
+Map thumbnails are generated here.

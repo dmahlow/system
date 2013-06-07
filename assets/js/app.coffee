@@ -273,8 +273,12 @@ SystemApp.start = ->
 
     # Start listening to model updates.
     SystemApp.alertView.listenToModels true
-    
+
+    # Start history.
     Backbone.history.start()
+
+    # Start the [Manager](manager.html).
+    SystemApp.Manager.start()
 
 # Dispose the app (called when user leaves the page).
 SystemApp.dispose = ->

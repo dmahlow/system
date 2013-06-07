@@ -8,10 +8,7 @@
     // GENERAL SETTINGS
     "general": {
         // The app title.
-        "appTitle": "System App",
-        // When debug is true, more messages will be logged especially to the console.
-        // Leaving it null will enable debug on development, and disable on production.
-        "debug": null
+        "appTitle": "System App"
     },
 
     // EXPRESSER APP SETTINGS
