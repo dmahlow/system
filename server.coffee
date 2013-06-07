@@ -12,10 +12,6 @@ path = require "path"
 security = require "./server/security.coffee"
 sockets = require "./server/sockets.coffee"
 
-# Load settings.
-settingsPath = path.dirname(require.main.filename) + "/server/settings.json"
-expresser.utils.loadSettingsFromJson settingsPath
-
 # Init modules.
 expresser.init()
 manager.init()
