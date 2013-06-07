@@ -86,28 +86,28 @@ If you want to override settings, please create or edit the <code>settings.json<
 the properties and values to be overriden.</p>
 <p>Detailed instructions are available on on the top of the <code>server/settings.coffee</code> file.</p>
 <p>The following settings will need your attention:</p>
-<h5>Settings.General</h5>
+<h4>general</h4>
 <ul>
 <li><code>appTitle</code> - The app title, default is &quot;System App&quot;. You can use something like &quot;MyCompany System&quot;.</li>
 <li><code>debug</code> - Enable debbuging logs. This should be set to false before you deploy the app to production!</li>
 </ul>
-<h5>Settings.Database</h5>
+<h4>database</h4>
 <ul>
 <li><code>connString</code> - The MongoDB connection string. Default is host &quot;localhost&quot;, database &quot;systemapp&quot;.</li>
 </ul>
-<h5>Settings.Web</h5>
+<h4>web</h4>
 <ul>
 <li><code>port</code> - The port used by the Node.js server, default is 3003.</li>
 <li><code>paas</code> - Set to true if you&#39;re deploying to common PaaS services. More info below.</li>
 </ul>
-<h5>Settings.Security</h5>
+<h4>security</h4>
 <ul>
 <li><code>port</code> - The port used by the Node.js server, default is 3003.</li>
 <li><code>userPasswordKey</code> - The secret key/token used to encrypt passwords on the database.</li>
 </ul>
-<h5>Deploying to PaaS</h5>
+<h4>Deploying to PaaS</h4>
 <p>The System App can be easily deployed to AppFog, OpenShift and Heroku. The only requirement is
-that you set <code>Settings.Web.paas</code> to true (it is true by default). In this case we&#39;ll override a few
+that you set <code>web.paas</code> to true (it is true by default). In this case we&#39;ll override a few
 settings to cope with the PaaS environment. For example:
 - the web <code>port</code> will be automatically set so it doesn&#39;t matter what value you have entered.
 - if your app on AppFog has a MongoDB bound to it, the <code>connString</code> will be automatically set.

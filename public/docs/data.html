@@ -114,6 +114,13 @@
               
                 
                 <li>
+                  <a class="source" href="manager.html">
+                    manager.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
                   <a class="source" href="messages.html">
                     messages.coffee
                   </a>
@@ -450,13 +457,6 @@
               
                 
                 <li>
-                  <a class="source" href="selfTestView.html">
-                    selfTestView.coffee
-                  </a>
-                </li>
-              
-                
-                <li>
                   <a class="source" href="settingsView.html">
                     settingsView.coffee
                   </a>
@@ -541,7 +541,7 @@ While loading, the <code>fetching</code> property of collections will be set tru
 
         
           <div class='highlight'><pre>    init: -&gt;
-        <span class="property">@loggedUser</span>.url = SystemApp.Settings.User.loggedUrl
+        <span class="property">@loggedUser</span>.url = SystemApp.Settings.user.loggedUrl
         <span class="property">@loggedUser</span>.fetch()
         <span class="property">@userSettings</span>.fetch()
 
@@ -650,7 +650,7 @@ While loading, the <code>fetching</code> property of collections will be set tru
             clearTimeout SystemApp.Data.timerSaveUserSettings
             SystemApp.Data.timerSaveUserSettings = <span class="literal">null</span>
 
-        interval = SystemApp.Settings.General.saveInterval
+        interval = SystemApp.Settings.general.saveInterval
         callback = SystemApp.Data.userSettings.save
 
         SystemApp.Data.timerSaveUserSettings = setTimeout callback, interval</pre></div>

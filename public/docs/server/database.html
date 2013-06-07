@@ -23,36 +23,8 @@
               
                 
                 <li>
-                  <a class="source" href="configure.html">
-                    configure.coffee
-                  </a>
-                </li>
-              
-                
-                <li>
                   <a class="source" href="database.html">
                     database.coffee
-                  </a>
-                </li>
-              
-                
-                <li>
-                  <a class="source" href="imaging.html">
-                    imaging.coffee
-                  </a>
-                </li>
-              
-                
-                <li>
-                  <a class="source" href="logger.html">
-                    logger.coffee
-                  </a>
-                </li>
-              
-                
-                <li>
-                  <a class="source" href="mail.html">
-                    mail.coffee
                   </a>
                 </li>
               
@@ -74,13 +46,6 @@
                 <li>
                   <a class="source" href="security.html">
                     security.coffee
-                  </a>
-                </li>
-              
-                
-                <li>
-                  <a class="source" href="settings.html">
-                    settings.coffee
                   </a>
                 </li>
               
@@ -117,147 +82,11 @@
         
       
         
-        <p>Define required modules.</p>
+        <p>Require Expresser.</p>
 
         
-          <div class='highlight'><pre>    _ = require <span class="string">"lodash"</span>
-    mongo = require <span class="string">"mongoskin"</span>
-    logger = require <span class="string">"./logger.coffee"</span>
-    settings = require <span class="string">"./settings.coffee"</span></pre></div>
-        
-      
-        
-        <p>Define the default connection object.</p>
-
-        
-          <div class='highlight'><pre>    db = mongo.db settings.Database.connString, {fsync: settings.Database.fsync}</pre></div>
-        
-      
-        
-        <h2>UNDERLYING METHODS</h2>
-
-        
-      
-        
-        <p>Make sure that we transform MongoDB &quot;_id&quot; to &quot;id&quot;.</p>
-
-        
-          <div class='highlight'><pre>    normalizeId: (result) =&gt;
-        <span class="keyword">if</span> <span class="keyword">not</span> result?
-            <span class="keyword">return</span>
-
-        <span class="keyword">if</span> result.length?
-            <span class="keyword">for</span> obj <span class="keyword">in</span> result
-                obj[<span class="string">"id"</span>] = obj[<span class="string">"_id"</span>].toString()
-                <span class="keyword">delete</span> obj[<span class="string">"_id"</span>]
-        <span class="keyword">else</span>
-            result[<span class="string">"id"</span>] = result[<span class="string">"_id"</span>].toString()
-            <span class="keyword">delete</span> result[<span class="string">"_id"</span>]
-
-        <span class="keyword">return</span> result</pre></div>
-        
-      
-        
-        <p>Get the full collection if no <code>filter</code> is specified. If <code>filter</code> is set,
-check if it represents an ID to return a single document by ID, otherwise
-assume it&#39;s a property filter and pass it to the <code>find</code> method on MongoDB.
-The <code>callback</code> is mandatory here.</p>
-
-        
-          <div class='highlight'><pre>    get: (table, filter, callback) =&gt;
-        <span class="keyword">if</span> settings.General.debug</pre></div>
-        
-      
-        
-        <p>Remove password fields from the logged string!</p>
-
-        
-          <div class='highlight'><pre>            <span class="keyword">if</span> filter?
-                cleanFilter = _.cloneDeep filter
-                <span class="keyword">delete</span> cleanFilter[<span class="string">"password"</span>]
-                <span class="keyword">delete</span> cleanFilter[<span class="string">"passwordHash"</span>]
-            <span class="keyword">else</span>
-                cleanFilter = <span class="literal">null</span>
-            logger.info <span class="string">"Database.get"</span>, table.collectionName, cleanFilter
-
-        <span class="keyword">if</span> filter?
-            <span class="keyword">if</span> filter.id?
-                id = filter.id
-            <span class="keyword">else</span>
-                t = <span class="keyword">typeof</span> filter
-                id = filter <span class="keyword">if</span> t <span class="keyword">is</span> <span class="string">"string"</span> <span class="keyword">or</span> t <span class="keyword">is</span> <span class="string">"integer"</span>
-
-        <span class="keyword">if</span> id?
-            table.findById id, (err, result) =&gt; callback err, <span class="property">@normalizeId</span>(result)
-        <span class="keyword">else</span> <span class="keyword">if</span> filter?
-            table.find(filter).toArray (err, result) =&gt; callback err, <span class="property">@normalizeId</span>(result)
-        <span class="keyword">else</span>
-            table.find().toArray (err, result) =&gt; callback err, <span class="property">@normalizeId</span>(result)</pre></div>
-        
-      
-        
-        <p>Insert a new document if its ID is null or undefined, or updates the specified
-document if its ID is set. If <code>options.patch</code> is true, patch the document
-with its updated info instead of replacing it entirely.</p>
-
-        
-          <div class='highlight'><pre>    set: (table, obj, options, callback) =&gt;
-        <span class="keyword">if</span> <span class="keyword">not</span> obj?
-            callback? <span class="string">"<span class="subst">#{table}</span> record not found."</span>, <span class="literal">null</span>
-            <span class="keyword">return</span>
-
-        <span class="keyword">if</span> settings.General.debug
-            logger.info <span class="string">"Database.set"</span>, table.collectionName, obj.id, obj.friendlyId</pre></div>
-        
-      
-        
-        <p>Make sure the ID is converted to ObjectID, and delete the <code>obj.id</code> as
-internally Mongo only uses the <code>_id</code> property.</p>
-
-        
-          <div class='highlight'><pre>        <span class="keyword">if</span> obj.id?
-            id = mongo.ObjectID.createFromHexString obj.id.toString()
-        <span class="keyword">else</span>
-            id = obj._id
-
-        <span class="keyword">delete</span> obj.id
-
-        <span class="keyword">if</span> options?.patch
-            table.findAndModify {<span class="string">"_id"</span>: id}, {<span class="string">"sort"</span>: <span class="string">"_id"</span>}, {$set: obj}, {<span class="string">"new"</span>: <span class="literal">true</span>}, (err, result) =&gt;
-                callback(err, <span class="property">@normalizeId</span>(result)) <span class="keyword">if</span> callback?
-        <span class="keyword">else</span>
-            table.findAndModify {<span class="string">"_id"</span>: id}, {<span class="string">"sort"</span>: <span class="string">"_id"</span>}, obj, {<span class="string">"new"</span>: <span class="literal">true</span>, <span class="string">"upsert"</span>: <span class="literal">true</span>}, (err, result) =&gt;
-                callback(err, <span class="property">@normalizeId</span>(result)) <span class="keyword">if</span> callback?</pre></div>
-        
-      
-        
-        <p>Log transaction to the logs collection.</p>
-
-        
-          <div class='highlight'><pre>        <span class="property">@log</span> obj, options</pre></div>
-        
-      
-        
-        <p>Delete the specified document from the database, based on its ID.</p>
-
-        
-          <div class='highlight'><pre>    del: (table, id, callback) =&gt;
-        <span class="keyword">if</span> <span class="keyword">not</span> id?
-            callback? <span class="string">"<span class="subst">#{table}</span> record not found."</span>, <span class="literal">null</span>
-            <span class="keyword">return</span>
-
-        <span class="keyword">if</span> settings.General.debug
-            logger.info <span class="string">"Database.del"</span>, table.collectionName, id</pre></div>
-        
-      
-        
-        <p>Make sure the ID is converted to ObjectID.</p>
-
-        
-          <div class='highlight'><pre>        id = mongo.ObjectID.createFromHexString id
-
-        table.remove {<span class="string">"_id"</span>: id}, (err, result) =&gt;
-            callback(err, <span class="property">@normalizeId</span>(result)) <span class="keyword">if</span> callback?</pre></div>
+          <div class='highlight'><pre>    expresser = require <span class="string">"expresser"</span>
+    settings = expresser.settings</pre></div>
         
       
         
@@ -270,8 +99,7 @@ internally Mongo only uses the <code>_id</code> property.</p>
 
         
           <div class='highlight'><pre>    getEntityDefinition: (filter, callback) =&gt;
-        table = db.collection <span class="string">"entity"</span>
-        <span class="property">@get</span> table, filter, callback</pre></div>
+        expresser.database.get <span class="string">"entity"</span>, filter, callback</pre></div>
         
       
         
@@ -279,8 +107,7 @@ internally Mongo only uses the <code>_id</code> property.</p>
 
         
           <div class='highlight'><pre>    setEntityDefinition: (obj, options, callback) =&gt;
-        table = db.collection <span class="string">"entity"</span>
-        <span class="property">@set</span> table, obj, options, callback</pre></div>
+        expresser.database.set <span class="string">"entity"</span>, obj, options, callback</pre></div>
         
       
         
@@ -288,8 +115,7 @@ internally Mongo only uses the <code>_id</code> property.</p>
 
         
           <div class='highlight'><pre>    deleteEntityDefinition: (id, callback) =&gt;
-        table = db.collection <span class="string">"entity"</span>
-        <span class="property">@del</span> table, id, callback</pre></div>
+        expresser.database.del <span class="string">"entity"</span>, id, callback</pre></div>
         
       
         
@@ -302,8 +128,7 @@ internally Mongo only uses the <code>_id</code> property.</p>
 
         
           <div class='highlight'><pre>    getMap: (filter, callback) =&gt;
-        table = db.collection <span class="string">"map"</span>
-        <span class="property">@get</span> table, filter, callback</pre></div>
+        expresser.database.get <span class="string">"map"</span>, filter, callback</pre></div>
         
       
         
@@ -311,8 +136,7 @@ internally Mongo only uses the <code>_id</code> property.</p>
 
         
           <div class='highlight'><pre>    setMap: (obj, options, callback) =&gt;
-        table = db.collection <span class="string">"map"</span>
-        <span class="property">@set</span> table, obj, options, callback</pre></div>
+        expresser.database.set <span class="string">"map"</span>, obj, options, callback</pre></div>
         
       
         
@@ -320,8 +144,7 @@ internally Mongo only uses the <code>_id</code> property.</p>
 
         
           <div class='highlight'><pre>    deleteMap: (id, callback) =&gt;
-        table = db.collection <span class="string">"map"</span>
-        <span class="property">@del</span> table, id, callback</pre></div>
+        expresser.database.del <span class="string">"map"</span>, id, callback</pre></div>
         
       
         
@@ -334,8 +157,7 @@ internally Mongo only uses the <code>_id</code> property.</p>
 
         
           <div class='highlight'><pre>    getAuditData: (filter, callback) =&gt;
-        table = db.collection <span class="string">"auditdata"</span>
-        <span class="property">@get</span> table, filter, callback</pre></div>
+        expresser.database.get <span class="string">"auditdata"</span>, filter, callback</pre></div>
         
       
         
@@ -343,8 +165,7 @@ internally Mongo only uses the <code>_id</code> property.</p>
 
         
           <div class='highlight'><pre>    setAuditData: (obj, options, callback) =&gt;
-        table = db.collection <span class="string">"auditdata"</span>
-        <span class="property">@set</span> table, obj, options, callback</pre></div>
+        expresser.database.set <span class="string">"auditdata"</span>, obj, options, callback</pre></div>
         
       
         
@@ -352,8 +173,7 @@ internally Mongo only uses the <code>_id</code> property.</p>
 
         
           <div class='highlight'><pre>    deleteAuditData: (id, callback) =&gt;
-        table = db.collection <span class="string">"auditdata"</span>
-        <span class="property">@del</span> table, id, callback</pre></div>
+        expresser.database.del <span class="string">"auditdata"</span>, id, callback</pre></div>
         
       
         
@@ -366,8 +186,7 @@ internally Mongo only uses the <code>_id</code> property.</p>
 
         
           <div class='highlight'><pre>    getAuditEvent: (filter, callback) =&gt;
-        table = db.collection <span class="string">"auditevent"</span>
-        <span class="property">@get</span> table, filter, callback</pre></div>
+        expresser.database.get <span class="string">"auditevent"</span>, filter, callback</pre></div>
         
       
         
@@ -375,8 +194,7 @@ internally Mongo only uses the <code>_id</code> property.</p>
 
         
           <div class='highlight'><pre>    setAuditEvent: (obj, options, callback) =&gt;
-        table = db.collection <span class="string">"auditevent"</span>
-        <span class="property">@set</span> table, obj, options, callback</pre></div>
+        expresser.database.set <span class="string">"auditevent"</span>, obj, options, callback</pre></div>
         
       
         
@@ -384,8 +202,7 @@ internally Mongo only uses the <code>_id</code> property.</p>
 
         
           <div class='highlight'><pre>    deleteAuditEvent: (id, callback) =&gt;
-        table = db.collection <span class="string">"auditevent"</span>
-        <span class="property">@del</span> table, id, callback</pre></div>
+        expresser.database.del <span class="string">"auditevent"</span>, id, callback</pre></div>
         
       
         
@@ -398,8 +215,7 @@ internally Mongo only uses the <code>_id</code> property.</p>
 
         
           <div class='highlight'><pre>    getVariable: (filter, callback) =&gt;
-        table = db.collection <span class="string">"variable"</span>
-        <span class="property">@get</span> table, filter, callback</pre></div>
+        expresser.database.get <span class="string">"variable"</span>, filter, callback</pre></div>
         
       
         
@@ -407,8 +223,7 @@ internally Mongo only uses the <code>_id</code> property.</p>
 
         
           <div class='highlight'><pre>    setVariable: (obj, options, callback) =&gt;
-        table = db.collection <span class="string">"variable"</span>
-        <span class="property">@set</span> table, obj, options, callback</pre></div>
+        expresser.database.set <span class="string">"variable"</span>, obj, options, callback</pre></div>
         
       
         
@@ -416,8 +231,7 @@ internally Mongo only uses the <code>_id</code> property.</p>
 
         
           <div class='highlight'><pre>    deleteVariable: (id, callback) =&gt;
-        table = db.collection <span class="string">"variable"</span>
-        <span class="property">@del</span> table, id, callback</pre></div>
+        expresser.database.del <span class="string">"variable"</span>, id, callback</pre></div>
         
       
         
@@ -430,8 +244,7 @@ internally Mongo only uses the <code>_id</code> property.</p>
 
         
           <div class='highlight'><pre>    getUser: (filter, callback) =&gt;
-        table = db.collection <span class="string">"user"</span>
-        <span class="property">@get</span> table, filter, callback</pre></div>
+        expresser.database.get <span class="string">"user"</span>, filter, callback</pre></div>
         
       
         
@@ -439,8 +252,7 @@ internally Mongo only uses the <code>_id</code> property.</p>
 
         
           <div class='highlight'><pre>    setUser: (obj, options, callback) =&gt;
-        table = db.collection <span class="string">"user"</span>
-        <span class="property">@set</span> table, obj, options, callback</pre></div>
+        expresser.database.set <span class="string">"user"</span>, obj, options, callback</pre></div>
         
       
         
@@ -448,8 +260,7 @@ internally Mongo only uses the <code>_id</code> property.</p>
 
         
           <div class='highlight'><pre>    deleteUser: (id, callback) =&gt;
-        table = db.collection <span class="string">"user"</span>
-        <span class="property">@del</span> table, id, callback</pre></div>
+        expresser.database.del <span class="string">"user"</span>, id, callback</pre></div>
         
       
         
@@ -464,21 +275,17 @@ this please check the <a href="logger.html">Logger</a> class.</p>
 
         
           <div class='highlight'><pre>    log: (obj, options) =&gt;
-        table = db.collection <span class="string">"log"</span>
-
-        <span class="keyword">if</span> <span class="keyword">not</span> obj?
-            <span class="keyword">return</span>
-        <span class="keyword">else</span>
-            obj.timestamp = <span class="keyword">new</span> Date()</pre></div>
+        <span class="keyword">return</span> <span class="keyword">if</span> <span class="keyword">not</span> obj?</pre></div>
         
       
         
-        <p>Append options, if any.</p>
+        <p>Append timestamp and options, if any.</p>
 
         
-          <div class='highlight'><pre>        obj.setOptions = options <span class="keyword">if</span> options?
+          <div class='highlight'><pre>        obj.timestamp = <span class="keyword">new</span> Date()
+        obj.setOptions = options <span class="keyword">if</span> options?
 
-        table.insert obj</pre></div>
+        expresser.database.db.collection(<span class="string">"log"</span>).insert obj</pre></div>
         
       
         
@@ -488,12 +295,10 @@ Default interval is every 2 hours.</p>
         
           <div class='highlight'><pre>    cleanLogs: =&gt;
         minDate = <span class="keyword">new</span> Date()
-        minDate.setHours(minDate.getHours() - settings.Database.logExpires)
+        minDate.setHours(minDate.getHours() - settings.database.logExpires)
 
-        table = db.collection <span class="string">"log"</span>
-        table.remove {<span class="string">"timestamp"</span>: {<span class="string">"$lt"</span>:minDate}}
-
-        logger.info <span class="string">"Deleted DB logs older than <span class="subst">#{minDate}</span>."</span></pre></div>
+        expresser.database.db.collection(<span class="string">"log"</span>).remove {<span class="string">"timestamp"</span>: {<span class="string">"$lt"</span>:minDate}}
+        expresser.logger.info <span class="string">"Deleted DB logs older than <span class="subst">#{minDate}</span>."</span></pre></div>
         
       
         

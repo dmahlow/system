@@ -114,6 +114,13 @@
               
                 
                 <li>
+                  <a class="source" href="manager.html">
+                    manager.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
                   <a class="source" href="messages.html">
                     messages.coffee
                   </a>
@@ -450,13 +457,6 @@
               
                 
                 <li>
-                  <a class="source" href="selfTestView.html">
-                    selfTestView.coffee
-                  </a>
-                </li>
-              
-                
-                <li>
                   <a class="source" href="settingsView.html">
                     settingsView.coffee
                   </a>
@@ -641,8 +641,8 @@
 
         
           <div class='highlight'><pre>    setPaper: =&gt;
-        width = SystemApp.Settings.Map.paperSizeX
-        height = SystemApp.Settings.Map.paperSizeY
+        width = SystemApp.Settings.map.paperSizeX
+        height = SystemApp.Settings.map.paperSizeY
 
         <span class="property">@selectedShapes</span> = {}
         <span class="property">@paper</span> = <span class="keyword">new</span> Raphael <span class="string">"map"</span>, width, height</pre></div>
@@ -760,7 +760,7 @@
 
         
           <div class='highlight'><pre>    bind: (map) =&gt;
-        console.profile <span class="string">"MapView.bind"</span> <span class="keyword">if</span> SystemApp.Settings.General.profile
+        console.profile <span class="string">"MapView.bind"</span> <span class="keyword">if</span> SystemApp.Settings.general.profile
         SystemApp.consoleLog <span class="string">"MapView.bind"</span>, <span class="string">"<span class="subst">#{map.name()}</span>, <span class="subst">#{map.shapes().length}</span> shapes, <span class="subst">#{map.links().length}</span> links"</span>
 
         <span class="property">@model</span>?.save()
@@ -846,7 +846,7 @@
         
           <div class='highlight'><pre>        <span class="property">@bindEvents</span>()
 
-        console.profileEnd <span class="string">"MapView.bind"</span> <span class="keyword">if</span> SystemApp.Settings.General.profile</pre></div>
+        console.profileEnd <span class="string">"MapView.bind"</span> <span class="keyword">if</span> SystemApp.Settings.general.profile</pre></div>
         
       
         
@@ -884,7 +884,7 @@
         <span class="keyword">else</span>
             <span class="property">@paperBg</span> = <span class="property">@paper</span>.rect(<span class="number">0</span>, <span class="number">0</span>, <span class="property">@paper</span>.width, <span class="property">@paper</span>.height).attr {fill: <span class="property">@paperBg</span>}
 
-        <span class="property">@paperBg</span>.node.id = SystemApp.Settings.Map.id</pre></div>
+        <span class="property">@paperBg</span>.node.id = SystemApp.Settings.map.id</pre></div>
         
       
         
@@ -1121,7 +1121,7 @@ entity object namespace before its value.</p>
 
         
           <div class='highlight'><pre>        <span class="keyword">if</span> prop? <span class="keyword">and</span> prop <span class="keyword">isnt</span> <span class="string">""</span>
-            prop = <span class="string">"<span class="subst">#{SystemApp.Settings.General.dataBindingKey}</span><span class="subst">#{SystemApp.Settings.EntityObject.bindingNamespace}</span>.<span class="subst">#{prop}</span>"</span>
+            prop = <span class="string">"<span class="subst">#{SystemApp.Settings.general.dataBindingKey}</span><span class="subst">#{SystemApp.Settings.entityObject.bindingNamespace}</span>.<span class="subst">#{prop}</span>"</span>
 
         <span class="property">@overrideShapeTitle</span> = prop
         _.each <span class="property">@shapeViews</span>, (view) =&gt; view.labelsView.refreshTitle()</pre></div>
@@ -1292,8 +1292,8 @@ The max and min zoom values are defined on the <a href="settings.html">Settings<
 
         
           <div class='highlight'><pre>    setViewBox: =&gt;
-        <span class="property">@currentZoom</span> = SystemApp.Settings.Map.minZoom <span class="keyword">if</span> <span class="property">@currentZoom</span> &lt; SystemApp.Settings.Map.minZoom
-        <span class="property">@currentZoom</span> = SystemApp.Settings.Map.maxZoom <span class="keyword">if</span> <span class="property">@currentZoom</span> &gt; SystemApp.Settings.Map.maxZoom
+        <span class="property">@currentZoom</span> = SystemApp.Settings.map.minZoom <span class="keyword">if</span> <span class="property">@currentZoom</span> &lt; SystemApp.Settings.map.minZoom
+        <span class="property">@currentZoom</span> = SystemApp.Settings.map.maxZoom <span class="keyword">if</span> <span class="property">@currentZoom</span> &gt; SystemApp.Settings.map.maxZoom
 
         boxWidth = <span class="property">@paper</span>.width * <span class="property">@currentZoom</span>
         boxHeight = <span class="property">@paper</span>.height * <span class="property">@currentZoom</span>
@@ -1311,7 +1311,7 @@ The max and min zoom values are defined on the <a href="settings.html">Settings<
 
         
           <div class='highlight'><pre>    zoomIn: (amount) =&gt;
-        amount = SystemApp.Settings.Map.zoomStep <span class="keyword">if</span> <span class="keyword">not</span> amount?
+        amount = SystemApp.Settings.map.zoomStep <span class="keyword">if</span> <span class="keyword">not</span> amount?
         <span class="property">@zoomSet</span> <span class="property">@currentZoom</span> - amount</pre></div>
         
       
@@ -1320,7 +1320,7 @@ The max and min zoom values are defined on the <a href="settings.html">Settings<
 
         
           <div class='highlight'><pre>    zoomOut: (amount) =&gt;
-        amount = SystemApp.Settings.Map.zoomStep <span class="keyword">if</span> <span class="keyword">not</span> amount?
+        amount = SystemApp.Settings.map.zoomStep <span class="keyword">if</span> <span class="keyword">not</span> amount?
         <span class="property">@zoomSet</span> <span class="property">@currentZoom</span> + amount</pre></div>
         
       
@@ -1335,7 +1335,7 @@ Save zoom to the <a href="userSettings.html">user settings</a>.</p>
 
         <span class="keyword">if</span> <span class="property">@timerAfterZoom</span>?
             clearTimeout <span class="property">@timerAfterZoom</span>
-        <span class="property">@timerAfterZoom</span> = setTimeout <span class="property">@afterZoomSet</span>, SystemApp.Settings.Map.zoomUpdateDelay</pre></div>
+        <span class="property">@timerAfterZoom</span> = setTimeout <span class="property">@afterZoomSet</span>, SystemApp.Settings.map.zoomUpdateDelay</pre></div>
         
       
         
@@ -1415,7 +1415,7 @@ edit mode, and off when not editable.</p>
             <span class="keyword">while</span> i++ &lt; lengthY
                 pathString += <span class="string">"M0 "</span> + i * sizeY + <span class="string">"H"</span> + <span class="property">@paper</span>.width
 
-        <span class="property">@gridLines</span> = <span class="property">@paper</span>.path(pathString).attr(<span class="string">"stroke"</span>, SystemApp.Settings.Map.gridStroke)
+        <span class="property">@gridLines</span> = <span class="property">@paper</span>.path(pathString).attr(<span class="string">"stroke"</span>, SystemApp.Settings.map.gridStroke)
         <span class="property">@gridLines</span>.toBack()
 
         <span class="property">@paperBg</span>.toBack()</pre></div>
@@ -1471,13 +1471,13 @@ the [Entity List View</a> overlay.</p>
             posX = view.x()
             posY = view.y()
 
-            <span class="keyword">if</span> posX - x &lt; SystemApp.Settings.Map.gridSizeX
-                x += SystemApp.Settings.Map.gridSizeX
+            <span class="keyword">if</span> posX - x &lt; SystemApp.Settings.map.gridSizeX
+                x += SystemApp.Settings.map.gridSizeX
 
-            <span class="keyword">if</span> posY - y &lt; SystemApp.Settings.Map.gridSizeY
-                y += SystemApp.Settings.Map.gridSizeY
+            <span class="keyword">if</span> posY - y &lt; SystemApp.Settings.map.gridSizeY
+                y += SystemApp.Settings.map.gridSizeY
 
-        <span class="keyword">return</span> <span class="keyword">new</span> SystemApp.Shape {x: x / SystemApp.Settings.Map.gridSizeX, y: y / SystemApp.Settings.Map.gridSizeY}</pre></div>
+        <span class="keyword">return</span> <span class="keyword">new</span> SystemApp.Shape {x: x / SystemApp.Settings.map.gridSizeX, y: y / SystemApp.Settings.map.gridSizeY}</pre></div>
         
       
         
@@ -1567,8 +1567,8 @@ and pressing &quot;Esc&quot; twice will unselect the any selected shapes.</p>
 
         
           <div class='highlight'><pre>        isBaseSvgTag = src.tagName <span class="keyword">isnt</span> <span class="string">"svg"</span>
-        isMapTag = targetId <span class="keyword">isnt</span> SystemApp.Settings.Map.id
-        isGridLine = targetId.indexOf(SystemApp.Settings.Map.gridIdPrefix) &lt; <span class="number">0</span></pre></div>
+        isMapTag = targetId <span class="keyword">isnt</span> SystemApp.Settings.map.id
+        isGridLine = targetId.indexOf(SystemApp.Settings.map.gridIdPrefix) &lt; <span class="number">0</span></pre></div>
         
       
         
@@ -1583,7 +1583,7 @@ and pressing &quot;Esc&quot; twice will unselect the any selected shapes.</p>
         <p>If user clicked on a blank area, deselect the current <a href="shapeView.html">Shape View</a>.</p>
 
         
-          <div class='highlight'><pre>        <span class="keyword">if</span> targetId <span class="keyword">is</span> SystemApp.Settings.Map.id
+          <div class='highlight'><pre>        <span class="keyword">if</span> targetId <span class="keyword">is</span> SystemApp.Settings.map.id
             <span class="property">@shapesMoverView</span>.hide()
             <span class="property">@clearSelectedShapes</span>()</pre></div>
         
@@ -1721,7 +1721,7 @@ the whole page.</p>
         
           <div class='highlight'><pre>    auditDataRemoved: (auditData) =&gt;
         SystemApp.alertEvents.trigger <span class="string">"footer"</span>, {removedModel: auditData}
-        _.delay location.reload, SystemApp.Settings.General.refetchDelay</pre></div>
+        _.delay location.reload, SystemApp.Settings.general.refetchDelay</pre></div>
         
       
         
@@ -1804,7 +1804,7 @@ This WON&#39;T happen for local maps.</p>
         <p>If a thumbnail was generated less than 5 minutes ago, do nothing.</p>
 
         
-          <div class='highlight'><pre>        <span class="keyword">if</span> now.getTime() - thumbnailDate.getTime() &lt; SystemApp.Settings.Map.thumbnailExpires
+          <div class='highlight'><pre>        <span class="keyword">if</span> now.getTime() - thumbnailDate.getTime() &lt; SystemApp.Settings.map.thumbnailExpires
             <span class="keyword">return</span></pre></div>
         
       
@@ -1812,15 +1812,23 @@ This WON&#39;T happen for local maps.</p>
         <p>Update thumbnail date and generate new thumbnail using an AJAX post.</p>
 
         
-          <div class='highlight'><pre>        <span class="property">@model</span>.thumbnailDate now
+          <div class='highlight'><pre>        <span class="property">@model</span>.thumbnailDate now</pre></div>
+        
+      
+        
+        <p>Clean SVG before sending to server.</p>
+
+        
+          <div class='highlight'><pre>        svgData = <span class="property">@$el</span>.html()
+        svgData = svgData.replace <span class="regexp">/&lt;(image)[^&gt;]*&gt;[^&lt;]*(&lt;\/image&gt;)/ig</span>, <span class="string">""</span>
 
         $.ajax
-            url: SystemApp.Settings.Map.thumbnailBaseUrl + <span class="property">@model</span>.id
+            url: SystemApp.Settings.map.thumbnailBaseUrl + <span class="property">@model</span>.id
             cache: <span class="literal">false</span>
             dataType: <span class="string">"json"</span>
             type: <span class="string">"POST"</span>
             data:
-                svg: <span class="property">@$el</span>.html()</pre></div>
+                svg: svgData</pre></div>
         
       
       <div class="fleur">h</div>

@@ -114,6 +114,13 @@
               
                 
                 <li>
+                  <a class="source" href="manager.html">
+                    manager.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
                   <a class="source" href="messages.html">
                     messages.coffee
                   </a>
@@ -450,13 +457,6 @@
               
                 
                 <li>
-                  <a class="source" href="selfTestView.html">
-                    selfTestView.coffee
-                  </a>
-                </li>
-              
-                
-                <li>
                   <a class="source" href="settingsView.html">
                     settingsView.coffee
                   </a>
@@ -586,6 +586,7 @@ subsequent callbacks should have their index updated as well!</p>
         
           <div class='highlight'><pre>    start: -&gt;
         SystemApp.consoleLog <span class="string">"Tutorial"</span>, <span class="string">"Start at "</span> + <span class="keyword">new</span> Date()
+
         <span class="property">@$cancelbg</span> = $(<span class="string">"#tutorial-cancelbg"</span>)
         <span class="property">@$cancelbg</span>.show()
         <span class="property">@$tour</span> = $(<span class="string">"#tutorial"</span>).joyride {postStepCallback: <span class="property">@postStepCallback</span>, postRideCallback: <span class="property">@postRideCallback</span>}</pre></div>

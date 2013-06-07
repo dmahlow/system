@@ -114,6 +114,13 @@
               
                 
                 <li>
+                  <a class="source" href="manager.html">
+                    manager.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
                   <a class="source" href="messages.html">
                     messages.coffee
                   </a>
@@ -450,13 +457,6 @@
               
                 
                 <li>
-                  <a class="source" href="selfTestView.html">
-                    selfTestView.coffee
-                  </a>
-                </li>
-              
-                
-                <li>
                   <a class="source" href="settingsView.html">
                     settingsView.coffee
                   </a>
@@ -523,7 +523,7 @@
 
         
           <div class='highlight'><pre>    initialize: =&gt;
-        <span class="property">@currentSettings</span> = SystemApp.Settings.EntityDefinition
+        <span class="property">@currentSettings</span> = SystemApp.Settings.entityDefinition
         <span class="property">@overlayInit</span> <span class="string">"#entitymanager"</span>
         <span class="property">@setDom</span>()
         <span class="property">@setEvents</span>()</pre></div>
@@ -586,8 +586,8 @@
         <p>Add dynamic attributes to input fields.</p>
 
         
-          <div class='highlight'><pre>        <span class="property">@$txtRefresh</span>.attr <span class="string">"min"</span>, SystemApp.Settings.EntityDefinition.minRefreshInterval
-        <span class="property">@$txtRefresh</span>.attr <span class="string">"max"</span>, SystemApp.Settings.EntityDefinition.maxRefreshInterval</pre></div>
+          <div class='highlight'><pre>        <span class="property">@$txtRefresh</span>.attr <span class="string">"min"</span>, SystemApp.Settings.entityDefinition.minRefreshInterval
+        <span class="property">@$txtRefresh</span>.attr <span class="string">"max"</span>, SystemApp.Settings.entityDefinition.maxRefreshInterval</pre></div>
         
       
         
@@ -763,9 +763,9 @@ If not entity is being edited, hide the shape template preview.</p>
             <span class="string">"border"</span>: <span class="string">"<span class="subst">#{@model.shapeStrokeWidth()}</span>px solid <span class="subst">#{@model.shapeStroke()}</span>"</span>
             <span class="string">"border-radius"</span>: borderRadius
             <span class="string">"font-size"</span>: <span class="string">"<span class="subst">#{@model.shapeFontSize()}</span>px"</span>
-            <span class="string">"height"</span>: <span class="property">@model</span>.shapeSizeY() * SystemApp.Settings.Map.gridSizeY - <span class="property">@model</span>.shapeStrokeWidth()
+            <span class="string">"height"</span>: <span class="property">@model</span>.shapeSizeY() * SystemApp.Settings.map.gridSizeY - <span class="property">@model</span>.shapeStrokeWidth()
             <span class="string">"opacity"</span>: <span class="property">@model</span>.shapeOpacity()
-            <span class="string">"width"</span>: <span class="property">@model</span>.shapeSizeX() * SystemApp.Settings.Map.gridSizeX - <span class="property">@model</span>.shapeStrokeWidth()
+            <span class="string">"width"</span>: <span class="property">@model</span>.shapeSizeX() * SystemApp.Settings.map.gridSizeX - <span class="property">@model</span>.shapeStrokeWidth()
 
         titleCss =
             <span class="string">"color"</span>: <span class="property">@model</span>.shapeTitleForeground()

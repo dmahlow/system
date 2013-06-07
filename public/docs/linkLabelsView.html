@@ -114,6 +114,13 @@
               
                 
                 <li>
+                  <a class="source" href="manager.html">
+                    manager.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
                   <a class="source" href="messages.html">
                     messages.coffee
                   </a>
@@ -450,13 +457,6 @@
               
                 
                 <li>
-                  <a class="source" href="selfTestView.html">
-                    selfTestView.coffee
-                  </a>
-                </li>
-              
-                
-                <li>
                   <a class="source" href="settingsView.html">
                     settingsView.coffee
                   </a>
@@ -642,7 +642,7 @@ to its parent <a href="linkView.html">Link View</a>.</p>
         x = <span class="number">0</span>
         y = <span class="number">0</span>
         text = value
-        iconSize = SystemApp.Settings.Map.icoActionsSize</pre></div>
+        iconSize = SystemApp.Settings.map.icoActionsSize</pre></div>
         
       
         
@@ -718,9 +718,9 @@ before recreating it on a new icon.</p>
 
         
           <div class='highlight'><pre>            <span class="keyword">if</span> <span class="keyword">not</span> iconSvg?
-                iconSvg = <span class="property">@parentView</span>.parentView.paper.image SystemApp.Settings.Map.icoAddLabelUrl, <span class="number">0</span>, <span class="number">0</span>, iconSize, iconSize
+                iconSvg = <span class="property">@parentView</span>.parentView.paper.image SystemApp.Settings.map.icoAddLabelUrl, <span class="number">0</span>, <span class="number">0</span>, iconSize, iconSize
 
-            iconSvg.attr {<span class="string">"x"</span>: x, <span class="string">"y"</span>: y, cursor: <span class="string">"pointer"</span>, opacity: SystemApp.Settings.Map.icoActionsOpacity}
+            iconSvg.attr {<span class="string">"x"</span>: x, <span class="string">"y"</span>: y, cursor: <span class="string">"pointer"</span>, opacity: SystemApp.Settings.map.icoActionsOpacity}
             iconSvg.click <span class="property">@click</span>
             iconSvg.mouseover <span class="property">@iconMouseOver</span>
             iconSvg.mouseout <span class="property">@iconMouseOut</span>
@@ -744,16 +744,16 @@ before recreating it on a new icon.</p>
         
           <div class='highlight'><pre>        opacity = {<span class="string">"opacity"</span>: <span class="number">1</span>}
         svgs = <span class="property">@svgsLabels</span>()
-        s?.animate(opacity, SystemApp.Settings.Map.blinkInterval) <span class="keyword">for</span> s <span class="keyword">in</span> svgs</pre></div>
+        s?.animate(opacity, SystemApp.Settings.map.blinkInterval) <span class="keyword">for</span> s <span class="keyword">in</span> svgs</pre></div>
         
       
         
         <p>Set the opacity defined on the <a href="settings.html">Settings</a>, on all add label icons.</p>
 
         
-          <div class='highlight'><pre>        opacity = {<span class="string">"opacity"</span>: SystemApp.Settings.Map.icoActionsOpacity}
+          <div class='highlight'><pre>        opacity = {<span class="string">"opacity"</span>: SystemApp.Settings.map.icoActionsOpacity}
         svgs = <span class="property">@svgsIcons</span>()
-        s?.animate(opacity, SystemApp.Settings.Map.blinkInterval) <span class="keyword">for</span> s <span class="keyword">in</span> svgs</pre></div>
+        s?.animate(opacity, SystemApp.Settings.map.blinkInterval) <span class="keyword">for</span> s <span class="keyword">in</span> svgs</pre></div>
         
       
         
@@ -766,7 +766,7 @@ before recreating it on a new icon.</p>
 
         opacity = {<span class="string">"opacity"</span>: <span class="number">0</span>}
         svgs = <span class="property">@svgs</span>()
-        s?.animate(opacity, SystemApp.Settings.Map.blinkInterval) <span class="keyword">for</span> s <span class="keyword">in</span> svgs</pre></div>
+        s?.animate(opacity, SystemApp.Settings.map.blinkInterval) <span class="keyword">for</span> s <span class="keyword">in</span> svgs</pre></div>
         
       
         
@@ -776,7 +776,7 @@ before recreating it on a new icon.</p>
           <div class='highlight'><pre>    hideIcons: =&gt;
         opacity = {<span class="string">"opacity"</span>: <span class="number">0</span>}
         svgs = <span class="property">@svgsIcons</span>()
-        s?.animate(opacity, SystemApp.Settings.Map.blinkInterval) <span class="keyword">for</span> s <span class="keyword">in</span> svgs</pre></div>
+        s?.animate(opacity, SystemApp.Settings.map.blinkInterval) <span class="keyword">for</span> s <span class="keyword">in</span> svgs</pre></div>
         
       
         
@@ -786,7 +786,7 @@ before recreating it on a new icon.</p>
           <div class='highlight'><pre>    setPosition: (location) =&gt;
         <span class="keyword">return</span> <span class="keyword">if</span> <span class="keyword">not</span> <span class="property">@visible</span>
 
-        iconSize = SystemApp.Settings.Map.icoActionsSize
+        iconSize = SystemApp.Settings.map.icoActionsSize
         iconHalfSize = iconSize / <span class="number">2</span>
 
         path = <span class="property">@parentView</span>.svg.svgLine
@@ -878,7 +878,7 @@ unless the <code>isCreatingLink</code> property of the <a href="mapView.html">Ma
         
           <div class='highlight'><pre>    iconMouseOut: -&gt;
         <span class="keyword">return</span> <span class="keyword">if</span> SystemApp.mapView.isCreatingLink
-        <span class="property">@attr</span> {<span class="string">"opacity"</span>: SystemApp.Settings.Map.icoActionsOpacity}</pre></div>
+        <span class="property">@attr</span> {<span class="string">"opacity"</span>: SystemApp.Settings.map.icoActionsOpacity}</pre></div>
         
       
         

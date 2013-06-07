@@ -114,6 +114,13 @@
               
                 
                 <li>
+                  <a class="source" href="manager.html">
+                    manager.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
                   <a class="source" href="messages.html">
                     messages.coffee
                   </a>
@@ -450,13 +457,6 @@
               
                 
                 <li>
-                  <a class="source" href="selfTestView.html">
-                    selfTestView.coffee
-                  </a>
-                </li>
-              
-                
-                <li>
                   <a class="source" href="settingsView.html">
                     settingsView.coffee
                   </a>
@@ -555,7 +555,7 @@ If the map is invalid, then show a <a href="alertView.html">Footer Alert</a>.</p
         <p>Find map based on its friendly URL key. If no map is found, trying using the value as its ID.</p>
 
         
-          <div class='highlight'><pre>        <span class="keyword">if</span> SystemApp.Settings.Map.enableLocalMap <span class="keyword">and</span> id <span class="keyword">is</span> SystemApp.Settings.Map.localMapId
+          <div class='highlight'><pre>        <span class="keyword">if</span> SystemApp.Settings.map.enableLocalMap <span class="keyword">and</span> id <span class="keyword">is</span> SystemApp.Settings.map.localMapId
             map = <span class="keyword">new</span> SystemApp.Map()
             map.initLocalMap()
         <span class="keyword">else</span>

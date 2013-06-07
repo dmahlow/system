@@ -114,6 +114,13 @@
               
                 
                 <li>
+                  <a class="source" href="manager.html">
+                    manager.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
                   <a class="source" href="messages.html">
                     messages.coffee
                   </a>
@@ -450,13 +457,6 @@
               
                 
                 <li>
-                  <a class="source" href="selfTestView.html">
-                    selfTestView.coffee
-                  </a>
-                </li>
-              
-                
-                <li>
                   <a class="source" href="settingsView.html">
                     settingsView.coffee
                   </a>
@@ -496,11 +496,11 @@ and <a href="link.html">Links</a>, and specific sizes and colours.</p>
     typeName: <span class="string">"Map"</span>
     defaults:
         createdByUserId: <span class="literal">null</span>
-        background: SystemApp.Settings.Map.background
-        paperSizeX: SystemApp.Settings.Map.paperSizeX
-        paperSizeY: SystemApp.Settings.Map.paperSizeY
-        gridSizeX: SystemApp.Settings.Map.gridSizeX
-        gridSizeY: SystemApp.Settings.Map.gridSizeY
+        background: SystemApp.Settings.map.background
+        paperSizeX: SystemApp.Settings.map.paperSizeX
+        paperSizeY: SystemApp.Settings.map.paperSizeY
+        gridSizeX: SystemApp.Settings.map.gridSizeX
+        gridSizeY: SystemApp.Settings.map.gridSizeY
         thumbnailDate: <span class="keyword">new</span> Date(<span class="number">2000</span>, <span class="number">1</span>, <span class="number">1</span>)
         silent: <span class="literal">false</span>
         isReadOnly: <span class="literal">false</span>
@@ -673,7 +673,7 @@ and <a href="link.html">Links</a>, and specific sizes and colours.</p>
         
           <div class='highlight'><pre>    urlKey: =&gt;
         <span class="keyword">if</span> <span class="property">@isLocal</span>()
-            <span class="keyword">return</span> SystemApp.Settings.Map.localMapId
+            <span class="keyword">return</span> SystemApp.Settings.map.localMapId
         <span class="keyword">return</span> SystemApp.DataUtil.getUrlKey <span class="property">@name</span>()</pre></div>
         
       
@@ -687,8 +687,8 @@ and <a href="link.html">Links</a>, and specific sizes and colours.</p>
 
         
           <div class='highlight'><pre>    initLocalMap: =&gt;
-        <span class="property">@id</span> = SystemApp.Settings.Map.localMapId
-        <span class="property">@set</span> <span class="string">"id"</span>, SystemApp.Settings.Map.localMapId
+        <span class="property">@id</span> = SystemApp.Settings.map.localMapId
+        <span class="property">@set</span> <span class="string">"id"</span>, SystemApp.Settings.map.localMapId
         <span class="property">@set</span> <span class="string">"isLocal"</span>, <span class="literal">true</span>
         <span class="property">@fetch</span>()
 
@@ -724,7 +724,7 @@ and <a href="link.html">Links</a>, and specific sizes and colours.</p>
         <p>Grid size X can&#39;t be too low.</p>
 
         
-          <div class='highlight'><pre>        <span class="keyword">if</span> <span class="keyword">not</span> attrs.gridSizeX? <span class="keyword">or</span> attrs.gridSizeX &lt; SystemApp.Settings.Map.minGridSize
+          <div class='highlight'><pre>        <span class="keyword">if</span> <span class="keyword">not</span> attrs.gridSizeX? <span class="keyword">or</span> attrs.gridSizeX &lt; SystemApp.Settings.map.minGridSize
             <span class="keyword">return</span> SystemApp.Messages.valGridSizeTooSmall</pre></div>
         
       
@@ -732,7 +732,7 @@ and <a href="link.html">Links</a>, and specific sizes and colours.</p>
         <p>Grid size Y can&#39;t be too low.</p>
 
         
-          <div class='highlight'><pre>        <span class="keyword">if</span> <span class="keyword">not</span> attrs.gridSizeY? <span class="keyword">or</span> attrs.gridSizeY &lt; SystemApp.Settings.Map.minGridSize
+          <div class='highlight'><pre>        <span class="keyword">if</span> <span class="keyword">not</span> attrs.gridSizeY? <span class="keyword">or</span> attrs.gridSizeY &lt; SystemApp.Settings.map.minGridSize
             <span class="keyword">return</span> SystemApp.Messages.valGridSizeTooSmall</pre></div>
         
       
@@ -740,7 +740,7 @@ and <a href="link.html">Links</a>, and specific sizes and colours.</p>
         <p>Paper size X can&#39;t be too low.</p>
 
         
-          <div class='highlight'><pre>        <span class="keyword">if</span> <span class="keyword">not</span> attrs.paperSizeX? <span class="keyword">or</span> attrs.paperSizeX &lt; SystemApp.Settings.Map.minPaperSize
+          <div class='highlight'><pre>        <span class="keyword">if</span> <span class="keyword">not</span> attrs.paperSizeX? <span class="keyword">or</span> attrs.paperSizeX &lt; SystemApp.Settings.map.minPaperSize
             <span class="keyword">return</span> SystemApp.Messages.valPaperSizeTooSmall</pre></div>
         
       
@@ -748,7 +748,7 @@ and <a href="link.html">Links</a>, and specific sizes and colours.</p>
         <p>Paper size Y can&#39;t be too low.</p>
 
         
-          <div class='highlight'><pre>        <span class="keyword">if</span> <span class="keyword">not</span> attrs.paperSizeY? <span class="keyword">or</span> attrs.paperSizeY &lt; SystemApp.Settings.Map.minPaperSize
+          <div class='highlight'><pre>        <span class="keyword">if</span> <span class="keyword">not</span> attrs.paperSizeY? <span class="keyword">or</span> attrs.paperSizeY &lt; SystemApp.Settings.map.minPaperSize
             <span class="keyword">return</span> SystemApp.Messages.valPaperSizeTooSmall</pre></div>
         
       
@@ -815,7 +815,7 @@ and <a href="link.html">Links</a>, and specific sizes and colours.</p>
           <div class='highlight'><pre><span class="class"><span class="keyword">class</span> <span class="title">SystemApp</span>.<span class="title">MapCollection</span> <span class="keyword">extends</span> <span class="title">SystemApp</span>.<span class="title">BaseCollection</span></span>
     typeName: <span class="string">"MapCollection"</span>
     model: SystemApp.Map
-    url: SystemApp.Settings.Map.url</pre></div>
+    url: SystemApp.Settings.map.url</pre></div>
         
       
         

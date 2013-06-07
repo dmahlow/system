@@ -114,6 +114,13 @@
               
                 
                 <li>
+                  <a class="source" href="manager.html">
+                    manager.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
                   <a class="source" href="messages.html">
                     messages.coffee
                   </a>
@@ -450,13 +457,6 @@
               
                 
                 <li>
-                  <a class="source" href="selfTestView.html">
-                    selfTestView.coffee
-                  </a>
-                </li>
-              
-                
-                <li>
                   <a class="source" href="settingsView.html">
                     settingsView.coffee
                   </a>
@@ -525,7 +525,7 @@ submenu list with all available maps.</p>
         <span class="property">@setDom</span>()
         <span class="property">@setEvents</span>()
 
-        <span class="property">@createSubLocalMap</span>() <span class="keyword">if</span> SystemApp.Settings.Map.enableLocalMap</pre></div>
+        <span class="property">@createSubLocalMap</span>() <span class="keyword">if</span> SystemApp.Settings.map.enableLocalMap</pre></div>
         
       
         
@@ -663,7 +663,7 @@ otherwise it&#39;s a newly created <a href="map.html">Map</a> being added.</p>
         
           <div class='highlight'><pre>        link = document.createElement <span class="string">"a"</span>
         link = $ link
-        link.attr <span class="string">"id"</span>, SystemApp.Settings.Menu.subPrefix + mapId
+        link.attr <span class="string">"id"</span>, SystemApp.Settings.menu.subPrefix + mapId
         link.attr <span class="string">"href"</span>, <span class="string">"#map/"</span> + map.urlKey()
         link.addClass <span class="string">"menu-item"</span>
         link.html mapName
@@ -689,7 +689,7 @@ otherwise it&#39;s a newly created <a href="map.html">Map</a> being added.</p>
         <p>If map was created less than 1 minute ago, auto select it.</p>
 
         
-          <div class='highlight'><pre>        <span class="keyword">if</span> dateCreated? <span class="keyword">and</span> (now - dateCreated) / <span class="number">1000</span> &lt; SystemApp.Settings.Map.isNewInterval
+          <div class='highlight'><pre>        <span class="keyword">if</span> dateCreated? <span class="keyword">and</span> (now - dateCreated) / <span class="number">1000</span> &lt; SystemApp.Settings.map.isNewInterval
             <span class="property">@setActiveMap</span> map</pre></div>
         
       
@@ -708,7 +708,7 @@ an item is removed from the main <a href="data.html">Map Collection</a>.</p>
           <div class='highlight'><pre>    removeSubMap: (map) =&gt;
         <span class="keyword">try</span>
             map.<span class="literal">off</span>()
-            element = $ <span class="string">"#"</span> + SystemApp.Settings.Menu.subPrefix + map.id
+            element = $ <span class="string">"#"</span> + SystemApp.Settings.menu.subPrefix + map.id
             element.remove() <span class="keyword">if</span> element.length &gt; <span class="number">0</span>
         <span class="keyword">catch</span> ex
             console.warn <span class="string">"Could not remove menu map <span class="subst">#{map.id}</span>. Maybe it was already removed?"</span>, ex</pre></div>
@@ -731,7 +731,7 @@ which have that specific data type (datacenter, or machine, or host, or view...)
             <span class="property">@timerHideMenu</span> = <span class="literal">null</span>
 
         <span class="keyword">if</span> e.data <span class="keyword">is</span> <span class="literal">false</span>
-            <span class="property">@timerHideMenu</span> = window.setTimeout <span class="property">@toggleSubMenu</span>, SystemApp.Settings.Menu.hideTimeout
+            <span class="property">@timerHideMenu</span> = window.setTimeout <span class="property">@toggleSubMenu</span>, SystemApp.Settings.menu.hideTimeout
             <span class="keyword">return</span>
 
         <span class="keyword">if</span> e.data <span class="keyword">is</span> <span class="literal">true</span>
@@ -794,7 +794,7 @@ and hide all submenus.</p>
 
         
           <div class='highlight'><pre>    setActiveMap: (map) =&gt;
-        sub = $ <span class="string">"#<span class="subst">#{SystemApp.Settings.Menu.subPrefix}</span><span class="subst">#{map.id}</span>"</span>
+        sub = $ <span class="string">"#<span class="subst">#{SystemApp.Settings.menu.subPrefix}</span><span class="subst">#{map.id}</span>"</span>
         <span class="property">@$currentSub</span>?.removeClass <span class="string">"active"</span>
         <span class="property">@$currentSub</span> = sub
 
@@ -809,7 +809,7 @@ has its name changed by the server or by the user.</p>
 
         
           <div class='highlight'><pre>    updateMapInfo: (map) =&gt;
-        link = $(<span class="string">"#"</span> + SystemApp.Settings.Menu.subPrefix + map.id)
+        link = $(<span class="string">"#"</span> + SystemApp.Settings.menu.subPrefix + map.id)
         link.html map.name()
         link.attr <span class="string">"href"</span>, <span class="string">"#map/"</span> + map.urlKey()</pre></div>
         

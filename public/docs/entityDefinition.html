@@ -114,6 +114,13 @@
               
                 
                 <li>
+                  <a class="source" href="manager.html">
+                    manager.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
                   <a class="source" href="messages.html">
                     messages.coffee
                   </a>
@@ -450,13 +457,6 @@
               
                 
                 <li>
-                  <a class="source" href="selfTestView.html">
-                    selfTestView.coffee
-                  </a>
-                </li>
-              
-                
-                <li>
                   <a class="source" href="settingsView.html">
                     settingsView.coffee
                   </a>
@@ -495,21 +495,21 @@ are represented by the <a href="entityObject.html">EntityObject</a> model.</p>
           <div class='highlight'><pre><span class="class"><span class="keyword">class</span> <span class="title">SystemApp</span>.<span class="title">EntityDefinition</span> <span class="keyword">extends</span> <span class="title">SystemApp</span>.<span class="title">BaseModel</span></span>
     typeName: <span class="string">"EntityDefinition"</span>
     defaults:
-        objectIdAttribute: SystemApp.Settings.EntityDefinition.objectIdAttribute
-        objectTitleAttribute: SystemApp.Settings.EntityDefinition.objectTitleAttribute
-        refreshInterval: SystemApp.Settings.EntityDefinition.refreshInterval
-        shapeBackground: SystemApp.Settings.Shape.background
-        shapeFormat: SystemApp.Settings.Shape.format
-        shapeFontSize: SystemApp.Settings.Shape.fontSize
-        shapeForeground: SystemApp.Settings.Shape.foreground
-        shapeOpacity: SystemApp.Settings.Map.opacityStatic
-        shapeRoundedCorners: SystemApp.Settings.Shape.roundedCorners
-        shapeSizeX: SystemApp.Settings.Shape.gridViewSizeX
-        shapeSizeY: SystemApp.Settings.Shape.gridViewSizeY
-        shapeStroke: SystemApp.Settings.Shape.stroke
-        shapeStrokeWidth: SystemApp.Settings.Shape.strokeWidth
-        shapeTitleForeground: SystemApp.Settings.Shape.titleForeground
-        shapeZIndex: SystemApp.Settings.Shape.zIndex
+        objectIdAttribute: SystemApp.Settings.entityDefinition.objectIdAttribute
+        objectTitleAttribute: SystemApp.Settings.entityDefinition.objectTitleAttribute
+        refreshInterval: SystemApp.Settings.entityDefinition.refreshInterval
+        shapeBackground: SystemApp.Settings.shape.background
+        shapeFormat: SystemApp.Settings.shape.format
+        shapeFontSize: SystemApp.Settings.shape.fontSize
+        shapeForeground: SystemApp.Settings.shape.foreground
+        shapeOpacity: SystemApp.Settings.map.opacityStatic
+        shapeRoundedCorners: SystemApp.Settings.shape.roundedCorners
+        shapeSizeX: SystemApp.Settings.shape.gridViewSizeX
+        shapeSizeY: SystemApp.Settings.shape.gridViewSizeY
+        shapeStroke: SystemApp.Settings.shape.stroke
+        shapeStrokeWidth: SystemApp.Settings.shape.strokeWidth
+        shapeTitleForeground: SystemApp.Settings.shape.titleForeground
+        shapeZIndex: SystemApp.Settings.shape.zIndex
 
     relations:
         data: SystemApp.EntityObjectCollection</pre></div>
@@ -744,7 +744,7 @@ Only fetch external data if there&#39;s a URL specified.</p>
           <div class='highlight'><pre><span class="class"><span class="keyword">class</span> <span class="title">SystemApp</span>.<span class="title">EntityDefinitionCollection</span> <span class="keyword">extends</span> <span class="title">SystemApp</span>.<span class="title">BaseCollection</span></span>
     typeName: <span class="string">"EntityDefinitionCollection"</span>
     model: SystemApp.EntityDefinition
-    url: SystemApp.Settings.EntityDefinition.url</pre></div>
+    url: SystemApp.Settings.entityDefinition.url</pre></div>
         
       
         

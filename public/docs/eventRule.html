@@ -114,6 +114,13 @@
               
                 
                 <li>
+                  <a class="source" href="manager.html">
+                    manager.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
                   <a class="source" href="messages.html">
                     messages.coffee
                   </a>
@@ -450,13 +457,6 @@
               
                 
                 <li>
-                  <a class="source" href="selfTestView.html">
-                    selfTestView.coffee
-                  </a>
-                </li>
-              
-                
-                <li>
                   <a class="source" href="settingsView.html">
                     settingsView.coffee
                   </a>
@@ -593,9 +593,9 @@ means the alert is being run against <a href="shape.html">Shape</a> or <a href="
 label values.</p>
 
         
-          <div class='highlight'><pre>        <span class="keyword">if</span> sourceFirstKey <span class="keyword">is</span> SystemApp.Settings.General.dataBindingKey
+          <div class='highlight'><pre>        <span class="keyword">if</span> sourceFirstKey <span class="keyword">is</span> SystemApp.Settings.general.dataBindingKey
             sourceValue = SystemApp.DataUtil.getDataBindingValue sourceValue
-        <span class="keyword">else</span> <span class="keyword">if</span> contextValues? <span class="keyword">and</span> sourceFirstKey <span class="keyword">is</span> SystemApp.Settings.AuditEvent.contextSpecialKey
+        <span class="keyword">else</span> <span class="keyword">if</span> contextValues? <span class="keyword">and</span> sourceFirstKey <span class="keyword">is</span> SystemApp.Settings.auditEvent.contextSpecialKey
             sourceValue = contextValues[sourceValue.substring <span class="number">1</span>]</pre></div>
         
       
@@ -603,9 +603,9 @@ label values.</p>
         <p>Same as above, but for the target value.</p>
 
         
-          <div class='highlight'><pre>        <span class="keyword">if</span> targetFirstKey <span class="keyword">is</span> SystemApp.Settings.General.dataBindingKey
+          <div class='highlight'><pre>        <span class="keyword">if</span> targetFirstKey <span class="keyword">is</span> SystemApp.Settings.general.dataBindingKey
             targetValue = SystemApp.DataUtil.getDataBindingValue targetValue
-        <span class="keyword">else</span> <span class="keyword">if</span> contextValues? <span class="keyword">and</span> targetFirstKey <span class="keyword">is</span> SystemApp.Settings.AuditEvent.contextSpecialKey
+        <span class="keyword">else</span> <span class="keyword">if</span> contextValues? <span class="keyword">and</span> targetFirstKey <span class="keyword">is</span> SystemApp.Settings.auditEvent.contextSpecialKey
             targetValue = contextValues[targetValue.substring <span class="number">1</span>]</pre></div>
         
       

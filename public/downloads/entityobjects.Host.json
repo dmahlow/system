@@ -6,16 +6,16 @@
 "status_id" :	"5",
 "hostname" :	"McKenzie",
 "cpu_cores" :	"2",
-"cpu_load" :	"1.79",
+"cpu_load" :	"1.10",
 "ram_total" :	"16384",
-"ram_free" :	"5052",
+"ram_free" :	"3728",
 "disk_total" :	"600",
-"disk_free" :	"176",
-"disk_load" :	"0.92",
+"disk_free" :	"275",
+"disk_load" :	"0.60",
 "internal_ip" :	"192.168.1.1",
 "external_ip" :	"10.111.141.150",
 "requests_sec" :	"1",
-"audit_date" :	"2013-06-06 09:20:26"
+"audit_date" :	"2013-06-07 14:03:02"
 
 },
 {
@@ -44,16 +44,16 @@
 "status_id" :	"5",
 "hostname" :	"Dacey",
 "cpu_cores" :	"2",
-"cpu_load" :	"0.65",
+"cpu_load" :	"0.53",
 "ram_total" :	"20480",
-"ram_free" :	"10422",
+"ram_free" :	"3071",
 "disk_total" :	"900",
-"disk_free" :	"170",
-"disk_load" :	"0.59",
+"disk_free" :	"176",
+"disk_load" :	"0.63",
 "internal_ip" :	"192.168.1.3",
 "external_ip" :	"10.111.175.197",
 "requests_sec" :	"1",
-"audit_date" :	"2013-06-06 09:20:26"
+"audit_date" :	"2013-06-07 14:03:02"
 
 },
 {
@@ -63,16 +63,16 @@
 "status_id" :	"5",
 "hostname" :	"Davis",
 "cpu_cores" :	"8",
-"cpu_load" :	"0.05",
+"cpu_load" :	"0.13",
 "ram_total" :	"16384",
-"ram_free" :	"3076",
+"ram_free" :	"15503",
 "disk_total" :	"1500",
-"disk_free" :	"400",
-"disk_load" :	"0.53",
+"disk_free" :	"386",
+"disk_load" :	"0.29",
 "internal_ip" :	"192.168.1.4",
 "external_ip" :	"10.111.112.152",
 "requests_sec" :	"1",
-"audit_date" :	"2013-06-06 09:20:23"
+"audit_date" :	"2013-06-07 14:03:02"
 
 },
 {
@@ -101,16 +101,16 @@
 "status_id" :	"5",
 "hostname" :	"Nissim",
 "cpu_cores" :	"2",
-"cpu_load" :	"0.38",
+"cpu_load" :	"0.76",
 "ram_total" :	"16384",
-"ram_free" :	"8209",
+"ram_free" :	"1883",
 "disk_total" :	"1500",
-"disk_free" :	"194",
-"disk_load" :	"0.27",
+"disk_free" :	"433",
+"disk_load" :	"0.65",
 "internal_ip" :	"192.168.1.6",
 "external_ip" :	"10.111.182.126",
 "requests_sec" :	"1",
-"audit_date" :	"2013-06-06 09:20:20"
+"audit_date" :	"2013-06-07 14:03:02"
 
 },
 {
@@ -139,16 +139,16 @@
 "status_id" :	"5",
 "hostname" :	"Cora",
 "cpu_cores" :	"6",
-"cpu_load" :	"0.21",
+"cpu_load" :	"1.97",
 "ram_total" :	"8192",
-"ram_free" :	"3796",
+"ram_free" :	"3152",
 "disk_total" :	"300",
-"disk_free" :	"57",
-"disk_load" :	"0.60",
+"disk_free" :	"256",
+"disk_load" :	"0.00",
 "internal_ip" :	"192.168.1.8",
 "external_ip" :	"10.111.101.196",
 "requests_sec" :	"1",
-"audit_date" :	"2013-06-06 09:20:26"
+"audit_date" :	"2013-06-07 14:03:02"
 
 },
 {
@@ -158,16 +158,16 @@
 "status_id" :	"5",
 "hostname" :	"Katell",
 "cpu_cores" :	"2",
-"cpu_load" :	"1.78",
+"cpu_load" :	"1.65",
 "ram_total" :	"8192",
-"ram_free" :	"2200",
+"ram_free" :	"4875",
 "disk_total" :	"900",
-"disk_free" :	"504",
-"disk_load" :	"0.68",
+"disk_free" :	"441",
+"disk_load" :	"0.18",
 "internal_ip" :	"192.168.1.9",
 "external_ip" :	"10.111.187.157",
 "requests_sec" :	"1",
-"audit_date" :	"2013-06-06 09:20:23"
+"audit_date" :	"2013-06-07 14:03:02"
 
 },
 {
@@ -177,16 +177,16 @@
 "status_id" :	"4",
 "hostname" :	"Serina",
 "cpu_cores" :	"2",
-"cpu_load" :	"0.60",
+"cpu_load" :	"1.80",
 "ram_total" :	"16384",
-"ram_free" :	"5141",
+"ram_free" :	"3158",
 "disk_total" :	"600",
-"disk_free" :	"69",
-"disk_load" :	"0.51",
+"disk_free" :	"418",
+"disk_load" :	"0.59",
 "internal_ip" :	"192.168.1.10",
 "external_ip" :	"10.111.171.176",
 "requests_sec" :	"1",
-"audit_date" :	"2013-06-06 09:20:23"
+"audit_date" :	"2013-06-07 14:03:02"
 
 },
 {
@@ -234,16 +234,16 @@
 "status_id" :	"5",
 "hostname" :	"Kaye",
 "cpu_cores" :	"2",
-"cpu_load" :	"0.77",
+"cpu_load" :	"0.67",
 "ram_total" :	"16384",
-"ram_free" :	"2819",
+"ram_free" :	"3527",
 "disk_total" :	"900",
-"disk_free" :	"221",
-"disk_load" :	"0.32",
+"disk_free" :	"167",
+"disk_load" :	"0.34",
 "internal_ip" :	"192.168.1.14",
 "external_ip" :	"10.111.147.173",
 "requests_sec" :	"1",
-"audit_date" :	"2013-06-06 09:20:26"
+"audit_date" :	"2013-06-07 14:03:02"
 
 },
 {
@@ -253,16 +253,16 @@
 "status_id" :	"5",
 "hostname" :	"Martina",
 "cpu_cores" :	"2",
-"cpu_load" :	"0.49",
+"cpu_load" :	"0.18",
 "ram_total" :	"16384",
-"ram_free" :	"6934",
+"ram_free" :	"11019",
 "disk_total" :	"1500",
-"disk_free" :	"233",
-"disk_load" :	"0.33",
+"disk_free" :	"394",
+"disk_load" :	"0.11",
 "internal_ip" :	"192.168.1.15",
 "external_ip" :	"10.111.171.109",
 "requests_sec" :	"1",
-"audit_date" :	"2013-06-06 09:20:26"
+"audit_date" :	"2013-06-07 14:03:02"
 
 },
 {
@@ -272,35 +272,35 @@
 "status_id" :	"5",
 "hostname" :	"Cairo",
 "cpu_cores" :	"6",
-"cpu_load" :	"1.32",
+"cpu_load" :	"0.20",
 "ram_total" :	"20480",
-"ram_free" :	"13963",
+"ram_free" :	"4455",
 "disk_total" :	"600",
-"disk_free" :	"109",
-"disk_load" :	"0.75",
+"disk_free" :	"418",
+"disk_load" :	"0.10",
 "internal_ip" :	"192.168.1.16",
 "external_ip" :	"10.111.153.134",
 "requests_sec" :	"1",
-"audit_date" :	"2013-06-06 09:20:26"
+"audit_date" :	"2013-06-07 14:02:59"
 
 },
 {
 "id" :	"17",
 "machine_id" :	"11",
 "role_id" :	"5",
-"status_id" :	"6",
+"status_id" :	"5",
 "hostname" :	"Josiah",
 "cpu_cores" :	"8",
-"cpu_load" :	"0.70",
+"cpu_load" :	"1.18",
 "ram_total" :	"16384",
-"ram_free" :	"4295",
+"ram_free" :	"11318",
 "disk_total" :	"300",
-"disk_free" :	"52",
-"disk_load" :	"0.54",
+"disk_free" :	"218",
+"disk_load" :	"0.20",
 "internal_ip" :	"192.168.1.17",
 "external_ip" :	"10.111.139.172",
 "requests_sec" :	"1",
-"audit_date" :	"2013-06-06 09:20:26"
+"audit_date" :	"2013-06-07 14:03:02"
 
 },
 {
@@ -312,14 +312,14 @@
 "cpu_cores" :	"6",
 "cpu_load" :	"0.51",
 "ram_total" :	"16384",
-"ram_free" :	"5503",
+"ram_free" :	"1930",
 "disk_total" :	"900",
-"disk_free" :	"630",
-"disk_load" :	"0.79",
+"disk_free" :	"288",
+"disk_load" :	"0.26",
 "internal_ip" :	"192.168.1.18",
 "external_ip" :	"10.111.169.186",
 "requests_sec" :	"1",
-"audit_date" :	"2013-06-06 09:20:26"
+"audit_date" :	"2013-06-07 14:03:02"
 
 },
 {
@@ -329,16 +329,16 @@
 "status_id" :	"5",
 "hostname" :	"Juliet",
 "cpu_cores" :	"2",
-"cpu_load" :	"0.35",
+"cpu_load" :	"0.28",
 "ram_total" :	"8192",
-"ram_free" :	"1882",
+"ram_free" :	"1674",
 "disk_total" :	"1200",
-"disk_free" :	"534",
-"disk_load" :	"0.14",
+"disk_free" :	"163",
+"disk_load" :	"0.52",
 "internal_ip" :	"192.168.1.19",
 "external_ip" :	"10.111.104.123",
 "requests_sec" :	"1",
-"audit_date" :	"2013-06-06 09:20:26"
+"audit_date" :	"2013-06-07 14:03:02"
 
 },
 {
@@ -348,16 +348,16 @@
 "status_id" :	"5",
 "hostname" :	"Patricia",
 "cpu_cores" :	"6",
-"cpu_load" :	"1.35",
+"cpu_load" :	"0.81",
 "ram_total" :	"16384",
-"ram_free" :	"1668",
+"ram_free" :	"1711",
 "disk_total" :	"300",
-"disk_free" :	"55",
-"disk_load" :	"0.63",
+"disk_free" :	"276",
+"disk_load" :	"0.43",
 "internal_ip" :	"192.168.1.20",
 "external_ip" :	"10.111.165.118",
 "requests_sec" :	"1",
-"audit_date" :	"2013-06-06 09:20:26"
+"audit_date" :	"2013-06-07 14:03:02"
 
 },
 {
@@ -367,16 +367,16 @@
 "status_id" :	"5",
 "hostname" :	"Dakony",
 "cpu_cores" :	"8",
-"cpu_load" :	"0.14",
+"cpu_load" :	"0.98",
 "ram_total" :	"20480",
-"ram_free" :	"3246",
+"ram_free" :	"8792",
 "disk_total" :	"600",
-"disk_free" :	"231",
-"disk_load" :	"0.76",
+"disk_free" :	"475",
+"disk_load" :	"0.75",
 "internal_ip" :	"192.168.1.21",
 "external_ip" :	"10.111.108.189",
 "requests_sec" :	"1",
-"audit_date" :	"2013-06-06 09:20:26"
+"audit_date" :	"2013-06-07 14:03:02"
 
 },
 {
@@ -386,16 +386,16 @@
 "status_id" :	"5",
 "hostname" :	"Tarik",
 "cpu_cores" :	"2",
-"cpu_load" :	"1.20",
+"cpu_load" :	"0.63",
 "ram_total" :	"8192",
-"ram_free" :	"3754",
+"ram_free" :	"6237",
 "disk_total" :	"900",
-"disk_free" :	"138",
-"disk_load" :	"0.04",
+"disk_free" :	"379",
+"disk_load" :	"0.75",
 "internal_ip" :	"192.168.1.22",
 "external_ip" :	"10.111.158.136",
 "requests_sec" :	"1",
-"audit_date" :	"2013-06-06 09:20:26"
+"audit_date" :	"2013-06-07 14:03:02"
 
 },
 {
@@ -405,16 +405,16 @@
 "status_id" :	"4",
 "hostname" :	"Adam",
 "cpu_cores" :	"6",
-"cpu_load" :	"0.85",
+"cpu_load" :	"0.95",
 "ram_total" :	"8192",
-"ram_free" :	"2914",
+"ram_free" :	"6472",
 "disk_total" :	"1500",
-"disk_free" :	"168",
-"disk_load" :	"0.41",
+"disk_free" :	"745",
+"disk_load" :	"0.58",
 "internal_ip" :	"192.168.1.23",
 "external_ip" :	"10.111.127.171",
 "requests_sec" :	"1",
-"audit_date" :	"2013-06-06 09:20:26"
+"audit_date" :	"2013-06-07 14:03:02"
 
 },
 {
@@ -424,16 +424,16 @@
 "status_id" :	"5",
 "hostname" :	"Buffy",
 "cpu_cores" :	"8",
-"cpu_load" :	"1.51",
+"cpu_load" :	"0.98",
 "ram_total" :	"16384",
-"ram_free" :	"4048",
+"ram_free" :	"5242",
 "disk_total" :	"1500",
-"disk_free" :	"438",
-"disk_load" :	"0.72",
+"disk_free" :	"310",
+"disk_load" :	"0.20",
 "internal_ip" :	"192.168.1.24",
 "external_ip" :	"10.111.175.133",
 "requests_sec" :	"1",
-"audit_date" :	"2013-06-06 09:20:26"
+"audit_date" :	"2013-06-07 14:03:02"
 
 },
 {
@@ -443,16 +443,16 @@
 "status_id" :	"5",
 "hostname" :	"Kenneth",
 "cpu_cores" :	"4",
-"cpu_load" :	"1.49",
+"cpu_load" :	"1.61",
 "ram_total" :	"16384",
-"ram_free" :	"9328",
+"ram_free" :	"6488",
 "disk_total" :	"1200",
-"disk_free" :	"852",
-"disk_load" :	"0.17",
+"disk_free" :	"408",
+"disk_load" :	"0.13",
 "internal_ip" :	"192.168.1.25",
 "external_ip" :	"10.111.179.152",
 "requests_sec" :	"1",
-"audit_date" :	"2013-06-06 09:20:26"
+"audit_date" :	"2013-06-07 14:03:02"
 
 },
 {
@@ -462,16 +462,16 @@
 "status_id" :	"5",
 "hostname" :	"Jane",
 "cpu_cores" :	"8",
-"cpu_load" :	"0.77",
+"cpu_load" :	"0.13",
 "ram_total" :	"20480",
-"ram_free" :	"4476",
+"ram_free" :	"4440",
 "disk_total" :	"600",
-"disk_free" :	"260",
-"disk_load" :	"0.33",
+"disk_free" :	"105",
+"disk_load" :	"0.67",
 "internal_ip" :	"192.168.1.26",
 "external_ip" :	"10.111.168.123",
 "requests_sec" :	"1",
-"audit_date" :	"2013-06-06 09:20:23"
+"audit_date" :	"2013-06-07 14:03:02"
 
 },
 {
@@ -481,16 +481,16 @@
 "status_id" :	"5",
 "hostname" :	"Craig",
 "cpu_cores" :	"4",
-"cpu_load" :	"0.17",
+"cpu_load" :	"0.68",
 "ram_total" :	"16384",
-"ram_free" :	"3428",
+"ram_free" :	"1951",
 "disk_total" :	"300",
-"disk_free" :	"179",
-"disk_load" :	"0.52",
+"disk_free" :	"63",
+"disk_load" :	"0.29",
 "internal_ip" :	"192.168.1.27",
 "external_ip" :	"10.111.151.194",
 "requests_sec" :	"1",
-"audit_date" :	"2013-06-06 09:20:26"
+"audit_date" :	"2013-06-07 14:03:02"
 
 },
 {
@@ -500,16 +500,16 @@
 "status_id" :	"5",
 "hostname" :	"Marah",
 "cpu_cores" :	"4",
-"cpu_load" :	"0.02",
+"cpu_load" :	"0.13",
 "ram_total" :	"8192",
-"ram_free" :	"5910",
+"ram_free" :	"2351",
 "disk_total" :	"1200",
-"disk_free" :	"348",
-"disk_load" :	"0.70",
+"disk_free" :	"269",
+"disk_load" :	"0.30",
 "internal_ip" :	"192.168.1.28",
 "external_ip" :	"10.111.135.105",
 "requests_sec" :	"1",
-"audit_date" :	"2013-06-06 09:20:26"
+"audit_date" :	"2013-06-07 14:02:59"
 
 },
 {
@@ -519,16 +519,16 @@
 "status_id" :	"5",
 "hostname" :	"Brielle",
 "cpu_cores" :	"4",
-"cpu_load" :	"0.49",
+"cpu_load" :	"0.72",
 "ram_total" :	"20480",
-"ram_free" :	"2763",
+"ram_free" :	"15409",
 "disk_total" :	"1500",
-"disk_free" :	"260",
-"disk_load" :	"0.08",
+"disk_free" :	"264",
+"disk_load" :	"0.59",
 "internal_ip" :	"192.168.1.29",
 "external_ip" :	"10.111.161.182",
 "requests_sec" :	"1",
-"audit_date" :	"2013-06-06 09:20:26"
+"audit_date" :	"2013-06-07 14:03:02"
 
 },
 {
@@ -538,16 +538,16 @@
 "status_id" :	"5",
 "hostname" :	"Hashim",
 "cpu_cores" :	"8",
-"cpu_load" :	"1.80",
+"cpu_load" :	"1.01",
 "ram_total" :	"16384",
-"ram_free" :	"6768",
+"ram_free" :	"5894",
 "disk_total" :	"1200",
-"disk_free" :	"156",
-"disk_load" :	"0.71",
+"disk_free" :	"379",
+"disk_load" :	"0.00",
 "internal_ip" :	"192.168.1.30",
 "external_ip" :	"10.111.159.157",
 "requests_sec" :	"1",
-"audit_date" :	"2013-06-06 09:20:26"
+"audit_date" :	"2013-06-07 14:03:02"
 
 },
 {
@@ -557,16 +557,16 @@
 "status_id" :	"5",
 "hostname" :	"Xantha",
 "cpu_cores" :	"2",
-"cpu_load" :	"0.76",
+"cpu_load" :	"0.29",
 "ram_total" :	"8192",
-"ram_free" :	"1681",
+"ram_free" :	"1055",
 "disk_total" :	"600",
-"disk_free" :	"160",
-"disk_load" :	"0.25",
+"disk_free" :	"99",
+"disk_load" :	"0.71",
 "internal_ip" :	"192.168.1.32",
 "external_ip" :	"10.111.199.117",
 "requests_sec" :	"1",
-"audit_date" :	"2013-06-06 09:20:23"
+"audit_date" :	"2013-06-07 14:03:02"
 
 },
 {
@@ -576,16 +576,16 @@
 "status_id" :	"4",
 "hostname" :	"Coby",
 "cpu_cores" :	"2",
-"cpu_load" :	"1.39",
+"cpu_load" :	"0.01",
 "ram_total" :	"20480",
-"ram_free" :	"6772",
+"ram_free" :	"4082",
 "disk_total" :	"300",
-"disk_free" :	"64",
-"disk_load" :	"0.23",
+"disk_free" :	"131",
+"disk_load" :	"0.74",
 "internal_ip" :	"192.168.1.33",
 "external_ip" :	"10.111.188.149",
 "requests_sec" :	"1",
-"audit_date" :	"2013-06-06 09:20:26"
+"audit_date" :	"2013-06-07 14:03:02"
 
 },
 {
@@ -595,16 +595,16 @@
 "status_id" :	"4",
 "hostname" :	"Lee",
 "cpu_cores" :	"6",
-"cpu_load" :	"0.82",
+"cpu_load" :	"0.33",
 "ram_total" :	"16384",
-"ram_free" :	"1745",
+"ram_free" :	"4289",
 "disk_total" :	"1200",
-"disk_free" :	"413",
-"disk_load" :	"0.42",
+"disk_free" :	"590",
+"disk_load" :	"0.40",
 "internal_ip" :	"192.168.1.35",
 "external_ip" :	"10.111.114.158",
 "requests_sec" :	"1",
-"audit_date" :	"2013-06-06 09:20:26"
+"audit_date" :	"2013-06-07 14:03:02"
 
 },
 {
@@ -614,16 +614,16 @@
 "status_id" :	"4",
 "hostname" :	"Xerxes",
 "cpu_cores" :	"8",
-"cpu_load" :	"0.69",
+"cpu_load" :	"1.30",
 "ram_total" :	"16384",
-"ram_free" :	"13851",
+"ram_free" :	"3687",
 "disk_total" :	"1500",
-"disk_free" :	"481",
-"disk_load" :	"0.23",
+"disk_free" :	"568",
+"disk_load" :	"0.55",
 "internal_ip" :	"192.168.1.36",
 "external_ip" :	"10.111.104.189",
 "requests_sec" :	"1",
-"audit_date" :	"2013-06-06 09:20:26"
+"audit_date" :	"2013-06-07 14:03:02"
 
 },
 {
@@ -633,16 +633,16 @@
 "status_id" :	"5",
 "hostname" :	"Olga",
 "cpu_cores" :	"6",
-"cpu_load" :	"1.69",
+"cpu_load" :	"0.05",
 "ram_total" :	"8192",
-"ram_free" :	"1116",
+"ram_free" :	"2809",
 "disk_total" :	"1500",
-"disk_free" :	"887",
-"disk_load" :	"0.43",
+"disk_free" :	"405",
+"disk_load" :	"0.41",
 "internal_ip" :	"192.168.1.37",
 "external_ip" :	"10.111.187.165",
 "requests_sec" :	"1",
-"audit_date" :	"2013-06-06 09:20:26"
+"audit_date" :	"2013-06-07 14:03:02"
 
 },
 {
@@ -652,16 +652,16 @@
 "status_id" :	"5",
 "hostname" :	"Hayley",
 "cpu_cores" :	"6",
-"cpu_load" :	"0.60",
+"cpu_load" :	"0.89",
 "ram_total" :	"20480",
-"ram_free" :	"16539",
+"ram_free" :	"14508",
 "disk_total" :	"900",
-"disk_free" :	"582",
-"disk_load" :	"0.34",
+"disk_free" :	"449",
+"disk_load" :	"0.79",
 "internal_ip" :	"192.168.1.38",
 "external_ip" :	"10.111.177.133",
 "requests_sec" :	"1",
-"audit_date" :	"2013-06-06 09:20:26"
+"audit_date" :	"2013-06-07 14:03:02"
 
 },
 {
@@ -671,16 +671,16 @@
 "status_id" :	"5",
 "hostname" :	"Whitney",
 "cpu_cores" :	"2",
-"cpu_load" :	"0.04",
+"cpu_load" :	"0.92",
 "ram_total" :	"8192",
-"ram_free" :	"1929",
+"ram_free" :	"1363",
 "disk_total" :	"1500",
-"disk_free" :	"353",
-"disk_load" :	"0.51",
+"disk_free" :	"1207",
+"disk_load" :	"0.10",
 "internal_ip" :	"192.168.1.39",
 "external_ip" :	"10.111.197.120",
 "requests_sec" :	"1",
-"audit_date" :	"2013-06-06 09:20:26"
+"audit_date" :	"2013-06-07 14:03:02"
 
 },
 {
@@ -690,16 +690,16 @@
 "status_id" :	"5",
 "hostname" :	"Yasir",
 "cpu_cores" :	"4",
-"cpu_load" :	"0.70",
+"cpu_load" :	"1.15",
 "ram_total" :	"8192",
-"ram_free" :	"1652",
+"ram_free" :	"2037",
 "disk_total" :	"600",
-"disk_free" :	"270",
-"disk_load" :	"0.81",
+"disk_free" :	"458",
+"disk_load" :	"0.21",
 "internal_ip" :	"192.168.1.41",
 "external_ip" :	"10.111.186.173",
 "requests_sec" :	"1",
-"audit_date" :	"2013-06-06 09:20:26"
+"audit_date" :	"2013-06-07 14:03:02"
 
 },
 {
@@ -709,16 +709,16 @@
 "status_id" :	"5",
 "hostname" :	"Plato",
 "cpu_cores" :	"4",
-"cpu_load" :	"1.93",
+"cpu_load" :	"1.49",
 "ram_total" :	"8192",
-"ram_free" :	"6012",
+"ram_free" :	"8116",
 "disk_total" :	"600",
-"disk_free" :	"449",
-"disk_load" :	"0.64",
+"disk_free" :	"181",
+"disk_load" :	"0.33",
 "internal_ip" :	"192.168.1.42",
 "external_ip" :	"10.111.174.112",
 "requests_sec" :	"1",
-"audit_date" :	"2013-06-06 09:20:26"
+"audit_date" :	"2013-06-07 14:03:02"
 
 },
 {
@@ -728,35 +728,35 @@
 "status_id" :	"5",
 "hostname" :	"Indigo",
 "cpu_cores" :	"8",
-"cpu_load" :	"1.40",
+"cpu_load" :	"0.82",
 "ram_total" :	"20480",
-"ram_free" :	"7040",
+"ram_free" :	"3400",
 "disk_total" :	"1500",
-"disk_free" :	"342",
-"disk_load" :	"0.53",
+"disk_free" :	"1053",
+"disk_load" :	"0.03",
 "internal_ip" :	"192.168.1.43",
 "external_ip" :	"10.111.121.178",
 "requests_sec" :	"1",
-"audit_date" :	"2013-06-06 09:20:26"
+"audit_date" :	"2013-06-07 14:03:02"
 
 },
 {
 "id" :	"45",
 "machine_id" :	"16",
 "role_id" :	"3",
-"status_id" :	"6",
+"status_id" :	"5",
 "hostname" :	"Olivia",
 "cpu_cores" :	"2",
-"cpu_load" :	"0.01",
+"cpu_load" :	"1.51",
 "ram_total" :	"16384",
-"ram_free" :	"3525",
+"ram_free" :	"7165",
 "disk_total" :	"600",
-"disk_free" :	"550",
-"disk_load" :	"0.23",
+"disk_free" :	"247",
+"disk_load" :	"0.77",
 "internal_ip" :	"192.168.1.45",
 "external_ip" :	"10.111.192.160",
 "requests_sec" :	"1",
-"audit_date" :	"2013-06-06 09:20:26"
+"audit_date" :	"2013-06-07 14:03:02"
 
 },
 {
@@ -766,16 +766,16 @@
 "status_id" :	"4",
 "hostname" :	"Casey",
 "cpu_cores" :	"4",
-"cpu_load" :	"1.80",
+"cpu_load" :	"1.49",
 "ram_total" :	"8192",
-"ram_free" :	"5963",
+"ram_free" :	"2893",
 "disk_total" :	"900",
-"disk_free" :	"121",
-"disk_load" :	"0.60",
+"disk_free" :	"211",
+"disk_load" :	"0.43",
 "internal_ip" :	"192.168.1.46",
 "external_ip" :	"10.111.134.171",
 "requests_sec" :	"1",
-"audit_date" :	"2013-06-06 09:20:26"
+"audit_date" :	"2013-06-07 14:02:59"
 
 },
 {
@@ -785,16 +785,16 @@
 "status_id" :	"5",
 "hostname" :	"Garrett",
 "cpu_cores" :	"2",
-"cpu_load" :	"0.89",
+"cpu_load" :	"0.99",
 "ram_total" :	"16384",
-"ram_free" :	"4090",
+"ram_free" :	"10965",
 "disk_total" :	"600",
-"disk_free" :	"565",
-"disk_load" :	"0.59",
+"disk_free" :	"499",
+"disk_load" :	"0.18",
 "internal_ip" :	"192.168.1.47",
 "external_ip" :	"10.111.117.194",
 "requests_sec" :	"1",
-"audit_date" :	"2013-06-06 09:20:26"
+"audit_date" :	"2013-06-07 14:03:02"
 
 },
 {
@@ -823,16 +823,16 @@
 "status_id" :	"4",
 "hostname" :	"Mufutau",
 "cpu_cores" :	"4",
-"cpu_load" :	"0.56",
+"cpu_load" :	"0.46",
 "ram_total" :	"20480",
-"ram_free" :	"2165",
+"ram_free" :	"3874",
 "disk_total" :	"300",
-"disk_free" :	"119",
-"disk_load" :	"0.35",
+"disk_free" :	"120",
+"disk_load" :	"0.73",
 "internal_ip" :	"192.168.1.49",
 "external_ip" :	"10.111.172.118",
 "requests_sec" :	"1",
-"audit_date" :	"2013-06-06 09:20:26"
+"audit_date" :	"2013-06-07 14:02:59"
 
 },
 {
@@ -861,16 +861,16 @@
 "status_id" :	"5",
 "hostname" :	"Hop",
 "cpu_cores" :	"6",
-"cpu_load" :	"0.16",
+"cpu_load" :	"0.00",
 "ram_total" :	"8192",
-"ram_free" :	"316",
+"ram_free" :	"3842",
 "disk_total" :	"900",
-"disk_free" :	"339",
-"disk_load" :	"0.75",
+"disk_free" :	"743",
+"disk_load" :	"0.19",
 "internal_ip" :	"192.168.1.51",
 "external_ip" :	"10.111.147.185",
 "requests_sec" :	"1",
-"audit_date" :	"2013-06-06 09:20:26"
+"audit_date" :	"2013-06-07 14:03:02"
 
 },
 {
@@ -880,16 +880,16 @@
 "status_id" :	"4",
 "hostname" :	"Arden",
 "cpu_cores" :	"8",
-"cpu_load" :	"0.73",
+"cpu_load" :	"0.14",
 "ram_total" :	"8192",
-"ram_free" :	"2307",
+"ram_free" :	"2944",
 "disk_total" :	"900",
-"disk_free" :	"133",
-"disk_load" :	"0.42",
+"disk_free" :	"690",
+"disk_load" :	"0.79",
 "internal_ip" :	"192.168.1.52",
 "external_ip" :	"10.111.148.136",
 "requests_sec" :	"1",
-"audit_date" :	"2013-06-06 09:20:26"
+"audit_date" :	"2013-06-07 14:02:59"
 
 }
 ]

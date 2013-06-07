@@ -114,6 +114,13 @@
               
                 
                 <li>
+                  <a class="source" href="manager.html">
+                    manager.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
                   <a class="source" href="messages.html">
                     messages.coffee
                   </a>
@@ -450,13 +457,6 @@
               
                 
                 <li>
-                  <a class="source" href="selfTestView.html">
-                    selfTestView.coffee
-                  </a>
-                </li>
-              
-                
-                <li>
                   <a class="source" href="settingsView.html">
                     settingsView.coffee
                   </a>
@@ -641,7 +641,7 @@ and encode the URL key.</p>
         <span class="keyword">return</span> <span class="literal">false</span> <span class="keyword">if</span> <span class="keyword">not</span> value? <span class="keyword">or</span> value <span class="keyword">is</span> <span class="string">""</span>
         value = value.toString()
 
-        namespace = SystemApp.Settings.General.dataBindingKey + SystemApp.Settings.AuditData.bindingNamespace
+        namespace = SystemApp.Settings.general.dataBindingKey + SystemApp.Settings.auditData.bindingNamespace
         specialKeyIndex = value.indexOf namespace
         <span class="keyword">return</span> <span class="literal">false</span> <span class="keyword">if</span> specialKeyIndex &lt; <span class="number">0</span></pre></div>
         
@@ -665,7 +665,7 @@ return only the relevant <a href="auditData.html">AuditData</a> property path.</
           <div class='highlight'><pre>    getOnlyTheAuditDataProperty: (value) -&gt;
         <span class="keyword">return</span> <span class="literal">false</span> <span class="keyword">if</span> <span class="keyword">not</span> value? <span class="keyword">or</span> value <span class="keyword">is</span> <span class="string">""</span>
 
-        namespace = SystemApp.Settings.General.dataBindingKey + SystemApp.Settings.AuditData.bindingNamespace
+        namespace = SystemApp.Settings.general.dataBindingKey + SystemApp.Settings.auditData.bindingNamespace
         specialKeyIndex = value.indexOf namespace
         value = value.substring specialKeyIndex
         spaceIndex = value.indexOf <span class="string">" "</span>
@@ -684,7 +684,7 @@ of referenced <a href="auditData.html">AuditData</a> properties.</p>
           <div class='highlight'><pre>    getAuditDataValue: (value) -&gt;
         <span class="keyword">return</span> <span class="keyword">if</span> <span class="keyword">not</span> value? <span class="keyword">or</span> value <span class="keyword">is</span> <span class="string">""</span>
 
-        namespace = SystemApp.Settings.General.dataBindingKey + SystemApp.Settings.AuditData.bindingNamespace
+        namespace = SystemApp.Settings.general.dataBindingKey + SystemApp.Settings.auditData.bindingNamespace
         substr = value.substring(namespace.length + <span class="number">1</span>)
 
         dotPosition = substr.indexOf(<span class="string">"."</span>)
@@ -722,7 +722,7 @@ of referenced <a href="auditData.html">AuditData</a> properties.</p>
         <span class="keyword">return</span> <span class="literal">false</span> <span class="keyword">if</span> <span class="keyword">not</span> value? <span class="keyword">or</span> value <span class="keyword">is</span> <span class="string">""</span>
         value = value.toString()
 
-        namespace = SystemApp.Settings.General.dataBindingKey + SystemApp.Settings.Variable.bindingNamespace
+        namespace = SystemApp.Settings.general.dataBindingKey + SystemApp.Settings.variable.bindingNamespace
         specialKeyIndex = value.indexOf namespace
         <span class="keyword">return</span> <span class="literal">false</span> <span class="keyword">if</span> specialKeyIndex &lt; <span class="number">0</span>
 
@@ -737,7 +737,7 @@ of the referenced <a href="variable.html">Variable</a>.</p>
           <div class='highlight'><pre>    getVariableValue: (value, ref) -&gt;
         <span class="keyword">return</span> <span class="keyword">if</span> <span class="keyword">not</span> value? <span class="keyword">or</span> value <span class="keyword">is</span> <span class="string">""</span>
 
-        namespace = SystemApp.Settings.General.dataBindingKey + SystemApp.Settings.Variable.bindingNamespace
+        namespace = SystemApp.Settings.general.dataBindingKey + SystemApp.Settings.variable.bindingNamespace
         s = value.substring(namespace.length + <span class="number">1</span>)
 
         indexParentheses = s.indexOf <span class="string">"("</span>
@@ -795,7 +795,7 @@ use whatever is inside as arguments to the custom variable.</p>
         <span class="keyword">return</span> <span class="literal">false</span> <span class="keyword">if</span> <span class="keyword">not</span> value? <span class="keyword">or</span> value <span class="keyword">is</span> <span class="string">""</span>
         value = value.toString()
 
-        namespace = SystemApp.Settings.General.dataBindingKey + SystemApp.Settings.EntityObject.bindingNamespace
+        namespace = SystemApp.Settings.general.dataBindingKey + SystemApp.Settings.entityObject.bindingNamespace
         specialKeyIndex = value.indexOf namespace
         <span class="keyword">return</span> <span class="literal">false</span> <span class="keyword">if</span> specialKeyIndex &lt; <span class="number">0</span>
 
@@ -812,7 +812,7 @@ an <a href="entityObject.html">entity object</a> must be passed.</p>
           <div class='highlight'><pre>    getEntityAttributeValue: (value, ref) -&gt;
         <span class="keyword">return</span> <span class="keyword">if</span> <span class="keyword">not</span> value? <span class="keyword">or</span> value <span class="keyword">is</span> <span class="string">""</span>
 
-        namespace = SystemApp.Settings.General.dataBindingKey + SystemApp.Settings.EntityObject.bindingNamespace
+        namespace = SystemApp.Settings.general.dataBindingKey + SystemApp.Settings.entityObject.bindingNamespace
         s = value.substring(namespace.length + <span class="number">1</span>)
         comma = s.indexOf <span class="string">","</span></pre></div>
         
@@ -950,7 +950,7 @@ found, then return the value itself.</p>
 
         
           <div class='highlight'><pre>        <span class="keyword">for</span> s <span class="keyword">in</span> splitValue
-            <span class="keyword">if</span> s.substring(<span class="number">0</span>, <span class="number">1</span>) <span class="keyword">is</span> SystemApp.Settings.General.dataBindingKey
+            <span class="keyword">if</span> s.substring(<span class="number">0</span>, <span class="number">1</span>) <span class="keyword">is</span> SystemApp.Settings.general.dataBindingKey
                 <span class="keyword">if</span> SystemApp.DataUtil.hasAuditData s
                     newValue += <span class="string">" "</span> + SystemApp.DataUtil.getAuditDataValue s
                 <span class="keyword">else</span> <span class="keyword">if</span> SystemApp.DataUtil.hasHasVariable s

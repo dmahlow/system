@@ -114,6 +114,13 @@
               
                 
                 <li>
+                  <a class="source" href="manager.html">
+                    manager.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
                   <a class="source" href="messages.html">
                     messages.coffee
                   </a>
@@ -450,13 +457,6 @@
               
                 
                 <li>
-                  <a class="source" href="selfTestView.html">
-                    selfTestView.coffee
-                  </a>
-                </li>
-              
-                
-                <li>
                   <a class="source" href="settingsView.html">
                     settingsView.coffee
                   </a>
@@ -515,7 +515,7 @@
 
         
           <div class='highlight'><pre>    initialize: =&gt;
-        <span class="property">@currentSettings</span> = SystemApp.Settings.AuditEvent
+        <span class="property">@currentSettings</span> = SystemApp.Settings.auditEvent
         <span class="property">@overlayInit</span> <span class="string">"#auditevents"</span>
         <span class="property">@setDom</span>()
         <span class="property">@setEvents</span>()</pre></div>
@@ -693,7 +693,7 @@ whenever the user clicks / selects an <a href="auditEvent.html">AuditEvent</a> o
         
           <div class='highlight'><pre>    addRuleToGrid: (rule) =&gt;
         row = $(document.createElement <span class="string">"div"</span>)
-        row.attr <span class="string">"id"</span>, SystemApp.Settings.AuditEvent.rowRulePrefix + rule.id
+        row.attr <span class="string">"id"</span>, SystemApp.Settings.auditEvent.rowRulePrefix + rule.id
         row.data <span class="string">"DataItem"</span>, rule
         row.addClass <span class="string">"row"</span>
 
@@ -739,7 +739,7 @@ whenever the user clicks / selects an <a href="auditEvent.html">AuditEvent</a> o
 
         
           <div class='highlight'><pre>    removeRuleFromGrid: (rule) =&gt;
-        $(<span class="string">"#"</span> + SystemApp.Settings.AuditEvent.rowRulePrefix + rule.id).remove()
+        $(<span class="string">"#"</span> + SystemApp.Settings.auditEvent.rowRulePrefix + rule.id).remove()
         <span class="property">@model</span>?.save()</pre></div>
         
       
@@ -828,7 +828,7 @@ whenever the user clicks / selects an <a href="auditEvent.html">AuditEvent</a> o
         
           <div class='highlight'><pre>    addActionToGrid: (action) =&gt;
         row = $(document.createElement <span class="string">"div"</span>)
-        row.attr <span class="string">"id"</span>, SystemApp.Settings.AuditEvent.rowActionPrefix + action.id
+        row.attr <span class="string">"id"</span>, SystemApp.Settings.auditEvent.rowActionPrefix + action.id
         row.data <span class="string">"DataItem"</span>, action
         row.addClass <span class="string">"row"</span>
 
@@ -863,7 +863,7 @@ whenever the user clicks / selects an <a href="auditEvent.html">AuditEvent</a> o
 
         
           <div class='highlight'><pre>    removeActionFromGrid: (action) =&gt;
-        $(<span class="string">"#"</span> + SystemApp.Settings.AuditEvent.rowActionPrefix + action.id).remove()
+        $(<span class="string">"#"</span> + SystemApp.Settings.auditEvent.rowActionPrefix + action.id).remove()
         <span class="property">@model</span>?.save()</pre></div>
         
       

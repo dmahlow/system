@@ -114,6 +114,13 @@
               
                 
                 <li>
+                  <a class="source" href="manager.html">
+                    manager.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
                   <a class="source" href="messages.html">
                     messages.coffee
                   </a>
@@ -450,13 +457,6 @@
               
                 
                 <li>
-                  <a class="source" href="selfTestView.html">
-                    selfTestView.coffee
-                  </a>
-                </li>
-              
-                
-                <li>
                   <a class="source" href="settingsView.html">
                     settingsView.coffee
                   </a>
@@ -657,7 +657,7 @@
         <p>Set row ID.</p>
 
         
-          <div class='highlight'><pre>        row.attr <span class="string">"id"</span>, SystemApp.Settings.User.rowListPrefix + user.id</pre></div>
+          <div class='highlight'><pre>        row.attr <span class="string">"id"</span>, SystemApp.Settings.user.rowListPrefix + user.id</pre></div>
         
       
         
@@ -680,7 +680,7 @@
 
         
           <div class='highlight'><pre>    removeUserFromGrid: (user) =&gt;
-        row = $(<span class="string">"#"</span> + SystemApp.Settings.User.rowListPrefix + user.id)
+        row = $(<span class="string">"#"</span> + SystemApp.Settings.user.rowListPrefix + user.id)
         <span class="property">@modelElementRemove</span> row</pre></div>
         
       
@@ -700,7 +700,7 @@ to the top form so it can be edited.</p>
         
           <div class='highlight'><pre>    editClick: (e) =&gt;
         <span class="keyword">if</span> <span class="property">@selectedUser</span>?
-            $(<span class="string">"#"</span> + SystemApp.Settings.User.rowListPrefix + <span class="property">@selectedUser</span>.id).removeClass <span class="string">"active"</span></pre></div>
+            $(<span class="string">"#"</span> + SystemApp.Settings.user.rowListPrefix + <span class="property">@selectedUser</span>.id).removeClass <span class="string">"active"</span></pre></div>
         
       
         

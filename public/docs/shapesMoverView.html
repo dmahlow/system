@@ -114,6 +114,13 @@
               
                 
                 <li>
+                  <a class="source" href="manager.html">
+                    manager.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
                   <a class="source" href="messages.html">
                     messages.coffee
                   </a>
@@ -450,13 +457,6 @@
               
                 
                 <li>
-                  <a class="source" href="selfTestView.html">
-                    selfTestView.coffee
-                  </a>
-                </li>
-              
-                
-                <li>
                   <a class="source" href="settingsView.html">
                     settingsView.coffee
                   </a>
@@ -573,7 +573,7 @@
         <span class="property">@remove</span>()
 
         <span class="property">@svg</span> = <span class="property">@parentView</span>.paper.rect(<span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>)
-        <span class="property">@svg</span>.attr {<span class="string">"fill"</span>: SystemApp.Settings.MapMover.background, <span class="string">"opacity"</span>: <span class="number">0</span>, <span class="string">"cursor"</span>: <span class="string">"move"</span>}
+        <span class="property">@svg</span>.attr {<span class="string">"fill"</span>: SystemApp.Settings.mapMover.background, <span class="string">"opacity"</span>: <span class="number">0</span>, <span class="string">"cursor"</span>: <span class="string">"move"</span>}
 
         <span class="property">@setElement</span> <span class="property">@svg</span>
 
@@ -607,7 +607,7 @@ Will set the opacity to the value defined on the <a href="settings.html">Setting
         <span class="property">@setSize</span> <span class="number">1</span>, <span class="number">1</span>
         <span class="property">@setPosition</span> x, y
 
-        <span class="property">@svg</span>.attr {<span class="string">"opacity"</span>: SystemApp.Settings.MapMover.opacity}
+        <span class="property">@svg</span>.attr {<span class="string">"opacity"</span>: SystemApp.Settings.mapMover.opacity}
         <span class="property">@svg</span>.toFront()
 
         $(document).mousemove <span class="property">@mouseMoveResize</span>
@@ -652,7 +652,7 @@ shadows and unbind mouse and keyboard events.</p>
 
             <span class="keyword">if</span> Raphael.isPointInsideBBox box, shapeCenter.x, shapeCenter.y
                 <span class="property">@shapeViews</span>.push view
-                view.highlight SystemApp.Settings.MapMover.shadowColor</pre></div>
+                view.highlight SystemApp.Settings.mapMover.shadowColor</pre></div>
         
       
         
@@ -800,7 +800,7 @@ of all selected <a href="shapeView.html">Shape Views</a>.</p>
         
           <div class='highlight'><pre>    dragEnd: (e) =&gt;
         <span class="keyword">for</span> view <span class="keyword">in</span> <span class="property">@shapeViews</span>
-            view.dragEnd e, SystemApp.Settings.MapMover.shadowColor
+            view.dragEnd e, SystemApp.Settings.mapMover.shadowColor
 
         <span class="property">@svg</span>.toFront()</pre></div>
         

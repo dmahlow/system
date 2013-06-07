@@ -23,36 +23,8 @@
               
                 
                 <li>
-                  <a class="source" href="configure.html">
-                    configure.coffee
-                  </a>
-                </li>
-              
-                
-                <li>
                   <a class="source" href="database.html">
                     database.coffee
-                  </a>
-                </li>
-              
-                
-                <li>
-                  <a class="source" href="imaging.html">
-                    imaging.coffee
-                  </a>
-                </li>
-              
-                
-                <li>
-                  <a class="source" href="logger.html">
-                    logger.coffee
-                  </a>
-                </li>
-              
-                
-                <li>
-                  <a class="source" href="mail.html">
-                    mail.coffee
                   </a>
                 </li>
               
@@ -74,13 +46,6 @@
                 <li>
                   <a class="source" href="security.html">
                     security.coffee
-                  </a>
-                </li>
-              
-                
-                <li>
-                  <a class="source" href="settings.html">
-                    settings.coffee
                   </a>
                 </li>
               
@@ -117,61 +82,20 @@
         
       
         
-        <p>Define the <a href="logger.html">Logger</a>.</p>
+        <p>Require Expresser.</p>
 
         
-          <div class='highlight'><pre>    logger = require <span class="string">"./logger.coffee"</span>
-    settings = require <span class="string">"./settings.coffee"</span></pre></div>
+          <div class='highlight'><pre>    expresser = require <span class="string">"expresser"</span>
+    settings = expresser.settings</pre></div>
         
       
         
-        <p>Bind the Socket.IO object to the Express app. This will also set
-the counter to increase / decrease when users connects or
-disconnects from the app.</p>
+        <p>Init socket connections.</p>
 
         
-          <div class='highlight'><pre>    bind: (server) =&gt;
-        <span class="property">@io</span> = require(<span class="string">"socket.io"</span>).listen server</pre></div>
-        
-      
-        
-        <p>Set transports.</p>
-
-        
-          <div class='highlight'><pre>        <span class="property">@io</span>.set <span class="string">"transports"</span>, [<span class="string">"websocket"</span>, <span class="string">"xhr-polling"</span>, <span class="string">"htmlfile"</span>]</pre></div>
-        
-      
-        
-        <p>On production, log only critical errors. On development, log almost everything.</p>
-
-        
-          <div class='highlight'><pre>        <span class="keyword">if</span> process.env.NODE_ENV <span class="keyword">is</span> <span class="string">"production"</span>
-            <span class="property">@io</span>.set <span class="string">"log level"</span>, <span class="number">1</span>
-            <span class="property">@io</span>.set <span class="string">"browser client minification"</span>
-            <span class="property">@io</span>.set <span class="string">"browser client etag"</span>
-            <span class="property">@io</span>.set <span class="string">"browser client gzip"</span>
-        <span class="keyword">else</span>
-            <span class="property">@io</span>.set <span class="string">"log level"</span>, <span class="number">2</span></pre></div>
-        
-      
-        
-        <p>Listen to user connection count updates.</p>
-
-        
-          <div class='highlight'><pre>        <span class="property">@io</span>.sockets.<span class="literal">on</span> <span class="string">"connection"</span>, (socket) =&gt;
-            <span class="property">@io</span>.sockets.emit <span class="string">"server:connectionCounter"</span>, <span class="property">@getConnectionCount</span>()
-
-            socket.<span class="literal">on</span> <span class="string">"disconnect"</span>, <span class="property">@onDisconnect</span>
-            socket.<span class="literal">on</span> <span class="string">"clients:refresh"</span>, <span class="property">@onClientsRefresh</span></pre></div>
-        
-      
-        
-        <p>Helper to get how many users are currenly connected to the app.</p>
-
-        
-          <div class='highlight'><pre>    getConnectionCount: =&gt;
-        count = Object.keys(<span class="property">@io</span>.sockets.manager.open).length
-        <span class="keyword">return</span> count</pre></div>
+          <div class='highlight'><pre>    init: =&gt;
+        expresser.sockets.listenTo <span class="string">"disconnect"</span>, <span class="property">@onDisconnect</span>
+        expresser.sockets.listenTo <span class="string">"clients:refresh"</span>, <span class="property">@onClientsRefresh</span></pre></div>
         
       
         
@@ -184,7 +108,7 @@ disconnects from the app.</p>
 
         
           <div class='highlight'><pre>    sendEntityRefresh: (entityDef) =&gt;
-        <span class="property">@io</span>.sockets.emit <span class="string">"entitydata:refresh"</span>, entityDef</pre></div>
+        expresser.sockets.emit <span class="string">"entitydata:refresh"</span>, entityDef</pre></div>
         
       
         
@@ -192,7 +116,7 @@ disconnects from the app.</p>
 
         
           <div class='highlight'><pre>    sendAuditDataRefresh: (auditData) =&gt;
-        <span class="property">@io</span>.sockets.emit <span class="string">"auditdata:refresh"</span>, auditData</pre></div>
+        expresser.sockets.emit <span class="string">"auditdata:refresh"</span>, auditData</pre></div>
         
       
         
@@ -205,13 +129,8 @@ disconnects from the app.</p>
 
         
           <div class='highlight'><pre>    sendServerError: (title, errorMessage) =&gt;
-        <span class="keyword">if</span> <span class="keyword">not</span> <span class="property">@io</span>?
-            <span class="keyword">if</span> settings.General.debug
-                console.error <span class="string">"Sockets.sendServerError"</span>, <span class="string">"Sockets object was not initiated yet!"</span>
-            <span class="keyword">return</span>
-
         errorMessage = <span class="string">"Unknown error"</span> <span class="keyword">if</span> <span class="keyword">not</span> errorMessage?
-        <span class="property">@io</span>.sockets.emit <span class="string">"server:error"</span>, {title: title, message: errorMessage.toString().replace(<span class="string">":"</span>, <span class="string">" "</span>)}</pre></div>
+        expresser.sockets.emit <span class="string">"server:error"</span>, {title: title, message: errorMessage.toString().replace(<span class="string">":"</span>, <span class="string">" "</span>)}</pre></div>
         
       
         
@@ -224,10 +143,7 @@ disconnects from the app.</p>
 
         
           <div class='highlight'><pre>    onDisconnect: =&gt;
-        count = <span class="property">@getConnectionCount</span>()
-        <span class="property">@io</span>.sockets.emit <span class="string">"server:connectionCounter"</span>, count
-        <span class="keyword">if</span> settings.General.debug
-            logger.info <span class="string">"Sockets.onDisconnect"</span>, <span class="string">"New count: <span class="subst">#{count}</span>."</span></pre></div>
+        expresser.sockets.emit <span class="string">"server:connectionCounter"</span>, expresser.sockets.getConnectionCount()</pre></div>
         
       
         
@@ -236,9 +152,7 @@ to all connected clients so they&#39;ll get the page refreshed.</p>
 
         
           <div class='highlight'><pre>    onClientsRefresh: (data) =&gt;
-        <span class="keyword">if</span> settings.General.debug
-            logger.info <span class="string">"Sockets.onClientsRefresh"</span>, data
-        <span class="property">@io</span>.sockets.emit <span class="string">"clients:refresh"</span>, data</pre></div>
+        expresser.sockets.emit <span class="string">"clients:refresh"</span>, data</pre></div>
         
       
         

@@ -23,36 +23,8 @@
               
                 
                 <li>
-                  <a class="source" href="configure.html">
-                    configure.coffee
-                  </a>
-                </li>
-              
-                
-                <li>
                   <a class="source" href="database.html">
                     database.coffee
-                  </a>
-                </li>
-              
-                
-                <li>
-                  <a class="source" href="imaging.html">
-                    imaging.coffee
-                  </a>
-                </li>
-              
-                
-                <li>
-                  <a class="source" href="logger.html">
-                    logger.coffee
-                  </a>
-                </li>
-              
-                
-                <li>
-                  <a class="source" href="mail.html">
-                    mail.coffee
                   </a>
                 </li>
               
@@ -74,13 +46,6 @@
                 <li>
                   <a class="source" href="security.html">
                     security.coffee
-                  </a>
-                </li>
-              
-                
-                <li>
-                  <a class="source" href="settings.html">
-                    settings.coffee
                   </a>
                 </li>
               
@@ -117,15 +82,20 @@
         
       
         
-        <p>Define required modules.</p>
+        <p>Require Expresser.</p>
+
+        
+          <div class='highlight'><pre>    expresser = require <span class="string">"expresser"</span>
+    settings = expresser.settings</pre></div>
+        
+      
+        
+        <p>Required modules.</p>
 
         
           <div class='highlight'><pre>    fs = require <span class="string">"fs"</span>
     http = require <span class="string">"http"</span>
-    logger = require <span class="string">"./logger.coffee"</span>
     moment = require <span class="string">"moment"</span>
-    settings = require <span class="string">"./settings.coffee"</span>
-    sockets = require <span class="string">"./sockets.coffee"</span>
     url = require <span class="string">"url"</span></pre></div>
         
       
@@ -153,7 +123,7 @@ downloaded at the moment.</p>
         
           <div class='highlight'><pre>    download: (remoteUrl, localFile, callback, contentType) =&gt;
         <span class="keyword">if</span> <span class="keyword">not</span> remoteUrl?
-            logger.warn <span class="string">"Download aborted, remoteUrl is not defined."</span>, localFile
+            expresser.logger.warn <span class="string">"Download aborted, remoteUrl is not defined."</span>, localFile
             <span class="keyword">return</span>
 
         now = <span class="keyword">new</span> Date()
@@ -164,8 +134,8 @@ downloaded at the moment.</p>
         <p>Check existing download time.</p>
 
         
-          <div class='highlight'><pre>        <span class="keyword">if</span> existing? <span class="keyword">and</span> now.getTime() - existing.date.getTime() &lt; settings.Web.downloadTimeout
-            logger.warn <span class="string">"Download aborted, already downloading!"</span>, localFile, existing
+          <div class='highlight'><pre>        <span class="keyword">if</span> existing? <span class="keyword">and</span> now.getTime() - existing.date.getTime() &lt; settings.web.downloadTimeout
+            expresser.logger.warn <span class="string">"Download aborted, already downloading!"</span>, localFile, existing
             <span class="keyword">return</span></pre></div>
         
       
@@ -176,10 +146,10 @@ only after some time (defined by the <code>connRestartInterval</code> web settin
         
           <div class='highlight'><pre>        errorCount = <span class="property">@errorCounters</span>[remoteUrl]
         <span class="keyword">if</span> errorCount?
-            <span class="keyword">if</span> errorCount &gt; settings.Web.connRestartInterval
+            <span class="keyword">if</span> errorCount &gt; settings.web.connRestartInterval
                 <span class="keyword">if</span> moment().valueOf() &lt; errorCount
-                    <span class="keyword">if</span> settings.General.debug
-                        logger.warn <span class="string">"Sync.download"</span>, <span class="string">"Abort because failed too many times before."</span>, remoteUrl
+                    <span class="keyword">if</span> settings.general.debug
+                        expresser.logger.warn <span class="string">"Sync.download"</span>, <span class="string">"Abort because failed too many times before."</span>, remoteUrl
                     <span class="keyword">return</span>
                 <span class="keyword">else</span>
                     <span class="keyword">delete</span> <span class="property">@errorCounters</span>[remoteUrl]</pre></div>
@@ -205,8 +175,8 @@ of the same file at the same time.</p>
 it to the content type header.</p>
 
         
-          <div class='highlight'><pre>        <span class="keyword">if</span> settings.Web.downloaderHeaders? <span class="keyword">and</span> settings.Web.downloaderHeaders <span class="keyword">isnt</span> <span class="string">""</span>
-            headers = settings.Web.downloaderHeaders
+          <div class='highlight'><pre>        <span class="keyword">if</span> settings.web.downloaderHeaders? <span class="keyword">and</span> settings.web.downloaderHeaders <span class="keyword">isnt</span> <span class="string">""</span>
+            headers = settings.web.downloaderHeaders
             headers[<span class="string">"Content-Type"</span>] = contentType
         <span class="keyword">else</span>
             headers = {<span class="string">"Content-Type"</span>: contentType}</pre></div>
@@ -242,8 +212,8 @@ it to the content type header.</p>
 only if no credentials were passed directly on the URL.</p>
 
         
-          <div class='highlight'><pre>        <span class="keyword">if</span> <span class="keyword">not</span> options.auth? <span class="keyword">and</span> settings.Web.downloaderUser? <span class="keyword">and</span> settings.Web.downloaderUser <span class="keyword">isnt</span> <span class="string">""</span>
-            options.auth = <span class="string">"<span class="subst">#{settings.Web.downloaderUser}</span>:<span class="subst">#{settings.Web.downloaderPassword}</span>"</span></pre></div>
+          <div class='highlight'><pre>        <span class="keyword">if</span> <span class="keyword">not</span> options.auth? <span class="keyword">and</span> settings.web.downloaderUser? <span class="keyword">and</span> settings.web.downloaderUser <span class="keyword">isnt</span> <span class="string">""</span>
+            options.auth = <span class="string">"<span class="subst">#{settings.web.downloaderUser}</span>:<span class="subst">#{settings.web.downloaderPassword}</span>"</span></pre></div>
         
       
         
@@ -258,7 +228,7 @@ only if no credentials were passed directly on the URL.</p>
         <p>Add up to the error counter.</p>
 
         
-          <div class='highlight'><pre>            <span class="keyword">if</span> counter? <span class="keyword">and</span> counter &lt; settings.Web.alertAfterFailedDownloads
+          <div class='highlight'><pre>            <span class="keyword">if</span> counter? <span class="keyword">and</span> counter &lt; settings.web.alertAfterFailedDownloads
                 counter = counter + <span class="number">1</span>
             <span class="keyword">else</span>
                 counter = <span class="number">1</span></pre></div>
@@ -270,13 +240,13 @@ update the <code>errorCounters</code> reference value with the current time plus
 the value specified on the <code>connRestartInterval</code> web setting.</p>
 
         
-          <div class='highlight'><pre>            <span class="keyword">if</span> counter <span class="keyword">is</span> settings.Web.alertAfterFailedDownloads
-                time = moment().add(<span class="string">"ms"</span>, settings.Web.connRestartInterval).valueOf()
+          <div class='highlight'><pre>            <span class="keyword">if</span> counter <span class="keyword">is</span> settings.web.alertAfterFailedDownloads
+                time = moment().add(<span class="string">"ms"</span>, settings.web.connRestartInterval).valueOf()
                 <span class="property">@errorCounters</span>[remoteUrl] = time
-                logger.error <span class="string">"Sync.download"</span>, remoteUrl, error
+                expresser.logger.error <span class="string">"Sync.download"</span>, remoteUrl, error
             <span class="keyword">else</span>
                 <span class="property">@errorCounters</span>[remoteUrl] = counter
-                logger.warn <span class="string">"Sync.download"</span>, remoteUrl, error</pre></div>
+                expresser.logger.warn <span class="string">"Sync.download"</span>, remoteUrl, error</pre></div>
         
       
         
@@ -369,8 +339,8 @@ download has finished and the file is totally written.</p>
           <div class='highlight'><pre>                        <span class="keyword">delete</span> <span class="property">@currentDownloads</span>[localFile]
                         <span class="keyword">delete</span> <span class="property">@errorCounters</span>[remoteUrl]
 
-                        <span class="keyword">if</span> settings.General.debug
-                            logger.info <span class="string">"Sync.download"</span>, remoteUrl, localFile
+                        <span class="keyword">if</span> settings.general.debug
+                            expresser.logger.info <span class="string">"Sync.download"</span>, remoteUrl, localFile
 
                     fileWriter.end()
                     fileWriter.destroySoon()</pre></div>

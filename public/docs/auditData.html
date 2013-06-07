@@ -114,6 +114,13 @@
               
                 
                 <li>
+                  <a class="source" href="manager.html">
+                    manager.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
                   <a class="source" href="messages.html">
                     messages.coffee
                   </a>
@@ -450,13 +457,6 @@
               
                 
                 <li>
-                  <a class="source" href="selfTestView.html">
-                    selfTestView.coffee
-                  </a>
-                </li>
-              
-                
-                <li>
                   <a class="source" href="settingsView.html">
                     settingsView.coffee
                   </a>
@@ -494,7 +494,7 @@
           <div class='highlight'><pre><span class="class"><span class="keyword">class</span> <span class="title">SystemApp</span>.<span class="title">AuditData</span> <span class="keyword">extends</span> <span class="title">SystemApp</span>.<span class="title">BaseModel</span></span>
     typeName: <span class="string">"AuditData"</span>
     defaults:
-        refreshInterval: SystemApp.Settings.AuditData.refreshInterval</pre></div>
+        refreshInterval: SystemApp.Settings.auditData.refreshInterval</pre></div>
         
       
         
@@ -592,7 +592,7 @@ couldn&#39;t be refreshed for more than X times - defined at the <a href="settin
         <p>Refresh interval can&#39;t be too low.</p>
 
         
-          <div class='highlight'><pre>        <span class="keyword">if</span> attrs.refreshInterval &lt; SystemApp.Settings.AuditData.minRefreshInterval
+          <div class='highlight'><pre>        <span class="keyword">if</span> attrs.refreshInterval &lt; SystemApp.Settings.auditData.minRefreshInterval
             <span class="keyword">return</span> SystemApp.Messages.valRefreshIntervalTooLow</pre></div>
         
       
@@ -614,7 +614,7 @@ to avoid cross-domain issues.</p>
         <span class="property">@fetching</span> = <span class="literal">true</span>
 
         $.ajax
-            url: SystemApp.Settings.General.remoteDownloaderUrl + <span class="string">"auditdata-"</span> + <span class="property">@id</span>
+            url: SystemApp.Settings.general.remoteDownloaderUrl + <span class="string">"auditdata-"</span> + <span class="property">@id</span>
             timeout: <span class="property">@refreshInterval</span>() * <span class="number">3</span>
             cache: <span class="literal">false</span>
             dataType: <span class="string">"json"</span>
@@ -647,7 +647,7 @@ has passed, it will update the data on the local MongoDB server as well.</p>
         <span class="property">@data</span> resp
         <span class="property">@lastDataRefresh</span> = <span class="keyword">new</span> Date()
 
-        <span class="keyword">if</span> <span class="property">@lastDataRefresh</span> - <span class="property">@lastDataSave</span> &gt; SystemApp.Settings.AuditData.dataSaveInterval
+        <span class="keyword">if</span> <span class="property">@lastDataRefresh</span> - <span class="property">@lastDataSave</span> &gt; SystemApp.Settings.auditData.dataSaveInterval
             <span class="property">@save</span>()
             <span class="property">@lastDataSave</span> = <span class="keyword">new</span> Date()
 
@@ -679,7 +679,7 @@ will display the error info to the user.</p>
 reset it to 0 so the user will see the alert again soon.</p>
 
         
-          <div class='highlight'><pre>        <span class="keyword">if</span> <span class="property">@refreshErrorCount</span> &gt; SystemApp.Settings.AuditData.alertOnErrorCount * <span class="number">2</span>
+          <div class='highlight'><pre>        <span class="keyword">if</span> <span class="property">@refreshErrorCount</span> &gt; SystemApp.Settings.auditData.alertOnErrorCount * <span class="number">2</span>
             <span class="property">@refreshErrorCount</span> = <span class="number">0</span>
 
         <span class="property">@trigger</span> <span class="string">"refresh:error"</span>, <span class="keyword">this</span>, error</pre></div>
@@ -721,7 +721,7 @@ to refresh errors and alert the user.</p>
 
         
           <div class='highlight'><pre>        <span class="keyword">if</span> newValue? <span class="keyword">and</span> <span class="keyword">not</span> isNaN(newValue)
-            newValue = parseFloat(newValue[<span class="number">0</span>]).toFixed SystemApp.Settings.AuditData.decimalCases
+            newValue = parseFloat(newValue[<span class="number">0</span>]).toFixed SystemApp.Settings.auditData.decimalCases
 
         <span class="keyword">return</span> newValue</pre></div>
         
@@ -738,7 +738,7 @@ to refresh errors and alert the user.</p>
           <div class='highlight'><pre><span class="class"><span class="keyword">class</span> <span class="title">SystemApp</span>.<span class="title">AuditDataCollection</span> <span class="keyword">extends</span> <span class="title">SystemApp</span>.<span class="title">BaseCollection</span></span>
 
     model: SystemApp.AuditData
-    url: SystemApp.Settings.AuditData.url</pre></div>
+    url: SystemApp.Settings.auditData.url</pre></div>
         
       
       <div class="fleur">h</div>

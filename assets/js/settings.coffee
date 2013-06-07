@@ -22,7 +22,7 @@ SystemApp.Settings =
         baseJsonUrl: "json/"
         # The special key / character used for data bindings.
         dataBindingKey: "#"
-        # Interval when blinking a form or HTMl field.
+        # Interval when blinking a form or HTMl field, in milliseconds.
         elementBlinkInterval: 150
         # Time in ms to fade in / out when using the show / hide methods of views.
         fadeDelay: 200

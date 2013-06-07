@@ -114,6 +114,13 @@
               
                 
                 <li>
+                  <a class="source" href="manager.html">
+                    manager.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
                   <a class="source" href="messages.html">
                     messages.coffee
                   </a>
@@ -450,13 +457,6 @@
               
                 
                 <li>
-                  <a class="source" href="selfTestView.html">
-                    selfTestView.coffee
-                  </a>
-                </li>
-              
-                
-                <li>
                   <a class="source" href="settingsView.html">
                     settingsView.coffee
                   </a>
@@ -577,9 +577,9 @@ property <code>sourceUrl</code>. If not parent model was set, return a generic &
         
           <div class='highlight'><pre>    url: =&gt;
         <span class="keyword">if</span> <span class="property">@parentModel</span>?
-            <span class="keyword">return</span> SystemApp.Settings.EntityObject.url + <span class="string">"/"</span> + <span class="property">@parentModel</span>.friendlyId()
+            <span class="keyword">return</span> SystemApp.Settings.entityObject.url + <span class="string">"/"</span> + <span class="property">@parentModel</span>.friendlyId()
         <span class="keyword">else</span>
-            <span class="keyword">return</span> SystemApp.Settings.EntityObject.url</pre></div>
+            <span class="keyword">return</span> SystemApp.Settings.entityObject.url</pre></div>
         
       
         
