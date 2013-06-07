@@ -5,3 +5,4 @@ gh-pages/
 logs/*.log
 node_modules/
 npm-shrinkwrap.json
+public/images/mapthumbs/*.*
