@@ -16,7 +16,7 @@ SystemApp.Manager =
         @timerCheckEntities = setInterval @checkEntities, SystemApp.Settings.manager.checkEntitiesInterval
 
     # Stop listening to all socket messages from the server. Please note that this
-    # will NOT kill the socket connection.
+    # will NOT npm testkill the socket connection.
     stop: ->
         if @timerCheckEntities?
             clearInterval @timerCheckEntities
