@@ -340,16 +340,6 @@ checkForever(){
     fi
 }
 
-# Check if Docco is installed (docco: optional).
-checkDocco(){
-    if checkDependency "docco"; then
-        echo "Docco is installed!"
-    else
-        aboutDependency "Docco is necessary to update the System App documentation." 1
-        confirmInstall "docco" 1
-    fi
-}
-
 # Check if node is installed (imagemagick: optional).
 checkImageMagick(){
     if checkDependency "convert"; then
@@ -397,7 +387,7 @@ downloadFromGit(){
             mv -f system_latest/.git ./
             rm -fr system_latest
             echo "Installing Node.js modules..."
-            sudo npm install
+            npm install
         fi
     fi
 }
@@ -459,7 +449,6 @@ checkNode
 checkNpm
 checkMongo
 checkForever
-checkDocco
 checkImageMagick
 
 downloadFromGit

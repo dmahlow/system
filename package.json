@@ -5,14 +5,18 @@
     "homepage": "http://systemapp.io",
     "author":"Igor Ramadas <igor.ramadas@zalando.de>",
     "license":"Apache License 2.0",
+    "subdomain": "systemapp",
     "main":"index",
-    "contributors":[
-        {
-            "name":"Igor Ramadas",
-            "email":"igor.ramadas@zalando.de"
-        }
+    "scripts": {
+        "test": "./node_modules/.bin/mocha --reporter spec"
+    },
+    "domains": [
+        "expresser.codeplex.com"
     ],
-
+    "engines":{
+        "node":">= 0.8.0",
+        "npm":">= 1.0.0"
+    },
     "dependencies":{
         "async":">= 0.1.23",
         "coffee-script":">= 1.6.2",
@@ -21,12 +25,15 @@
         "moment":">= 2.0.0",
         "socket.io":">= 0.9.6"
     },
-
-    "engines":{
-        "node":">= 0.8.0",
-        "npm":">= 1.0.0"
+    "devDependencies":{
+        "chai": "*",
+        "docco": "*",
+        "mocha": "*"
     },
-
+    "repository":{
+        "type":"git",
+        "url":"https://github.com/zalando/system"
+    },
     "keywords":[
         "auditing",
         "diagram",
@@ -39,9 +46,4 @@
         "svg",
         "system"
     ],
-
-    "repository":{
-        "type":"git",
-        "url":"https://github.com/zalando/system"
-    }
 }

@@ -190,8 +190,7 @@ SystemApp.Settings =
         # How long to wait before updating labels whem zooming, in milliseconds.
         zoomUpdateDelay: 400
         # Properties to ignore on the shape details tab.
-        ignoreDisplayProps: "0,format,background,foreground,fontSize,stroke,strokeWidth," +
-                            "map_position_x,map_position_y,physical_machine,sizeX,sizeY,roundedCorners,zIndex"
+        ignoreDisplayProps: "0,format,background,foreground,fontSize,stroke,strokeWidth,map_position_x,map_position_y,physical_machine,sizeX,sizeY,roundedCorners,zIndex"
 
 
     # MAP MOVER
