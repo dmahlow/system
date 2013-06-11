@@ -23,6 +23,9 @@ class Security
     init: =>
         @cachedUsers = {}
 
+        # Only add passowrd protection if enabled on settings.
+        return if not expresser.app.passport?
+
         # Helper to validate user login. If no user was specified and [settings](settings.html)
         # allow guest access, then log as guest.
         validateUser = (user, password, callback) =>

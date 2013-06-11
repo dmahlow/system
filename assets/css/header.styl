@@ -59,21 +59,17 @@
         color lightHoverColor
 
     .lock input[type="checkbox"] + span:after
-    .lock input[type="radio"] + span:after
         content "edit"
 
     .lock input[type="checkbox"]:checked + span:after
-    .lock input[type="radio"]:checked + span:after
         content "lock"
 
-    .lock input[type="checkbox"] + span
-    .lock input[type="radio"] + span
-        color lightTextColor
-
     .lock input[type="checkbox"]:checked + span
-    .lock input[type="radio"]:checked + span
         background errorColor
         color lightTextColor
+
+    .lock input[type="checkbox"]:disabled + span
+        color rgb(210, 210, 210)
 
 #top-img-lock
     float right

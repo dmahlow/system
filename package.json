@@ -7,6 +7,9 @@
     "license":"Apache License 2.0",
     "subdomain": "systemapp",
     "main":"index",
+    "bin": {
+        "systemapp": "./bin/systemapp"
+    },
     "scripts": {
         "test": "./node_modules/.bin/mocha --reporter spec"
     },

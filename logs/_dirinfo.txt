@@ -1,5 +1,0 @@
-/logs
-
-Log files should be stored here.
-Please note that the System App might be configured log to Logentries or Loggly as well,
-and in that case only critical exceptions will be stored under this folder.

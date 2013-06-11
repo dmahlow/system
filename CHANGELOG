@@ -5,6 +5,8 @@ SYSTEM APP CHANGE LOG
 
 # -----------------------------------------------------------------------------
   0.6.7
++ You can now execute "$ npm install systemapp" to install the System App, and
+  run it by executing the "$ ./bin/systemapp" executable file.
 * General bug fixes.
 
 # -----------------------------------------------------------------------------

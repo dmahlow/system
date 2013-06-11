@@ -303,62 +303,43 @@ input.error, textarea.error
 // -------------------------------------------------------------------------
 
 .toggle input[type="checkbox"] + span:after
-.toggle input[type="radio"] + span:after
     content "off"
 
 .toggle input[type="checkbox"]:checked + span:after
-.toggle input[type="radio"]:checked + span:after
     content "on"
 
 .toggle input[type="checkbox"] + span
-.toggle input[type="radio"] + span
 .toggle input[type="checkbox"] + span:before
-.toggle input[type="radio"] + span:before
 .toggle input[type="checkbox"] + span:after
-.toggle input[type="radio"] + span:after
     display inline-block
 
 .toggle input[type="checkbox"] + span
-.toggle input[type="radio"] + span
     font-style normal !important
     vertical-align middle
 
 .toggle input[type="checkbox"] + span:before
-.toggle input[type="radio"] + span:before
 .toggle input[type="checkbox"] + span:after
-.toggle input[type="radio"] + span:after
 .toggle input[type="checkbox"]:checked + span:before
-.toggle input[type="radio"]:checked + span:before
 .toggle input[type="checkbox"]:checked + span:after
-.toggle input[type="radio"]:checked + span:after
     top 0
 
 .toggle input[type="checkbox"] + span:after
-.toggle input[type="radio"] + span:after
 .toggle input[type="checkbox"]:checked + span:before
-.toggle input[type="radio"]:checked + span:before
     right 0
 
 .toggle input[type="checkbox"] + span:before
-.toggle input[type="radio"] + span:before
 .toggle input[type="checkbox"]:checked + span:after
-.toggle input[type="radio"]:checked + span:after
     left 0
 
 .toggle input[type="checkbox"]
-.toggle input[type="radio"]
 .toggle input[type="checkbox"] + span:before
-.toggle input[type="radio"] + span:before
 .toggle input[type="checkbox"] + span:after
-.toggle input[type="radio"] + span:after
     position absolute
 
 .toggle input[type="checkbox"]
-.toggle input[type="radio"]
     opacity 0
 
 .toggle input[type="checkbox"] + span
-.toggle input[type="radio"] + span
     background rgb(210, 210, 210)
     color #8C8C8C
     font 11px/26px Arial, Helvetica, sans-serif
@@ -369,35 +350,30 @@ input.error, textarea.error
     width 80px
 
 .toggle input[type="checkbox"] + span:before
-.toggle input[type="radio"] + span:before
     background rgb(245, 245, 245)
     content ""
     height 25px
     width 40%
 
 .toggle input[type="checkbox"] + span:after
-.toggle input[type="radio"] + span:after
     height 27px
     width 62%
     text-align center
     text-indent 0
 
 .toggle input[type="checkbox"]:checked + span
-.toggle input[type="radio"]:checked + span
     background checkedBg
     color rgb(250, 250, 250)
 
 .toggle input[type="checkbox"]:disabled + span
-.toggle input[type="radio"]:disabled + span
-    background rgb(235, 235, 235) !important
-    color rgb(145, 145, 145) !important
+    background rgb(235, 235, 235)
+    color rgb(145, 145, 145)
+    cursor default !important
 
 .toggle input[type="checkbox"]:checked + span:before
-.toggle input[type="radio"]:checked + span:before
     left auto
 
 .toggle input[type="checkbox"]:checked + span:after
-.toggle input[type="radio"]:checked + span:after
     height 30px
     left -1px
     top -1px
