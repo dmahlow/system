@@ -4,8 +4,12 @@ SYSTEM APP CHANGE LOG
 - = removed features
 
 # -----------------------------------------------------------------------------
+  0.6.7
+* General bug fixes.
+
+# -----------------------------------------------------------------------------
   0.6.6, 2013.06.07
-* New "Manager" code on frontend will do health checks and data veritification
++ New "Manager" code on frontend will do health checks and data veritification
   automatically and alert the user in case something's wrong.
 * Fixed Expresser related bugs.
 

@@ -1,6 +1,6 @@
 {
     "name":"systemapp",
-    "version":"0.6.6",
+    "version":"0.6.7",
     "description":"A sleek and smart infrastructure mapping and monitoring tool by Zalando.",
     "homepage": "http://systemapp.io",
     "author":"Igor Ramadas <igor.ramadas@zalando.de>",

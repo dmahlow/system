@@ -91,6 +91,7 @@ class SystemApp.MapControlsView extends SystemApp.BaseView
 
     # Bind the saved [User Settings](userSettings.html) and current [Data](data.html) to the map map controls.
     bindInitialState: =>
+        @$chkEditable.prop "disabled", true
         @$chkAutoUpdate.prop "checked", SystemApp.Data.userSettings.mapAutoRefresh()
 
     # When window has loaded or resized, call this to resize the map controls accordingly.
@@ -106,6 +107,11 @@ class SystemApp.MapControlsView extends SystemApp.BaseView
     # Bind the loaded [map](map.html) to the view.
     bindMap: (map) =>
         @model = map
+
+        if map?
+            @$chkEditable.prop "disabled", false
+        else
+            @$chkEditable.prop "disabled", true
 
     # Bind the selected shape details to the [Shape Details View](shapeTabView.html).
     bind: (views) =>
@@ -138,13 +144,14 @@ class SystemApp.MapControlsView extends SystemApp.BaseView
         if value isnt false and (value is undefined or value.data is null)
             value = not (@$chkEditable.prop "checked")
 
-        # Get user permissions.
-        hasPermission = SystemApp.Data.loggedUser.hasRole "mapedit"
-        readOnly = @model.isReadOnly()
-        isOwner = (@model.createdByUserId() is SystemApp.Data.loggedUser.id)
-
-        # Make sure user has permissions to edit this map.
+        # If edit is enabled.
         if value is true
+
+            # Get user permissions.
+            hasPermission = SystemApp.Data.loggedUser.hasRole "mapedit"
+            readOnly = (@model? and @model.isReadOnly())
+            isOwner = (@model? and @model.createdByUserId() is SystemApp.Data.loggedUser.id)
+
             if not hasPermission and not isOwner
                 value = false
                 errorMsg = SystemApp.Messages.errNoPermissionTo.replace "#", SystemApp.Messages.editThisMap
