@@ -8,11 +8,15 @@
     // GENERAL SETTINGS
     "general": {
         // The app title.
-        "appTitle": "System App"
+        "appTitle": "System App",
+        // Only set debug = true on development and testing environments!
+        "debug": null
     },
 
     // EXPRESSER APP SETTINGS
     "app": {
+        // Leave paas = true if you're deploying to a PaaS provider.
+        "paas": true,
         // Port on which the server will run. If left blank, default 8080 will be used.
         "port": 3003
     },
