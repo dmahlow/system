@@ -93,16 +93,11 @@
                     $ chmod +x install.sh<br />
                     $ ./install.sh
                 </code>
-                <p>
-                    The script will tell you which dependencies are missing, ask if you want to
-                    download and install them, get the latest stable source code and install required
-                    Node.js modules.
-                </p>
 
                 <h3>Manual installation</h3>
 
                 <p>
-                    If you want to install it manually, please make sure you have installed:
+                    If you want to install it manually, make sure you have:
                 </p>
                 <ul>
                     <li>Node.js (0.8.x +)</li>
@@ -113,6 +108,13 @@
                     Download the latest source code from GitHub:
                 </p>
                 <code>$ git clone https://github.com/zalando/system.git ./</code>
+                <p>
+                    Get Node modules:
+                </p>
+                <code>$ npm install</code>
+                <p>
+                    And you're good to go!
+                </p>
 
             </div>
 
@@ -120,17 +122,15 @@
             <div class="bar"><h2 class="contents">Configuring</h2></div>
             <div class="contents configuring">
                 <p>
-                    All server settings are located on the file
-                    <label>/server/settings.coffee</label>. If you want to override settings,
-                    please edit (or create) the <label>/server/settings.json</label> file with
-                    your own values. Detailed instructions are available on the comments on the
-                    top of the <label>/server/settings.coffee</label> file.
+                    All server settings should be specified on the file
+                    <label>settings.json</label> on the root of the application.
+                    The specific settings are all described on this file.
                 </p>
                 <p>
                     The following settings will certainly need your attention:
                 </p>
 
-                <h5>Settings.General</h5>
+                <h5>Settings.general</h5>
                 <ul>
                     <li>
                         <label>appTitle</label> Sets the desired title for the app, something like "My Company System".
@@ -140,7 +140,7 @@
                     </li>
                 </ul>
 
-                <h5>Settings.Database</h5>
+                <h5>Settings.database</h5>
                 <ul>
                     <li>
                         <label>connString</label> MongoDB connection string. Default is host "localhost", database "systemapp".
@@ -148,20 +148,20 @@
                 </ul>
 
 
-                <h5>Settings.Web</h5>
+                <h5>Settings.web</h5>
                 <ul>
                     <li>
-                        <label>port</label> The port used by the Node.js server, default is 3003.
+                        <label>paas</label> Set to true if you're deploying to common PaaS services. More info on the next section.
                     </li>
                     <li>
-                        <label>paas</label> Set to true if you're deploying to common PaaS services. More info below.
+                        <label>port</label> The port used by the Node.js server, default is 3003.
                     </li>
                 </ul>
 
                 <h3>Deploying to PaaS</h3>
                 <p>
                     The System App can be easily deployed to AppFog, Heroku, Nodejitsu and OpenShift.
-                    The only requirement is that you set <label>Settings.Web.paas</label> to <label>true</label>, so:
+                    The only requirement is that you set <label>Settings.web.paas</label> to <label>true</label>, so:
                 </p>
                 <ul class="paas">
                     <li>
@@ -171,10 +171,15 @@
                         If your PaaS app has a MongoDB bound to it, the <label>connString</label> will be automatically set.
                     </li>
                     <li>
-                        It will use <a href="http://logentries.com" title="Logging events with Logentries">Logentries</a> for logging if you have enabled it on your PaaS account.
+                        It will use <a href="http://logentries.com" title="Logging events with Logentries">Logentries</a> or
+                        <a href="http://loggly.com" title="Logging events with Loggly">Loggly</a>
+                        for logging when enabled on your PaaS account.
                     </li>
                     <li>
-                        It will use <a href="http://mailgun.com" title="Sending emails with Mailgun">Mailgun</a> for emails if you have enabled it on your PaaS account.
+                        It will use <a href="http://mailgun.com" title="Sending emails with Mailgun">Mailgun</a>,
+                        <a href="http://mandrillapp.com" title="Sending emails with Mandrill">Mandrill</a> or
+                        <a href="http://sendgrid.com" title="Sending emails with SendGrid">SendGrid</a>
+                        for emails when enabled on your PaaS account.
                     </li>
                 </ul>
                 <p>
@@ -247,6 +252,7 @@
                 <ul>
                     <li><a href="http://nodejs.org/api/" title="Node.js Docs">Node.js Docs</a></li>
                     <li><a href="http://docs.mongodb.org/manual/" title="MongoDB Docs">MongoDB Docs</a></li>
+                    <li><a href="http://expresser.codeplex.com/" title="Expresser Docs">Expresser Docs</a></li>
                     <li><a href="http://backbonejs.org/" title="Backbone.js Docs">Backbone.js Docs</a></li>
                     <li><a href="http://raphaeljs.com/reference.html" title="Raphaël Docs">Raphaël Docs</a></li>
                     <li><a href="http://coffeescript.org/" title="CoffeeScript Docs">CoffeeScript Docs</a></li>
