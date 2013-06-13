@@ -272,19 +272,24 @@ class SystemApp.OverlayView extends SystemApp.BaseView
         # Get the input value based on its type.
         if inputType is "checkbox"
             value = src.prop "checked"
+            isValid = true
         else
             value = src.val()
+            isValid = @validateField src
 
-        # If the `data` is passed to the event, then save the property to the
-        # data instead of the main view model.
-        if e.data?
-            e.data.set propertyName, value
-        else
-            @model.set propertyName, value
+        # Only save if field has validated.
+        if isValid
 
-        # Save the model and show a "saved" next to the edited field.
-        @model.save()
-        @fieldSaved src
+            # If the `data` is passed to the event, then save the property to the
+            # data instead of the main view model.
+            if e.data?
+                e.data.set propertyName, value
+            else
+                @model.set propertyName, value
+
+            # Save the model and show a "saved" next to the edited field.
+            @model.save()
+            @fieldSaved src
 
 
     # KEYBOARD EVENTS

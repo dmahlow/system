@@ -18,7 +18,7 @@
 
             if roles.admin || roles.auditdata
                 .create
-                    input#auditdata-txt-create(type="text", placeholder="New audit data ID...", title="Enter the name of the new audit data to be created.")
+                    input#auditdata-txt-create(type="text", placeholder="New audit data ID...", title="Enter the name of the new audit data to be created.", data-validation="type:nospecial")
                     button#auditdata-but-create(title="Click to create a new audit data with the specified ID.") Create
 
                 .notes.small.
@@ -37,10 +37,10 @@
                         input#auditdata-txt-description.required.long(type="text", data-propertyname="description", title="Enter a quick description of this audit data.")
                     div
                         label(for="auditdata-txt-url") Source URL:
-                        input#auditdata-txt-url.required.long(type="url", data-propertyname="sourceUrl", placeholder="http(s)://domain.com/path/to/auditdata/json", title="Enter the URL to the JSON resource for this audit data, including http(s)://.")
+                        input#auditdata-txt-url.required.long(type="url", data-propertyname="sourceUrl", placeholder="http(s)://domain.com/path/to/auditdata/json", title="Enter the URL to the JSON resource for this audit data, including http(s)://.", data-validation="type:url")
                     div
                         label(for="auditdata-txt-refresh") Refresh:
-                        input#auditdata-txt-refresh.required.short(type="number", data-propertyname="refreshInterval", title="Data refresh interval in milliseconds. Minimum of 2000, for performance reasons.")
+                        input#auditdata-txt-refresh.required.short(type="number", data-propertyname="refreshInterval", title="Data refresh interval in milliseconds. Minimum of 2000, for performance reasons.", data-validation="type:numeric")
                         span.spaced seconds
 
             // Audit data preview tab.

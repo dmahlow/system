@@ -141,6 +141,11 @@ class SystemApp.BaseView extends Backbone.View
         # Field value required?
         if value is "" and options.required
             error = SystemApp.Messages.valRequired
+        # No special chars allowed?
+        else if options.type is "nosepcial"
+            regex = new RegExp "[`\^=\"<>|]+"
+            if regex.test value
+                error = SystemApp.Messages.valNoSpecialChars
         # Should be a number?
         else if options.type is "number" or options.type is "numeric"
             if not $.isNumeric value
@@ -153,6 +158,11 @@ class SystemApp.BaseView extends Backbone.View
         else if options.type is "color" or options.type is "colour"
             if not value.match(/^#[a-f0-9]{6}$/gi)?
                 error = SystemApp.Messages.valHexColour
+        # Should it be an URL?
+        else if options.type is "url" or options.type is "uri"
+            regex = new RegExp "^(http[s]?:\\/\\/(www\\.)?|ftp:\\/\\/(www\\.)?|www\\.){1}([0-9A-Za-z-\\.@:%_\+~#=]+)+((\\.[a-zA-Z]{2,3})+)(/(.)*)?(\\?(.)*)?"
+            if not regex.test value
+                error = SystemApp.Messages.valUrl
 
         # Set result to false if there's an error.
         result = false if error?

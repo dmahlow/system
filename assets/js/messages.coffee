@@ -111,11 +111,13 @@ SystemApp.Messages =
     valMoreThanMax: "Maximum accepted value is #."
     valNameIsDuplicate: "The entered name already exists."
     valNameIsRequired: "A name is required."
+    valNoSpecialChars: "No special characters allowed."
     valNumeric: "Value must be a number."
     valPaperSizeTooSmall: "The paper size too small. Minimum is  #{SystemApp.Settings.map.minPaperSize}."
     valRefreshIntervalTooLow: "Refresh interval too low. Minimum is #{SystemApp.Settings.auditData.minRefreshInterval}."
     valRequired: "This field cannot be empty."
     valTitleIsRequired: "A title is required."
+    valUrl: "The value must be a valid URL."
 
 
     # SCRIPT EDITOR DESCRIPTIONS

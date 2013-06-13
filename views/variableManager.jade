@@ -17,7 +17,7 @@
 
             if roles.admin || roles.variables
                 .create
-                    input#variables-txt-create(type="text", placeholder="New variable ID...", title="Enter the name of the new variable to be created.")
+                    input#variables-txt-create(type="text", placeholder="New variable ID...", title="Enter the name of the new variable to be created.", data-validation="type:nospecial")
                     button#variables-but-create(title="Click to create a new variable with the specified ID.") Create
 
                 .notes.small.

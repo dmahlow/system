@@ -19,7 +19,7 @@
 
             if roles.admin || roles.auditevents
                 div.create
-                    input#auditevents-txt-create(type="text", placeholder="New audit event ID...", title="Enter the name of the new audit event to be created.")
+                    input#auditevents-txt-create(type="text", placeholder="New audit event ID...", title="Enter the name of the new audit event to be created.", data-validation="type:nospecial")
                     button#auditevents-but-create(title="Click to create a new audit event with the specified name.") Create
 
                 div.notes.small.

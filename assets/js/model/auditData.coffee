@@ -56,10 +56,6 @@ class SystemApp.AuditData extends SystemApp.BaseModel
     # All validation rules should be put inside this method.
     validate: (attrs) =>
 
-        # Data source URL must be a valid URL.
-        if not /((http|https):\/\/(\w+:{0,1}\w*@)?(\S+)|)(:[0-9]+)?(\/|\/([\w#!:.?+=&%@!\-\/]))?/.test attrs.sourceUrl
-            return SystemApp.Messages.valInvalidUrl
-
         # Refresh interval can't be too low.
         if attrs.refreshInterval < SystemApp.Settings.auditData.minRefreshInterval
             return SystemApp.Messages.valRefreshIntervalTooLow
