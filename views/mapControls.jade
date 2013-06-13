@@ -17,18 +17,18 @@
         .panel
             div
                 label.control-label(for="map-ctl-name") Name
-                input#map-ctl-name(type="text", maxlength="20", disabled="disabled", title="Enter the map's name here, with a maximum of 20 chars.", required)
+                input#map-ctl-name(type="text", maxlength="20", disabled="disabled", title="Enter the map's name here, with a maximum of 20 chars.")
             div
                 label.control-label Paper Size
-                input#map-ctl-papersize-x.grid-size(type="text", maxlength="4", disabled="disabled", title="Enter the map's paper width (horizontal length, in pixels).", required)
+                input#map-ctl-papersize-x.grid-size(type="text", maxlength="4", disabled="disabled", title="Enter the map's paper width (horizontal length, in pixels).")
                 span.grid-size X
-                input#map-ctl-papersize-y.grid-size(type="text", maxlength="4", disabled="disabled", title="Enter the map's paper height (vertical length, in pixels).", required)
+                input#map-ctl-papersize-y.grid-size(type="text", maxlength="4", disabled="disabled", title="Enter the map's paper height (vertical length, in pixels).")
                 span.grid-size Y
             div
                 label.control-label Grid Size
-                input#map-ctl-gridsize-x.grid-size(type="text", maxlength="2", disabled="disabled", title="Enter the horizontal grid size, in pixels (distance between vertical lines).", required)
+                input#map-ctl-gridsize-x.grid-size(type="text", maxlength="2", disabled="disabled", title="Enter the horizontal grid size, in pixels (distance between vertical lines).")
                 span.grid-size X
-                input#map-ctl-gridsize-y.grid-size(type="text", maxlength="2", disabled="disabled", title="Enter the vertical grid size, in pixels (distance between horizontal lines).", required)
+                input#map-ctl-gridsize-y.grid-size(type="text", maxlength="2", disabled="disabled", title="Enter the vertical grid size, in pixels (distance between horizontal lines).")
                 span.grid-size Y
             div
                 label.control-label Init script
@@ -62,19 +62,19 @@
         .panel
             div.not-for-links
                 label.control-label(for="map-ctl-shape-background") Background
-                input#map-ctl-shape-background(type="text", maxlength="10", disabled="disabled", title="Enter the shape's background color, hexadecimal format.", required)
+                input#map-ctl-shape-background(type="text", maxlength="10", disabled="disabled", title="Enter the shape's background color, hexadecimal format.", data-validation="type:color")
                 div.preview
             div
                 label.control-label(for="map-ctl-shape-foreground") Label color
-                input#map-ctl-shape-foreground(type="text", maxlength="10", disabled="disabled", title="Enter the element's label color, hexadecimal format.", required)
+                input#map-ctl-shape-foreground(type="text", maxlength="10", disabled="disabled", title="Enter the element's label color, hexadecimal format.", data-validation="type:color")
                 div.preview
             div.not-for-links
                 label.control-label(for="map-ctl-shape-title-foreground") Title color
-                input#map-ctl-shape-title-foreground(type="text", maxlength="10", disabled="disabled", title="Enter the shape's title foreground color, hexadecimal format.", required)
+                input#map-ctl-shape-title-foreground(type="text", maxlength="10", disabled="disabled", title="Enter the shape's title foreground color, hexadecimal format.", data-validation="type:color")
                 div.preview
             div
                 label.control-label(for="map-ctl-shape-stroke") Border color
-                input#map-ctl-shape-stroke(type="text", maxlength="10", disabled="disabled", title="Enter the element's border / stroke color, hexadecimal format.", required)
+                input#map-ctl-shape-stroke(type="text", maxlength="10", disabled="disabled", title="Enter the element's border / stroke color, hexadecimal format.", data-validation="type:color")
                 div.preview
         h5 Styling
         .panel

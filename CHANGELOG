@@ -5,6 +5,7 @@ SYSTEM APP CHANGE LOG
 
 # -----------------------------------------------------------------------------
   0.6.7
++ Revamped form validation to prevent incorrect values to be entered on the app.
 + You can now execute "$ npm install systemapp" to install the System App, and
   run it by executing the "$ ./bin/systemapp" executable file.
 * General bug fixes.

@@ -237,18 +237,17 @@ class SystemApp.MapControlsShapeTabView extends SystemApp.BaseView
 
         if src.attr("type") is "checkbox"
             value = src.prop "checked"
+            isValid = true
         else
             value = src.val()
-            if not isNaN(value)
-                # Make sure numeric values are saved as numbers, not string.
-                value = parseFloat value
+            value = parseFloat value if not isNaN value
+            isValid = @validateField(src).result
 
-        if value? and value isnt ""
+        # Only save if field is validated.
+        if isValid and value? and value isnt ""
             @currentBoundViews.model.set propertyName, value
             @currentBoundViews.model.save()
             @parentView.model.save()
-        else
-            src.val @currentBoundViews.model.get propertyName
 
     # When user selects no icon, disable the "full icon" toggle.
     selIconChanged: =>

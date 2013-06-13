@@ -105,6 +105,7 @@ SystemApp.Messages =
     valAllFieldsEmpty: "All fields are empty!"
     valDescriptionIsRequired: "A description is required."
     valGridSizeTooSmall: "The grid size is too small. Minimum allowed is  #{SystemApp.Settings.map.minGridSize}."
+    valHexColour: "Value must be a hex colour."
     valInvalidUrl: "The entered URL is not valid."
     valLessThanMin: "Minimum accepted value is #."
     valMoreThanMax: "Maximum accepted value is #."

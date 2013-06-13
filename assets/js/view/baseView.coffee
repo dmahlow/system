@@ -108,16 +108,35 @@ class SystemApp.BaseView extends Backbone.View
     # Validate the specified DOM field. The callback will receive the field value and trigger
     # only if validation is OK. Returns an object {result: true/false, error: "error description if any"}.
     validateField: (field, options, successCallback) =>
-        result = true
+        defaultOptions = {required: true, warn: true, refocus: true, type: "string", min: 0, max: 99999999}
+        dataOptions = {}
         value = $.trim field.val()
+        result = true
 
         # Check if only callback was passed (so use default options).
+        # ALso make sure options is an object.
         if not callback? and _.isFunction options
             callback = options
             options = {}
+        if not options?
+            options = {}
+
+        # Check for the "validation" data on the field.
+        validationData = field.data "validation"
+        if validationData?
+
+            # Parse options set via data attribute.
+            if _.isString(validationData)
+                props = validationData.split ","
+                for p in props
+                    keyValue = p.split ":"
+                    dataOptions[keyValue[0]] = keyValue[1]
+                field.data "validation", dataOptions
+            else
+                dataOptions = validationData
 
         # Set default options: field required, warn and refocus is failed, string type.
-        options = $.extend {required: true, warn: true, refocus: true, type: "string", min: 0, max: 99999999}, options
+        options = $.extend defaultOptions, dataOptions, options
 
         # Field value required?
         if value is "" and options.required
@@ -130,6 +149,10 @@ class SystemApp.BaseView extends Backbone.View
                 error = SystemApp.Messages.valLessThanMin.replace "#", options.min
             else if value > options.max
                 error = SystemApp.Messages.valMoreThanMax.replace "#", options.max
+        # Should be a hex colour?
+        else if options.type is "color" or options.type is "colour"
+            if not value.match(/^#[a-f0-9]{6}$/gi)?
+                error = SystemApp.Messages.valHexColour
 
         # Set result to false if there's an error.
         result = false if error?
@@ -143,6 +166,9 @@ class SystemApp.BaseView extends Backbone.View
         # Callback only if valid.
         else if successCallback?
             successCallback value
+
+        # Debug log.
+        SystemApp.consoleLog "BaseView.validateField", value, options, result
 
         return {result: result, error: error}
 
