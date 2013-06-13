@@ -124,45 +124,33 @@ class SystemApp.MapControlsMapTabView extends SystemApp.BaseView
 
     # Trigger whenever the current [Map](map.html) name has changed.
     setName: =>
-        value = @$txtName.val()
-
-        @model.name value if value.length > 0
+        @validateField @$txtName, @model.name
 
     # Triggered whenever the current [Map](map.html) `paperSizeX` has changed, `$txtPaperSizeX` onBlur event.
     setPaperSizeX: =>
-        @setSize @$txtPaperSizeX, @model.paperSizeX, SystemApp.Settings.map.minPaperSize
+        @setSize @$txtPaperSizeX, SystemApp.Settings.map.minPaperSize, @model.paperSizeX
 
     # Triggered whenever the current [Map](map.html) `paperSizeY` has changed, `$txtPaperSizeY` onBlur event.
     setPaperSizeY: =>
-        @setSize @$txtPaperSizeY, @model.paperSizeY, SystemApp.Settings.map.minPaperSize
+        @setSize @$txtPaperSizeY, SystemApp.Settings.map.minPaperSize, @model.paperSizeY
 
     # Triggered whenever the current [Map](map.html) `gridSizeX` has changed, `$txtGridSizeX` onBlur event.
     setGridSizeX: =>
-        @setSize @$txtGridSizeX, @model.gridSizeX, SystemApp.Settings.map.minGridSize
+        @setSize @$txtGridSizeX, SystemApp.Settings.map.minGridSize, @model.gridSizeX
 
     # Triggered whenever the current [Map](map.html) `gridSizeY` has changed, `$txtGridSizeY` onBlur event.
     setGridSizeY: =>
-        @setSize @$txtGridSizeY, @model.gridSizeY, SystemApp.Settings.map.minGridSize
+        @setSize @$txtGridSizeY, SystemApp.Settings.map.minGridSize, @model.gridSizeY
+
+    # Update one of the current [Map](map.html) sizes, which can be paperSizeX, paperSizeY,
+    # gridSizeX or gridSizeY. A text input field, property callback and the minimum accepted
+    # value must be passed.
+    setSize: (field, minValue, callback) =>
+        @validateField field, {type: "number", min: minValue}, callback
 
     # Sets the "zoom" span, to display the current [Map View](mapView.html) zoom level.
     setZoomLabel: (zoomLevel) =>
         @$zoomSpan.html "Zoom " + (1 / zoomLevel).toFixed(2)
-
-    # Update one of the current [Map](map.html) sizes, which can be paperSizeX, paperSizeY,
-    # gridSizeX or gridSizeY. A text input field, property name and the minimum accepted
-    # value must be passed. *Internal use only!*
-    setSize: (textField, propertyName, minValue) =>
-        size = textField.val()
-
-        if $.isNumeric size
-            size = Math.round size
-        else
-            size = propertyName()
-            textField.val size
-
-        size = minValue if size < minValue
-
-        propertyName size
 
     # Enable or disable editing the current [Map](map.html) settings.
     setEnabled: (value) =>

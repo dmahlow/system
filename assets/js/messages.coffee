@@ -106,10 +106,14 @@ SystemApp.Messages =
     valDescriptionIsRequired: "A description is required."
     valGridSizeTooSmall: "The grid size is too small. Minimum allowed is  #{SystemApp.Settings.map.minGridSize}."
     valInvalidUrl: "The entered URL is not valid."
+    valLessThanMin: "Minimum accepted value is #."
+    valMoreThanMax: "Maximum accepted value is #."
     valNameIsDuplicate: "The entered name already exists."
     valNameIsRequired: "A name is required."
+    valNumeric: "Value must be a number."
     valPaperSizeTooSmall: "The paper size too small. Minimum is  #{SystemApp.Settings.map.minPaperSize}."
     valRefreshIntervalTooLow: "Refresh interval too low. Minimum is #{SystemApp.Settings.auditData.minRefreshInterval}."
+    valRequired: "This field cannot be empty."
     valTitleIsRequired: "A title is required."
 
 

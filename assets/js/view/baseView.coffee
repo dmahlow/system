@@ -62,41 +62,6 @@ class SystemApp.BaseView extends Backbone.View
             value = SystemApp.Settings.general.appTitle
         document.title = value
 
-    # Warn the user by blinking the specified field with a red background.
-    warnField: (field) =>
-        extraMs = SystemApp.Settings.general.elementBlinkInterval / 2
-        redClass = "error"
-
-        @addClass field, redClass
-        _.delay @removeClass, SystemApp.Settings.general.elementBlinkInterval, field, redClass
-        _.delay @addClass, SystemApp.Settings.general.elementBlinkInterval + extraMs, field, redClass
-        _.delay @removeClass, SystemApp.Settings.general.elementBlinkInterval * 2, field, redClass
-        _.delay @addClass, SystemApp.Settings.general.elementBlinkInterval * 2 + extraMs, field, redClass
-        _.delay @removeClass, SystemApp.Settings.general.elementBlinkInterval * 3, field, redClass
-
-    # Show a "saved" message next to the specified field, and fade it out after a few seconds.
-    fieldSaved: (field) =>
-        parent = field.parent()
-        parent = parent.parent() if parent.hasClass("toggle")
-
-        # Do not proceed if container has the class "silent".
-        return if parent.hasClass "silent"
-
-        # Last element of the container.
-        lastChild = parent.children("span:last-child")
-
-        # Create alert.
-        alert = $(document.createElement "span")
-        alert.addClass "saved"
-        alert.html SystemApp.Messages.saved
-
-        # Append the "saved" at the very end of the field container,
-        # but only if a "saved" is not present yet.
-        if not lastChild.hasClass "saved"
-            parent.append alert
-
-            # Fade out and then remove from the DOM.
-            alert.fadeOut SystemApp.Settings.general.fadeRemoveDelay * 2, () -> alert.remove()
 
     # Remove a DOM element representing a model from the view. This will add the class "removed"
     # and then fade the element out.
@@ -135,6 +100,88 @@ class SystemApp.BaseView extends Backbone.View
 
         # Reappend each item on its correct position after sorting.
         $.each items, (i, el) -> list.append el
+
+
+    # FORM HELPERS
+    # ----------------------------------------------------------------------
+
+    # Validate the specified DOM field. The callback will receive the field value and trigger
+    # only if validation is OK. Returns an object {result: true/false, error: "error description if any"}.
+    validateField: (field, options, successCallback) =>
+        result = true
+        value = $.trim field.val()
+
+        # Check if only callback was passed (so use default options).
+        if not callback? and _.isFunction options
+            callback = options
+            options = {}
+
+        # Set default options: field required, warn and refocus is failed, string type.
+        options = $.extend {required: true, warn: true, refocus: true, type: "string", min: 0, max: 99999999}, options
+
+        # Field value required?
+        if value is "" and options.required
+            error = SystemApp.Messages.valRequired
+        # Should be a number?
+        else if options.type is "number" or options.type is "numeric"
+            if not $.isNumeric value
+                error = SystemApp.Messages.valNumeric
+            else if value < options.min
+                error = SystemApp.Messages.valLessThanMin.replace "#", options.min
+            else if value > options.max
+                error = SystemApp.Messages.valMoreThanMax.replace "#", options.max
+
+        # Set result to false if there's an error.
+        result = false if error?
+
+        # Warn and refocus if validation failed.
+        if not result
+            if options.warn
+                @warnField field
+            if options.refocus
+                field.focus()
+        # Callback only if valid.
+        else if successCallback?
+            successCallback value
+
+        return {result: result, error: error}
+
+
+    # Warn the user by blinking the specified field with a red background.
+    warnField: (field) =>
+        extraMs = SystemApp.Settings.general.elementBlinkInterval / 2
+        redClass = "error"
+
+        @addClass field, redClass
+        _.delay @removeClass, SystemApp.Settings.general.elementBlinkInterval, field, redClass
+        _.delay @addClass, SystemApp.Settings.general.elementBlinkInterval + extraMs, field, redClass
+        _.delay @removeClass, SystemApp.Settings.general.elementBlinkInterval * 2, field, redClass
+        _.delay @addClass, SystemApp.Settings.general.elementBlinkInterval * 2 + extraMs, field, redClass
+        _.delay @removeClass, SystemApp.Settings.general.elementBlinkInterval * 3, field, redClass
+
+    # Show a "saved" message next to the specified field, and fade it out after a few seconds.
+    fieldSaved: (field) =>
+        parent = field.parent()
+        parent = parent.parent() if parent.hasClass("toggle")
+
+        # Do not proceed if container has the class "silent".
+        return if parent.hasClass "silent"
+
+        # Last element of the container.
+        lastChild = parent.children("span:last-child")
+
+        # Create alert.
+        alert = $(document.createElement "span")
+        alert.addClass "saved"
+        alert.html SystemApp.Messages.saved
+
+        # Append the "saved" at the very end of the field container,
+        # but only if a "saved" is not present yet.
+        if not lastChild.hasClass "saved"
+            parent.append alert
+
+            # Fade out and then remove from the DOM.
+            alert.fadeOut SystemApp.Settings.general.fadeRemoveDelay * 2, () -> alert.remove()
 
 
     # MODIFIER KEY HELPERS
