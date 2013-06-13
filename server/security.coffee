@@ -26,62 +26,62 @@ class Security
         # Only add passowrd protection if enabled on settings.
         return if not expresser.app.passport?
 
-        # Helper to validate user login. If no user was specified and [settings](settings.html)
-        # allow guest access, then log as guest.
-        validateUser = (user, password, callback) =>
-            if not user? or user is "" or user is "guest"
-                if settings.security.guestEnabled
-                    guest = {id: "guest", displayName: "Guest", username: "guest", roles: ["guest"]}
-                    return callback null, guest
-                else
-                    return callback null, false, {message: "Username was not specified."}
-
-            # Check if user should be fetched by ID or username.
-            if not user.id?
-                filter = {username: user}
-            else
-                fromCache = @cachedUsers[user.id]
-                filter = user
-
-            # Add password hash to filter.
-            if password isnt false
-                filter.passwordHash = @getPasswordHash user, password
-
-            # Check if user was previously cached. If not valid, delete from cache.
-            if fromCache?.cacheExpiryDate?
-                if fromCache.cacheExpiryDate.isAfter(moment())
-                    return callback null, fromCache
-                delete @cachedUsers[user.id]
-
-            # Get user from database.
-            database.getUser filter, (err, result) =>
-                if err?
-                    return callback err
-                else if not result? or result.length < 1
-                    return callback null, false, {message: "User and password combination not found."}
-
-                result = result[0] if result.length > 0
-
-                # Set expiry date for the user cache.
-                result.cacheExpiryDate = moment().add "s", settings.security.userCacheExpires
-                @cachedUsers[result.id] = result
-
-                # Return the login callback.
-                return callback null, result
-
         # Use HTTP basic authentication.
-        expresser.app.passportAuthenticate = validateUser
+        expresser.app.passportAuthenticate = @validateUser
 
         # User serializer will user the user ID only.
-        expresser.app.passport.serializeUser (user, callback) ->
+        expresser.app.passport.serializeUser (user, callback) =>
             callback null, user.id
 
         # User deserializer will get user details from the database.
-        expresser.app.passport.deserializeUser (user, callback) ->
+        expresser.app.passport.deserializeUser (user, callback) =>
             if user is "guest"
-                validateUser "guest", null, callback
+                @validateUser "guest", null, callback
             else
-                validateUser {id: user}, false, callback
+                @validateUser {id: user}, false, callback
+
+    # Helper to validate user login. If no user was specified and [settings](settings.html)
+    # allow guest access, then log as guest.
+    validateUser: (user, password, callback) =>
+        if not user? or user is "" or user is "guest"
+            if settings.security.guestEnabled
+                guest = {id: "guest", displayName: "Guest", username: "guest", roles: ["guest"]}
+                return callback null, guest
+            else
+                return callback null, false, {message: "Username was not specified."}
+
+        # Check if user should be fetched by ID or username.
+        if not user.id?
+            filter = {username: user}
+        else
+            fromCache = @cachedUsers[user.id]
+            filter = user
+
+        # Add password hash to filter.
+        if password isnt false
+            filter.passwordHash = @getPasswordHash user, password
+
+        # Check if user was previously cached. If not valid, delete from cache.
+        if fromCache?.cacheExpiryDate?
+            if fromCache.cacheExpiryDate.isAfter(moment())
+                return callback null, fromCache
+            delete @cachedUsers[user.id]
+
+        # Get user from database.
+        database.getUser filter, (err, result) =>
+            if err?
+                return callback err
+            else if not result? or result.length < 1
+                return callback null, false, {message: "User and password combination not found."}
+
+            result = result[0] if result.length > 0
+
+            # Set expiry date for the user cache.
+            result.cacheExpiryDate = moment().add "s", settings.security.userCacheExpires
+            @cachedUsers[result.id] = result
+
+            # Return the login callback.
+            return callback null, result
 
     # Ensure that there's at least one admin user registered. The default
     # admin user will have username "admin", password "system".

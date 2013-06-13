@@ -22,8 +22,30 @@ module.exports = (app) ->
     lastModified = null
 
 
-    # MAIN ROUTE
+    # MAIN AND ADMIN ROUTES
     # ----------------------------------------------------------------------
+
+    # The login page and form.
+    getLogin = (req, res) ->
+        options =  getResponseOptions req
+
+        # Render the index page.
+        res.render "login", options
+
+    # The login validation via post.
+    postLogin = (req, res) ->
+        username = req.body.username
+        password = req.body.password
+
+        if not username? or username is "" or not password? or password is ""
+            res.redirect "/login"
+        else
+            security.validateUser username, password, (err, result) ->
+                if err?
+                    res.send "Error: #{JSON.stringify(err)}"
+                else
+                    res.send "Login validated! #{JSON.stringify(result)}"
+
 
     # The main index page.
     getIndex = (req, res) ->
@@ -35,10 +57,6 @@ module.exports = (app) ->
 
         # Render the index page.
         res.render "index", options
-
-
-    # ADMIN ROUTES
-    # ----------------------------------------------------------------------
 
     # The main index page. Only users with the "admin" role will be able to
     # access this page.
@@ -623,24 +641,25 @@ module.exports = (app) ->
         res.send "Access denied for #{method}."
 
 
-    # SET MAIN ROUTES
+
+    # SET MAIN AND ADMIN ROUTES
     # ----------------------------------------------------------------------
 
-    # Set basic HTTP authentication options.
+    # Set authentication options.
     passportOptions = {session: true}
+    passportStrategy = if expresser.settings.passport.ldap.enabled then "ldapauth" else "basic"
 
-    # The login page/
-    app.get "/login", expresser.app.passport.authenticate("basic", passportOptions), (req, res) -> res.send req.user.username
+    # The login page.
+    app.get "/login", getLogin
+
+    # The login page post validation.
+    app.post "/login", postLogin
 
     # Main index.
-    app.get "/", expresser.app.passport.authenticate("basic", passportOptions), getIndex
-
-
-    # SET ADMIN ROUTES
-    # ----------------------------------------------------------------------
+    app.get "/", expresser.app.passport.authenticate(passportStrategy, passportOptions), getIndex
 
     # Admin area.
-    app.get "/admin", expresser.app.passport.authenticate("basic", passportOptions), getAdmin
+    app.get "/admin", expresser.app.passport.authenticate(passportStrategy, passportOptions), getAdmin
 
     # Upgrader page.
     app.get "/upgrade", runUpgrade

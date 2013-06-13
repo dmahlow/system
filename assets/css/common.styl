@@ -243,6 +243,7 @@ select
 input[type="email"],
 input[type="number"],
 input[type="text"],
+input[type="password"],
 input[type="url"]
     background inputBgColor
     border-radius 0
@@ -266,6 +267,7 @@ textarea
 input[type="email"]:disabled,
 input[type="number"]:disabled,
 input[type="text"]:disabled,
+input[type="password"]:disabled,
 input[type="url"]:disabled
     background rgb(210, 210, 210)
     color rgb(140, 140, 140)
@@ -294,6 +296,10 @@ button.undo
 // Buttons with refresh icon.
 button.refresh
     background-image url(../images/but-refresh.png)
+
+// Buttons with refresh icon.
+button.identify
+    background-image url(../images/but-identify.png)
 
 // When a text field is not valid, set it to red to alert the user
 input.error, textarea.error

@@ -1,0 +1,18 @@
+!!! 5
+!= css("app")
+html
+    head
+        title #{title}
+        link(type="image/x-icon", href="images/favico.png", rel="icon")
+        meta(name="apple-mobile-web-app-capable", content="yes")
+    body#login
+        h1 #{title} Login
+        form(method="POST")
+            div
+                label(for="username") Username
+                input#username(type="text", name="username", placeholder="username", title="Enter your username (case sensitive!)")
+            div
+                label(for="password") Password
+                input#password(type="password", name="password", placeholder="password", title="Enter your password (case sensitive!)")
+            div
+                button.identify Validate

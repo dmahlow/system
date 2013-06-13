@@ -84,6 +84,14 @@
         // By default the System App will use basic HTTP authentication.
         "basic": {
             "enabled": true
+        },
+        // If you want to use LDAP, set the information below.
+        "ldap": {
+            "enabled": false,
+            "server": null,
+            "adminDn": null,
+            "searchBase": null,
+            "searchFilter": null
         }
     },
 
