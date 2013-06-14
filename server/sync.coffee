@@ -105,7 +105,7 @@ class Sync
                 expresser.logger.warn "Sync.download", remoteUrl, error
 
             # Send error using Socket.IO.
-            sockets.sendServerError "Download error: " + remoteUrl + " " + error.code
+            expresser.sockets.sendServerError "Download error: " + remoteUrl + " " + error.code
 
             # Callback passing the error object.
             errorMessage = error.message
