@@ -90,6 +90,7 @@
             "enabled": false,
             "server": null,
             "adminDn": null,
+            "adminPassword": null,
             "searchBase": null,
             "searchFilter": null
         }

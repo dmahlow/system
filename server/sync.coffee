@@ -126,7 +126,6 @@ class Sync
                 downloadError {code: response.statusCode, message: "Server returned an unexpected status code."}
 
             else
-
                 # Create the file stream with a .download extension. This will be renamed after the
                 # download has finished and the file is totally written.
                 fileWriter = fs.createWriteStream localFileTemp, {"flags": "w+"}

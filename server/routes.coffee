@@ -641,7 +641,6 @@ module.exports = (app) ->
         res.send "Access denied for #{method}."
 
 
-
     # SET MAIN AND ADMIN ROUTES
     # ----------------------------------------------------------------------
 
@@ -656,10 +655,16 @@ module.exports = (app) ->
     app.post "/login", postLogin
 
     # Main index.
-    app.get "/", expresser.app.passport.authenticate(passportStrategy, passportOptions), getIndex
+    if expresser.app.passport?
+        app.get "/", expresser.app.passport.authenticate(passportStrategy, passportOptions), getIndex
+    else
+        app.get "/", getIndex
 
     # Admin area.
-    app.get "/admin", expresser.app.passport.authenticate(passportStrategy, passportOptions), getAdmin
+    if expresser.app.passport?
+        app.get "/admin", expresser.app.passport.authenticate(passportStrategy, passportOptions), getAdmin
+    else
+        app.get "/admin", getAdmin
 
     # Upgrader page.
     app.get "/upgrade", runUpgrade
