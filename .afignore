@@ -4,3 +4,5 @@
 atlassian-ide-plugin.xml
 gh-pages/
 logs/*.log
+settings.development.json
+settings.production.json

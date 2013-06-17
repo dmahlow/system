@@ -8,3 +8,5 @@ npm-shrinkwrap.json
 public/downloads/*.json
 public/images/mapthumbs/*.png
 public/images/mapthumbs/*.svg
+settings.development.json
+settings.production.json

@@ -124,7 +124,9 @@ class SystemApp.MapControlsMapTabView extends SystemApp.BaseView
 
     # Trigger whenever the current [Map](map.html) name has changed.
     setName: =>
-        @validateField @$txtName, @model.name
+        if @validateField(@$txtName, @model.name).result
+            @model.save()
+            SystemApp.routes.navigate "map/" + @model.urlKey(), {trigger: false}
 
     # Triggered whenever the current [Map](map.html) `paperSizeX` has changed, `$txtPaperSizeX` onBlur event.
     setPaperSizeX: =>
@@ -146,7 +148,8 @@ class SystemApp.MapControlsMapTabView extends SystemApp.BaseView
     # gridSizeX or gridSizeY. A text input field, property callback and the minimum accepted
     # value must be passed.
     setSize: (field, minValue, callback) =>
-        @validateField field, {type: "number", min: minValue}, callback
+        if @validateField(field, {type: "number", min: minValue}, callback).result
+            @model.save()
 
     # Sets the "zoom" span, to display the current [Map View](mapView.html) zoom level.
     setZoomLabel: (zoomLevel) =>

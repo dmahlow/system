@@ -3,8 +3,6 @@
 
 # Expresser.
 expresser = require "expresser"
-settings = expresser.settings
-settings.general.debug = true
 
 # Required modules.
 lodash = require "lodash"

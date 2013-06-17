@@ -11,7 +11,9 @@ class Sync
     # Required modules.
     fs = require "fs"
     http = require "http"
+    https = require "https"
     moment = require "moment"
+    sockets = require "./sockets.coffee"
     url = require "url"
 
     # Holds a copy of all files being downloaded.
@@ -68,11 +70,20 @@ class Sync
         # Reset error message and set options.
         errorMessage = null
         urlInfo = url.parse remoteUrl
-        options = {host: urlInfo.hostname, port: urlInfo.port, path: urlInfo.path, headers: headers}
+        options =
+            host: urlInfo.hostname
+            hostname: urlInfo.hostname
+            port: urlInfo.port
+            path: urlInfo.path
+            headers: headers
+            rejectUnauthorized: false
 
         # Make sure port is 443 for https, if left undefined.
-        if remoteUrl.indexOf("https") is 0 and not urlInfo.port?
-            options.port = 443
+        if remoteUrl.indexOf("https") is 0
+            options.port = 443 if not urlInfo.port?
+            httpHandler = https
+        else
+            httpHandler = http
 
         # Check for credentials on the URL.
         if urlInfo.auth? and urlInfo.auth isnt ""
@@ -105,7 +116,7 @@ class Sync
                 expresser.logger.warn "Sync.download", remoteUrl, error
 
             # Send error using Socket.IO.
-            expresser.sockets.sendServerError "Download error: " + remoteUrl + " " + error.code
+            sockets.sendServerError "Download error: " + remoteUrl + " " + error.code
 
             # Callback passing the error object.
             errorMessage = error.message
@@ -115,7 +126,7 @@ class Sync
             @currentDownloads[localFile] = null
             delete @currentDownloads[localFile]
 
-        req = http.get options, (response) =>
+        req = httpHandler.get options, (response) =>
 
             localFileTemp = localFile + ".download"
 

@@ -154,6 +154,8 @@ class SystemApp.AlertView extends SystemApp.BaseView
         if alertObj.savedModel?
             if alertObj.savedModel.text?
                 title = alertObj.savedModel.text()
+            else if alertObj.savedModel.name?
+                title = alertObj.savedModel.name()
             else if alertObj.savedModel.friendlyId?
                 title = alertObj.savedModel.friendlyId()
             else
@@ -162,6 +164,8 @@ class SystemApp.AlertView extends SystemApp.BaseView
         else if alertObj.removedModel?
             if alertObj.removedModel.text?
                 title = alertObj.removedModel.text()
+            else if alertObj.removedModel.name?
+                title = alertObj.removedModel.name()
             else if alertObj.removedModel.friendlyId?
                 title = alertObj.removedModel.friendlyId()
             else

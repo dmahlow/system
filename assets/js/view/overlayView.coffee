@@ -211,7 +211,7 @@ class SystemApp.OverlayView extends SystemApp.BaseView
         @modelElementRemove row
 
         # Hide the right panel if the removed model was the one being displayed / edited.
-        @bindModel() if @model.id is item.id
+        @bindModel() if @model? and @model.id is item.id
 
     # When user clicks on the edit icon on a row, call the `selectModel` method.
     clickEditIcon: (e) =>

@@ -2,7 +2,10 @@
 // These will be appended to the base Expresser Settings class, and some of the
 // Expresser settings might not be defined here (and in this case it will use the default values).
 //
-// For more details: https://expresser.codeplex.com/wikipage?title=Settings
+// For more details on Expresser settings: https://expresser.codeplex.com/wikipage?title=Settings
+//
+// Please note that the System App will also look for `settings.development.json` if running on
+// development environment, and `settings.production.json` if running on production.
 
 {
     // GENERAL SETTINGS
@@ -10,6 +13,7 @@
         // The app title.
         "appTitle": "System App",
         // Only set debug = true on development and testing environments!
+        // Leaving it null will automatically set to false on production.
         "debug": null
     },
 

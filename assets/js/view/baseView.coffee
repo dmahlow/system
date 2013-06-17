@@ -115,8 +115,8 @@ class SystemApp.BaseView extends Backbone.View
 
         # Check if only callback was passed (so use default options).
         # ALso make sure options is an object.
-        if not callback? and _.isFunction options
-            callback = options
+        if not successCallback? and _.isFunction options
+            successCallback = options
             options = {}
         if not options?
             options = {}
