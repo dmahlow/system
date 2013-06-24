@@ -39,27 +39,6 @@ body
     -webkit-font-smoothing: antialiased;
 }
 
-body.fulldemo
-{
-    overflow: hidden;
-}
-
-body.fulldemo iframe
-{
-    border-width: 0 !important;
-    position: fixed !important;
-}
-
-body.fulldemo #tofulldemo
-{
-    background-image: url(../images/minimize.png);
-    bottom: 5px !important;
-    left: auto;
-    position: fixed !important;
-    right: 150px !important;
-    top: auto;
-}
-
 p, ul, ol, code
 {
     margin: 0 0 20px 0;
@@ -97,11 +76,16 @@ img
 
 code
 {
-    background: rgb(240, 240, 240);
-    border-left: 1px solid rgb(100, 110, 120);
+    background: rgb(30, 30, 30);
+    color: rgb(140, 210, 50);
     display: block;
     font-family: "Lucida Sans", Monaco, Bitstream Vera Sans Mono, Lucida Console, Terminal;
-    padding: 2px 5px 2px 5px;
+    padding: 5px;
+}
+
+h3
+{
+    font-size: 30px;
 }
 
 /* CONTAINERS
@@ -120,7 +104,7 @@ code
 .contents
 {
     margin: auto;
-    width: 980px;
+    width: 1110px;
 }
 
 .bar
@@ -130,49 +114,51 @@ code
     border-bottom: 3px solid rgb(90, 160, 30);
     color: rgb(20, 30, 25);
     margin-bottom: 40px;
-    margin-top: 50px;
     padding: 10px 0 10px 0;
+}
+
+#page
+{
+    margin-bottom: 40px;
+    margin-top: 30px;
 }
 
 /* HEADER AND TOP FACTS
 // ------------------------------------------------------------------------- */
 
-#header
-{
-    background: rgb(0, 0, 0);
-    height: 438px;
-}
-
-#header iframe
+#demoframe
 {
     border: 1px solid rgb(190, 190, 190);
-    left: 90px;
-    height: 310px;
+    height: 350px;
+    left: 10px;
     padding: 5px;
     position: absolute;
-    top: 50px;
-    width: 580px;
+    top: 580px;
+    width: 1168px;
 }
 
-#tofulldemo
+#demoframe-overlay
 {
-    background: url(../images/maximize.png) no-repeat 98% 50%;
-    color: rgb(190, 190, 190);
-    cursor: pointer;
-    display: block;
-    font-size: 11px;
-    left: 517px;
-    padding-right: 22px;
+    background-color: rgba(0, 0, 0, 0.5);
+    color: rgb(240, 240, 240);
+    font-size: 40px;
+    height: 200px;
+    left: 10px;
+    opacity: 0;
+    margin: 5px;
+    padding-top: 150px;
     position: absolute;
-    top: 374px;
+    text-align: center;
+    top: 580px;
+    width: 1168px;
 }
 
-#tofulldemo:hover
+#demoframe-overlay:hover
 {
-    color: rgb(252, 252, 252);
+    opacity: 0.9;
 }
 
-#miniheader
+#topmenu
 {
     background: rgba(0, 0, 0, 0.9);
     box-shadow: 0 0 20px rgb(20, 20, 20);
@@ -183,68 +169,64 @@ code
     position: fixed;
     top: 0;
     width: 1200px;
+    z-index: 9;
 }
 
-#miniheader div
+#topmenu div
 {
-    font-size: 14px;
+    font-size: 18px;
     text-align: left;
 }
 
-#miniheader a
+#topmenu a
 {
     color: rgb(250, 248, 245);
     margin: 0 10px 0 10px;
 }
 
-#miniheader span
+#topmenu span
 {
     float: right;
 }
 
-#miniheader .active
+#topmenu .active
 {
     color: rgb(150, 190, 130) !important;
 }
 
 h1
 {
-    color: rgb(255, 255, 255);
+    color: rgb(0, 0, 0);
     font-family: "OpenSansLight";
     font-size: 58px;
     margin: 0;
-    padding: 160px 0 0 0;
-    text-align: right;
-}
-
-h6
-{
-    background: url(../images/zalando_logo_top.png) no-repeat right;
-    color: rgb(250, 250, 250);
-    font-size: 20px;
-    float: right;
-    height: 25px;
-    margin: 6px 6px 0 0;
-    text-align: left;
-    width: 174px;
+    padding: 80px 0 0 0;
+    text-align: center;
 }
 
 #topfacts
 {
     color: rgb(131, 149, 162);
-    margin-top: 60px;
+    margin-top: 20px;
 }
 
 #topfacts > div
 {
     display: inline-block;
-    padding: 134px 10px 0 10px;
+    padding: 134px 0 0 0;
     vertical-align: top;
-    width: 303px;
+    width: 33%;
+}
+
+#topfacts > div > h3
+{
+    margin: 10px;
+    text-align: center;
 }
 
 #topfacts > div > p
 {
+    margin: 10px;
     text-align: left;
 }
 
@@ -263,12 +245,12 @@ h6
     background: url(../images/ico_monitor.png) no-repeat top;
 }
 
-#topdemo
+#demoinfo
 {
-    margin-top: 20px;
+    margin-top: 440px;
 }
 
-#topdemo h5
+#demoinfo h5
 {
     margin: auto;
     text-align: center;
@@ -276,18 +258,18 @@ h6
     font-size: 20px;
 }
 
-#topdemo div
+#demoinfo div
 {
     display: block;
     margin-top: 10px;
 }
 
-#topdemo a
+#demoinfo a
 {
     font-weight: bold;
 }
 
-#topdemo small
+#demoinfo small
 {
     display: block;
     font-size: 12px;
@@ -297,12 +279,12 @@ h6
 /* CONTENTS
 // ------------------------------------------------------------------------- */
 
-#main-contents div.contents
+#page div.contents
 {
     text-align: left;
 }
 
-#main-contents div label
+#page div label
 {
     font-weight: bold;
 }
@@ -325,26 +307,46 @@ ul.paas small
 /* FOOTER
 // ------------------------------------------------------------------------- */
 
-#footer
+
+
+#footer-notes
 {
-    border-top: 1px solid rgb(200, 200, 200);
-    font-size: 14px;
-    height: 40px;
-    margin-top: 70px;
-    padding-top: 10px;
+    background: rgb(235, 235, 235);
+    padding: 20px 0 40px 0;
+    text-align: left;
 }
 
-#footer > img
+#footer-notes code
 {
-    float: left;
-    margin-right: 9px;
+    float: right;
+    margin-left: 20px;
+    margin-top: 20px;
+    padding: 10px;
+    width: 50%;
+}
+
+#footer
+{
+    background: rgb(205, 205, 205);
+    height: 40px;
+    padding: 40px 0 40px 0;
+    text-align: left;
+}
+
+#footer .right
+{
+    float: right;
+}
+
+#footer .right img
+{
+    margin-left: 6px;
 }
 
 #footer a
 {
     color: rgb(30, 30, 30);
-    float: right;
-    margin-left: 20px;
+    margin-right: 20px;
 }
 
 /* TOOLTIPS
@@ -359,60 +361,5 @@ ul.paas small
     right: 0;
     top: 0;
     width: 149px;
-    z-index: 90;
-}
-
-#tooltip-expand
-{
-    left: 696px;
-    position: absolute;
-    top: 373px;
-}
-
-#tooltip-collapse
-{
-    right: 336px;
-    position: fixed;
-    bottom: 3px;
-}
-
-.tooltip
-{
-    display: inline-block;
-    font-size: 11px;
-    z-index: 99
-}
-
-.tooltip > div
-{
-    background: rgb(200, 240, 180);
-    color: rgb(0, 0, 0);
-    height: 19px;
-    padding: 1px 6px 0 6px;
-    position: relative;
-}
-
-.tooltip > div:after, .tooltip > div:before
-{
-    border: solid transparent;
-    border-width: 10px;
-    content: " ";
-    height: 0;
-    width: 0;
-    position: absolute;
-    pointer-events: none;
-    top: 50%;
-    margin-top: -10px;
-}
-
-.tooltip > div.left:after, .tooltip > div.left:before
-{
-    border-right-color: rgb(200, 240, 180);
-    right: 100%;
-}
-
-.tooltip > div.right:before, .tooltip > div.right:after
-{
-    border-left-color: rgb(200, 240, 180);
-    left: 100%;
+    z-index: 7;
 }

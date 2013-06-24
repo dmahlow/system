@@ -1,0 +1,69 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>System App by Zalando</title>
+    <link rel="stylesheet" href="styles/styles.css">
+    <link type="image/x-icon" href="images/favico.png" rel="icon">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+    <script src="scripts/scripts.js"></script>
+    <script>
+        (function(i,s,o,g,r,a,m){i["GoogleAnalyticsObject"]=r;i[r]=i[r]||function(){
+            (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+                m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+        })(window,document,"script","//www.google-analytics.com/analytics.js","ga");
+
+        ga("create", "UA-40533395-1", "systemapp.io");
+        ga("send", "pageview");
+    </script>
+</head>
+<body>
+    <div id="wrapper">
+        <div id="topmenu-wrapper"></div>
+        <script>loadTopMenu();</script>
+
+        <div id="page">
+
+            <div class="bar"><h2 class="contents">Installing the System App</h2></div>
+            <div class="contents installation">
+                <p>
+                    Simply download the
+                    <label><a href="https://raw.github.com/zalando/system/master/install.sh" title="Download the System App install script.">install.sh</a></label>
+                    script, make it executable and run!
+                </p>
+                <code>
+                    $ curl https://raw.github.com/zalando/system/master/install.sh<br />
+                    $ chmod +x install.sh<br />
+                    $ ./install.sh
+                </code>
+
+                <h3>Manual installation</h3>
+
+                <p>
+                    If you want to install it manually, make sure you have:
+                </p>
+                <ul>
+                    <li><a href="http://nodejs.org/" title="Node.js">Node.js</a> (0.8.x +)</li>
+                    <li><a href="http://www.mongodb.org/" title="MongoDB">MongoDB</a> (1.8.2 +)</li>
+                    <li><a href="http://www.imagemagick.org/" title="ImageMagick">ImageMagick</a> (optional to generate map thumbnails)</li>
+                </ul>
+                <p>
+                    Download the latest source code from GitHub:
+                </p>
+                <code>$ git clone https://github.com/zalando/system.git ./</code>
+                <p>
+                    Install Node.js dependencies:
+                </p>
+                <code>$ npm install</code>
+                <p>
+                    And you're good to go!
+                </p>
+
+            </div>
+        </div>
+
+        <div id="footer-wrapper"></div>
+        <script>loadFooter();</script>
+    </div>
+</body>
+</html>
