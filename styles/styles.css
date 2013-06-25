@@ -165,7 +165,6 @@ h3
     color: rgb(250, 248, 245);
     left: 50%;
     margin-left: -600px;
-    padding: 3px 0 5px 0;
     position: fixed;
     top: 0;
     width: 1200px;
@@ -180,18 +179,23 @@ h3
 
 #topmenu a
 {
+    border: 2px solid transparent;
     color: rgb(250, 248, 245);
-    margin: 0 10px 0 10px;
+    display: inline-block;
+    padding: 4px;
+    margin: 0 1px 1px 1px;
 }
 
 #topmenu span
 {
     float: right;
+    margin-top: 6px;
 }
 
 #topmenu .active
 {
-    color: rgb(150, 190, 130) !important;
+    border-bottom-color: rgb(140, 210, 50) !important;
+    color: rgb(140, 210, 50) !important;
 }
 
 h1
