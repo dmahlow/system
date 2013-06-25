@@ -24,41 +24,30 @@
 
         <div id="page">
 
-            <div class="bar"><h2 class="contents">Installing the System App</h2></div>
+            <div class="bar"><h2 class="contents">Need help?</h2></div>
             <div class="contents installation">
                 <p>
-                    Simply download the
-                    <label><a href="https://raw.github.com/zalando/system/master/install.sh" title="Download the System App install script.">install.sh</a></label>
-                    script, make it executable and run!
-                </p>
-                <code>
-                    $ curl https://raw.github.com/zalando/system/master/install.sh<br />
-                    $ chmod +x install.sh<br />
-                    $ ./install.sh
-                </code>
-
-                <h3>Manual installation</h3>
-
-                <p>
-                    If you want to install it manually, make sure you have:
-                </p>
-                <ul>
-                    <li><a href="http://nodejs.org/" title="Node.js">Node.js</a> (0.8.x +)</li>
-                    <li><a href="http://www.mongodb.org/" title="MongoDB">MongoDB</a> (1.8.2 +)</li>
-                    <li><a href="http://www.imagemagick.org/" title="ImageMagick">ImageMagick</a> (optional to generate map thumbnails)</li>
-                </ul>
-                <p>
-                    Download the latest source code from GitHub:
-                </p>
-                <code>$ git clone https://github.com/zalando/system.git ./</code>
-                <p>
-                    Install Node.js dependencies:
-                </p>
-                <code>$ npm install</code>
-                <p>
-                    And you're good to go!
+                    If you're having problems with the System App...
                 </p>
 
+                <h4>On the server side</h4>
+                <ol>
+                    <li>First, make sure all the dependencies are properly installed (Node.js, MongoDB, etc).</li>
+                    <li>If you're using Windows... eerrrm, switch to Linux or Mac OS X.</li>
+                    <li>Can't access the app on your browser? Double check if the settings.web.port is correct.</li>
+                    <li>Can't save any data? Double check if the settings.database.connString is correct.</li>
+                </ol>
+
+                <h4>On the client side</h4>
+                <ol>
+                    <li>We recommend the latest version of Google Chrome - but other browser * might * work.</li>
+                    <li>If things are scrambled up or features stop working, reloading the page (usually pressing F5) helps a lot.</li>
+                </ol>
+
+                <h3>Still need help?</h3>
+                <p>
+                    Post your issue on our <a href="https://github.com/zalando/system/issues" title="Issues at the System App project page">project page</a>.
+                </p>
             </div>
         </div>
 

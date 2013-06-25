@@ -29,14 +29,14 @@
             <div class="contents configuring">
                 <p>
                     All server settings should be specified on the file
-                    <label>settings.json</label> on the root of the application.
-                    The specific settings are all described on this file.
+                    <label><a href="https://raw.github.com/zalando/system/master/settings.json" title="settings.json for server settings">settings.json</a></label> on the root of the application.
+                    This file will be parsed by the Settings class.
                 </p>
                 <p>
-                    The following settings will certainly need your attention:
+                    The following keys will certainly need your attention:
                 </p>
 
-                <h5>Settings.general</h5>
+                <h4>general</h4>
                 <ul>
                     <li>
                         <label>appTitle</label> Sets the desired title for the app, something like "My Company System".
@@ -46,7 +46,7 @@
                     </li>
                 </ul>
 
-                <h5>Settings.database</h5>
+                <h4>database</h4>
                 <ul>
                     <li>
                         <label>connString</label> MongoDB connection string. Default is host "localhost", database "systemapp".
@@ -54,7 +54,7 @@
                 </ul>
 
 
-                <h5>Settings.web</h5>
+                <h4>web</h4>
                 <ul>
                     <li>
                         <label>paas</label> Set to true if you're deploying to common PaaS services. More info on the next section.
@@ -64,17 +64,17 @@
                     </li>
                 </ul>
 
-                <h3>Deploying to PaaS</h3>
+                <h3>Deploying to PaaS (platform as a service)</h3>
                 <p>
                     The System App can be easily deployed to AppFog, Heroku, Nodejitsu and OpenShift.
-                    The only requirement is that you set <label>Settings.web.paas</label> to <label>true</label>, so:
+                    The only requirement is that you set the key <label>Settings.web.paas</label> to <label>true</label>, so:
                 </p>
                 <ul class="paas">
                     <li>
                         The Node.js <label>IP</label> and <label>port</label> will be automatically set.
                     </li>
                     <li>
-                        If your PaaS app has a MongoDB bound to it, the <label>connString</label> will be automatically set.
+                        If your PaaS account has a MongoDB bound to it, the <label>connString</label> will be automatically set.
                     </li>
                     <li>
                         It will use <a href="http://logentries.com" title="Logging events with Logentries">Logentries</a> or
@@ -95,8 +95,8 @@
                 <h3>Client settings</h3>
                 <p>
                     All client specific settings - everything that happens inside the browser like colours, timers, sizes
-                    etc - are set on the <label>/assets/js/settings.coffee</label> file. In most circumstances the default
-                    settings will work fine.
+                    etc - are set on the <label><a href="https://raw.github.com/zalando/system/master/settings.json" title="settings.coffee for client settings">/assets/js/settings.coffee</a></label> file.
+                    In most circumstances the default settings will work fine.
                 </p>
             </div>
 

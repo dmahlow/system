@@ -32,7 +32,7 @@ body
 {
     background: rgb(0, 0, 0);
     color: rgb(50, 60, 70);
-    font: 20px/1.6 "OpenSansRegular", "Helvetica Neue", Helvetica, Arial;
+    font: 20px/1.7 "OpenSansRegular", "Helvetica Neue", Helvetica, Arial;
     margin: 0;
     overflow: auto;
     padding: 0;
@@ -114,7 +114,7 @@ h3
     border-bottom: 3px solid rgb(90, 160, 30);
     color: rgb(20, 30, 25);
     margin-bottom: 40px;
-    padding: 10px 0 10px 0;
+    padding: 20px 0 10px 0;
 }
 
 #page
@@ -332,9 +332,14 @@ ul.paas small
     margin-left: 3px;
 }
 
+#footer-notes h3 img
+{
+    margin-left: 8px;
+}
+
 #footer-notes code
 {
-    margin-top: 8px;
+    margin-top: 7px;
 }
 
 #footer
