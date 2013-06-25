@@ -307,27 +307,39 @@ ul.paas small
 /* FOOTER
 // ------------------------------------------------------------------------- */
 
+#footer-logos
+{
+    background: rgb(240, 240, 240);
+    padding: 40px 0 40px 0;
+    text-align: left;
+}
 
+#footer-logos img
+{
+    margin: 0 20px 0 0;
+
+}
 
 #footer-notes
 {
-    background: rgb(235, 235, 235);
+    background: rgb(220, 220, 220);
     padding: 20px 0 40px 0;
     text-align: left;
 }
 
+#footer-notes h3
+{
+    margin-left: 3px;
+}
+
 #footer-notes code
 {
-    float: right;
-    margin-left: 20px;
-    margin-top: 20px;
-    padding: 10px;
-    width: 50%;
+    margin-top: 8px;
 }
 
 #footer
 {
-    background: rgb(205, 205, 205);
+    background: rgb(195, 195, 195);
     height: 40px;
     padding: 40px 0 40px 0;
     text-align: left;
@@ -347,6 +359,13 @@ ul.paas small
 {
     color: rgb(30, 30, 30);
     margin-right: 20px;
+}
+
+.footer-right
+{
+    float: right;
+    padding: 8px;
+    width: 50%;
 }
 
 /* TOOLTIPS

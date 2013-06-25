@@ -9,6 +9,8 @@ $(document).ready(function()
     {
         $body.css("zoom", 0.75);
     }
+
+    $("#demoframe-overlay").click(function(){ window.open("http://systemapp.io/demo/index.html", "SystemApp"); });
 });
 
 // Helper to "pulsate" an element.
@@ -25,7 +27,7 @@ function elementPulsate(el) {
         });
     });
 }
-
+// 1036 x 664
 // Load top menu.
 function loadTopMenu() {
     var callback = function() {
