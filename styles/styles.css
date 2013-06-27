@@ -52,7 +52,7 @@ a
 
 a:hover
 {
-    color: rgb(140, 210, 50) !important;
+    color: rgb(140, 210, 50);
 }
 
 a small
@@ -128,7 +128,7 @@ h3
 
 #demoframe
 {
-    border: 1px solid rgb(190, 190, 190);
+    border: 1px solid rgb(205, 205, 205);
     height: 350px;
     left: 10px;
     padding: 5px;
@@ -308,12 +308,27 @@ ul.paas small
     font-size: 14px;
 }
 
+.screenshot
+{
+    clear: both;
+    text-align: left;
+}
+
+.screenshot img
+{
+    border: 1px solid rgb(205, 205, 205);
+    float: right;
+    margin: 17px 0 37px 37px;
+    padding: 5px;
+}
+
 /* FOOTER
 // ------------------------------------------------------------------------- */
 
 #footer-logos
 {
     background: rgb(240, 240, 240);
+    clear: both;
     padding: 40px 0 40px 0;
     text-align: left;
 }
@@ -370,15 +385,17 @@ ul.paas small
     margin-right: 20px;
 }
 
+#footer a:hover
+{
+    color: rgb(90, 160, 30);
+}
+
 .footer-right
 {
     float: right;
     padding: 8px;
     width: 50%;
 }
-
-/* TOOLTIPS
-// ------------------------------------------------------------------------- */
 
 #fork
 {
