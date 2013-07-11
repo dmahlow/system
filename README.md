@@ -36,8 +36,6 @@ Felling lazy? Simply run the `./install.sh` script and it will try to do all the
 It should work on Linux and OS X.
 
 1.  Download the `./install.sh` and save it on the directory where you want to install the System App.
-    `$ curl https://raw.github.com/zalando/system/master/install.sh`
-    or
     `$ wget https://raw.github.com/zalando/system/master/install.sh`
 2.  Make it executable.
     `$ chmod +x install.sh`
