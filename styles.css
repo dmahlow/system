@@ -40,6 +40,15 @@ p, ul, ol, code
     margin: 0 0 20px 0;
 }
 
+h1
+{
+    color: rgb(0, 0, 0);
+    font-size: 58px;
+    margin: 0;
+    padding: 80px 0 0 0;
+    text-align: center;
+}
+
 /* CONTAINERS
 // ------------------------------------------------------------------------- */
 
@@ -64,47 +73,6 @@ p, ul, ol, code
 
 /* HEADER AND TOP FACTS
 // ------------------------------------------------------------------------- */
-
-#demoframe
-{
-    border: 1px solid rgb(205, 205, 205);
-    height: 350px;
-    left: 0;
-    padding: 5px;
-    position: absolute;
-    top: 0;
-    width: 100%;
-}
-
-#demoframe-overlay
-{
-    background-color: rgba(0, 0, 0, 0.5);
-    color: rgb(240, 240, 240);
-    font-size: 40px;
-    height: 200px;
-    left: 0;
-    opacity: 0;
-    margin: 5px;
-    padding-top: 150px;
-    position: absolute;
-    text-align: center;
-    top: 0;
-    width: 100%;
-}
-
-#demoframe-overlay:hover
-{
-    opacity: 0.9;
-}
-
-h1
-{
-    color: rgb(0, 0, 0);
-    font-size: 58px;
-    margin: 0;
-    padding: 80px 0 0 0;
-    text-align: center;
-}
 
 #topfacts
 {
@@ -147,9 +115,42 @@ h1
     background: url(images/ico_monitor.png) no-repeat top;
 }
 
+#demoframe
+{
+    border: 1px solid rgb(205, 205, 205);
+    height: 350px;
+    left: 0;
+    padding: 5px;
+    position: absolute;
+    top: 40px;
+    width: 100%;
+}
+
+#demoframe-overlay
+{
+    background-color: rgba(0, 0, 0, 0.5);
+    color: rgb(240, 240, 240);
+    font-size: 40px;
+    height: 270px;
+    left: 0;
+    opacity: 0;
+    margin: 5px;
+    padding-top: 80px;
+    position: absolute;
+    text-align: center;
+    top: 40px;
+    width: 100%;
+}
+
+#demoframe-overlay:hover
+{
+    opacity: 0.9;
+}
+
 #demoinfo
 {
-    margin-top: 400px;
+    margin-bottom: 50px;
+    margin-top: 410px;
 }
 
 #demoinfo h5
@@ -217,78 +218,4 @@ ul.paas small
     float: right;
     margin: 17px 0 37px 37px;
     padding: 5px;
-}
-
-/* FOOTER
-// ------------------------------------------------------------------------- */
-
-#footer-logos
-{
-    background: rgb(240, 240, 240);
-    clear: both;
-    padding: 40px 0 40px 0;
-    text-align: left;
-}
-
-#footer-logos img
-{
-    margin: 0 20px 0 0;
-
-}
-
-#footer-notes
-{
-    background: rgb(220, 220, 220);
-    padding: 20px 0 40px 0;
-    text-align: left;
-}
-
-#footer-notes h3
-{
-    margin-left: 3px;
-}
-
-#footer-notes h3 img
-{
-    margin-left: 8px;
-}
-
-#footer-notes code
-{
-    margin-top: 7px;
-}
-
-#footer
-{
-    background: rgb(195, 195, 195);
-    height: 40px;
-    padding: 40px 0 40px 0;
-    text-align: left;
-}
-
-#footer .right
-{
-    float: right;
-}
-
-#footer .right img
-{
-    margin-left: 6px;
-}
-
-#footer a
-{
-    color: rgb(30, 30, 30);
-    margin-right: 20px;
-}
-
-#footer a:hover
-{
-    color: rgb(90, 160, 30);
-}
-
-.footer-right
-{
-    float: right;
-    width: 50%;
 }
