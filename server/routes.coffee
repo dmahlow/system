@@ -435,21 +435,25 @@ module.exports = (app) ->
         id = getIdFromRequest(req)
         id = req.user.id if id is "logged"
 
-        database.getUser id, (err, result) ->
-            if result? and not err?
+        # Return guest user if logged as "guest" and guest access is enabled on settings.
+        if settings.security.guestEnabled and req.user.id is "guest"
+            res.send minifyJson security.guestUser
+        else
+            database.getUser id, (err, result) ->
+                if result? and not err?
 
-                # Check user permissions.
-                if not roles.admin and result.id isnt req.user.id
-                    sendForbiddenResponse res, "User GET"
-                    return
+                    # Check user permissions.
+                    if not roles.admin and result.id isnt req.user.id
+                        sendForbiddenResponse res, "User GET"
+                        return
 
-                # Make sure password fields are removed.
-                delete result["passwordHash"]
-                delete result["password"]
+                    # Make sure password fields are removed.
+                    delete result["passwordHash"]
+                    delete result["password"]
 
-                res.send minifyJson result
-            else
-                sendErrorResponse res, "User GET", err
+                    res.send minifyJson result
+                else
+                    sendErrorResponse res, "User GET", err
 
     # Add or update a [Users](user.html).
     postUser = (req, res) ->

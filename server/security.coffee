@@ -18,6 +18,9 @@ class Security
     # The default expirty time is 1 minute.
     cachedUsers: null
 
+    # The default guest user.
+    guestUser: {id: "guest", displayName: "Guest", username: "guest", roles: ["guest"]}
+
     # Init all security related stuff. Set the passport strategy to
     # authenticate users using basic HTTP authentication.
     init: =>
@@ -43,10 +46,9 @@ class Security
     # Helper to validate user login. If no user was specified and [settings](settings.html)
     # allow guest access, then log as guest.
     validateUser: (user, password, callback) =>
-        if not user? or user is "" or user is "guest"
+        if not user? or user is "" or user is "guest" or user.id is "guest"
             if settings.security.guestEnabled
-                guest = {id: "guest", displayName: "Guest", username: "guest", roles: ["guest"]}
-                return callback null, guest
+                return callback null, @guestUser
             else
                 return callback null, false, {message: "Username was not specified."}
 
