@@ -1,6 +1,6 @@
 {
     "name":"systemapp",
-    "version":"0.6.9",
+    "version":"0.6.10",
     "description":"A sleek and smart infrastructure mapping and monitoring tool by Zalando.",
     "homepage": "http://systemapp.io",
     "author":"Igor Ramadas <igor.ramadas@zalando.de>",
@@ -26,6 +26,9 @@
         "expresser":">= 0.7.0",
         "lodash":">= 1.2.1",
         "moment":">= 2.0.0",
+        "passport":">= 0.1.16",
+        "passport-http":">= 0.2.1",
+        "passport-ldapauth":">= 0.0.5",
         "socket.io":">= 0.9.6"
     },
     "devDependencies":{

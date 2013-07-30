@@ -46,7 +46,6 @@ module.exports = (app) ->
                 else
                     res.send "Login validated! #{JSON.stringify(result)}"
 
-
     # The main index page.
     getIndex = (req, res) ->
         if not req.user?
@@ -659,14 +658,14 @@ module.exports = (app) ->
     app.post "/login", postLogin
 
     # Main index.
-    if expresser.app.passport?
-        app.get "/", expresser.app.passport.authenticate(passportStrategy, passportOptions), getIndex
+    if expresser.settings.passport.enabled
+        app.get "/", security.passport.authenticate(passportStrategy, passportOptions), getIndex
     else
         app.get "/", getIndex
 
     # Admin area.
-    if expresser.app.passport?
-        app.get "/admin", expresser.app.passport.authenticate(passportStrategy, passportOptions), getAdmin
+    if expresser.settings.passport.enabled
+        app.get "/admin", security.passport.authenticate(passportStrategy, passportOptions), getAdmin
     else
         app.get "/admin", getAdmin
 

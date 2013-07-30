@@ -14,6 +14,9 @@ class Security
     database = require "./database.coffee"
     moment = require "moment"
 
+    # Passport is accessible from outside.
+    passport: require "passport"
+
     # Cache with logged users to avoid hitting the database all the time.
     # The default expirty time is 1 minute.
     cachedUsers: null
@@ -27,21 +30,46 @@ class Security
         @cachedUsers = {}
 
         # Only add passowrd protection if enabled on settings.
-        return if not expresser.app.passport?
-
-        # Use HTTP basic authentication.
-        expresser.app.passportAuthenticate = @validateUser
+        return if not expresser.settings.passport.enabled
 
         # User serializer will user the user ID only.
-        expresser.app.passport.serializeUser (user, callback) =>
+        @passport.serializeUser (user, callback) =>
             callback null, user.id
 
         # User deserializer will get user details from the database.
-        expresser.app.passport.deserializeUser (user, callback) =>
+        @passport.deserializeUser (user, callback) =>
             if user is "guest"
                 @validateUser "guest", null, callback
             else
                 @validateUser {id: user}, false, callback
+
+        # Enable basic HTTP authentication?
+        if settings.passport.basic.enabled
+            httpStrategy = (require "passport-http").BasicStrategy
+
+            @passport.use new httpStrategy (username, password, callback) =>
+                @validateUser username, password, callback
+
+            if settings.general.debug
+                expresser.logger.info "Security", "Passport: using basic HTTP authentication."
+
+        # Enable LDAP authentication?
+        if settings.passport.ldap.enabled
+            ldapStrategy = (require "passport-ldapauth").Strategy
+
+            ldapOptions =
+                server:
+                    url: settings.passport.ldap.server
+                    adminDn: settings.passport.ldap.adminDn
+                    adminPassword: settings.passport.ldap.adminPassword
+                    searchBase: settings.passport.ldap.searchBase
+                    searchFilter: settings.passport.ldap.searchFilter
+
+            @passport.use new ldapStrategy ldapOptions, (profile, callback) =>
+                @validateUser profile, callback
+
+            if settings.general.debug
+                expresser.logger.info "Security", "Passport: using LDAP authentication."
 
     # Helper to validate user login. If no user was specified and [settings](settings.html)
     # allow guest access, then log as guest.
