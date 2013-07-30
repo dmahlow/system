@@ -1,3 +1,3 @@
-var zalAppName = "System App";
-var zalDomain = "systemapp.io";
-var gaId = "UA-40533395-1";
+zalAppName = "System App";
+zalDomain = "systemapp.io";
+gaId = "UA-40533395-1";
