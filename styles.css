@@ -26,15 +26,6 @@ a small
     display: block;
 }
 
-code
-{
-    background: rgb(30, 30, 30);
-    color: rgb(140, 210, 50);
-    display: block;
-    font-family: "Lucida Sans", Monaco, Bitstream Vera Sans Mono, Lucida Console, Terminal;
-    padding: 5px;
-}
-
 p, ul, ol, code
 {
     margin: 0 0 20px 0;
@@ -42,15 +33,19 @@ p, ul, ol, code
 
 h1
 {
-    background: url(images/logo.jpg) no-repeat top center;
-    color: rgb(99, 99, 99);
+    color: rgb(210, 210, 210);
     display: block;
     font-family: "Myriad Pro", Calibri, Helvetica, Arial, sans-serif;
-    font-size: 66px;
-    height: 310px;
-    margin: 20px 0 0 0;
-    padding-top: 222px;
+    font-size: 170px;
+    margin: 0;
+    padding: 0;
     text-align: center;
+}
+
+.logo
+{
+    background: url(images/logo.jpg) no-repeat center;
+    height: 100px;
 }
 
 /* CONTAINERS
