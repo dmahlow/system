@@ -66,6 +66,7 @@ SystemApp.init = ->
     window.onerror = SystemApp.onError
     SystemApp.currentView = new SystemApp.AdminView()
 
+
 # HELPERS
 # -----------------------------------------------------------------------------
 

@@ -2,6 +2,8 @@
 
 **Official homepage:** **http://systemapp.io**
 
+**Blog post:** **http://tech.zalando.com/meet-the-system-app**
+
 [![Build Status](https://travis-ci.org/zalando/system.png?branch=master)](https://travis-ci.org/zalando/system)
 
 The System App is a sleek, smart and open-source IT mapping and monitoring tool by Zalando.
