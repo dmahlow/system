@@ -1,8 +1,8 @@
 # System App by Zalando
 
-**Official homepage:** **http://systemapp.io**
+**Official homepage:** http://systemapp.io
 
-**Blog post:** **http://tech.zalando.com/meet-the-system-app**
+**Blog post:** http://tech.zalando.com/meet-the-system-app
 
 [![Build Status](https://travis-ci.org/zalando/system.png?branch=master)](https://travis-ci.org/zalando/system)
 
